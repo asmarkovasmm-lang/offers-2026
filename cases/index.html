@@ -1219,7 +1219,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       if(!e.isIntersecting) return;
       e.target.classList.add('in');
       io.unobserve(e.target);
-      var vals = e.target.querySelectorAll('.val[data-count]');
+      var vals = e.target.querySelectorAll('.val');
       Array.prototype.forEach.call(vals, count);
     });
   }, {threshold:.18, rootMargin:'0px 0px -8% 0px'});
@@ -1234,7 +1234,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       var r = el.getBoundingClientRect();
       if(r.top < window.innerHeight * 1.15 && r.bottom > -50){
         el.classList.add('in');
-        Array.prototype.forEach.call(el.querySelectorAll('.val[data-count]'), count);
+        Array.prototype.forEach.call(el.querySelectorAll('.val'), count);
       }
     });
   }
@@ -1245,11 +1245,57 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+
+  // крутит числа внутри произвольной подписи: «в 3 раза», «1–1,5 млн», «1 месяц»
+  function countInText(el){
+    var orig = el.textContent.trim();
+    var parts = orig.split(/(\d+(?:[   ]\d{3})*(?:[.,]\d+)?)/);
+    var nums = [];
+    parts.forEach(function(p, i){
+      if(/^\d/.test(p)){
+        var clean = p.replace(/[\u00A0\u2009 ]/g, '').replace(',', '.');
+        nums.push({
+          i: i,
+          target: parseFloat(clean),
+          dec: (clean.split('.')[1] || '').length,
+          space: /[\u00A0\u2009 ]/.test(p)
+        });
+      }
+    });
+    if(!nums.length) return;
+
+    function render(p){
+      var eased = 1 - Math.pow(1 - p, 3);
+      var out = parts.slice();
+      nums.forEach(function(n){
+        var v = n.target * eased;
+        var s = n.dec ? v.toFixed(n.dec).replace('.', ',') : String(Math.round(v));
+        if(n.space) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+        out[n.i] = s;
+      });
+      el.textContent = out.join('');
+    }
+
+    var dur = 1100, t0 = null;
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      render(p);
+      if(p < 1) requestAnimationFrame(step);
+      else el.textContent = orig;
+    }
+    render(0);
+    requestAnimationFrame(step);
+  }
+
   function count(el){
+    if(el.dataset.counted) return;
+    el.dataset.counted = '1';
+    if(reduce) return;
+    if(!el.dataset.count){ countInText(el); return; }
     var target = parseInt(el.dataset.count, 10);
     var pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
     var space = el.dataset.fmt === 'space';
-    if(reduce) return;
     var dur = 1100, t0 = null;
     function fmt(n){
       var s = String(n);
