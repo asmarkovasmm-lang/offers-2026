@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
 <title>COSMOMED Clinic · кейс Анастасии Марковой</title>
-<meta name="description" content="Кейс COSMOMED Clinic: таргетированная реклама для клиники косметологии в Перми — ×5,7 выручки на вложенный рубль, выход в прибыль с первого месяца.">
+<meta name="description" content="Кейс COSMOMED Clinic: таргетированная реклама для клиники косметологии — ×5,7 выручки на вложенный рубль, выход в прибыль с первого месяца.">
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -401,14 +401,19 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 .fine{margin-top:clamp(30px,4vw,52px);font-size:12px;opacity:.62;max-width:62ch;line-height:1.5}
 
 /* ============ REVEAL ============ */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .bar{transform:scaleY(1) !important;transition:none}
+}
+</style>
 <style>
 .niche{display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.16em;
   text-transform:uppercase;font-weight:600;color:var(--acid)}
 .niche svg{width:17px;height:17px;flex:none}
-.card-case .niche{margin-bottom:2px}
-/* ============ МНОГОСТРАНИЧНОСТЬ ============ */
 .caselist-row a.is-active{border-color:var(--acid);color:var(--acid);background:var(--ink-2)}
-.case{border-top:none;margin-top:0;padding-top:clamp(28px,4vw,52px)}
+.case{border-top:none;margin-top:0;padding-top:clamp(26px,3.5vw,46px)}
 .case-nav{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   border-top:var(--rule);margin-top:clamp(48px,7vw,90px);padding-top:26px}
 .case-nav a{display:inline-flex;flex-direction:column;gap:4px;text-decoration:none;max-width:46%}
@@ -417,16 +422,15 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
   letter-spacing:-.02em;color:var(--text)}
 .case-nav a:hover .v{color:var(--acid)}
 .case-nav .next{text-align:right;align-items:flex-end;margin-left:auto}
-.crumbs{padding:22px 0 0;font-size:12.5px;color:var(--text-3)}
+.crumbs{padding:20px 0 0;font-size:12.5px;color:var(--text-3)}
 .crumbs a{color:var(--text-2);text-decoration:none}
 .crumbs a:hover{color:var(--acid)}
-/* список кейсов */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;
   background:var(--line);border:1px solid var(--line);margin-top:clamp(30px,4vw,52px)}
 .card-case{background:var(--ink);padding:clamp(24px,3vw,36px);text-decoration:none;
   display:flex;flex-direction:column;gap:10px;transition:background .2s}
 .card-case:hover{background:var(--ink-2)}
-.card-case .n{font-family:var(--display);font-weight:800;font-size:13px;color:var(--acid)}
+.card-case .n{font-family:var(--display);font-weight:800;font-size:13px;color:var(--text-3)}
 .card-case h2{font-size:clamp(20px,2.2vw,27px);margin:0}
 .card-case .win{font-size:15px;color:var(--text-2)}
 .card-case .go{margin-top:auto;padding-top:14px;font-size:12.5px;letter-spacing:.06em;
@@ -434,19 +438,13 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 </style>
 </head>
 <body>
-.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  .rv{opacity:1;transform:none;transition:none}
-  .bar{transform:scaleY(1) !important;transition:none}
-}
-</style>
-
 <nav>
   <div class="wrap">
-    <div class="brand">МАРКОВА<span>.</span></div>
-    <div class="nav-links">
-      <a href="#cosmomed">01 — COSMOMED</a>
-      <a href="#philosophy">02 — Философия</a>
+    <a class="brand" href="../" style="text-decoration:none">МАРКОВА<span>.</span></a>
+    <div class="nav-links"><a href="#contact" class="nav-cta">Связаться</a></div>
+  </div>
+</nav>
+
 <div class="caselist">
   <div class="wrap">
     <div class="caselist-row">
@@ -460,14 +458,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 </div>
 <div class="wrap"><div class="crumbs"><a href="../">Кейсы</a> · COSMOMED Clinic</div></div>
 <main class="wrap">
-    </div>
-  </div>
-</div>
-
-<main class="wrap">
-
-  <!-- ═══════════ CASE 01 ═══════════ -->
-  <section class="case" id="cosmomed">
+<section class="case" id="cosmomed">
     <div class="niche rv"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg><span>Медицина</span></div>
     <div class="case-head">
       <div class="case-num rv">01</div>
@@ -585,23 +576,17 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
           </p>
           <footer>
             <b>Анастасия Моховикова</b>
+            Руководитель Cosmomed Clinic, Пермь
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
 
 <div class="case-nav">
   <a class="next" href="../filosofiya-krasoty/"><span class="k">следующий кейс →</span><span class="v">Философия красоты и здоровья</span></a>
 </div>
 </main>
-
-        <a class="linkcard rv" href="https://vk.com/shavermahaus" target="_blank" rel="noopener">
-          <span class="lc-k">Сообщество сети</span>
-          <span class="lc-v">vk.com/shavermahaus</span>
-          <span class="lc-arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
-</main>
-
-
 <footer class="end" id="contact">
   <div class="wrap">
     <p class="eyebrow" style="color:rgba(250,246,245,.7)">Свободна для проектов</p>
@@ -618,6 +603,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       </a>
       <a class="contact" href="mailto:a.s.markova.smm@gmail.com">
         <span class="k">Почта</span>
+        <span class="v">a.s.markova.smm@gmail.com</span>
       </a>
     </div>
 
@@ -629,7 +615,6 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
     </p>
   </div>
 </footer>
-
 <script>
 (function(){
   if(!('IntersectionObserver' in window)){
@@ -724,5 +709,17 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       if(space) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
       return pre + s + suf;
     }
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(Math.round(target * eased));
+      if(p < 1) requestAnimationFrame(step);
+    }
+    el.textContent = fmt(0);
+    requestAnimationFrame(step);
+  }
+})();
+</script>
 </body>
 </html>
