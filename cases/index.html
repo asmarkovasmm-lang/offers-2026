@@ -283,6 +283,12 @@ header.hero::before{
 .case-tags{display:flex;flex-wrap:wrap;gap:8px;max-width:340px}
 
 /* stat band */
+.stats-scope{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;
+  font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text-3);margin-bottom:14px;
+}
+.stats-scope b{color:var(--acid);font-weight:600;letter-spacing:.14em}
 .stats{
   display:grid;grid-template-columns:repeat(2,1fr);
   border-top:var(--rule);border-left:var(--rule);
@@ -530,6 +536,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
           <div class="hero-meta-row"><dt>Ниши</dt><dd>Медицина — от эстетической до многопрофильного центра с 5 филиалами, недвижимость, общепит, товары для детей и активного отдыха</dd></div>
           <div class="hero-meta-row"><dt>Роль</dt><dd>Стратегия, продюсирование контента, управление командой, аналитика</dd></div>
           <div class="hero-meta-row"><dt>Опыт</dt><dd>11+ лет в digital, рост оборота клиентов на 50–400%</dd></div>
+          <div class="hero-meta-row"><dt>Клиенты</dt><dd>Остаются годами: «Философия красоты» — 6 лет, COSMOMED — год в одном режиме</dd></div>
         </dl>
       </div>
     </div>
@@ -537,10 +544,10 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 
   <div class="ticker">
     <div class="ticker-track" aria-hidden="false">
-      <span>+427 000 ₽ за 2 месяца</span><span>окупаемость с 1-го месяца</span><span>99 записей на прием из органики</span><span>0 ₽ рекламного бюджета</span><span>1,5 млн ₽ продаж в месяц из ВК</span><span>+2000% охватов</span>
+      <span>+427 000 ₽ за 2 месяца</span><span>окупаемость с 1-го месяца</span><span>×5,7 выручки на вложенный рубль</span><span>99 записей на прием из органики</span><span>0 ₽ рекламного бюджета</span><span>1,5 млн ₽ продаж в месяц из ВК</span><span>+2000% охватов</span>
     </div>
     <div class="ticker-track" aria-hidden="true">
-      <span>+427 000 ₽ за 2 месяца</span><span>окупаемость с 1-го месяца</span><span>99 записей на прием из органики</span><span>0 ₽ рекламного бюджета</span><span>1,5 млн ₽ продаж в месяц из ВК</span><span>+2000% охватов</span>
+      <span>+427 000 ₽ за 2 месяца</span><span>окупаемость с 1-го месяца</span><span>×5,7 выручки на вложенный рубль</span><span>99 записей на прием из органики</span><span>0 ₽ рекламного бюджета</span><span>1,5 млн ₽ продаж в месяц из ВК</span><span>+2000% охватов</span>
     </div>
   </div>
 </header>
@@ -565,7 +572,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       <div class="case-num rv">01</div>
       <h2 class="case-title rv" style="transition-delay:.06s">
         Cosmomed<br>Clinic
-        <span class="loc">Пермь · клиника косметологии</span>
+        <span class="loc">Пермь · клиника косметологии · год работы</span>
       </h2>
       <div class="case-tags rv" style="transition-delay:.12s">
         <span class="tag">Таргетированная реклама</span>
@@ -575,22 +582,27 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       </div>
     </div>
 
+    <div class="stats-scope rv">
+      <span><b>Замер: первые два месяца</b></span>
+      <span>· работали с клиникой год, но цифры привожу только за тот период, где стояла сквозная аналитика</span>
+    </div>
+
     <div class="stats rv">
       <div class="stat">
+        <div class="val">×5,7</div>
+        <div class="cap">рублей выручки на каждый вложенный рубль</div>
+      </div>
+      <div class="stat">
         <div class="val" data-count="427000" data-prefix="+" data-fmt="space">+427 000</div>
-        <div class="cap">рублей выручки сверх затрат на рекламу за два месяца</div>
-      </div>
-      <div class="stat">
-        <div class="val" data-count="517000" data-fmt="space">517 000</div>
-        <div class="cap">рублей выручки с рекламы за два месяца</div>
-      </div>
-      <div class="stat">
-        <div class="val" data-count="1">1</div>
-        <div class="cap">месяц до выхода в прибыль, а не в ноль</div>
+        <div class="cap">рублей выручки сверх затрат на рекламу</div>
       </div>
       <div class="stat">
         <div class="val" data-count="90000" data-fmt="space">90 000</div>
         <div class="cap">рублей всех затрат: бюджет и работа команды</div>
+      </div>
+      <div class="stat">
+        <div class="val" data-count="1">1</div>
+        <div class="cap">месяц до выхода в прибыль, а не в ноль</div>
       </div>
     </div>
 
@@ -618,7 +630,20 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
         </div>
 
         <div class="block rv">
-          <h3>Экономика за два месяца</h3>
+          <h3>Год в одном режиме</h3>
+          <p>
+            Канал окупился с первого месяца, и клиника продлевала работу до года.
+            Дальше повторялся один и тот же цикл:
+          </p>
+          <ul class="list">
+            <li><b>Каждую неделю</b> — сверка выручки с расходом: что окупается, масштабируем; что нет, отключаем.</li>
+            <li><b>Каждый месяц</b> — пересборка кампаний под сезон и под услуги, которые клинике нужно было загрузить.</li>
+            <li><b>Постоянно</b> — разбор реальных диалогов администраторов и правка скриптов под новые возражения.</li>
+          </ul>
+        </div>
+
+        <div class="block rv">
+          <h3>Экономика первых двух месяцев</h3>
           <table class="econ">
             <tr><td>Выручка с записанных клиентов</td><td>517 000 ₽</td></tr>
             <tr><td>Себестоимость услуг · маржа клиники 50%</td><td>− 258 500 ₽</td></tr>
@@ -627,9 +652,9 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
             <tr class="total"><td>Чистыми клинике</td><td>+168 500<span class="rub">₽</span></td></tr>
           </table>
           <p style="margin-top:16px;font-size:13px;color:var(--text-3)">
-            427 000 ₽ наверху — это выручка сверх затрат на рекламу. С учетом маржи
-            клиники 50% чистыми остается 168 500 ₽: каждый вложенный рубль вернулся
-            с 1,9 ₽ прибыли сверху, ROMI 187%.
+            ×5,7 наверху — это выручка на вложенный рубль. Прибылью клиники она становится
+            с учетом маржи 50%: 168 500 ₽ чистыми, то есть 1,9 ₽ прибыли на каждый
+            вложенный рубль, ROMI 187%.
           </p>
         </div>
       </div>
@@ -674,7 +699,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       <div class="case-num rv">02</div>
       <h2 class="case-title rv" style="transition-delay:.06s">
         Философия<br>красоты<br>и здоровья
-        <span class="loc">Пермь · клиника косметологии</span>
+        <span class="loc">Пермь · клиника косметологии · 6 лет работы</span>
       </h2>
       <div class="case-tags rv" style="transition-delay:.12s">
         <span class="tag">SMM</span>
@@ -682,7 +707,13 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
         <span class="tag">ВКонтакте</span>
         <span class="tag">Чат-бот записи</span>
         <span class="tag tag--hot">0 ₽ бюджета</span>
+        <span class="tag">6 лет вместе</span>
       </div>
+    </div>
+
+    <div class="stats-scope rv">
+      <span><b>Замер: декабрь 2023 — март 2024</b></span>
+      <span>· работаем с клиникой шестой год, детальные цифры привожу за период с полной отчетностью по воронке</span>
     </div>
 
     <div class="stats rv">
@@ -699,8 +730,8 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
         <div class="cap">прямых записей на прием из соцсети</div>
       </div>
       <div class="stat">
-        <div class="val" data-count="224">224</div>
-        <div class="cap">новых подписчика за март</div>
+        <div class="val" data-count="6">6</div>
+        <div class="cap">лет непрерывной работы с клиникой</div>
       </div>
     </div>
 
@@ -728,9 +759,10 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
           <h3>Результат</h3>
           <ul class="list">
             <li>Записи на прием идут из соцсети <b>стабильно, а не всплесками</b> — четыре месяца подряд.</li>
-            <li>Пик февраля (+103% к январю) дала серия разборов процедур с ответами на возражения — тему повторили в следующих месяцах.</li>
+            <li>Пик февраля (+103% к декабрю) дала серия разборов процедур с ответами на возражения — тему повторили в следующих месяцах.</li>
             <li>Сообщество прирастает органически: <b>224</b> новых подписчика за март — без накруток и платного продвижения.</li>
             <li>Охват подписчиков стабилизировался и пошел в рост — контент остается интересен ядру аудитории.</li>
+            <li><b>Шестой год работы с клиникой</b> — канал не выгорел и продолжает приносить записи без рекламного бюджета.</li>
           </ul>
         </div>
       </div>
