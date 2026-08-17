@@ -160,6 +160,13 @@ header.hero::before{
 .case{scroll-margin-top:118px}
 @media(max-width:900px){.caselist{top:62px}}
 
+
+/* ============ ЗНАК НИШИ ============ */
+.niche{display:inline-flex;align-items:center;gap:7px;margin-bottom:12px;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--acid)}
+.niche svg{width:17px;height:17px;flex:none}
+.card-case .niche{margin-bottom:2px}
+
 /* ============ CASE ============ */
 .case{border-top:var(--rule);padding-top:clamp(40px,6vw,80px);margin-top:clamp(56px,8vw,120px)}
 .case-head{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;margin-bottom:clamp(34px,5vw,64px)}
@@ -394,14 +401,11 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 .fine{margin-top:clamp(30px,4vw,52px);font-size:12px;opacity:.62;max-width:62ch;line-height:1.5}
 
 /* ============ REVEAL ============ */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
-.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  .rv{opacity:1;transform:none;transition:none}
-  .bar{transform:scaleY(1) !important;transition:none}
-}
-</style>
 <style>
+.niche{display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:600;color:var(--acid)}
+.niche svg{width:17px;height:17px;flex:none}
+.card-case .niche{margin-bottom:2px}
 /* ============ МНОГОСТРАНИЧНОСТЬ ============ */
 .caselist-row a.is-active{border-color:var(--acid);color:var(--acid);background:var(--ink-2)}
 .case{border-top:none;margin-top:0;padding-top:clamp(28px,4vw,52px)}
@@ -430,19 +434,19 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 </style>
 </head>
 <body>
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .bar{transform:scaleY(1) !important;transition:none}
+}
+</style>
+
 <nav>
   <div class="wrap">
     <div class="brand">МАРКОВА<span>.</span></div>
     <div class="nav-links">
       <a href="#cosmomed">01 — COSMOMED</a>
       <a href="#philosophy">02 — Философия</a>
-      <a href="#bigoland">03 — BigoLand</a>
-      <a href="#pzsp">04 — ПЗСП-групп</a>
-      <a href="#shaverma">05 — Шаверма Хаус</a>
-      <a href="#contact" class="nav-cta">Связаться</a>
-    </div>
-  </div>
-</nav>
 <div class="caselist">
   <div class="wrap">
     <div class="caselist-row">
@@ -456,7 +460,17 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 </div>
 <div class="wrap"><div class="crumbs"><a href="../">Кейсы</a> · BigoLand</div></div>
 <main class="wrap">
+        <img src="../assets/philosophy-vk-report.png"
+             alt="Отчет по ВКонтакте за март 2024: 29 постов, 61К охват страницы, 754 новых диалога, 99 записей на прием, 22К подписчиков"
+             loading="lazy">
+      </div>
+      <div class="shot-cap"><span>Фрагмент ежемесячного отчета · ВКонтакте, март 2024</span><span class="shot-hint">← листайте →</span></div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CASE 03 ═══════════ -->
   <section class="case" id="bigoland">
+    <div class="niche rv"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3 6.5L10 3l7 3.5v7L10 17l-7-3.5z"/><path d="M3 6.5L10 10l7-3.5M10 10v7"/></svg><span>Товары</span></div>
     <div class="case-head">
       <div class="case-num rv">03</div>
       <h2 class="case-title rv" style="transition-delay:.06s">
@@ -587,22 +601,24 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 
         <a class="linkcard rv" href="https://vk.com/bigo.land" target="_blank" rel="noopener">
           <span class="lc-k">Сообщество проекта</span>
-          <span class="lc-v">vk.com/bigo.land</span>
-          <span class="lc-arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- ═══════════ CASE 04 ═══════════ -->
 
 <div class="case-nav">
   <a href="../filosofiya-krasoty/"><span class="k">← предыдущий кейс</span><span class="v">Философия красоты и здоровья</span></a>
   <a class="next" href="../pzsp-grupp/"><span class="k">следующий кейс →</span><span class="v">ПЗСП-групп</span></a>
 </div>
 </main>
+
+        <a class="linkcard rv" href="https://vk.com/shavermahaus" target="_blank" rel="noopener">
+          <span class="lc-k">Сообщество сети</span>
+          <span class="lc-v">vk.com/shavermahaus</span>
+          <span class="lc-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
 <footer class="end" id="contact">
   <div class="wrap">
     <p class="eyebrow" style="color:rgba(250,246,245,.7)">Свободна для проектов</p>
@@ -619,7 +635,6 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       </a>
       <a class="contact" href="mailto:a.s.markova.smm@gmail.com">
         <span class="k">Почта</span>
-        <span class="v">a.s.markova.smm@gmail.com</span>
       </a>
     </div>
 
@@ -631,6 +646,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
     </p>
   </div>
 </footer>
+
 <script>
 (function(){
   if(!('IntersectionObserver' in window)){
@@ -725,17 +741,5 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       if(space) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
       return pre + s + suf;
     }
-    function step(ts){
-      if(!t0) t0 = ts;
-      var p = Math.min((ts - t0) / dur, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = fmt(Math.round(target * eased));
-      if(p < 1) requestAnimationFrame(step);
-    }
-    el.textContent = fmt(0);
-    requestAnimationFrame(step);
-  }
-})();
-</script>
 </body>
 </html>

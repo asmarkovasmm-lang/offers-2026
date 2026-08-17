@@ -160,6 +160,13 @@ header.hero::before{
 .case{scroll-margin-top:118px}
 @media(max-width:900px){.caselist{top:62px}}
 
+
+/* ============ ЗНАК НИШИ ============ */
+.niche{display:inline-flex;align-items:center;gap:7px;margin-bottom:12px;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--acid)}
+.niche svg{width:17px;height:17px;flex:none}
+.card-case .niche{margin-bottom:2px}
+
 /* ============ CASE ============ */
 .case{border-top:var(--rule);padding-top:clamp(40px,6vw,80px);margin-top:clamp(56px,8vw,120px)}
 .case-head{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;margin-bottom:clamp(34px,5vw,64px)}
@@ -394,14 +401,11 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 .fine{margin-top:clamp(30px,4vw,52px);font-size:12px;opacity:.62;max-width:62ch;line-height:1.5}
 
 /* ============ REVEAL ============ */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
-.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  .rv{opacity:1;transform:none;transition:none}
-  .bar{transform:scaleY(1) !important;transition:none}
-}
-</style>
 <style>
+.niche{display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:600;color:var(--acid)}
+.niche svg{width:17px;height:17px;flex:none}
+.card-case .niche{margin-bottom:2px}
 /* ============ МНОГОСТРАНИЧНОСТЬ ============ */
 .caselist-row a.is-active{border-color:var(--acid);color:var(--acid);background:var(--ink-2)}
 .case{border-top:none;margin-top:0;padding-top:clamp(28px,4vw,52px)}
@@ -430,19 +434,19 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 </style>
 </head>
 <body>
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .bar{transform:scaleY(1) !important;transition:none}
+}
+</style>
+
 <nav>
   <div class="wrap">
     <div class="brand">МАРКОВА<span>.</span></div>
     <div class="nav-links">
       <a href="#cosmomed">01 — COSMOMED</a>
       <a href="#philosophy">02 — Философия</a>
-      <a href="#bigoland">03 — BigoLand</a>
-      <a href="#pzsp">04 — ПЗСП-групп</a>
-      <a href="#shaverma">05 — Шаверма Хаус</a>
-      <a href="#contact" class="nav-cta">Связаться</a>
-    </div>
-  </div>
-</nav>
 <div class="caselist">
   <div class="wrap">
     <div class="caselist-row">
@@ -456,7 +460,16 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 </div>
 <div class="wrap"><div class="crumbs"><a href="../">Кейсы</a> · Философия красоты и здоровья</div></div>
 <main class="wrap">
+            Руководитель Cosmomed Clinic, Пермь
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CASE 02 ═══════════ -->
   <section class="case" id="philosophy">
+    <div class="niche rv"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg><span>Медицина</span></div>
     <div class="case-head">
       <div class="case-num rv">02</div>
       <h2 class="case-title rv" style="transition-delay:.06s">
@@ -468,24 +481,24 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
         <span class="tag">Контент-маркетинг</span>
         <span class="tag">Сеть филиалов</span>
         <span class="tag">Чат-бот записи</span>
-        <span class="tag tag--hot">15,2 млн ₽ при 0 ₽ бюджета</span>
+        <span class="tag tag--hot">22,8 млн ₽ при 0 ₽ бюджета</span>
         <span class="tag">5 лет вместе</span>
       </div>
     </div>
 
     <div class="stats-scope rv">
-      <span><b>Замер: 6 месяцев, сентябрь 2023 — май 2024</b></span>
-      <span>· работаем с клиникой пятый год; привожу шесть месяцев, по которым велась ежедневная отчетность по воронке — головной центр и филиалы, без направлений ЭКО и эстетики</span>
+      <span><b>Замер: 12 месяцев</b></span>
+      <span>· работаем с клиникой пятый год; привожу год, по которому велась ежедневная отчетность по воронке — головной центр и филиалы, без направлений ЭКО и эстетики</span>
     </div>
 
     <div class="stats rv">
       <div class="stat">
-        <div class="val" data-count="15186000" data-fmt="space" data-suffix=" ₽">15 186 000 ₽</div>
-        <div class="cap">выручка клиники с этих записей — при среднем чеке 6 000 ₽</div>
+        <div class="val" data-count="22779000" data-fmt="space" data-suffix=" ₽">22 779 000 ₽</div>
+        <div class="cap">выручка клиники с записей из соцсетей за год</div>
       </div>
       <div class="stat">
-        <div class="val" data-count="2531" data-fmt="space">2 531</div>
-        <div class="cap">запись на прием из соцсетей за 6 месяцев</div>
+        <div class="val" data-count="3526" data-fmt="space">3 526</div>
+        <div class="cap">записей на прием — средний чек 6 460 ₽</div>
       </div>
       <div class="stat">
         <div class="val">0 ₽</div>
@@ -522,7 +535,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
           <h3>Результат</h3>
           <ul class="list">
             <li>Записи идут <b>стабильно, а не всплесками</b>: от 296 до 521 в месяц на протяжении всего замера.</li>
-            <li>Обращений об услугах за период — <b>14 019</b>, конверсия из обращения в запись — <b>18,1%</b>.</li>
+            <li>Обращений об услугах за год — <b>21 028</b>, конверсия из обращения в запись — <b>16,8%</b>.</li>
             <li>Лучшие месяцы — февраль и март (488 и 521 запись): их дала серия разборов процедур с ответами на возражения, тему повторяли дальше.</li>
             <li>Поток идет по всем точкам сети: головной центр и филиалы в других городах края — <b>без накруток и платного продвижения</b>.</li>
             <li>Охват подписчиков стабилизировался и пошел в рост — контент остается интересен ядру аудитории.</li>
@@ -533,7 +546,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 
       <div>
         <div class="block rv">
-          <h3>Динамика · сентябрь 2023 — май 2024</h3>
+          <h3>Динамика · выборка за 6 месяцев</h3>
           <div class="charts">
 
             <figure class="chart" style="margin:0">
@@ -562,7 +575,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
                 </div>
               </div>
               <div class="bar-labels"><span>сен 23</span><span>дек 23</span><span>фев 24</span><span>мар 24</span><span>апр 24</span><span>май 24</span></div>
-              <div class="chart-note">В среднем <b style="color:var(--acid);font-weight:600">422 записи</b> в месяц, без рекламного бюджета.</div>
+              <div class="chart-note">Помесячная детализация по шести месяцам из года — поток держится ровно.</div>
             </figure>
 
             <figure class="chart" style="margin:0">
@@ -591,35 +604,35 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
                 </div>
               </div>
               <div class="bar-labels"><span>сен 23</span><span>дек 23</span><span>фев 24</span><span>мар 24</span><span>апр 24</span><span>май 24</span></div>
-              <div class="chart-note">Из обращения в запись — <b style="color:var(--acid);font-weight:600">18,1%</b>.</div>
+              <div class="chart-note">Из обращения в запись за год — <b style="color:var(--acid);font-weight:600">16,8%</b>.</div>
             </figure>
 
           </div>
         </div>
 
         <div class="block rv">
-          <h3>Экономика за шесть месяцев</h3>
+          <h3>Экономика за год</h3>
           <table class="econ">
-            <tr><td>Записей на прием из соцсетей</td><td>2 531</td></tr>
-            <tr><td>Средний чек клиники</td><td>6 000 ₽</td></tr>
-            <tr><td>Выручка с этих записей</td><td>15 186 000 ₽</td></tr>
+            <tr><td>Обращений об услугах из соцсетей</td><td>21 028</td></tr>
+            <tr><td>Записей на прием</td><td>3 526</td></tr>
+            <tr><td>Конверсия обращения в запись</td><td>16,8%</td></tr>
             <tr><td>Рекламный бюджет</td><td>0 ₽</td></tr>
-            <tr class="total"><td>Стоимость одной записи</td><td>0 ₽</td></tr>
+            <tr class="total"><td>Выручка клиники</td><td>22 779 000 ₽</td></tr>
           </table>
           <p style="margin-top:14px;font-size:14px;color:var(--text-2)">
-            Средний чек — по данным клиники. Считаю только головной центр и филиалы:
-            направления ЭКО и эстетики в цифры не включены. Весь поток дали контент
-            и чат-бот записи, платного продвижения не было ни в одном месяце.
+            Выручка — по данным клиники, средний чек по факту составил 6 460 ₽. Считаю
+            головной центр и филиалы: направления ЭКО и эстетики в цифры не включены.
+            Весь поток дали контент и чат-бот записи, платного продвижения не было.
           </p>
         </div>
 
         <div class="block rv">
-          <h3>Итого за шесть месяцев</h3>
+          <h3>Итого за год</h3>
           <div class="totals">
-            <div class="total-row"><span class="t-val">2 531</span><span class="t-cap">запись на прием из соцсетей</span></div>
-            <div class="total-row"><span class="t-val">14 019</span><span class="t-cap">обращений об услугах клиники</span></div>
-            <div class="total-row zero"><span class="t-val">0</span><span class="t-cap">рублей рекламного бюджета за весь период</span></div>
-            <div class="total-row"><span class="t-val">15,2 млн ₽</span><span class="t-cap">выручки клиники с этих записей</span></div>
+            <div class="total-row"><span class="t-val">3 526</span><span class="t-cap">записей на прием из соцсетей</span></div>
+            <div class="total-row"><span class="t-val">21 028</span><span class="t-cap">обращений об услугах клиники</span></div>
+            <div class="total-row zero"><span class="t-val">0</span><span class="t-cap">рублей рекламного бюджета за весь год</span></div>
+            <div class="total-row"><span class="t-val">22,8 млн ₽</span><span class="t-cap">выручки клиники с этих записей</span></div>
           </div>
         </div>
       </div>
@@ -627,21 +640,24 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 
     <div class="shot rv">
       <div class="shot-scroll">
-        <img src="../assets/philosophy-vk-report.png"
-             alt="Отчет по ВКонтакте за март 2024: 29 постов, 61К охват страницы, 754 новых диалога, 99 записей на прием, 22К подписчиков"
-             loading="lazy">
-      </div>
-      <div class="shot-cap"><span>Фрагмент ежемесячного отчета · ВКонтакте, март 2024</span><span class="shot-hint">← листайте →</span></div>
-    </div>
-  </section>
-
-  <!-- ═══════════ CASE 03 ═══════════ -->
 
 <div class="case-nav">
   <a href="../cosmomed/"><span class="k">← предыдущий кейс</span><span class="v">COSMOMED Clinic</span></a>
   <a class="next" href="../bigoland/"><span class="k">следующий кейс →</span><span class="v">BigoLand</span></a>
 </div>
 </main>
+
+        <a class="linkcard rv" href="https://vk.com/shavermahaus" target="_blank" rel="noopener">
+          <span class="lc-k">Сообщество сети</span>
+          <span class="lc-v">vk.com/shavermahaus</span>
+          <span class="lc-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
 <footer class="end" id="contact">
   <div class="wrap">
     <p class="eyebrow" style="color:rgba(250,246,245,.7)">Свободна для проектов</p>
@@ -658,7 +674,6 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       </a>
       <a class="contact" href="mailto:a.s.markova.smm@gmail.com">
         <span class="k">Почта</span>
-        <span class="v">a.s.markova.smm@gmail.com</span>
       </a>
     </div>
 
@@ -670,6 +685,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
     </p>
   </div>
 </footer>
+
 <script>
 (function(){
   if(!('IntersectionObserver' in window)){
@@ -764,17 +780,5 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       if(space) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
       return pre + s + suf;
     }
-    function step(ts){
-      if(!t0) t0 = ts;
-      var p = Math.min((ts - t0) / dur, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = fmt(Math.round(target * eased));
-      if(p < 1) requestAnimationFrame(step);
-    }
-    el.textContent = fmt(0);
-    requestAnimationFrame(step);
-  }
-})();
-</script>
 </body>
 </html>

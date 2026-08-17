@@ -160,6 +160,13 @@ header.hero::before{
 .case{scroll-margin-top:118px}
 @media(max-width:900px){.caselist{top:62px}}
 
+
+/* ============ ЗНАК НИШИ ============ */
+.niche{display:inline-flex;align-items:center;gap:7px;margin-bottom:12px;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--acid)}
+.niche svg{width:17px;height:17px;flex:none}
+.card-case .niche{margin-bottom:2px}
+
 /* ============ CASE ============ */
 .case{border-top:var(--rule);padding-top:clamp(40px,6vw,80px);margin-top:clamp(56px,8vw,120px)}
 .case-head{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;margin-bottom:clamp(34px,5vw,64px)}
@@ -394,14 +401,11 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 .fine{margin-top:clamp(30px,4vw,52px);font-size:12px;opacity:.62;max-width:62ch;line-height:1.5}
 
 /* ============ REVEAL ============ */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
-.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  .rv{opacity:1;transform:none;transition:none}
-  .bar{transform:scaleY(1) !important;transition:none}
-}
-</style>
 <style>
+.niche{display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:600;color:var(--acid)}
+.niche svg{width:17px;height:17px;flex:none}
+.card-case .niche{margin-bottom:2px}
 /* ============ МНОГОСТРАНИЧНОСТЬ ============ */
 .caselist-row a.is-active{border-color:var(--acid);color:var(--acid);background:var(--ink-2)}
 .case{border-top:none;margin-top:0;padding-top:clamp(28px,4vw,52px)}
@@ -430,19 +434,19 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 </style>
 </head>
 <body>
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .bar{transform:scaleY(1) !important;transition:none}
+}
+</style>
+
 <nav>
   <div class="wrap">
     <div class="brand">МАРКОВА<span>.</span></div>
     <div class="nav-links">
       <a href="#cosmomed">01 — COSMOMED</a>
       <a href="#philosophy">02 — Философия</a>
-      <a href="#bigoland">03 — BigoLand</a>
-      <a href="#pzsp">04 — ПЗСП-групп</a>
-      <a href="#shaverma">05 — Шаверма Хаус</a>
-      <a href="#contact" class="nav-cta">Связаться</a>
-    </div>
-  </div>
-</nav>
 <div class="caselist">
   <div class="wrap">
     <div class="caselist-row">
@@ -456,7 +460,18 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 </div>
 <div class="wrap"><div class="crumbs"><a href="../">Кейсы</a> · ПЗСП-групп</div></div>
 <main class="wrap">
+          <span class="lc-v">vk.com/bigo.land</span>
+          <span class="lc-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ═══════════ CASE 04 ═══════════ -->
   <section class="case" id="pzsp">
+    <div class="niche rv"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3 9l7-5 7 5v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M8 17v-5h4v5"/></svg><span>Недвижимость</span></div>
     <div class="case-head">
       <div class="case-num rv">04</div>
       <h2 class="case-title rv" style="transition-delay:.06s">
@@ -567,23 +582,24 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
         <div class="block rv">
           <h3>Что показал этот кейс</h3>
           <p>
-            В недвижимости с длинным циклом решения выигрывает не красивая картинка,
-            а понятная выгода в первой строке. Дизайнерский креатив проиграл живой
-            фотографии стройки — потому что вызывает доверие, а не восхищение.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════ CASE 05 ═══════════ -->
 
 <div class="case-nav">
   <a href="../bigoland/"><span class="k">← предыдущий кейс</span><span class="v">BigoLand</span></a>
   <a class="next" href="../shaverma-haus/"><span class="k">следующий кейс →</span><span class="v">Шаверма Хаус</span></a>
 </div>
 </main>
+
+        <a class="linkcard rv" href="https://vk.com/shavermahaus" target="_blank" rel="noopener">
+          <span class="lc-k">Сообщество сети</span>
+          <span class="lc-v">vk.com/shavermahaus</span>
+          <span class="lc-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
 <footer class="end" id="contact">
   <div class="wrap">
     <p class="eyebrow" style="color:rgba(250,246,245,.7)">Свободна для проектов</p>
@@ -600,7 +616,6 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       </a>
       <a class="contact" href="mailto:a.s.markova.smm@gmail.com">
         <span class="k">Почта</span>
-        <span class="v">a.s.markova.smm@gmail.com</span>
       </a>
     </div>
 
@@ -612,6 +627,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
     </p>
   </div>
 </footer>
+
 <script>
 (function(){
   if(!('IntersectionObserver' in window)){
@@ -706,17 +722,5 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       if(space) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
       return pre + s + suf;
     }
-    function step(ts){
-      if(!t0) t0 = ts;
-      var p = Math.min((ts - t0) / dur, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = fmt(Math.round(target * eased));
-      if(p < 1) requestAnimationFrame(step);
-    }
-    el.textContent = fmt(0);
-    requestAnimationFrame(step);
-  }
-})();
-</script>
 </body>
 </html>
