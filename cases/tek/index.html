@@ -4,8 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
-<title>Кейсы · Анастасия Маркова</title>
-<meta name="description" content="Кейсы интернет-маркетолога Анастасии Марковой: клиники, многопрофильный медцентр, застройщик, сеть общепита, проект Сколково.">
+<title>ТЭК · кейс Анастасии Марковой</title>
+<meta name="description" content="Кейс ТЭК: наем водителей через соцсети — 180 заявок на работу, стоимость заявки 209 ₽ при бюджете 15,9 тыс ₽ в месяц.">
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -180,6 +180,13 @@ header.hero::before{
   letter-spacing:-.04em;
 }
 .case-title{font-size:clamp(29px,4.1vw,58px);text-transform:uppercase}
+.case-title .offer{
+  display:block;font-family:var(--body);font-weight:600;
+  font-size:clamp(16px,1.6vw,23px);line-height:1.25;letter-spacing:-.01em;
+  text-transform:none;color:var(--acid);
+  margin-top:18px;max-width:24ch;
+}
+@media(min-width:900px){.case-title .offer{margin-top:20px}}
 .case-title .loc{
   display:block;font-family:var(--body);font-weight:500;
   font-size:13px;letter-spacing:.16em;text-transform:uppercase;
@@ -425,82 +432,14 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 .crumbs{padding:20px 0 0;font-size:12.5px;color:var(--text-3)}
 .crumbs a{color:var(--text-2);text-decoration:none}
 .crumbs a:hover{color:var(--acid)}
-/* полоса логотипов клиентов */
-.clients{margin-top:clamp(30px,4.5vw,52px)}
-.clients-cap{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);margin:0 0 14px}
-.clients-row{display:flex;flex-wrap:wrap;gap:10px}
-.clients-row .mark{
-  display:inline-flex;align-items:center;justify-content:center;
-  background:#FFFFFF;border:1px solid var(--line);
-  height:78px;padding:0 22px;
-}
-.clients-row .mark img{display:block;width:auto;max-height:44px;max-width:142px}
-.clients-row .mark.sq img{max-height:52px}
-/* строка имен клиентов */
-.more-list{display:flex;flex-wrap:wrap;gap:8px 0;margin:14px 0 0;padding:0;list-style:none}
-.more-list li{font-size:14.5px;color:var(--text);white-space:nowrap}
-.more-list li:not(:last-child)::after{
-  content:"·";color:var(--text-3);margin:0 10px;
-}
-.more-list li span{color:var(--text-3);font-size:13px}
-@media(max-width:640px){
-  .more-list li{font-size:13.5px}
-  .more-list li:not(:last-child)::after{margin:0 7px}
-}
-
-@media(max-width:640px){
-  .clients-row .mark{height:52px;padding:0 13px}
-  .clients-row .mark img{max-height:28px}
-  .clients-row .mark.sq img{max-height:34px}
-}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;
   background:var(--line);border:1px solid var(--line);margin-top:clamp(30px,4vw,52px)}
 .card-case{background:var(--ink);padding:clamp(24px,3vw,36px);text-decoration:none;
   display:flex;flex-direction:column;gap:10px;transition:background .2s}
 .card-case:hover{background:var(--ink-2)}
-.card-case .card-top{
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
-  padding-bottom:clamp(15px,1.7vw,19px);margin-bottom:clamp(3px,.5vw,6px);
-  border-bottom:1px solid var(--line-soft);
-}
-.card-case .card-logo{display:flex;align-items:center;height:58px;flex:none}
-.card-case .card-logo img{
-  display:block;width:auto;max-height:var(--h,40px);max-width:var(--w,136px);
-  opacity:.92;transition:opacity .2s;
-}
-/* оптическое выравнивание: у знаков разная доля поля внутри файла */
-.card-case .card-logo.text{
-  font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em;
-  color:var(--text);opacity:.9;
-}
-.card-case .l-cosmomed  {--h:58px}
-.card-case .l-philosophy{--h:50px;--w:150px}
-.card-case .l-bigoland  {--h:20px;--w:152px}
-.card-case .l-pzsp      {--h:44px}
-.card-case .l-shaverma  {--h:46px}
-.card-case:hover .card-logo img{opacity:1}
-.card-case .card-top .niche{margin:0;flex:none;color:var(--text-3);text-align:right}
-.card-case .card-top .niche svg{width:15px;height:15px}
-@media(max-width:640px){
-  .card-case .card-logo{height:44px}
-  .card-case .card-logo img{max-height:calc(var(--h,40px) * .82);max-width:calc(var(--w,136px) * .84)}
-  .card-case .card-top{gap:12px}
-}
 .card-case .n{font-family:var(--display);font-weight:800;font-size:13px;color:var(--text-3)}
 .card-case h2{font-size:clamp(20px,2.2vw,27px);margin:0}
-.card-case .offer{font-size:16.5px;font-weight:600;line-height:1.3;color:var(--acid)}
 .card-case .win{font-size:15px;color:var(--text-2)}
-.card-case .card-sk{
-  display:inline-flex;align-items:center;gap:10px;align-self:flex-start;
-  background:#FFFFFF;border:1px solid var(--line);
-  padding:6px 12px 6px 6px;white-space:nowrap;
-}
-.card-case .card-sk img{display:block;height:24px;width:auto}
-.card-case .card-sk b{
-  font-family:var(--display);font-weight:700;font-size:10px;
-  letter-spacing:.13em;text-transform:uppercase;color:var(--acid);
-  padding-left:10px;border-left:1px solid var(--line);
-}
 .card-case .go{margin-top:auto;padding-top:14px;font-size:12.5px;letter-spacing:.06em;
   text-transform:uppercase;color:var(--acid)}
 </style>
@@ -508,7 +447,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 <body>
 <nav>
   <div class="wrap">
-    <a class="brand" href="" style="text-decoration:none">МАРКОВА<span>.</span></a>
+    <a class="brand" href="../" style="text-decoration:none">МАРКОВА<span>.</span></a>
     <div class="nav-links"><a href="#contact" class="nav-cta">Связаться</a></div>
   </div>
 </nav>
@@ -516,121 +455,137 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 <div class="caselist">
   <div class="wrap">
     <div class="caselist-row">
-      <a href="cosmomed/"><b>01</b> COSMOMED Clinic</a>
-      <a href="filosofiya-krasoty/"><b>02</b> Философия красоты и здоровья</a>
-      <a href="bigoland/"><b>03</b> BigoLand</a>
-      <a href="pzsp-grupp/"><b>04</b> ПЗСП-групп</a>
-      <a href="shaverma-haus/"><b>05</b> Шаверма Хаус</a>
-      <a href="tek/"><b>06</b> ТЭК</a>
+      <a href="../cosmomed/"><b>01</b> COSMOMED Clinic</a>
+      <a href="../filosofiya-krasoty/"><b>02</b> Философия красоты и здоровья</a>
+      <a href="../bigoland/"><b>03</b> BigoLand</a>
+      <a href="../pzsp-grupp/"><b>04</b> ПЗСП-групп</a>
+      <a href="../shaverma-haus/"><b>05</b> Шаверма Хаус</a>
+      <a href="../tek/" class="is-active"><b>06</b> ТЭК</a>
     </div>
   </div>
 </div>
-
+<div class="wrap"><div class="crumbs"><a href="../">Кейсы</a> · ТЭК</div></div>
 <main class="wrap">
-  <header class="hero" style="padding-top:clamp(30px,5vw,64px)">
-    <div class="hero-grid">
-      <p class="eyebrow rv in">Анастасия Маркова · интернет / digital маркетинг · Пермь</p>
-      <h1 class="rv in" style="transition-delay:.06s">Кейсы<br><em>в деньгах</em></h1>
-      <div class="hero-sub">
-        <p class="hero-lead rv in" style="transition-delay:.14s">Шесть проектов, где соцсети и реклама считаются в деньгах:
-        платный трафик с окупаемостью с первого месяца, органика на <b>22,8 млн ₽ без рекламного бюджета</b>,
-        запуск продукта с чеком от 150 000 ₽, управление маркетингом сети из 24 точек и наем водителей
-        по <b>209 ₽ за заявку</b>.</p>
+<section class="case" id="tek">
+    <div class="niche rv"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M2 6h9v8H2z"/><path d="M11 9h4l3 3v2h-7z"/><circle cx="6" cy="15" r="1.5"/><circle cx="14.5" cy="15" r="1.5"/></svg><span>Логистика</span></div>
+    <div class="case-head">
+      <div class="case-num rv">06</div>
+      <h2 class="case-title rv" style="transition-delay:.06s">
+        ТЭК
+        <span class="offer">Наем там, где о компании никто не слышал</span>
+        <span class="loc">Транспортно-логистическая компания · подбор водителей</span>
+      </h2>
+      <div class="case-tags rv" style="transition-delay:.12s">
+        <span class="tag tag--hot">180 заявок на работу</span>
+        <span class="tag">209 ₽ за заявку</span>
+        <span class="tag">Таргет ВКонтакте</span>
+        <span class="tag">Контент-маркетинг</span>
+        <span class="tag">HR-бренд с нуля</span>
       </div>
     </div>
-  </header>
 
-  <div class="clients rv in" style="transition-delay:.26s">
-    <p class="clients-cap">С кем работала за 11 лет</p>
-    <ul class="more-list">
-      <li>COSMOMED Clinic</li>
-      <li>Философия красоты и здоровья</li>
-      <li>BigoLand</li>
-      <li>ПЗСП-групп</li>
-      <li>Шаверма Хаус</li>
-      <li>Доктор Боева</li>
-      <li>Malika nail club</li>
-      <li>Дамские угодники</li>
-      <li>TOM TAILOR</li>
-      <li>GERRY WEBER</li>
-      <li>Стеклодом</li>
-      <li>Погода в доме</li>
-      <li>Ujin</li>
-      <li>Addreality</li>
-      <li>ТЭК</li>
-      <li>Финграм</li>
-    </ul>
-  </div>
+    <div class="stats rv">
+      <div class="stat">
+        <div class="val" data-count="180">180</div>
+        <div class="cap">заявок на работу за все время сотрудничества</div>
+      </div>
+      <div class="stat">
+        <div class="val" data-count="209" data-suffix=" ₽">209 ₽</div>
+        <div class="cap">стоимость заявки в замерном месяце</div>
+      </div>
+      <div class="stat">
+        <div class="val" data-count="15907" data-fmt="space" data-suffix=" ₽">15 907 ₽</div>
+        <div class="cap">рекламный бюджет за тот же месяц</div>
+      </div>
+      <div class="stat">
+        <div class="val" data-count="79859" data-fmt="space">79 859</div>
+        <div class="cap">показов за 30 дней замера</div>
+      </div>
+    </div>
 
-  <div class="cards">
-    <a class="card-case" href="cosmomed/">
-      <span class="card-top">
-        <span class="card-logo l-cosmomed"><img src="assets/logo-cosmomed.svg" alt="COSMOMED Clinic" loading="lazy"></span>
-        <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg><span>Медицина</span></span>
-      </span>
-      <span class="n">01</span>
-      <h2>COSMOMED Clinic</h2>
-      <span class="offer">Реклама, которая окупается с первого месяца</span>
-      <span class="win">×5,7 выручки на вложенный рубль</span>
-      <span class="go">Смотреть кейс →</span>
-    </a>
-    <a class="card-case" href="filosofiya-krasoty/">
-      <span class="card-top">
-        <span class="card-logo l-philosophy"><img src="assets/logo-philosophy.png" alt="Философия красоты и здоровья" loading="lazy"></span>
-        <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg><span>Медицина</span></span>
-      </span>
-      <span class="n">02</span>
-      <h2>Философия красоты и здоровья</h2>
-      <span class="offer">Контент, который продает</span>
-      <span class="win">22,8 млн ₽ выручки без рекламного бюджета</span>
-      <span class="go">Смотреть кейс →</span>
-    </a>
-    <a class="card-case" href="bigoland/">
-      <span class="card-top">
-        <span class="card-logo l-bigoland"><img src="assets/logo-bigoland.png" alt="BigoLand" loading="lazy"></span>
-        <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3 6.5L10 3l7 3.5v7L10 17l-7-3.5z"/><path d="M3 6.5L10 10l7-3.5M10 10v7"/></svg><span>Товары</span></span>
-      </span>
-      <span class="n">03</span>
-      <h2>BigoLand</h2>
-      <span class="card-sk"><img src="assets/skolkovo-logo.png" alt="Сколково"><b>Резидент</b></span>
-      <span class="offer">Запуск продукта с чеком от 150 000 ₽</span>
-      <span class="win">1–1,5 млн ₽ продаж в месяц из ВК</span>
-      <span class="go">Смотреть кейс →</span>
-    </a>
-    <a class="card-case" href="pzsp-grupp/">
-      <span class="card-top">
-        <span class="card-logo l-pzsp"><img src="assets/logo-pzsp.svg" alt="ПЗСП-групп" loading="lazy"></span>
-        <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3 9l7-5 7 5v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M8 17v-5h4v5"/></svg><span>Недвижимость</span></span>
-      </span>
-      <span class="n">04</span>
-      <h2>ПЗСП-групп</h2>
-      <span class="offer">Трафик втрое дешевле, чем у прошлой команды</span>
-      <span class="win">подписчик дешевле в 3 раза</span>
-      <span class="go">Смотреть кейс →</span>
-    </a>
-    <a class="card-case" href="shaverma-haus/">
-      <span class="card-top">
-        <span class="card-logo l-shaverma"><img src="assets/logo-shaverma.png" alt="Шаверма Хаус" loading="lazy"></span>
-        <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 3v6a2 2 0 0 0 4 0V3M8 9v8"/><path d="M14 3c-1.5 1.5-1.5 5 0 6v8"/></svg><span>Общепит</span></span>
-      </span>
-      <span class="n">05</span>
-      <h2>Шаверма Хаус</h2>
-      <span class="offer">Маркетинг сети под одним управлением</span>
-      <span class="win">+38% онлайн-выручки за 3 месяца</span>
-      <span class="go">Смотреть кейс →</span>
-    </a>
-    <a class="card-case" href="tek/">
-      <span class="card-top">
-        <span class="card-logo text">ТЭК</span>
-        <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M2 6h9v8H2z"/><path d="M11 9h4l3 3v2h-7z"/><circle cx="6" cy="15" r="1.5"/><circle cx="14.5" cy="15" r="1.5"/></svg><span>Логистика</span></span>
-      </span>
-      <span class="n">06</span>
-      <h2>ТЭК</h2>
-      <span class="offer">Наем там, где о компании никто не слышал</span>
-      <span class="win">180 заявок на работу, отклик по 209 ₽</span>
-      <span class="go">Смотреть кейс →</span>
-    </a>
-  </div>
+    <div class="case-body case-body--text">
+      <div>
+        <div class="block rv">
+          <h3>Задача</h3>
+          <p>
+            Компания пришла не за продажами, а за людьми: нужны были водители. Рынок труда
+            дальнобойщиков перегрет — за одного и того же кандидата конкурируют десятки
+            перевозчиков, и вакансия сама по себе ничем не выделяется.
+          </p>
+          <p>
+            Главный барьер был не в деньгах и не в условиях, а в незнании. Кандидат видел
+            название, которое ему ни о чем не говорило: что за компания, какие машины, кто
+            начальник колонны, что происходит в рейсе. Идти «в никуда» человек не готов,
+            даже если оффер хороший.
+          </p>
+        </div>
+
+        <div class="block rv">
+          <h3>Что сделали</h3>
+          <ul class="list">
+            <li><b>Показали компанию изнутри.</b> Автопарк, ремонтная база, обследование перед рейсом, истории от начальника колонны — то, что кандидат обычно узнает только на собеседовании.</li>
+            <li><b>Дали слово самим водителям.</b> Видео из рейсов снимали и присылали сотрудники: дорога, стоянки, кабина, семья, которая провожает в рейс.</li>
+            <li><b>Собрали живое сообщество, а не доску вакансий.</b> Разборы техники, новости с трасс, юмор про профессию — люди приходили читать, а вакансию видели уже как свои.</li>
+            <li><b>Реклама на этом же контенте.</b> Таргет ВКонтакте вел не на сухое объявление, а в сообщество, где о компании уже все понятно.</li>
+          </ul>
+        </div>
+
+        <div class="block rv">
+          <h3>Результат</h3>
+          <ul class="list">
+            <li><b>180 заявок на работу</b> за все время сотрудничества — сквозной итог рекламы и контента вместе.</li>
+            <li>В замерном месяце — <b>76 заявок при бюджете 15 907 ₽</b>, то есть <b>209 ₽ за отклик кандидата</b>.</li>
+            <li>Сообщество закрыло разрыв между «первый раз слышу про эту компанию» и «я могу представить себя в этой команде» — заявки шли от людей, которые уже знали, куда идут.</li>
+            <li>Контент производили сами сотрудники, поэтому канал не требовал дорогого продакшена и не выгорал.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div class="block rv">
+          <h3>Замерный месяц · 30 дней</h3>
+          <table class="econ">
+            <tr><td>Рекламный бюджет</td><td>15 907 ₽</td></tr>
+            <tr><td>Показов</td><td>79 859</td></tr>
+            <tr><td>Подписок в сообщество</td><td>32</td></tr>
+            <tr><td>Заявок на работу</td><td>76</td></tr>
+            <tr class="total"><td>Стоимость заявки</td><td>209 ₽</td></tr>
+          </table>
+          <p style="margin-top:14px;font-size:14px;color:var(--text-2)">
+            Цифры — из отчета план/факт по кампании. Стоимость заявки посчитана от полного
+            бюджета периода: 15 906,83 ₽ на 76 заявок. В самом отчете рядом стоит 195,48 ₽ —
+            она взята от меньшей суммы, без части кампаний. Беру осторожную цифру.
+            Суммы указаны без НДС.
+          </p>
+        </div>
+
+        <div class="block rv">
+          <h3>Почему это работает в найме</h3>
+          <p>
+            В подборе линейного персонала выигрывает не тот, кто громче кричит про зарплату,
+            а тот, кого кандидат успел узнать. Соцсети здесь — не витрина вакансий, а способ
+            показать будни: технику, людей, порядки. Когда человек уже месяц читает про
+            компанию, отклик стоит дешевле и доходит до собеседования чаще.
+          </p>
+        </div>
+
+        <div class="block rv">
+          <h3>Итого</h3>
+          <div class="totals">
+            <div class="total-row"><span class="t-val">180</span><span class="t-cap">заявок на работу за все время</span></div>
+            <div class="total-row"><span class="t-val">76</span><span class="t-cap">заявок за один замерный месяц</span></div>
+            <div class="total-row"><span class="t-val">209 ₽</span><span class="t-cap">стоимость отклика кандидата</span></div>
+            <div class="total-row"><span class="t-val">15 907 ₽</span><span class="t-cap">рекламный бюджет месяца</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="case-nav">
+  <a href="../shaverma-haus/"><span class="k">← предыдущий кейс</span><span class="v">Шаверма Хаус</span></a>
+  <a class="next" href="../cosmomed/"><span class="k">первый кейс →</span><span class="v">COSMOMED Clinic</span></a>
+</div>
 </main>
 <footer class="end" id="contact">
   <div class="wrap">
