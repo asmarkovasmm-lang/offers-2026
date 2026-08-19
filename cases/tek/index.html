@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
 <title>ТЭК · кейс Анастасии Марковой</title>
-<meta name="description" content="Кейс ТЭК: наем водителей через соцсети — 180 заявок на работу, средняя стоимость заявки 194,5–209 ₽ при бюджете 15,9 тыс ₽ в месяц.">
+<meta name="description" content="Кейс ТЭК: наем водителей через соцсети — 32 принятых водителя, 180 заявок на работу, средняя стоимость заявки 194,5–209 ₽ в месяц.">
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -437,6 +437,27 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 .card-case{background:var(--ink);padding:clamp(24px,3vw,36px);text-decoration:none;
   display:flex;flex-direction:column;gap:10px;transition:background .2s}
 .card-case:hover{background:var(--ink-2)}
+/* клипы */
+.clips{margin-top:clamp(34px,5vw,64px)}
+.clips-head h3{margin:0 0 8px}
+.clips-head p{margin:0 0 18px;max-width:60ch;color:var(--text-2);font-size:15px;line-height:1.55}
+.clips-row{
+  display:flex;gap:12px;overflow-x:auto;padding-bottom:10px;
+  scrollbar-width:thin;-webkit-overflow-scrolling:touch;
+}
+.clip{margin:0;flex:none;width:180px}
+.clip video{
+  display:block;width:180px;height:auto;aspect-ratio:300/516;object-fit:cover;
+  background:#241419;border:var(--rule);
+}
+.clip figcaption{
+  margin-top:8px;font-size:12.5px;color:var(--text-3);
+  font-variant-numeric:tabular-nums;
+}
+@media(min-width:900px){
+  .clip{width:212px}
+  .clip video{width:212px}
+}
 .block .lead-in{margin:0 0 14px;color:var(--text-2);font-size:15px;line-height:1.55}
 .card-case .n{font-family:var(--display);font-weight:800;font-size:13px;color:var(--text-3)}
 .card-case h2{font-size:clamp(20px,2.2vw,27px);margin:0}
@@ -477,7 +498,8 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
         <span class="loc">Транспортно-логистическая компания · подбор водителей</span>
       </h2>
       <div class="case-tags rv" style="transition-delay:.12s">
-        <span class="tag tag--hot">180 заявок на работу</span>
+        <span class="tag tag--hot">32 водителя приняты</span>
+        <span class="tag">180 заявок на работу</span>
         <span class="tag">194,5–209 ₽ за заявку</span>
         <span class="tag">Таргет ВКонтакте</span>
         <span class="tag">Контент-маркетинг</span>
@@ -486,6 +508,10 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
     </div>
 
     <div class="stats rv">
+      <div class="stat">
+        <div class="val" data-count="32">32</div>
+        <div class="cap">водителей принято на работу</div>
+      </div>
       <div class="stat">
         <div class="val" data-count="180">180</div>
         <div class="cap">заявок на работу за все время сотрудничества</div>
@@ -497,10 +523,6 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       <div class="stat">
         <div class="val" data-count="15907" data-fmt="space" data-suffix=" ₽">15 907 ₽</div>
         <div class="cap">рекламный бюджет в месяц</div>
-      </div>
-      <div class="stat">
-        <div class="val" data-count="79859" data-fmt="space">79 859</div>
-        <div class="cap">показов за 30 дней замера</div>
       </div>
     </div>
 
@@ -536,7 +558,8 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
         <div class="block rv">
           <h3>Результат</h3>
           <ul class="list">
-            <li><b>180 заявок на работу</b> за все время сотрудничества — сквозной итог рекламы и контента вместе.</li>
+            <li><b>32 водителя вышли на работу</b> — конечный результат, ради которого все и делалось.</li>
+            <li><b>180 заявок на работу</b> за все время сотрудничества: каждая шестая дошла до найма, конверсия отклика в принятого сотрудника — <b>17,8%</b>.</li>
             <li>В замерном месяце — <b>76 заявок при бюджете 15 907 ₽</b>, средняя стоимость отклика кандидата <b>194,5–209 ₽</b>.</li>
             <li>Сообщество закрыло разрыв между «первый раз слышу про эту компанию» и «я могу представить себя в этой команде» — заявки шли от людей, которые уже знали, куда идут.</li>
             <li>Контент производили сами сотрудники, поэтому канал не требовал дорогого продакшена и не выгорал.</li>
@@ -554,12 +577,6 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
             <tr><td>Заявок на работу</td><td>76</td></tr>
             <tr class="total"><td>Средняя стоимость заявки</td><td>194,5–209 ₽</td></tr>
           </table>
-          <p style="margin-top:14px;font-size:14px;color:var(--text-2)">
-            Цифры — из отчета план/факт по кампании. Вилка стоимости заявки зависит от того,
-            какие кампании включать в расчет: по полному бюджету периода выходит 209 ₽
-            (15 906,83 ₽ на 76 заявок), по профильным кампаниям — около 194,5 ₽.
-            Суммы указаны без НДС.
-          </p>
         </div>
 
         <div class="block rv">
@@ -581,12 +598,48 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
         <div class="block rv">
           <h3>Итого</h3>
           <div class="totals">
+            <div class="total-row"><span class="t-val">32</span><span class="t-cap">водителя приняты на работу</span></div>
             <div class="total-row"><span class="t-val">180</span><span class="t-cap">заявок на работу за все время</span></div>
             <div class="total-row"><span class="t-val">76</span><span class="t-cap">заявок за один замерный месяц</span></div>
             <div class="total-row"><span class="t-val">194,5–209 ₽</span><span class="t-cap">средняя стоимость отклика кандидата</span></div>
             <div class="total-row"><span class="t-val">15 907 ₽</span><span class="t-cap">рекламный бюджет в месяц</span></div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="clips rv">
+      <div class="clips-head">
+        <h3>Контент, на котором это работало</h3>
+        <p>Ролики снимали сами сотрудники: рейс, кабина, автопарк, будни офиса.
+        Суммарно эти пять — <b>около 257 000 просмотров</b>, из них 233 300 у одного
+        ролика с приглашением водителей.</p>
+      </div>
+      <div class="clips-row">
+        <figure class="clip">
+          <video src="../assets/tek-clip-1.mp4" poster="../assets/tek-clip-1.jpg"
+                 muted loop playsinline preload="none" autoplay></video>
+          <figcaption>9,8K просмотров</figcaption>
+        </figure>
+        <figure class="clip">
+          <video src="../assets/tek-clip-2.mp4" poster="../assets/tek-clip-2.jpg"
+                 muted loop playsinline preload="none" autoplay></video>
+          <figcaption>5K просмотров</figcaption>
+        </figure>
+        <figure class="clip">
+          <video src="../assets/tek-clip-3.mp4" poster="../assets/tek-clip-3.jpg"
+                 muted loop playsinline preload="none" autoplay></video>
+          <figcaption>233,3K просмотров</figcaption>
+        </figure>
+        <figure class="clip">
+          <video src="../assets/tek-clip-4.mp4" poster="../assets/tek-clip-4.jpg"
+                 muted loop playsinline preload="none" autoplay></video>
+          <figcaption>3K просмотров</figcaption>
+        </figure>
+        <figure class="clip">
+          <video src="../assets/tek-clip-5.mp4" poster="../assets/tek-clip-5.jpg"
+                 muted loop playsinline preload="none" autoplay></video>
+          <figcaption>5,6K просмотров</figcaption>
+        </figure>
       </div>
     </div>
   </section>
