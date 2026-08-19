@@ -436,12 +436,12 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 }
 .clients-row .mark img{display:block;width:auto;max-height:44px;max-width:142px}
 .clients-row .mark.sq img{max-height:52px}
-/* остальной опыт */
-.more{margin-top:clamp(26px,3.4vw,40px);border-top:1px solid var(--line-soft);padding-top:clamp(22px,2.8vw,32px)}
-.more-lead{margin:0 0 18px;max-width:62ch;font-size:clamp(14.5px,1.15vw,16px);line-height:1.6;color:var(--text-2)}
-.more-lead b{color:var(--text);font-weight:600}
-.more-cap{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);margin:0 0 12px}
-.more-list{display:flex;flex-wrap:wrap;gap:8px 0;margin:0;padding:0;list-style:none}
+/* остальной опыт — продолжение полосы клиентов */
+.more-lead{
+  margin:clamp(18px,2.2vw,26px) 0 0;max-width:64ch;
+  font-size:clamp(13.5px,1.05vw,15px);line-height:1.6;color:var(--text-3);
+}
+.more-list{display:flex;flex-wrap:wrap;gap:8px 0;margin:14px 0 0;padding:0;list-style:none}
 .more-list li{font-size:14.5px;color:var(--text);white-space:nowrap}
 .more-list li:not(:last-child)::after{
   content:"·";color:var(--text-3);margin:0 10px;
@@ -462,6 +462,18 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
 .card-case{background:var(--ink);padding:clamp(24px,3vw,36px);text-decoration:none;
   display:flex;flex-direction:column;gap:10px;transition:background .2s}
 .card-case:hover{background:var(--ink-2)}
+.card-case .card-logo{
+  display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;
+  background:#FFFFFF;border:1px solid var(--line);
+  height:64px;padding:0 18px;margin-bottom:4px;min-width:112px;
+}
+.card-case .card-logo img{display:block;width:auto;max-height:44px;max-width:124px}
+.card-case .card-logo.wide img{max-width:152px;max-height:26px}
+@media(max-width:640px){
+  .card-case .card-logo{height:54px;padding:0 14px;min-width:96px}
+  .card-case .card-logo img{max-height:36px;max-width:104px}
+  .card-case .card-logo.wide img{max-height:22px;max-width:128px}
+}
 .card-case .n{font-family:var(--display);font-weight:800;font-size:13px;color:var(--text-3)}
 .card-case h2{font-size:clamp(20px,2.2vw,27px);margin:0}
 .card-case .offer{font-size:16.5px;font-weight:600;line-height:1.3;color:var(--acid)}
@@ -515,39 +527,33 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
   </header>
 
   <div class="clients rv in" style="transition-delay:.26s">
-    <p class="clients-cap">С кем работала</p>
-    <div class="clients-row">
-      <span class="mark sq"><img src="assets/logo-cosmomed.svg" alt="COSMOMED Clinic" loading="lazy"></span>
-      <span class="mark sq"><img src="assets/logo-philosophy.png" alt="Философия красоты и здоровья" loading="lazy"></span>
-      <span class="mark"><img src="assets/logo-bigoland.png" alt="BigoLand" loading="lazy"></span>
-      <span class="mark sq"><img src="assets/logo-pzsp.svg" alt="ПЗСП-групп" loading="lazy"></span>
-      <span class="mark sq"><img src="assets/logo-shaverma.png" alt="Шаверма Хаус" loading="lazy"></span>
-    </div>
-
-    <div class="more">
-      <p class="more-lead">Развернуто показываю пять проектов: по ним есть цифры, которые я могу
-      подтвердить, и разрешение эти цифры показывать. Всего за <b>11 лет</b> проектов было
-      в разы больше — шесть из них в агентстве, где я вела до шести клиентов одновременно,
-      а последние годы руководила отделом SMM и трафика.</p>
-      <p class="more-cap">Среди клиентов</p>
-      <ul class="more-list">
-        <li>Доктор Боева <span>стоматология</span></li>
-        <li>Malika nail club</li>
-        <li>Дамские угодники <span>шоу</span></li>
-        <li>TOM TAILOR</li>
-        <li>GERRY WEBER</li>
-        <li>Стеклодом</li>
-        <li>Погода в доме</li>
-        <li>Ujin <span>умный дом</span></li>
-        <li>Addreality</li>
-        <li>ТЭК <span>логистика</span></li>
-        <li>Финграм <span>финансовая грамотность</span></li>
-      </ul>
-    </div>
+    <p class="clients-cap">С кем работала за 11 лет</p>
+    <ul class="more-list">
+      <li>COSMOMED Clinic</li>
+      <li>Философия красоты и здоровья</li>
+      <li>BigoLand</li>
+      <li>ПЗСП-групп</li>
+      <li>Шаверма Хаус</li>
+      <li>Доктор Боева</li>
+      <li>Malika nail club</li>
+      <li>Дамские угодники</li>
+      <li>TOM TAILOR</li>
+      <li>GERRY WEBER</li>
+      <li>Стеклодом</li>
+      <li>Погода в доме</li>
+      <li>Ujin</li>
+      <li>Addreality</li>
+      <li>ТЭК</li>
+      <li>Финграм</li>
+    </ul>
+    <p class="more-lead">Шесть лет из них — в агентстве, где я вела до шести клиентов
+    одновременно, последние годы руководила отделом SMM и трафика. Развернутых кейсов
+    ниже пять: это те проекты, по которым у меня есть цифры и разрешение их показать.</p>
   </div>
 
   <div class="cards">
     <a class="card-case" href="cosmomed/">
+      <span class="card-logo"><img src="assets/logo-cosmomed.svg" alt="COSMOMED Clinic" loading="lazy"></span>
       <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg><span>Медицина</span></span>
       <span class="n">01</span>
       <h2>COSMOMED Clinic</h2>
@@ -556,6 +562,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       <span class="go">Смотреть кейс →</span>
     </a>
     <a class="card-case" href="filosofiya-krasoty/">
+      <span class="card-logo"><img src="assets/logo-philosophy.png" alt="Философия красоты и здоровья" loading="lazy"></span>
       <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg><span>Медицина</span></span>
       <span class="n">02</span>
       <h2>Философия красоты и здоровья</h2>
@@ -564,6 +571,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       <span class="go">Смотреть кейс →</span>
     </a>
     <a class="card-case" href="bigoland/">
+      <span class="card-logo wide"><img src="assets/logo-bigoland.png" alt="BigoLand" loading="lazy"></span>
       <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3 6.5L10 3l7 3.5v7L10 17l-7-3.5z"/><path d="M3 6.5L10 10l7-3.5M10 10v7"/></svg><span>Товары</span></span>
       <span class="n">03</span>
       <h2>BigoLand</h2>
@@ -573,6 +581,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       <span class="go">Смотреть кейс →</span>
     </a>
     <a class="card-case" href="pzsp-grupp/">
+      <span class="card-logo"><img src="assets/logo-pzsp.svg" alt="ПЗСП-групп" loading="lazy"></span>
       <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3 9l7-5 7 5v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M8 17v-5h4v5"/></svg><span>Недвижимость</span></span>
       <span class="n">04</span>
       <h2>ПЗСП-групп</h2>
@@ -581,6 +590,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       <span class="go">Смотреть кейс →</span>
     </a>
     <a class="card-case" href="shaverma-haus/">
+      <span class="card-logo"><img src="assets/logo-shaverma.png" alt="Шаверма Хаус" loading="lazy"></span>
       <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 3v6a2 2 0 0 0 4 0V3M8 9v8"/><path d="M14 3c-1.5 1.5-1.5 5 0 6v8"/></svg><span>Общепит</span></span>
       <span class="n">05</span>
       <h2>Шаверма Хаус</h2>
