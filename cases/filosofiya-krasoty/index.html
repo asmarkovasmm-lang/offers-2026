@@ -180,6 +180,13 @@ header.hero::before{
   letter-spacing:-.04em;
 }
 .case-title{font-size:clamp(29px,4.1vw,58px);text-transform:uppercase}
+.case-title .offer{
+  display:block;font-family:var(--body);font-weight:600;
+  font-size:clamp(16px,1.6vw,23px);line-height:1.25;letter-spacing:-.01em;
+  text-transform:none;color:var(--acid);
+  margin-top:18px;max-width:24ch;
+}
+@media(min-width:900px){.case-title .offer{margin-top:20px}}
 .case-title .loc{
   display:block;font-family:var(--body);font-weight:500;
   font-size:13px;letter-spacing:.16em;text-transform:uppercase;
@@ -464,6 +471,7 @@ a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
       <div class="case-num rv">02</div>
       <h2 class="case-title rv" style="transition-delay:.06s">
         Философия<br>красоты<br>и здоровья
+        <span class="offer">Контент, который продает</span>
         <span class="loc">Пермский край · многопрофильный медцентр, сеть филиалов · 5 лет работы</span>
       </h2>
       <div class="case-tags rv" style="transition-delay:.12s">
