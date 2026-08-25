@@ -355,7 +355,7 @@ a.contact:hover{opacity:.72}
    обесцвеченный в тон палитры (иначе неоновые плашки лезут в кадр) */
 .hero-atmo .atmo-photo{
   position:absolute;left:-12%;top:-12%;width:124%;height:124%;
-  object-fit:cover;object-position:50% 34%;
+  object-fit:cover;object-position:72% 30%;
   filter:blur(56px) saturate(.18) sepia(.32) contrast(1.04);
   opacity:.46;
 }
@@ -421,41 +421,45 @@ a.contact:hover{opacity:.72}
 }
 @media(prefers-reduced-motion:reduce){.numbers-track{animation:none}}
 
-/* ============ ЖИВОЙ МАТЕРИАЛ ============ */
-.reel{margin-top:clamp(52px,7vw,96px)}
-.reel-head{
-  display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;
-  margin-bottom:clamp(18px,2.2vw,26px);
+
+/* ============ КТО ЗА ЭТИМ СТОИТ ============ */
+.about{
+  display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,3vw,44px);
+  align-items:center;
+  margin-top:clamp(64px,9vw,120px);
+  padding-top:clamp(40px,5vw,64px);border-top:1px solid var(--line-soft);
 }
-.reel-head p{font-size:13.5px;color:var(--text-2);max-width:52ch}
-.reel-row{
-  display:flex;align-items:flex-start;gap:clamp(10px,1.2vw,16px);overflow-x:auto;padding-bottom:6px;
-  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+@media(min-width:820px){.about{grid-template-columns:minmax(280px,.85fr) minmax(0,1.4fr);gap:clamp(38px,5vw,80px)}}
+.about-photo{
+  position:relative;border-radius:var(--r);overflow:hidden;
+  aspect-ratio:434/600;background:var(--bone-2);box-shadow:var(--shadow);
+  max-width:420px;
 }
-.reel-row::-webkit-scrollbar{display:none}
-.reel-item{
-  position:relative;flex:0 0 auto;
-  width:clamp(148px,15vw,214px);aspect-ratio:9/16;
-  border-radius:var(--r-s);overflow:hidden;
-  background:var(--bone-2);box-shadow:var(--shadow);
-  transition:transform .45s cubic-bezier(.22,1,.36,1);
+.about-photo img{
+  display:block;width:100%;height:100%;object-fit:cover;object-position:50% 18%;
+  filter:saturate(.78) contrast(1.03);
 }
-.reel-item:hover{transform:translateY(-4px)}
-.reel-item:hover video,.reel-item:hover img{filter:saturate(.9) contrast(1.02)}
-.reel-item video,.reel-item img{
-  display:block;width:100%;height:100%;object-fit:cover;
-  filter:saturate(.32) sepia(.16) contrast(1.06) brightness(1.02);
-  transition:filter .4s;
+/* теплый флер поверх кадра, чтобы фото жило в той же палитре */
+.about-photo::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(200deg,rgba(138,90,56,.09),transparent 44%),
+             linear-gradient(0deg,rgba(36,29,25,.26),transparent 40%);
 }
-/* горизонтальный кадр кадрируем в вертикаль, держим лицо в кадре */
-.reel-item .fit-face{object-position:50% 26%}
-.reel-item .cap{
-  position:absolute;left:0;right:0;bottom:0;
-  padding:26px 12px 11px;
-  background:linear-gradient(to top,rgba(36,29,25,.78),transparent);
-  color:var(--cream);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+.about-photo .badge{
+  position:absolute;left:14px;bottom:13px;z-index:2;
+  font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--cream);
 }
-.reel-note{margin-top:14px;font-size:12px;color:var(--text-3)}
+.about h2{font-size:clamp(28px,3.6vw,52px);letter-spacing:-.05em;margin-bottom:18px}
+.about p{color:var(--text-2);font-size:clamp(15px,1.15vw,16.5px);max-width:56ch}
+.about p + p{margin-top:14px}
+.about b{color:var(--text);font-weight:500}
+.about-facts{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:0;margin-top:clamp(26px,3vw,38px);border-top:1px solid var(--line-soft);
+}
+.about-facts div{padding:16px 18px 16px 0;border-bottom:1px solid var(--line-soft)}
+.about-facts .v{font-family:var(--display);font-weight:500;font-size:clamp(19px,2vw,26px);letter-spacing:-.035em}
+.about-facts .k{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-3);margin-top:5px}
 
 /* ============ REVEAL ============ */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}
@@ -490,7 +494,7 @@ a.contact:hover{opacity:.72}
 <main class="wrap">
   <header class="hero">
     <div class="hero-atmo" aria-hidden="true">
-      <img class="atmo-photo" src="assets/cosmomed-poster.jpg" alt="" loading="eager">
+      <img class="atmo-photo" src="assets/anastasia-wide.jpg" alt="" loading="eager">
       <span class="blob b1"></span><span class="blob b2"></span>
       <span class="blob b3"></span><span class="blob b4"></span>
       <span class="streak s1"></span><span class="streak s2"></span><span class="streak s3"></span>
@@ -566,41 +570,6 @@ a.contact:hover{opacity:.72}
     </div>
   </div>
 
-  <section class="reel rv">
-    <div class="reel-head">
-      <p class="clients-cap" style="margin:0">Материал, который снимали и монтировали мы</p>
-      <p>Не стоки и не чужие кадры: отзыв клиента на камеру и клипы для найма водителей — съемка,
-      сценарий, монтаж на нашей стороне.</p>
-    </div>
-    <div class="reel-row">
-      <div class="reel-item">
-        <video class="fit-face" src="assets/cosmomed-otzyv.mp4" poster="assets/cosmomed-poster.jpg"
-               muted loop playsinline preload="none"></video>
-        <span class="cap">COSMOMED · отзыв клиента</span>
-      </div>
-      <div class="reel-item">
-        <video src="assets/tek-clip-1.mp4" poster="assets/tek-clip-1.jpg" muted loop playsinline preload="none"></video>
-        <span class="cap">ТЭК · клип</span>
-      </div>
-      <div class="reel-item">
-        <video src="assets/tek-clip-2.mp4" poster="assets/tek-clip-2.jpg" muted loop playsinline preload="none"></video>
-        <span class="cap">ТЭК · клип</span>
-      </div>
-      <div class="reel-item">
-        <video src="assets/tek-clip-3.mp4" poster="assets/tek-clip-3.jpg" muted loop playsinline preload="none"></video>
-        <span class="cap">ТЭК · клип</span>
-      </div>
-      <div class="reel-item">
-        <video src="assets/tek-clip-4.mp4" poster="assets/tek-clip-4.jpg" muted loop playsinline preload="none"></video>
-        <span class="cap">ТЭК · клип</span>
-      </div>
-      <div class="reel-item">
-        <video src="assets/tek-clip-5.mp4" poster="assets/tek-clip-5.jpg" muted loop playsinline preload="none"></video>
-        <span class="cap">ТЭК · клип</span>
-      </div>
-    </div>
-    <p class="reel-note">Наведите на кадр — начнет играть. На телефоне — коснитесь. Полные разборы — в кейсах ниже.</p>
-  </section>
 
   <div class="cards">
     <a class="card-case" href="cosmomed/">
@@ -671,6 +640,26 @@ a.contact:hover{opacity:.72}
       <span class="go">Смотреть кейс →</span>
     </a>
   </div>
+  <section class="about rv">
+    <div class="about-photo">
+      <img src="assets/anastasia.jpg" alt="Анастасия Маркова" loading="lazy">
+      <span class="badge">Съемка на РБК</span>
+    </div>
+    <div>
+      <h2>Кто за этим<br>стоит</h2>
+      <p>Анастасия Маркова, интернет-маркетолог из Перми. <b>11+ лет в digital:</b> стратегия,
+      платный трафик, SMM и видеопроизводство, управление командами и подрядчиками.</p>
+      <p>Веду проекты целиком — от того, откуда приходит клиент, до того, что руководитель
+      видит в отчете. Поэтому в кейсах ниже стоят не охваты, а <b>деньги, заявки и найм</b>:
+      у каждой цифры есть источник и период замера.</p>
+      <div class="about-facts">
+        <div><div class="v">11+</div><div class="k">лет в digital</div></div>
+        <div><div class="v">16</div><div class="k">компаний в работе</div></div>
+        <div><div class="v">6</div><div class="k">ниш — от клиник до логистики</div></div>
+      </div>
+    </div>
+  </section>
+
 </main>
 <footer class="end" id="contact">
   <div class="wrap">
@@ -804,19 +793,6 @@ a.contact:hover{opacity:.72}
     el.textContent = fmt(0);
     requestAnimationFrame(step);
   }
-})();
-
-(function(){
-  var items = document.querySelectorAll('.reel-item');
-  items.forEach(function(it){
-    var v = it.querySelector('video');
-    if(!v) return;
-    function play(){ v.play().catch(function(){}); }
-    function stop(){ v.pause(); }
-    it.addEventListener('mouseenter', play);
-    it.addEventListener('mouseleave', stop);
-    it.addEventListener('touchstart', function(){ v.paused ? play() : stop(); }, {passive:true});
-  });
 })();
 </script>
 </body>
