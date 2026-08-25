@@ -120,12 +120,14 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px
 /* ============ HERO — размытая атмосфера ============ */
 header.hero{
   position:relative;
-  padding:clamp(46px,8vw,104px) 0 clamp(44px,6vw,82px);
+  padding:clamp(46px,8vw,104px) 0 clamp(26px,3.4vw,48px);
   text-align:center;
 }
 /* размытая «дымка» — вместо плоской заливки, как на референсах */
-.hero-atmo{position:absolute;left:50%;transform:translateX(-50%);width:100vw;top:-16%;height:132%;
-  z-index:0;pointer-events:none;overflow:hidden}
+.hero-atmo{position:absolute;left:50%;transform:translateX(-50%);width:100vw;top:-16%;height:118%;
+  z-index:0;pointer-events:none;overflow:hidden;
+  -webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent 97%);
+  mask-image:linear-gradient(to bottom,#000 62%,transparent 97%)}
 .hero-atmo .blob{position:absolute;border-radius:50%;display:block;filter:blur(90px)}
 .hero-atmo .b1{width:58vw;height:52vw;left:-8%;top:-14%;background:radial-gradient(circle,rgba(168,156,141,.85),transparent 64%)}
 .hero-atmo .b2{width:46vw;height:44vw;right:-6%;top:-6%;background:radial-gradient(circle,rgba(138,90,56,.42),transparent 64%)}
@@ -345,6 +347,116 @@ a.contact:hover{opacity:.72}
   max-width:66ch;line-height:1.65;margin-inline:auto;
 }
 
+/* ===================================================================
+   ГРАФИЧЕСКИЙ СЛОЙ: живой материал, логотипы, бегущие строки
+   =================================================================== */
+
+/* кадр из реальной съемки за заголовком — размытый до пятна,
+   обесцвеченный в тон палитры (иначе неоновые плашки лезут в кадр) */
+.hero-atmo .atmo-photo{
+  position:absolute;left:-12%;top:-12%;width:124%;height:124%;
+  object-fit:cover;object-position:50% 34%;
+  filter:blur(56px) saturate(.18) sepia(.32) contrast(1.04);
+  opacity:.46;
+}
+
+/* ============ БЕГУЩАЯ СТРОКА ЛОГОТИПОВ ============ */
+.logos{
+  margin-top:clamp(8px,1.4vw,20px);
+  border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
+  padding:clamp(18px,2.2vw,28px) 0;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+}
+.logos-track{display:flex;align-items:center;gap:clamp(38px,5vw,76px);width:max-content;
+  animation:marquee 48s linear infinite}
+.logos:hover .logos-track{animation-play-state:paused}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.logos-track img{
+  display:block;height:clamp(24px,2.6vw,36px);width:auto;max-width:150px;
+  object-fit:contain;
+  mix-blend-mode:multiply;
+  filter:grayscale(1) contrast(1);opacity:.62;
+  transition:filter .35s,opacity .35s;
+}
+.logos-track img:hover{filter:none;opacity:1;mix-blend-mode:normal}
+.logos-track .l-bigo{height:clamp(14px,1.5vw,20px)}
+.logos-track .l-dense{filter:grayscale(1) contrast(1.5) brightness(.75);opacity:.75}
+.logos-track .l-word{
+  font-family:var(--display);font-weight:500;font-size:clamp(15px,1.5vw,19px);
+  letter-spacing:-.02em;color:var(--text-3);white-space:nowrap;
+}
+@media(prefers-reduced-motion:reduce){.logos-track{animation:none}}
+
+/* ============ ТЕМНАЯ ПОЛОСА С ЦИФРАМИ ============ */
+.numbers{
+  position:relative;overflow:hidden;
+  margin-top:clamp(34px,4.5vw,60px);
+  background:var(--espresso);color:var(--cream);
+  border-radius:var(--r);
+}
+.numbers::before{
+  content:"";position:absolute;inset:-40% -10%;pointer-events:none;filter:blur(70px);
+  background:
+    radial-gradient(circle at 18% 30%,rgba(138,90,56,.55),transparent 56%),
+    radial-gradient(circle at 82% 70%,rgba(168,156,141,.32),transparent 58%);
+}
+.numbers-track{
+  position:relative;display:flex;align-items:baseline;width:max-content;
+  gap:clamp(26px,3.4vw,52px);
+  padding:clamp(13px,1.5vw,19px) 0;
+  animation:marquee 42s linear infinite;
+}
+.numbers:hover .numbers-track{animation-play-state:paused}
+.numbers-track span{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(13px,1.4vw,18px);letter-spacing:-.02em;white-space:nowrap;
+}
+.numbers-track span b{font-weight:600}
+.numbers-track span::after{
+  content:"";display:inline-block;vertical-align:middle;
+  width:5px;height:5px;border-radius:50%;background:var(--cognac);
+  margin-left:clamp(26px,3.4vw,52px);
+}
+@media(prefers-reduced-motion:reduce){.numbers-track{animation:none}}
+
+/* ============ ЖИВОЙ МАТЕРИАЛ ============ */
+.reel{margin-top:clamp(52px,7vw,96px)}
+.reel-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  margin-bottom:clamp(18px,2.2vw,26px);
+}
+.reel-head p{font-size:13.5px;color:var(--text-2);max-width:52ch}
+.reel-row{
+  display:flex;align-items:flex-start;gap:clamp(10px,1.2vw,16px);overflow-x:auto;padding-bottom:6px;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+.reel-row::-webkit-scrollbar{display:none}
+.reel-item{
+  position:relative;flex:0 0 auto;
+  width:clamp(148px,15vw,214px);aspect-ratio:9/16;
+  border-radius:var(--r-s);overflow:hidden;
+  background:var(--bone-2);box-shadow:var(--shadow);
+  transition:transform .45s cubic-bezier(.22,1,.36,1);
+}
+.reel-item:hover{transform:translateY(-4px)}
+.reel-item:hover video,.reel-item:hover img{filter:saturate(.9) contrast(1.02)}
+.reel-item video,.reel-item img{
+  display:block;width:100%;height:100%;object-fit:cover;
+  filter:saturate(.32) sepia(.16) contrast(1.06) brightness(1.02);
+  transition:filter .4s;
+}
+/* горизонтальный кадр кадрируем в вертикаль, держим лицо в кадре */
+.reel-item .fit-face{object-position:50% 26%}
+.reel-item .cap{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:26px 12px 11px;
+  background:linear-gradient(to top,rgba(36,29,25,.78),transparent);
+  color:var(--cream);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+}
+.reel-note{margin-top:14px;font-size:12px;color:var(--text-3)}
+
 /* ============ REVEAL ============ */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}
 .rv.in{opacity:1;transform:none}
@@ -378,6 +490,7 @@ a.contact:hover{opacity:.72}
 <main class="wrap">
   <header class="hero">
     <div class="hero-atmo" aria-hidden="true">
+      <img class="atmo-photo" src="assets/cosmomed-poster.jpg" alt="" loading="eager">
       <span class="blob b1"></span><span class="blob b2"></span>
       <span class="blob b3"></span><span class="blob b4"></span>
       <span class="streak s1"></span><span class="streak s2"></span><span class="streak s3"></span>
@@ -396,27 +509,98 @@ a.contact:hover{opacity:.72}
     </div>
   </header>
 
-  <div class="clients rv in" style="transition-delay:.26s">
-    <p class="clients-cap">С кем работала за 11 лет</p>
-    <ul class="more-list">
-      <li>COSMOMED Clinic</li>
-      <li>Философия красоты и здоровья</li>
-      <li>BigoLand</li>
-      <li>ПЗСП-групп</li>
-      <li>Шаверма Хаус</li>
-      <li>Доктор Боева</li>
-      <li>Malika nail club</li>
-      <li>Дамские угодники</li>
-      <li>TOM TAILOR</li>
-      <li>GERRY WEBER</li>
-      <li>Стеклодом</li>
-      <li>Погода в доме</li>
-      <li>Ujin</li>
-      <li>Addreality</li>
-      <li>ТЭК</li>
-      <li>Финграм</li>
-    </ul>
+  <div class="logos rv in" style="transition-delay:.26s" aria-label="Клиенты за 11 лет работы">
+    <div class="logos-track">
+        <img src="assets/logo-cosmomed.svg" alt="COSMOMED Clinic" loading="lazy">
+        <img src="assets/logo-philosophy.png" alt="Философия красоты и здоровья" loading="lazy">
+        <img src="assets/logo-bigoland.png" alt="BigoLand" class="l-bigo" loading="lazy">
+        <img src="assets/logo-pzsp.svg" alt="ПЗСП-групп" loading="lazy">
+        <img src="assets/logo-shaverma.png" alt="Шаверма Хаус" loading="lazy">
+        <img src="assets/logo-boeva.png" alt="Доктор Боева" class="l-dense" loading="lazy">
+        <img src="assets/logo-steklodom.svg" alt="Стеклодом" loading="lazy">
+        <img src="assets/logo-pogoda.png" alt="Погода в доме" loading="lazy">
+        <img src="assets/logo-ujin.svg" alt="Ujin" loading="lazy">
+        <img src="assets/logo-addreality.svg" alt="Addreality" loading="lazy">
+        <img src="assets/logo-fingram.svg" alt="Финграм" loading="lazy">
+        <span class="l-word">TOM TAILOR</span>
+        <span class="l-word">GERRY WEBER</span>
+        <span class="l-word">ТЭК</span>
+        <span class="l-word">Malika nail club</span>
+        <span class="l-word">Дамские угодники</span>
+        <img src="assets/logo-cosmomed.svg" alt="COSMOMED Clinic" loading="lazy">
+        <img src="assets/logo-philosophy.png" alt="Философия красоты и здоровья" loading="lazy">
+        <img src="assets/logo-bigoland.png" alt="BigoLand" class="l-bigo" loading="lazy">
+        <img src="assets/logo-pzsp.svg" alt="ПЗСП-групп" loading="lazy">
+        <img src="assets/logo-shaverma.png" alt="Шаверма Хаус" loading="lazy">
+        <img src="assets/logo-boeva.png" alt="Доктор Боева" class="l-dense" loading="lazy">
+        <img src="assets/logo-steklodom.svg" alt="Стеклодом" loading="lazy">
+        <img src="assets/logo-pogoda.png" alt="Погода в доме" loading="lazy">
+        <img src="assets/logo-ujin.svg" alt="Ujin" loading="lazy">
+        <img src="assets/logo-addreality.svg" alt="Addreality" loading="lazy">
+        <img src="assets/logo-fingram.svg" alt="Финграм" loading="lazy">
+        <span class="l-word">TOM TAILOR</span>
+        <span class="l-word">GERRY WEBER</span>
+        <span class="l-word">ТЭК</span>
+        <span class="l-word">Malika nail club</span>
+        <span class="l-word">Дамские угодники</span>
+    </div>
   </div>
+
+  <div class="numbers rv in" style="transition-delay:.3s" aria-hidden="true">
+    <div class="numbers-track">
+
+        <span>×5,7 <b>выручки на вложенный рубль</b></span>
+        <span>22,8 млн ₽ <b>без рекламного бюджета</b></span>
+        <span>32 <b>принятых водителя</b></span>
+        <span>подписчик <b>втрое дешевле</b></span>
+        <span>+38% <b>онлайн-выручки</b></span>
+        <span>1–1,5 млн ₽ <b>продаж в месяц</b></span>
+        <span>427 000 ₽ <b>сверх затрат за 2 месяца</b></span>
+        <span>×5,7 <b>выручки на вложенный рубль</b></span>
+        <span>22,8 млн ₽ <b>без рекламного бюджета</b></span>
+        <span>32 <b>принятых водителя</b></span>
+        <span>подписчик <b>втрое дешевле</b></span>
+        <span>+38% <b>онлайн-выручки</b></span>
+        <span>1–1,5 млн ₽ <b>продаж в месяц</b></span>
+        <span>427 000 ₽ <b>сверх затрат за 2 месяца</b></span>
+    </div>
+  </div>
+
+  <section class="reel rv">
+    <div class="reel-head">
+      <p class="clients-cap" style="margin:0">Материал, который снимали и монтировали мы</p>
+      <p>Не стоки и не чужие кадры: отзыв клиента на камеру и клипы для найма водителей — съемка,
+      сценарий, монтаж на нашей стороне.</p>
+    </div>
+    <div class="reel-row">
+      <div class="reel-item">
+        <video class="fit-face" src="assets/cosmomed-otzyv.mp4" poster="assets/cosmomed-poster.jpg"
+               muted loop playsinline preload="none"></video>
+        <span class="cap">COSMOMED · отзыв клиента</span>
+      </div>
+      <div class="reel-item">
+        <video src="assets/tek-clip-1.mp4" poster="assets/tek-clip-1.jpg" muted loop playsinline preload="none"></video>
+        <span class="cap">ТЭК · клип</span>
+      </div>
+      <div class="reel-item">
+        <video src="assets/tek-clip-2.mp4" poster="assets/tek-clip-2.jpg" muted loop playsinline preload="none"></video>
+        <span class="cap">ТЭК · клип</span>
+      </div>
+      <div class="reel-item">
+        <video src="assets/tek-clip-3.mp4" poster="assets/tek-clip-3.jpg" muted loop playsinline preload="none"></video>
+        <span class="cap">ТЭК · клип</span>
+      </div>
+      <div class="reel-item">
+        <video src="assets/tek-clip-4.mp4" poster="assets/tek-clip-4.jpg" muted loop playsinline preload="none"></video>
+        <span class="cap">ТЭК · клип</span>
+      </div>
+      <div class="reel-item">
+        <video src="assets/tek-clip-5.mp4" poster="assets/tek-clip-5.jpg" muted loop playsinline preload="none"></video>
+        <span class="cap">ТЭК · клип</span>
+      </div>
+    </div>
+    <p class="reel-note">Наведите на кадр — начнет играть. На телефоне — коснитесь. Полные разборы — в кейсах ниже.</p>
+  </section>
 
   <div class="cards">
     <a class="card-case" href="cosmomed/">
@@ -620,6 +804,19 @@ a.contact:hover{opacity:.72}
     el.textContent = fmt(0);
     requestAnimationFrame(step);
   }
+})();
+
+(function(){
+  var items = document.querySelectorAll('.reel-item');
+  items.forEach(function(it){
+    var v = it.querySelector('video');
+    if(!v) return;
+    function play(){ v.play().catch(function(){}); }
+    function stop(){ v.pause(); }
+    it.addEventListener('mouseenter', play);
+    it.addEventListener('mouseleave', stop);
+    it.addEventListener('touchstart', function(){ v.paused ? play() : stop(); }, {passive:true});
+  });
 })();
 </script>
 </body>
