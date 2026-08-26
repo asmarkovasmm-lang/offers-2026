@@ -446,12 +446,28 @@ a.contact:hover{opacity:.72}
   content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(210deg,rgba(138,90,56,.10),transparent 46%);
 }
-.about > p{
+.about > div > p:first-child{
   color:var(--text-2);
   font-size:clamp(17px,2.05vw,28px);line-height:1.42;letter-spacing:-.018em;
   max-width:34ch;
 }
 .about b{color:var(--text);font-weight:500}
+
+/* компетенции тегами */
+.skills{display:flex;flex-wrap:wrap;gap:7px;margin-top:clamp(22px,2.6vw,32px)}
+.skills span{
+  display:inline-block;padding:7px 14px 8px;
+  border:1px solid var(--line);border-radius:100px;
+  background:rgba(252,250,247,.5);
+  font-family:var(--display);font-weight:400;
+  font-size:13px;line-height:1.15;letter-spacing:-.008em;color:var(--text-2);
+  white-space:nowrap;transition:border-color .25s,color .25s,background .25s;
+}
+.skills span:hover{border-color:var(--espresso);color:var(--text);background:var(--surface-2)}
+/* ключевые направления — чуть плотнее по тону */
+.skills span.key{border-color:rgba(36,29,25,.26);color:var(--text);font-weight:500}
+.skills-note{margin-top:12px;font-size:11.5px;line-height:1.5;color:var(--text-3)}
+@media(max-width:560px){.skills span{font-size:12.5px;padding:6px 12px 7px}}
 
 /* ============ REVEAL ============ */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}
@@ -636,8 +652,47 @@ a.contact:hover{opacity:.72}
     <div class="about-photo">
       <img src="assets/anastasia.jpg" alt="Анастасия Маркова" loading="lazy">
     </div>
-    <p>Анастасия Маркова, интернет-маркетолог из Перми. <b>11+ лет в digital:</b> стратегия,
-    платный трафик, SMM и видеопроизводство, управление командами и подрядчиками.</p>
+    <div>
+      <p>Анастасия Маркова, интернет-маркетолог из Перми. <b>11+ лет в digital:</b> стратегия,
+      платный трафик, SMM и видеопроизводство, управление командами и подрядчиками.</p>
+      <div class="skills">
+      <span class="key">Digital-маркетинг</span>
+      <span class="key">Контент-маркетинг</span>
+      <span class="key">SMM</span>
+      <span class="key">Стратегия</span>
+      <span>SEO</span>
+      <span>Контент-план</span>
+      <span>Tone of voice</span>
+      <span>Аналитика и отчетность</span>
+      <span>Юнит-экономика</span>
+      <span class="key">VK Реклама</span>
+      <span class="key">Яндекс Директ</span>
+      <span>Яндекс Бизнес</span>
+      <span>Meta*</span>
+      <span>Медиапланирование</span>
+      <span class="key">Видеопроизводство</span>
+      <span>Съемка и монтаж</span>
+      <span>Копирайтинг</span>
+      <span>Figma</span>
+      <span>Photoshop</span>
+      <span class="key">Claude Code</span>
+      <span class="key">ИИ-агенты</span>
+      <span class="key">Автоматизация</span>
+      <span>Telegram-боты</span>
+      <span>Python-скрипты</span>
+      <span>API и JSON</span>
+      <span>Google Sheets и Docs</span>
+      <span>YClients</span>
+      <span>WAHELP</span>
+      <span>Bitrix24</span>
+      <span class="key">Управление командой</span>
+      <span>Управление подрядчиками</span>
+      <span>Проектное управление</span>
+      <span>Обучение сотрудников</span>
+      <span>Скрипты продаж</span>
+      </div>
+      <p class="skills-note">* Meta признана экстремистской организацией и запрещена в РФ.</p>
+    </div>
   </section>
 
 </main>
