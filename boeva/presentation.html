@@ -131,6 +131,35 @@ ul.ticks li::before{content:"";position:absolute;left:0;top:.42em;width:15px;hei
   .t-ring{stroke-dashoffset:0}
 }
 
+.slide.tip{background:#0B1F24;color:#fff}
+.tip .eyebrow{color:#7FE3EC}
+.tip h2{color:#fff}
+.tip .lead{color:rgba(255,255,255,.78)}
+.spheres{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:11px;
+  margin:clamp(22px,3vw,36px) 0}
+.sph{padding:16px 18px;border-radius:13px;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.13);opacity:0;transform:translateY(12px)}
+.slide.on .spheres .sph{animation:light .55s cubic-bezier(.2,.9,.3,1) forwards;
+  animation-delay:calc(var(--i) * 130ms)}
+@keyframes light{
+  60%{opacity:1;transform:none;background:rgba(127,227,236,.20);border-color:rgba(127,227,236,.55)}
+  to{opacity:1;transform:none;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16)}}
+.sph b{display:block;font-size:15px;font-weight:700;color:#fff}
+.sph i{display:block;font-style:normal;font-size:12.5px;color:rgba(255,255,255,.6);margin-top:5px;line-height:1.4}
+.flow{display:grid;gap:11px;margin-top:clamp(18px,2.4vw,30px)}
+.flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:14px 16px;
+  border-radius:13px;border:1px solid rgba(255,255,255,.16)}
+.flow-row.was{background:rgba(233,162,59,.10)}
+.flow-row.is{background:rgba(127,227,236,.12)}
+.flow-lab{font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  padding:4px 9px;border-radius:6px;margin-right:5px}
+.was .flow-lab{background:rgba(233,162,59,.3);color:#F2C57E}
+.is .flow-lab{background:rgba(127,227,236,.26);color:#9FEAF2}
+.fl{font-size:13.5px;color:#fff;padding:6px 12px;border-radius:9px;
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);white-space:nowrap}
+.is .fl{background:rgba(127,227,236,.14);border-color:rgba(127,227,236,.3)}
+.flow-row i{font-style:normal;color:rgba(255,255,255,.4)}
+
 /* навигация */
 .nav{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
   gap:16px;padding:14px clamp(18px,4vw,40px);background:rgba(255,255,255,.82);
@@ -190,6 +219,26 @@ ul.ticks li::before{content:"";position:absolute;left:0;top:.42em;width:15px;hei
           <p style="font-size:12.5px;color:var(--ink-3);margin-top:16px">Цифры за 03.08 — 09.08.2026 · на видео запись работы бота в сентябре</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="slide tip">
+    <div class="inner">
+      <p class="eyebrow">Но это только верхушка</p>
+      <h2>Автоматизировать можно почти любой процесс</h2>
+      <p class="lead">Бот со статистикой — самый простой пример из возможных. Тем же способом
+        собираются системы для любого участка, где данные ходят между людьми и программами.</p>
+      <div class="spheres">
+        <div class="sph" style="--i:0"><b>Маркетинг и продажи</b><i>воронка заявок, касания, отчетность</i></div>
+        <div class="sph" style="--i:1"><b>Учет и отчетность</b><i>сводки вместо ручных выгрузок</i></div>
+        <div class="sph" style="--i:2"><b>HR-процессы</b><i>подбор, адаптация, документы</i></div>
+        <div class="sph" style="--i:3"><b>Обучение и тесты</b><i>для новичков и повышения квалификации</i></div>
+        <div class="sph" style="--i:4"><b>Расчет заработка с LTV</b><i>прозрачная система мотивации</i></div>
+        <div class="sph" style="--i:5"><b>Бухгалтерский учет</b><i>первичка, сроки, напоминания</i></div>
+        <div class="sph" style="--i:6"><b>Работа с базой клиентов</b><i>кто выпал, кого пора вернуть</i></div>
+        <div class="sph" style="--i:7"><b>Регламенты и контроль</b><i>что делается, а что забывается</i></div>
+      </div>
+      <p class="lead" style="font-size:clamp(14px,1.5vw,18px)">Дальше — на примерах нашего клиента.</p>
     </div>
   </section>
 
@@ -279,24 +328,55 @@ ul.ticks li::before{content:"";position:absolute;left:0;top:.42em;width:15px;hei
 
   <section class="slide dark">
     <div class="inner">
+      <p class="eyebrow">Процесс 2 · Медлайн</p>
+      <h2>Постановка задач<br>для колл-центра</h2>
+      <p class="lead" style="font-size:clamp(14px,1.5vw,18px)">Врач решает, когда пригласить пациента
+        снова. Между этим решением и задачей в колл-центре стояло лишнее звено.</p>
+      <div class="flow">
+        <div class="flow-row was">
+          <span class="flow-lab">Было</span>
+          <span class="fl">Врач</span><i>&rarr;</i><span class="fl">Администратор</span><i>&rarr;</i>
+          <span class="fl">Мессенджер</span><i>&rarr;</i><span class="fl">Help</span><i>&rarr;</i>
+          <span class="fl">Проверка</span><i>&rarr;</i><span class="fl">Колл-центр</span>
+        </div>
+        <div class="flow-row is">
+          <span class="flow-lab">Стало</span>
+          <span class="fl">Врач</span><i>&rarr;</i><span class="fl">ИИ-агент</span><i>&rarr;</i>
+          <span class="fl">Задача в системе</span><i>&rarr;</i><span class="fl">Колл-центр</span>
+        </div>
+      </div>
+      <div class="cols c3" style="margin-top:clamp(20px,2.6vw,34px)">
+        <div class="box"><div class="big" style="font-size:clamp(22px,2.8vw,34px)">1&ndash;1,5 ч</div>
+          <div class="cap">в день освободилось у администраторов</div></div>
+        <div class="box"><div class="big" style="font-size:clamp(22px,2.8vw,34px)">100&#37;</div>
+          <div class="cap">задач врача доходят до колл-центра</div></div>
+        <div class="box"><div class="big" style="font-size:clamp(22px,2.8vw,34px)">&uarr;</div>
+          <div class="cap">меньше пациентов теряется между приемом и повторным контактом</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide dark">
+    <div class="inner">
       <p class="eyebrow">Что перевели на автоматику</p>
-      <h2>Три процесса</h2>
-      <div class="cols c3">
-        <div class="box"><div class="n">ПРОЦЕСС 1</div><h3>База и постановка задач</h3>
-          <p><b>Было:</b> задачи ставились вручную, часть базы в них не попадала.<br>
-             <b>Стало:</b> сверка идет сама, задача ставится без администратора.</p>
-          <div class="big" style="font-size:clamp(20px,2.4vw,30px);margin-top:14px">2 426</div>
-          <div class="cap">человек, с которыми не связывались, найдены за один прогон</div></div>
-        <div class="box"><div class="n">ПРОЦЕСС 2</div><h3>Цепочка касаний по заявкам</h3>
-          <p><b>Было:</b> не дозвонились — заявка остывала.<br>
-             <b>Стало:</b> после каждого исхода звонка следующий шаг идет автоматически.</p>
-          <div class="big" style="font-size:clamp(20px,2.4vw,30px);margin-top:14px">60% → 75%</div>
+      <h2>Четыре процесса</h2>
+      <div class="cols c4">
+        <div class="box"><div class="n">ПРОЦЕСС 1</div><h3>Проверка клиентской базы</h3>
+          <p><b>Было:</b> часть базы не попадала в задачи.<br><b>Стало:</b> сверка по двум системам за прогон.</p>
+          <div class="big" style="font-size:clamp(19px,2.2vw,27px);margin-top:12px">2 426</div>
+          <div class="cap">человек, с которыми не связывались</div></div>
+        <div class="box"><div class="n">ПРОЦЕСС 2</div><h3>Постановка задач</h3>
+          <p><b>Было:</b> врач передавал задачу администратору.<br><b>Стало:</b> задачу ставит ИИ-агент.</p>
+          <div class="big" style="font-size:clamp(19px,2.2vw,27px);margin-top:12px">1&ndash;1,5 ч</div>
+          <div class="cap">в день освободилось у администраторов</div></div>
+        <div class="box"><div class="n">ПРОЦЕСС 3</div><h3>Цепочка касаний</h3>
+          <p><b>Было:</b> не дозвонились — заявка остывала.<br><b>Стало:</b> следующий шаг идет сам.</p>
+          <div class="big" style="font-size:clamp(19px,2.2vw,27px);margin-top:12px">60&#37; &rarr; 75&#37;</div>
           <div class="cap">конверсия из заявки в запись</div></div>
-        <div class="box"><div class="n">ПРОЦЕСС 3</div><h3>Сквозная аналитика и LTV</h3>
-          <p><b>Было:</b> эффективность канала считалась по первому визиту.<br>
-             <b>Стало:</b> данные из Директа и ВК стекаются сами, видна выручка за период.</p>
-          <div class="big" style="font-size:clamp(20px,2.4vw,30px);margin-top:14px">прозрачно</div>
-          <div class="cap">видно, какой канал приносит деньги, а какой их расходует</div></div>
+        <div class="box"><div class="n">ПРОЦЕСС 4</div><h3>Аналитика и LTV</h3>
+          <p><b>Было:</b> канал считался по первому визиту.<br><b>Стало:</b> данные стекаются сами.</p>
+          <div class="big" style="font-size:clamp(19px,2.2vw,27px);margin-top:12px">прозрачно</div>
+          <div class="cap">видно, какой канал приносит деньги</div></div>
       </div>
     </div>
   </section>
