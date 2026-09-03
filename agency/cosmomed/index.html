@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>COSMOMED Clinic · кейс Анастасии Марковой</title>
+<meta name="description" content="Кейс COSMOMED Clinic: таргетированная реклама для клиники косметологии — ×5,7 выручки на вложенный рубль, выход в прибыль с первого месяца.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  /* поверхности */
+  --ink:#0A0A0A;           /* фон страницы */
+  --ink-2:#151515;         /* фон при наведении */
+  --surface:#111111;       /* подложка блоков */
+  --surface-2:#171717;     /* карточка */
+
+  /* акцент */
+  --acid:#C1FF0E;          /* салатовый — снят с плашек видеоотзыва COSMOMED */
+  --acid-dim:#9BCC0B;
+  --acid-soft:rgba(193,255,14,.16);
+
+  /* совместимость со старыми классами */
+  --bone:#0A0A0A;
+  --bone-2:#151515;
+  --espresso:#0A0A0A;
+  --espresso-2:#1C1C1C;
+  --taupe:rgba(242,242,240,.34);
+  --cognac:#C1FF0E;
+  --red:#C1FF0E;
+  --blush:#1C1C1C;
+  --cream:#F2F2F0;
+
+  --text:#F2F2F0;
+  --text-2:rgba(242,242,240,.62);
+  --text-3:rgba(242,242,240,.40);
+  --line:rgba(242,242,240,.15);
+  --line-soft:rgba(242,242,240,.08);
+
+  --display:"Inter Tight",-apple-system,"Helvetica Neue",sans-serif;
+  --body:"Inter",-apple-system,"Helvetica Neue",sans-serif;
+
+  --r:20px;
+  --r-s:13px;
+  --pad:clamp(20px,5vw,88px);
+  --rule:1px solid var(--line);
+  --shadow:0 22px 48px -34px rgba(0,0,0,.9);
+  --shadow-lift:0 34px 64px -32px rgba(0,0,0,.75);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--text);
+  font-family:var(--body);
+  font-size:clamp(15px,1.05vw,17px);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* grain */
+body::after{
+  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection{background:var(--acid);color:#FAF6F5}
+
+h1,h2,h3{font-family:var(--display);font-weight:800;margin:0;letter-spacing:-.03em;line-height:.92}
+p{margin:0}
+a{color:inherit}
+
+.wrap{max-width:1420px;margin:0 auto;padding-inline:var(--pad)}
+
+/* ============ MICRO TYPE ============ */
+.eyebrow{
+  font-family:var(--body);font-weight:600;
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--text-3);
+}
+.tag{
+  display:inline-block;padding:6px 13px 7px;border:1px solid var(--line);
+  border-radius:100px;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
+  font-weight:500;color:var(--text-2);white-space:nowrap;
+}
+.tag--hot{
+  background:var(--acid);border-color:var(--acid);color:#FAF6F5;font-weight:700;
+}
+
+/* ============ NAV ============ */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(250,246,245,.86);backdrop-filter:blur(14px);
+  border-bottom:var(--rule);
+}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:62px}
+.brand{font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:-.02em}
+.brand span{color:var(--acid)}
+.nav-links{display:flex;gap:26px;font-size:12.5px;letter-spacing:.05em;color:var(--text-2)}
+.nav-links a{text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--acid)}
+@media(max-width:900px){.nav-links a:not(.nav-cta){display:none}}
+.nav-cta{color:var(--acid) !important;font-weight:600}
+
+/* ============ HERO ============ */
+header.hero{padding:clamp(56px,9vw,120px) 0 0;position:relative;overflow:hidden}
+header.hero::before{
+  content:"";position:absolute;top:-40%;right:-12%;width:62vw;height:62vw;
+  background:radial-gradient(circle,rgba(194,133,140,.30),transparent 64%);
+  pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:40px;position:relative}
+.hero h1{
+  font-size:clamp(44px,11.4vw,156px);
+  text-transform:uppercase;letter-spacing:-.045em;
+}
+.hero h1 em{
+  font-style:normal;color:var(--acid);
+  display:inline-block;white-space:nowrap;
+}
+.hero-sub{
+  display:grid;grid-template-columns:minmax(0,1fr);gap:28px;
+  padding-top:clamp(24px,4vw,46px);
+}
+@media(min-width:900px){
+  .hero-sub{grid-template-columns:1.1fr 1fr;gap:clamp(40px,6vw,110px);align-items:start}
+}
+.hero-lead{font-size:clamp(17px,1.55vw,22px);line-height:1.45;color:var(--text);max-width:34ch}
+.hero-lead b{color:var(--acid);font-weight:600}
+.hero-meta{display:flex;flex-direction:column;gap:14px;padding-top:6px}
+.hero-meta-row{display:flex;gap:16px;align-items:baseline;border-top:1px solid var(--line-soft);padding-top:12px}
+.hero-meta-row dt{flex:0 0 auto;width:112px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3)}
+.hero-meta-row dd{margin:0;font-size:14.5px;color:var(--text-2)}
+
+/* ticker */
+.ticker{
+  margin-top:clamp(48px,7vw,96px);
+  border-top:var(--rule);border-bottom:var(--rule);
+  background:var(--acid);color:#FAF6F5;
+  overflow:hidden;display:flex;
+}
+.ticker-track{
+  display:flex;flex-shrink:0;gap:0;
+  animation:slide 34s linear infinite;
+  will-change:transform;
+}
+.ticker-track span{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(15px,2.1vw,26px);text-transform:uppercase;letter-spacing:-.02em;
+  padding:14px 0;white-space:nowrap;
+}
+.ticker-track span::after{content:"◆";padding:0 clamp(16px,2.4vw,34px);opacity:.5;font-size:.62em;vertical-align:middle}
+@keyframes slide{to{transform:translateX(-100%)}}
+@media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+
+
+/* ============ БЫСТРЫЙ ВЫБОР КЕЙСА ============ */
+.caselist{
+  position:sticky;top:62px;z-index:90;
+  background:rgba(250,246,245,.94);backdrop-filter:blur(14px);
+  border-bottom:var(--rule);
+}
+.caselist-row{
+  display:flex;gap:8px;overflow-x:auto;padding:12px 0;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+.caselist-row::-webkit-scrollbar{display:none}
+.caselist-row a{
+  flex:0 0 auto;display:inline-flex;align-items:baseline;gap:8px;
+  padding:8px 15px;border:1px solid var(--line);border-radius:100px;
+  text-decoration:none;font-size:12.5px;letter-spacing:.04em;color:var(--text-2);
+  white-space:nowrap;transition:border-color .2s,color .2s,background .2s;
+}
+.caselist-row a b{font-family:var(--display);font-weight:700;font-size:11px;color:var(--acid)}
+.caselist-row a:hover,.caselist-row a:focus-visible{
+  border-color:var(--acid);color:var(--acid);background:var(--ink-2);
+}
+.case{scroll-margin-top:118px}
+@media(max-width:900px){.caselist{top:62px}}
+
+
+/* ============ ЗНАК НИШИ ============ */
+.niche{display:inline-flex;align-items:center;gap:7px;margin-bottom:12px;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--acid)}
+.niche svg{width:17px;height:17px;flex:none}
+.card-case .niche{margin-bottom:2px}
+
+/* ============ CASE ============ */
+.case{border-top:var(--rule);padding-top:clamp(40px,6vw,80px);margin-top:clamp(56px,8vw,120px)}
+.case-head{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;margin-bottom:clamp(34px,5vw,64px)}
+@media(min-width:900px){
+  .case-head{grid-template-columns:auto 1fr auto;align-items:start;gap:clamp(28px,4vw,60px)}
+}
+.case-num{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(44px,7vw,104px);line-height:.8;
+  color:transparent;-webkit-text-stroke:1.5px var(--line);
+  letter-spacing:-.04em;
+}
+.case-title{font-size:clamp(29px,4.1vw,58px);text-transform:uppercase}
+.case-title .offer{
+  display:block;font-family:var(--body);font-weight:600;
+  font-size:clamp(16px,1.6vw,23px);line-height:1.25;letter-spacing:-.01em;
+  text-transform:none;color:var(--acid);
+  margin-top:18px;max-width:24ch;
+}
+@media(min-width:900px){.case-title .offer{margin-top:20px}}
+.case-title .loc{
+  display:block;font-family:var(--body);font-weight:500;
+  font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--text-3);margin-top:16px;
+}
+.case-tags{display:flex;flex-wrap:wrap;gap:8px;max-width:340px}
+
+/* stat band */
+.stats-scope{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;
+  font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text-3);margin-bottom:14px;
+}
+.stats-scope b{color:var(--acid);font-weight:600;letter-spacing:.14em}
+.stats{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  border-top:var(--rule);border-left:var(--rule);
+}
+@media(min-width:760px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{
+  border-right:var(--rule);border-bottom:var(--rule);
+  padding:clamp(18px,2.4vw,30px) clamp(14px,1.8vw,26px);
+  display:flex;flex-direction:column;gap:8px;
+  transition:background .25s;
+}
+.stat:hover{background:var(--ink-2)}
+.stat .val{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(23px,2.7vw,40px);line-height:1;letter-spacing:-.05em;
+  color:var(--acid);font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.stat .cap{font-size:12.5px;line-height:1.35;color:var(--text-2)}
+
+/* body columns */
+.case-body{
+  display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(34px,5vw,72px);
+  margin-top:clamp(38px,5vw,72px);
+}
+.case-body > *{min-width:0}
+@media(min-width:960px){
+  .case-body{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}
+  .case-body--text{grid-template-columns:minmax(0,1.32fr) minmax(0,1fr)}
+}
+.block + .block{margin-top:clamp(26px,3.2vw,42px)}
+.block h3{
+  font-family:var(--body);font-weight:600;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--acid);
+  margin-bottom:14px;display:flex;align-items:center;gap:10px;
+}
+.block h3::after{content:"";flex:1;min-width:18px;height:1px;background:var(--line-soft)}
+@media(max-width:560px){.block h3{letter-spacing:.13em;line-height:1.5;flex-wrap:wrap}}
+.block p{color:var(--text-2)}
+.list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
+.list li{
+  position:relative;padding-left:21px;
+  color:var(--text-2);font-size:15px;line-height:1.45;
+}
+.list li::before{
+  content:"";position:absolute;left:0;top:.62em;
+  width:7px;height:7px;background:var(--acid);transform:rotate(45deg);
+}
+.list li b{color:var(--text);font-weight:600}
+
+/* video */
+.video-card{position:relative;border:var(--rule);background:var(--surface);overflow:hidden}
+.video-card video{display:block;width:100%;height:auto;background:#241419}
+.video-label{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  padding:14px 18px;border-top:var(--rule);
+  font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);
+}
+.video-label b{color:var(--text);font-weight:600;letter-spacing:.04em;text-transform:none;font-size:14px}
+.rec{display:inline-flex;align-items:center;gap:7px;color:var(--acid)}
+.rec::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--acid);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.25}}
+
+/* quote */
+blockquote{
+  margin:0;padding:clamp(22px,2.8vw,34px);
+  border:var(--rule);background:linear-gradient(160deg,rgba(194,133,140,.20),transparent 62%);
+}
+.qmark{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(44px,5.2vw,76px);line-height:.55;
+  color:var(--acid);opacity:.28;margin-bottom:12px;user-select:none;
+}
+blockquote p{
+  font-size:clamp(16px,1.5vw,20px);line-height:1.5;color:var(--text);
+  max-width:44ch;
+}
+blockquote p + p{margin-top:14px;color:var(--text-2);font-size:.92em}
+blockquote footer{
+  margin-top:22px;padding-top:16px;border-top:1px solid var(--line-soft);
+  font-size:13px;color:var(--text-3);
+}
+blockquote footer b{display:block;color:var(--text);font-size:15px;font-weight:600;margin-bottom:3px}
+
+/* economics table */
+.econ{width:100%;border-collapse:collapse;margin-top:6px}
+.econ td{padding:13px 0;border-bottom:1px solid var(--line-soft);font-size:14.5px;color:var(--text-2)}
+.econ td:last-child{text-align:right;font-variant-numeric:tabular-nums;color:var(--text);font-weight:500;white-space:nowrap}
+.econ tr.sub td{color:var(--text);font-weight:500;border-bottom-color:var(--line)}
+.econ tr.total td{border-bottom:none;padding-top:18px;font-size:16px;color:var(--text)}
+.econ .td-note{font-size:12.5px;color:var(--text-3)}
+.econ tr.total td:last-child{color:var(--acid);font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.02em}
+
+/* ============ CHARTS ============ */
+.charts{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(26px,3.4vw,44px);margin-top:26px}
+.charts > *{min-width:0}
+@media(min-width:620px){.charts{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.chart{border:var(--rule);padding:clamp(18px,2.2vw,26px);background:var(--surface)}
+.chart-title{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:3px}
+.chart-sub{font-size:11.5px;color:var(--text-3);letter-spacing:.04em;margin-bottom:22px}
+.bars{display:flex;align-items:flex-end;gap:clamp(8px,1.4vw,16px);height:150px}
+.bar-col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px;height:100%;cursor:default}
+.bar-val{font-size:12.5px;font-weight:600;color:var(--text-2);font-variant-numeric:tabular-nums;transition:color .2s}
+.bar{
+  width:100%;background:var(--acid);border-radius:4px 4px 0 0;
+  transform-origin:bottom;transform:scaleY(0);
+  transition:transform .8s cubic-bezier(.22,1,.36,1),background .2s;
+}
+.chart.in .bar{transform:scaleY(1)}
+.bar-col:nth-child(2) .bar{transition-delay:.08s}
+.bar-col:nth-child(3) .bar{transition-delay:.16s}
+.bar-col:nth-child(4) .bar{transition-delay:.24s}
+.bar-col:hover .bar{background:var(--red)}
+.bar-col:hover .bar-val{color:var(--text)}
+.bar.dim{background:var(--acid-dim)}
+.bar-labels{display:flex;gap:clamp(8px,1.4vw,16px);margin-top:10px;padding-top:10px;border-top:1px solid var(--line-soft)}
+.bar-labels span{flex:1;text-align:center;font-size:11px;letter-spacing:.06em;color:var(--text-3);text-transform:uppercase}
+.chart-note{margin-top:14px;font-size:12px;line-height:1.45;color:var(--text-3)}
+
+.rub{font-family:var(--body),"Helvetica Neue",Arial,sans-serif;font-weight:600;font-size:.8em;padding-left:.14em}
+
+/* totals */
+.totals{border-top:1px solid var(--line-soft)}
+.total-row{
+  display:flex;align-items:baseline;gap:clamp(14px,2vw,26px);
+  padding:14px 0;border-bottom:1px solid var(--line-soft);
+}
+.total-row .t-val{
+  flex:0 0 auto;min-width:clamp(84px,9vw,132px);
+  font-family:var(--display);font-weight:800;letter-spacing:-.045em;
+  font-size:clamp(22px,2.3vw,32px);color:var(--acid);
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.total-row .t-cap{font-size:14px;line-height:1.35;color:var(--text-2)}
+.total-row.zero .t-val{color:var(--text);-webkit-text-stroke:0}
+
+.t-unit{font-size:.62em;letter-spacing:0;padding-left:.16em}
+
+.totals.wide .t-val{min-width:clamp(112px,13vw,192px)}
+
+/* link card */
+.linkcard{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  margin-top:clamp(26px,3.2vw,42px);padding:20px 24px;
+  border:var(--rule);text-decoration:none;transition:background .25s,border-color .25s;
+}
+.linkcard:hover{background:var(--ink-2);border-color:var(--acid)}
+.lc-k{flex:0 0 auto;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3)}
+.lc-v{font-family:var(--display);font-weight:700;font-size:clamp(15px,1.5vw,19px);letter-spacing:-.02em;color:var(--text)}
+.lc-arrow{margin-left:auto;font-size:20px;color:var(--acid);transition:transform .25s}
+.linkcard:hover .lc-arrow{transform:translateX(5px)}
+
+/* report screenshot */
+.shot{border:var(--rule);background:var(--surface);overflow:hidden;margin-top:clamp(38px,5vw,64px)}
+.shot-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.shot img{display:block;width:100%;min-width:680px;height:auto}
+.shot-cap{
+  padding:13px 18px;border-top:var(--rule);
+  font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+.shot-hint{display:none;color:var(--acid)}
+@media(max-width:760px){.shot-hint{display:inline}}
+
+
+/* ============ ЗНАК СКОЛКОВО ============ */
+.sk{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px}
+.sk-mark{
+  display:inline-flex;align-items:center;gap:14px;
+  background:#FFFFFF;border:1px solid var(--line);
+  padding:8px 16px 8px 8px;white-space:nowrap;
+}
+.sk-logo{display:block;height:38px;width:auto}
+.sk-status{
+  font-family:var(--display);font-weight:700;font-size:11.5px;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--acid);
+  padding-left:13px;border-left:1px solid var(--line);
+}
+.sk-note{font-size:13px;color:var(--text-2);max-width:46ch;line-height:1.45}
+@media(max-width:640px){.sk-note{font-size:12.5px}}
+
+/* ============ FOOTER ============ */
+footer.end{
+  margin-top:clamp(70px,10vw,150px);border-top:var(--rule);
+  background:var(--acid);color:#FAF6F5;
+}
+footer.end .wrap{padding-block:clamp(46px,7vw,96px)}
+footer.end h2{font-size:clamp(34px,7.5vw,104px);text-transform:uppercase;letter-spacing:-.045em}
+.contacts{
+  display:grid;grid-template-columns:minmax(0,1fr);gap:0;
+  margin-top:clamp(32px,4.5vw,60px);
+  border-top:1px solid rgba(250,246,245,.26);
+}
+@media(min-width:760px){.contacts{grid-template-columns:repeat(3,1fr)}}
+.contact{
+  padding:20px 0;border-bottom:1px solid rgba(250,246,245,.26);
+  display:flex;flex-direction:column;gap:5px;text-decoration:none;
+}
+@media(min-width:760px){
+  .contact{padding:22px 24px 22px 0;border-bottom:none}
+  .contact + .contact{border-left:1px solid rgba(250,246,245,.26);padding-left:24px}
+}
+.contact .k{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.58;font-weight:600}
+.contact .v{font-family:var(--display);font-weight:700;font-size:clamp(16px,1.7vw,21px);letter-spacing:-.02em}
+a.contact:hover .v{text-decoration:underline;text-underline-offset:4px}
+.fine{margin-top:clamp(30px,4vw,52px);font-size:12px;opacity:.62;max-width:62ch;line-height:1.5}
+
+/* ============ REVEAL ============ */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .bar{transform:scaleY(1) !important;transition:none}
+}
+
+/* ===================================================================
+   BONE & ESPRESSO — надстройка стиля: типографика, радиусы, размытие
+   =================================================================== */
+body{font-weight:400;line-height:1.6;letter-spacing:-.006em}
+h1,h2,h3{font-weight:600 !important;letter-spacing:-.045em}
+
+/* сверхширокий трекинг у мелких строк — главный прием референсов */
+.eyebrow{font-weight:500;font-size:10.5px;letter-spacing:.34em}
+.brand{font-family:var(--body);font-weight:500;font-size:11px;letter-spacing:.36em;text-transform:uppercase}
+.nav-links{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase}
+.crumbs{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase}
+.block h3{font-weight:500 !important;font-size:10px;letter-spacing:.3em;color:var(--text-3)}
+.block h3::after{background:var(--line-soft)}
+/* длинная строка замера читается плохо капсом — капс только у ярлыка */
+.stats-scope{font-size:13px;letter-spacing:.005em;text-transform:none;color:var(--text-3)}
+.stats-scope b{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--text-2);font-weight:500}
+.case-title .loc{font-size:10.5px;letter-spacing:.28em;font-weight:500}
+.video-label,.shot-cap{font-size:10px;letter-spacing:.26em}
+.lc-k,.contact .k{font-size:9.5px;letter-spacing:.28em}
+.clients-cap{font-size:10px;letter-spacing:.3em}
+
+/* мягкие формы вместо жестких рамок */
+.tag,.caselist-row a{border-radius:100px;background:rgba(252,250,247,.45);
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase}
+.caselist-row a b{color:var(--cognac);font-weight:500;letter-spacing:.1em}
+/* главный тег кейса — темная плашка, а не блеклая */
+.tag--hot{background:var(--espresso);border-color:var(--espresso);color:var(--cream);font-weight:500}
+.chart,.video-card,.shot,blockquote,.linkcard,.sk-mark,.card-sk,.clients-row .mark{
+  border-radius:var(--r);overflow:hidden;
+}
+.stats{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);border-left:1px solid var(--line)}
+.stat{border-right:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.chart,.video-card,.shot{box-shadow:var(--shadow)}
+.linkcard{border-radius:var(--r-s)}
+
+/* размытая атмосфера в шапке — вместо плоского розового пятна */
+header.hero::before{display:none}
+/* размытая дымка во всю ширину экрана — общий прием со страницы кейсов */
+/* слой уходит ЗА поток: фон держит html, у body он прозрачный */
+html{background:var(--ink)}
+body{background:transparent}
+.page-atmo{
+  position:absolute;left:50%;transform:translateX(-50%);top:0;
+  width:100vw;height:min(900px,105vh);z-index:-1;pointer-events:none;overflow:hidden;
+}
+.page-atmo i{position:absolute;display:block;border-radius:50%;filter:blur(90px)}
+.page-atmo .a1{width:58vw;height:52vw;left:-10%;top:-16%;background:radial-gradient(circle,rgba(168,156,141,.85),transparent 64%)}
+.page-atmo .a2{width:48vw;height:44vw;right:-8%;top:-10%;background:radial-gradient(circle,rgba(138,90,56,.40),transparent 64%)}
+.page-atmo .a3{width:64vw;height:36vw;left:18%;bottom:-14%;background:radial-gradient(ellipse,rgba(252,250,247,.95),transparent 62%)}
+.page-atmo::after{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(184.5deg,
+    rgba(252,250,247,0) 0 26px,
+    rgba(252,250,247,.58) 26px 29px,
+    rgba(36,29,25,.05) 29px 74px);
+  filter:blur(7px);opacity:.38;
+  -webkit-mask-image:radial-gradient(ellipse 66% 60% at 50% 40%,#000 6%,transparent 74%);
+  mask-image:radial-gradient(ellipse 66% 60% at 50% 40%,#000 6%,transparent 74%);
+}
+main,footer.end{position:relative;z-index:1}
+nav,.caselist{
+  background:rgba(239,235,228,.74);
+  backdrop-filter:blur(22px) saturate(1.4);
+  -webkit-backdrop-filter:blur(22px) saturate(1.4);
+  border-bottom:1px solid var(--line-soft);
+}
+
+/* акцент — тональный, не кричащий */
+.stat .val,.total-row .t-val,.econ tr.total td:last-child{color:var(--espresso)}
+.list li::before{background:var(--taupe);transform:rotate(45deg)}
+.bar{background:var(--espresso-2);border-radius:6px 6px 0 0}
+.bar.dim{background:var(--taupe)}
+.bar-col:hover .bar{background:var(--cognac)}
+.qmark{color:var(--taupe);opacity:.5}
+blockquote{background:linear-gradient(160deg,rgba(168,156,141,.22),transparent 64%)}
+.rec,.rec::before{color:var(--cognac);background-color:var(--cognac)}
+.case-num{-webkit-text-stroke:1px var(--line)}
+
+/* темный якорь страницы */
+footer.end{background:var(--espresso);color:var(--cream);position:relative;overflow:hidden}
+footer.end::before{
+  content:"";position:absolute;inset:-30% -10%;pointer-events:none;filter:blur(80px);
+  background:
+    radial-gradient(circle at 22% 20%,rgba(138,90,56,.45),transparent 58%),
+    radial-gradient(circle at 78% 74%,rgba(168,156,141,.30),transparent 60%);
+}
+footer.end .wrap{position:relative}
+footer.end h2{color:var(--cream)}
+.contacts{border-top-color:rgba(245,241,234,.16)}
+.contact{border-bottom-color:rgba(245,241,234,.16)}
+@media(min-width:760px){.contact + .contact{border-left-color:rgba(245,241,234,.16)}}
+.ticker{background:var(--espresso);color:var(--cream);border-color:var(--espresso)}
+.ticker-track span{font-weight:500;letter-spacing:.02em}
+
+/* ===== BLACK & ACID: правки под темный фон ===== */
+html{background:var(--ink)}
+::selection{background:var(--acid);color:#0A0A0A}
+nav,.caselist{background:rgba(10,10,10,.76);backdrop-filter:blur(22px) saturate(1.2);
+  -webkit-backdrop-filter:blur(22px) saturate(1.2)}
+.tag,.caselist-row a{background:rgba(242,242,240,.05)}
+.caselist-row a:hover,.caselist-row a:focus-visible,.caselist-row a.is-active{
+  border-color:var(--acid);color:var(--acid);background:rgba(193,255,14,.08)}
+.tag--hot{background:var(--acid);border-color:var(--acid);color:#0A0A0A}
+/* знаки клиентов на черном выводим силуэтом */
+.clients-row .mark{background:var(--surface-2);border-color:var(--line)}
+.clients-row .mark img,.card-logo img{filter:brightness(0) invert(1);opacity:.7}
+.sk-mark,.card-sk{background:#F2F2F0}
+.sk-status,.card-sk b{color:#0A0A0A}
+.page-atmo{display:none}
+.stat .val,.total-row .t-val,.econ tr.total td:last-child{color:var(--acid)}
+.list li::before{background:var(--acid)}
+.bar{background:var(--acid-dim)}
+.bar.dim{background:rgba(242,242,240,.22)}
+.bar-col:hover .bar{background:var(--acid)}
+.qmark{color:var(--acid);opacity:.6}
+blockquote{background:linear-gradient(160deg,rgba(193,255,14,.10),transparent 64%)}
+.chart,.video-card,.shot,.linkcard{background:var(--surface)}
+.case-num{-webkit-text-stroke:1px var(--line)}
+.ticker{background:var(--acid);color:#0A0A0A;border-color:var(--acid)}
+footer.end{background:#0A0A0A;color:var(--cream);border-top:1px solid var(--line)}
+footer.end::before{background:radial-gradient(circle at 26% 26%,rgba(193,255,14,.20),transparent 58%)}
+footer.end .eyebrow{color:var(--acid)}
+.contacts{border-top-color:var(--line)}
+.contact{border-bottom-color:var(--line)}
+@media(min-width:760px){.contact + .contact{border-left-color:var(--line)}}
+</style>
+<style>
+.niche{display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:600;color:var(--acid)}
+.niche svg{width:17px;height:17px;flex:none}
+.caselist-row a.is-active{border-color:var(--acid);color:var(--acid);background:var(--ink-2)}
+.case{border-top:none;margin-top:0;padding-top:clamp(26px,3.5vw,46px)}
+.case-nav{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  border-top:var(--rule);margin-top:clamp(48px,7vw,90px);padding-top:26px}
+.case-nav a{display:inline-flex;flex-direction:column;gap:4px;text-decoration:none;max-width:46%}
+.case-nav .k{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3)}
+.case-nav .v{font-family:var(--display);font-weight:700;font-size:clamp(15px,1.7vw,19px);
+  letter-spacing:-.02em;color:var(--text)}
+.case-nav a:hover .v{color:var(--acid)}
+.case-nav .next{text-align:right;align-items:flex-end;margin-left:auto}
+.crumbs{padding:20px 0 0;font-size:12.5px;color:var(--text-3)}
+.crumbs a{color:var(--text-2);text-decoration:none}
+.crumbs a:hover{color:var(--acid)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);margin-top:clamp(30px,4vw,52px)}
+.card-case{background:var(--ink);padding:clamp(24px,3vw,36px);text-decoration:none;
+  display:flex;flex-direction:column;gap:10px;transition:background .2s}
+.card-case:hover{background:var(--ink-2)}
+.card-case .n{font-family:var(--display);font-weight:800;font-size:13px;color:var(--text-3)}
+.card-case h2{font-size:clamp(20px,2.2vw,27px);margin:0}
+.card-case .win{font-size:15px;color:var(--text-2)}
+.card-case .go{margin-top:auto;padding-top:14px;font-size:12.5px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--acid)}
+</style>
+</head>
+<body>
+<div class="page-atmo" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="../" style="text-decoration:none"><span>&#8592;</span> На главную</a>
+    <div class="nav-links"><a href="#contact" class="nav-cta">Связаться</a></div>
+  </div>
+</nav>
+
+<div class="caselist">
+  <div class="wrap">
+    <div class="caselist-row">
+      <a href="../cosmomed/" class="is-active"><b>01</b> COSMOMED Clinic</a>
+      <a href="../filosofiya-krasoty/"><b>02</b> Философия красоты и здоровья</a>
+      <a href="../bigoland/"><b>03</b> BigoLand</a>
+      <a href="../pzsp-grupp/"><b>04</b> ПЗСП-групп</a>
+      <a href="../shaverma-haus/"><b>05</b> Шаверма Хаус</a>
+      <a href="../tek/"><b>06</b> ТЭК</a>
+    </div>
+  </div>
+</div>
+<div class="wrap"><div class="crumbs"><a href="../">Кейсы</a> · COSMOMED Clinic</div></div>
+<main class="wrap">
+<section class="case" id="cosmomed">
+    <div class="niche rv"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg><span>Медицина</span></div>
+    <div class="case-head">
+      <div class="case-num rv">01</div>
+      <h2 class="case-title rv" style="transition-delay:.06s">
+        Cosmomed<br>Clinic
+        <span class="offer">Реклама, которая окупается с первого месяца</span>
+        <span class="loc">Пермь · клиника косметологии · год работы</span>
+      </h2>
+      <div class="case-tags rv" style="transition-delay:.12s">
+        <span class="tag">Таргетированная реклама</span>
+        <span class="tag">Скрипты продаж</span>
+        <span class="tag">Работа администраторов</span>
+        <span class="tag">Учет заявок и выручки</span>
+      </div>
+    </div>
+
+    <div class="stats-scope rv">
+      <span><b>Замер: первые два месяца</b></span>
+      <span>· работали с клиникой год, но цифры привожу только за тот период, где велся учет от заявки до суммы в чеке</span>
+    </div>
+
+    <div class="stats rv">
+      <div class="stat">
+        <div class="val" data-count="517000" data-fmt="space" data-suffix=" ₽">517 000 ₽</div>
+        <div class="cap">выручка клиники с записанных пациентов</div>
+      </div>
+      <div class="stat">
+        <div class="val" data-count="427000" data-prefix="+" data-fmt="space" data-suffix=" ₽">+427 000 ₽</div>
+        <div class="cap">выручка сверх всех затрат на канал</div>
+      </div>
+      <div class="stat">
+        <div class="val">×5,7</div>
+        <div class="cap">рублей выручки на каждый вложенный рубль</div>
+      </div>
+      <div class="stat">
+        <div class="val" data-count="1">1</div>
+        <div class="cap">месяц до выхода в прибыль, а не в ноль</div>
+      </div>
+    </div>
+
+    <div class="case-body">
+      <div>
+        <div class="block rv">
+          <h3>Задача</h3>
+          <p>
+            Клиника много вкладывалась в рекламу — телевидение, радио, билборды, печать.
+            Отдачу этих каналов невозможно было посчитать: заявки приходили, но связать их
+            с конкретным каналом и стоимостью записи никто не мог. Нужен был канал с
+            прозрачной экономикой.
+          </p>
+        </div>
+
+        <div class="block rv">
+          <h3>Что сделали</h3>
+          <ul class="list">
+            <li>Собрали таргетированную рекламу под конкретные услуги с высоким чеком — контурная пластика, ультраформер, лазер.</li>
+            <li>Настроили учет: каждая заявка привязана к источнику, каждая запись — к сумме в чеке.</li>
+            <li>Переписали скрипты для администраторов: работа с ценой, отработка «я подумаю», перевод заявки в запись.</li>
+            <li>Разобрали реальные диалоги и обучили колл-центр — рост конверсии из заявки в визит.</li>
+            <li>Еженедельная сверка выручки с расходом: масштабировали то, что окупается, отключали остальное.</li>
+          </ul>
+        </div>
+
+        <div class="block rv">
+          <h3>Год в одном режиме</h3>
+          <p>
+            Канал окупился с первого месяца, и клиника продлевала работу до года.
+            Дальше повторялся один и тот же цикл:
+          </p>
+          <ul class="list">
+            <li><b>Каждую неделю</b> — сверка выручки с расходом: что окупается, масштабируем; что нет, отключаем.</li>
+            <li><b>Каждый месяц</b> — пересборка кампаний под сезон и под услуги, которые клинике нужно было загрузить.</li>
+            <li><b>Постоянно</b> — разбор реальных диалогов администраторов и правка скриптов под новые возражения.</li>
+          </ul>
+        </div>
+
+        <div class="block rv">
+          <h3>Экономика канала</h3>
+          <p style="margin-bottom:16px;font-size:15px;color:var(--text-2)">
+            Выручку привязывала к источнику заявки, затраты на канал знаю точно —
+            это подтверждается учетом.
+          </p>
+          <table class="econ">
+            <tr><td>Выручка с записанных клиентов</td><td>517 000 ₽</td></tr>
+            <tr><td>Бюджет и работа команды</td><td>− 90 000 ₽</td></tr>
+            <tr class="total"><td>Выручка сверх затрат на канал</td><td>+427 000 ₽</td></tr>
+          </table>
+
+        </div>
+      </div>
+
+      <div>
+        <div class="video-card rv">
+          <video controls preload="metadata" playsinline poster="../assets/cosmomed-poster.jpg">
+            <source src="../assets/cosmomed-otzyv.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео. <a href="assets/cosmomed-otzyv.mp4">Скачать отзыв</a>.
+          </video>
+          <div class="video-label">
+            <span><b>Анастасия Моховикова</b><br>руководитель Cosmomed Clinic</span>
+            <span class="rec">Видеоотзыв · 0:48</span>
+          </div>
+        </div>
+
+        <blockquote class="rv" style="margin-top:22px">
+          <div class="qmark" aria-hidden="true">«</div>
+          <p>
+            Мы очень много вкладывались в рекламу, но такой продуктивности не видели —
+            ни от телевидения, ни от радио, ни от билбордов. В первый же месяц мы не только
+            окупили рекламу, но и получили прибыль. Второй месяц — то же самое.
+          </p>
+          <p>
+            Кроме того, команда помогает работать над скриптами и работой администраторов,
+            чтобы увеличивать конверсию. Безусловно, хочу работать с ними дальше и могу всем
+            порекомендовать эту команду: высокий профессионализм, высокая окупаемость и
+            высокое качество работы.
+          </p>
+          <footer>
+            <b>Анастасия Моховикова</b>
+            Руководитель Cosmomed Clinic, Пермь
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+<div class="case-nav">
+  <a class="next" href="../filosofiya-krasoty/"><span class="k">следующий кейс →</span><span class="v">Философия красоты и здоровья</span></a>
+</div>
+</main>
+<footer class="end" id="contact">
+  <div class="wrap">
+    <p class="eyebrow" style="color:rgba(250,246,245,.7)">Свободна для проектов</p>
+    <h2 style="margin-top:18px">Нужен<br>такой же<br>результат?</h2>
+
+    <div class="contacts">
+      <a class="contact" href="https://t.me/nastya_mgh">
+        <span class="k">Telegram — предпочтительно</span>
+        <span class="v">@nastya_mgh</span>
+      </a>
+      <a class="contact" href="tel:+79519403338">
+        <span class="k">Позвонить</span>
+        <span class="v">+7 951 940-33-38</span>
+      </a>
+      <a class="contact" href="mailto:a.s.markova.smm@gmail.com">
+        <span class="k">Почта</span>
+        <span class="v">a.s.markova.smm@gmail.com</span>
+      </a>
+    </div>
+
+    <p class="fine">
+      Анастасия Маркова — digital-маркетолог. 11+ лет в digital: стратегия,
+      платный трафик, SMM и видеопроизводство, управление командами и подрядчиками.
+      Если не получается найти в Telegram по нику — аккаунт зарегистрирован на номер
+      +7 982 440-22-90.
+    </p>
+  </div>
+</footer>
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.rv, .chart').forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+      var vals = e.target.querySelectorAll('.val');
+      Array.prototype.forEach.call(vals, count);
+    });
+  }, {threshold:.18, rootMargin:'0px 0px -8% 0px'});
+
+  var targets = document.querySelectorAll('.rv, .chart');
+  targets.forEach(function(el){ io.observe(el); });
+
+  // подстраховка: на мобильных наблюдатель иногда не срабатывает —
+  // всё, что уже попало в зону видимости, показываем принудительно
+  function revealVisible(){
+    document.querySelectorAll('.rv:not(.in), .chart:not(.in)').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight * 1.15 && r.bottom > -50){
+        el.classList.add('in');
+        Array.prototype.forEach.call(el.querySelectorAll('.val'), count);
+      }
+    });
+  }
+  window.addEventListener('scroll', revealVisible, {passive:true});
+  window.addEventListener('resize', revealVisible, {passive:true});
+  setTimeout(revealVisible, 400);
+  setTimeout(revealVisible, 1400);
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+
+  // крутит числа внутри произвольной подписи: «в 3 раза», «1–1,5 млн», «1 месяц»
+  function countInText(el){
+    var orig = el.textContent.trim();
+    var parts = orig.split(/(\d+(?:[   ]\d{3})*(?:[.,]\d+)?)/);
+    var nums = [];
+    parts.forEach(function(p, i){
+      if(/^\d/.test(p)){
+        var clean = p.replace(/[\u00A0\u2009 ]/g, '').replace(',', '.');
+        nums.push({
+          i: i,
+          target: parseFloat(clean),
+          dec: (clean.split('.')[1] || '').length,
+          space: /[\u00A0\u2009 ]/.test(p)
+        });
+      }
+    });
+    if(!nums.length) return;
+
+    function render(p){
+      var eased = 1 - Math.pow(1 - p, 3);
+      var out = parts.slice();
+      nums.forEach(function(n){
+        var v = n.target * eased;
+        var s = n.dec ? v.toFixed(n.dec).replace('.', ',') : String(Math.round(v));
+        if(n.space) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+        out[n.i] = s;
+      });
+      el.textContent = out.join('');
+    }
+
+    var dur = 1100, t0 = null;
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      render(p);
+      if(p < 1) requestAnimationFrame(step);
+      else el.textContent = orig;
+    }
+    render(0);
+    requestAnimationFrame(step);
+  }
+
+  function count(el){
+    if(el.dataset.counted) return;
+    el.dataset.counted = '1';
+    if(reduce) return;
+    if(!el.dataset.count){ countInText(el); return; }
+    var target = parseInt(el.dataset.count, 10);
+    var pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
+    var space = el.dataset.fmt === 'space';
+    var dur = 1100, t0 = null;
+    function fmt(n){
+      var s = String(n);
+      if(space) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+      return pre + s + suf;
+    }
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(Math.round(target * eased));
+      if(p < 1) requestAnimationFrame(step);
+    }
+    el.textContent = fmt(0);
+    requestAnimationFrame(step);
+  }
+})();
+</script>
+</body>
+</html>
