@@ -616,6 +616,28 @@ footer p{color:rgba(255,255,255,.86);margin-top:16px;font-size:clamp(15px,1.5vw,
     requestAnimationFrame(step);
   }
 
+  /* автозапуск видео: браузеры иногда игнорируют autoplay, а Safari на iOS
+     требует playsinline и явного вызова play() */
+  (function(){
+    var vs = document.querySelectorAll('video');
+    if(!vs.length) return;
+    function kick(v){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+    if('IntersectionObserver' in window){
+      var vo = new IntersectionObserver(function(es){
+        es.forEach(function(e){ e.isIntersecting ? kick(e.target) : e.target.pause(); });
+      }, {threshold:.25});
+      vs.forEach(function(v){ vo.observe(v); });
+    }
+    vs.forEach(function(v){
+      v.addEventListener('loadeddata', function(){ kick(v); });
+      v.addEventListener('click', function(){ v.paused ? kick(v) : v.pause(); });
+      kick(v);
+    });
+    document.addEventListener('touchstart', function once(){
+      vs.forEach(kick); document.removeEventListener('touchstart', once);
+    }, {passive:true});
+  })();
+
   /* калькулятор упущенной выгоды */
   var ids = ['base','conv','check','visits'];
   var els = {};
