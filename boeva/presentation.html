@@ -50,6 +50,7 @@ p{margin:0}
 .teal .box,.dark .box{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
 .box p{font-size:14.5px;color:var(--ink-2);line-height:1.5}
 .teal .box p,.dark .box p{color:rgba(255,255,255,.82)}
+.teal .box p b,.dark .box p b{color:#fff;font-weight:700}
 .box .n{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--teal);margin-bottom:9px}
 .teal .box .n,.dark .box .n{color:#9FEAF2}
 .big{font-size:clamp(28px,4.4vw,52px);font-weight:800;letter-spacing:-.035em;line-height:1;
@@ -188,8 +189,10 @@ ul.ticks li::before{content:"";position:absolute;left:0;top:.42em;width:15px;hei
           <p>Система сверяет базу сразу по двум системам и отдает готовый список: кто в задаче,
             кто записан, кто сотрудник, кто ушел к другому врачу.</p></div>
         <div class="box"><div class="n">ШАГ 3</div><h3>Учли исключения</h3>
-          <p>Конкурирующих врачей исключаем друг у друга, неконкурирующих — нет.
-            Человек может законно быть клиентом двоих.</p></div>
+          <p>Есть целый ряд нюансов, по которым нужно проверить клиента, прежде чем заносить
+            его в базу: сверить условия и подтянуть данные из разных частей программы.
+            <b>Прописали все условия исключений и сделали техническую настройку для того,
+            чтобы получать не промежуточный, а полностью готовый результат.</b></p></div>
       </div>
     </div>
   </section>
