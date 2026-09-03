@@ -666,7 +666,7 @@ footer p{color:rgba(255,255,255,.86);margin-top:16px;font-size:clamp(15px,1.5vw,
         setTimeout(function(){ b.style.width = b.dataset.w + '%'; }, 180);
       });
     });
-  }, {threshold:.2, rootMargin:'0px 0px -6% 0px'});
+  }, {threshold:0, rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.rv, .case, .race, .found, .kpis').forEach(function(el){ io.observe(el); });
 
   /* календари и таймер: 5 месяцев против 2 минут */
@@ -694,6 +694,22 @@ footer p{color:rgba(255,255,255,.86);margin-top:16px;font-size:clamp(15px,1.5vw,
     }
     requestAnimationFrame(step);
   }
+
+  /* подстраховка: длинные блоки на мобильных иногда не добирают порог видимости */
+  function revealVisible(){
+    document.querySelectorAll('.rv:not(.in), .case:not(.in)').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < innerHeight * 1.2 && r.bottom > -60) el.classList.add('in');
+    });
+    var v = document.querySelector('.vs');
+    if(v && !v.classList.contains('go')){
+      var r = v.getBoundingClientRect();
+      if(r.top < innerHeight && r.bottom > 0) v.classList.add('go');
+    }
+  }
+  addEventListener('scroll', revealVisible, {passive:true});
+  addEventListener('resize', revealVisible, {passive:true});
+  setTimeout(revealVisible, 400); setTimeout(revealVisible, 1500);
 
   /* автозапуск видео: браузеры иногда игнорируют autoplay, а Safari на iOS
      требует playsinline и явного вызова play() */
