@@ -174,6 +174,27 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:56ch;margin-inlin
 .btn:hover{transform:translateY(-2px)}
 .sign{margin-top:30px;font-size:13.5px;color:rgba(255,255,255,.7);line-height:1.7}
 
+/* ---------- результат решения ---------- */
+.outcome{margin-top:clamp(24px,3vw,36px);background:var(--gold-l);
+  border:1px solid rgba(216,154,78,.42);border-left:4px solid var(--gold);
+  border-radius:0 var(--r) var(--r) 0;padding:clamp(20px,2.6vw,28px);display:grid;gap:16px}
+@media(min-width:820px){.outcome{grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:32px}}
+.outcome .k{font-size:10.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
+  color:#9A6A22;margin-bottom:9px}
+.outcome p{font-size:clamp(15px,1.55vw,17.5px);line-height:1.5;font-weight:600;color:var(--ink)}
+.outcome .fig{text-align:center;padding-left:clamp(0px,2vw,28px);
+  border-left:1px solid rgba(216,154,78,.45)}
+.outcome .fig b{display:block;font-size:clamp(23px,3vw,32px);font-weight:800;letter-spacing:-.03em;
+  color:var(--plum);line-height:1.05;white-space:nowrap}
+.outcome .fig i{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--ink-3);display:block;margin-top:7px;max-width:19ch}
+@media(max-width:819px){.outcome .fig{border-left:none;border-top:1px solid rgba(216,154,78,.45);
+  padding:16px 0 0;text-align:left}.outcome .fig i{max-width:none}}
+.hero .jump{display:inline-flex;align-items:center;gap:9px;margin-top:26px;color:#F3B9CB;
+  font-size:14px;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(243,185,203,.42);
+  padding-bottom:3px;transition:gap .25s}
+.hero .jump:hover{gap:14px}
+
 /* ---------- результат ---------- */
 .res{background:linear-gradient(160deg,var(--plum-d),var(--plum) 58%,#4A2B54);color:#fff;overflow:hidden}
 .res::after{content:"";position:absolute;inset:auto auto -55% -12%;width:60vw;height:60vw;
@@ -256,6 +277,7 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:56ch;margin-inlin
       <div class="ord" style="--i:2"><div class="n">3</div><h4>ИИ-подсказки в переписку</h4>
         <p>Агент предлагает варианты ответа, отправляет всегда менеджер</p></div>
     </div>
+    <a class="jump" href="#result">К чему это приведет — сразу к результату ↓</a>
   </div>
 </header>
 
@@ -318,6 +340,12 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:56ch;margin-inlin
           снимок прикладывается к записи. Тетрадь так не умеет.</p></div>
         <div class="feat"><h4>Отмена последней записи</h4><p>Ошиблась — одна команда,
           строка убирается.</p></div>
+      </div>
+
+      <div class="outcome rv">
+        <div><div class="k">Результат</div>
+          <p>Учет ведется в момент сделки, а не вечером по тетради. Через два-три месяца видно ритм закупа каждого клиента — и это те самые данные, на которых работают решения 2 и 3.</p></div>
+        <div class="fig"><b>1 строка</b><i>вместо тетради и переноса в таблицу</i></div>
       </div>
     </div>
 
@@ -382,6 +410,12 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:56ch;margin-inlin
         у вас годами.</mark> Перегрузить их сообщениями — потерять доверие, которое
         зарабатывалось десять лет. Поэтому в сценариях сразу закладываем ограничение
         по частоте и приоритет между поводами, чтобы не пришло три сообщения подряд.</p>
+
+      <div class="outcome rv">
+        <div><div class="k">Результат</div>
+          <p>800 спящих клиентов превращаются в очередь на возврат. А активные 200 перестают становиться спящими: сбой ритма закупа система замечает раньше вас.</p></div>
+        <div class="fig"><b>800 000 ₽</b><i>за год при возврате 5% спящих</i></div>
+      </div>
     </div>
 
     <!-- ======= РЕШЕНИЕ 3 ======= -->
@@ -439,12 +473,17 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:56ch;margin-inlin
           ее заменить.</mark> Это снимаем до начала работы: инструмент подсказывает,
           решение всегда за ней. И запускаем после того, как бот учета уже облегчил ей жизнь.</p></div>
       </div>
+
+      <div class="outcome rv">
+        <div><div class="k">Результат</div>
+          <p>Ответ клиенту становится быстрым и теплым, а допродажа предлагается системно, а не когда менеджер про нее вспомнила. Отправляет по-прежнему человек, которого клиенты знают в лицо.</p></div>
+      </div>
     </div>
 
   </div>
 </section>
 
-<section class="res">
+<section class="res" id="result">
   <div class="wrap">
     <p class="eyebrow rv">Результат</p>
     <h2 class="rv d1">К чему это приведет</h2>
