@@ -174,6 +174,63 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:56ch;margin-inlin
 .btn:hover{transform:translateY(-2px)}
 .sign{margin-top:30px;font-size:13.5px;color:rgba(255,255,255,.7);line-height:1.7}
 
+/* ---------- результат ---------- */
+.res{background:linear-gradient(160deg,var(--plum-d),var(--plum) 58%,#4A2B54);color:#fff;overflow:hidden}
+.res::after{content:"";position:absolute;inset:auto auto -55% -12%;width:60vw;height:60vw;
+  background:radial-gradient(circle,rgba(194,67,107,.26),transparent 62%);pointer-events:none}
+.res::before{content:"";position:absolute;inset:-30% -12% auto auto;width:48vw;height:48vw;
+  background:radial-gradient(circle,rgba(216,154,78,.16),transparent 62%);pointer-events:none}
+.res .wrap{position:relative;z-index:1}
+.res h2,.res h3{color:#fff}
+.res .eyebrow{color:#F3B9CB}
+.res .lead{color:rgba(255,255,255,.82)}
+.res h3{font-size:clamp(20px,2.6vw,29px);margin-top:clamp(38px,4.6vw,62px)}
+.res h3 + p{font-size:15px;color:rgba(255,255,255,.78);margin-top:14px;max-width:66ch}
+
+.ba{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:14px;
+  margin-top:clamp(28px,3.6vw,44px)}
+.ba > div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.17);
+  border-radius:var(--r);padding:22px}
+.ba .k{font-size:10.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
+  color:#F3B9CB;margin-bottom:14px}
+.ba .was{font-size:13.5px;color:rgba(255,255,255,.5);padding-bottom:14px;margin-bottom:14px;
+  border-bottom:1px dashed rgba(255,255,255,.2);line-height:1.5}
+.ba .now{font-size:15px;font-weight:600;line-height:1.5}
+.ba .was::before,.ba .now::before{display:block;font-size:9.5px;font-weight:800;letter-spacing:.13em;
+  text-transform:uppercase;margin-bottom:6px}
+.ba .was::before{content:"Сейчас";color:rgba(255,255,255,.34)}
+.ba .now::before{content:"Станет";color:var(--gold)}
+
+.money{display:grid;grid-template-columns:repeat(auto-fit,minmax(206px,1fr));gap:13px;margin-top:26px}
+.mn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:16px;
+  padding:22px 20px;text-align:center}
+.mn.acc{background:rgba(216,154,78,.14);border-color:rgba(216,154,78,.5)}
+.mn .p{font-size:12.5px;font-weight:700;color:rgba(255,255,255,.66);letter-spacing:.03em}
+.mn .big{font-size:clamp(23px,3.2vw,33px);font-weight:800;letter-spacing:-.03em;margin:9px 0 3px;
+  white-space:nowrap}
+.mn.acc .big{color:var(--gold)}
+.mn .sm{font-size:12.5px;color:rgba(255,255,255,.6)}
+.res .note{margin-top:20px;font-size:13.5px;line-height:1.62;color:rgba(255,255,255,.58);max-width:74ch}
+.res .note b{color:rgba(255,255,255,.86);font-weight:700}
+
+.gains{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:16px 34px;
+  margin-top:clamp(26px,3.2vw,38px)}
+.gain{border-top:2px solid rgba(243,185,203,.42);padding-top:17px}
+.gain h4{font-size:15.5px;color:#fff;margin-bottom:9px}
+.gain p{font-size:13.5px;color:rgba(255,255,255,.72);line-height:1.55}
+
+.dl{margin-top:clamp(30px,3.8vw,46px);background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.18);border-radius:var(--r);padding:clamp(22px,2.8vw,30px);
+  display:grid;gap:18px;align-items:start}
+@media(min-width:760px){.dl{grid-template-columns:auto minmax(0,1fr);gap:28px}}
+.dl .wk{text-align:center;flex:none}
+.dl .wk b{display:block;font-size:clamp(34px,5vw,52px);font-weight:800;line-height:1;
+  letter-spacing:-.04em;color:var(--gold)}
+.dl .wk i{font-style:normal;font-size:11px;font-weight:800;letter-spacing:.13em;
+  text-transform:uppercase;color:rgba(255,255,255,.55)}
+.dl p{font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.8)}
+.dl p b{color:#fff}
+
 .rv{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.9,.3,1)}
 .rv.in{opacity:1;transform:none}
 .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}
@@ -382,6 +439,86 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:56ch;margin-inlin
           ее заменить.</mark> Это снимаем до начала работы: инструмент подсказывает,
           решение всегда за ней. И запускаем после того, как бот учета уже облегчил ей жизнь.</p></div>
       </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="res">
+  <div class="wrap">
+    <p class="eyebrow rv">Результат</p>
+    <h2 class="rv d1">К чему это приведет</h2>
+    <p class="lead rv d2">Три решения работают на один результат. База перестает быть мертвым файлом.
+      Клиенты возвращаются по вашему расписанию, а не когда вспомнят сами. И это видно
+      в цифрах.</p>
+
+    <div class="ba">
+      <div class="rv">
+        <div class="k">Решение 1 · Учет</div>
+        <p class="was">Учет идет в тетради, в таблицу данные попадают с задержкой или не попадают вовсе</p>
+        <p class="now">Продажа записана в момент сделки. Через два-три месяца видно ритм закупа
+          каждого клиента — кто покупает в норме, а кто начал выпадать</p>
+      </div>
+      <div class="rv d1">
+        <div class="k">Решение 2 · Касания</div>
+        <p class="was">Клиент возвращается сам или не возвращается — и никто не знает, кто именно выпал</p>
+        <p class="now">800 спящих превращаются в очередь на возврат. А активные 200 перестают
+          становиться спящими: сбой ритма система замечает раньше вас</p>
+      </div>
+      <div class="rv d2">
+        <div class="k">Решение 3 · Подсказки</div>
+        <p class="was">Ответы короткие и деловые, допродажа — когда менеджер про нее вспомнила</p>
+        <p class="now">Ответ теплый и быстрый, допродажа предлагается системно. Отправляет
+          по-прежнему человек, которого клиенты знают в лицо</p>
+      </div>
+    </div>
+
+    <h3 class="rv">Главные деньги — в спящей базе</h3>
+    <p class="rv">Из 1 000 клиентов регулярно покупают 200. Остальные 800 когда-то купили
+      и перестали. Считаю по вашему среднему закупу 5 000 ₽ и четырем закупам в год.</p>
+
+    <div class="money">
+      <div class="mn rv"><div class="p">Вернулись 3&#37;</div>
+        <div class="big">480 000 ₽</div><div class="sm">за год · 24 человека</div></div>
+      <div class="mn acc rv d1"><div class="p">Вернулись 5&#37;</div>
+        <div class="big">800 000 ₽</div><div class="sm">за год · 40 человек</div></div>
+      <div class="mn rv d2"><div class="p">Вернулись 10&#37;</div>
+        <div class="big">1 600 000 ₽</div><div class="sm">за год · 80 человек</div></div>
+    </div>
+
+    <p class="note rv"><b>Это расчет по вашим цифрам, а не обещание.</b> Реальный объем спящих
+      станет понятен после выгрузки базы: часть из 800 могла закрыться или уйти из профессии.
+      В другую сторону цифра тоже двигается — если среди вернувшихся окажутся салоны с чеком
+      8 000 ₽ или сетки с 40 000–50 000 ₽, она вырастет кратно. И при вашей себестоимости
+      почти вся эта сумма ложится в прибыль.</p>
+
+    <h3 class="rv">Что меняется, кроме денег</h3>
+
+    <div class="gains">
+      <div class="gain rv"><h4>Ваше время</h4>
+        <p>Ежедневный ручной занос приходов и расходов уходит. Вы сами сказали, куда бы вложили
+          освободившиеся часы — в соцсети. И сами же отметили, что рилсы возвращают клиентов,
+          а блогеры — ваша аудитория.</p></div>
+      <div class="gain rv d1"><h4>Менеджер на вашей стороне</h4>
+        <p>Бот забирает у нее и тетрадь, и перенос данных в таблицу. Это то условие,
+          при котором вообще заработают второе и третье решение: инструментом, которому
+          не поверили, не пользуются.</p></div>
+      <div class="gain rv d2"><h4>Знания выходят из одной головы</h4>
+        <p>То, что менеджер помнит про каждого клиента, постепенно ложится в базу. Компания
+          перестает зависеть от того, на месте ли она: заболела или ушла в отпуск —
+          работа с клиентами не встает.</p></div>
+      <div class="gain rv"><h4>Решения на цифрах</h4>
+        <p>Видно, сколько клиент принес за все годы работы с вами. Какие сегменты
+          растут, какое касание сработало, кому можно давать скидку. Через 12 лет работы —
+          впервые не на ощущение.</p></div>
+    </div>
+
+    <div class="dl rv">
+      <div class="wk"><b>~10</b><i>недель до сезона</i></div>
+      <p>Порядок работ подобран под этот срок. <b>К сезону успевают первые два решения:</b>
+        учет к тому моменту уже копит данные, а касания успевают вернуть часть спящих
+        до пика спроса — вернувшийся клиент попадает сразу в высокий спрос.
+        Третье решение идет после: ему нужны и накопленные данные, и отлаженные сценарии.</p>
     </div>
 
   </div>
