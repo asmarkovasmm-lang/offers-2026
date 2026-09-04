@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Три решения для производства гель-лаков</title>
+<meta name="description" content="Учет через Телеграм-бота, система касаний с клиентом и ИИ-подсказки в переписку.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2A1E2E; --ink-2:#6A5B70; --ink-3:#9C8FA1;
+  --plum:#3D2647; --plum-d:#2A1930; --plum-l:#F3EDF5;
+  --rose:#C2436B; --rose-l:#FDF0F4; --gold:#D89A4E; --gold-l:#FBF3E8;
+  --paper:#FCFAFB; --paper-2:#F6F2F5; --line:#E9E1EC; --white:#fff;
+  --f:'Manrope',-apple-system,'Segoe UI',sans-serif;
+  --pad:clamp(18px,4vw,64px); --r:18px;
+  --sh:0 12px 32px -20px rgba(42,25,48,.5);
+  --sh-l:0 28px 56px -28px rgba(42,25,48,.5);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f);
+  font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{margin:0;line-height:1.14;font-weight:800;letter-spacing:-.025em}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:var(--pad)}
+section{padding-block:clamp(46px,6.5vw,96px);position:relative}
+.alt{background:var(--paper-2)}
+
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;
+  letter-spacing:.17em;text-transform:uppercase;color:var(--rose);margin-bottom:16px}
+.eyebrow::before{content:"";width:24px;height:2px;background:currentColor;border-radius:2px}
+h2{font-size:clamp(25px,3.5vw,42px)}
+.lead{font-size:clamp(15.5px,1.45vw,19px);color:var(--ink-2);max-width:64ch;margin-top:16px}
+mark{background:var(--gold-l);color:inherit;padding:.1em .25em;border-radius:4px;
+  box-shadow:inset 0 -.42em 0 rgba(216,154,78,.22)}
+
+/* ---------- шапка ---------- */
+header.hero{background:linear-gradient(155deg,var(--plum-d),var(--plum) 55%,#5A3562);
+  color:#fff;overflow:hidden;position:relative}
+header.hero::after{content:"";position:absolute;inset:-45% -15% auto auto;width:72vw;height:72vw;
+  background:radial-gradient(circle,rgba(194,67,107,.34),transparent 62%);pointer-events:none}
+header.hero::before{content:"";position:absolute;inset:auto auto -40% -18%;width:56vw;height:56vw;
+  background:radial-gradient(circle,rgba(216,154,78,.20),transparent 62%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;padding-block:clamp(48px,7vw,104px)}
+.hero .eyebrow{color:#F3B9CB}
+.hero h1{font-size:clamp(30px,5.4vw,62px);max-width:17ch}
+.hero h1 span{color:#F3B9CB}
+.hero p.sub{margin-top:20px;font-size:clamp(15px,1.5vw,19px);color:rgba(255,255,255,.86);max-width:58ch}
+
+/* ---------- порядок ---------- */
+.order{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;
+  margin-top:clamp(30px,4vw,48px)}
+.ord{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);
+  padding:22px;opacity:0;transform:translateY(16px)}
+.order.go .ord{animation:pop .6s cubic-bezier(.2,.9,.3,1) forwards;animation-delay:calc(var(--i)*150ms)}
+@keyframes pop{60%{opacity:1;transform:none;border-color:rgba(243,185,203,.6)}
+  to{opacity:1;transform:none;border-color:rgba(255,255,255,.22)}}
+.ord .n{width:30px;height:30px;border-radius:9px;background:var(--rose);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;margin-bottom:13px}
+.ord h4{font-size:16.5px;color:#fff;margin-bottom:7px}
+.ord p{font-size:13.5px;color:rgba(255,255,255,.72);line-height:1.5}
+
+/* ---------- блок решения ---------- */
+.sol{border-top:1px solid var(--line);padding-top:clamp(30px,4vw,54px);margin-top:clamp(34px,4.5vw,60px)}
+.sol:first-of-type{border-top:none;padding-top:0;margin-top:0}
+.sol-head{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+.sol-tag{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:#fff;background:var(--plum);padding:6px 13px;border-radius:100px}
+.sol h3{font-size:clamp(22px,3vw,34px)}
+.task{background:var(--rose-l);border-left:3px solid var(--rose);border-radius:0 12px 12px 0;
+  padding:18px 22px;margin-top:22px}
+.task .k{font-size:10.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--rose);margin-bottom:8px}
+.task p{font-size:15px;color:var(--ink-2)}
+
+/* ---------- чат-мокап ---------- */
+.demo{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(22px,3vw,42px);
+  align-items:center;margin-top:clamp(24px,3vw,38px)}
+@media(min-width:900px){.demo{grid-template-columns:minmax(280px,340px) minmax(0,1fr)}}
+.chat{background:linear-gradient(170deg,#EEE6F0,#F7F2F8);border:1px solid var(--line);
+  border-radius:22px;padding:18px;box-shadow:var(--sh-l)}
+.chat-top{display:flex;align-items:center;gap:10px;padding-bottom:14px;margin-bottom:14px;
+  border-bottom:1px solid rgba(42,25,48,.09)}
+.ava{width:32px;height:32px;border-radius:50%;background:var(--plum);color:#fff;font-size:13px;
+  font-weight:800;display:flex;align-items:center;justify-content:center}
+.chat-top b{font-size:14px}
+.chat-top i{font-style:normal;font-size:11.5px;color:var(--ink-3);display:block}
+.msg{max-width:86%;padding:11px 14px;border-radius:14px;font-size:14px;line-height:1.45;
+  margin-bottom:9px;opacity:0;transform:translateY(8px)}
+.chat.go .msg{animation:say .45s ease forwards;animation-delay:calc(var(--i)*420ms)}
+@keyframes say{to{opacity:1;transform:none}}
+.msg.me{background:var(--plum);color:#fff;margin-left:auto;border-bottom-right-radius:5px}
+.msg.bot{background:#fff;border:1px solid var(--line);border-bottom-left-radius:5px}
+.msg.bot b{color:var(--plum)}
+.btns-row{display:flex;gap:8px;margin-top:10px}
+.btns-row span{flex:1;text-align:center;padding:9px;border-radius:10px;font-size:12.5px;
+  font-weight:700;border:1px solid var(--line);background:#fff;color:var(--ink-2)}
+.btns-row span.ok{background:var(--plum);color:#fff;border-color:var(--plum)}
+.arrow-to{display:flex;align-items:center;justify-content:center;gap:9px;margin:12px 0;
+  font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3)}
+.sheet{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:12.5px}
+.sheet div{display:grid;grid-template-columns:1.1fr 1.4fr .8fr;gap:1px;background:var(--line)}
+.sheet div > span{background:#fff;padding:9px 11px}
+.sheet div.h > span{background:var(--plum-l);font-weight:700;color:var(--plum);font-size:11px;
+  letter-spacing:.05em;text-transform:uppercase}
+
+/* ---------- списки-фичи ---------- */
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:13px;
+  margin-top:clamp(22px,2.8vw,34px)}
+.feat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;
+  box-shadow:var(--sh);transition:transform .4s,box-shadow .4s}
+.feat:hover{transform:translateY(-3px);box-shadow:var(--sh-l)}
+.feat h4{font-size:15.5px;margin-bottom:7px}
+.feat p{font-size:13.5px;color:var(--ink-2);line-height:1.5}
+
+/* ---------- таблицы ---------- */
+.tbl-wrap{overflow-x:auto;margin-top:clamp(22px,2.8vw,32px);border:1px solid var(--line);
+  border-radius:14px;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+th{background:var(--plum-l);color:var(--plum);text-align:left;font-size:11px;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;padding:13px 16px}
+td{padding:13px 16px;border-top:1px solid var(--line);color:var(--ink-2);vertical-align:top}
+td:first-child{color:var(--ink);font-weight:600}
+tr .who{white-space:nowrap;font-weight:700;font-size:12.5px}
+.who.auto{color:var(--plum)}
+.who.man{color:var(--rose)}
+
+/* ---------- сегменты ---------- */
+.segs{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.seg{border:1px solid var(--line);background:#fff;border-radius:100px;padding:9px 16px;font-size:13.5px;
+  box-shadow:var(--sh)}
+.seg b{color:var(--plum)}
+
+/* ---------- правило ---------- */
+.rule{margin-top:clamp(22px,2.8vw,34px);background:linear-gradient(150deg,var(--plum-d),var(--plum));
+  color:#fff;border-radius:var(--r);padding:clamp(22px,2.8vw,32px);position:relative;overflow:hidden}
+.rule::after{content:"";position:absolute;inset:auto -10% -60% auto;width:44%;height:150%;
+  background:radial-gradient(circle,rgba(194,67,107,.4),transparent 62%);pointer-events:none}
+.rule > *{position:relative}
+.rule .k{font-size:10.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
+  color:#F3B9CB;margin-bottom:10px}
+.rule p{font-size:clamp(16px,1.7vw,21px);line-height:1.45;font-weight:600}
+.rule p + p{margin-top:12px;font-size:14.5px;font-weight:400;color:rgba(255,255,255,.8)}
+
+/* ---------- варианты ответов ---------- */
+.vars{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:24px}
+.var{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--sh)}
+.var .k{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--rose);margin-bottom:9px}
+.var p{font-size:13.5px;color:var(--ink-2);line-height:1.5}
+.var .pick{margin-top:12px;font-size:12px;color:var(--ink-3)}
+
+/* ---------- финал ---------- */
+.need{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:13px;margin-top:26px}
+.need > div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
+.need .n{font-size:11px;font-weight:800;letter-spacing:.13em;color:var(--rose);margin-bottom:9px}
+.need p{font-size:14px;color:var(--ink-2)}
+footer.cta{background:linear-gradient(155deg,var(--plum-d),var(--plum));color:#fff;text-align:center;
+  padding-block:clamp(46px,6.5vw,92px);position:relative;overflow:hidden}
+footer.cta::after{content:"";position:absolute;inset:auto auto -50% -12%;width:58vw;height:58vw;
+  background:radial-gradient(circle,rgba(194,67,107,.3),transparent 62%);pointer-events:none}
+footer .wrap{position:relative;z-index:1}
+footer h2{color:#fff}
+footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:56ch;margin-inline:auto}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;padding:14px 26px;border-radius:100px;text-decoration:none;font-weight:700;
+  font-size:15px;transition:transform .25s}
+.btn-w{background:#fff;color:var(--plum-d)}
+.btn-o{border:1.5px solid rgba(255,255,255,.5);color:#fff}
+.btn:hover{transform:translateY(-2px)}
+.sign{margin-top:30px;font-size:13.5px;color:rgba(255,255,255,.7);line-height:1.7}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.9,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .ord,.msg{opacity:1;transform:none;animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow rv in">Производство гель-лаков</p>
+    <h1 class="rv in d1">Три решения:<br><span>учет, касания, подсказки</span></h1>
+    <p class="sub rv in d2">Что предлагаю сделать по итогам разговора. Порядок здесь не случайный —
+      начинаем с того, что дает данные и сразу облегчает работу менеджеру.</p>
+    <div class="order">
+      <div class="ord" style="--i:0"><div class="n">1</div><h4>Учет через Телеграм-бота</h4>
+        <p>Менеджер пишет боту одну строку, запись уходит в таблицу сама</p></div>
+      <div class="ord" style="--i:1"><div class="n">2</div><h4>Система касаний</h4>
+        <p>Сценарии, кому и когда пишем, и где в разговор включается человек</p></div>
+      <div class="ord" style="--i:2"><div class="n">3</div><h4>ИИ-подсказки в переписку</h4>
+        <p>Агент предлагает варианты ответа, отправляет всегда менеджер</p></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+
+    <!-- ======= РЕШЕНИЕ 1 ======= -->
+    <div class="sol rv">
+      <div class="sol-head"><span class="sol-tag">Решение 1</span><h3>Учет через Телеграм-бота</h3></div>
+      <div class="task">
+        <div class="k">Задача</div>
+        <p>Менеджер ведет учет в тетради, потому что таблица для нее сложная. Данные попадают
+          в таблицу с задержкой или не попадают вовсе.</p>
+      </div>
+
+      <p class="lead"><mark>Главное условие: интерфейс должен быть проще тетради.</mark>
+        Тетрадь выигрывает не потому, что удобная, а потому что ничего не требует.
+        Бот должен требовать еще меньше.</p>
+
+      <div class="demo">
+        <div class="chat rv d1">
+          <div class="chat-top">
+            <span class="ava">У</span>
+            <span><b>Учет продаж</b><i>бот</i></span>
+          </div>
+          <div class="msg me" style="--i:0">Южакова — 2000 руб.</div>
+          <div class="msg bot" style="--i:1">Записала: <b>Южакова Ирина</b><br>
+            2 000 ₽ · 4 сентября<br>Верно?
+            <div class="btns-row"><span class="ok">Да</span><span>Исправить</span></div>
+          </div>
+          <div class="msg me" style="--i:2">Да</div>
+          <div class="msg bot" style="--i:3">Готово, строка ушла в таблицу ✓</div>
+        </div>
+
+        <div class="rv d2">
+          <div class="arrow-to">строка попадает в таблицу</div>
+          <div class="sheet">
+            <div class="h"><span>Дата</span><span>Клиент</span><span>Сумма</span></div>
+            <div><span>04.09.2026</span><span>Южакова Ирина</span><span>2 000 ₽</span></div>
+            <div><span>04.09.2026</span><span>Салон «Ампир»</span><span>8 400 ₽</span></div>
+            <div><span>03.09.2026</span><span>Сеть «Лакрица»</span><span>46 200 ₽</span></div>
+          </div>
+          <p style="font-size:13.5px;color:var(--ink-2);margin-top:16px">Учет ведется в момент
+            сделки, а не вечером по тетради. Данные копятся сами — это фундамент
+            для решений 2 и 3.</p>
+        </div>
+      </div>
+
+      <div class="feats">
+        <div class="feat"><h4>Свободный ввод</h4><p>Понимает разные варианты: «Южакова 2000»,
+          «Южакова — 2000 руб вчера», «Южакова 2000 наличными, топ и база».</p></div>
+        <div class="feat"><h4>Поиск клиента</h4><p>Несколько совпадений по фамилии — покажет кнопки
+          с вариантами. Клиента нет в базе — предложит завести.</p></div>
+        <div class="feat"><h4>Обязательное подтверждение</h4><p>Без него ошибки уходят в базу молча,
+          и через месяц данным нельзя верить. Одна кнопка — не нагрузка.</p></div>
+        <div class="feat"><h4>Голосовые</h4><p>Надиктовать проще, чем напечатать. Бот расшифрует
+          и покажет то же подтверждение — для человека, которому тяжело с таблицами,
+          это часто решающий момент.</p></div>
+        <div class="feat"><h4>Фото чека</h4><p>Вы обязаны хранить чеки: менеджер фотографирует,
+          снимок прикладывается к записи. Тетрадь так не умеет.</p></div>
+        <div class="feat"><h4>Отмена последней записи</h4><p>Ошиблась — одна команда,
+          строка убирается.</p></div>
+      </div>
+    </div>
+
+    <!-- ======= РЕШЕНИЕ 2 ======= -->
+    <div class="sol rv">
+      <div class="sol-head"><span class="sol-tag">Решение 2</span><h3>Система касаний с клиентом</h3></div>
+      <div class="task">
+        <div class="k">Задача</div>
+        <p>Мессенджер-маркетинга нет. Клиенты возвращаются сами или не возвращаются вовсе,
+          и никто не знает, кто именно выпал.</p>
+      </div>
+
+      <div class="feats" style="margin-top:26px">
+        <div class="feat"><h4>Платформа</h4><p>Типа WAHELP — доставляет сообщения и держит
+          сегменты. У меня есть рабочий опыт с ней: на другом проекте через нее ведется
+          вся работа с базой пациентов клиники.</p></div>
+        <div class="feat"><h4>Google-таблица</h4><p>Источник правды: кто клиент, что покупал,
+          когда, на какую сумму, в каком ритме. Наполняется из бота учета.</p></div>
+        <div class="feat"><h4>Связка</h4><p>Из таблицы в платформу уходят сегменты и поводы,
+          обратно — факты касаний и ответы клиентов.</p></div>
+      </div>
+
+      <p class="lead" style="margin-top:30px"><strong>Сегменты</strong></p>
+      <div class="segs">
+        <span class="seg"><b>Сетки</b> · чек 40 000–50 000 ₽</span>
+        <span class="seg"><b>Салоны</b> · чек 8 000 ₽, скидка 12%</span>
+        <span class="seg"><b>Мастера</b> · чек 2 000 ₽</span>
+        <span class="seg"><b>Спящие</b> · 3, 6, 12 месяцев</span>
+        <span class="seg"><b>Новички</b> · первая покупка</span>
+      </div>
+
+      <p class="lead" style="margin-top:30px"><strong>Карта касаний</strong></p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Событие</th><th>Что уходит</th><th>Кто отправляет</th></tr></thead>
+          <tbody>
+            <tr><td>Первая покупка</td><td>Спасибо, как пользоваться, что берут вместе</td><td class="who auto">Автоматика</td></tr>
+            <tr><td>Через 7–10 дней</td><td>Как зашло, есть ли вопросы по нанесению</td><td class="who auto">Автоматика</td></tr>
+            <tr><td>Ритм закупа сбился</td><td>Обычно раз в 6 недель, прошло 8 — напоминание</td><td class="who auto">Автоматика</td></tr>
+            <tr><td>Спящий 3 месяца</td><td>Мягкое возвращение: что нового появилось</td><td class="who auto">Автоматика</td></tr>
+            <tr><td>Спящий 6–12 месяцев</td><td>Реактивация с персональным поводом</td><td class="who man">Крупным — менеджер</td></tr>
+            <tr><td>Новинка</td><td>Только тем сегментам, кому подходит</td><td class="who auto">Автоматика</td></tr>
+            <tr><td>Перед сезоном</td><td>Напоминание закупиться заранее</td><td class="who auto">Автоматика</td></tr>
+            <tr><td>Крупный закуп</td><td>Допродажа расходников</td><td class="who man">Менеджер</td></tr>
+            <tr><td>Жалоба, брак, возврат</td><td>—</td><td class="who man">Только человек, сразу</td></tr>
+            <tr><td>Нестандартный ответ</td><td>—</td><td class="who man">Переключение на менеджера</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="rule">
+        <div class="k">Где включается человек</div>
+        <p>Автоматика ведет ритм, человек ведет отношения.</p>
+        <p>Автоматика берет регулярное и предсказуемое: напоминания, новинки, благодарности,
+          реактивацию мелких клиентов. Человек подключается там, где цена ошибки высокая:
+          сетки и крупные салоны, жалобы, нестандартные вопросы, любой разговор про деньги
+          и условия. Если клиент ответил на автоматическое сообщение — диалог сразу уходит
+          менеджеру. Автоматика не ведет переписку.</p>
+      </div>
+
+      <p class="lead" style="margin-top:28px"><mark>Клиенты — профессионалы, которые покупают
+        у вас годами.</mark> Перегрузить их сообщениями — потерять доверие, которое
+        зарабатывалось десять лет. Поэтому в сценариях сразу закладываем ограничение
+        по частоте и приоритет между поводами, чтобы не пришло три сообщения подряд.</p>
+    </div>
+
+    <!-- ======= РЕШЕНИЕ 3 ======= -->
+    <div class="sol rv">
+      <div class="sol-head"><span class="sol-tag">Решение 3</span><h3>ИИ-подсказки в переписку</h3></div>
+      <div class="task">
+        <div class="k">Задача</div>
+        <p>Менеджер отвечает сухо. Клиенты знают ее лично, отношения теплые,
+          а тексты получаются короткими и деловыми.</p>
+      </div>
+
+      <div class="demo">
+        <div class="chat rv d1">
+          <div class="chat-top">
+            <span class="ava">И</span>
+            <span><b>Ирина Южакова</b><i>мастер · покупает 3 года</i></span>
+          </div>
+          <div class="msg bot" style="--i:0">Добрый день! А красный из новой коллекции
+            уже можно заказать?</div>
+          <div class="msg me" style="--i:1" title="подсказка агента">Агент предлагает 3 варианта ответа →</div>
+        </div>
+        <div class="rv d2">
+          <div class="vars">
+            <div class="var"><div class="k">Коротко</div>
+              <p>«Да, уже в наличии. Отложить вам?»</p>
+              <div class="pick">когда вопрос простой</div></div>
+            <div class="var"><div class="k">Тепло</div>
+              <p>«Ирина, добрый день! Да, пришел вчера — оттенок получился глубже,
+                чем на фото. Отложу вам?»</p>
+              <div class="pick">клиент давно с вами</div></div>
+            <div class="var"><div class="k">С допродажей</div>
+              <p>«Да, есть. К нему хорошо идет топ с глиттером — вы его в прошлый раз брали,
+                добавить?»</p>
+              <div class="pick">когда есть что предложить</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="k">Принцип</div>
+        <p>Это не автоответчик. Отправляет всегда человек.</p>
+        <p>Клиенты знают менеджера в лицо и знают, что пишет именно она. Подмена этого
+          на бота обесценит главный актив компании. Агент только предлагает —
+          менеджер выбирает, правит и отправляет сама.</p>
+      </div>
+
+      <div class="feats">
+        <div class="feat"><h4>Что знает агент</h4><p>Историю клиента: что покупал, когда,
+          в каком объеме. Прайс и наличие. Типовые вопросы и правильные ответы.
+          Тон общения компании.</p></div>
+        <div class="feat"><h4>Почему это последним</h4><p>Нужны данные — их дает решение 1.
+          Нужны тон и правила — они складываются в решении 2. И нужно доверие менеджера:
+          если она не поверит инструменту, она им не воспользуется.</p></div>
+        <div class="feat"><h4>Отдельный риск</h4><p><mark>Менеджер может воспринять ИИ как попытку
+          ее заменить.</mark> Это снимаем до начала работы: инструмент подсказывает,
+          решение всегда за ней. И запускаем после того, как бот учета уже облегчил ей жизнь.</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <p class="eyebrow rv">Что нужно от вас</p>
+    <h2 class="rv d1">Чтобы начать</h2>
+    <div class="need">
+      <div class="rv"><div class="n">01</div><p>Выгрузка базы клиентов с историей закупов</p></div>
+      <div class="rv"><div class="n">02</div><p>Прайс и текущие остатки</p></div>
+      <div class="rv"><div class="n">03</div><p>Доступ к каналам, где сейчас идет переписка с клиентами</p></div>
+      <div class="rv"><div class="n">04</div><p>Полчаса с менеджером — посмотреть, как она реально работает и что пишет в тетрадь</p></div>
+      <div class="rv"><div class="n">05</div><p>Примеры хорошей переписки — на них настраивается тон</p></div>
+      <div class="rv"><div class="n">06</div><p>Решение по платформе рассылок: заводим WAHELP или аналог</p></div>
+    </div>
+
+    <p class="lead rv" style="margin-top:38px"><strong>Что уточнить до старта:</strong>
+      в каких мессенджерах клиенты, есть ли согласия на рассылку, сколько диалогов в день
+      ведет менеджер, кто кроме нее общается с клиентами, ведется ли где-то история переписки.</p>
+  </div>
+</section>
+
+<footer class="cta">
+  <div class="wrap">
+    <h2>Начнем с первого</h2>
+    <p>Бот учета — самое короткое расстояние до результата: он сразу облегчает работу
+      менеджеру и дает данные, на которых строятся остальные два решения.</p>
+    <div class="btns">
+      <a class="btn btn-w" href="https://t.me/nastya_mgh">Написать в Telegram</a>
+      <a class="btn btn-o" href="tel:+79519403338">+7 951 940-33-38</a>
+    </div>
+    <p class="sign">Анастасия Маркова · digital-маркетолог<br>
+      Разработка и автоматизация: asmarkovasmm-lang.github.io/offers-2026/automation/</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.classList.add('in','go');
+      io.unobserve(e.target);
+    });
+  }, {threshold:0, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv, .order, .chat').forEach(function(el){ io.observe(el); });
+
+  function revealVisible(){
+    document.querySelectorAll('.rv:not(.in), .order:not(.go), .chat:not(.go)').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < innerHeight * 1.2 && r.bottom > -60) el.classList.add('in','go');
+    });
+  }
+  addEventListener('scroll', revealVisible, {passive:true});
+  addEventListener('resize', revealVisible, {passive:true});
+  setTimeout(revealVisible, 400); setTimeout(revealVisible, 1500);
+})();
+</script>
+</body>
+</html>
