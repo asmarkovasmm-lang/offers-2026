@@ -174,6 +174,37 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:56ch;margin-inlin
 .btn:hover{transform:translateY(-2px)}
 .sign{margin-top:30px;font-size:13.5px;color:rgba(255,255,255,.7);line-height:1.7}
 
+/* ---------- аргумент из слов клиента ---------- */
+.proof{margin-top:clamp(24px,3vw,34px);background:#fff;border:1px solid var(--line);
+  border-radius:var(--r);padding:clamp(22px,3vw,34px);box-shadow:var(--sh-l);position:relative;
+  overflow:hidden}
+.proof::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;
+  background:linear-gradient(180deg,var(--rose),var(--gold))}
+.proof .k{font-size:10.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--rose);margin-bottom:16px}
+.proof blockquote{margin:0 0 20px;font-size:clamp(17px,2.1vw,24px);line-height:1.4;font-weight:700;
+  letter-spacing:-.02em;color:var(--plum);position:relative;padding-left:clamp(28px,3.4vw,44px)}
+.proof blockquote::before{content:"\201C";position:absolute;left:-2px;top:-.1em;
+  font-size:clamp(52px,7vw,86px);line-height:1;color:var(--gold);opacity:.5;font-family:Georgia,serif}
+.proof blockquote i{display:block;font-style:normal;font-size:12.5px;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-top:12px}
+.proof p{font-size:15px;line-height:1.62;color:var(--ink-2)}
+.proof p + p{margin-top:14px}
+
+/* ---------- три слоя ---------- */
+.layers{display:grid;gap:11px;margin-top:clamp(22px,2.8vw,30px)}
+@media(min-width:780px){.layers{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.layer{border-radius:14px;padding:19px 20px;border:1px solid var(--line);background:#fff;
+  position:relative}
+.layer .n{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+  margin-bottom:8px;color:var(--ink-3)}
+.layer h4{font-size:15.5px;margin-bottom:6px}
+.layer p{font-size:13.5px;color:var(--ink-2);line-height:1.5}
+.layer.on{background:var(--plum);border-color:var(--plum)}
+.layer.on .n{color:#F3B9CB}.layer.on h4{color:#fff}.layer.on p{color:rgba(255,255,255,.78)}
+.layer.next{background:var(--gold-l);border-color:rgba(216,154,78,.45)}
+.layer.next .n{color:#9A6A22}
+
 /* ---------- результат решения ---------- */
 .outcome{margin-top:clamp(24px,3vw,36px);background:var(--gold-l);
   border:1px solid rgba(216,154,78,.42);border-left:4px solid var(--gold);
@@ -358,6 +389,22 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:56ch;margin-inlin
           и никто не знает, кто именно выпал.</p>
       </div>
 
+      <div class="proof rv">
+        <div class="k">Вы уже видели, что это работает</div>
+        <blockquote>Если бы появилось свободное время — начала бы снимать рилсы. Люди
+          оживают, теплеют и больше заказывают.
+          <i>Аня, с нашего созвона</i></blockquote>
+        <p>Это ровно та механика, о которой мы здесь говорим. <mark>Рилс — такое же касание:
+          напоминание о себе и повод вернуться.</mark> Вы уже знаете, что оно работает —
+          просто сейчас оно держится на вашем свободном времени, которого нет.</p>
+        <p>Отсюда вывод: вопрос не в том, нужны ли касания, а в том, кто их делает — вы
+          вручную или система. Настраивать пришлось бы в любом случае: те же поводы,
+          те же сегменты, тот же тон. Разница только в том, кто нажимает кнопку.</p>
+        <p><strong>Поэтому ручную ступень мы перешагиваем и сразу делаем автоматику.</strong>
+          Регулярные касания перестают зависеть от того, нашлось у вас время или нет.
+          А ваши рилсы после этого работают не вместо системы, а поверх нее.</p>
+      </div>
+
       <div class="feats" style="margin-top:26px">
         <div class="feat"><h4>Платформа</h4><p>Типа WAHELP — доставляет сообщения и держит
           сегменты. У меня есть рабочий опыт с ней: на другом проекте через нее ведется
@@ -410,6 +457,19 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:56ch;margin-inlin
         у вас годами.</mark> Перегрузить их сообщениями — потерять доверие, которое
         зарабатывалось десять лет. Поэтому в сценариях сразу закладываем ограничение
         по частоте и приоритет между поводами, чтобы не пришло три сообщения подряд.</p>
+
+      <h4 style="font-size:clamp(17px,2vw,22px);margin-top:clamp(30px,3.6vw,44px)">Как складываются слои</h4>
+      <div class="layers">
+        <div class="layer on rv"><div class="n">Слой 1 · сейчас делаем</div>
+          <h4>Автоматика</h4><p>Все регулярное и предсказуемое: новичкам, тем, у кого сбился
+            ритм закупа, спящим, перед сезоном. Работает без людей.</p></div>
+        <div class="layer rv d1"><div class="n">Слой 2 · есть уже сейчас</div>
+          <h4>Живая переписка</h4><p>Сетки, крупные салоны, жалобы, разговор про деньги.
+            Здесь по-прежнему менеджер, и заменять ее нечем.</p></div>
+        <div class="layer next rv d2"><div class="n">Слой 3 · решение 3</div>
+          <h4>ИИ-подсказки</h4><p>Помогают второму слою: агент предлагает менеджеру варианты
+            ответа, чтобы живая переписка не была сухой.</p></div>
+      </div>
 
       <div class="outcome rv">
         <div><div class="k">Результат</div>
