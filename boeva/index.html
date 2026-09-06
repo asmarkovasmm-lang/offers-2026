@@ -155,6 +155,8 @@ header.hero::after{content:"";position:absolute;inset:-40% -20% auto auto;width:
   text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-top:7px}
 .conv .st.was b{color:rgba(255,255,255,.55)}
 .conv .st.now b{color:#F5CE8C}
+.conv.rub .st b{font-size:clamp(21px,2.9vw,34px)}
+.conv.rub .plus b{font-size:clamp(17px,2.2vw,24px)}
 .conv .ar{font-size:clamp(20px,2.6vw,30px);color:rgba(255,255,255,.4)}
 .conv .plus{background:linear-gradient(158deg,#F5CE8C,#E9A23B 64%,#DE9327);color:#20272B;
   border-radius:12px;padding:13px 20px;text-align:center;white-space:nowrap}
@@ -936,6 +938,16 @@ footer p{color:rgba(255,255,255,.86);margin-top:16px;font-size:clamp(15px,1.5vw,
           <div class="plus"><b>+25</b><i>процентных пунктов</i></div>
         </div>
 
+        <div class="conv rub">
+          <div class="cap">Выручка с рекламы в месяц</div>
+          <div class="pair">
+            <div class="st was"><b>715 500 ₽</b><i>было</i></div>
+            <div class="ar">&rarr;</div>
+            <div class="st now"><b>1 113 000 ₽</b><i>стало</i></div>
+          </div>
+          <div class="plus"><b>+397 500 ₽</b><i>каждый месяц</i></div>
+        </div>
+
         <div class="money-grid">
           <div><div class="v">182 000 ₽</div><div class="k">среднемесячный расход на рекламу за май-июль 2026 — не изменился</div></div>
           <div><div class="v">106</div><div class="k">заявок в месяц приходит с рекламы — поток не изменился</div></div>
@@ -944,16 +956,17 @@ footer p{color:rgba(255,255,255,.86);margin-top:16px;font-size:clamp(15px,1.5vw,
         </div>
 
         <div class="money-big">
-          <b>+780 000 ₽</b>
-          <span>Столько высвобождает бюджет за год. Прежние 48 записей в месяц теперь стоят
-            117 000 ₽ вместо 182 000 ₽ — разница 65 000 ₽ в месяц.</span>
+          <b>+4 770 000 ₽</b>
+          <span>Столько добавляет рост конверсии за год: было 8,6 млн ₽, стало 13,4 млн ₽.
+            Тот же бюджет, тот же поток заявок, средний чек 15 000 ₽.</span>
         </div>
 
         <p class="money-note">Рекламный бюджет и поток заявок — фактические, среднемесячные
           за май-июль 2026 по таблице расходов ВК и Яндекс Директа. Каждая запись подешевела
           с 3 816 ₽ до 2 453 ₽. Точный прирост — 26,5 записи в месяц, за год это 318 записей.
-          Если считать не экономию бюджета, а выручку, при среднем чеке 8 000 ₽ получается
-          около <b>2,5 млн ₽ в год</b>.</p>
+          Выручка посчитана по среднему чеку 15 000 ₽. Тот же результат можно смотреть
+          и со стороны расходов: прежние 48 записей теперь обошлись бы в 117 000 ₽
+          вместо 182 000 ₽.</p>
       </div>
     </div>
   </div>
@@ -977,8 +990,8 @@ footer p{color:rgba(255,255,255,.86);margin-top:16px;font-size:clamp(15px,1.5vw,
             <input type="range" id="s-conv" min="1" max="15" step="1" value="3">
           </div>
           <div class="field">
-            <label>Средний чек визита <b><span id="v-check">8 000</span> ₽</b></label>
-            <input type="range" id="s-check" min="2000" max="40000" step="500" value="8000">
+            <label>Средний чек визита <b><span id="v-check">15 000</span> ₽</b></label>
+            <input type="range" id="s-check" min="2000" max="40000" step="500" value="15000">
           </div>
           <div class="field">
             <label>Визитов на вернувшегося за год <b><span id="v-visits">2</span></b></label>
@@ -994,8 +1007,8 @@ footer p{color:rgba(255,255,255,.86);margin-top:16px;font-size:clamp(15px,1.5vw,
         </div>
       </div>
       <p class="calc-note">Расчет по одной базе одного врача. Значения по умолчанию намеренно
-        осторожные: возврат 3% и чек 8 000 ₽ ниже того, что обычно дает адресная работа
-        с клиентом, который уже был в клинике.</p>
+        осторожные: возврат 3% ниже того, что обычно дает адресная работа с клиентом,
+        который уже был в клинике. Средний чек 15 000 ₽.</p>
     </div>
   </div>
 </section>
