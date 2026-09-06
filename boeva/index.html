@@ -140,6 +140,61 @@ header.hero::after{content:"";position:absolute;inset:-40% -20% auto auto;width:
   color:#BFF0F5;line-height:1;margin-bottom:10px}
 .p-card.hl h4{font-size:14.5px;font-weight:600;color:rgba(255,255,255,.9)}
 
+/* ---------- схема сценариев ---------- */
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.lg{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;
+  padding:8px 15px;border-radius:100px}
+.lg::before{content:"";width:13px;height:13px;border-radius:4px;flex:none}
+.lg-auto{background:rgba(233,162,59,.14);border:1px solid rgba(233,162,59,.45);color:#F7DFB4}
+.lg-auto::before{background:linear-gradient(150deg,#F5CE8C,#DE9327)}
+.lg-man{background:rgba(127,227,236,.10);border:1px solid rgba(127,227,236,.38);color:#CFF3F7}
+.lg-man::before{background:#7FE3EC}
+
+.sc-top{display:flex;flex-direction:column;align-items:center}
+.sc-start{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);
+  border-radius:100px;padding:9px 22px;font-size:13px;font-weight:700;color:#fff;
+  letter-spacing:.02em}
+.sc-line{width:2px;height:20px;background:rgba(255,255,255,.3)}
+.sc-node{border-radius:12px;padding:12px 26px;font-size:15px;font-weight:700;
+  background:rgba(127,227,236,.14);border:1px solid rgba(127,227,236,.45);color:#E4FAFC}
+
+.sc-cols{display:grid;gap:16px;position:relative}
+.sc-col{position:relative;display:flex;flex-direction:column;gap:9px}
+@media(min-width:960px){
+  .sc-cols{grid-template-columns:repeat(4,minmax(0,1fr));padding-top:30px;margin-top:20px}
+  .sc-cols::before{content:"";position:absolute;top:0;left:12.5%;right:12.5%;height:2px;
+    background:rgba(255,255,255,.3)}
+  .sc-col::before{content:"";position:absolute;top:-30px;left:50%;transform:translateX(-50%);
+    width:2px;height:30px;background:rgba(255,255,255,.3)}
+}
+@media(max-width:959px){.sc-cols{margin-top:18px}}
+.sc-case{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fff;
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:9px;
+  padding:10px 12px;text-align:center}
+.sc-step{border-radius:12px;padding:14px 15px;font-size:13.5px;line-height:1.45;position:relative}
+.sc-step i{display:block;font-style:normal;font-size:10px;font-weight:800;letter-spacing:.13em;
+  text-transform:uppercase;margin-bottom:7px}
+.sc-step.auto{background:linear-gradient(158deg,#F5CE8C,#E9A23B 64%,#DE9327);color:#20272B;
+  border:1px solid rgba(255,255,255,.42);font-weight:600;box-shadow:0 12px 28px -18px rgba(0,0,0,.6)}
+.sc-step.auto i{color:#7A4406}
+.sc-step.man{background:rgba(127,227,236,.10);border:1px solid rgba(127,227,236,.35);
+  color:rgba(255,255,255,.86)}
+.sc-step.man i{color:#9FEAF2}
+.sc-step + .sc-step::before{content:"";position:absolute;top:-9px;left:50%;
+  transform:translateX(-50%);width:2px;height:9px;background:rgba(255,255,255,.28)}
+
+.zones{display:grid;gap:13px;margin-top:clamp(22px,2.8vw,32px)}
+@media(min-width:800px){.zones{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.zone{border-radius:14px;padding:20px 22px}
+.zone h4{font-size:15.5px;margin-bottom:9px}
+.zone p{font-size:13.5px;line-height:1.55}
+.zone.auto{background:rgba(233,162,59,.13);border:1px solid rgba(233,162,59,.45)}
+.zone.auto h4{color:#F7DFB4}
+.zone.auto p{color:rgba(255,255,255,.8)}
+.zone.man{background:rgba(127,227,236,.09);border:1px solid rgba(127,227,236,.35)}
+.zone.man h4{color:#CFF3F7}
+.zone.man p{color:rgba(255,255,255,.8)}
+
 /* ---------- «Но это только верхушка» ---------- */
 .tip{background:#0B1F24;color:#fff;position:relative;overflow:hidden}
 .tip::before{content:"";position:absolute;inset:-30% -10% auto auto;width:70vw;height:70vw;
@@ -783,31 +838,57 @@ footer p{color:rgba(255,255,255,.86);margin-top:16px;font-size:clamp(15px,1.5vw,
       </div>
 
       <div class="p-block">
-        <div class="p-cap">Как это выглядит на практике</div>
-        <div class="p-grid">
-          <div class="p-card gold-s">
-            <div class="p-n">Не дозвонились</div>
-            <h4>Сразу уходит сообщение, кто звонил</h4>
-            <p>Человек видит название клиники и повод звонка. В следующий раз номер уже
-              знакомый — вероятность, что трубку возьмут, заметно выше.</p>
+        <div class="p-cap">Как это работает на практике</div>
+
+        <div class="legend rv">
+          <span class="lg lg-auto">Идет само, без человека</span>
+          <span class="lg lg-man">Делает отдел продаж</span>
+        </div>
+
+        <div class="sc-top rv">
+          <div class="sc-start">Заявка с рекламы</div>
+          <div class="sc-line"></div>
+          <div class="sc-node">Звонок оператора</div>
+          <div class="sc-line" style="height:20px"></div>
+        </div>
+
+        <div class="sc-cols rv">
+          <div class="sc-col">
+            <div class="sc-case">Не дозвонились</div>
+            <div class="sc-step auto"><i>Сразу</i>Сообщение: кто звонил и по какому вопросу</div>
+            <div class="sc-step man"><i>Через день</i>Повторный звонок — номер уже знакомый</div>
+            <div class="sc-step auto"><i>Если снова тишина</i>Кейс в мессенджер и последняя попытка</div>
           </div>
-          <div class="p-card gold-s">
-            <div class="p-n">Думает, сравнивает</div>
-            <h4>Между звонками уходит кейс</h4>
-            <p>Результат работы, отзыв, ответ на частое возражение. Пауза перестает быть
-              пустой и работает на решение, а не против него.</p>
+          <div class="sc-col">
+            <div class="sc-case">Думает, сравнивает</div>
+            <div class="sc-step auto"><i>Между звонками</i>Кейс: результат, отзыв, ответ на возражение</div>
+            <div class="sc-step man"><i>По регламенту</i>Следующий звонок — уже по теплому</div>
           </div>
-          <div class="p-card gold-s">
-            <div class="p-n">Договорились созвониться</div>
-            <h4>Напоминание накануне</h4>
-            <p>Человек ждет звонка и держит время свободным. Дозвон с первой попытки
-              вместо серии безуспешных наборов.</p>
+          <div class="sc-col">
+            <div class="sc-case">Договорились созвониться</div>
+            <div class="sc-step auto"><i>Накануне</i>Напоминание о звонке</div>
+            <div class="sc-step man"><i>В назначенное время</i>Звонок — человек его ждет</div>
           </div>
-          <div class="p-card gold-s">
-            <div class="p-n">Записался</div>
-            <h4>Подтверждение и напоминание о визите</h4>
-            <p>Запись доживает до приема. Меньше неявок — а неявка стоит клинике так же,
-              как непришедший новый пациент.</p>
+          <div class="sc-col">
+            <div class="sc-case">Записался</div>
+            <div class="sc-step auto"><i>Сразу</i>Подтверждение записи</div>
+            <div class="sc-step auto"><i>Накануне</i>Напоминание о визите</div>
+            <div class="sc-step man"><i>На приеме</i>Врач</div>
+          </div>
+        </div>
+
+        <div class="zones">
+          <div class="zone auto rv">
+            <h4>Идет само, без человека</h4>
+            <p>Сообщение после недозвона, кейс между звонками, напоминание накануне созвона,
+              подтверждение записи и напоминание о визите. Оператору не нужно об этом помнить
+              и тратить на это время — в плотный день ничего не теряется.</p>
+          </div>
+          <div class="zone man rv d1">
+            <h4>Человек остался здесь</h4>
+            <p>Сам звонок и живой разговор, ответы на вопросы, работа с возражениями, решение
+              по цене и записи, любая нестандартная ситуация. И отказ: если человек сказал нет,
+              оператор закрывает заявку и автоматика к ней больше не возвращается.</p>
           </div>
         </div>
       </div>
