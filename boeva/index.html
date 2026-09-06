@@ -140,6 +140,36 @@ header.hero::after{content:"";position:absolute;inset:-40% -20% auto auto;width:
   color:#BFF0F5;line-height:1;margin-bottom:10px}
 .p-card.hl h4{font-size:14.5px;font-weight:600;color:rgba(255,255,255,.9)}
 
+/* ---------- конверсия было/стало ---------- */
+.conv{display:grid;gap:16px;align-items:center;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:clamp(20px,2.6vw,28px);
+  margin-bottom:16px}
+@media(min-width:760px){.conv{grid-template-columns:auto 1fr auto;gap:28px}}
+.conv .cap{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.6);max-width:16ch;line-height:1.4}
+.conv .pair{display:flex;align-items:center;gap:clamp(12px,2vw,24px);flex-wrap:wrap}
+.conv .st{text-align:center}
+.conv .st b{display:block;font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.03em;
+  line-height:1}
+.conv .st i{font-style:normal;font-size:10.5px;font-weight:800;letter-spacing:.13em;
+  text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-top:7px}
+.conv .st.was b{color:rgba(255,255,255,.55)}
+.conv .st.now b{color:#F5CE8C}
+.conv .ar{font-size:clamp(20px,2.6vw,30px);color:rgba(255,255,255,.4)}
+.conv .plus{background:linear-gradient(158deg,#F5CE8C,#E9A23B 64%,#DE9327);color:#20272B;
+  border-radius:12px;padding:13px 20px;text-align:center;white-space:nowrap}
+.conv .plus b{display:block;font-size:clamp(20px,2.6vw,28px);font-weight:800;letter-spacing:-.03em;
+  line-height:1}
+.conv .plus i{font-style:normal;font-size:10.5px;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;color:#7A4406;display:block;margin-top:6px}
+
+.money-big{margin-top:16px;background:linear-gradient(158deg,#F5CE8C,#E9A23B 64%,#DE9327);
+  color:#20272B;border-radius:16px;padding:clamp(20px,2.6vw,28px);display:grid;gap:8px}
+@media(min-width:720px){.money-big{grid-template-columns:auto 1fr;gap:26px;align-items:center}}
+.money-big b{font-size:clamp(28px,4.2vw,46px);font-weight:800;letter-spacing:-.035em;
+  line-height:1;white-space:nowrap}
+.money-big span{font-size:14.5px;line-height:1.5;color:rgba(28,32,35,.85);font-weight:600}
+
 /* ---------- схема сценариев ---------- */
 .legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
 .lg{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;
@@ -895,16 +925,34 @@ footer p{color:rgba(255,255,255,.86);margin-top:16px;font-size:clamp(15px,1.5vw,
 
       <div class="money">
         <div class="money-h">Что это дало в деньгах при неизменном бюджете</div>
-        <div class="money-grid">
-          <div><div class="v">182 000 ₽</div><div class="k">средний расход на рекламу в месяц — не изменился</div></div>
-          <div><div class="v">106</div><div class="k">заявок в месяц приходит с рекламы</div></div>
-          <div><div class="v">64 → 80</div><div class="k">записей в месяц из тех же заявок</div></div>
-          <div class="hl"><div class="v">−20%</div><div class="k">стоимость записи: 2 861 ₽ → 2 289 ₽</div></div>
+
+        <div class="conv">
+          <div class="cap">Конверсия из заявки в запись</div>
+          <div class="pair">
+            <div class="st was"><b>60&#37;</b><i>было</i></div>
+            <div class="ar">&rarr;</div>
+            <div class="st now"><b>75&#37;</b><i>стало</i></div>
+          </div>
+          <div class="plus"><b>+15</b><i>процентных пунктов</i></div>
         </div>
-        <p class="money-note">Рекламный бюджет и поток заявок — фактические, среднее за май-июль 2026.
-          Прирост конверсии дает <b>+16 записей в месяц</b> и <b>+191 запись за год</b> без единого
-          дополнительного рубля в рекламу. Чтобы получить прежний результат, теперь достаточно
-          145 600 ₽ вместо 182 000 ₽ — это 436 700 ₽ в год.</p>
+
+        <div class="money-grid">
+          <div><div class="v">182 000 ₽</div><div class="k">среднемесячный расход на рекламу за май-июль 2026 — не изменился</div></div>
+          <div><div class="v">106</div><div class="k">заявок в месяц приходит с рекламы — поток не изменился</div></div>
+          <div class="hl"><div class="v">+16</div><div class="k">записей в месяц из тех же заявок: 64 &rarr; 80</div></div>
+          <div class="hl"><div class="v">+191</div><div class="k">запись за год без единого дополнительного рубля в рекламу</div></div>
+        </div>
+
+        <div class="money-big">
+          <b>+436 800 ₽</b>
+          <span>Столько высвобождает бюджет за год. Прежние 64 записи в месяц теперь стоят
+            145 600 ₽ вместо 182 000 ₽ — разница 36 400 ₽ в месяц.</span>
+        </div>
+
+        <p class="money-note">Рекламный бюджет и поток заявок — фактические, среднемесячные
+          за май-июль 2026 по таблице расходов ВК и Яндекс Директа. Каждая запись подешевела
+          с 2 861 ₽ до 2 289 ₽. Если считать не экономию бюджета, а выручку, то прирост
+          в 191 запись при среднем чеке 8 000 ₽ — это около <b>1,5 млн ₽ в год</b>.</p>
       </div>
     </div>
   </div>
