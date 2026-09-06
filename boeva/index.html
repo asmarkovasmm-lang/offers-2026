@@ -125,6 +125,17 @@ header.hero::after{content:"";position:absolute;inset:-40% -20% auto auto;width:
 .p-card p{font-size:13.5px;color:rgba(255,255,255,.78);line-height:1.5}
 .p-card p b{color:#fff;font-weight:700}
 .p-card.hl{background:rgba(127,227,236,.10);border-color:rgba(127,227,236,.3)}
+.p-card.gold{background:linear-gradient(158deg,#F5CE8C,#E9A23B 62%,#DE9327);
+  border-color:rgba(255,255,255,.42);box-shadow:0 16px 38px -20px rgba(0,0,0,.55)}
+.p-card.gold .p-n{color:#7A4406}
+.p-card.gold h4{color:#20272B}
+.p-card.gold p{color:rgba(28,32,35,.84)}
+.p-card.gold p b{color:#20272B}
+.p-card.gold .p-ic{color:#7A4406}
+.p-card.gold.hl h4{color:rgba(28,32,35,.92)}
+.p-card.gold-s{background:rgba(233,162,59,.06);border-color:rgba(242,197,126,.55)}
+.p-card.gold-s h4{color:#F7DFB4}
+.p-card.gold-s .p-n{color:#F2C57E}
 .p-card .p-ic{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.03em;
   color:#BFF0F5;line-height:1;margin-bottom:10px}
 .p-card.hl h4{font-size:14.5px;font-weight:600;color:rgba(255,255,255,.9)}
@@ -664,18 +675,18 @@ footer p{color:rgba(255,255,255,.86);margin-top:16px;font-size:clamp(15px,1.5vw,
       <div class="p-block">
         <div class="p-cap">Что изменилось</div>
         <div class="p-grid res">
-          <div class="p-card hl">
+          <div class="p-card gold hl">
             <div class="p-ic">1&ndash;1,5 ч</div>
             <h4>в день освободилось у администраторов</h4>
             <p>Время уходит на пациентов и нестандартные вопросы, а не на перенос информации
               из переписки в систему.</p>
           </div>
-          <div class="p-card hl">
+          <div class="p-card gold hl">
             <div class="p-ic">100&#37;</div>
             <h4>задач врача доходят до колл-центра</h4>
             <p>Промежуточное звено убрано: нечего пропустить, забыть или перепутать в дате.</p>
           </div>
-          <div class="p-card hl">
+          <div class="p-card gold hl">
             <div class="p-ic">&uarr;</div>
             <h4>меньше потерянных пациентов</h4>
             <p>Каждая непоставленная задача — это человек, с которым не связались вовремя.
@@ -740,28 +751,28 @@ footer p{color:rgba(255,255,255,.86);margin-top:16px;font-size:clamp(15px,1.5vw,
       <div class="p-block">
         <div class="p-cap">Что внедрили — по этапам</div>
         <div class="p-grid">
-          <div class="p-card">
+          <div class="p-card gold">
             <div class="p-n">Этап 1</div>
             <h4>Сценарии под каждый исход звонка</h4>
             <p>Разобрали, чем реально заканчивается звонок, и под каждый исход прописали
               следующий шаг: что уходит человеку, через сколько времени и в каком канале.
               Не общая рассылка, а реакция на конкретную ситуацию.</p>
           </div>
-          <div class="p-card">
+          <div class="p-card gold">
             <div class="p-n">Этап 2</div>
             <h4>Развели, что делают люди, а что система</h4>
             <p>Звонки остались за отделом продаж — живой разговор не заменяем.
               Сообщения уходят <b>между звонками, сами, по сценарию</b>. Оператору не нужно
               о них помнить и тратить на них время.</p>
           </div>
-          <div class="p-card">
+          <div class="p-card gold">
             <div class="p-n">Этап 3</div>
             <h4>Написали скрипты сообщений</h4>
             <p>Текст под каждое касание: что именно уходит, каким тоном, от чьего имени.
               Не дежурное &laquo;вам удобно говорить&raquo;, а сообщение под конкретный
               этап разговора и конкретную причину обращения.</p>
           </div>
-          <div class="p-card">
+          <div class="p-card gold">
             <div class="p-n">Этап 4</div>
             <h4>Обучение и запуск</h4>
             <p>Разбор с операторами: как это работает, что меняется в их работе, где они
@@ -774,25 +785,25 @@ footer p{color:rgba(255,255,255,.86);margin-top:16px;font-size:clamp(15px,1.5vw,
       <div class="p-block">
         <div class="p-cap">Как это выглядит на практике</div>
         <div class="p-grid">
-          <div class="p-card">
+          <div class="p-card gold-s">
             <div class="p-n">Не дозвонились</div>
             <h4>Сразу уходит сообщение, кто звонил</h4>
             <p>Человек видит название клиники и повод звонка. В следующий раз номер уже
               знакомый — вероятность, что трубку возьмут, заметно выше.</p>
           </div>
-          <div class="p-card">
+          <div class="p-card gold-s">
             <div class="p-n">Думает, сравнивает</div>
             <h4>Между звонками уходит кейс</h4>
             <p>Результат работы, отзыв, ответ на частое возражение. Пауза перестает быть
               пустой и работает на решение, а не против него.</p>
           </div>
-          <div class="p-card">
+          <div class="p-card gold-s">
             <div class="p-n">Договорились созвониться</div>
             <h4>Напоминание накануне</h4>
             <p>Человек ждет звонка и держит время свободным. Дозвон с первой попытки
               вместо серии безуспешных наборов.</p>
           </div>
-          <div class="p-card">
+          <div class="p-card gold-s">
             <div class="p-n">Записался</div>
             <h4>Подтверждение и напоминание о визите</h4>
             <p>Запись доживает до приема. Меньше неявок — а неявка стоит клинике так же,
