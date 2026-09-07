@@ -140,6 +140,10 @@ header.hero::after{content:"";position:absolute;inset:-40% -20% auto auto;width:
   color:#BFF0F5;line-height:1;margin-bottom:10px}
 .p-card.hl h4{font-size:14.5px;font-weight:600;color:rgba(255,255,255,.9)}
 
+.calc-inline{margin:clamp(34px,4.6vw,62px) 0}
+.calc-inline .eyebrow{margin-bottom:14px}
+.calc-inline h2{margin-bottom:0}
+
 /* ---------- конверсия было/стало ---------- */
 .conv{display:grid;gap:16px;align-items:center;background:rgba(255,255,255,.07);
   border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:clamp(20px,2.6vw,28px);
@@ -703,6 +707,46 @@ footer p{color:rgba(255,255,255,.86);margin-top:16px;font-size:clamp(15px,1.5vw,
       </div>
     </div>
 
+    <div class="calc-inline">
+      <p class="eyebrow rv">Упущенная выгода</p>
+      <h2 class="rv d1">2 426 человек — это сколько<br>в деньгах?</h2>
+      <p class="lead rv d1">Ровно тот вопрос, на который до автоматизации ответа не было.
+        Подвигайте ползунки под свои цифры — расчет пересчитается.</p>
+
+      <div class="calc rv d2">
+        <div class="calc-top">
+          <div class="calc-in">
+            <div class="field">
+              <label>Человек в базе без задачи <b><span id="v-base">2 426</span></b></label>
+              <input type="range" id="s-base" min="200" max="5000" step="1" value="2426">
+            </div>
+            <div class="field">
+              <label>Вернется после адресной работы <b><span id="v-conv">3</span>%</b></label>
+              <input type="range" id="s-conv" min="1" max="15" step="1" value="3">
+            </div>
+            <div class="field">
+              <label>Средний чек визита <b><span id="v-check">15 000</span> ₽</b></label>
+              <input type="range" id="s-check" min="2000" max="40000" step="500" value="15000">
+            </div>
+            <div class="field">
+              <label>Визитов на вернувшегося за год <b><span id="v-visits">2</span></b></label>
+              <input type="range" id="s-visits" min="1" max="6" step="1" value="2">
+            </div>
+          </div>
+          <div class="calc-out">
+            <div class="cap">Не заработано на этой базе</div>
+            <div class="big"><span id="out-sum">0</span> ₽</div>
+            <p class="per">при возврате <span id="out-people">73</span> человек из базы</p>
+            <div class="year">В пересчете на клинику это <b id="out-month">0 ₽</b> в месяц,
+              которые сейчас просто не доходят до кассы.</div>
+          </div>
+        </div>
+        <p class="calc-note">Расчет по одной базе одного врача. Значения по умолчанию намеренно
+          осторожные: возврат 3% ниже того, что обычно дает адресная работа с клиентом,
+          который уже был в клинике. Средний чек 15 000 ₽.</p>
+      </div>
+    </div>
+
     <div class="case proc-block rv">
       <div class="proc-head">
         <span class="proc-tag">Процесс 2</span>
@@ -971,48 +1015,6 @@ footer p{color:rgba(255,255,255,.86);margin-top:16px;font-size:clamp(15px,1.5vw,
     </div>
   </div>
 </section>
-<section>
-  <div class="wrap">
-    <p class="eyebrow rv">Упущенная выгода</p>
-    <h2 class="rv d1">2 426 человек — это сколько<br>в деньгах?</h2>
-    <p class="lead rv d1">Ровно тот вопрос, на который до автоматизации ответа не было.
-      Подвигайте ползунки под свои цифры — расчет пересчитается.</p>
-
-    <div class="calc rv d2">
-      <div class="calc-top">
-        <div class="calc-in">
-          <div class="field">
-            <label>Человек в базе без задачи <b><span id="v-base">2 426</span></b></label>
-            <input type="range" id="s-base" min="200" max="5000" step="1" value="2426">
-          </div>
-          <div class="field">
-            <label>Вернется после адресной работы <b><span id="v-conv">3</span>%</b></label>
-            <input type="range" id="s-conv" min="1" max="15" step="1" value="3">
-          </div>
-          <div class="field">
-            <label>Средний чек визита <b><span id="v-check">15 000</span> ₽</b></label>
-            <input type="range" id="s-check" min="2000" max="40000" step="500" value="15000">
-          </div>
-          <div class="field">
-            <label>Визитов на вернувшегося за год <b><span id="v-visits">2</span></b></label>
-            <input type="range" id="s-visits" min="1" max="6" step="1" value="2">
-          </div>
-        </div>
-        <div class="calc-out">
-          <div class="cap">Не заработано на этой базе</div>
-          <div class="big"><span id="out-sum">0</span> ₽</div>
-          <p class="per">при возврате <span id="out-people">73</span> человек из базы</p>
-          <div class="year">В пересчете на клинику это <b id="out-month">0 ₽</b> в месяц,
-            которые сейчас просто не доходят до кассы.</div>
-        </div>
-      </div>
-      <p class="calc-note">Расчет по одной базе одного врача. Значения по умолчанию намеренно
-        осторожные: возврат 3% ниже того, что обычно дает адресная работа с клиентом,
-        который уже был в клинике. Средний чек 15 000 ₽.</p>
-    </div>
-  </div>
-</section>
-
 <section class="alt">
   <div class="wrap">
     <p class="eyebrow rv">Предложение для «Доктор Боева»</p>
