@@ -176,6 +176,46 @@ header.hero::after{content:"";position:absolute;inset:-40% -20% auto auto;width:
   line-height:1;white-space:nowrap}
 .money-big span{font-size:14.5px;line-height:1.5;color:rgba(28,32,35,.85);font-weight:600}
 
+/* ---------- бейдж стадии ---------- */
+.stage{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+  padding:6px 13px;border-radius:100px;background:rgba(233,162,59,.18);
+  border:1px solid rgba(233,162,59,.55);color:#F7DFB4;white-space:nowrap}
+.proc .st-badge{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;padding:4px 9px;border-radius:100px;background:rgba(233,162,59,.18);
+  border:1px solid rgba(233,162,59,.5);color:#F7DFB4;margin-left:8px;vertical-align:middle}
+
+/* ---------- что анализирует агент ---------- */
+.brain{display:grid;gap:12px;margin-top:clamp(22px,2.8vw,30px)}
+@media(min-width:900px){.brain{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.br{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:14px;
+  padding:18px 17px;position:relative}
+.br .n{width:26px;height:26px;border-radius:8px;background:rgba(127,227,236,.2);color:#BFF0F5;
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-bottom:11px}
+.br h4{font-size:14.5px;color:#fff;margin-bottom:7px;line-height:1.25}
+.br p{font-size:13px;color:rgba(255,255,255,.76);line-height:1.5}
+
+/* ---------- примеры сообщений ---------- */
+.mex{display:grid;gap:14px;margin-top:14px}
+@media(min-width:900px){.mex{grid-template-columns:minmax(0,340px) minmax(0,1fr);align-items:start}}
+.bubble{background:#E7F3EE;color:#20272B;border-radius:16px 16px 16px 5px;padding:16px 18px;
+  font-size:13.5px;line-height:1.5;white-space:pre-line;box-shadow:0 12px 30px -18px rgba(0,0,0,.55)}
+.bubble .who{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:#5B686E;margin-bottom:10px;display:block}
+.ann{display:grid;gap:11px}
+.an{border-left:2px solid rgba(233,162,59,.6);padding-left:14px}
+.an b{display:block;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:#F2C57E;margin-bottom:5px}
+.an span{font-size:13.5px;color:rgba(255,255,255,.82);line-height:1.5}
+.mex-h{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);margin-top:clamp(24px,3vw,34px);margin-bottom:12px}
+
+/* ---------- регламент «без тебя никак» ---------- */
+.esc{display:grid;gap:12px;margin-top:14px}
+@media(min-width:820px){.esc{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.es{background:rgba(127,227,236,.09);border:1px solid rgba(127,227,236,.32);border-radius:14px;padding:18px}
+.es b{display:block;font-size:13px;color:#CFF3F7;margin-bottom:7px}
+.es p{font-size:13px;color:rgba(255,255,255,.78);line-height:1.5}
+
 /* ---------- схема сценариев ---------- */
 .legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
 .lg{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;
@@ -612,14 +652,21 @@ footer p{color:rgba(255,255,255,.86);margin-top:16px;font-size:clamp(15px,1.5vw,
           <h3>Цепочка касаний по заявкам</h3>
           <div class="ba"><span class="was">Было</span> не дозвонились — заявка остывала</div>
           <div class="ba"><span class="is">Стало</span> следующий шаг идет сам после каждого звонка</div>
-          <div class="pr">конверсия из заявки в запись <b>45&#37; &rarr; 70&#37;</b></div>
+          <div class="pr">конверсия из заявки в запись <b>20&#37; &rarr; 30&#37;</b></div>
         </div>
         <div class="proc">
-          <div class="pn">Процесс 4</div>
+          <div class="pn">Процесс 4<span class="st-badge">запуск</span></div>
           <h3>Сквозная аналитика и LTV</h3>
           <div class="ba"><span class="was">Было</span> эффективность канала считалась по первому визиту</div>
           <div class="ba"><span class="is">Стало</span> данные из Директа и ВК стекаются сами</div>
           <div class="pr">видно, какой канал приносит деньги, а какой их расходует</div>
+        </div>
+        <div class="proc">
+          <div class="pn">Процесс 5<span class="st-badge">тесты</span></div>
+          <h3>ИИ-агент по обработке заявок</h3>
+          <div class="ba"><span class="was">Было</span> оператор сам поднимал контекст по каждому клиенту</div>
+          <div class="ba"><span class="is">Стало</span> агент собирает контекст и готовит текст, человек проверяет</div>
+          <div class="pr"><b>90&#37;</b> сообщений уходят без правок</div>
         </div>
       </div>
     </div>
@@ -973,44 +1020,235 @@ footer p{color:rgba(255,255,255,.86);margin-top:16px;font-size:clamp(15px,1.5vw,
         <div class="money-h">Что это дало в деньгах при неизменном бюджете</div>
 
         <div class="conv">
-          <div class="cap">Конверсия из заявки в запись</div>
+          <div class="cap">Конверсия из заявки в запись<br><span style="font-weight:600;letter-spacing:0;text-transform:none;font-size:11.5px;opacity:.75">замер за месяц</span></div>
           <div class="pair">
-            <div class="st was"><b>45&#37;</b><i>было</i></div>
+            <div class="st was"><b>20&#37;</b><i>было</i></div>
             <div class="ar">&rarr;</div>
-            <div class="st now"><b>70&#37;</b><i>стало</i></div>
+            <div class="st now"><b>30&#37;</b><i>стало</i></div>
           </div>
-          <div class="plus"><b>+25</b><i>процентных пунктов</i></div>
+          <div class="plus"><b>+10</b><i>процентных пунктов</i></div>
         </div>
 
         <div class="conv rub">
           <div class="cap">Выручка с рекламы в месяц</div>
           <div class="pair">
-            <div class="st was"><b>715 500 ₽</b><i>было</i></div>
+            <div class="st was"><b>318 000 ₽</b><i>было</i></div>
             <div class="ar">&rarr;</div>
-            <div class="st now"><b>1 113 000 ₽</b><i>стало</i></div>
+            <div class="st now"><b>477 000 ₽</b><i>стало</i></div>
           </div>
-          <div class="plus"><b>+397 500 ₽</b><i>каждый месяц</i></div>
+          <div class="plus"><b>+159 000 ₽</b><i>каждый месяц</i></div>
         </div>
 
         <div class="money-grid">
           <div><div class="v">182 000 ₽</div><div class="k">среднемесячный расход на рекламу за май-июль 2026 — не изменился</div></div>
           <div><div class="v">106</div><div class="k">заявок в месяц приходит с рекламы — поток не изменился</div></div>
-          <div class="hl"><div class="v">+26</div><div class="k">записей в месяц из тех же заявок: 48 &rarr; 74</div></div>
-          <div class="hl"><div class="v">+318</div><div class="k">записей за год без единого дополнительного рубля в рекламу</div></div>
+          <div class="hl"><div class="v">+11</div><div class="k">записей в месяц из тех же заявок: 21 &rarr; 32</div></div>
+          <div class="hl"><div class="v">+127</div><div class="k">записей за год, если темп сохранится</div></div>
         </div>
 
         <div class="money-big">
-          <b>+4 770 000 ₽</b>
-          <span>Столько добавляет рост конверсии за год: было 8,6 млн ₽, стало 13,4 млн ₽.
+          <b>+1 908 000 ₽</b>
+          <span>Прогноз на год, если темп сохранится: было 3,8 млн ₽, станет 5,7 млн ₽.
             Тот же бюджет, тот же поток заявок, средний чек 15 000 ₽.</span>
         </div>
 
         <p class="money-note">Рекламный бюджет и поток заявок — фактические, среднемесячные
           за май-июль 2026 по таблице расходов ВК и Яндекс Директа. Каждая запись подешевела
-          с 3 816 ₽ до 2 453 ₽. Точный прирост — 26,5 записи в месяц, за год это 318 записей.
-          Выручка посчитана по среднему чеку 15 000 ₽. Тот же результат можно смотреть
-          и со стороны расходов: прежние 48 записей теперь обошлись бы в 117 000 ₽
-          вместо 182 000 ₽.</p>
+          с 8 585 ₽ до 5 723 ₽. <b>Замер идет месяц</b>, годовые цифры — прогноз при сохранении
+          текущего темпа, а не свершившийся факт. При этом часть людей, попавших в воронку сейчас,
+          еще догревается и запишется позже — поэтому фактический результат может оказаться выше
+          прогноза. Выручка посчитана по среднему чеку 15 000 ₽.</p>
+      </div>
+    </div>
+
+    <div class="case proc-block rv">
+      <div class="proc-head">
+        <span class="proc-tag">Процесс 4</span>
+        <span class="stage">В стадии запуска</span>
+        <h3>Сквозная аналитика и LTV</h3>
+      </div>
+      <p class="lead">Сейчас данные по рекламе собираются руками, а эффективность канала считается
+        по первому визиту. Человек мог прийти на недорогую процедуру и за год оставить в клинике
+        в разы больше — эта разница не видна, и из-за нее лучший канал может выглядеть убыточным.</p>
+
+      <div class="flow">
+        <div class="flow-row was">
+          <span class="flow-lab">Было</span>
+          <span class="fl">Выгрузка руками</span><i>&rarr;</i>
+          <span class="fl">Считаем первый визит</span><i>&rarr;</i>
+          <span class="fl">Канал кажется убыточным</span>
+        </div>
+        <div class="flow-row is">
+          <span class="flow-lab">Стало</span>
+          <span class="fl">Директ и ВК стекаются сами</span><i>&rarr;</i>
+          <span class="fl">Человек связан со своей выручкой</span><i>&rarr;</i>
+          <span class="fl">Окупаемость за период</span>
+        </div>
+      </div>
+
+      <div class="p-block">
+        <div class="p-cap">Что будет на выходе</div>
+        <div class="p-grid">
+          <div class="p-card gold"><div class="p-n">01</div><h4>Сколько вложено в каждый канал</h4>
+            <p>Расходы по Яндекс Директу и ВК собираются автоматически, без ручных выгрузок
+              и сверок в конце месяца.</p></div>
+          <div class="p-card gold"><div class="p-n">02</div><h4>Сколько человек этот канал привел</h4>
+            <p>Каждый пришедший с рекламы связывается со своей карточкой в клинике —
+              не обезличенной цифрой, а конкретным человеком.</p></div>
+          <div class="p-card gold"><div class="p-n">03</div><h4>Сколько они принесли за период</h4>
+            <p>Не за первый визит, а за год. Именно здесь и появляется разница,
+              из-за которой сейчас каналы оцениваются неверно.</p></div>
+        </div>
+      </div>
+
+      <div class="zones">
+        <div class="zone auto"><h4>Что это меняет в решениях</h4>
+          <p>Появляется честный ответ, какой канал масштабировать, а какой закрывать.
+            Сейчас этот вопрос решается по ощущению и по стоимости первого визита.</p></div>
+        <div class="zone man"><h4>Что нужно от клиники</h4>
+          <p>Доступы к рекламным кабинетам, данные по выручке в разрезе клиентов
+            и договоренность, за какой период считаем LTV.</p></div>
+      </div>
+    </div>
+
+    <div class="case proc-block rv">
+      <div class="proc-head">
+        <span class="proc-tag">Процесс 5</span>
+        <span class="stage">В стадии запуска · идут тесты</span>
+        <h3>ИИ-агент по обработке заявок</h3>
+      </div>
+      <p class="lead">Сейчас мы наполняем агента контекстом. Прежде чем решить, что написать
+        клиенту, он собирает всю картину сам — и только потом составляет сообщение
+        и отдает его человеку на проверку.</p>
+
+      <div class="p-block">
+        <div class="p-cap">Что агент анализирует перед тем, как написать</div>
+        <div class="brain">
+          <div class="br"><div class="n">1</div><h4>Саму задачу</h4>
+            <p>Что именно поручено и какие этапы задача уже прошла: звали ли этого человека
+              раньше, сколько раз и чем закончилось.</p></div>
+          <div class="br"><div class="n">2</div><h4>Карточку в CRM</h4>
+            <p>Записи, комментарии к карточке и к записи, кто из врачей принимал.
+              Врачи бывают конкурирующие — тогда звать можно не к любому.</p></div>
+          <div class="br"><div class="n">3</div><h4>Предыдущую переписку</h4>
+            <p>О чем договаривались в прошлый раз, что человек обещал, чем интересовался
+              и на что уже отвечал отказом.</p></div>
+          <div class="br"><div class="n">4</div><h4>Куда писать</h4>
+            <p>В каких мессенджерах человек вообще есть, и выбирает канал по правилу:
+              МАХ, потом Телеграм, WhatsApp — только если больше ничего нет.</p></div>
+        </div>
+      </div>
+
+      <div class="p-block">
+        <div class="p-cap">Что происходит дальше</div>
+        <div class="p-grid">
+          <div class="p-card gold"><div class="p-n">01</div><h4>Составляет сообщение</h4>
+            <p>Не шаблон под замену имени, а текст под конкретную ситуацию этого человека.</p></div>
+          <div class="p-card gold"><div class="p-n">02</div><h4>Подтягивает свободные окна</h4>
+            <p>Сам смотрит расписание нужного врача и вставляет реальные даты и время,
+              а не «позвоните, подберем».</p></div>
+          <div class="p-card gold"><div class="p-n">03</div><h4>Отдает на проверку человеку</h4>
+            <p>Менеджер читает и решает: отправить, поправить или отложить.
+              Без этого шага ничего не уходит.</p></div>
+          <div class="p-card gold"><div class="p-n">04</div><h4>После проверки — автоматика</h4>
+            <p>Сама отправляет в выбранный мессенджер, проверяет доставку и ставит
+              новую дату задачи с комментарием.</p></div>
+        </div>
+      </div>
+
+      <div class="mex-h">Как это выглядит: реальные сообщения от 7 сентября</div>
+
+      <div class="mex">
+        <div class="bubble"><span class="who">Боброва · Телеграм</span>Елена Владимировна, здравствуйте!
+
+Вы планировали биоревитализацию и ботулинотерапию на осень — она наступила 🙂 Юлия Владимировна будет рада вас видеть.
+
+Есть свободные окна:
+📅 8 сентября в 9:00, 11:00, 15:30
+📅 9 сентября в 10:15, 14:00, 16:30
+
+В какой день вас записать?</div>
+        <div class="ann">
+          <div class="an"><b>Контекст</b><span>В переписке весной клиентка сказала, что вернется
+            к процедурам осенью. Задача стояла общая — пригласить.</span></div>
+          <div class="an"><b>Что сделал агент</b><span>Поднял прошлую переписку, нашел обещание
+            и привязал приглашение к нему, а не к календарю клиники.</span></div>
+          <div class="an"><b>Почему такой текст</b><span>«Она наступила» — возврат ее же слов.
+            Человек узнает свой разговор, и это не выглядит рассылкой.</span></div>
+        </div>
+      </div>
+
+      <div class="mex">
+        <div class="bubble"><span class="who">Сальникова · МАХ</span>Вера Семеновна, здравствуйте!
+
+Валерия приглашает вас на массаж R-sleek — и для Ивана Яковлевича тоже подберем время, можно записаться парой в один день.
+
+Есть свободные окна:
+📅 9 сентября в 9:00, 12:00, 15:00
+📅 11 сентября в 9:00, 12:00, 16:00
+
+В какой день вам будет удобно?</div>
+        <div class="ann">
+          <div class="an"><b>Контекст</b><span>В базе две отдельные задачи: на Веру Семеновну
+            и на ее мужа Ивана Яковлевича. У мужа своих мессенджеров нет.</span></div>
+          <div class="an"><b>Что сделал агент</b><span>Увидел связь между карточками и вместо двух
+            сообщений собрал одно — с приглашением на двоих.</span></div>
+          <div class="an"><b>Почему такой текст</b><span>Пара ходит вместе, и предложение записаться
+            в один день снимает главное возражение — согласовать время.
+            Задача мужа перенеслась синхронно с женой.</span></div>
+        </div>
+      </div>
+
+      <div class="mex">
+        <div class="bubble"><span class="who">Мушка · МАХ</span>Любовь Павловна, здравствуйте!
+
+Летом вы были в командировке — возможно, сейчас удобнее. Юлия Владимировна приглашает вас на первичную консультацию, заодно обсудите Фраксор, которым вы интересовались.
+
+Есть свободные окна:
+📅 8 сентября в 9:00, 11:00, 15:30
+📅 9 сентября в 10:15, 14:00, 16:30
+
+В какой день вас записать?</div>
+        <div class="ann">
+          <div class="an"><b>Контекст</b><span>Летом клиентка отказалась — была в командировке.
+            Отдельно в переписке спрашивала про Фраксор.</span></div>
+          <div class="an"><b>Что сделал агент</b><span>Разделил причину отказа и интерес:
+            причина устарела, интерес остался. Собрал оба факта в одно сообщение.</span></div>
+          <div class="an"><b>Почему такой текст</b><span>Прямая отсылка к прошлому отказу показывает,
+            что ее помнят. А Фраксор — повод, который она назвала сама.</span></div>
+        </div>
+      </div>
+
+      <div class="p-block">
+        <div class="p-cap">Регламент: где агент останавливается и зовет человека</div>
+        <div class="esc">
+          <div class="es"><b>«Здесь без тебя никак»</b>
+            <p>В задаче не указан врач, а последний визит был больше года назад — агент не угадывает,
+              к кому звать, а спрашивает.</p></div>
+          <div class="es"><b>«Задача исполнилась сама»</b>
+            <p>Человек уже записался без нашего участия. Агент это видит, сообщение не отправляет
+              и предлагает перенести контроль на день после визита.</p></div>
+          <div class="es"><b>«Предлагаю такое решение»</b>
+            <p>Клиент записан на другую процедуру. Агент показывает ситуацию и предлагает вариант:
+              не писать поверх, а передать администратору на визите.</p></div>
+          <div class="es"><b>«Не вмешиваюсь»</b>
+            <p>В диалоге уже идет живая переписка с менеджером. Агент ее не трогает
+              и не пишет параллельно.</p></div>
+        </div>
+      </div>
+
+      <div class="money">
+        <div class="money-h">Что показали тесты за первые пять дней</div>
+        <div class="money-grid">
+          <div class="hl"><div class="v">90&#37;</div><div class="k">сообщений уходят без единой правки</div></div>
+          <div><div class="v">42</div><div class="k">задачи агент разобрал за одно утро 7 сентября</div></div>
+          <div><div class="v">23</div><div class="k">готовых текста из них — с окнами врачей из реального расписания</div></div>
+          <div class="hl"><div class="v">0</div><div class="k">ошибок при отправке: 10 сообщений с интервалом 5 минут, все доставлены</div></div>
+        </div>
+        <p class="money-note">Оставшиеся 10&#37; — это не брак, а случаи из регламента выше:
+          агент сознательно не отправляет сообщение и приносит ситуацию человеку.
+          <b>Проверка менеджером остается обязательным шагом</b> — она не отменяется по мере
+          того, как агент учится.</p>
       </div>
     </div>
   </div>
