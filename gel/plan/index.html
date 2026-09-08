@@ -132,6 +132,31 @@ header.hero::before{content:"";position:absolute;inset:auto auto -40% -18%;width
 .pg span{display:block;font-size:13px;color:rgba(255,255,255,.75);margin-top:8px}
 .pay p.note{margin-top:18px;font-size:14.5px;color:rgba(255,255,255,.85);line-height:1.55}
 .pay p.note b{color:#fff}
+.pay-h{font-size:clamp(19px,2.1vw,24px);font-weight:800;letter-spacing:-.028em;
+  margin:0 0 22px;line-height:1.25}
+.chain{display:grid}
+.ch{display:grid;grid-template-columns:34px 1fr;gap:15px;position:relative;padding-bottom:18px}
+.ch:last-child{padding-bottom:0}
+.ch::before{content:"";position:absolute;left:16px;top:36px;bottom:2px;width:2px;
+  background:linear-gradient(rgba(255,255,255,.3),rgba(255,255,255,.07))}
+.ch:last-child::before{display:none}
+.ch-n{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.3);
+  font-size:14px;font-weight:800;color:#fff}
+.ch-b{padding-top:5px;min-width:0}
+.ch-b b{display:block;font-size:clamp(16px,1.75vw,20px);font-weight:800;
+  letter-spacing:-.025em;color:#fff;line-height:1.3;font-variant-numeric:tabular-nums}
+.ch-b b em{font-style:normal;color:#F5CE8C}
+.ch-b span{display:block;font-size:14px;color:rgba(255,255,255,.72);
+  margin-top:5px;line-height:1.5}
+.pay-out{background:rgba(216,154,78,.18);border:1px solid rgba(216,154,78,.5);
+  border-radius:14px;padding:19px 21px;margin:24px 0 26px}
+.pay-out span{display:block;font-size:14px;color:rgba(255,255,255,.82)}
+.pay-out b{display:block;font-size:clamp(19px,2.4vw,27px);font-weight:800;
+  letter-spacing:-.032em;margin-top:6px;line-height:1.2}
+.pay-out span.tail{margin-top:9px;font-size:13.5px;color:rgba(255,255,255,.72);line-height:1.5}
+.pay-sub{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:#F3B9CB;margin:0 0 13px}
 
 .need{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:13px;margin-top:26px}
 .need>div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
@@ -303,26 +328,69 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:54ch;margin-inlin
 
     <div class="why rv">
       <div class="cap">Почему цена ниже</div>
-      <p><strong>Зачеркнутые цифры — реальная стоимость такой работы.</strong> Я показываю
-        их честно, чтобы вы понимали объем: 180 000 ₽ — это то, во что проект обходится
-        обычно, и по этой цене я буду делать его следующим клиентам.</p>
-      <p>Ваш проект — первый в нише производства косметики, и он нужен мне как кейс.
-        Поэтому беру 50 000 ₽ за все. Взамен прошу одно: разрешение рассказывать
-        о результатах — без названия компании, если так будет комфортнее.
-        Это разовое условие, а не мой прайс.</p>
+      <p><strong>Такая работа должна стоить 180 000 ₽.</strong> За зачеркнутыми цифрами
+        конкретный объем: разбор базы на 1 000 человек, настройка платформы, сценарии
+        под каждый сегмент, бот для менеджера, обкатка на живых людях.</p>
+      <p>Беру 50 000 ₽ по одной причине: ваш проект первый в нише производства
+        косметики, и он нужен мне как кейс. Взамен прошу разрешение рассказывать
+        о результатах — без названия компании, если так спокойнее.
+        Дальше эта работа будет стоить свои деньги.</p>
     </div>
 
     <div class="pay rv">
       <div class="cap">Когда окупается</div>
-      <div class="pay-grid">
-        <div class="pg hl"><b>160 000 ₽</b><span>если вернется 1% спящих — 8 человек</span></div>
-        <div class="pg"><b>480 000 ₽</b><span>если вернется 3% — 24 человека</span></div>
-        <div class="pg"><b>800 000 ₽</b><span>если вернется 5% — 40 человек</span></div>
+      <h3 class="pay-h">Считаю по самому скромному сценарию</h3>
+
+      <div class="chain">
+        <div class="ch">
+          <div class="ch-n">1</div>
+          <div class="ch-b">
+            <b>800 человек спят в базе</b>
+            <span>Когда-то купили и перестали. Это ваша цифра, не моя оценка.</span>
+          </div>
+        </div>
+        <div class="ch">
+          <div class="ch-n">2</div>
+          <div class="ch-b">
+            <b>Вернулся 1% — это <em>8 человек</em></b>
+            <span>Беру намеренно мало. Один процент — это когда почти ничего
+              не сработало.</span>
+          </div>
+        </div>
+        <div class="ch">
+          <div class="ch-n">3</div>
+          <div class="ch-b">
+            <b>8 × 5 000 ₽ = <em>40 000 ₽</em></b>
+            <span>5 000 ₽ — ваш средний закуп. В нем и мастер, и салон:
+              у салона чек выше, у мастера ниже.</span>
+          </div>
+        </div>
+        <div class="ch">
+          <div class="ch-n">4</div>
+          <div class="ch-b">
+            <b>40 000 ₽ × 4 закупа = <em>160 000 ₽ за год</em></b>
+            <span>Гель-лак — расходник, его берут снова. Четыре закупа в год —
+              спокойный ритм для вернувшегося клиента.</span>
+          </div>
+        </div>
       </div>
-      <p class="note">Расчет по вашим цифрам: 800 спящих, средний закуп 5 000 ₽, четыре
-        закупа в год. <b>Проект окупается при возврате одного процента.</b> Все, что выше —
-        заработок, и при вашей себестоимости почти целиком прибыль. И это только спящие:
-        отдельно система удерживает 200 активных, замечая сбой ритма раньше вас.</p>
+
+      <div class="pay-out">
+        <span>Проект стоит 50 000 ₽. Чтобы его отбить,</span>
+        <b>достаточно вернуть 3 человека из 800</b>
+        <span class="tail">Трое за год дадут 60 000 ₽. Все, кто вернется сверх этого, —
+          уже заработок.</span>
+      </div>
+
+      <p class="pay-sub">А если вернется больше — за год</p>
+      <div class="pay-grid">
+        <div class="pg hl"><b>160 000 ₽</b><span>1% — 8 человек</span></div>
+        <div class="pg"><b>480 000 ₽</b><span>3% — 24 человека</span></div>
+        <div class="pg"><b>800 000 ₽</b><span>5% — 40 человек</span></div>
+      </div>
+      <p class="note">При вашей себестоимости почти вся эта сумма — прибыль.
+        <b>И это только спящие.</b> Отдельно система держит 200 активных: замечает,
+        что клиент выпал из привычного ритма закупа, раньше, чем он успевает уснуть.</p>
     </div>
   </div>
 </section>
