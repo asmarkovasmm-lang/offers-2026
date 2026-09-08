@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI-разработка и маркетинг — Анастасия Маркова</title>
-<meta name="description" content="AI-агентство для малого бизнеса: Telegram-боты, ИИ-агенты, скрипты, аналитика с LTV — и маркетинг в одних руках. Разбор вашего случая: 20 минут созвона, готовое решение через 2–3 дня">
-<meta property="og:title" content="AI-разработка и маркетинг для малого бизнеса">
+<meta name="description" content="AI-разработка и маркетинг в одних руках: Telegram-боты, ИИ-агенты, скрипты, аналитика с LTV — для бизнеса, где клиенты возвращаются. Разбор вашего случая: 20 минут созвона, готовое решение через 2–3 дня">
+<meta property="og:title" content="AI-разработка и маркетинг в одних руках">
 <meta property="og:description" content="Боты, ИИ-агенты, аналитика и маркетинг в одних руках. Готовые решения, калькулятор спящей базы, разбор вашего случая за 20 минут">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
@@ -140,7 +140,11 @@
 
   /* ---------- витрина решений ---------- */
   .solutions{background:var(--card);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
-  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
+  .filters-note{
+    font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-soft);padding-left:6px;
+  }
   .fbtn{
     font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
     padding:13px 24px;border-radius:0;cursor:pointer;
@@ -203,6 +207,19 @@
   .mcell .v{font-family:var(--display);font-weight:900;font-size:clamp(21px,2.4vw,29px);color:#fff;margin:8px 0 4px;white-space:nowrap}
   .mcell .v .arr{color:#A9A9F0}
   .mcell .d{font-size:13px;color:#BFC0F2}
+  .mpart{margin-top:24px}
+  .mpart:first-of-type{margin-top:0}
+  .mpart-head{
+    display:flex;gap:12px;align-items:center;
+    font-family:var(--display);font-weight:800;font-size:13.5px;
+    letter-spacing:.05em;text-transform:uppercase;color:#fff;margin-bottom:14px;
+  }
+  .mnum{
+    width:26px;height:26px;flex:none;background:#fff;color:var(--wine);
+    display:inline-flex;align-items:center;justify-content:center;
+    font-weight:900;font-size:13px;
+  }
+  .money .total a{color:var(--wine);font-weight:700}
   .money .total{
     margin-top:14px;border-radius:0;padding:20px 24px;
     background:#fff;color:var(--wine-deep);
@@ -419,7 +436,7 @@
     <div class="meta-row">
       <span>® est. 2015</span>
       <span class="circles">○ ○ ○</span>
-      <span>для малого бизнеса</span>
+      <span>для бизнеса, где клиенты возвращаются</span>
       <span>обновлено — 09.2026</span>
     </div>
     <h1>AI-разработка<br>и <span class="accent">маркетинг</span> <span class="arr">↘</span></h1>
@@ -455,9 +472,10 @@
 
     <div class="filters reveal">
       <button class="fbtn active" data-filter="all">Все решения</button>
-      <button class="fbtn" data-filter="time">Экономия времени</button>
-      <button class="fbtn" data-filter="analytics">Аналитика на руках</button>
-      <button class="fbtn" data-filter="revenue">Рост выручки</button>
+      <button class="fbtn" data-filter="revenue">Про деньги</button>
+      <button class="fbtn" data-filter="time">Про время</button>
+      <button class="fbtn" data-filter="analytics">Про ясность</button>
+      <span class="filters-note">— то, чего не хватает в каждом бизнесе</span>
     </div>
 
     <div class="legend reveal">
@@ -469,33 +487,63 @@
     <div class="money" id="money-proof">
       <div class="inner">
         <div class="cap">Живой замер · клиника косметологии</div>
-        <h3>Что дала цепочка дожима заявок — при том же бюджете и том же потоке заявок</h3>
-        <div class="money-grid">
-          <div class="mcell">
-            <div class="t">Конверсия из заявки в запись</div>
-            <div class="v">20% <span class="arr">→</span> 30%</div>
-            <div class="d">замер за первый месяц работы цепочки</div>
+        <h3>Деньги лежат в двух местах: в первичке и в спящей базе</h3>
+
+        <div class="mpart">
+          <div class="mpart-head"><span class="mnum">А</span> Дожим первички — заявки, которые уже пришли и молчат</div>
+          <div class="money-grid">
+            <div class="mcell">
+              <div class="t">Конверсия из заявки в запись</div>
+              <div class="v">20% <span class="arr">→</span> 30%</div>
+              <div class="d">замер за первый месяц работы цепочки дожима</div>
+            </div>
+            <div class="mcell">
+              <div class="t">Выручка с рекламы в месяц</div>
+              <div class="v">+159 000 ₽</div>
+              <div class="d">318 000 → 477 000 ₽, расход на рекламу не менялся</div>
+            </div>
+            <div class="mcell">
+              <div class="t">Записей из тех же заявок</div>
+              <div class="v">21 <span class="arr">→</span> 32</div>
+              <div class="d">каждая запись подешевела с 8 585 до 5 723 ₽</div>
+            </div>
           </div>
-          <div class="mcell">
-            <div class="t">Выручка с рекламы в месяц</div>
-            <div class="v">+159 000 ₽</div>
-            <div class="d">318 000 → 477 000 ₽, расход на рекламу не менялся</div>
-          </div>
-          <div class="mcell">
-            <div class="t">Записей из тех же заявок</div>
-            <div class="v">21 <span class="arr">→</span> 32</div>
-            <div class="d">каждая запись подешевела с 8 585 до 5 723 ₽</div>
+          <div class="total">
+            <span class="sum">+1 908 000 ₽</span>
+            <p>прогноз на год, если темп сохранится: было 3,8 млн ₽, станет 5,7 млн ₽.
+            Тот же бюджет, тот же поток заявок, средний чек 15 000 ₽</p>
           </div>
         </div>
-        <div class="total">
-          <span class="sum">+1 908 000 ₽</span>
-          <p>прогноз на год, если темп сохранится: было 3,8 млн ₽, станет 5,7 млн ₽.
-          Тот же бюджет, тот же поток заявок, средний чек 15 000 ₽</p>
+
+        <div class="mpart">
+          <div class="mpart-head"><span class="mnum">Б</span> Работа с базой — клиенты, которые покупали и пропали</div>
+          <div class="money-grid">
+            <div class="mcell">
+              <div class="t">Найдено клиентов вне задач</div>
+              <div class="v">2 426</div>
+              <div class="d">с ними никто не связывался — скрипт нашел всех за 2 минуты</div>
+            </div>
+            <div class="mcell">
+              <div class="t">Из них с высоким чеком</div>
+              <div class="v">38</div>
+              <div class="d">не были в клинике больше года — и об этом никто не знал</div>
+            </div>
+            <div class="mcell">
+              <div class="t">Потенциал этой базы</div>
+              <div class="v">2 183 400 ₽</div>
+              <div class="d">при осторожном возврате 3% и двух визитах за год</div>
+            </div>
+          </div>
+          <div class="total">
+            <span class="sum">≈182 000 ₽</span>
+            <p>в месяц сейчас просто не доходят до кассы этой клиники.
+            <a href="#sleeping-calc">Подставьте свою базу в калькулятор ↓</a></p>
+          </div>
         </div>
       </div>
       <div class="src">Цифры фактические: бюджет и поток заявок — среднемесячные за май–июль,
-      конверсия — замер до и после запуска. Замер продолжается, годовые цифры — прогноз
-      при сохранении темпа, а не обещание</div>
+      конверсия — замер до и после запуска цепочки, база — отчет скрипта. Замер продолжается:
+      годовые цифры и потенциал базы — прогноз и расчет, а не обещание</div>
     </div>
 
     <div class="sol-group reveal">
@@ -503,7 +551,7 @@
       <div class="sol-cards">
         <div class="sol" data-benefit="revenue">
           <div class="top"><span class="niche">Клиника</span><span class="badge live">работает у клиента</span></div>
-          <h4>Цепочка дожима заявок</h4>
+          <h4>Цепочка дожима первички</h4>
           <p>Регламент и сценарии на каждый исход звонка: недозвон, «подумаю», перенос.
           Сообщения, напоминания и кейсы уходят сами — ни одна заявка не остается
           без следующего шага</p>
@@ -650,7 +698,7 @@
       знакомство, у кого сбился ритм покупок — напоминание, спящему — персональный повод вернуться</p>
       <p class="txt">Подставьте свои цифры и посчитайте, во сколько спящая база обходится вам:</p>
 
-      <div class="calc">
+      <div class="calc" id="sleeping-calc">
         <div class="calc-top">
           <div class="calc-in">
             <div class="field">
