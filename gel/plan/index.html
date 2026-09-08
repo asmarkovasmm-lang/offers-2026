@@ -104,6 +104,15 @@ header.hero::before{content:"";position:absolute;inset:auto auto -40% -18%;width
   color:var(--plum);line-height:1}
 .tot p{font-size:14px;color:var(--ink-2);margin-top:11px;line-height:1.5}
 .tot ul{margin:11px 0 0;padding-left:19px}
+.sup{margin-top:17px;padding-top:15px;border-top:1px solid var(--line)}
+.sup .cap2{font-size:13px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+.sup .sub{font-size:13px;color:var(--ink-3);margin:3px 0 10px;line-height:1.45}
+.sup-row{display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+  font-size:14px;color:var(--ink-2);padding:7px 0}
+.sup-row+.sup-row{border-top:1px dashed var(--line)}
+.sup-row b{font-weight:800;color:var(--ink);white-space:nowrap}
+.sup-row.free{color:var(--ink)}
+.sup-row.free b{color:var(--rose)}
 .tot li{font-size:14px;color:var(--ink-2);margin-bottom:4px}
 
 .pay{background:linear-gradient(150deg,var(--plum-d),var(--plum));color:#fff;border-radius:var(--r);
@@ -156,7 +165,7 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:54ch;margin-inlin
   <div class="wrap">
     <p class="eyebrow rv in">Производство гель-лаков</p>
     <h1 class="rv in d1">Система касаний<br><span>дорожная карта</span></h1>
-    <p class="sub rv in d2">15–20 рабочих дней на реализацию и две недели обкатки на живых людях.
+    <p class="sub rv in d2">15–20 рабочих дней на реализацию и 2 недели обкатки на живых людях.
       Первая часть заканчивается тем, что вы впервые видите свою базу целиком.</p>
     <div class="pills">
       <span class="pill rv in d2"><b>15–20 дней</b> на реализацию</span>
@@ -238,7 +247,7 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:54ch;margin-inlin
         <div class="step-l">
           <div class="n">2</div>
           <h3>Запуск, обкатка и обучение</h3>
-          <div class="wk">Две недели после реализации</div>
+          <div class="wk">2 недели после реализации</div>
           <div class="pr"><s>35 000 ₽</s>10 000 ₽</div>
         </div>
         <div class="step-r">
@@ -281,9 +290,14 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:54ch;margin-inlin
         <b class="big">2 900–3 300 ₽</b>
         <p>Подписка на платформу, платите напрямую сервису. Это единственный
           обязательный платеж.</p>
-        <ul>
-          <li>Ведение и поддержка — 15 000 ₽/мес, по желанию</li>
-        </ul>
+        <div class="sup">
+          <div class="cap2">Ведение и поддержка</div>
+          <p class="sub">Наблюдаю за сценариями, правлю тексты, добавляю новые поводы
+            под сезон, разбираю, что сработало.</p>
+          <div class="sup-row free"><span>Первый месяц</span><b>бесплатно</b></div>
+          <div class="sup-row"><span>Следующие 3 месяца</span><b>5 000 ₽/мес</b></div>
+          <div class="sup-row"><span>Дальше</span><b>по согласованию</b></div>
+        </div>
       </div>
     </div>
 
@@ -332,7 +346,7 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:54ch;margin-inlin
   <div class="wrap">
     <h2>Начинаем с первого блока</h2>
     <p>Три-четыре рабочих недели — и у вас есть база, работающие сценарии и бот
-      у менеджера. Дальше две недели обкатки, чтобы система училась на живых ответах.</p>
+      у менеджера. Дальше 2 недели обкатки, чтобы система училась на живых ответах.</p>
     <div class="btns">
       <a class="btn btn-w" href="https://t.me/nastya_mgh">Написать в Telegram</a>
       <a class="btn btn-o" href="tel:+79519403338">+7 951 940-33-38</a>
