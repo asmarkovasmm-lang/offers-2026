@@ -133,6 +133,36 @@
     background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.14);
     border-radius:18px;padding:28px 26px;display:flex;flex-direction:column;gap:10px;
   }
+  .out-card .icon{height:58px;display:flex;align-items:flex-end;margin-bottom:2px}
+
+  /* значок: часы с бегущей стрелкой */
+  .hand-m{transform-origin:27px 27px;animation:spin 2.2s linear infinite}
+  .hand-h{transform-origin:27px 27px;animation:spin 13.2s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* значок: толпа, головы загораются по очереди */
+  .person{opacity:.3;animation:lightup 3s infinite}
+  .p1{animation-delay:0s}.p2{animation-delay:.5s}.p3{animation-delay:1s}
+  .p4{animation-delay:1.5s}.p5{animation-delay:2s}.p6{animation-delay:2.5s}
+  @keyframes lightup{
+    0%,24%{opacity:.3}
+    8%{opacity:1}
+    100%{opacity:.3}
+  }
+
+  /* значок: кривая статистики рисует себя */
+  .curve{stroke-dasharray:100;stroke-dashoffset:100;animation:draw 3.4s ease-in-out infinite}
+  @keyframes draw{
+    0%{stroke-dashoffset:100}
+    55%,82%{stroke-dashoffset:0}
+    100%{stroke-dashoffset:-100}
+  }
+  .curve-dot{opacity:0;animation:dotpop 3.4s ease-in-out infinite}
+  @keyframes dotpop{
+    0%,50%{opacity:0}
+    58%,80%{opacity:1}
+    90%,100%{opacity:0}
+  }
   .out-card .big{font-family:var(--display);font-weight:800;font-size:clamp(26px,3vw,38px);color:#fff;line-height:1.05}
   .out-card .name{font-size:15.5px;font-weight:600;color:#F3DEE2}
   .out-card .txt{font-size:14px;color:#C99AA5}
@@ -213,6 +243,55 @@
   .hours tr.total td{background:var(--wine);color:#F3DEE2;font-weight:600}
   .hours tr.total td.now{color:#fff}
   .hours .note{margin-top:18px;font-size:13.5px;color:var(--ink-soft);max-width:720px}
+
+  /* ---------- калькулятор ---------- */
+  .calc{
+    background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  }
+  .calc-top{display:grid;grid-template-columns:1fr}
+  @media(min-width:860px){.calc-top{grid-template-columns:1.05fr .95fr}}
+  .calc-in{padding:clamp(22px,2.8vw,34px)}
+  .calc-out{
+    padding:clamp(22px,2.8vw,34px);background:var(--wine);color:#F3DEE2;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .field{margin-bottom:22px}
+  .field:last-child{margin-bottom:0}
+  .field label{
+    display:flex;justify-content:space-between;gap:12px;
+    font-size:14px;color:var(--ink-soft);margin-bottom:10px;
+  }
+  .field label b{color:var(--wine);font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+  input[type=range]{
+    width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:100px;
+    background:var(--blush);outline:none;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;width:22px;height:22px;border-radius:50%;
+    background:var(--wine);cursor:pointer;border:3px solid #fff;
+    box-shadow:0 2px 8px rgba(77,0,17,.3);transition:transform .15s;
+  }
+  input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.12)}
+  input[type=range]::-moz-range-thumb{
+    width:22px;height:22px;border-radius:50%;background:var(--wine);
+    cursor:pointer;border:3px solid #fff;box-shadow:0 2px 8px rgba(77,0,17,.3);
+  }
+  .calc-out .cap{font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#D9A0AC}
+  .calc-out .big{
+    font-family:var(--display);font-weight:800;color:#fff;
+    font-size:clamp(30px,4.6vw,52px);letter-spacing:-.02em;margin-top:10px;
+    font-variant-numeric:tabular-nums;
+  }
+  .calc-out .per{font-size:14px;color:#E8C7CE;margin-top:12px}
+  .calc-out .year{
+    margin-top:18px;padding-top:16px;border-top:1px dashed rgba(255,255,255,.3);
+    font-size:14.5px;color:#E8C7CE;
+  }
+  .calc-out .year b{color:#fff;font-weight:600;font-size:19px;font-variant-numeric:tabular-nums}
+  .calc-note{
+    padding:15px clamp(22px,2.8vw,34px);background:var(--blush);
+    border-top:1px solid var(--line);font-size:13px;color:var(--ink-soft);
+  }
 
   /* ---------- принципы ---------- */
   .principles .grid{grid-template-columns:repeat(2,1fr)}
@@ -349,6 +428,18 @@
     </div>
     <div class="grid">
       <div class="out-card">
+        <div class="icon">
+          <svg width="54" height="54" viewBox="0 0 54 54" aria-hidden="true">
+            <circle cx="27" cy="27" r="24" fill="none" stroke="#D9A0AC" stroke-width="2.5"/>
+            <line x1="27" y1="5.5" x2="27" y2="9.5" stroke="#D9A0AC" stroke-width="2" stroke-linecap="round"/>
+            <line x1="48.5" y1="27" x2="44.5" y2="27" stroke="#D9A0AC" stroke-width="2" stroke-linecap="round"/>
+            <line x1="27" y1="48.5" x2="27" y2="44.5" stroke="#D9A0AC" stroke-width="2" stroke-linecap="round"/>
+            <line x1="5.5" y1="27" x2="9.5" y2="27" stroke="#D9A0AC" stroke-width="2" stroke-linecap="round"/>
+            <line class="hand-h" x1="27" y1="27" x2="27" y2="17" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/>
+            <line class="hand-m" x1="27" y1="27" x2="27" y2="11.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="27" cy="27" r="2.4" fill="#fff"/>
+          </svg>
+        </div>
         <div class="big">−60 часов</div>
         <div class="name">механической работы в месяц</div>
         <div class="txt">Расчет по процессам одной клиники: постановка задач, касания по заявкам,
@@ -356,6 +447,16 @@
         сотрудника, возвращенных живым клиентам.</div>
       </div>
       <div class="out-card">
+        <div class="icon">
+          <svg width="96" height="54" viewBox="0 0 96 54" aria-hidden="true" fill="#fff">
+            <g class="person p1"><circle cx="14" cy="10" r="6"/><path d="M4 26c0-5.5 4.5-8 10-8s10 2.5 10 8v1H4z"/></g>
+            <g class="person p2"><circle cx="48" cy="10" r="6"/><path d="M38 26c0-5.5 4.5-8 10-8s10 2.5 10 8v1H38z"/></g>
+            <g class="person p3"><circle cx="82" cy="10" r="6"/><path d="M72 26c0-5.5 4.5-8 10-8s10 2.5 10 8v1H72z"/></g>
+            <g class="person p4"><circle cx="31" cy="36" r="6"/><path d="M21 52c0-5.5 4.5-8 10-8s10 2.5 10 8v1H21z"/></g>
+            <g class="person p5"><circle cx="65" cy="36" r="6"/><path d="M55 52c0-5.5 4.5-8 10-8s10 2.5 10 8v1H55z"/></g>
+            <g class="person p6"><circle cx="82" cy="36" r="6"/><path d="M72 52c0-5.5 4.5-8 10-8s10 2.5 10 8v1H72z"/></g>
+          </svg>
+        </div>
         <div class="big">до 800 000 ₽</div>
         <div class="name">в год из спящей базы</div>
         <div class="txt">У производителя косметики для мастеров из 1 000 клиентов регулярно
@@ -363,6 +464,15 @@
         всего 5% — около 800 000 ₽ в год. Расчет по цифрам клиента, не обещание.</div>
       </div>
       <div class="out-card">
+        <div class="icon">
+          <svg width="96" height="54" viewBox="0 0 96 54" aria-hidden="true">
+            <line x1="4" y1="50" x2="92" y2="50" stroke="#D9A0AC" stroke-width="1.5" opacity=".5"/>
+            <line x1="4" y1="50" x2="4" y2="4" stroke="#D9A0AC" stroke-width="1.5" opacity=".5"/>
+            <path class="curve" pathLength="100" d="M8 44 C 22 42, 26 30, 38 31 S 56 22, 66 16 S 84 10, 90 7"
+              fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+            <circle class="curve-dot" cx="90" cy="7" r="3.4" fill="#fff"/>
+          </svg>
+        </div>
         <div class="big">1 экран</div>
         <div class="name">вместо ощущений — для решений</div>
         <div class="txt">Дашборд руководителя: расходы, заявки, стоимость записи, окупаемость
@@ -554,11 +664,55 @@
   </div>
 </section>
 
+<!-- калькулятор -->
+<section class="calc-sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">05 · ПОСЧИТАЙТЕ СЕБЯ</div>
+      <h2>Спящая база — это сколько в деньгах?</h2>
+      <p class="sec-sub">Ровно тот вопрос, на который без системы нет ответа. Подвигайте
+      ползунки под свои цифры — расчет пересчитается сам.</p>
+    </div>
+    <div class="calc reveal">
+      <div class="calc-top">
+        <div class="calc-in">
+          <div class="field">
+            <label>Клиентов в базе, с которыми никто не связывается <b><span id="v-base">2 426</span></b></label>
+            <input type="range" id="s-base" min="200" max="5000" step="1" value="2426">
+          </div>
+          <div class="field">
+            <label>Вернется после адресной работы <b><span id="v-conv">3</span>%</b></label>
+            <input type="range" id="s-conv" min="1" max="15" step="1" value="3">
+          </div>
+          <div class="field">
+            <label>Средний чек <b><span id="v-check">15 000</span> ₽</b></label>
+            <input type="range" id="s-check" min="1000" max="40000" step="500" value="15000">
+          </div>
+          <div class="field">
+            <label>Покупок вернувшегося за год <b><span id="v-visits">2</span></b></label>
+            <input type="range" id="s-visits" min="1" max="6" step="1" value="2">
+          </div>
+        </div>
+        <div class="calc-out">
+          <div class="cap">Не заработано на этой базе за год</div>
+          <div class="big"><span id="out-sum">0</span> ₽</div>
+          <p class="per">при возврате <span id="out-people">73</span> человек из базы</p>
+          <div class="year">Это <b id="out-month">0 ₽</b> в месяц, которые сейчас
+          просто не доходят до кассы.</div>
+        </div>
+      </div>
+      <p class="calc-note">Значения по умолчанию — из реального проекта: 2 426 клиентов, до которых
+      у клиники не доходили руки, нашел скрипт из первого экрана. Возврат 3% — намеренно осторожная
+      оценка: адресная работа с человеком, который у вас уже покупал, обычно дает больше.</p>
+    </div>
+  </div>
+</section>
+
 <!-- принципы -->
 <section class="principles">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="sec-num">05 · КАК Я РАБОТАЮ</div>
+      <div class="sec-num">06 · КАК Я РАБОТАЮ</div>
       <h2>Четыре принципа, из-за которых это приживается</h2>
       <p class="sec-sub">Автоматизация чаще умирает не от плохого кода, а от того, что ей не пользуются.</p>
     </div>
@@ -591,7 +745,7 @@
 <section class="steps">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="sec-num">06 · КАК НАЧАТЬ</div>
+      <div class="sec-num">07 · КАК НАЧАТЬ</div>
       <h2>Старт без домашней работы</h2>
       <p class="sec-sub">Не нужно описывать процессы и готовить выгрузки. Достаточно 30 минут разговора.</p>
     </div>
@@ -626,7 +780,7 @@
 <section class="cases">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="sec-num">07 · ПОСМОТРЕТЬ ВБЛИЗИ</div>
+      <div class="sec-num">08 · ПОСМОТРЕТЬ ВБЛИЗИ</div>
       <h2>Страница с разборами решений</h2>
     </div>
     <a class="proof-link reveal" href="https://asmarkovasmm-lang.github.io/offers-2026/automation/" target="_blank">
@@ -692,6 +846,31 @@
     });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // калькулятор спящей базы
+  const ids = ['base','conv','check','visits'];
+  const els = {}, lab = {};
+  ids.forEach(k=>{ els[k]=document.getElementById('s-'+k); lab[k]=document.getElementById('v-'+k); });
+  const out = {
+    sum: document.getElementById('out-sum'),
+    people: document.getElementById('out-people'),
+    month: document.getElementById('out-month')
+  };
+  const sp = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+  function recalc(){
+    const base=+els.base.value, conv=+els.conv.value,
+          check=+els.check.value, visits=+els.visits.value;
+    lab.base.textContent=sp(base);
+    lab.conv.textContent=conv;
+    lab.check.textContent=sp(check);
+    lab.visits.textContent=visits;
+    const people = base*conv/100;
+    out.people.textContent = sp(people);
+    out.sum.textContent = sp(people*check*visits);
+    out.month.textContent = sp(people*check*visits/12)+' ₽';
+  }
+  ids.forEach(k=>els[k].addEventListener('input', recalc));
+  recalc();
 </script>
 </body>
 </html>
