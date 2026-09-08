@@ -170,6 +170,29 @@
   }
   .sol.hide{display:none}
   .sol-group.hide{display:none}
+
+  /* money-блок фильтра «Рост выручки» */
+  .money{display:none;margin-bottom:40px;border-radius:20px;overflow:hidden;
+    background:var(--wine);color:#F3DEE2}
+  .money.show{display:block;animation:solin .4s ease both}
+  .money .inner{padding:clamp(24px,3vw,38px)}
+  .money .cap{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#D9A0AC;font-weight:600;margin-bottom:6px}
+  .money h3{font-family:var(--display);font-weight:600;font-size:clamp(18px,2.4vw,26px);color:#fff;margin-bottom:22px}
+  .money-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:860px){.money-grid{grid-template-columns:1fr}}
+  .mcell{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:20px 22px}
+  .mcell .t{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#D9A0AC;font-weight:600}
+  .mcell .v{font-family:var(--display);font-weight:800;font-size:clamp(21px,2.4vw,29px);color:#fff;margin:8px 0 4px;white-space:nowrap}
+  .mcell .v .arr{color:var(--gold)}
+  .mcell .d{font-size:13px;color:#C99AA5}
+  .money .total{
+    margin-top:14px;border-radius:14px;padding:20px 24px;
+    background:linear-gradient(120deg, var(--gold), #E8CB8C);color:var(--wine-deep);
+    display:flex;gap:18px;align-items:center;flex-wrap:wrap;
+  }
+  .money .total .sum{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.2vw,36px);white-space:nowrap}
+  .money .total p{font-size:14px;max-width:560px}
+  .money .src{padding:13px clamp(24px,3vw,38px);background:rgba(0,0,0,.18);font-size:12.5px;color:#C99AA5}
   @keyframes solin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
   .sol.pop{animation:solin .35s ease both}
 
@@ -386,7 +409,7 @@
       <a class="btn-ghost" href="#solutions">Что уже разработано ↓</a>
     </div>
     <div class="hero-chips">
-      <span class="chip"><b>12</b> готовых решений</span>
+      <span class="chip"><b>13</b> готовых решений</span>
       <span class="chip"><b>5</b> ниш: от медицины до автосервиса</span>
       <span class="chip"><b>11</b> лет в digital</span>
     </div>
@@ -428,9 +451,49 @@
       <span><span class="badge ready">готовое решение — ждет внедрения</span></span>
     </div>
 
+    <div class="money" id="money-proof">
+      <div class="inner">
+        <div class="cap">Живой замер · стоматология</div>
+        <h3>Что дала цепочка дожима заявок — при том же бюджете и том же потоке заявок</h3>
+        <div class="money-grid">
+          <div class="mcell">
+            <div class="t">Конверсия из заявки в запись</div>
+            <div class="v">20% <span class="arr">→</span> 30%</div>
+            <div class="d">замер за первый месяц работы цепочки</div>
+          </div>
+          <div class="mcell">
+            <div class="t">Выручка с рекламы в месяц</div>
+            <div class="v">+159 000 ₽</div>
+            <div class="d">318 000 → 477 000 ₽, расход на рекламу не менялся</div>
+          </div>
+          <div class="mcell">
+            <div class="t">Записей из тех же заявок</div>
+            <div class="v">21 <span class="arr">→</span> 32</div>
+            <div class="d">каждая запись подешевела с 8 585 до 5 723 ₽</div>
+          </div>
+        </div>
+        <div class="total">
+          <span class="sum">+1 908 000 ₽</span>
+          <p>прогноз на год, если темп сохранится: было 3,8 млн ₽, станет 5,7 млн ₽.
+          Тот же бюджет, тот же поток заявок, средний чек 15 000 ₽.</p>
+        </div>
+      </div>
+      <div class="src">Цифры фактические: бюджет и поток заявок — среднемесячные за май–июль,
+      конверсия — замер до и после запуска. Замер продолжается, годовые цифры — прогноз
+      при сохранении темпа, а не обещание.</div>
+    </div>
+
     <div class="sol-group reveal">
-      <h3><span class="ic">01</span>Клиентская база под контролем</h3>
+      <h3><span class="ic">01</span>Заявки и клиентская база под контролем</h3>
       <div class="sol-cards">
+        <div class="sol" data-benefit="revenue">
+          <div class="top"><span class="niche">Стоматология</span><span class="badge live">работает у клиента</span></div>
+          <h4>Цепочка дожима заявок</h4>
+          <p>Регламент и сценарии на каждый исход звонка: недозвон, «подумаю», перенос.
+          Сообщения, напоминания и кейсы уходят сами — ни одна заявка не остается
+          без следующего шага.</p>
+          <div class="fact">+159 000 ₽ в месяц с той же рекламы</div>
+        </div>
         <div class="sol" data-benefit="time">
           <div class="top"><span class="niche">Клиника</span><span class="badge live">работает у клиента</span></div>
           <h4>Проверка базы по двум системам</h4>
@@ -444,14 +507,14 @@
           <p>Сегменты, поводы, расписание: новичку — приветствие после первого визита, подошел
           срок ТО или сезон шин — напоминание, спящим — возвращение. Ответил человек — диалог
           сразу уходит приемщику.</p>
-          <div class="fact">1 000 спящих → очередь на возврат</div>
+          <div class="fact">потенциал ≈700 000 ₽ в год при возврате 5% спящих</div>
         </div>
         <div class="sol" data-benefit="revenue">
           <div class="top"><span class="niche">Юридическая практика</span><span class="badge ready">готовое решение</span></div>
           <h4>База из договоров + автопоздравления</h4>
           <p>Программа вытягивает данные из сотен договоров Word в единую таблицу. Дальше система
           сама поздравляет клиентов с днем рождения — с учетом требований 152-ФЗ и закона о рекламе.</p>
-          <div class="fact">500 договоров → база без ручного ввода</div>
+          <div class="fact">повод вернуться — каждому клиенту раз в год, без рекламы</div>
         </div>
       </div>
     </div>
@@ -491,7 +554,7 @@
           <h4>ИИ-агент обработки заявок</h4>
           <p>Читает задачи по клиентам, историю переписки и прайс — готовит персональные сообщения:
           с нужной процедурой, врачом и датами. Человек проверяет и отправляет.</p>
-          <div class="fact">90% сообщений уходят без правок</div>
+          <div class="fact">90% без правок — заявка не успевает остыть</div>
         </div>
         <div class="sol" data-benefit="revenue">
           <div class="top"><span class="niche">Автосервис</span><span class="badge ready">готовое решение</span></div>
@@ -798,6 +861,7 @@
     fbtns.forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     const f = btn.dataset.filter;
+    document.getElementById('money-proof').classList.toggle('show', f==='revenue');
     document.querySelectorAll('.sol').forEach(card=>{
       const show = f==='all' || card.dataset.benefit===f;
       card.classList.toggle('hide', !show);
