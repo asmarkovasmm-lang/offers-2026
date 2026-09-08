@@ -501,7 +501,7 @@ a.contact:hover{opacity:.72}
 }
 
 /* MANKA-ребрендинг */
-.hero-stage{min-height:auto;padding:clamp(34px,5vw,72px) 0 10px}
+.hero-stage{min-height:auto;padding:clamp(44px,6vw,84px) 0 10px;max-width:none}
 .manka-hero{position:relative;left:auto;top:auto;pointer-events:auto}
 .manka-word{font-weight:300;font-size:clamp(76px,15.5vw,236px);color:var(--acid);
   line-height:.9;letter-spacing:-.02em;text-shadow:none}
@@ -514,6 +514,26 @@ a.contact:hover{opacity:.72}
 .nav-alt{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);
   text-decoration:none;margin-right:18px;opacity:.75}
 .nav-alt:hover{opacity:1;color:var(--acid)}
+.manka-word{margin-left:-.05em}
+.l2-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;
+  margin-top:clamp(16px,2vw,26px);pointer-events:auto}
+.l2-row .l2{margin-top:0;align-self:center;padding-right:0}
+.l2-btn{
+  display:inline-flex;gap:12px;align-items:center;
+  font-family:var(--body);font-weight:600;font-size:11px;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--acid);text-decoration:none;
+  border:1.5px solid var(--acid);padding:12px 20px;
+  animation:btnGlow 1.7s ease .9s 3;
+  transition:background .2s,color .2s;
+}
+.l2-btn i{font-style:normal;font-size:14px;transition:transform .2s}
+.l2-btn:hover{background:var(--acid);color:#0B0B08}
+.l2-btn:hover i{transform:translate(3px,-3px)}
+@keyframes btnGlow{
+  0%,100%{box-shadow:0 0 0 0 rgba(193,255,14,0)}
+  50%{box-shadow:0 0 30px 3px rgba(193,255,14,.55)}
+}
 </style>
 </head>
 <body>
@@ -543,7 +563,10 @@ a.contact:hover{opacity:.72}
       <div class="hero-type rv in manka-hero" style="transition-delay:.1s">
         <span class="ai manka-word">MANKA<i class="reg">®</i></span>
         <span class="l1">digital-маркетинг</span>
-        <span class="l2">AI native · автоматизация и разработка</span>
+        <div class="l2-row">
+          <span class="l2">AI native</span>
+          <a class="l2-btn" href="../start/">автоматизация и разработка <i>↗</i></a>
+        </div>
       </div>
     </div>
     <p class="hero-lead rv" style="transition-delay:.18s">Маркетинг, который считается в деньгах,
