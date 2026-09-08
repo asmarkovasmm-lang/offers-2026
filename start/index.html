@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Маркетинг в цифрах — Анастасия Маркова</title>
-<meta name="description" content="Digital-маркетинг + автоматизация в одних руках. Окупаемость рекламы ×5,7, обработка базы за 2 минуты вместо 2,5 недель. Бесплатный разбор за 30 минут.">
-<meta property="og:title" content="Сколько стоит ваша заявка? Прямо сейчас.">
-<meta property="og:description" content="Маркетинг, где виден каждый рубль: реклама, контент, боты и отчеты в одних руках. Цифры реальных проектов внутри. Бесплатный разбор за 30 минут.">
+<title>Автоматизация в цифрах — Анастасия Маркова</title>
+<meta name="description" content="Разработка и автоматизация для малого бизнеса: боты, скрипты, ИИ-агенты, дашборды. База 2 614 строк за 2 минуты вместо 5 месяцев ручной работы. Бесплатный разбор за 30 минут.">
+<meta property="og:title" content="Два менеджера — 2,5 недели. Скрипт — 2 минуты.">
+<meta property="og:description" content="Разработка и автоматизация: боты, ИИ-агенты, дашборды. Освобождаю сотрудникам до 60 часов в месяц и показываю бизнес в цифрах. Бесплатный разбор за 30 минут.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,6 +23,9 @@
     --blush:#F0E2E0;
     --line:#E5D6D3;
     --ok:#1E7A46;
+    --ok-bg:#E4F1E9;
+    --amber:#8A5A00;
+    --amber-bg:#F6ECD9;
     --display:'Unbounded', 'Arial Black', sans-serif;
     --body:'Golos Text', 'Segoe UI', Tahoma, sans-serif;
   }
@@ -36,7 +39,6 @@
     -webkit-font-smoothing:antialiased;
   }
   ::selection{background:var(--wine);color:var(--paper)}
-
   .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 
   /* ---------- топбар ---------- */
@@ -46,16 +48,9 @@
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
   }
-  .topbar .wrap{
-    display:flex;align-items:center;gap:16px;
-    padding-top:14px;padding-bottom:14px;
-  }
+  .topbar .wrap{display:flex;align-items:center;gap:16px;padding-top:14px;padding-bottom:14px}
   .brand{font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.02em}
-  .status{
-    display:flex;align-items:center;gap:8px;
-    font-size:12.5px;color:var(--ink-soft);
-    margin-left:auto;
-  }
+  .status{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-soft);margin-left:auto}
   .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);
     box-shadow:0 0 0 0 rgba(30,122,70,.5);animation:pulse 2s infinite}
   @keyframes pulse{
@@ -64,8 +59,7 @@
     100%{box-shadow:0 0 0 0 rgba(30,122,70,0)}
   }
   .tg-btn{
-    font-family:var(--body);font-weight:600;font-size:13.5px;
-    background:var(--wine);color:#fff;text-decoration:none;
+    font-weight:600;font-size:13.5px;background:var(--wine);color:#fff;text-decoration:none;
     padding:9px 18px;border-radius:100px;white-space:nowrap;
     transition:background .2s, transform .15s;
   }
@@ -73,28 +67,21 @@
   @media(max-width:640px){.status span.txt{display:none}}
 
   /* ---------- хиро ---------- */
-  .hero{padding:88px 0 64px;position:relative;overflow:hidden}
+  .hero{padding:84px 0 60px;position:relative;overflow:hidden}
   .hero::before{
     content:'';position:absolute;right:-180px;top:-120px;
     width:520px;height:520px;border-radius:50%;
     background:radial-gradient(circle, var(--blush) 0%, transparent 68%);
     pointer-events:none;
   }
-  .kicker{
-    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--wine);font-weight:600;margin-bottom:22px;
-  }
+  .kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--wine);font-weight:600;margin-bottom:22px}
   h1{
     font-family:var(--display);font-weight:800;
-    font-size:clamp(34px, 5.6vw, 62px);
-    line-height:1.06;letter-spacing:-.01em;
-    max-width:820px;
+    font-size:clamp(30px, 5vw, 56px);
+    line-height:1.08;letter-spacing:-.01em;max-width:860px;
   }
   h1 .accent{color:var(--wine)}
-  .hero p.lead{
-    max-width:640px;font-size:18px;color:var(--ink-soft);
-    margin:26px 0 36px;
-  }
+  .hero p.lead{max-width:660px;font-size:17.5px;color:var(--ink-soft);margin:26px 0 34px}
   .hero p.lead b{color:var(--ink);font-weight:600}
   .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
   .btn-main{
@@ -103,170 +90,181 @@
     padding:17px 32px;border-radius:100px;
     transition:background .2s, transform .15s, box-shadow .2s;
   }
-  .btn-main:hover{background:var(--wine-deep);transform:translateY(-2px);
-    box-shadow:0 12px 28px rgba(77,0,17,.22)}
-  .btn-ghost{
-    font-size:14.5px;font-weight:500;color:var(--wine);
-    text-decoration:none;padding:16px 6px;border-bottom:1px solid transparent;
-  }
+  .btn-main:hover{background:var(--wine-deep);transform:translateY(-2px);box-shadow:0 12px 28px rgba(77,0,17,.22)}
+  .btn-ghost{font-size:14.5px;font-weight:500;color:var(--wine);text-decoration:none;padding:16px 6px;border-bottom:1px solid transparent}
   .btn-ghost:hover{border-color:var(--wine)}
+
+  /* дуэль цифр в хиро */
+  .duel{
+    margin-top:52px;display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch;
+    max-width:760px;
+  }
+  @media(max-width:640px){.duel{grid-template-columns:1fr;max-width:100%}}
+  .duel .side{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px;
+  }
+  .duel .side.win{border-color:var(--wine);background:var(--wine);color:#F3DEE2}
+  .duel .side .t{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ink-soft)}
+  .duel .side.win .t{color:#D9A0AC}
+  .duel .side .v{font-family:var(--display);font-weight:800;font-size:clamp(24px,3vw,34px);margin:8px 0 4px}
+  .duel .side.win .v{color:#fff}
+  .duel .side .d{font-size:13.5px;color:var(--ink-soft)}
+  .duel .side.win .d{color:#E8C7CE}
+  .duel .vs{
+    align-self:center;font-family:var(--display);font-weight:800;font-size:18px;color:var(--wine);
+  }
+  @media(max-width:640px){.duel .vs{justify-self:center}}
 
   /* ---------- секции ---------- */
   section{padding:72px 0}
-  .sec-head{margin-bottom:40px;max-width:720px}
-  .sec-num{
-    font-family:var(--display);font-size:12px;font-weight:600;
-    color:var(--wine);letter-spacing:.18em;margin-bottom:14px;
-  }
-  h2{
-    font-family:var(--display);font-weight:600;
-    font-size:clamp(24px, 3.4vw, 38px);line-height:1.15;
-  }
+  .sec-head{margin-bottom:40px;max-width:760px}
+  .sec-num{font-family:var(--display);font-size:12px;font-weight:600;color:var(--wine);letter-spacing:.18em;margin-bottom:14px}
+  h2{font-family:var(--display);font-weight:600;font-size:clamp(24px,3.4vw,38px);line-height:1.15}
   .sec-sub{margin-top:14px;color:var(--ink-soft);font-size:16px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:900px){.grid{grid-template-columns:1fr}}
 
-  /* ---------- дашборд ---------- */
-  .dash{background:var(--wine);color:var(--paper);position:relative}
-  .dash .sec-num{color:#D9A0AC}
-  .dash .sec-sub{color:#E8C7CE}
-  .dash h2{color:#fff}
-  .grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+  /* ---------- три результата ---------- */
+  .outcomes{background:var(--wine);color:var(--paper)}
+  .outcomes .sec-num{color:#D9A0AC}
+  .outcomes h2{color:#fff}
+  .outcomes .sec-sub{color:#E8C7CE}
+  .out-card{
+    background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.14);
+    border-radius:18px;padding:28px 26px;display:flex;flex-direction:column;gap:10px;
   }
-  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:580px){.grid{grid-template-columns:1fr}}
-  .tile{
-    background:rgba(255,255,255,.055);
-    border:1px solid rgba(255,255,255,.14);
-    border-radius:18px;padding:26px 24px 22px;
-    display:flex;flex-direction:column;gap:8px;
-    opacity:0;transform:translateY(18px);
-    transition:opacity .6s ease, transform .6s ease, background .25s;
-  }
-  .tile:hover{background:rgba(255,255,255,.1)}
-  .tile.on{opacity:1;transform:none}
-  .tile .tag{
-    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-    color:#D9A0AC;font-weight:600;
-  }
-  .tile .num{
-    font-family:var(--display);font-weight:800;
-    font-size:clamp(30px, 3.2vw, 42px);line-height:1;color:#fff;
-    margin-top:6px;white-space:nowrap;
-  }
-  .tile .what{font-size:14.5px;color:#F3DEE2;font-weight:500}
-  .tile .how{font-size:13px;color:#C99AA5;margin-top:auto;padding-top:10px}
-  .tile svg{margin-top:6px;opacity:.85}
-  .dash-note{
-    margin-top:28px;font-size:13.5px;color:#C99AA5;
-    display:flex;gap:10px;align-items:baseline;
-  }
+  .out-card .big{font-family:var(--display);font-weight:800;font-size:clamp(26px,3vw,38px);color:#fff;line-height:1.05}
+  .out-card .name{font-size:15.5px;font-weight:600;color:#F3DEE2}
+  .out-card .txt{font-size:14px;color:#C99AA5}
+  .outcomes .note{margin-top:24px;font-size:13.5px;color:#C99AA5}
 
-  /* ---------- роли ---------- */
-  .roles .grid{grid-template-columns:repeat(3,1fr);align-items:stretch}
-  @media(max-width:900px){.roles .grid{grid-template-columns:1fr}}
-  .role{
-    background:var(--card);border:1px solid var(--line);
-    border-radius:18px;padding:30px 28px;
-    display:flex;flex-direction:column;gap:14px;
+  /* ---------- симптомы ---------- */
+  .symptoms .grid{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:800px){.symptoms .grid{grid-template-columns:1fr}}
+  .sym{
+    display:flex;gap:18px;align-items:flex-start;
+    background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;
+  }
+  .sym .q{
+    font-family:var(--display);font-weight:800;font-size:22px;color:var(--wine);
+    flex:none;line-height:1.2;
+  }
+  .sym p{font-size:15px;color:var(--ink-soft)}
+  .sym p b{color:var(--ink)}
+  .sym-note{margin-top:26px;font-size:15px;max-width:720px;color:var(--ink-soft)}
+
+  /* ---------- витрина решений ---------- */
+  .solutions{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .sol-group{margin-bottom:44px}
+  .sol-group:last-child{margin-bottom:0}
+  .sol-group h3{
+    font-family:var(--display);font-weight:600;font-size:19px;margin-bottom:18px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .sol-group h3 .ic{
+    width:36px;height:36px;border-radius:10px;background:var(--wine);color:#fff;
+    display:inline-flex;align-items:center;justify-content:center;font-size:16px;flex:none;
+    font-family:var(--body);font-weight:600;
+  }
+  .sol-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:900px){.sol-cards{grid-template-columns:1fr}}
+  .sol{
+    border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--paper);
+    display:flex;flex-direction:column;gap:10px;
     transition:transform .2s, box-shadow .2s;
   }
-  .role:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(77,0,17,.09)}
-  .role .who{
-    font-family:var(--display);font-weight:600;font-size:17px;
+  .sol:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(77,0,17,.08)}
+  .sol .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+  .sol .niche{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--wine);font-weight:600;padding-top:3px}
+  .badge{
+    font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;white-space:nowrap;flex:none;
   }
-  .role .pain{
-    color:var(--wine);font-weight:600;font-size:15px;
-    padding:12px 14px;background:var(--blush);border-radius:10px;
+  .badge.live{background:var(--ok-bg);color:var(--ok)}
+  .badge.ready{background:var(--blush);color:var(--wine)}
+  .badge.test{background:var(--amber-bg);color:var(--amber)}
+  .sol h4{font-size:16px;font-weight:600;line-height:1.3}
+  .sol p{font-size:13.5px;color:var(--ink-soft)}
+  .sol .fact{
+    margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);
+    font-size:13px;font-weight:600;color:var(--wine);
   }
-  .role .gain{font-size:14.5px;color:var(--ink-soft)}
-  .role .gain b{color:var(--ink)}
+  .legend{
+    display:flex;gap:18px;flex-wrap:wrap;margin-bottom:36px;font-size:13px;color:var(--ink-soft);
+    align-items:center;
+  }
 
-  /* ---------- два крыла ---------- */
-  .wings{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .wings-flex{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:26px}
-  @media(max-width:800px){.wings-flex{grid-template-columns:1fr}}
-  .wing{
-    border:1px solid var(--line);border-radius:18px;padding:30px 28px;
-    background:var(--paper);
+  /* ---------- часы ---------- */
+  .hours table{
+    width:100%;border-collapse:collapse;background:var(--card);
+    border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    font-size:14.5px;
   }
-  .wing h3{
-    font-family:var(--display);font-weight:600;font-size:18px;margin-bottom:16px;
-    display:flex;align-items:center;gap:10px;
+  .hours .tbl-wrap{overflow-x:auto;border-radius:18px}
+  .hours th{
+    text-align:left;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:600;padding:16px 20px;border-bottom:1px solid var(--line);
+    background:var(--card);
   }
-  .wing h3 .ic{
-    width:34px;height:34px;border-radius:9px;background:var(--wine);
-    color:#fff;display:inline-flex;align-items:center;justify-content:center;
-    font-size:16px;flex:none;
+  .hours td{padding:14px 20px;border-bottom:1px solid var(--line);color:var(--ink-soft)}
+  .hours tr:last-child td{border-bottom:none}
+  .hours td:first-child{color:var(--ink);font-weight:500}
+  .hours td.was{white-space:nowrap}
+  .hours td.now{white-space:nowrap;color:var(--ok);font-weight:600}
+  .hours tr.total td{background:var(--wine);color:#F3DEE2;font-weight:600}
+  .hours tr.total td.now{color:#fff}
+  .hours .note{margin-top:18px;font-size:13.5px;color:var(--ink-soft);max-width:720px}
+
+  /* ---------- принципы ---------- */
+  .principles .grid{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:800px){.principles .grid{grid-template-columns:1fr}}
+  .pr{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 28px;
   }
-  .wing ul{list-style:none}
-  .wing li{
-    padding:9px 0 9px 22px;position:relative;
-    font-size:14.5px;color:var(--ink-soft);
-    border-bottom:1px dashed var(--line);
-  }
-  .wing li:last-child{border-bottom:none}
-  .wing li::before{content:'—';position:absolute;left:0;color:var(--wine)}
-  .bridge{
-    border-radius:18px;background:var(--wine);color:#F3DEE2;
-    padding:28px 32px;font-size:16.5px;line-height:1.6;
-  }
-  .bridge b{color:#fff}
+  .pr h3{font-family:var(--display);font-weight:600;font-size:16.5px;margin-bottom:10px;color:var(--wine)}
+  .pr p{font-size:14.5px;color:var(--ink-soft)}
 
   /* ---------- шаги ---------- */
   .steps-flex{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
   @media(max-width:800px){.steps-flex{grid-template-columns:1fr}}
-  .step{
-    border:1px solid var(--line);border-radius:18px;padding:28px;
-    background:var(--card);position:relative;
-  }
+  .step{border:1px solid var(--line);border-radius:18px;padding:28px;background:var(--card)}
   .step .n{
     font-family:var(--display);font-weight:800;font-size:38px;
-    color:var(--blush);-webkit-text-stroke:1.5px var(--wine);
-    line-height:1;margin-bottom:16px;
+    color:var(--blush);-webkit-text-stroke:1.5px var(--wine);line-height:1;margin-bottom:16px;
   }
   .step h3{font-size:16.5px;font-weight:600;margin-bottom:8px}
   .step p{font-size:14px;color:var(--ink-soft)}
   .steps-note{
     margin-top:26px;padding:20px 24px;border-left:3px solid var(--wine);
-    background:var(--card);border-radius:0 14px 14px 0;
-    font-size:15px;max-width:760px;
+    background:var(--card);border-radius:0 14px 14px 0;font-size:15px;max-width:760px;
   }
 
-  /* ---------- кейсы-ссылки ---------- */
-  .case-links{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  @media(max-width:700px){.case-links{grid-template-columns:1fr}}
-  .case-link{
+  /* ---------- доказательства ---------- */
+  .proof-link{
     display:block;text-decoration:none;color:var(--ink);
-    border:1px solid var(--line);border-radius:18px;
-    padding:30px 28px;background:var(--card);
-    transition:transform .2s, box-shadow .2s, border-color .2s;
+    border:1px solid var(--line);border-radius:18px;padding:32px;background:var(--card);
+    transition:transform .2s, box-shadow .2s, border-color .2s;max-width:720px;
   }
-  .case-link:hover{transform:translateY(-3px);border-color:var(--wine);
-    box-shadow:0 14px 30px rgba(77,0,17,.1)}
-  .case-link .cl-tag{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--wine);font-weight:600}
-  .case-link h3{font-family:var(--display);font-weight:600;font-size:19px;margin:12px 0 8px}
-  .case-link p{font-size:14px;color:var(--ink-soft)}
-  .case-link .go{
-    display:inline-block;margin-top:16px;font-weight:600;font-size:14px;color:var(--wine);
-  }
+  .proof-link:hover{transform:translateY(-3px);border-color:var(--wine);box-shadow:0 14px 30px rgba(77,0,17,.1)}
+  .proof-link .cl-tag{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--wine);font-weight:600}
+  .proof-link h3{font-family:var(--display);font-weight:600;font-size:19px;margin:12px 0 8px}
+  .proof-link p{font-size:14px;color:var(--ink-soft)}
+  .proof-link .go{display:inline-block;margin-top:16px;font-weight:600;font-size:14px;color:var(--wine)}
 
   /* ---------- обо мне ---------- */
   .about-flex{
     display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;
-    background:var(--card);border:1px solid var(--line);border-radius:22px;
-    padding:40px;
+    background:var(--card);border:1px solid var(--line);border-radius:22px;padding:40px;
   }
   @media(max-width:700px){.about-flex{grid-template-columns:1fr;padding:30px}}
   .avatar{
-    width:110px;height:110px;border-radius:50%;
-    background:var(--wine);color:#fff;
+    width:110px;height:110px;border-radius:50%;background:var(--wine);color:#fff;
     font-family:var(--display);font-weight:800;font-size:34px;
     display:flex;align-items:center;justify-content:center;
   }
   .about-txt h3{font-family:var(--display);font-weight:600;font-size:20px;margin-bottom:10px}
   .about-txt p{font-size:15px;color:var(--ink-soft);max-width:640px}
   .about-txt p + p{margin-top:10px}
+  .about-txt b{color:var(--ink)}
 
   /* ---------- финал ---------- */
   .final{background:var(--wine-deep);color:#F3DEE2;text-align:center;padding:96px 0}
@@ -279,9 +277,7 @@
   .final p{max-width:560px;margin:0 auto 36px;font-size:16px}
   .final .btn-main{background:#fff;color:var(--wine-deep)}
   .final .btn-main:hover{background:var(--blush)}
-  .final .alt{
-    margin-top:30px;font-size:14px;color:#C99AA5;
-  }
+  .final .alt{margin-top:30px;font-size:14px;color:#C99AA5}
   .final .alt a{color:#F3DEE2}
   .limit{
     margin-top:44px;display:inline-flex;gap:10px;align-items:center;
@@ -293,7 +289,6 @@
   footer .wrap{display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between}
   footer a{color:var(--wine)}
 
-  /* появление при скролле */
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease}
   .reveal.on{opacity:1;transform:none}
 </style>
@@ -303,7 +298,7 @@
 <!-- топбар -->
 <div class="topbar">
   <div class="wrap">
-    <div class="brand">МАРКОВА · digital</div>
+    <div class="brand">МАРКОВА · автоматизация</div>
     <div class="status">
       <span class="dot"></span>
       <span class="txt">открыта запись на разборы — сентябрь 2026</span>
@@ -315,157 +310,279 @@
 <!-- хиро -->
 <header class="hero">
   <div class="wrap">
-    <div class="kicker">digital-маркетинг + автоматизация · для собственников, управленцев и маркетологов</div>
-    <h1>Сколько стоит<br>ваша заявка? <span class="accent">Прямо&nbsp;сейчас.</span></h1>
+    <div class="kicker">разработка и автоматизация · для собственников и управленцев</div>
+    <h1>Два менеджера — 2,5 недели.<br><span class="accent">Скрипт — 2 минуты.</span></h1>
     <p class="lead">
-      Если точной цифры нет под рукой — реклама работает вслепую, а заявки теряются
-      между подрядчиком, менеджером и CRM. Я строю маркетинг, где <b>виден каждый рубль</b>:
-      от поста и объявления до заявки, звонка и оплаты. А то, что ваша команда
-      делает руками, — <b>забирают скрипты и боты</b>.
+      Реальная история из клиники: базу врача в 2 932 клиента два менеджера разбирали
+      вручную. За две с половиной недели прошли 318 строк. Оставшиеся 2 614 мой скрипт
+      обработал за две минуты — и нашел <b>38 клиентов с высоким чеком, которые не
+      появлялись больше года</b>. Я разрабатываю боты, скрипты и ИИ-агентов под
+      процессы конкретного бизнеса — вашего.
     </p>
     <div class="cta-row">
       <a class="btn-main" href="https://t.me/nastya_mgh" target="_blank">Разбор за 30 минут — бесплатно</a>
-      <a class="btn-ghost" href="#dash">Сначала покажите цифры ↓</a>
+      <a class="btn-ghost" href="#solutions">Что уже разработано ↓</a>
+    </div>
+
+    <div class="duel">
+      <div class="side">
+        <div class="t">Вручную</div>
+        <div class="v">5+ месяцев</div>
+        <div class="d">столько заняла бы вся база при скорости двух менеджеров — она успела бы устареть дважды</div>
+      </div>
+      <div class="vs">VS</div>
+      <div class="side win">
+        <div class="t">Скриптом</div>
+        <div class="v">2 минуты</div>
+        <div class="d">2 614 строк сверены по двум системам, каждому клиенту проставлен статус</div>
+      </div>
     </div>
   </div>
 </header>
 
-<!-- дашборд с цифрами -->
-<section class="dash" id="dash">
+<!-- три результата -->
+<section class="outcomes">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-num">01 · ДАШБОРД</div>
-      <h2>Цифры из проектов моих клиентов</h2>
-      <p class="sec-sub">Все проекты реальные, 2021–2026. Часть опубликована в кейсах ниже,
-      детали остальных расскажу на созвоне.</p>
+      <div class="sec-num">01 · К ЧЕМУ ЭТО ПРИВОДИТ</div>
+      <h2>Три результата автоматизации</h2>
     </div>
     <div class="grid">
-
-      <div class="tile">
-        <div class="tag">Косметология · таргет ВК</div>
-        <div class="num">×<span data-count="5.7" data-dec="1">0</span></div>
-        <div class="what">окупаемость рекламы за два месяца</div>
-        <svg width="120" height="26" viewBox="0 0 120 26" fill="none"><polyline points="0,22 20,20 40,16 60,17 80,10 100,6 120,2" stroke="#D9A0AC" stroke-width="2"/></svg>
-        <div class="how">517 000 ₽ выручки с рекламного трафика</div>
+      <div class="out-card">
+        <div class="big">−60 часов</div>
+        <div class="name">механической работы в месяц</div>
+        <div class="txt">Расчет по процессам одной клиники: постановка задач, касания по заявкам,
+        отчеты. Было 75 часов ручной работы в месяц — осталось 15. Это 7–8 рабочих дней
+        сотрудника, возвращенных живым клиентам.</div>
       </div>
-
-      <div class="tile">
-        <div class="tag">Медицина · автоматизация</div>
-        <div class="num"><span data-count="2">0</span> минуты</div>
-        <div class="what">скрипт обработал 2 614 строк клиентской базы</div>
-        <div class="how">до этого два менеджера прошли 318 строк за 2,5 недели вручную</div>
+      <div class="out-card">
+        <div class="big">до 800 000 ₽</div>
+        <div class="name">в год из спящей базы</div>
+        <div class="txt">У производителя косметики для мастеров из 1 000 клиентов регулярно
+        покупают 200. Система касаний возвращает спящих по расписанию: при возврате
+        всего 5% — около 800 000 ₽ в год. Расчет по цифрам клиента, не обещание.</div>
       </div>
-
-      <div class="tile">
-        <div class="tag">Общепит · сеть фастфуда</div>
-        <div class="num">+<span data-count="38">0</span>%</div>
-        <div class="what">онлайн-выручка сети</div>
-        <svg width="120" height="26" viewBox="0 0 120 26" fill="none"><polyline points="0,20 20,21 40,15 60,12 80,13 100,7 120,3" stroke="#D9A0AC" stroke-width="2"/></svg>
-        <div class="how">SMM, меню, боты-акции и экраны в точках — под одним управлением</div>
+      <div class="out-card">
+        <div class="big">1 экран</div>
+        <div class="name">вместо ощущений — для решений</div>
+        <div class="txt">Дашборд руководителя: расходы, заявки, стоимость записи, окупаемость
+        каналов — по всей истории клиента, а не по первому визиту. Канал, который выглядел
+        убыточным, часто оказывается лучшим.</div>
       </div>
-
-      <div class="tile">
-        <div class="tag">Недвижимость · застройщик</div>
-        <div class="num">×<span data-count="3">0</span> дешевле</div>
-        <div class="what">подписчик, чем у прошлого агентства</div>
-        <div class="how">тот же бюджет — втрое больше аудитории</div>
-      </div>
-
-      <div class="tile">
-        <div class="tag">Найм персонала · логистика</div>
-        <div class="num"><span data-count="32">0</span> водителя</div>
-        <div class="what">наняты через рекламу за одну кампанию</div>
-        <div class="how">180 заявок, отклик по 194–209 ₽ — дешевле, чем HH</div>
-      </div>
-
-      <div class="tile">
-        <div class="tag">Медицина · контент без бюджета</div>
-        <div class="num"><span data-count="15.2" data-dec="1">0</span> млн ₽</div>
-        <div class="what">выручка на органике, без рекламных вложений</div>
-        <svg width="120" height="26" viewBox="0 0 120 26" fill="none"><polyline points="0,23 20,19 40,18 60,13 80,11 100,8 120,2" stroke="#D9A0AC" stroke-width="2"/></svg>
-        <div class="how">системный контент в ВК на дистанции пяти лет</div>
-      </div>
-
     </div>
-    <div class="dash-note">
-      <span>*</span>
-      <span>Такой дашборд — не украшение презентации. Свою версию с расходами, заявками
-      и стоимостью клиента вы получаете в первый месяц работы.</span>
+    <div class="note">* Все цифры — из рабочих документов по реальным проектам 2026 года. Как они посчитаны, показываю на созвоне.</div>
+  </div>
+</section>
+
+<!-- симптомы -->
+<section class="symptoms">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">02 · ЗНАКОМО?</div>
+      <h2>Четыре симптома ручного бизнеса</h2>
+    </div>
+    <div class="grid">
+      <div class="sym reveal"><div class="q">01</div>
+        <p><b>Учет живет в тетради или в голове сотрудника.</b> Данные попадают в таблицу
+        с задержкой или не попадают вовсе. Если человек заболел — вместе с ним «болеет» вся база.</p>
+      </div>
+      <div class="sym reveal"><div class="q">02</div>
+        <p><b>Заявки остаются без ответа.</b> Не дозвонились — и никто не перезвонил, потому что
+        напоминание держится на памяти оператора. Сколько заявок так теряется, не знает никто.</p>
+      </div>
+      <div class="sym reveal"><div class="q">03</div>
+        <p><b>Отчеты собираются руками по полдня.</b> Цифры из рекламного кабинета, из CRM
+        и из таблиц сводит человек — раз в месяц, с ошибками, к моменту готовности уже устаревшие.</p>
+      </div>
+      <div class="sym reveal"><div class="q">04</div>
+        <p><b>Клиентская база лежит мертвым грузом.</b> Кто перестал покупать, кто не был год,
+        кому пора напомнить о себе — неизвестно. Клиенты возвращаются сами. Или не возвращаются.</p>
+      </div>
+    </div>
+    <p class="sym-note reveal">Узнали хотя бы один? Значит, у вас есть процесс, который можно отдать
+    системе. Ниже — решения, которые я уже разработала для таких же задач.</p>
+  </div>
+</section>
+
+<!-- витрина решений -->
+<section class="solutions" id="solutions">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">03 · ВИТРИНА</div>
+      <h2>Что уже разработано</h2>
+      <p class="sec-sub">Не идеи с презентаций — рабочие решения из реальных проектов.
+      Каждое адаптируется под ваш бизнес быстрее и дешевле, чем разработка с нуля.</p>
+    </div>
+
+    <div class="legend reveal">
+      <span><span class="badge live">работает у клиента</span></span>
+      <span><span class="badge test">на тестах</span></span>
+      <span><span class="badge ready">готовое решение — ждет внедрения</span></span>
+    </div>
+
+    <div class="sol-group reveal">
+      <h3><span class="ic">01</span>Клиентская база под контролем</h3>
+      <div class="sol-cards">
+        <div class="sol">
+          <div class="top"><span class="niche">Клиника</span><span class="badge live">работает у клиента</span></div>
+          <h4>Проверка базы по двум системам</h4>
+          <p>Скрипт сверяет CRM и онлайн-запись, находит клиентов, с которыми никто не связывается,
+          и учитывает исключения: кто в записи, кто сотрудник, кто ушел к другому врачу.</p>
+          <div class="fact">2 614 строк за 2 минуты</div>
+        </div>
+        <div class="sol">
+          <div class="top"><span class="niche">Производитель косметики</span><span class="badge ready">готовое решение</span></div>
+          <h4>Система касаний со спящими клиентами</h4>
+          <p>Сегменты, поводы, расписание: новичкам — welcome-цепочка, у кого сбился ритм закупа —
+          напоминание, спящим — возвращение. Ответил человек — диалог сразу уходит менеджеру.</p>
+          <div class="fact">800 спящих → очередь на возврат</div>
+        </div>
+        <div class="sol">
+          <div class="top"><span class="niche">Юридическая практика</span><span class="badge ready">готовое решение</span></div>
+          <h4>База из договоров + автопоздравления</h4>
+          <p>Программа вытягивает данные из сотен договоров Word в единую таблицу. Дальше система
+          сама поздравляет клиентов с днем рождения — с учетом требований 152-ФЗ и закона о рекламе.</p>
+          <div class="fact">500 договоров → база без ручного ввода</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sol-group reveal">
+      <h3><span class="ic">02</span>Боты, которые забирают рутину</h3>
+      <div class="sol-cards">
+        <div class="sol">
+          <div class="top"><span class="niche">Производитель косметики</span><span class="badge ready">готовое решение</span></div>
+          <h4>Учет продаж через Telegram-бота</h4>
+          <p>Менеджер пишет как привыкла: «Южакова — 2000 руб». Бот находит клиента, просит
+          подтвердить и сам заносит в таблицу. Понимает голосовые, хранит фото чеков.</p>
+          <div class="fact">интерфейс проще тетради</div>
+        </div>
+        <div class="sol">
+          <div class="top"><span class="niche">Клиника</span><span class="badge test">на тестах</span></div>
+          <h4>Постановка задач без администратора</h4>
+          <p>Отправили клиенту сообщение — задача на контроль ответа ставится сама. Администратор
+          выпадает из цепочки вместе с потерями на этом звене.</p>
+          <div class="fact">21 час в месяц → 0</div>
+        </div>
+        <div class="sol">
+          <div class="top"><span class="niche">Клиника</span><span class="badge live">работает у клиента</span></div>
+          <h4>Свободные окна специалистов</h4>
+          <p>Скрипт достает из онлайн-записи свободные слоты врача на нужные даты — администратор
+          не листает календарь, а сразу предлагает клиенту время.</p>
+          <div class="fact">подбор слотов за секунды</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sol-group reveal">
+      <h3><span class="ic">03</span>ИИ в переписке с клиентами</h3>
+      <div class="sol-cards">
+        <div class="sol">
+          <div class="top"><span class="niche">Клиника</span><span class="badge test">на тестах</span></div>
+          <h4>ИИ-агент обработки заявок</h4>
+          <p>Читает задачи по клиентам, историю переписки и прайс — готовит персональные сообщения:
+          с нужной процедурой, врачом и датами. Человек проверяет и отправляет.</p>
+          <div class="fact">90% сообщений уходят без правок</div>
+        </div>
+        <div class="sol">
+          <div class="top"><span class="niche">Производитель косметики</span><span class="badge ready">готовое решение</span></div>
+          <h4>ИИ-суфлер для менеджера</h4>
+          <p>Агент читает диалог и предлагает 2–3 варианта ответа: короткий деловой, теплый
+          развернутый, с уместной допродажей. Выбирает и отправляет всегда человек.</p>
+          <div class="fact">допродажа — системно, а не по памяти</div>
+        </div>
+        <div class="sol">
+          <div class="top"><span class="niche">Юридическая практика</span><span class="badge ready">готовое решение</span></div>
+          <h4>Бот «личный кабинет клиента»</h4>
+          <p>Клиент сам получает в Telegram свои документы: договор, выписки, статус дела — 24/7,
+          без звонка «скиньте еще раз». Чужие документы недоступны.</p>
+          <div class="fact">рутина «скинь договор» → 0 минут</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sol-group reveal">
+      <h3><span class="ic">04</span>Цифры для руководителя</h3>
+      <div class="sol-cards">
+        <div class="sol">
+          <div class="top"><span class="niche">Стоматология</span><span class="badge live">работает у клиента</span></div>
+          <h4>Бот статистики рекламы</h4>
+          <p>Каждый день присылает в Telegram: бюджет, показы, клики, подписчики, обращения
+          и их стоимость. Руководитель видит рекламу без входа в кабинеты.</p>
+          <div class="fact">отчет сам приходит в чат</div>
+        </div>
+        <div class="sol">
+          <div class="top"><span class="niche">Стоматология</span><span class="badge live">работает у клиента</span></div>
+          <h4>Интерактивный дашборд руководителя</h4>
+          <p>Одна страница: конверсия из заявки в запись, стоимость записи, помесячная динамика
+          и калькулятор — сколько денег теряется на текущей конверсии.</p>
+          <div class="fact">упущенная выгода — в рублях</div>
+        </div>
+        <div class="sol">
+          <div class="top"><span class="niche">Клиника</span><span class="badge ready">готовое решение</span></div>
+          <h4>Окупаемость рекламы по LTV</h4>
+          <p>Система связывает расходы на каналы с тем, что клиент принес за всю историю,
+          а не за первый визит. Отвечает на вопрос: куда вкладывать, откуда уходить.</p>
+          <div class="fact">экономика каналов без догадок</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- роли -->
-<section class="roles">
+<!-- часы -->
+<section class="hours">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="sec-num">02 · КОМУ ЭТО</div>
-      <h2>Узнайте свою ситуацию</h2>
+      <div class="sec-num">04 · СЧИТАЕМ ЧЕСТНО</div>
+      <h2>Куда уходят часы сотрудников</h2>
+      <p class="sec-sub">Расчет по процессам одной клиники — до и после автоматизации.</p>
     </div>
-    <div class="grid">
-
-      <div class="role reveal">
-        <div class="who">Собственник</div>
-        <div class="pain">«Плачу за рекламу и SMM, а что возвращается — непонятно»</div>
-        <div class="gain">Вы получаете <b>одну таблицу</b>: расходы, заявки, стоимость клиента
-        по каждому каналу. Решения о бюджете принимаете на цифрах, а не со слов подрядчика.
-        Раз в месяц — отчет, который читается за пять минут.</div>
-      </div>
-
-      <div class="role reveal">
-        <div class="who">Управленец, директор</div>
-        <div class="pain">«Заявки теряются между рекламой, администратором и CRM»</div>
-        <div class="gain">Я нахожу, где именно течет воронка, и <b>закрываю стык
-        автоматизацией</b>: напоминания, обработка баз, отчеты, которые собираются сами.
-        Плюс регламенты и обучение сотрудников — чтобы система работала без меня.</div>
-      </div>
-
-      <div class="role reveal">
-        <div class="who">Маркетолог</div>
-        <div class="pain">«Рутина съедает время, до стратегии руки не доходят»</div>
-        <div class="gain">Я — <b>усиление вашей команды, не замена</b>. Забираю
-        контент-производство, настройку ботов и отчетность. Вы остаетесь владельцем
-        стратегии и главным по маркетингу — у вас просто появляются свободные руки.</div>
-      </div>
-
+    <div class="tbl-wrap reveal">
+      <table>
+        <tr><th>Процесс</th><th>Было</th><th>Стало</th></tr>
+        <tr><td>Постановка задач администратором</td><td class="was">21 час/мес</td><td class="now">0 — ставятся сами</td></tr>
+        <tr><td>Касания по заявкам: звонки, напоминания</td><td class="was">40 часов/мес</td><td class="now">~15 — остаются разговоры</td></tr>
+        <tr><td>Подбор клиентов под акционный день</td><td class="was">8 часов/мес</td><td class="now">~20 минут</td></tr>
+        <tr><td>Сбор отчета по рекламе</td><td class="was">6 часов/мес</td><td class="now">0 — собирается сам</td></tr>
+        <tr><td>Сверка клиентской базы</td><td class="was">руками не делается</td><td class="now">2 минуты на прогон</td></tr>
+        <tr class="total"><td>Итого механической работы</td><td class="was">75 часов/мес</td><td class="now">~15 часов/мес</td></tr>
+      </table>
     </div>
+    <p class="note reveal">60 часов × стоимость часа вашего сотрудника — столько это стоит в рублях
+    каждый месяц. На разборе подставим ваши объемы, и цифра станет вашей, а не моей.</p>
   </div>
 </section>
 
-<!-- два крыла -->
-<section class="wings">
+<!-- принципы -->
+<section class="principles">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="sec-num">03 · ЧЕМ ОТЛИЧАЮСЬ</div>
-      <h2>Маркетинг и автоматизация — в одних руках</h2>
+      <div class="sec-num">05 · КАК Я РАБОТАЮ</div>
+      <h2>Четыре принципа, из-за которых это приживается</h2>
+      <p class="sec-sub">Автоматизация чаще умирает не от плохого кода, а от того, что ей не пользуются.</p>
     </div>
-    <div class="wings-flex">
-      <div class="wing reveal">
-        <h3><span class="ic">М</span>Маркетинг</h3>
-        <ul>
-          <li>контент-планы и посты для соцсетей — системно, а не «когда есть время»</li>
-          <li>таргетированная реклама ВК: от объявления до отчета по заявкам</li>
-          <li>личные бренды экспертов и врачей — стратегия, рубрики, ТЗ</li>
-          <li>видеопроизводство: рилсы, клипы, отзывы клиентов</li>
-          <li>управление подрядчиками: дизайнеры, копирайтеры, монтаж</li>
-        </ul>
+    <div class="grid">
+      <div class="pr reveal">
+        <h3>Автоматика ведет ритм, человек ведет отношения</h3>
+        <p>Система берет регулярное и предсказуемое: напоминания, сверки, отчеты. Жалобы, деньги
+        и нестандартные вопросы — всегда человек. Клиент ответил боту — диалог мгновенно уходит менеджеру.</p>
       </div>
-      <div class="wing reveal">
-        <h3><span class="ic">А</span>Автоматизация</h3>
-        <ul>
-          <li>Telegram-боты: акции, анкеты, внутренняя отчетность</li>
-          <li>обработка клиентских баз скриптами — тысячи строк за минуты</li>
-          <li>связки CRM, мессенджеров и онлайн-записи без ручного переноса</li>
-          <li>отчеты, которые собираются сами: реклама, заявки, звонки</li>
-          <li>обучение сотрудников работе с новыми инструментами</li>
-        </ul>
+      <div class="pr reveal">
+        <h3>Интерфейс должен быть проще тетради</h3>
+        <p>Тетрадь выигрывает у CRM не потому, что удобная, а потому что ничего не требует.
+        Мои инструменты требуют еще меньше: написать боту как человеку или надиктовать голосом.</p>
       </div>
-    </div>
-    <div class="bridge reveal">
-      Обычно это два разных подрядчика: агентство ведет рекламу, программист пишет ботов,
-      и на стыке между ними теряются заявки и ответственность.
-      <b>У меня оба конца в одних руках: реклама приводит заявку — автоматизация
-      не дает ей потеряться.</b>
+      <div class="pr reveal">
+        <h3>Сотрудник — союзник, не препятствие</h3>
+        <p>Сначала инструмент облегчает жизнь тому, кто им пользуется, и только потом просит нового.
+        Страх «меня заменят» снимаю до старта: решения принимает человек, система подсказывает.</p>
+      </div>
+      <div class="pr reveal">
+        <h3>Обкатка — часть работы</h3>
+        <p>Блок считается сданным не после демо, а после недели работы на реальных данных без ошибок.
+        Исключения всплывают всегда — честнее заложить на них время, чем обещать идеальный запуск.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -474,60 +591,51 @@
 <section class="steps">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="sec-num">04 · КАК НАЧАТЬ</div>
+      <div class="sec-num">06 · КАК НАЧАТЬ</div>
       <h2>Старт без домашней работы</h2>
-      <p class="sec-sub">Не нужно готовить брифы и выгружать статистику. Достаточно 30 минут разговора.</p>
+      <p class="sec-sub">Не нужно описывать процессы и готовить выгрузки. Достаточно 30 минут разговора.</p>
     </div>
     <div class="steps-flex">
       <div class="step reveal">
         <div class="n">1</div>
         <h3>Созвон 30 минут</h3>
-        <p>Вы рассказываете, как устроен маркетинг сейчас, — своими словами.
-        Не знаете своих цифр? Большинство моих клиентов приходили именно так.</p>
+        <p>Вы рассказываете своими словами, как устроена работа: где заявки, где учет, что делается
+        руками. Не знаете точных цифр? Нормальная точка старта.</p>
       </div>
       <div class="step reveal">
         <div class="n">2</div>
         <h3>Разбор через 2 дня</h3>
-        <p>Присылаю письменно 2–3 точки роста по вашей ситуации: где теряются
-        деньги и что можно автоматизировать. Бесплатно и без обязательств.</p>
+        <p>Присылаю письменно: где теряются часы и клиенты, 2–3 решения под ваши процессы
+        и расчет эффекта в ваших цифрах. Бесплатно и без обязательств.</p>
       </div>
       <div class="step reveal">
         <div class="n">3</div>
-        <h3>План и старт</h3>
-        <p>Если решаем работать — план на первый месяц с понятными результатами.
-        Первые цифры в вашем дашборде появляются уже через 2–3 недели.</p>
+        <h3>Внедрение блоками</h3>
+        <p>Каждый блок: разработка → обкатка на реальных данных → обучение сотрудников.
+        Инструмент, которым не умеют пользоваться, не считается внедренным.</p>
       </div>
     </div>
     <div class="steps-note reveal">
       Разбор остается у вас в любом случае — даже если работать не начнем.
-      Заберете его своей команде или другому подрядчику.
+      Заберете его своей команде или другому разработчику.
     </div>
   </div>
 </section>
 
-<!-- кейсы -->
+<!-- доказательства -->
 <section class="cases">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="sec-num">05 · ДОКАЗАТЕЛЬСТВА</div>
-      <h2>Кейсы — с именами и скриншотами</h2>
+      <div class="sec-num">07 · ПОСМОТРЕТЬ ВБЛИЗИ</div>
+      <h2>Страница с разборами решений</h2>
     </div>
-    <div class="case-links">
-      <a class="case-link reveal" href="https://asmarkovasmm-lang.github.io/offers-2026/cases/" target="_blank">
-        <div class="cl-tag">Маркетинг</div>
-        <h3>5 кейсов: медицина, общепит, недвижимость</h3>
-        <p>COSMOMED, BigoLand, сеть фастфуда и другие — с цифрами выручки,
-        охватов и стоимости подписчика.</p>
-        <span class="go">Открыть кейсы →</span>
-      </a>
-      <a class="case-link reveal" href="https://asmarkovasmm-lang.github.io/offers-2026/automation/" target="_blank">
-        <div class="cl-tag">Автоматизация</div>
-        <h3>Скрипты и боты в работе</h3>
-        <p>Обработка клиентской базы, свободные окна врачей, бот статистики рекламы,
-        учет финансов — с отчетами скриптов.</p>
-        <span class="go">Открыть страницу →</span>
-      </a>
-    </div>
+    <a class="proof-link reveal" href="https://asmarkovasmm-lang.github.io/offers-2026/automation/" target="_blank">
+      <div class="cl-tag">Разработка и автоматизация</div>
+      <h3>Скрипты и боты в работе — со скриншотами отчетов</h3>
+      <p>Проверка клиентской базы, свободные окна специалистов, бот статистики рекламы,
+      бот учета финансов — как это выглядит и что выдает.</p>
+      <span class="go">Открыть страницу →</span>
+    </a>
   </div>
 </section>
 
@@ -538,13 +646,13 @@
       <div class="avatar">АМ</div>
       <div class="about-txt">
         <h3>Анастасия Маркова</h3>
-        <p>11 лет в digital: SMM, контент, видеопроизводство, таргет, управление
-        подрядчиками. Веду несколько проектов параллельно — от клиники косметологии
-        до сети фастфуда.</p>
-        <p>Последние годы соединяю маркетинг с автоматизацией: пишу скрипты и ботов
-        на Python, строю связки CRM и мессенджеров, учу команды клиентов работать
-        с AI-инструментами. Сама делаю и посты, и код — поэтому между «придумали»
-        и «работает» нет испорченного телефона.</p>
+        <p>Разрабатываю автоматизацию для малого бизнеса: Python-скрипты, Telegram-боты,
+        интеграции CRM и мессенджеров, ИИ-агенты, дашборды. Среди клиентов — клиника,
+        стоматология, производитель косметики, сеть общепита, юридическая практика.</p>
+        <p><b>11 лет работала внутри процессов клиентов</b> — вела проекты, заявки
+        и колл-центры, поэтому автоматизирую то, что болит, а не то, что модно. Между
+        «придумали» и «работает» нет испорченного телефона: и постановку задачи,
+        и код делаю я.</p>
       </div>
     </div>
   </div>
@@ -554,8 +662,8 @@
 <section class="final">
   <div class="wrap">
     <h2>Напишите мне слово <span class="word">разбор</span></h2>
-    <p>Отвечу в течение дня и предложу три слота на созвон на этой неделе.
-    30 минут — и у вас на руках взгляд со стороны на ваш маркетинг.</p>
+    <p>Отвечу в течение дня и предложу три слота на созвон на этой неделе. 30 минут —
+    и вы знаете, какие из ваших процессов система заберет первыми.</p>
     <a class="btn-main" href="https://t.me/nastya_mgh" target="_blank">Telegram: @nastya_mgh</a>
     <div class="alt">
       Удобнее голосом? <a href="tel:+79519403338">+7 951 940-33-38</a>
@@ -570,51 +678,20 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Анастасия Маркова · digital-маркетинг и автоматизация</span>
+    <span>© 2026 Анастасия Маркова · разработка и автоматизация</span>
     <span>
-      <a href="https://asmarkovasmm-lang.github.io/offers-2026/cases/" target="_blank">Кейсы</a>
-      &nbsp;·&nbsp;
-      <a href="https://asmarkovasmm-lang.github.io/offers-2026/automation/" target="_blank">Автоматизация</a>
+      <a href="https://asmarkovasmm-lang.github.io/offers-2026/automation/" target="_blank">Разборы решений</a>
     </span>
   </div>
 </footer>
 
 <script>
-  // появление блоков при скролле
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
       if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
     });
-  },{threshold:.15});
+  },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-  // плитки дашборда: появление каскадом + счетчики
-  const tiles = document.querySelectorAll('.tile');
-  const tileIO = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting) return;
-      tileIO.unobserve(e.target);
-      const i = [...tiles].indexOf(e.target);
-      setTimeout(()=>{
-        e.target.classList.add('on');
-        e.target.querySelectorAll('[data-count]').forEach(runCounter);
-      }, i*110);
-    });
-  },{threshold:.3});
-  tiles.forEach(t=>tileIO.observe(t));
-
-  function runCounter(el){
-    const target = parseFloat(el.dataset.count);
-    const dec = parseInt(el.dataset.dec||'0');
-    const dur = 1100, t0 = performance.now();
-    function frame(t){
-      const p = Math.min((t-t0)/dur, 1);
-      const eased = 1-Math.pow(1-p,3);
-      el.textContent = (target*eased).toFixed(dec).replace('.',',');
-      if(p<1) requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-  }
 </script>
 </body>
 </html>
