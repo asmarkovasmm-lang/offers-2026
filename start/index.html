@@ -222,6 +222,19 @@
     display:flex;gap:18px;flex-wrap:wrap;margin-bottom:36px;font-size:13px;color:var(--ink-soft);
     align-items:center;
   }
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+  .fbtn{
+    font-family:var(--body);font-weight:600;font-size:14px;
+    padding:11px 22px;border-radius:100px;cursor:pointer;
+    border:1.5px solid var(--wine);background:transparent;color:var(--wine);
+    transition:background .2s, color .2s, transform .15s;
+  }
+  .fbtn:hover{transform:translateY(-1px)}
+  .fbtn.active{background:var(--wine);color:#fff}
+  .sol.hide{display:none}
+  .sol-group.hide{display:none}
+  @keyframes solin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .sol.pop{animation:solin .35s ease both}
 
   /* ---------- часы ---------- */
   .hours table{
@@ -524,6 +537,13 @@
       Каждое адаптируется под ваш бизнес быстрее и дешевле, чем разработка с нуля.</p>
     </div>
 
+    <div class="filters reveal">
+      <button class="fbtn active" data-filter="all">Все решения</button>
+      <button class="fbtn" data-filter="time">Экономия времени</button>
+      <button class="fbtn" data-filter="analytics">Аналитика на руках</button>
+      <button class="fbtn" data-filter="revenue">Рост выручки</button>
+    </div>
+
     <div class="legend reveal">
       <span><span class="badge live">работает у клиента</span></span>
       <span><span class="badge test">на тестах</span></span>
@@ -533,21 +553,21 @@
     <div class="sol-group reveal">
       <h3><span class="ic">01</span>Клиентская база под контролем</h3>
       <div class="sol-cards">
-        <div class="sol">
+        <div class="sol" data-benefit="time">
           <div class="top"><span class="niche">Клиника</span><span class="badge live">работает у клиента</span></div>
           <h4>Проверка базы по двум системам</h4>
           <p>Скрипт сверяет CRM и онлайн-запись, находит клиентов, с которыми никто не связывается,
           и учитывает исключения: кто в записи, кто сотрудник, кто ушел к другому врачу.</p>
           <div class="fact">2 614 строк за 2 минуты</div>
         </div>
-        <div class="sol">
+        <div class="sol" data-benefit="revenue">
           <div class="top"><span class="niche">Производитель косметики</span><span class="badge ready">готовое решение</span></div>
           <h4>Система касаний со спящими клиентами</h4>
           <p>Сегменты, поводы, расписание: новичкам — welcome-цепочка, у кого сбился ритм закупа —
           напоминание, спящим — возвращение. Ответил человек — диалог сразу уходит менеджеру.</p>
           <div class="fact">800 спящих → очередь на возврат</div>
         </div>
-        <div class="sol">
+        <div class="sol" data-benefit="revenue">
           <div class="top"><span class="niche">Юридическая практика</span><span class="badge ready">готовое решение</span></div>
           <h4>База из договоров + автопоздравления</h4>
           <p>Программа вытягивает данные из сотен договоров Word в единую таблицу. Дальше система
@@ -560,21 +580,21 @@
     <div class="sol-group reveal">
       <h3><span class="ic">02</span>Боты, которые забирают рутину</h3>
       <div class="sol-cards">
-        <div class="sol">
+        <div class="sol" data-benefit="time">
           <div class="top"><span class="niche">Производитель косметики</span><span class="badge ready">готовое решение</span></div>
           <h4>Учет продаж через Telegram-бота</h4>
           <p>Менеджер пишет как привыкла: «Южакова — 2000 руб». Бот находит клиента, просит
           подтвердить и сам заносит в таблицу. Понимает голосовые, хранит фото чеков.</p>
           <div class="fact">интерфейс проще тетради</div>
         </div>
-        <div class="sol">
+        <div class="sol" data-benefit="time">
           <div class="top"><span class="niche">Клиника</span><span class="badge test">на тестах</span></div>
           <h4>Постановка задач без администратора</h4>
           <p>Отправили клиенту сообщение — задача на контроль ответа ставится сама. Администратор
           выпадает из цепочки вместе с потерями на этом звене.</p>
           <div class="fact">21 час в месяц → 0</div>
         </div>
-        <div class="sol">
+        <div class="sol" data-benefit="time">
           <div class="top"><span class="niche">Клиника</span><span class="badge live">работает у клиента</span></div>
           <h4>Свободные окна специалистов</h4>
           <p>Скрипт достает из онлайн-записи свободные слоты врача на нужные даты — администратор
@@ -587,21 +607,21 @@
     <div class="sol-group reveal">
       <h3><span class="ic">03</span>ИИ в переписке с клиентами</h3>
       <div class="sol-cards">
-        <div class="sol">
+        <div class="sol" data-benefit="revenue">
           <div class="top"><span class="niche">Клиника</span><span class="badge test">на тестах</span></div>
           <h4>ИИ-агент обработки заявок</h4>
           <p>Читает задачи по клиентам, историю переписки и прайс — готовит персональные сообщения:
           с нужной процедурой, врачом и датами. Человек проверяет и отправляет.</p>
           <div class="fact">90% сообщений уходят без правок</div>
         </div>
-        <div class="sol">
+        <div class="sol" data-benefit="revenue">
           <div class="top"><span class="niche">Производитель косметики</span><span class="badge ready">готовое решение</span></div>
           <h4>ИИ-суфлер для менеджера</h4>
           <p>Агент читает диалог и предлагает 2–3 варианта ответа: короткий деловой, теплый
           развернутый, с уместной допродажей. Выбирает и отправляет всегда человек.</p>
           <div class="fact">допродажа — системно, а не по памяти</div>
         </div>
-        <div class="sol">
+        <div class="sol" data-benefit="time">
           <div class="top"><span class="niche">Юридическая практика</span><span class="badge ready">готовое решение</span></div>
           <h4>Бот «личный кабинет клиента»</h4>
           <p>Клиент сам получает в Telegram свои документы: договор, выписки, статус дела — 24/7,
@@ -614,21 +634,21 @@
     <div class="sol-group reveal">
       <h3><span class="ic">04</span>Цифры для руководителя</h3>
       <div class="sol-cards">
-        <div class="sol">
+        <div class="sol" data-benefit="analytics">
           <div class="top"><span class="niche">Стоматология</span><span class="badge live">работает у клиента</span></div>
           <h4>Бот статистики рекламы</h4>
           <p>Каждый день присылает в Telegram: бюджет, показы, клики, подписчики, обращения
           и их стоимость. Руководитель видит рекламу без входа в кабинеты.</p>
           <div class="fact">отчет сам приходит в чат</div>
         </div>
-        <div class="sol">
+        <div class="sol" data-benefit="analytics">
           <div class="top"><span class="niche">Стоматология</span><span class="badge live">работает у клиента</span></div>
           <h4>Интерактивный дашборд руководителя</h4>
           <p>Одна страница: конверсия из заявки в запись, стоимость записи, помесячная динамика
           и калькулятор — сколько денег теряется на текущей конверсии.</p>
           <div class="fact">упущенная выгода — в рублях</div>
         </div>
-        <div class="sol">
+        <div class="sol" data-benefit="analytics">
           <div class="top"><span class="niche">Клиника</span><span class="badge ready">готовое решение</span></div>
           <h4>Окупаемость рекламы по LTV</h4>
           <p>Система связывает расходы на каналы с тем, что клиент принес за всю историю,
@@ -846,6 +866,24 @@
     });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // фильтры витрины решений
+  const fbtns = document.querySelectorAll('.fbtn');
+  fbtns.forEach(btn=>btn.addEventListener('click', ()=>{
+    fbtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.sol').forEach(card=>{
+      const show = f==='all' || card.dataset.benefit===f;
+      card.classList.toggle('hide', !show);
+      card.classList.remove('pop');
+      if(show){ void card.offsetWidth; card.classList.add('pop'); }
+    });
+    document.querySelectorAll('.sol-group').forEach(g=>{
+      const hasVisible = g.querySelector('.sol:not(.hide)');
+      g.classList.toggle('hide', !hasVisible);
+    });
+  }));
 
   // калькулятор спящей базы
   const ids = ['base','conv','check','visits'];
