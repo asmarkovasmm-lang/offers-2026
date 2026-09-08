@@ -779,7 +779,7 @@ a.contact:hover{opacity:.72}
   targets.forEach(function(el){ io.observe(el); });
 
   // подстраховка: на мобильных наблюдатель иногда не срабатывает —
-  // всё, что уже попало в зону видимости, показываем принудительно
+  // все, что уже попало в зону видимости, показываем принудительно
   function revealVisible(){
     document.querySelectorAll('.rv:not(.in), .chart:not(.in)').forEach(function(el){
       var r = el.getBoundingClientRect();
