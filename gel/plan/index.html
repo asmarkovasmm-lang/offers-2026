@@ -158,6 +158,53 @@ header.hero::before{content:"";position:absolute;inset:auto auto -40% -18%;width
 .pay-sub{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
   color:#F3B9CB;margin:0 0 13px}
 
+/* ---------- калькулятор окупаемости ---------- */
+.calc{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  box-shadow:var(--sh-l);margin-top:clamp(20px,2.6vw,30px)}
+.calc-head{padding:clamp(20px,2.6vw,28px) clamp(20px,2.8vw,30px) clamp(16px,2vw,22px)}
+.calc-head .cap{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--rose);margin-bottom:11px}
+.calc-head h3{font-size:clamp(18px,2vw,23px);font-weight:800;letter-spacing:-.028em;
+  margin:0 0 8px;line-height:1.25;color:var(--plum-d)}
+.calc-head p{font-size:14px;color:var(--ink-2);line-height:1.55;margin:0}
+.calc-top{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+@media(min-width:820px){.calc-top{grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr)}}
+.calc-in{padding:clamp(20px,2.6vw,30px)}
+.calc-out{padding:clamp(22px,2.8vw,32px);background:linear-gradient(160deg,var(--plum-d),var(--plum));
+  color:#fff;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.calc-out::after{content:"";position:absolute;inset:auto -20% -70% auto;width:70%;height:160%;
+  background:radial-gradient(circle,rgba(194,67,107,.42),transparent 62%);pointer-events:none}
+.calc-out>*{position:relative}
+.fld{margin-bottom:21px}
+.fld:last-child{margin-bottom:0}
+.fld label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  font-size:13.5px;font-weight:600;color:var(--ink-2);margin-bottom:10px}
+.fld label b{font-size:16.5px;font-weight:800;color:var(--plum);font-variant-numeric:tabular-nums;
+  white-space:nowrap}
+.calc input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:6px;
+  border-radius:100px;background:var(--plum-l);outline:none}
+.calc input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;
+  border-radius:50%;background:var(--rose);border:3px solid #fff;
+  box-shadow:0 2px 9px rgba(194,67,107,.5);cursor:pointer;transition:transform .15s}
+.calc input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.12)}
+.calc input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;
+  background:var(--rose);border:3px solid #fff;box-shadow:0 2px 9px rgba(194,67,107,.5);cursor:pointer}
+.calc-out .k{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:#F3B9CB;margin-bottom:13px}
+.calc-out .big{font-size:clamp(40px,6.4vw,68px);font-weight:800;letter-spacing:-.04em;
+  line-height:.95;color:#F5CE8C;font-variant-numeric:tabular-nums}
+.calc-out .big small{font-size:.34em;font-weight:800;letter-spacing:-.02em;color:#fff;
+  display:block;margin-top:9px}
+.calc-out .row{margin-top:20px;padding-top:17px;border-top:1px solid rgba(255,255,255,.22);
+  display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:14px;
+  color:rgba(255,255,255,.82)}
+.calc-out .row b{font-size:18px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums;
+  white-space:nowrap}
+.calc-out .verdict{margin-top:17px;font-size:14px;line-height:1.5;color:rgba(255,255,255,.88)}
+.calc-out .verdict b{color:#F5CE8C}
+.calc-note{padding:14px clamp(20px,2.8vw,30px);background:var(--plum-l);border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--ink-3);line-height:1.5}
+
 .need{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:13px;margin-top:26px}
 .need>div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
 .need .n{font-size:11px;font-weight:800;letter-spacing:.13em;color:var(--rose);margin-bottom:9px}
@@ -394,6 +441,45 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:54ch;margin-inlin
         <b>И это только спящие.</b> Отдельно система держит 200 активных: замечает,
         что клиент выпал из привычного ритма закупа, раньше, чем он успевает уснуть.</p>
     </div>
+
+    <div class="calc rv">
+      <div class="calc-head">
+        <div class="cap">Посчитайте на своих цифрах</div>
+        <h3>Сколько человек надо вернуть, чтобы проект окупился</h3>
+        <p>Цифры выше — мой скромный сценарий. Подвиньте ползунки под свои,
+          расчет пересчитается.</p>
+      </div>
+      <div class="calc-top">
+        <div class="calc-in">
+          <div class="fld">
+            <label>Спящих в базе <b><span id="c-base">800</span></b></label>
+            <input type="range" id="s-base" min="100" max="2000" step="10" value="800">
+          </div>
+          <div class="fld">
+            <label>Сколько вернется <b><span id="c-conv">1</span>%</b></label>
+            <input type="range" id="s-conv" min="1" max="10" step="1" value="1">
+          </div>
+          <div class="fld">
+            <label>Средний закуп <b><span id="c-check">5 000</span> ₽</b></label>
+            <input type="range" id="s-check" min="1500" max="15000" step="500" value="5000">
+          </div>
+          <div class="fld">
+            <label>Закупов в год <b><span id="c-buys">4</span></b></label>
+            <input type="range" id="s-buys" min="1" max="8" step="1" value="4">
+          </div>
+        </div>
+        <div class="calc-out">
+          <div class="k">Чтобы отбить 50 000 ₽</div>
+          <div class="big"><span id="c-need">3</span><small>человека из базы за год</small></div>
+          <div class="row"><span>Вернется при вашем проценте</span><b id="c-people">8</b></div>
+          <div class="row"><span>Они принесут за год</span><b id="c-year">160 000 ₽</b></div>
+          <p class="verdict" id="c-verdict"></p>
+        </div>
+      </div>
+      <p class="calc-note">Один вернувшийся считается по среднему закупу и числу закупов
+        за год. Себестоимость не вычитается: на гель-лаке она невысокая,
+        и почти вся сумма остается прибылью.</p>
+    </div>
   </div>
 </section>
 
@@ -436,6 +522,43 @@ footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:54ch;margin-inlin
     if(r.top < innerHeight*1.2 && r.bottom > -60) el.classList.add('in'); }); }
   addEventListener('scroll', rv, {passive:true}); addEventListener('resize', rv, {passive:true}); rv();
 })();
+
+  /* калькулятор окупаемости */
+  (function(){
+    var PRICE = 50000;
+    var ids=['base','conv','check','buys'], el={}, lab={};
+    ids.forEach(function(k){ el[k]=document.getElementById('s-'+k); lab[k]=document.getElementById('c-'+k); });
+    if(!el.base) return;
+    var need=document.getElementById('c-need'), people=document.getElementById('c-people'),
+        year=document.getElementById('c-year'), verdict=document.getElementById('c-verdict');
+    function sp(n){ return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,'\u00A0'); }
+    function word(n,a,b,c){ var d=n%10,h=n%100;
+      return h>=11&&h<=14?c:d===1?a:(d>=2&&d<=4?b:c); }
+    function calc(){
+      var base=+el.base.value, conv=+el.conv.value, check=+el.check.value, buys=+el.buys.value;
+      lab.base.textContent=sp(base); lab.conv.textContent=conv;
+      lab.check.textContent=sp(check); lab.buys.textContent=buys;
+      var perClient=check*buys;
+      var n=Math.max(1,Math.ceil(PRICE/perClient));
+      var ret=Math.round(base*conv/100);
+      var total=ret*perClient;
+      need.textContent=sp(n);
+      need.parentNode.querySelector('small').textContent=
+        word(n,'человека','человек','человек')+' из базы за год';
+      people.textContent=sp(ret)+'\u00A0'+word(ret,'человек','человека','человек');
+      year.textContent=sp(total)+'\u00A0₽';
+      if(ret>=n){
+        var x=(total/PRICE);
+        verdict.innerHTML='Ваш сценарий это перекрывает: <b>'+
+          (x>=10?Math.round(x):x.toFixed(1).replace('.',','))+' \u00D7 к вложенному</b>.';
+      } else {
+        verdict.innerHTML='При таком проценте возврата до окупаемости не хватает <b>'+
+          sp(n-ret)+'\u00A0'+word(n-ret,'человека','человек','человек')+'</b>.';
+      }
+    }
+    ids.forEach(function(k){ el[k].addEventListener('input', calc); });
+    calc();
+  })();
 </script>
 </body>
 </html>
