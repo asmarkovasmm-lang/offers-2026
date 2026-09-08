@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Дорожная карта — система касаний</title>
+<meta name="description" content="Пять недель, три этапа. Что делаем и что вы получите в конце каждого.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2A1E2E; --ink-2:#6A5B70; --ink-3:#9C8FA1;
+  --plum:#3D2647; --plum-d:#2A1930; --plum-l:#F3EDF5;
+  --rose:#C2436B; --rose-l:#FDF0F4; --gold:#D89A4E; --gold-l:#FBF3E8;
+  --paper:#FCFAFB; --paper-2:#F6F2F5; --line:#E9E1EC;
+  --f:'Manrope',-apple-system,'Segoe UI',sans-serif;
+  --pad:clamp(18px,4vw,64px); --r:18px;
+  --sh:0 12px 32px -20px rgba(42,25,48,.5);
+  --sh-l:0 28px 56px -28px rgba(42,25,48,.5);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f);font-size:16px;
+  line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{margin:0;line-height:1.14;font-weight:800;letter-spacing:-.025em}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:var(--pad)}
+section{padding-block:clamp(44px,6vw,88px);position:relative}
+.alt{background:var(--paper-2)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;
+  letter-spacing:.17em;text-transform:uppercase;color:var(--rose);margin-bottom:16px}
+.eyebrow::before{content:"";width:24px;height:2px;background:currentColor;border-radius:2px}
+h2{font-size:clamp(25px,3.5vw,40px)}
+.lead{font-size:clamp(15.5px,1.45vw,19px);color:var(--ink-2);max-width:64ch;margin-top:16px}
+
+header.hero{background:linear-gradient(155deg,var(--plum-d),var(--plum) 55%,#5A3562);
+  color:#fff;overflow:hidden;position:relative}
+header.hero::after{content:"";position:absolute;inset:-45% -15% auto auto;width:72vw;height:72vw;
+  background:radial-gradient(circle,rgba(194,67,107,.34),transparent 62%);pointer-events:none}
+header.hero::before{content:"";position:absolute;inset:auto auto -40% -18%;width:56vw;height:56vw;
+  background:radial-gradient(circle,rgba(216,154,78,.20),transparent 62%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;padding-block:clamp(48px,7vw,100px);text-align:center}
+.hero .eyebrow{color:#F3B9CB}
+.hero h1{font-size:clamp(29px,5vw,58px);max-width:18ch;margin-inline:auto}
+.hero h1 span{color:#F3B9CB}
+.hero p.sub{margin:20px auto 0;font-size:clamp(15px,1.5vw,19px);color:rgba(255,255,255,.86);max-width:56ch}
+.pills{display:flex;gap:11px;justify-content:center;flex-wrap:wrap;margin-top:clamp(28px,3.6vw,42px)}
+.pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:100px;
+  padding:11px 20px;font-size:14px}
+.pill b{color:#fff;font-weight:800}
+
+.steps{display:grid;gap:16px;margin-top:clamp(30px,4vw,46px)}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  box-shadow:var(--sh);display:grid}
+@media(min-width:860px){.step{grid-template-columns:250px minmax(0,1fr)}}
+.step-l{background:linear-gradient(158deg,var(--plum-d),var(--plum));color:#fff;
+  padding:clamp(22px,2.8vw,30px);display:flex;flex-direction:column;justify-content:center;gap:10px}
+.step-l .n{width:38px;height:38px;border-radius:11px;background:var(--rose);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px}
+.step-l h3{font-size:clamp(18px,2vw,23px);color:#fff}
+.step-l .wk{font-size:13px;color:rgba(255,255,255,.72);font-weight:600}
+.step-l .pr{margin-top:6px;font-size:clamp(19px,2.2vw,26px);font-weight:800;color:#F3B9CB;
+  letter-spacing:-.03em}
+.step-r{padding:clamp(22px,2.8vw,32px)}
+.step-r .cap{font-size:10.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:9px}
+.step-r ul{margin:0 0 20px;padding-left:20px}
+.step-r li{font-size:14.5px;color:var(--ink-2);line-height:1.55;margin-bottom:5px}
+.out{background:var(--gold-l);border:1px solid rgba(216,154,78,.42);border-left:4px solid var(--gold);
+  border-radius:0 13px 13px 0;padding:18px 20px}
+.out .cap{color:#9A6A22;margin-bottom:7px}
+.out p{font-size:15px;font-weight:600;line-height:1.5;color:var(--ink)}
+
+.total{display:grid;gap:14px;margin-top:clamp(28px,3.6vw,40px)}
+@media(min-width:800px){.total{grid-template-columns:1fr 1fr}}
+.tot{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:var(--sh)}
+.tot .cap{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--rose);margin-bottom:12px}
+.tot b.big{display:block;font-size:clamp(28px,3.6vw,40px);font-weight:800;letter-spacing:-.035em;
+  color:var(--plum);line-height:1}
+.tot p{font-size:14px;color:var(--ink-2);margin-top:11px;line-height:1.5}
+.tot ul{margin:11px 0 0;padding-left:19px}
+.tot li{font-size:14px;color:var(--ink-2);margin-bottom:4px}
+
+.pay{background:linear-gradient(150deg,var(--plum-d),var(--plum));color:#fff;border-radius:var(--r);
+  padding:clamp(24px,3.2vw,36px);margin-top:clamp(26px,3.4vw,38px);position:relative;overflow:hidden}
+.pay::after{content:"";position:absolute;inset:auto -10% -60% auto;width:44%;height:150%;
+  background:radial-gradient(circle,rgba(194,67,107,.4),transparent 62%);pointer-events:none}
+.pay>*{position:relative}
+.pay .cap{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:#F3B9CB;margin-bottom:16px}
+.pay-grid{display:grid;gap:12px}
+@media(min-width:700px){.pay-grid{grid-template-columns:repeat(3,1fr)}}
+.pg{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;
+  padding:20px;text-align:center}
+.pg.hl{background:rgba(216,154,78,.16);border-color:rgba(216,154,78,.5)}
+.pg b{display:block;font-size:clamp(21px,2.6vw,29px);font-weight:800;letter-spacing:-.03em}
+.pg.hl b{color:#F5CE8C}
+.pg span{display:block;font-size:13px;color:rgba(255,255,255,.75);margin-top:8px}
+.pay p.note{margin-top:18px;font-size:14.5px;color:rgba(255,255,255,.85);line-height:1.55}
+.pay p.note b{color:#fff}
+
+.need{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:13px;margin-top:26px}
+.need>div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
+.need .n{font-size:11px;font-weight:800;letter-spacing:.13em;color:var(--rose);margin-bottom:9px}
+.need p{font-size:14px;color:var(--ink-2)}
+
+footer.cta{background:linear-gradient(155deg,var(--plum-d),var(--plum));color:#fff;text-align:center;
+  padding-block:clamp(44px,6vw,88px);position:relative;overflow:hidden}
+footer.cta::after{content:"";position:absolute;inset:auto auto -50% -12%;width:58vw;height:58vw;
+  background:radial-gradient(circle,rgba(194,67,107,.3),transparent 62%);pointer-events:none}
+footer .wrap{position:relative;z-index:1}
+footer h2{color:#fff}
+footer p{color:rgba(255,255,255,.84);margin-top:16px;max-width:54ch;margin-inline:auto}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;padding:14px 26px;border-radius:100px;text-decoration:none;font-weight:700;
+  font-size:15px;transition:transform .25s}
+.btn-w{background:#fff;color:var(--plum-d)}
+.btn-o{border:1.5px solid rgba(255,255,255,.5);color:#fff}
+.btn:hover{transform:translateY(-2px)}
+.sign{margin-top:28px;font-size:13.5px;color:rgba(255,255,255,.7);line-height:1.7}
+
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.9,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow rv in">Производство гель-лаков</p>
+    <h1 class="rv in d1">Система касаний<br><span>дорожная карта</span></h1>
+    <p class="sub rv in d2">Пять недель, три этапа. После каждого у вас остается
+      что-то работающее — даже если решите на нем остановиться.</p>
+    <div class="pills">
+      <span class="pill rv in d2"><b>5 недель</b> от старта до запуска</span>
+      <span class="pill rv in d2"><b>800</b> спящих клиентов — первая цель</span>
+      <span class="pill rv in d2"><b>150 000 ₽</b> за весь проект</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow rv">Этапы</p>
+    <h2 class="rv d1">Что делаем и что вы получите</h2>
+
+    <div class="steps">
+
+      <div class="step rv">
+        <div class="step-l">
+          <div class="n">1</div>
+          <h3>База и сегменты</h3>
+          <div class="wk">Неделя 1</div>
+          <div class="pr">50 000 ₽</div>
+        </div>
+        <div class="step-r">
+          <div class="cap">Что делаем</div>
+          <ul>
+            <li>Забираем выгрузку из 1С и приводим в рабочий вид</li>
+            <li>Считаем привычный ритм закупа каждого клиента</li>
+            <li>Делим базу на сегменты: сети, салоны, мастера, спящие, новички</li>
+            <li>Проверяем, есть ли согласия на рассылку в ваших документах</li>
+          </ul>
+          <div class="out">
+            <div class="cap">Что получите</div>
+            <p>Таблицу, где по каждому клиенту видно: кто он, что покупал, в каком ритме
+              и когда был последний раз. И готовый список тех, кто выпал.
+              Даже если дальше ничего не делать — вы впервые увидите свою базу целиком.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step rv">
+        <div class="step-l">
+          <div class="n">2</div>
+          <h3>Платформа и сценарии</h3>
+          <div class="wk">Недели 2–3</div>
+          <div class="pr">75 000 ₽</div>
+        </div>
+        <div class="step-r">
+          <div class="cap">Что делаем</div>
+          <ul>
+            <li>Подключаем платформу и каналы: Телеграм, МАКС, сообщество ВК</li>
+            <li>Связываем платформу с таблицей</li>
+            <li>Прописываем, кому и когда пишем, а где включается человек</li>
+            <li>Пишем тексты под каждый повод и каждый сегмент</li>
+          </ul>
+          <div class="out">
+            <div class="cap">Что получите</div>
+            <p>Единое окно: менеджер видит все диалоги на одном экране, откуда бы человек
+              ни написал. И работающие сценарии — система знает, кому, когда и что отправить.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step rv">
+        <div class="step-l">
+          <div class="n">3</div>
+          <h3>Запуск и обучение</h3>
+          <div class="wk">Недели 4–5</div>
+          <div class="pr">25 000 ₽</div>
+        </div>
+        <div class="step-r">
+          <div class="cap">Что делаем</div>
+          <ul>
+            <li>Первое касание к спящим — законное, с получением согласия</li>
+            <li>Пилот на одном сегменте: смотрим на живые ответы, правим тексты</li>
+            <li>Учим менеджера пользоваться единым окном</li>
+            <li>Замеряем: сколько вернулось и на какую сумму</li>
+          </ul>
+          <div class="out">
+            <div class="cap">Что получите</div>
+            <p>Система работает по всей базе, менеджер ей пользуется, и есть первые
+              цифры возврата — сколько человек откликнулось и сколько денег это принесло.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <p class="eyebrow rv">Деньги</p>
+    <h2 class="rv d1">Сколько стоит и когда окупится</h2>
+
+    <div class="total">
+      <div class="tot rv">
+        <div class="cap">Разовая работа</div>
+        <b class="big">150 000 ₽</b>
+        <p>Три этапа: 50 000 + 75 000 + 25 000 ₽. Можно брать по очереди —
+          первый этап имеет смысл сам по себе.</p>
+      </div>
+      <div class="tot rv d1">
+        <div class="cap">Ежемесячно</div>
+        <b class="big">2 900–3 300 ₽</b>
+        <p>Подписка на платформу, платите напрямую сервису. Это единственный
+          обязательный платеж.</p>
+        <ul>
+          <li>Ведение и поддержка — 15 000 ₽/мес, по желанию</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pay rv">
+      <div class="cap">Когда окупается</div>
+      <div class="pay-grid">
+        <div class="pg hl"><b>160 000 ₽</b><span>если вернется 1% спящих — 8 человек</span></div>
+        <div class="pg"><b>480 000 ₽</b><span>если вернется 3% — 24 человека</span></div>
+        <div class="pg"><b>800 000 ₽</b><span>если вернется 5% — 40 человек</span></div>
+      </div>
+      <p class="note">Расчет по вашим цифрам: 800 спящих, средний закуп 5 000 ₽, четыре
+        закупа в год. <b>Проект окупается при возврате одного процента.</b> Все, что выше —
+        заработок, и при вашей себестоимости почти целиком прибыль. И это только спящие:
+        отдельно система удерживает 200 активных, замечая сбой ритма раньше вас.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow rv">Что нужно от вас</p>
+    <h2 class="rv d1">Чтобы начать</h2>
+    <div class="need">
+      <div class="rv"><div class="n">01</div><p>Выгрузка базы из 1С с историей закупов</p></div>
+      <div class="rv"><div class="n">02</div><p>Прайс и текущие остатки</p></div>
+      <div class="rv"><div class="n">03</div><p>Доступы к каналам и права администратора в сообществе ВК</p></div>
+      <div class="rv"><div class="n">04</div><p>Полчаса с менеджером — посмотреть, как она реально работает</p></div>
+      <div class="rv"><div class="n">05</div><p>Юрист с вашей стороны — проверить текст согласия, работа на пару часов</p></div>
+      <div class="rv"><div class="n">06</div><p>Один человек, который принимает решения по проекту</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="cta">
+  <div class="wrap">
+    <h2>Начинаем с первого этапа</h2>
+    <p>Он дает данные, на которых работает все остальное, и заканчивается тем,
+      что вы впервые видите свою базу целиком.</p>
+    <div class="btns">
+      <a class="btn btn-w" href="https://t.me/nastya_mgh">Написать в Telegram</a>
+      <a class="btn btn-o" href="tel:+79519403338">+7 951 940-33-38</a>
+    </div>
+    <p class="sign">Анастасия Маркова · digital-маркетолог</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(!e.isIntersecting) return; e.target.classList.add('in'); io.unobserve(e.target); });
+  }, {threshold:0, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+  function rv(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){
+    var r=el.getBoundingClientRect();
+    if(r.top < innerHeight*1.2 && r.bottom > -60) el.classList.add('in'); }); }
+  addEventListener('scroll', rv, {passive:true}); addEventListener('resize', rv, {passive:true}); rv();
+})();
+</script>
+</body>
+</html>
