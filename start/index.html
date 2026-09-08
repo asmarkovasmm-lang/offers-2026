@@ -90,11 +90,17 @@
   }
   .meta-row .circles{letter-spacing:.4em;color:var(--wine);font-size:13px}
   h1{
-    font-family:var(--display);font-weight:900;text-transform:uppercase;
-    font-size:clamp(32px, 5.6vw, 64px);
-    line-height:1.02;letter-spacing:-.015em;max-width:900px;
+    font-family:var(--display);font-weight:400;text-transform:uppercase;
+    font-size:clamp(44px, 8.2vw, 104px);
+    line-height:.96;letter-spacing:-.03em;max-width:900px;
   }
   h1 .accent{color:var(--wine)}
+  .h1-sub{
+    font-family:var(--display);font-weight:600;text-transform:uppercase;
+    font-size:clamp(15px,2.1vw,25px);letter-spacing:.02em;
+    color:var(--ink);margin-top:16px;
+  }
+  .h1-sub .accent{color:var(--wine)}
   /* inline-кнопка в лиде: овальный контур + белая стрелка в кружке вне контура */
   .lead-btn{
     display:inline-flex;align-items:center;gap:8px;vertical-align:middle;
@@ -464,7 +470,8 @@
       <span>для малого бизнеса</span>
       <span>обновлено — 09.2026</span>
     </div>
-    <h1>AI-разработка<br>и <span class="accent">digital-маркетинг</span></h1>
+    <h1>AI-автоматизация</h1>
+    <p class="h1-sub">разработка &amp; <span class="accent">digital-маркетинг</span></p>
     <p class="statement-line">Мы <mark>особенно хороши</mark> в создании автоматических
     систем повторных касаний — находим в вашей базе деньги, которые бизнес уже заработал,
     но еще не забрал</p>
