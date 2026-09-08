@@ -98,6 +98,23 @@
   }
   .chip b{color:var(--wine);font-weight:600}
 
+  /* ---------- заявление ---------- */
+  .statement{padding:26px 0 84px}
+  .statement p.big{
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(22px,3.4vw,40px);line-height:1.3;
+    max-width:900px;
+  }
+  .statement mark{
+    background:var(--wine);color:#fff;
+    padding:1px 14px;border-radius:8px;
+    -webkit-box-decoration-break:clone;box-decoration-break:clone;
+  }
+  .statement p.after{
+    margin-top:22px;font-size:17px;color:var(--ink-soft);max-width:680px;
+  }
+  .statement p.after b{color:var(--ink)}
+
   /* ---------- секции ---------- */
   section{padding:72px 0}
   .sec-head{margin-bottom:40px;max-width:760px}
@@ -375,6 +392,17 @@
     </div>
   </div>
 </header>
+
+<!-- заявление -->
+<section class="statement">
+  <div class="wrap">
+    <p class="big reveal">Я <mark>особенно хороша</mark> в системах повторных касаний —
+    когда выручка растет из вашей собственной базы, до которой годами не доходят руки.</p>
+    <p class="after reveal">У большинства компаний главные деньги лежат не в новом трафике,
+    а в списке тех, кто уже покупал и пропал. <b>Ниже — решения, которые их возвращают,
+    и калькулятор, чтобы посчитать вашу цифру.</b></p>
+  </div>
+</section>
 
 <!-- витрина решений -->
 <section class="solutions" id="solutions">
