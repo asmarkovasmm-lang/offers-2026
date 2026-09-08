@@ -11,7 +11,7 @@
 <meta property="og:locale" content="ru_RU">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&family=Marck+Script&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#E9E9E7;
@@ -174,18 +174,18 @@
   .solutions{background:var(--card);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
   .filters{display:flex;gap:30px;flex-wrap:wrap;margin-bottom:22px;align-items:center}
   .filters-note{
-    font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;
-    font-size:clamp(15px,1.7vw,20px);letter-spacing:0;text-transform:none;
-    color:var(--bordo);padding-left:8px;
+    font-family:'Marck Script',cursive;font-weight:400;
+    font-size:clamp(18px,2.1vw,26px);letter-spacing:0;text-transform:none;
+    color:var(--bordo);padding-left:10px;transform:rotate(-2deg);display:inline-block;
   }
   .fbtn{
     font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;
-    padding:8px 2px 9px;border-radius:0;cursor:pointer;
-    border:none;border-bottom:2px solid transparent;background:transparent;color:var(--ink);
-    transition:color .2s,border-color .2s;
+    padding:12px 20px;border-radius:0;cursor:pointer;
+    border:none;border-bottom:2.5px solid var(--wine);background:transparent;color:var(--wine);
+    transition:background .2s,color .2s;
   }
-  .fbtn:hover{color:var(--wine);border-bottom-color:var(--line)}
-  .fbtn.active{color:var(--wine);border-bottom-color:var(--wine)}
+  .fbtn:hover{background:var(--blush)}
+  .fbtn.active{background:var(--wine);color:#fff;border-bottom-color:var(--wine)}
   .legend{
     display:flex;gap:18px;flex-wrap:wrap;margin-bottom:36px;font-size:13px;color:var(--ink-soft);
     align-items:center;
