@@ -210,6 +210,10 @@ input[type=range]:focus-visible{outline:2px solid var(--teal);outline-offset:6px
   line-height:1;font-variant-numeric:tabular-nums}
 .calc-line{font-size:14.5px;color:var(--ink-2);margin-top:12px;line-height:1.45}
 .calc-line b{color:var(--ink);font-variant-numeric:tabular-nums}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.presets button{font:inherit;font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:100px;
+  border:1px solid var(--line);background:#fff;color:var(--ink-2);cursor:pointer}
+.presets button.on{background:var(--teal);border-color:var(--teal);color:#fff}
 
 /* навигация */
 .nav{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
@@ -246,19 +250,18 @@ input[type=range]:focus-visible{outline:2px solid var(--teal);outline-offset:6px
       <p class="lead" style="margin-top:14px">В очереди у администратора 160 человек. С остальными
         никто не работает, хотя многим из них пора на осмотр или гигиену.</p>
       <div class="cols c4" style="margin-top:26px">
-        <div class="box"><div class="big" style="font-size:clamp(24px,3vw,38px)">6 000</div>
-          <div class="cap">пациентов в базе</div></div>
-        <div class="box"><div class="big" style="font-size:clamp(24px,3vw,38px)">160</div>
-          <div class="cap">в очереди у администратора</div></div>
-        <div class="box"><div class="big" style="font-size:clamp(24px,3vw,38px)">146</div>
-          <div class="cap">вернем при 2,5% — вдвое меньше, чем за три месяца вернули в клинике косметологии</div></div>
-        <div class="box gold"><div class="big" style="font-size:clamp(24px,3vw,38px)">1 460 000 ₽</div>
-          <div class="cap">при среднем чеке 10 000 ₽ — больше, чем стоит первый год работы с нами</div></div>
+        <div class="box"><div class="n">В БАЗЕ</div><div class="big" style="font-size:clamp(24px,3vw,38px)">6 000</div>
+          <div class="cap">пациентов</div></div>
+        <div class="box"><div class="n">В ОЧЕРЕДИ</div><div class="big" style="font-size:clamp(24px,3vw,38px)">160</div>
+          <div class="cap">у администратора</div></div>
+        <div class="box"><div class="n">ЕСЛИ ВЕРНЕМ 2,5%</div><div class="big" style="font-size:clamp(24px,3vw,38px)">1 460 000 ₽</div>
+          <div class="cap">146 пациентов за год, осторожная цель</div></div>
+        <div class="box gold"><div class="n">ЕСЛИ ВЕРНЕМ 5%</div><div class="big" style="font-size:clamp(24px,3vw,38px)">2 920 000 ₽</div>
+          <div class="cap">292 пациента за год. Клиника косметологии вернула почти 5% за три месяца</div></div>
       </div>
-      <div class="box ask" style="margin-top:20px"><p style="font-size:clamp(15px,1.5vw,18px)"><b>А если вернем 5%</b>,
-        как клиника косметологии за три месяца, выйдет 292&nbsp;пациента и <b>2&nbsp;920&nbsp;000&nbsp;₽</b> за год.</p></div>
-      <p class="lead" style="font-size:clamp(14px,1.4vw,17px)">Один пациент, который вернется
-        на имплант под ключ за 59 900 ₽, почти целиком окупает разработку.</p>
+      <p class="lead" style="font-size:clamp(14px,1.4vw,17px)">Считаем при среднем чеке 10&nbsp;000&nbsp;₽. Даже осторожный
+        вариант больше, чем стоит первый год работы с нами. А один пациент, который вернется на имплант
+        под ключ за 59&nbsp;900&nbsp;₽, почти целиком окупает разработку.</p>
     </div>
   </section>
 
@@ -411,7 +414,8 @@ input[type=range]:focus-visible{outline:2px solid var(--teal);outline-offset:6px
           <div class="field"><label for="c-base">Пациентов, с которыми сейчас не работают <b id="v-base">5 840</b></label>
             <input type="range" id="c-base" min="500" max="6000" step="10" value="5840"></div>
           <div class="field"><label for="c-conv">Вернутся после сообщений <b><span id="v-conv">2,5</span>%</b></label>
-            <input type="range" id="c-conv" min="0.5" max="10" step="0.5" value="2.5"></div>
+            <input type="range" id="c-conv" min="0.5" max="10" step="0.5" value="2.5">
+            <div class="presets"><button type="button" data-conv="2.5">2,5% — осторожно</button><button type="button" data-conv="5">5% — как клиника косметологии</button></div></div>
           <div class="field"><label for="c-check">Средний чек визита <b><span id="v-check">10 000</span> ₽</b></label>
             <input type="range" id="c-check" min="2000" max="60000" step="500" value="10000"></div>
           <div class="field"><label for="c-visits">Визитов у вернувшегося за год <b id="v-visits">1</b></label>
@@ -523,6 +527,7 @@ input[type=range]:focus-visible{outline:2px solid var(--teal);outline-offset:6px
     document.getElementById('v-conv').textContent = String(conv).replace('.', ',');
     document.getElementById('v-check').textContent = sp(check);
     document.getElementById('v-visits').textContent = visits;
+    presets.forEach(function(b){ b.classList.toggle('on', +b.getAttribute('data-conv') === conv); });
     var people = Math.round(base * conv / 100);
     var need = Math.ceil(60000 / (check * visits));
     document.getElementById('o-sum').textContent = sp(people * check * visits);
@@ -531,6 +536,9 @@ input[type=range]:focus-visible{outline:2px solid var(--teal);outline-offset:6px
       ? 'Разработка за 60 000 ₽ окупается на <b>' + need + '-м</b> из них'
       : 'Чтобы окупить разработку за 60 000 ₽, нужно <b>' + need + '</b> вернувшихся';
   }
+  var presets = [].slice.call(document.querySelectorAll('.presets button'));
+  presets.forEach(function(b){ b.addEventListener('click', function(){
+    el.conv.value = b.getAttribute('data-conv'); calc(); b.blur(); }); });
   ids.forEach(function(k){ el[k].addEventListener('input', calc); });
   calc();
 })();
