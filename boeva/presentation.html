@@ -20,7 +20,7 @@
 html,body{height:100%}
 body{margin:0;font-family:var(--f);background:#0b1416;color:var(--ink);overflow:hidden}
 .deck{position:relative;width:100vw;height:100vh;overflow:hidden}
-.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-start;
   padding:clamp(28px,5vw,84px) clamp(24px,6vw,110px);background:#fff;
   opacity:0;visibility:hidden;transform:translateY(26px);
   transition:opacity .55s ease,transform .55s cubic-bezier(.2,.9,.3,1),visibility .55s;
@@ -29,7 +29,7 @@ body{margin:0;font-family:var(--f);background:#0b1416;color:var(--ink);overflow:
 .slide.teal{background:linear-gradient(160deg,var(--teal-d),var(--teal) 58%,#0a9aac);color:#fff}
 .slide.dark{background:linear-gradient(165deg,var(--md),var(--md2) 72%,#2a8f96);color:#fff}
 .slide.soft{background:var(--teal-xl)}
-.inner{max-width:1120px;margin:0 auto;width:100%}
+.inner{max-width:1120px;margin:auto;width:100%}
 
 .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:700;
   letter-spacing:.17em;text-transform:uppercase;color:var(--teal);margin-bottom:18px}
@@ -181,6 +181,9 @@ ul.ticks li::before{content:"";position:absolute;left:0;top:.42em;width:15px;hei
   font-size:14px;line-height:1.45;color:var(--ink-2)}
 .svc b{white-space:nowrap;color:var(--ink)}
 .ask{margin-top:18px;background:var(--teal-l);border-color:#BFE3E8}
+.was{font-size:clamp(16px,1.6vw,20px);font-weight:700;color:rgba(32,39,43,.6);margin-bottom:8px}
+.was s{text-decoration-thickness:2px}
+.was span{font-size:12.5px;font-weight:600;margin-left:8px}
 
 /* калькулятор */
 .calc{display:grid;margin-top:clamp(18px,2.4vw,30px);background:#fff;border:1px solid var(--line);
@@ -309,8 +312,9 @@ input[type=range]:focus-visible{outline:2px solid var(--teal);outline-offset:6px
       <div class="price">
         <div class="box gold">
           <div class="n">ВОЗВРАЩАЕМ ПАЦИЕНТОВ ИЗ БАЗЫ</div>
+          <div class="was"><s>350&nbsp;000&nbsp;₽</s><span>обычная цена</span></div>
           <div class="big">60 000 ₽</div>
-          <div class="cap">разработка, двумя платежами по 30 000 ₽</div>
+          <div class="cap">разработка для вас, двумя платежами по 30&nbsp;000&nbsp;₽</div>
           <div class="big" style="margin-top:18px">20 000 ₽ <span class="per">в месяц</span></div>
           <div class="cap">после запуска</div>
         </div>
@@ -323,6 +327,9 @@ input[type=range]:focus-visible{outline:2px solid var(--teal);outline-offset:6px
             потратили, сколько обращений и записей, как это меняется от недели к неделе.</div>
         </div>
       </div>
+      <div class="box ask"><p><b>Почему для вас 60&nbsp;000&nbsp;₽.</b> Ваша клиника — наш первый проект в стоматологии,
+        и ваш результат станет нашим кейсом. В кейс войдут только цифры: сколько пациентов вернулось
+        и сколько они принесли. Данные пациентов остаются у вас.</p></div>
       <div class="steps7" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-top:20px">
         <div class="st"><div class="k">1</div><h4>Неделя на пробу</h4><p>бесплатно</p></div>
         <div class="st"><div class="k">2</div><h4>Решили дорабатывать</h4><p>30 000 ₽</p></div>
