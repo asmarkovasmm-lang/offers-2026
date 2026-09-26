@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="Сколько принесет система касаний по клиентской базе и как она выглядит у клиентки и у менеджера">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%92%85</text></svg>">
+<style>:root{color-scheme:light}body{margin:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Касания и помощник менеджера</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #eceef1;
+    --surface: #ffffff;
+    --text: #16181d;
+    --muted: #5d6470;
+    --line: #d6dae0;
+    --cherry: #7b1e2e;
+    --cherry-soft: #f1dfe3;
+    --toast-bg: #16181d;
+    --toast-text: #ffffff;
+    --hl: #ffec8a;
+    --hl-text: #16181d;
+
+    /* внутри телефонов: всегда светлая тема, как на скриншоте */
+    --phone-frame: #111214;
+    --ui-font: -apple-system, "SF Pro Text", "Segoe UI", Roboto, Arial, sans-serif;
+    --c-wall: #efedf5;
+    --c-head: #ffffff;
+    --c-in: #ffffff;
+    --c-out: #e4e0fb;
+    --c-accent: #5b50d6;
+    --tg-wall: #b3d197;
+    --tg-doodle: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%232f6b3a%22%20stroke-opacity%3D%220.3%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M30%2018l3.5%207.5%208%201-6%205.5%201.6%208L30%2036l-7.1%204%201.6-8-6-5.5%208-1z%22%2F%3E%3Cpath%20d%3D%22M110%2050c-9-7-15-11-15-17a7%207%200%200%201%2015-3%207%207%200%200%201%2015%203c0%206-6%2010-15%2017z%22%2F%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%2234%22%20r%3D%224%22%2F%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%2224%22%20r%3D%226%22%2F%3E%3Ccircle%20cx%3D%22210%22%20cy%3D%2231%22%20r%3D%226%22%2F%3E%3Ccircle%20cx%3D%22206%22%20cy%3D%2243%22%20r%3D%226%22%2F%3E%3Ccircle%20cx%3D%22194%22%20cy%3D%2243%22%20r%3D%226%22%2F%3E%3Ccircle%20cx%3D%22190%22%20cy%3D%2231%22%20r%3D%226%22%2F%3E%3Cpath%20d%3D%22M200%2049v16m0-6c4-4%208-4%2010-3%22%2F%3E%3Cpath%20d%3D%22M268%2062a3%203%200%201%201%203%203%206%206%200%201%201-6-6%209%209%200%201%201%209%209%2012%2012%200%201%201-12-12%22%2F%3E%3Cpath%20d%3D%22M24%20104h26v16a9%209%200%200%201-9%209h-8a9%209%200%200%201-9-9zM50%20108h4a5%205%200%200%201%200%2010h-4M31%2096c-3-4%203-6%200-10M41%2096c-3-4%203-6%200-10%22%2F%3E%3Cpath%20d%3D%22M112%20112c8-10%2024-10%2032%200-8%2010-24%2010-32%200zM112%20112l-10-8v16z%22%2F%3E%3Ccircle%20cx%3D%22136%22%20cy%3D%22110%22%20r%3D%221.6%22%2F%3E%3Cpath%20d%3D%22M198%20128c4-24%2030-26%2038-22-4%2022-26%2028-38%2022zM198%20128l26-16%22%2F%3E%3Cellipse%20cx%3D%22270%22%20cy%3D%22140%22%20rx%3D%2211%22%20ry%3D%2214%22%2F%3E%3Cpath%20d%3D%22M270%20154l-2%204h4zM270%20158c-4%208%204%2012%200%2020%22%2F%3E%3Ccircle%20cx%3D%2258%22%20cy%3D%22188%22%20r%3D%2214%22%2F%3E%3Ccircle%20cx%3D%2253%22%20cy%3D%22184%22%20r%3D%221.6%22%2F%3E%3Ccircle%20cx%3D%2263%22%20cy%3D%22184%22%20r%3D%221.6%22%2F%3E%3Cpath%20d%3D%22M51%20193c4%205%2010%205%2014%200%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22168%22%20r%3D%226%22%2F%3E%3Ccircle%20cx%3D%22116%22%20cy%3D%22172%22%20r%3D%226%22%2F%3E%3Cpath%20d%3D%22M100%20162c2-10%208-16%2014-18M116%20166c-2-8-2-14-2-22%22%2F%3E%3Cpath%20d%3D%22M150%20200c-6-4-9-9-9-15a12%2012%200%200%201%2024%200c0%206-3%2011-9%2015zM147%20204h12M148%20208h10M150%20188l3%205%203-5%22%2F%3E%3Cpath%20d%3D%22M216%20206h30v24h-30zM213%20198h36v8h-36zM231%20198v32M231%20198c-6-10-14-4-8%200m8%200c6-10%2014-4%208%200%22%2F%3E%3Cpath%20d%3D%22M20%20262l20-12M16%20258a4%204%200%201%201%206-4%204%204%200%201%201%202%207M44%20254a4%204%200%201%201-6%204%204%204%200%201%201-2-7%22%2F%3E%3Cpath%20d%3D%22M92%20246h32v22H92zM92%20246l16%2012%2016-12%22%2F%3E%3Cpath%20d%3D%22M176%20280h34a8%208%200%200%200%200-16%2011%2011%200%200%200-21-3%208%208%200%200%200-13%205%207%207%200%200%200%200%2014z%22%2F%3E%3Cpath%20d%3D%22M258%20262a16%2012%200%200%201%2032%200zM268%20262v14h12v-14%22%2F%3E%3Ccircle%20cx%3D%22268%22%20cy%3D%22254%22%20r%3D%222%22%2F%3E%3Ccircle%20cx%3D%22280%22%20cy%3D%22256%22%20r%3D%221.6%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2260%22%20r%3D%223%22%2F%3E%3Ccircle%20cx%3D%22160%22%20cy%3D%2270%22%20r%3D%222.5%22%2F%3E%3Ccircle%20cx%3D%22240%22%20cy%3D%2290%22%20r%3D%223%22%2F%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%22150%22%20r%3D%222.5%22%2F%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%22150%22%20r%3D%223%22%2F%3E%3Ccircle%20cx%3D%22140%22%20cy%3D%22240%22%20r%3D%222.5%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%22230%22%20r%3D%223%22%2F%3E%3Ccircle%20cx%3D%22290%22%20cy%3D%22210%22%20r%3D%222.5%22%2F%3E%3Cpath%20d%3D%22M76%20140v8m-4-4h8M252%2034v8m-4-4h8M170%20228v8m-4-4h8M12%20208v8m-4-4h8M228%20268v8m-4-4h8%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    --tg-grad: linear-gradient(120deg, #d3dd96 0%, #a8cf8a 45%, #86bf8e 100%);
+    --tg-head: #ffffff;
+    --tg-in: #ffffff;
+    --tg-accent: #3390ec;
+    --tg-ikb: rgba(58, 86, 52, 0.55);
+    --tg-kb: #eef0f2;
+    --ink: #111418;
+    --ink-2: #707a86;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121417;
+      --surface: #1c1f24;
+      --text: #eceef1;
+      --muted: #9aa2ad;
+      --line: #2d3238;
+      --cherry: #e0788a;
+      --cherry-soft: #3a2328;
+      --toast-bg: #eceef1;
+      --toast-text: #16181d;
+      --hl: #5c4c0c;
+      --hl-text: #f5edc8;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #121417;
+    --surface: #1c1f24;
+    --text: #eceef1;
+    --muted: #9aa2ad;
+    --line: #2d3238;
+    --cherry: #e0788a;
+    --cherry-soft: #3a2328;
+    --toast-bg: #eceef1;
+    --toast-text: #16181d;
+    --hl: #5c4c0c;
+    --hl-text: #f5edc8;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.55 "Onest", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding-inline: 16px; padding-block: 36px 56px; }
+
+  .kicker {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--cherry); margin: 0 0 6px;
+  }
+  h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); line-height: 1.15; margin: 0 0 12px; text-wrap: balance; max-width: 22ch; }
+  h2 { font-size: 1.3rem; line-height: 1.25; margin: 0 0 8px; text-wrap: balance; }
+  .lead { color: var(--muted); max-width: 60ch; margin: 0 0 22px; }
+
+  /* деньги */
+  .money {
+    display: flex; flex-wrap: wrap; align-items: stretch; gap: 10px;
+    margin: 0 0 8px;
+  }
+  .money .step {
+    background: var(--surface); border-radius: 12px; padding: 12px 16px; flex: 1 1 180px;
+  }
+  .money .num { font-size: 1.6rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .money .step:last-child .num { color: var(--cherry); }
+  .money .cap { font-size: 0.88rem; color: var(--muted); }
+  .money .arrow { align-self: center; color: var(--muted); font-size: 1.3rem; }
+
+  .block { margin: 0 0 40px; }
+  .block h2, h2.sec { font-size: 1.4rem; margin: 0 0 10px; }
+  h2.sec { margin-top: 56px; }
+  .sub { color: var(--muted); margin: 0 0 14px; max-width: 60ch; }
+  .sub b { color: var(--text); }
+  .note { font-size: 0.9rem; color: var(--muted); margin: 10px 0 0; }
+
+  .pay { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .pay .tile { background: var(--surface); border-radius: 12px; padding: 14px 18px; flex: 1 1 170px; }
+  .pay .big { font-size: 1.6rem; font-weight: 700; line-height: 1.1; }
+  .pay .seg-name { color: var(--muted); margin: 0 0 8px; }
+  .pay .calc-line { font-weight: 600; color: var(--cherry); font-variant-numeric: tabular-nums; }
+  .pay .or { color: var(--muted); font-size: 0.9rem; }
+
+  .calc {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px;
+    background: var(--surface); border-radius: 14px; padding: 18px 20px;
+  }
+  .controls { display: flex; flex-direction: column; }
+  .controls label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 0.93rem; margin: 12px 0 4px; }
+  .controls label:first-child { margin-top: 0; }
+  .controls output { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .controls input[type="range"] { width: 100%; accent-color: var(--cherry); margin: 0; }
+  .controls input[type="range"]:focus-visible { outline: 2px solid var(--cherry); outline-offset: 3px; }
+  .results { display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+  .results .r {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    padding: 12px 16px; border-radius: 10px; background: var(--bg);
+  }
+  .results .r span { color: var(--muted); font-size: 0.93rem; }
+  .results .r b { font-size: 1.45rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .results .r.main { background: var(--cherry-soft); }
+  .results .r.main span { color: var(--text); }
+  .results .r.main b { color: var(--cherry); }
+  .with-logo { display: flex; align-items: center; gap: 14px; }
+  .with-logo img { width: 58px; height: auto; flex: none; }
+  .hl { background: var(--hl); color: var(--hl-text); padding: 2px 6px; border-radius: 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .tgshot {
+    max-width: 560px; margin: 18px 0 0; border-radius: 14px; overflow: hidden;
+    background-color: var(--tg-wall); background-image: var(--tg-doodle), var(--tg-grad);
+    background-size: 210px 210px, 100% 100%;
+    padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 3px;
+    font-family: -apple-system, "SF Pro Text", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .tgshot .d {
+    align-self: center; background: rgba(62, 128, 72, 0.78); color: #fff;
+    font-size: 13px; font-weight: 500; padding: 3px 10px; border-radius: 12px; margin: 0 0 8px;
+  }
+  .tgshot .b {
+    max-width: 84%; padding: 6px 9px 6px 11px; border-radius: 17px;
+    font-size: 15.5px; line-height: 1.32; color: #000; letter-spacing: -0.1px;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+  }
+  .tgshot .b.o { align-self: flex-end; background: #effdde; border-bottom-right-radius: 5px; margin-bottom: 10px; }
+  .tgshot .b.i { align-self: flex-start; background: #fff; }
+  .tgshot .b.i.last { border-bottom-left-radius: 5px; }
+  .tgshot .t {
+    float: right; font-size: 12px; line-height: 1; margin: 9px 0 -3px 12px;
+    color: #a1aab3; font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .tgshot .b.o .t { color: #4fae4e; }
+  .tgshot .b { position: relative; }
+  .tgshot .b.o.tail { border-bottom-right-radius: 3px; }
+  .tgshot .b.i.last { border-bottom-left-radius: 3px; }
+  .tgshot .b.o.tail::after, .tgshot .b.i.last::after {
+    content: ""; position: absolute; bottom: 0; width: 11px; height: 17px;
+  }
+  .tgshot .b.o.tail::after { right: -9px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='17'%3E%3Cpath d='M0 0C0 8 3 14 11 17H0z' fill='%23effdde'/%3E%3C/svg%3E"); }
+  .tgshot .b.i.last::after { left: -9px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='17'%3E%3Cpath d='M11 0C11 8 8 14 0 17H11z' fill='%23ffffff'/%3E%3C/svg%3E"); }
+  .chatshot { display: block; width: 100%; max-width: 680px; height: auto; margin: 18px 0 0; border-radius: 14px; }
+  .tgshot-cap { font-size: 0.82rem; color: var(--muted); margin: 6px 0 0; }
+  .col-text h3 { font-size: 1.2rem; line-height: 1.25; margin: 0 0 8px; text-wrap: balance; }
+
+  /* две колонки с телефонами */
+  .demo { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px 32px; align-items: start; }
+  .col-text { min-height: 218px; }
+  .col-text p { color: var(--muted); margin: 0 0 14px; font-size: 0.95rem; max-width: 46ch; }
+  .hint { font-size: 0.88rem; color: var(--cherry); font-weight: 500; }
+
+  .seg { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+  .seg button {
+    font: 500 0.88rem/1 "Onest", sans-serif; color: var(--text);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+    padding: 9px 14px; cursor: pointer;
+  }
+  .seg button[aria-pressed="true"] { background: var(--cherry); border-color: var(--cherry); color: #fff; }
+  .seg button:focus-visible, .phone button:focus-visible, .reset:focus-visible { outline: 2px solid var(--cherry); outline-offset: 2px; }
+
+  .caption { font-size: 0.85rem; color: var(--muted); text-align: center; margin: 10px auto 0; max-width: 36ch; }
+
+  /* телефон */
+  .phone {
+    width: 100%; max-width: 360px; height: 680px; margin: 0 auto;
+    background: var(--phone-frame); border-radius: 46px; padding: 10px;
+    box-shadow: 0 18px 40px rgba(17, 20, 24, 0.22);
+    transition: box-shadow 0.3s;
+  }
+  .phone.flash { box-shadow: 0 0 0 4px var(--cherry), 0 18px 40px rgba(17, 20, 24, 0.22); }
+  @media (prefers-reduced-motion: reduce) { .phone { transition: none; } }
+  .screen {
+    height: 100%; border-radius: 36px; overflow: hidden;
+    display: flex; flex-direction: column;
+    font-family: var(--ui-font); color: var(--ink);
+  }
+  .statusbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 28px 4px; font: 600 13px/1 var(--ui-font);
+  }
+  .statusbar svg { display: block; }
+  .chat-head {
+    display: flex; align-items: center; gap: 10px; padding: 6px 12px 9px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  }
+  .back { font-size: 26px; line-height: 1; color: var(--c-accent); margin-right: 2px; }
+  .ava {
+    width: 38px; height: 38px; border-radius: 50%; flex: none;
+    display: grid; place-items: center; color: #fff; font: 600 16px/1 var(--ui-font);
+  }
+  .who b { display: block; font-size: 15px; line-height: 1.2; }
+  .who span { font-size: 12.5px; color: var(--ink-2); }
+
+  .chat-body {
+    flex: 1; overflow-y: auto; padding: 12px 10px 14px;
+    display: flex; flex-direction: column; gap: 6px;
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) { .chat-body { scroll-behavior: auto; } }
+  .day {
+    align-self: center; font-size: 12px; padding: 3px 10px; border-radius: 10px;
+    background: rgba(0, 0, 0, 0.12); color: #fff; margin: 2px 0 6px;
+  }
+  .msg {
+    max-width: 84%; padding: 7px 10px 6px; border-radius: 16px;
+    font-size: 14.5px; line-height: 1.38; position: relative;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.12);
+    overflow-wrap: anywhere;
+  }
+  .msg time {
+    display: block; text-align: right; font-size: 11px; color: var(--ink-2);
+    margin-top: 2px; line-height: 1;
+  }
+  .msg .lbl { display: block; font-size: 12px; font-weight: 600; color: var(--tg-accent); margin-bottom: 2px; }
+  .msg .ctx { display: block; font-size: 13px; color: var(--ink-2); }
+  .msg .quote {
+    display: block; border-left: 3px solid var(--tg-accent); padding: 2px 0 2px 8px; margin: 4px 0;
+    background: rgba(51, 144, 236, 0.08); border-radius: 0 6px 6px 0;
+  }
+  .in { align-self: flex-start; border-bottom-left-radius: 5px; }
+  .out { align-self: flex-end; border-bottom-right-radius: 5px; }
+
+  .inputbar {
+    display: flex; align-items: center; gap: 8px; padding: 8px 10px;
+    background: #fff; border-top: 1px solid rgba(0, 0, 0, 0.07);
+  }
+  .inputbar .field {
+    flex: 1; border-radius: 18px; padding: 8px 14px; font-size: 14px; color: #9aa1aa;
+    background: #f2f3f5;
+  }
+  .inputbar .dot { width: 30px; height: 30px; border-radius: 50%; flex: none; display: grid; place-items: center; color: #fff; font-size: 15px; }
+
+  /* клиентский мессенджер */
+  .client .screen { background: var(--c-wall); }
+  .client .statusbar, .client .chat-head { background: var(--c-head); }
+  .client .in { background: var(--c-in); }
+  .client .out { background: var(--c-out); }
+  .client .out time { color: #6f66c9; }
+
+  .album {
+    display: grid; grid-template-columns: 1.3fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px;
+    width: 100%; aspect-ratio: 1 / 1.15; margin: -4px -7px 6px; width: calc(100% + 14px);
+    border-radius: 13px 13px 4px 4px; overflow: hidden;
+  }
+  .album img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .album img:first-child { grid-row: 1 / 3; }
+  .msg.has-album { padding-top: 7px; width: 84%; }
+
+  /* Телеграм-бот */
+  .bot .screen { background-color: var(--tg-wall); background-image: var(--tg-doodle), var(--tg-grad); background-size: 190px 190px, 100% 100%; }
+  .bot .day { background: rgba(62, 128, 72, 0.78); }
+  .bot .statusbar, .bot .chat-head { background: var(--tg-head); }
+  .bot .back { color: var(--tg-accent); }
+  .bot .in { background: var(--tg-in); }
+  .bot .msg { max-width: 88%; }
+  .ikb { display: grid; gap: 4px; width: 88%; align-self: flex-start; margin: -2px 0 4px; }
+  .ikb.row3 { grid-template-columns: 1fr 1fr 1fr; }
+  .ikb button {
+    font: 500 13px/1.2 var(--ui-font); color: #fff; background: var(--tg-ikb);
+    border: 0; border-radius: 9px; padding: 8px 6px; cursor: pointer;
+  }
+  .ikb button:hover { background: rgba(58, 86, 52, 0.7); }
+  .sent-note { font-size: 12.5px; font-weight: 600; color: #2e7d32; margin-top: 4px; display: block; }
+  .v-text[contenteditable="true"] { outline: 2px dashed var(--tg-accent); outline-offset: 2px; border-radius: 4px; background: #f5faff; }
+  .num-row { display: flex; justify-content: space-between; gap: 12px; font-variant-numeric: tabular-nums; }
+  .num-row b { font-weight: 600; }
+
+  .rkb {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
+    padding: 8px; background: var(--tg-kb);
+  }
+  .rkb button {
+    font: 500 13.5px/1.2 var(--ui-font); color: var(--ink);
+    background: #fff; border: 0; border-radius: 8px; padding: 11px 4px; cursor: pointer;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+  }
+  .rkb button[aria-pressed="true"] { background: #dcecfd; color: #1d63b8; }
+  .bot .inputbar { border-top: 1px solid rgba(0, 0, 0, 0.07); }
+
+  .reset-row { text-align: center; margin: 22px 0 0; }
+  .reset {
+    font: 500 0.88rem/1 "Onest", sans-serif; color: var(--muted); background: none;
+    border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; cursor: pointer;
+  }
+
+  /* кто что делает */
+  .roles { margin: 56px 0 0; }
+  .roles h2 { margin-bottom: 14px; }
+  .roles dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin: 0; }
+  .roles .role { background: var(--surface); border-radius: 12px; padding: 14px 16px; }
+  .roles dt { font-weight: 600; margin: 0 0 4px; }
+  .roles dd { margin: 0; color: var(--muted); font-size: 0.93rem; }
+  .roles .role.accent dt { color: var(--cherry); }
+
+  .foot { margin: 36px 0 0; font-size: 0.8rem; color: var(--muted); max-width: 70ch; }
+  .foot a { color: inherit; }
+
+  .toast {
+    position: fixed; left: 50%; transform: translateX(-50%);
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    background: var(--toast-bg); color: var(--toast-text);
+    padding: 11px 16px; border-radius: 12px; font-size: 0.92rem; max-width: calc(100% - 32px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25); z-index: 10;
+  }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Демо на осенних трендах</p>
+  <h1>Сколько это принесет и как это будет выглядеть</h1>
+  <p class="lead">Сначала деньги: сколько заказов нужно, чтобы работа окупилась. Потом — как сообщения приходят клиенткам и что видит менеджер.</p>
+
+  <section class="block">
+    <h2>Чтобы окупить работу</h2>
+    <p class="sub">Работа стоит <b>45 000 ₽</b>. Эти деньги вернет любой из трех вариантов:</p>
+    <div class="pay">
+      <div class="tile"><div class="big">6 заказов</div><div class="seg-name">салонов</div><div class="calc-line">6 × 8 000 = 48 000 ₽</div></div>
+      <div class="or">или</div>
+      <div class="tile"><div class="big">23 заказа</div><div class="seg-name">мастеров</div><div class="calc-line">23 × 2 000 = 46 000 ₽</div></div>
+      <div class="or">или</div>
+      <div class="tile"><div class="big">3 + 11</div><div class="seg-name">3 салона и 11 мастеров</div><div class="calc-line">24 000 + 22 000 = 46 000 ₽</div></div>
+    </div>
+    <p class="note">Это из 800 клиентов, которые сейчас ничего не покупают.</p>
+  </section>
+
+  <section class="block">
+    <h2 class="with-logo"><img src="img/medline-mark.png" alt="Логотип клиники Медлайн" width="58" height="54"><span>Как это уже работает в Медлайне</span></h2>
+    <p class="sub">Клиника косметологии, та же схема: регулярные касания по базе, сообщения по поводу и по ритму визитов. Цифры за первые 3 месяца работы, данные на 13 сентября 2026.</p>
+    <div class="money" aria-label="Результат Медлайна">
+      <div class="step"><div class="num">2 000</div><div class="cap">клиентов в работе</div></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="step"><div class="num">98</div><div class="cap">вернулись за 3 месяца</div></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="step"><div class="num">15 302 ₽</div><div class="cap">средний чек</div></div>
+    </div>
+    <p class="note">Из вернувшихся 12 пришли второй раз, 2 — третий. Всего 114 визитов, это около <mark class="hl"><b>1,7 млн ₽ выручки</b></mark> с базы, которая до этого не приходила.</p>
+    <p class="note">98 из 2 000 — это 5% базы за 3 месяца.</p>
+    <img class="chatshot" src="img/medline-chat.jpg" alt="Переписка в Телеграме: Наташа пишет, что за 3 месяца вернулось 98 человек, 12 сходили 2 раза, 2 — 3 раза, средний чек 15 302" width="1400" height="408">
+    <p class="tgshot-cap">Переписка с представителем Медлайна, 18 сентября 2026</p>
+  </section>
+
+  <section class="block">
+    <h2>Если у тебя вернется 5%, как в Медлайне</h2>
+    <div class="money" aria-label="Пример расчета">
+      <div class="step"><div class="num">800</div><div class="cap">клиентов сейчас ничего не покупают</div></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="step"><div class="num">5% = 40</div><div class="cap">клиентов снова заказывают</div></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="step"><div class="num">80–200 тыс ₽</div><div class="cap">выручки при среднем чеке 2–5 тыс ₽</div></div>
+    </div>
+    <p class="note"><b style="color:var(--text)">Работа окупится в 2–4 раза.</b> <mark class="hl">И это только первый заказ: вернувшийся клиент потом заказывает снова.</mark></p>
+  </section>
+
+  <section class="block">
+    <h2>Посчитай сама</h2>
+    <div class="calc">
+      <div class="controls">
+        <label for="cSleep">Клиентов, которые сейчас не покупают <output id="oSleep" for="cSleep">800</output></label>
+        <input type="range" id="cSleep" min="100" max="2000" step="50" value="800">
+        <label for="cPct">Сколько процентов вернется <output id="oPct" for="cPct">5%</output></label>
+        <input type="range" id="cPct" min="1" max="30" step="1" value="5">
+        <label for="cCheck">Средний чек <output id="oCheck" for="cCheck">3 000 ₽</output></label>
+        <input type="range" id="cCheck" min="1000" max="15000" step="500" value="3000">
+        <label for="cFreq">Сколько раз в год закажет вернувшийся клиент <output id="oFreq" for="cFreq">1</output></label>
+        <input type="range" id="cFreq" min="1" max="12" step="1" value="1">
+      </div>
+      <div class="results" aria-live="polite">
+        <div class="r"><span>Вернется клиентов</span><b id="rCount">40</b></div>
+        <div class="r"><span>Выручка за год</span><b id="rRev">120 000 ₽</b></div>
+        <div class="r main"><span id="rXLabel">Окупает работу</span><b id="rX">в 2,7 раза</b></div>
+      </div>
+    </div>
+    <p class="note">Считаем выручку, себестоимость товара не вычитаем. Работа стоит 45 000 ₽.</p>
+  </section>
+
+  <h2 class="sec">Как это выглядит</h2>
+  <p class="lead">Первый телефон — клиентки: так к ней приходят сообщения. Второй — менеджера: бот-помощник, который присылает ответы клиентов и готовые тексты. Все кнопки нажимаются.</p>
+
+  <div class="demo">
+
+    <!-- КЛИЕНТКА -->
+    <section>
+      <div class="col-text">
+        <p class="kicker">Телефон клиентки</p>
+        <h3>Сообщение с пользой, без «купите»</h3>
+        <p>Четыре повода, которые уходят сами по понедельникам и четвергам. Пишем только тем, кто согласился получать сообщения.</p>
+        <div class="seg" id="clientSeg">
+          <button type="button" data-scn="trend" aria-pressed="true">Тренд сезона</button>
+          <button type="button" data-scn="bloom" aria-pressed="false">Пришло ваше</button>
+          <button type="button" data-scn="refill" aria-pressed="false">Пора пополнить</button>
+          <button type="button" data-scn="works" aria-pressed="false">Фото работ</button>
+        </div>
+      </div>
+
+      <div class="phone client" id="clientPhone">
+        <div class="screen">
+          <div class="statusbar"><span>10:48</span>
+            <svg width="44" height="12" viewBox="0 0 44 12" aria-hidden="true"><rect x="0" y="7" width="3" height="5" rx="1" fill="#111418"/><rect x="5" y="5" width="3" height="7" rx="1" fill="#111418"/><rect x="10" y="3" width="3" height="9" rx="1" fill="#111418"/><rect x="15" y="1" width="3" height="11" rx="1" fill="#111418"/><rect x="22" y="1" width="19" height="10" rx="3" fill="none" stroke="#111418"/><rect x="24" y="3" width="13" height="6" rx="1.5" fill="#111418"/><rect x="42" y="4" width="2" height="4" rx="1" fill="#111418"/></svg>
+          </div>
+          <div class="chat-head">
+            <span class="back" aria-hidden="true">‹</span>
+            <span class="ava" style="background:#7b1e2e">М</span>
+            <span class="who"><b>Марина</b><span>менеджер · гель-лаки</span></span>
+          </div>
+          <div class="chat-body" id="clientBody">
+            <div data-chat="trend">
+              <div class="chat-body-inner" style="display:flex;flex-direction:column;gap:6px">
+                <div class="day">Четверг</div>
+                <div class="msg in has-album">
+                  <div class="album">
+                    <img src="img/shokolad.jpg" alt="Глянцевый шоколадный маникюр на фоне осенних листьев" style="object-position:50% 45%">
+                    <img src="img/perlamutr.jpg" alt="Молочный перламутр поверх нюда" style="object-position:50% 35%">
+                    <img src="img/nyud-french.jpg" alt="Нюд с шоколадным микро-френчем и шоколадные ногти" style="object-position:50% 45%">
+                  </div>
+                  Ирина, добрый день! Собрали осень-2026 в трех образах — их клиентки будут просить до декабря:<br><br>
+                  🍫 горький шоколад — главный цвет сезона, глубокий и глянцевый<br>
+                  🤎 нюд с шоколадным микро-френчем — для тех, кто хочет спокойнее<br>
+                  🤍 молочный перламутр — жемчужная втирка поверх нюда, светлая пара к темным оттенкам<br><br>
+                  Фото можно брать к себе в соцсети как есть. Понадобится какой-то оттенок — напишите, соберу.
+                  <time>10:00</time>
+                </div>
+                <div class="msg out">Ой, шоколад прям мой 😍 А он есть в 15 мл? И какой топ к нему лучше — глянец или матовый?<time>10:47 ✓✓</time></div>
+              </div>
+            </div>
+            <div data-chat="bloom" hidden>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div class="day">Четверг</div>
+                <div class="msg in">Ольга, добрый день! Пришла база Bloom 30 мл, которую вы обычно берете. Отложить вам 5 штук, как в прошлый раз?<time>10:00</time></div>
+                <div class="msg out">Да, отложите пожалуйста 🙏 Заберу в пятницу<time>10:12 ✓✓</time></div>
+                <div class="msg in">Отложила, ждем вас в пятницу!<time>10:15</time></div>
+              </div>
+            </div>
+            <div data-chat="refill" hidden>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div class="day">Понедельник</div>
+                <div class="msg in">Анна, добрый день! Базу и топ вы обычно берете раз в три недели, а с прошлого заказа прошло уже две с половиной. Собрать как в прошлый раз?<br><br>— база Bloom 30 мл × 2<br>— топ без липкого слоя × 2<time>10:00</time></div>
+                <div class="msg out">Ой, точно, уже на донышке 😅 Собирайте!<time>11:20 ✓✓</time></div>
+              </div>
+            </div>
+            <div data-chat="works" hidden>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div class="day">Четверг</div>
+                <div class="msg in">Елена, добрый день! Собираем работы мастеров на наших лаках для нашего инстаграма. Если есть свежие — пришлите пару фото, опубликуем с отметкой вашего салона 🤍<time>10:00</time></div>
+                <div class="msg out has-album">
+                  <div class="album">
+                    <img src="img/work-hrom.jpg" alt="Шоколадный и медный хром на миндальных ногтях" style="object-position:50% 40%">
+                    <img src="img/work-goroshek.jpg" alt="Нюд с белым горошком" style="object-position:50% 45%">
+                    <img src="img/work-cherepaha.jpg" alt="Черепаховый дизайн и омбре" style="object-position:50% 30%">
+                  </div>
+                  Вот наши за сентябрь! Шоколадный хром, горошек и черепаха 😊 Отметьте, пожалуйста, салон «Лак»
+                  <time>12:34 ✓✓</time>
+                </div>
+                <div class="msg in">Какая красота! Опубликуем в четверг и пришлем вам ссылку. Спасибо 🤍<time>12:40</time></div>
+              </div>
+            </div>
+          </div>
+          <div class="inputbar"><span class="field">Сообщение</span><span class="dot" style="background:var(--c-accent)">↑</span></div>
+        </div>
+      </div>
+      <p class="caption">У клиентки это обычная переписка с менеджером в МАКС, Телеграме или ВК.</p>
+    </section>
+
+    <!-- МЕНЕДЖЕР -->
+    <section>
+      <div class="col-text">
+        <p class="kicker">Телефон менеджера</p>
+        <h3>Бот-помощник в Телеграме</h3>
+        <p>Клиентка ответила — менеджеру приходит уведомление и три готовых ответа. <b style="color:var(--text)">Нажала «Отправить» — ответ ушел клиентке туда, откуда она написала.</b> Написала в МАКС — ответ уйдет в МАКС, написала в Телеграм — уйдет в Телеграм. Менеджеру не нужно переключаться между мессенджерами.</p>
+        <p class="hint">Нажми «Отправить» под любым вариантом и посмотри на телефон клиентки.</p>
+      </div>
+
+      <div class="phone bot" id="botPhone">
+        <div class="screen">
+          <div class="statusbar"><span>10:48</span>
+            <svg width="44" height="12" viewBox="0 0 44 12" aria-hidden="true"><rect x="0" y="7" width="3" height="5" rx="1" fill="#111418"/><rect x="5" y="5" width="3" height="7" rx="1" fill="#111418"/><rect x="10" y="3" width="3" height="9" rx="1" fill="#111418"/><rect x="15" y="1" width="3" height="11" rx="1" fill="#111418"/><rect x="22" y="1" width="19" height="10" rx="3" fill="none" stroke="#111418"/><rect x="24" y="3" width="13" height="6" rx="1.5" fill="#111418"/><rect x="42" y="4" width="2" height="4" rx="1" fill="#111418"/></svg>
+          </div>
+          <div class="chat-head">
+            <span class="back" aria-hidden="true">‹</span>
+            <span class="ava" style="background:linear-gradient(135deg,#5fb2f5,#2f7fd6)">П</span>
+            <span class="who"><b>Помощник продаж</b><span>бот</span></span>
+          </div>
+
+          <div class="chat-body" id="botBody">
+
+            <div data-pane="replies" style="display:flex;flex-direction:column;gap:6px">
+              <div class="day">Сегодня</div>
+              <div class="msg in">💬 <b>Ирина Соколова</b> ответила в МАКС
+                <span class="quote">Ой, шоколад прям мой 😍 А он есть в 15 мл? И какой топ к нему лучше — глянец или матовый?</span>
+                <span class="ctx">Мастер · с нами 3 года · берет раз в 3–4 недели</span>
+                <span class="ctx">Прошлый заказ 2 сентября, 3 480 ₽: база Bloom 30 мл × 2, топ без липкого слоя × 2</span>
+                <span class="ctx">Шоколад 15 мл на складе: 40 шт.</span>
+                <time>10:47</time>
+              </div>
+
+              <div class="msg in variant" data-v="1"><span class="lbl">Вариант 1 · коротко</span><span class="v-text">Есть в 15 мл! К шоколаду лучше глянцевый топ — цвет смотрится глубже. Отложить вам флакон?</span><time>10:47</time></div>
+              <div class="ikb row3" data-for="1">
+                <button type="button" data-act="send" data-v="1">Отправить</button>
+                <button type="button" data-act="copy" data-v="1">Скопировать</button>
+                <button type="button" data-act="edit" data-v="1">Исправить</button>
+              </div>
+
+              <div class="msg in variant" data-v="2"><span class="lbl">Вариант 2 · с допродажей</span><span class="v-text">Есть, 15 мл — 690 ₽. К нему советую глянцевый топ без липкого слоя: шоколад под ним как глазурь. А база Bloom у вас по времени как раз заканчивается — собрать шоколад, топ и базу одним заказом?</span><time>10:47</time></div>
+              <div class="ikb row3" data-for="2">
+                <button type="button" data-act="send" data-v="2">Отправить</button>
+                <button type="button" data-act="copy" data-v="2">Скопировать</button>
+                <button type="button" data-act="edit" data-v="2">Исправить</button>
+              </div>
+
+              <div class="msg in variant" data-v="3"><span class="lbl">Вариант 3 · про матовый топ</span><span class="v-text">Есть в 15 мл! Глянец — классика, а матовый топ дает шоколаду эффект бархата, осенью его часто просят. Положить оба топа, чтобы попробовали на себе?</span><time>10:47</time></div>
+              <div class="ikb row3" data-for="3">
+                <button type="button" data-act="send" data-v="3">Отправить</button>
+                <button type="button" data-act="copy" data-v="3">Скопировать</button>
+                <button type="button" data-act="edit" data-v="3">Исправить</button>
+              </div>
+            </div>
+
+            <div data-pane="arrivals" hidden style="flex-direction:column;gap:6px">
+              <div class="day">Сегодня</div>
+              <div class="msg in">📦 <b>Пришло на склад:</b> база Bloom 30 мл — 120 шт.<br><br>Ее обычно берут 23 клиента. 17 из них согласны получать сообщения — им напишем в четверг в 10:00.<time>09:05</time></div>
+              <div class="msg in"><span class="lbl">Текст — имя и количество подставятся для каждого</span><span class="v-text" id="arrivalText">Ольга, добрый день! Пришла база Bloom 30 мл, которую вы обычно берете. Отложить вам 5 штук, как в прошлый раз?</span><time>09:05</time></div>
+              <div class="ikb" id="arrivalKb">
+                <button type="button" data-act="arr-send">Отправить в четверг</button>
+                <button type="button" data-act="arr-edit">Изменить текст</button>
+                <button type="button" data-act="arr-skip">Не отправлять</button>
+              </div>
+              <div class="msg in">Поступления я вижу в 1С сам — вводить ничего не нужно.<time>09:05</time></div>
+            </div>
+
+            <div data-pane="week" hidden style="flex-direction:column;gap:6px">
+              <div class="day">Понедельник</div>
+              <div class="msg in">📊 <b>Итоги недели</b>, 21–27 сентября<br><br>
+                <span class="num-row"><span>Написали</span><b>124</b></span>
+                <span class="num-row"><span>Ответили</span><b>31</b></span>
+                <span class="num-row"><span>Заказали</span><b>9 — на 47 800 ₽</b></span>
+                <time>09:00</time>
+              </div>
+              <div class="msg in">⏳ <b>Ждут вашего ответа — 3</b><br>Нажмите, чтобы открыть переписку<time>09:00</time></div>
+              <div class="ikb">
+                <button type="button" data-act="open" data-name="Еленой">Елена, салон «Лак» · ждет 2 дня</button>
+                <button type="button" data-act="open" data-name="Анной Петровной">Анна Петровна, салон · 1 день</button>
+                <button type="button" data-act="open" data-name="Марией">Мария, мастер · 5 часов</button>
+              </div>
+              <div class="msg in">🔁 <b>Не ответили на наши сообщения — 93.</b><br>Напомним сами через 2 недели, другим текстом. Делать ничего не нужно.<time>09:00</time></div>
+              <div class="msg in">Итоги приходят по понедельникам — вам и Анне.<time>09:00</time></div>
+            </div>
+          </div>
+
+          <div class="inputbar"><span class="field">Сообщение</span><span class="dot" style="background:var(--tg-accent)">↑</span></div>
+          <div class="rkb" id="botKb">
+            <button type="button" data-pane-btn="replies" aria-pressed="true">Ответы</button>
+            <button type="button" data-pane-btn="arrivals" aria-pressed="false">Поступления</button>
+            <button type="button" data-pane-btn="week" aria-pressed="false">Итоги недели</button>
+          </div>
+        </div>
+      </div>
+      <p class="caption">Кнопки внизу — разделы бота: ответы клиентов, новые поступления, итоги недели.</p>
+    </section>
+  </div>
+
+  <div class="reset-row"><button type="button" class="reset" id="resetBtn">Начать демо заново</button></div>
+
+  <section class="roles">
+    <h2>Кто что делает</h2>
+    <dl>
+      <div class="role"><dt>Уходит само</dt><dd>Тренды, поступления, напоминание пополнить запас, просьба прислать фото работ. По понедельникам и четвергам, по свежим данным из 1С.</dd></div>
+      <div class="role accent"><dt>Делает менеджер</dt><dd>Отвечает тем, кто ответил: выбирает готовый вариант или правит его. Одно нажатие.</dd></div>
+      <div class="role"><dt>Не чаще раза в 2 недели</dt><dd>Кто не ответил, получит следующее сообщение с новым поводом, без напоминаний о прошлом. Скоро пора пополнить запас — пишем сразу про это. Молчит дважды — пишем раз в 2 месяца.</dd></div>
+      <div class="role"><dt>Видишь ты</dt><dd>Итоги по понедельникам: сколько написали, ответили, заказали, на какую сумму и кого ждем.</dd></div>
+    </dl>
+  </section>
+
+  <p class="foot">Имена, цены и цифры в демо — пример. Тренды осени 2026 — по подборкам <a href="https://lenta.ru/articles/2026/09/01/trendy-manikyura-na-osen-2026/">Lenta.ru</a> и <a href="https://www.marieclaire.com/beauty/nails/best-fall-2026-nail-colors/">Marie Claire</a>. Фото — примеры для демо.</p>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function () {
+  var clientBody = document.getElementById('clientBody');
+  var botBody = document.getElementById('botBody');
+  var clientPhone = document.getElementById('clientPhone');
+  var initClient = clientBody.innerHTML;
+  var initBot = botBody.innerHTML;
+  var timers = [];
+  var toastEl = document.getElementById('toast');
+  var toastTimer = null;
+
+  function toast(text) {
+    toastEl.textContent = text;
+    toastEl.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.hidden = true; }, 2600);
+  }
+
+  function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
+
+  function showClient(scn) {
+    clientBody.querySelectorAll('[data-chat]').forEach(function (el) {
+      el.hidden = el.getAttribute('data-chat') !== scn;
+    });
+    document.querySelectorAll('#clientSeg button').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-scn') === scn ? 'true' : 'false');
+    });
+    clientBody.scrollTop = 0;
+  }
+
+  function showPane(p) {
+    botBody.querySelectorAll('[data-pane]').forEach(function (el) {
+      var on = el.getAttribute('data-pane') === p;
+      el.hidden = !on;
+      if (on) el.style.display = 'flex';
+    });
+    document.querySelectorAll('#botKb button').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-pane-btn') === p ? 'true' : 'false');
+    });
+    botBody.scrollTop = 0;
+  }
+
+  function bubble(cls, html, time) {
+    var d = document.createElement('div');
+    d.className = 'msg ' + cls;
+    d.innerHTML = html + '<time>' + time + '</time>';
+    return d;
+  }
+
+  function esc(s) {
+    return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+  }
+
+  function scrollEnd(el) { el.scrollTop = el.scrollHeight; }
+
+  function copyText(text, node) {
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(node);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      toast('Текст выделен — скопируйте его вручную');
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        toast('Скопировано — можно вставить клиентке');
+      }, fallback);
+    } catch (e) { fallback(); }
+  }
+
+  function sendVariant(v) {
+    var pane = botBody.querySelector('[data-pane="replies"]');
+    var card = pane.querySelector('.variant[data-v="' + v + '"]');
+    var textNode = card.querySelector('.v-text');
+    textNode.setAttribute('contenteditable', 'false');
+    var text = textNode.textContent.trim();
+
+    pane.querySelectorAll('.ikb').forEach(function (k) { k.remove(); });
+    pane.querySelectorAll('.variant').forEach(function (c) {
+      if (c !== card) c.remove();
+    });
+    var note = document.createElement('span');
+    note.className = 'sent-note';
+    note.textContent = '✓ Отправлено Ирине в МАКС';
+    card.insertBefore(note, card.querySelector('time'));
+    pane.appendChild(bubble('in', 'Готово. Если Ирина не ответит до завтра, напомню.', '10:49'));
+    scrollEnd(botBody);
+
+    showClient('trend');
+    var chat = clientBody.querySelector('[data-chat="trend"] > div');
+    chat.appendChild(bubble('in', esc(text), '10:49'));
+    scrollEnd(clientBody);
+    clientPhone.classList.add('flash');
+    later(function () { clientPhone.classList.remove('flash'); }, 1200);
+    toast('Ответ ушел Ирине — посмотри на телефон клиентки');
+
+    later(function () {
+      chat.appendChild(bubble('out', 'Да, собирайте все 🙌 Заберу в пятницу', '10:52 ✓✓'));
+      scrollEnd(clientBody);
+    }, 2200);
+    later(function () {
+      pane.appendChild(bubble('in',
+        '💬 <b>Ирина</b> ответила<span class="quote">Да, собирайте все 🙌 Заберу в пятницу</span>' +
+        'Похоже на заказ — оформляйте как обычно. В итоги недели он попадет сам, когда появится в 1С.', '10:52'));
+      scrollEnd(botBody);
+    }, 3000);
+  }
+
+  function toggleEdit(node, btn, doneLabel, editLabel) {
+    var on = node.getAttribute('contenteditable') === 'true';
+    if (on) {
+      node.setAttribute('contenteditable', 'false');
+      btn.textContent = editLabel;
+      toast('Текст сохранен');
+    } else {
+      node.setAttribute('contenteditable', 'true');
+      btn.textContent = doneLabel;
+      node.focus();
+      var r = document.createRange(); r.selectNodeContents(node); r.collapse(false);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+  }
+
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+
+    if (b.hasAttribute('data-scn')) { showClient(b.getAttribute('data-scn')); return; }
+    if (b.hasAttribute('data-pane-btn')) { showPane(b.getAttribute('data-pane-btn')); return; }
+    if (b.id === 'resetBtn') {
+      timers.forEach(clearTimeout); timers = [];
+      clientBody.innerHTML = initClient;
+      botBody.innerHTML = initBot;
+      showClient('trend'); showPane('replies');
+      toast('Демо сначала');
+      return;
+    }
+
+    var act = b.getAttribute('data-act');
+    if (!act) return;
+    var v = b.getAttribute('data-v');
+
+    if (act === 'send') { sendVariant(v); return; }
+    if (act === 'copy') {
+      var n = botBody.querySelector('.variant[data-v="' + v + '"] .v-text');
+      copyText(n.textContent.trim(), n);
+      return;
+    }
+    if (act === 'edit') {
+      var node = botBody.querySelector('.variant[data-v="' + v + '"] .v-text');
+      toggleEdit(node, b, 'Готово', 'Исправить');
+      return;
+    }
+    if (act === 'arr-edit') {
+      toggleEdit(document.getElementById('arrivalText'), b, 'Готово', 'Изменить текст');
+      return;
+    }
+    if (act === 'arr-send' || act === 'arr-skip') {
+      var kb = document.getElementById('arrivalKb');
+      var t = document.getElementById('arrivalText');
+      t.setAttribute('contenteditable', 'false');
+      var msg = act === 'arr-send'
+        ? '✓ Запланировано: четверг, 10:00 · 17 сообщений'
+        : 'Хорошо, по этому поступлению не пишем.';
+      kb.replaceWith(bubble('in', msg, '09:06'));
+      toast(act === 'arr-send' ? 'Сообщения уйдут в четверг сами' : 'Рассылка отменена');
+      return;
+    }
+    if (act === 'open') {
+      toast('Откроется переписка с ' + b.getAttribute('data-name'));
+      return;
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var COST = 45000;
+  var ids = ['cSleep', 'cPct', 'cCheck', 'cFreq'];
+  function money(n) { return Math.round(n).toLocaleString('ru-RU') + ' ₽'; }
+  function times(n) {
+    var i = Math.floor(n), m10 = i % 10, m100 = i % 100;
+    return (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) ? 'раза' : 'раз';
+  }
+  function update() {
+    var sleep = +document.getElementById('cSleep').value;
+    var pct = +document.getElementById('cPct').value;
+    var check = +document.getElementById('cCheck').value;
+    var freq = +document.getElementById('cFreq').value;
+    var count = Math.round(sleep * pct / 100);
+    var rev = count * check * freq;
+    var x = rev / COST;
+    document.getElementById('oSleep').textContent = sleep.toLocaleString('ru-RU');
+    document.getElementById('oPct').textContent = pct + '%';
+    document.getElementById('oCheck').textContent = money(check);
+    document.getElementById('oFreq').textContent = freq;
+    document.getElementById('rCount').textContent = count.toLocaleString('ru-RU');
+    document.getElementById('rRev').textContent = money(rev);
+    var label = document.getElementById('rXLabel'), out = document.getElementById('rX');
+    if (x < 1) {
+      label.textContent = 'Покрывает стоимость работы';
+      out.textContent = 'на ' + Math.round(x * 100) + '%';
+    } else if (x >= 10) {
+      label.textContent = 'Окупает работу';
+      out.textContent = 'в ' + Math.round(x) + ' ' + times(Math.round(x));
+    } else {
+      label.textContent = 'Окупает работу';
+      var r = Math.round(x * 10) / 10;
+      out.textContent = 'в ' + (r % 1 === 0 ? r.toFixed(0) + ' ' + times(r) : r.toFixed(1).replace('.', ',') + ' раза');
+    }
+  }
+  ids.forEach(function (id) { document.getElementById(id).addEventListener('input', update); });
+  update();
+})();
+</script>
+
+</body>
+</html>
