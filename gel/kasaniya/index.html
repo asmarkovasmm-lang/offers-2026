@@ -327,6 +327,25 @@
   .roles dd { margin: 0; color: var(--muted); font-size: 0.93rem; }
   .roles .role.accent dt { color: var(--cherry); }
 
+  .diy { margin: 56px 0 0; }
+  .diy h2 { margin-bottom: 6px; }
+  .diy .sub { margin-bottom: 16px; }
+  .cmp { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .cmp .col { background: var(--surface); border-radius: 14px; padding: 18px 20px; }
+  .cmp .col.us { outline: 2px solid var(--cherry); outline-offset: -2px; }
+  .cmp h3 { font-size: 1.05rem; margin: 0 0 12px; }
+  .cmp .col.us h3 { color: var(--cherry); }
+  .cmp ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
+  .cmp li { padding-left: 26px; position: relative; font-size: 0.95rem; line-height: 1.45; }
+  .cmp li::before { content: ""; position: absolute; left: 0; top: 0.35em; width: 16px; height: 16px; border-radius: 50%; }
+  .cmp li.ok::before { background: #2e7d32; }
+  .cmp li.ok::after { content: ""; position: absolute; left: 5px; top: calc(0.35em + 4px); width: 5px; height: 8px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .cmp li.no::before { background: var(--line); }
+  .cmp li.no::after { content: ""; position: absolute; left: 4px; top: calc(0.35em + 7px); width: 8px; height: 2px; background: var(--muted); }
+  .cmp li.no { color: var(--muted); }
+  .cmp li b { font-weight: 600; }
+  .cmp .col.us li b { color: var(--text); }
+  .diy .bottom { margin: 16px 0 0; font-size: 0.95rem; }
   .foot { margin: 36px 0 0; font-size: 0.8rem; color: var(--muted); max-width: 70ch; }
   .foot a { color: inherit; }
 
@@ -604,6 +623,37 @@
       <div class="role"><dt>Не чаще раза в 2 недели</dt><dd>Кто не ответил, получит следующее сообщение с новым поводом, без напоминаний о прошлом. Скоро пора пополнить запас — пишем сразу про это. Молчит дважды — пишем раз в 2 месяца.</dd></div>
       <div class="role"><dt>Видишь ты</dt><dd>Итоги по понедельникам: сколько написали, ответили, заказали, на какую сумму и кого ждем.</dd></div>
     </dl>
+  </section>
+
+  <section class="diy">
+    <h2>Можно ли сделать это самим?</h2>
+    <p class="sub">Часть — да. Вот что получится самим и где это заканчивается.</p>
+    <div class="cmp">
+      <div class="col">
+        <h3>Самим: менеджер и WAHELP</h3>
+        <ul>
+          <li class="ok"><b>Фото работ для активных клиентов.</b> Хорошая идея, начинайте хоть завтра. Работает с теми 200, кто и так покупает.</li>
+          <li class="ok"><b>Подборка трендов раз в месяц</b> тем, кто в постоянном контакте.</li>
+          <li class="no"><b>Спящие 800 на «пришлите фото» не ответят.</b> Человек, который 8 месяцев ничего не брал, не пришлет работы для чужого инстаграма. Ему нужно сообщение про его заказ и его ритм.</li>
+          <li class="no"><b>Кому и когда писать — вручную.</b> Два раза в неделю открыть 1С, найти, у кого подошел срок, проверить, не писали ли ему две недели назад. 3–4 часа в неделю на 800 человек.</li>
+          <li class="no"><b>Рассылка «всем подборку» из WAHELP</b> — это и есть «задолбить». Без ритма и без учета, кто когда покупал. Вторая волна обзвона уже так стоила клиентов.</li>
+          <li class="no"><b>Согласия.</b> Тренды тем, кто не сказал «да», — реклама без согласия, штраф от 100 тыс ₽. Сначала 800 человек надо спросить и записать, кто ответил.</li>
+          <li class="no"><b>Живет три недели.</b> Пока есть азарт. Потом розница, маркетплейсы, отгрузки — и «если человек ушел на несколько месяцев, мы о нем забудем».</li>
+        </ul>
+      </div>
+      <div class="col us">
+        <h3>С системой</h3>
+        <ul>
+          <li class="ok"><b>Кому и когда писать</b> считается из 1С: ритм каждого клиента, срок пополнения, что он брал.</li>
+          <li class="ok"><b>Не чаще раза в 2 недели</b> одному человеку. Ближе к сроку пополнения — только про пополнение, без лишних сообщений.</li>
+          <li class="ok"><b>Согласия и стоп-лист</b> ведутся сами: «да» записано с датой, «не пишите» — навсегда.</li>
+          <li class="ok"><b>Менеджер только отвечает.</b> Ответ клиентки приходит в бот с историей покупок и тремя готовыми текстами. Одно нажатие.</li>
+          <li class="ok"><b>Сводка по понедельникам:</b> написали, ответили, заказали, на какую сумму, кто ждет ответа.</li>
+          <li class="ok"><b>Работает, пока включен компьютер.</b> Менеджер в отпуске или заболела — сообщения уходят, ответы ждут ее в боте.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="bottom"><mark class="hl">Самим — работает три недели, пока есть время. Система работает, пока включен компьютер.</mark></p>
   </section>
 
   <p class="foot">Имена, цены и цифры в демо — пример. Тренды осени 2026 — по подборкам <a href="https://lenta.ru/articles/2026/09/01/trendy-manikyura-na-osen-2026/">Lenta.ru</a> и <a href="https://www.marieclaire.com/beauty/nails/best-fall-2026-nail-colors/">Marie Claire</a>. Фото — примеры для демо.</p>
