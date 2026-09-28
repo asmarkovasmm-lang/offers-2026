@@ -187,6 +187,9 @@ ul.ticks li::before{content:"";position:absolute;left:0;top:.42em;width:15px;hei
 .svc{display:flex;justify-content:space-between;gap:14px;padding:10px 0;border-top:1px solid var(--line);
   font-size:14px;line-height:1.45;color:var(--ink-2)}
 .svc b{white-space:nowrap;color:var(--ink)}
+.box p.sp{margin-top:8px}
+.box p.soft{margin-top:12px;padding:10px 12px;border-radius:10px;background:#FDF3E1;border:1px solid #F3DCAE;
+  color:#6B4A12;font-size:13.5px}
 .ask{margin-top:18px;background:var(--teal-l);border-color:#BFE3E8}
 .was{font-size:clamp(16px,1.6vw,20px);font-weight:700;color:rgba(32,39,43,.6);margin-bottom:8px}
 .was s{text-decoration-thickness:2px}
@@ -391,15 +394,20 @@ input[type=range]:focus-visible{outline:2px solid var(--teal);outline-offset:6px
       <p class="eyebrow">Условия</p>
       <h2>Что входит в ежемесячную оплату</h2>
       <div class="cols c2">
-        <div class="box"><h3>Делаем мы</h3>
-          <p>Обновляем тексты и поводы под ваши услуги и цены, следим, чтобы список собирался каждое утро,
-            присылаем сводку и правим по вашим замечаниям.</p>
-          <p style="margin-top:12px"><b>Перестанете платить</b> — все продолжит работать как было,
-            только без обновлений и нашего присмотра.</p></div>
+        <div class="box"><h3>Сопровождение и поддержка</h3>
+          <p><b>Следим каждый день.</b> Проверяем, что список собрался и сообщения ушли. Если что-то сломалось,
+            чиним сами.</p>
+          <p class="sp"><b>Обновляем данные.</b> Меняются цены, врачи, расписание — перенастраиваем поводы и тексты.</p>
+          <p class="sp"><b>Подстраиваем под обновления.</b> Ваша программа и мессенджеры регулярно обновляются,
+            а мы следим, чтобы система после этого не остановилась.</p>
+          <p class="sp"><b>Раз в неделю</b> присылаем сводку и правим по вашим замечаниям.</p>
+          <p class="soft">Без сопровождения система проработает, пока ничего не меняется. Но после обновления
+            программы или смены прайса список начнет ошибаться, а следить за этим будет некому.</p></div>
         <div class="box"><h3>Оплачиваете напрямую</h3>
           <div class="svc"><span>Сервер в России на вашем аккаунте</span><b>300–700 ₽ в месяц</b></div>
-          <p style="margin-top:10px">Сообщения уходят из вашей программы, поэтому
-            сервис для рассылки и новый тариф amoCRM не нужны.</p></div>
+          <div class="svc"><span>Нейросеть, которая пишет пример сообщения (GigaChat или YandexGPT)</span><b>2 000–5 000 ₽ в месяц</b></div>
+          <p style="margin-top:10px">Имени и телефона пациента нейросеть не видит, система подставляет их сама.
+            Сообщения уходят из вашей программы, поэтому сервис для рассылки и новый тариф amoCRM не нужны.</p></div>
       </div>
       <div class="box ask"><p><b>Одна просьба уже сейчас.</b> Пусть администратор при записи спрашивает,
         откуда пациент о вас узнал, и отмечает ответ. Тогда к запуску дашборда у вас накопится история,
