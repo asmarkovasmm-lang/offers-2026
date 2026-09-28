@@ -195,6 +195,20 @@ ul.ticks li::before{content:"";position:absolute;left:0;top:.42em;width:15px;hei
 .was s{text-decoration-thickness:2px}
 .was span{font-size:12.5px;font-weight:600;margin-left:8px}
 
+/* сводка в Телеграм на слайде 2 */
+.tgrep{margin-top:12px;background:#E3EBF1;border-radius:14px;padding:12px}
+.tgrep .msg{background:#fff;border-radius:12px 12px 12px 4px;padding:11px 14px 8px;max-width:440px;
+  box-shadow:0 1px 1px rgba(0,0,0,.06)}
+.tgrep .from{font-size:12.5px;font-weight:700;color:#2F7FB8;margin-bottom:4px}
+.tgrep .ttl{font-weight:700;font-size:14px;color:var(--ink);margin-bottom:4px}
+.tgrep .row{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:3px 0;
+  border-top:1px dashed var(--line);color:var(--ink-2)}
+.tgrep .ttl + .row{border-top:0}
+.tgrep .row b{color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tgrep .tot{margin-top:6px;padding-top:7px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink)}
+.tgrep .lnk{margin-top:5px;font-size:13px;color:#2F7FB8}
+.tgrep .time{font-size:11px;color:#9AA7AD;text-align:right}
+
 /* макеты окна администратора */
 .inner.wide{max-width:1360px}
 .mocks{display:grid;gap:clamp(14px,2vw,26px);margin-top:clamp(16px,2vw,24px)}
@@ -313,9 +327,21 @@ input[type=range]:focus-visible{outline:2px solid var(--teal);outline-offset:6px
           <ul class="ticks" style="margin-top:6px">
             <li>Больше не расписываете администратору каждого пациента. Ваше решение нужно
               только там, где без врача не обойтись.</li>
-            <li>Раз в неделю получаете короткую сводку: скольким написали, сколько ответили,
-              сколько записались и пришли.</li>
-          </ul></div>
+            <li>Раз в неделю получаете сводку в Телеграм. В ней только цифры, без данных пациентов:</li>
+          </ul>
+          <div class="tgrep"><div class="msg">
+            <div class="from">Сводка · Доктор Боева</div>
+            <div class="ttl">Неделя 13–17 октября</div>
+            <div class="row"><span>Написали</span><b>112</b></div>
+            <div class="row"><span>Ответили</span><b>29</b></div>
+            <div class="row"><span>Записались</span><b>5</b></div>
+            <div class="row"><span>Пришли на прием</span><b>3 · 31&nbsp;500&nbsp;₽</b></div>
+            <div class="row"><span>Нужен звонок: нет мессенджеров</span><b>8</b></div>
+            <div class="row"><span>Попросили не писать</span><b>1</b></div>
+            <div class="tot">С запуска пришли <b>23 пациента</b> на <b>241&nbsp;000&nbsp;₽</b></div>
+            <div class="lnk">Кто ответил и записался — в списке →</div>
+            <div class="time">пн, 9:00</div>
+          </div></div></div>
       </div>
     </div>
   </section>
@@ -344,8 +370,8 @@ input[type=range]:focus-visible{outline:2px solid var(--teal);outline-offset:6px
           <p>На данных из вашей выгрузки, у вас ничего не устанавливаем. Под вашу клинику система еще
             не настроена, но уже видно, как она будет работать.</p></div>
         <div class="st"><div class="k">2</div><h4>Администратор работает 4&nbsp;дня</h4>
-          <p>Получает список и примеры сообщений. В пробной версии примерно 7&nbsp;из&nbsp;10 уже можно отправить
-            без правок.</p></div>
+          <p>Получает список и примеры сообщений. В пробной версии 6–7 сообщений из&nbsp;10 уже можно
+            отправить без правок.</p></div>
         <div class="st"><div class="k">3</div><h4>Собираем ваши замечания</h4>
           <p>Что удобно, что нет, что поменять в окне и в текстах.</p></div>
         <div class="st"><div class="k">4</div><h4>Вы решаете</h4>
