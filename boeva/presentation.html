@@ -187,6 +187,7 @@ ul.ticks li::before{content:"";position:absolute;left:0;top:.42em;width:15px;hei
 .svc{display:flex;justify-content:space-between;gap:14px;padding:10px 0;border-top:1px solid var(--line);
   font-size:14px;line-height:1.45;color:var(--ink-2)}
 .svc b{white-space:nowrap;color:var(--ink)}
+.svc .dep{font-size:12.5px;color:var(--ink-3)}
 .box p.sp{margin-top:8px}
 .box p.soft{margin-top:12px;padding:10px 12px;border-radius:10px;background:#FDF3E1;border:1px solid #F3DCAE;
   color:#6B4A12;font-size:13.5px}
@@ -432,14 +433,14 @@ input[type=range]:focus-visible{outline:2px solid var(--teal);outline-offset:6px
           <p><b>Следим каждый день.</b> Проверяем, что список собрался и сообщения ушли. Если что-то сломалось,
             чиним сами.</p>
           <p class="sp"><b>Обновляем данные.</b> Меняются цены, врачи, расписание — перенастраиваем поводы и тексты.</p>
-          <p class="sp"><b>Подстраиваем под обновления.</b> Ваша программа и мессенджеры регулярно обновляются,
+          <p class="sp"><b>Подстраиваем под обновления.</b> Ваша программа и мессенджеры регулярно технически обновляются,
             а мы следим, чтобы система после этого не остановилась.</p>
           <p class="sp"><b>Раз в неделю</b> присылаем сводку и правим по вашим замечаниям.</p>
           <p class="soft">Без сопровождения система проработает, пока ничего не меняется. Но после обновления
             программы или смены прайса список начнет ошибаться, а следить за этим будет некому.</p></div>
         <div class="box"><h3>Оплачиваете напрямую</h3>
           <div class="svc"><span>Сервер в России на вашем аккаунте</span><b>300–700 ₽ в месяц</b></div>
-          <div class="svc"><span>Нейросеть, которая пишет пример сообщения</span><b>2 000–5 000 ₽ в месяц</b></div>
+          <div class="svc"><span>Нейросеть, которая пишет пример сообщения <small class="dep">(цена зависит от количества сообщений в месяц)</small></span><b>2 000–5 000 ₽ в месяц</b></div>
           <p style="margin-top:10px">Имени и телефона пациента нейросеть не видит, система подставляет их сама.
             Сообщения уходят из вашей программы, поэтому сервис для рассылки и новый тариф amoCRM не нужны.</p></div>
       </div>
