@@ -7,7 +7,7 @@
 <title>Предложение для «Доктор Боева»</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --teal:#058494;--teal-d:#04606d;--teal-l:#E9F4F6;--teal-xl:#F5FAFB;
@@ -334,6 +334,51 @@ ul.ticks li::before{background:#fff}
 .navlogo.w,.nav.on-dark .navlogo.t{display:none}
 .nav.on-dark .navlogo.w{display:block}
 .ctalogo{height:36px;width:auto;display:block;margin-bottom:22px}
+
+/* правки после независимой проверки 28.09.2026 */
+.nav.on-dark .dot.act{background:#fff}
+.nav.on-dark .nb button:hover{background:#fff;color:var(--teal);border-color:#fff}
+.nav.on-dark .count{color:rgba(255,255,255,.8)}
+.nav.on-teal{background:var(--teal);border-top-color:rgba(255,255,255,.22);-webkit-backdrop-filter:none;backdrop-filter:none}
+.prog.on-dark{background:#fff}
+.teal .eyebrow{color:#fff;opacity:.85}
+.teal .lead,.teal ul.ticks li{color:#fff}
+.box .n{font-weight:700;letter-spacing:.1em}
+.proof .pv,.field label b{font-weight:700}
+.calc-big{font-weight:700;letter-spacing:-.02em}
+.box.gold .n,.box.gold .cap,.box.gold p{color:#fff}
+.box.gold .was{color:rgba(255,255,255,.8)}
+.box.gold .was s{text-decoration-color:rgba(255,255,255,.6)}
+.box.gold .per,.box:not(.gold) .per{opacity:1}
+.src{font-size:13px;color:var(--ink-2)}
+.count{color:var(--ink-2)}
+.hero h2 .acc{color:#3EC3D2}
+.brandbar{padding:0 max(clamp(24px,6vw,110px), calc((100% - 1120px) / 2))}
+.brandbar img{margin-left:-11px}
+.ctalogo{margin-left:-12px}
+.inner.wide{max-width:1120px}
+@media(min-width:820px){.inner.wide .mocks{margin-inline:min(0px, (1120px - min(1360px, 100vw - 2 * clamp(24px, 6vw, 110px))) / 2)}}
+.cols.s2>.tgrep{margin-top:0;align-self:start}
+@media(min-width:1100px){.cols.s2{grid-template-columns:1fr 1fr minmax(300px,.85fr)}}
+@media(min-width:600px) and (max-width:1099px){.cols.s2{grid-template-columns:1fr 1fr}.cols.s2>.tgrep{grid-column:2}}
+@media (min-width:820px) and (max-height:820px){
+  .slide{padding-top:clamp(24px,6vh,84px);padding-bottom:88px}
+  .slide.hero{padding-top:calc(64px + clamp(14px,3.5vh,48px))}
+  h2{font-size:min(clamp(24px,3.9vw,46px),clamp(24px,5.4vh,40px))}
+  .cols,.price,.calc,.mocks{margin-top:clamp(12px,2.4vh,24px)}
+  .box{padding:clamp(14px,2.4vh,22px) clamp(16px,1.8vw,24px)}
+  ul.ticks li{font-size:15px}
+  ul.ticks{gap:8px}
+  .steps7{margin-top:14px}
+  .proof{margin-top:12px;padding:10px 18px}
+  .ask{margin-top:12px}
+  .eyebrow{margin-bottom:10px}
+}
+@media(max-width:560px){.dots{display:none}.proof{flex-direction:column;align-items:flex-start;gap:6px}
+  .svc{flex-direction:column;gap:2px}}
+@media(min-width:360px) and (max-width:560px){.hero .c4{grid-template-columns:1fr 1fr;gap:10px}
+  .hero .c4 .box{padding:14px}.hero .c4 .big{font-size:21px!important}.hero .c4 .n{letter-spacing:.06em}}
+@media(max-width:700px){.zoom{justify-content:flex-start;overflow:auto}.zoom img{width:820px;max-width:none}}
 </style>
 </head>
 <body>
@@ -369,7 +414,7 @@ ul.ticks li::before{background:#fff}
     <div class="inner">
       <p class="eyebrow">Что будет у вас в руках</p>
       <h2 style="font-size:clamp(26px,3.4vw,44px)">Каждое утро у администратора готовый список</h2>
-      <div class="cols c2">
+      <div class="cols c2 s2">
         <div class="box"><div class="n">АДМИНИСТРАТОР</div>
           <ul class="ticks" style="margin-top:6px">
             <li>Видит, кому написать, с каким поводом и что именно. Повод берем из истории визитов:
@@ -386,7 +431,7 @@ ul.ticks li::before{background:#fff}
               ставить задачи по каждому пациенту. К человеку с высшим медицинским образованием идем
               в исключительных случаях.</li>
             <li>Раз в неделю получаете сводку в Телеграм. В ней только цифры, без данных пациентов:</li>
-          </ul>
+          </ul></div>
           <div class="tgrep"><div class="msg">
             <div class="from">Сводка · Доктор Боева</div>
             <div class="ttl">Неделя 13–17 октября</div>
@@ -398,7 +443,7 @@ ul.ticks li::before{background:#fff}
             <div class="row"><span>Попросили не писать</span><b>1</b></div>
             <div class="tot">С запуска пришли <b>23 пациента</b> на <b>241&nbsp;000&nbsp;₽</b></div>
             <div class="lnk">Кто ответил и записался — в списке →<span class="time">пн, 9:00</span></div>
-          </div></div></div>
+          </div></div>
       </div>
     </div>
   </section>
@@ -465,7 +510,7 @@ ul.ticks li::before{background:#fff}
       <div class="box ask"><p><b>Почему для вас 75&nbsp;000&nbsp;₽.</b> Ваша клиника — наш первый проект в стоматологии,
         и ваш результат станет нашим кейсом. В кейс войдут только цифры: сколько пациентов вернулось
         и сколько они принесли. Данные пациентов остаются у вас.</p></div>
-      <div class="steps7" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-top:20px">
+      <div class="steps7" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin-top:20px">
         <div class="st"><div class="k">1</div><h4>4 дня демо-режима</h4><p>бесплатно</p></div>
         <div class="st"><div class="k">2</div><h4>Решили дорабатывать</h4><p>37 500 ₽</p></div>
         <div class="st"><div class="k">3</div><h4>Через месяц</h4><p>37 500 ₽</p></div>
@@ -526,7 +571,7 @@ ul.ticks li::before{background:#fff}
     <div class="inner">
       <img class="ctalogo" src="data:image/png;base64,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" alt="dr. Boeva">
       <p class="eyebrow">Следующий шаг</p>
-      <h1 style="font-size:clamp(28px,4.6vw,54px)">Начнем с 4 дней демо-режима</h1>
+      <h1 style="font-size:clamp(28px,4.6vw,54px)">Начнем с 4 дней <span style="white-space:nowrap">демо-режима</span></h1>
       <p class="lead">Чтобы его запустить, нужно:</p>
       <ul class="ticks">
         <li><b>доступ к API вашей программы</b> — назовите программу, где ведете расписание и карточки пациентов,
@@ -538,9 +583,9 @@ ul.ticks li::before{background:#fff}
         <a class="btn" href="https://t.me/nastya_mgh">Telegram @nastya_mgh</a>
         <a class="btn o" href="tel:+79519403338">+7 951 940-33-38</a>
       </div>
-      <p class="lead" style="font-size:13.5px;opacity:.75;margin-top:30px">
+      <p class="lead" style="font-size:13.5px;color:rgba(255,255,255,.9);margin-top:30px">
         Анастасия Маркова · digital-маркетолог<br>
-        Кейсы и разработка: asmarkovasmm-lang.github.io/offers-2026/</p>
+        Кейсы и разработка: <a href="https://asmarkovasmm-lang.github.io/offers-2026/" style="color:inherit;white-space:nowrap">asmarkovasmm-lang.github.io/offers-2026/</a></p>
     </div>
   </section>
 
@@ -609,6 +654,8 @@ ul.ticks li::before{background:#fff}
     prog.style.width = ((i+1)/slides.length*100) + '%';
     var dark = slides[i].classList.contains('teal') || slides[i].classList.contains('dark') || slides[i].classList.contains('hero');
     nav.classList.toggle('on-dark', dark);
+    nav.classList.toggle('on-teal', slides[i].classList.contains('teal'));
+    prog.classList.toggle('on-dark', dark);
   }
   /* автозапуск видео: браузеры иногда игнорируют autoplay, а Safari на iOS
      требует playsinline и явного вызова play() */
