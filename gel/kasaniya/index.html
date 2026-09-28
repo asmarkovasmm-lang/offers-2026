@@ -330,25 +330,26 @@
   .faq { margin: 56px 0 0; }
   .faq h2 { margin-bottom: 6px; }
   .faq .sub { margin-bottom: 14px; }
-  .faq details { background: var(--surface); border-radius: 12px; margin: 0 0 8px; }
+  .faq details { background: var(--hl); color: var(--hl-text); border-radius: 12px; margin: 0 0 8px; }
   .faq summary {
     list-style: none; cursor: pointer; padding: 16px 48px 16px 18px; position: relative;
-    font-weight: 600; font-size: 1.02rem; line-height: 1.35;
+    font-weight: 600; font-size: 1.02rem; line-height: 1.35; color: var(--hl-text);
   }
   .faq summary::-webkit-details-marker { display: none; }
   .faq summary::after {
     content: ""; position: absolute; right: 20px; top: 50%; width: 9px; height: 9px;
-    border: solid var(--muted); border-width: 0 2px 2px 0; transform: translateY(-70%) rotate(45deg);
+    border: solid var(--hl-text); border-width: 0 2px 2px 0; opacity: 0.6; transform: translateY(-70%) rotate(45deg);
     transition: transform 0.2s;
   }
   .faq details[open] summary::after { transform: translateY(-30%) rotate(225deg); }
   .faq summary:focus-visible { outline: 2px solid var(--cherry); outline-offset: 2px; border-radius: 12px; }
-  .faq .a { padding: 0 18px 18px; color: var(--text); font-size: 0.97rem; }
+  .faq .a { padding: 0 18px 18px; color: var(--hl-text); font-size: 0.97rem; }
   .faq .a p { margin: 0 0 10px; }
   .faq .a p:last-child { margin-bottom: 0; }
   .faq .a ol { margin: 0 0 10px; padding-left: 1.3em; }
   .faq .a li { margin: 0 0 6px; }
-  .faq .a .q { color: var(--muted); }
+  .faq .a .q { opacity: 0.75; }
+  .faq .a mark.hl { background: var(--surface); color: var(--text); }
   @media (prefers-reduced-motion: reduce) { .faq summary::after { transition: none; } }
   .foot { margin: 36px 0 0; font-size: 0.8rem; color: var(--muted); max-width: 70ch; }
   .foot a { color: inherit; }
