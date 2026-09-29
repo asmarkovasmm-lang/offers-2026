@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="Когда окупится система касаний: расчет по прибыли с маржой 30%">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%92%85</text></svg>">
+<style>:root{color-scheme:light}body{margin:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Когда окупится</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #eceef1;
+    --surface: #ffffff;
+    --text: #16181d;
+    --muted: #5d6470;
+    --line: #d6dae0;
+    --cherry: #7b1e2e;
+    --cherry-soft: #f1dfe3;
+    --hl: #ffec8a;
+    --hl-text: #16181d;
+    --good: #2e7d32;
+    --good-soft: #e3f1e4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121417;
+      --surface: #1c1f24;
+      --text: #eceef1;
+      --muted: #9aa2ad;
+      --line: #2d3238;
+      --cherry: #e0788a;
+      --cherry-soft: #3a2328;
+      --hl: #5c4c0c;
+      --hl-text: #f5edc8;
+      --good: #7fc983;
+      --good-soft: #1f3322;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #121417;
+    --surface: #1c1f24;
+    --text: #eceef1;
+    --muted: #9aa2ad;
+    --line: #2d3238;
+    --cherry: #e0788a;
+    --cherry-soft: #3a2328;
+    --hl: #5c4c0c;
+    --hl-text: #f5edc8;
+    --good: #7fc983;
+    --good-soft: #1f3322;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.55 "Onest", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding-inline: 16px; padding-block: 36px 56px; }
+
+  .kicker {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--cherry); margin: 0 0 6px;
+  }
+  h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); line-height: 1.15; margin: 0 0 12px; text-wrap: balance; }
+  h2 { font-size: 1.4rem; line-height: 1.25; margin: 0 0 10px; text-wrap: balance; }
+  .lead { color: var(--muted); max-width: 62ch; margin: 0 0 8px; }
+  .block { margin: 44px 0 0; }
+  .sub { color: var(--muted); margin: 0 0 14px; max-width: 62ch; }
+  .note { font-size: 0.9rem; color: var(--muted); margin: 10px 0 0; max-width: 70ch; }
+  b { font-weight: 600; }
+  .hl {
+    background: var(--hl); color: var(--hl-text); padding: 2px 6px; border-radius: 4px;
+    box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  }
+
+  /* главный ответ */
+  .answer {
+    background: var(--surface); border-radius: 14px; padding: 20px 22px; margin: 22px 0 0;
+    display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: baseline;
+  }
+  .answer .big { font-size: clamp(1.9rem, 5vw, 2.6rem); font-weight: 700; line-height: 1.05; color: var(--cherry); }
+  .answer .txt { flex: 1 1&nbsp;320px; }
+
+  /* плитки */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+  .tile { background: var(--surface); border-radius: 12px; padding: 14px 18px; }
+  .tile .num { font-size: 1.5rem; font-weight: 700; line-height: 1.15; font-variant-numeric: tabular-nums; }
+  .tile .cap { color: var(--muted); font-size: 0.92rem; }
+  .tile .num.acc { color: var(--cherry); }
+
+  /* таблицы */
+  .tbl { overflow-x: auto; background: var(--surface); border-radius: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+  tr:last-child td { border-bottom: 0; }
+  td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.win td { background: var(--good-soft); }
+  tr.win td:first-child { box-shadow: inset 3px 0 0 var(--good); }
+  .ok { color: var(--good); font-weight: 600; }
+
+  /* два столбца: активные / спящие */
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+  .card { background: var(--surface); border-radius: 12px; padding: 18px 20px; }
+  .card h3 { font-size: 1.05rem; margin: 0 0 8px; }
+  .card p { margin: 0 0 10px; }
+  .card p:last-child { margin-bottom: 0; }
+
+  ul.plain { margin: 0; padding-left: 1.2em; }
+  ul.plain li { margin: 0 0 6px; }
+
+  .foot { margin: 40px 0 0; font-size: 0.82rem; color: var(--muted); max-width: 72ch; }
+  .foot a { color: inherit; }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Продолжение расчета</p>
+  <h1>Когда это окупится</h1>
+  <p class="lead">Считаем по прибыли, а не по выручке. Маржа — 30%: с каждой тысячи выручки у тебя остается 300&nbsp;₽.</p>
+
+  <div class="answer">
+    <div class="big">≈ 4 месяца</div>
+    <div class="txt">В базовом сценарии работа окупается к <b>январю</b>, если старт в начале октября. Деньги приходят из двух мест: <b>возвращаются спящие клиенты</b> и <b>чаще заказывают постоянные</b>.</div>
+  </div>
+
+  <section class="block">
+    <h2>Что входит в расходы</h2>
+    <div class="tiles">
+      <div class="tile"><div class="num">45&nbsp;000&nbsp;₽</div><div class="cap">разработка, один раз</div></div>
+      <div class="tile"><div class="num">5&nbsp;000&nbsp;₽/мес</div><div class="cap">сопровождение, первый месяц бесплатно</div></div>
+      <div class="tile"><div class="num">≈ 3&nbsp;500&nbsp;₽/мес</div><div class="cap">WAHELP и сервер, платишь напрямую сервисам</div></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Сколько заказов окупают 50&nbsp;000&nbsp;₽</h2>
+    <p class="sub">С заказа салона на 8&nbsp;000&nbsp;₽ у тебя остается 2&nbsp;400&nbsp;₽ прибыли, с заказа мастера на 2&nbsp;000&nbsp;₽ — 600&nbsp;₽.</p>
+    <div class="tiles">
+      <div class="tile"><div class="num acc">21 заказ</div><div class="cap">салонов</div></div>
+      <div class="tile"><div class="num acc">84 заказа</div><div class="cap">мастеров</div></div>
+      <div class="tile"><div class="num acc">56 заказов</div><div class="cap">при среднем чеке 3&nbsp;000&nbsp;₽</div></div>
+    </div>
+    <p class="note">Это сумма всех заказов за несколько месяцев, не за один. Первый заказ вернувшегося клиента — примерно половина пути, окупают повторные.</p>
+  </section>
+
+  <section class="block">
+    <h2>Откуда берутся заказы</h2>
+    <div class="two">
+      <div class="card">
+        <h3>Спящие: 800 клиентов</h3>
+        <p>Если вернется 5%, как в Медлайне, это <b>40 клиентов</b>. Первые заказы — в конце ноября и в декабре. Дальше они заказывают снова: мастера берут базу и топ раз в три-четыре недели, в расчете мы взяли осторожнее — раз в полтора месяца.</p>
+      </div>
+      <div class="card">
+        <h3>Постоянные: 200 клиентов</h3>
+        <p>Сейчас им никто не пишет. Система будет напоминать про пополнение, писать о поступлениях и замечать, когда постоянный клиент пропустил привычный заказ. Вернуть того, кто пропал на месяц, гораздо проще, чем того, кто ушел восемь месяцев назад.</p>
+        <p>Если каждый из 200 сделает <b>всего на один заказ в год больше</b>, это 600 тыс ₽ выручки и <mark class="hl">180 тыс ₽ прибыли в год — больше, чем все расходы за год</mark>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>По месяцам</h2>
+    <p class="sub">Базовый сценарий: средний чек 3&nbsp;000&nbsp;₽, возвращается 5% спящих, постоянные делают на один заказ в год больше.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Месяц</th><th>Что происходит</th><th>Прибыль, всего</th><th>Расходы, всего</th></tr></thead>
+        <tbody>
+          <tr><td>Октябрь</td><td>Собираем систему, спрашиваем у клиентов согласие на сообщения</td><td class="n">0</td><td class="n">26 тыс ₽</td></tr>
+          <tr><td>Ноябрь</td><td>Первые продающие сообщения тем, кто сказал «да», первые заказы</td><td class="n">22 тыс ₽</td><td class="n">52 тыс ₽</td></tr>
+          <tr><td>Декабрь</td><td>Основная волна возвратов плюс предновогодний сезон</td><td class="n">56 тыс ₽</td><td class="n">61 тыс ₽</td></tr>
+          <tr class="win"><td><b>Январь</b></td><td><span class="ok">Окупилось.</span> Вернувшиеся в ноябре заказывают снова</td><td class="n"><b>95 тыс ₽</b></td><td class="n">69 тыс ₽</td></tr>
+          <tr><td>Февраль</td><td>Повторные заказы копятся</td><td class="n">136 тыс ₽</td><td class="n">78 тыс ₽</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Если средний чек будет другим</h2>
+    <p class="sub">Срок зависит от того, кто вернется: один заказ салона приносит столько же прибыли, сколько четыре заказа мастеров.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Средний чек</th><th>Спящие и постоянные</th><th>Только спящие</th></tr></thead>
+        <tbody>
+          <tr><td>5&nbsp;000&nbsp;₽ — много салонов</td><td class="n"><b>декабрь</b></td><td class="n">январь</td></tr>
+          <tr class="win"><td>3&nbsp;000&nbsp;₽ — салоны и мастера</td><td class="n"><b>январь</b></td><td class="n">март</td></tr>
+          <tr><td>2&nbsp;000&nbsp;₽ — почти одни мастера</td><td class="n"><b>февраль</b></td><td class="n">май–июнь</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Если спящих вернется 2–3% вместо 5%, сроки по спящим растягиваются почти вдвое.</p>
+  </section>
+
+  <section class="block">
+    <h2>Время менеджера</h2>
+    <div class="two">
+      <div class="card">
+        <h3>Уходит</h3>
+        <ul class="plain">
+          <li>искать в 1С, кто что брал и когда;</li>
+          <li>помнить, кому пора написать и кто обещал подумать;</li>
+          <li>сочинять текст с нуля — бот дает готовые варианты;</li>
+          <li>проверять, есть ли товар на складе.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Прибавляется</h3>
+        <p>Ответов от клиентов станет больше — а это и есть продажи.</p>
+        <p>На один диалог уходит <b>минута-две вместо пяти-семи</b>. Время менеджера уходит на продажу, а не на поиск и вспоминание.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Проверка — раньше окупаемости</h2>
+    <p class="sub" style="color:var(--text)">Ждать января, чтобы понять, работает ли система, не нужно. Часть клиентов мы не трогаем — это контрольная группа. <mark class="hl">В конце декабря сравниваем, сколько вернулось среди тех, кому писали, и среди тех, кому нет.</mark> Если разницы нет, это видно рано, и мы меняем тексты и поводы, а не ждем полгода.</p>
+  </section>
+
+  <p class="foot">Как считали: маржа 30% — с твоих слов; 5% возврата — результат Медлайна за первые 3 месяца; повторный заказ — раз в полтора месяца; постоянные клиенты — плюс один заказ в год; расходы включают WAHELP и сервер. Это оценка: точные цифры по частоте закупок увидим в первой выгрузке из 1С и пересчитаем. Как все это выглядит у клиентки и у менеджера — <a href="https://asmarkovasmm-lang.github.io/offers-2026/gel/kasaniya/">на первой странице</a>.</p>
+</div>
+
+</body>
+</html>
