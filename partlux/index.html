@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Калькулятор Partlux</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #F2F4F3;
+    --surface: #FFFFFF;
+    --surface-2: #E9EDEB;
+    --ink: #171B19;
+    --muted: #5C6461;
+    --line: #D6DCD9;
+    --parts: #2A62A8;
+    --anti: #C2521A;
+    --good: #2A8A4A;
+    --cost: #8C9490;
+    --warn: #B3261E;
+    --focus: #2A62A8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #141716;
+      --surface: #1D2120;
+      --surface-2: #262B29;
+      --ink: #ECEFEE;
+      --muted: #A5ADA9;
+      --line: #323835;
+      --parts: #5B8FD0;
+      --anti: #CF6E36;
+      --good: #4FA86C;
+      --cost: #6F7773;
+      --warn: #F28B82;
+      --focus: #5B8FD0;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #141716;
+    --surface: #1D2120;
+    --surface-2: #262B29;
+    --ink: #ECEFEE;
+    --muted: #A5ADA9;
+    --line: #323835;
+    --parts: #5B8FD0;
+    --anti: #CF6E36;
+    --good: #4FA86C;
+    --cost: #6F7773;
+    --warn: #F28B82;
+    --focus: #5B8FD0;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 16px/1.45 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    padding-inline: 16px;
+    padding-block: 24px 56px;
+  }
+  .wrap { max-width: 780px; margin-inline: auto; display: grid; gap: 24px; }
+
+  .head { display: grid; gap: 8px; padding-block: 8px 4px; }
+  .eyebrow {
+    font: 600 13px/1.2 'Barlow Condensed', 'Barlow', sans-serif;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+  }
+  h1 {
+    margin: 0; font: 700 40px/1.05 'Barlow Condensed', 'Barlow', sans-serif;
+    text-wrap: balance; letter-spacing: -.01em;
+  }
+  .lead { margin: 0; max-width: 60ch; color: var(--muted); }
+
+  .periodbar {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 8px 6px 16px; box-shadow: 0 2px 10px rgba(0,0,0,.08);
+  }
+  .pb-label { font: 600 14px/1 'Barlow', system-ui, sans-serif; color: var(--muted); }
+  .toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 2px; background: var(--surface-2); }
+  .toggle button {
+    font: 600 14px/1 'Barlow', system-ui, sans-serif; color: var(--muted); background: transparent; border: 0;
+    border-radius: 999px; padding: 8px 14px; cursor: pointer;
+  }
+  .toggle button.on { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+  .toggle button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  .calc {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+    display: grid; gap: 18px;
+    --acc: var(--ink);
+  }
+  .calc.parts { --acc: var(--parts); }
+  .calc.anti { --acc: var(--anti); }
+  .calc.newc { --acc: var(--parts); }
+  .calc.year { --acc: var(--good); }
+  .calc.goal { --acc: var(--anti); }
+  .calc-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; }
+  h2 { margin: 0; font: 700 28px/1.1 'Barlow Condensed', 'Barlow', sans-serif; }
+  .badge {
+    font: 600 13px/1 'Barlow Condensed', 'Barlow', sans-serif; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--acc); border: 1px solid currentColor; border-radius: 999px; padding: 5px 9px;
+  }
+  .intro { margin: 0; color: var(--muted); max-width: 62ch; }
+
+  .body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; }
+  @media (max-width: 640px) { .body { grid-template-columns: 1fr; } }
+
+  .controls { display: grid; gap: 14px; align-content: start; }
+  .field { display: grid; gap: 6px; }
+  .field label { font-size: 14px; color: var(--muted); }
+  .field .row { display: flex; align-items: center; gap: 10px; }
+  input[type="range"] { flex: 1 1 auto; min-width: 0; accent-color: var(--acc); margin: 0; height: 28px; }
+  input[type="number"] {
+    width: 7.5em; padding: 6px 8px; text-align: right;
+    font: 600 15px/1.2 'Barlow', system-ui, sans-serif; font-variant-numeric: tabular-nums;
+    color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+  }
+  input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { margin-left: 4px; }
+  .unit { color: var(--muted); font-size: 14px; min-width: 2.2em; }
+  .fixed { font-weight: 600; font-variant-numeric: tabular-nums; padding: 6px 0; }
+  input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  .results { display: grid; gap: 14px; align-content: start; }
+  .hero { display: grid; gap: 2px; padding: 14px 16px; border-radius: 10px; background: var(--surface-2); }
+  .hero .lbl {
+    font: 600 13px/1.2 'Barlow Condensed', 'Barlow', sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+  }
+  .hero .val { font: 700 36px/1.05 'Barlow Condensed', 'Barlow', sans-serif; font-variant-numeric: tabular-nums; }
+  .hero .sub { font-size: 14px; color: var(--muted); }
+  .hero .val.neg, .v.neg { color: var(--warn); }
+
+  .rows { display: grid; }
+  .r { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 7px 0; border-top: 1px solid var(--line); }
+  .r:first-child { border-top: 0; }
+  .r .k { color: var(--muted); font-size: 15px; }
+  .r .v { font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .r.strong .k { color: var(--ink); font-weight: 500; }
+  .r.strong .v { font-size: 17px; }
+  .rows-title {
+    font: 600 13px/1.2 'Barlow Condensed', 'Barlow', sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+    padding-top: 4px;
+  }
+
+  .bar { display: flex; gap: 2px; height: 14px; border-radius: 4px; overflow: hidden; background: var(--surface-2); }
+  .seg { height: 100%; min-width: 0; flex: 0 0 auto; transition: width .25s ease; }
+  .seg.cost, .chip i.cost { background: repeating-linear-gradient(45deg, var(--cost) 0 3px, transparent 3px 6px); }
+  .seg.other, .chip i.other { background: var(--cost); }
+  .seg.fee, .chip i.fee { background: var(--acc); }
+  .seg.keep, .chip i.keep { background: var(--good); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--muted); }
+  .chip { display: inline-flex; align-items: center; gap: 6px; }
+  .chip i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; border: 1px solid var(--line); }
+  .chip b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  .note { margin: 0; font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+
+  .summary { display: grid; gap: 12px; padding-top: 6px; border-top: 1px solid var(--line); }
+  .tbl-wrap { overflow-x: auto; }
+  .sum { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .sum th, .sum td { padding: 8px 6px; text-align: right; border-top: 1px solid var(--line); white-space: nowrap; }
+  .sum th:first-child, .sum td:first-child { text-align: left; white-space: normal; min-width: 11em; }
+  .sum thead th { border-top: 0; color: var(--muted); font-weight: 500; font-size: 13px; }
+  .sum tbody td { font-weight: 500; }
+  .sum tfoot th { border-top: 2px solid var(--ink); font-weight: 700; font-size: 15px; }
+  .sum .neg { color: var(--warn); }
+  .foot { font-size: 13px; color: var(--muted); max-width: 64ch; }
+
+  @media (prefers-reduced-motion: reduce) { .seg { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <div class="eyebrow">Partlux · расчет для Никиты · сентябрь 2026</div>
+    <h1>Что остается тебе</h1>
+    <p class="lead">Двигай ползунки, цифры пересчитаются сразу. Все проценты считаются с оборота по заказам в Parts-Soft, платишь после того, как деньги пришли.</p>
+  </header>
+
+  <div class="periodbar">
+    <span class="pb-label">Все цифры показывать</span>
+    <div class="toggle" role="group" aria-label="Период расчета">
+      <button type="button" id="mode_m" class="on" aria-pressed="true">в месяц</button>
+      <button type="button" id="mode_y" aria-pressed="false">в год</button>
+    </div>
+  </div>
+
+  <!-- ========== ЗАПЧАСТИ ========== -->
+  <section class="calc parts" aria-labelledby="h-parts">
+    <div class="calc-head">
+      <h2 id="h-parts">Запчасти</h2>
+      <span class="badge">наценка 30%</span>
+    </div>
+    <p class="intro">Спящие клиенты сейчас не приносят ничего. Все, что ниже, — новые деньги, которых у магазина сегодня нет.</p>
+    <div class="body">
+      <div class="controls">
+        <div class="field">
+          <label for="f_p_sleep">Спящих в базе, не покупали больше года</label>
+          <div class="row"><input type="range" id="f_p_sleep" min="200" max="3000" step="50" value="1200"><input type="number" id="n_p_sleep" min="0" step="50" value="1200"><span class="unit">чел.</span></div>
+        </div>
+        <div class="field">
+          <label for="f_p_ret">Вернутся за год</label>
+          <div class="row"><input type="range" id="f_p_ret" min="0.5" max="50" step="0.5" value="3"><input type="number" id="n_p_ret" min="0" max="100" step="0.5" value="3"><span class="unit">%</span></div>
+        </div>
+        <div class="field">
+          <label for="f_p_check">Средний чек</label>
+          <div class="row"><input type="range" id="f_p_check" min="1000" max="10000" step="100" value="3500"><input type="number" id="n_p_check" min="0" step="100" value="3500"><span class="unit">₽</span></div>
+        </div>
+        <div class="field">
+          <label for="f_p_buys">Покупок в год у вернувшегося</label>
+          <div class="row"><input type="range" id="f_p_buys" min="1" max="12" step="0.5" value="3.5"><input type="number" id="n_p_buys" min="0" step="0.5" value="3.5"><span class="unit">раз</span></div>
+        </div>
+        <div class="field">
+          <label for="f_p_markup">Наценка на запчасти</label>
+          <div class="row"><input type="range" id="f_p_markup" min="10" max="100" step="5" value="30"><input type="number" id="n_p_markup" min="0" step="5" value="30"><span class="unit">%</span></div>
+        </div>
+        <div class="field">
+          <label>Насте с оборота вернувшихся</label>
+          <div class="fixed">10 %, не меняется</div>
+        </div>
+      </div>
+
+      <div class="results">
+        <div class="hero">
+          <div class="lbl">Твоя прибыль с вернувшихся, <span class="per">в месяц</span></div>
+          <div class="val" id="p_keep">—</div>
+          <div class="sub">после себестоимости и 10% Насте · <span class="per-other">в год</span> <span id="p_keep_o">—</span></div>
+        </div>
+        <div class="rows">
+          <div class="r"><span class="k">Вернувшихся клиентов, <span class="per">в месяц</span></span><span class="v" id="p_n">—</span></div>
+          <div class="r"><span class="k">Оборот с них</span><span class="v" id="p_turn">—</span></div>
+          <div class="r"><span class="k">Себестоимость запчастей</span><span class="v" id="p_cost">—</span></div>
+          <div class="r"><span class="k">Твоя прибыль по наценке</span><span class="v" id="p_profit">—</span></div>
+          <div class="r"><span class="k">Насте, 10% с покупок за первые полгода</span><span class="v" id="p_fee">—</span></div>
+        </div>
+        <div class="bar" aria-hidden="true">
+          <div class="seg cost" id="p_seg_cost"></div>
+          <div class="seg fee" id="p_seg_fee"></div>
+          <div class="seg keep" id="p_seg_keep"></div>
+        </div>
+        <div class="chips">
+          <span class="chip"><i class="cost"></i>Себестоимость <b id="p_c_cost">—</b></span>
+          <span class="chip"><i class="fee"></i>Насте <b id="p_c_fee">—</b></span>
+          <span class="chip"><i class="keep"></i>Тебе <b id="p_c_keep">—</b></span>
+        </div>
+        <p class="note">Насте считаем с покупок вернувшегося за первые полгода. Дальше он просто твой клиент, без процента.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== НОВЫЕ КЛИЕНТЫ ========== -->
+  <section class="calc newc" aria-labelledby="h-newc">
+    <div class="calc-head">
+      <h2 id="h-newc">Новые клиенты</h2>
+      <span class="badge">по правилам запчастей</span>
+    </div>
+    <p class="intro">Новые клиенты приходят к тебе сами: с сайта, с улицы, по рекомендации. После первой покупки они попадают в ту же систему. Из 1 500 покупавших у тебя активных осталось 150: девять из десяти уходят после первой покупки. Чек, покупок в год и наценку берем из блока «Запчасти».</p>
+    <div class="body">
+      <div class="controls">
+        <div class="field">
+          <label for="f_n_new">Новых клиентов в месяц, первая покупка</label>
+          <div class="row"><input type="range" id="f_n_new" min="0" max="150" step="5" value="30"><input type="number" id="n_n_new" min="0" step="5" value="30"><span class="unit">чел.</span></div>
+        </div>
+        <div class="field">
+          <label for="f_n_cur">Сейчас покупают повторно</label>
+          <div class="row"><input type="range" id="f_n_cur" min="0" max="60" step="1" value="10"><input type="number" id="n_n_cur" min="0" max="100" step="1" value="10"><span class="unit">%</span></div>
+        </div>
+        <div class="field">
+          <label for="f_n_sys">С системой будут покупать повторно</label>
+          <div class="row"><input type="range" id="f_n_sys" min="0" max="80" step="1" value="25"><input type="number" id="n_n_sys" min="0" max="100" step="1" value="25"><span class="unit">%</span></div>
+        </div>
+        <div class="field">
+          <label>Насте с покупок удержанных</label>
+          <div class="fixed">10 %, не меняется</div>
+        </div>
+      </div>
+
+      <div class="results">
+        <div class="hero">
+          <div class="lbl">Твоя прибыль с удержанных новых, <span class="per">в месяц</span></div>
+          <div class="val" id="n_keep">—</div>
+          <div class="sub">после себестоимости и 10% Насте · <span class="per-other">в год</span> <span id="n_keep_o">—</span></div>
+        </div>
+        <div class="rows">
+          <div class="r"><span class="k">Новых клиентов, <span class="per">в месяц</span></span><span class="v" id="n_year">—</span></div>
+          <div class="r"><span class="k">Остаются сейчас</span><span class="v" id="n_stay_cur">—</span></div>
+          <div class="r"><span class="k">Останутся с системой</span><span class="v" id="n_stay_sys">—</span></div>
+          <div class="r strong"><span class="k">Прибавка удержанных</span><span class="v" id="n_delta">—</span></div>
+          <div class="r"><span class="k">Оборот прибавки</span><span class="v" id="n_turn">—</span></div>
+          <div class="r"><span class="k">Себестоимость запчастей</span><span class="v" id="n_cost">—</span></div>
+          <div class="r"><span class="k">Твоя прибыль по наценке</span><span class="v" id="n_profit">—</span></div>
+          <div class="r"><span class="k">Насте, 10% с покупок за первые полгода</span><span class="v" id="n_fee">—</span></div>
+        </div>
+        <div class="bar" aria-hidden="true">
+          <div class="seg cost" id="n_seg_cost"></div>
+          <div class="seg fee" id="n_seg_fee"></div>
+          <div class="seg keep" id="n_seg_keep"></div>
+        </div>
+        <div class="chips">
+          <span class="chip"><i class="cost"></i>Себестоимость <b id="n_c_cost">—</b></span>
+          <span class="chip"><i class="fee"></i>Насте <b id="n_c_fee">—</b></span>
+          <span class="chip"><i class="keep"></i>Тебе <b id="n_c_keep">—</b></span>
+        </div>
+        <p class="note">Первая покупка нового клиента — твоя, без процента. Считаем только повторные покупки после нашего сообщения: 10% за первые полгода, как со спящими. Те, кто остался бы и без системы, в расчет не входят.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== АНТИКОР ========== -->
+  <section class="calc anti" aria-labelledby="h-anti">
+    <div class="calc-head">
+      <h2 id="h-anti">Антикор</h2>
+      <span class="badge">наценка 300%</span>
+    </div>
+    <p class="intro">Считаем только машины, которые пришли через касания по базе, партнеров и автопарки. Твои личные контакты, отмеченные до осмотра, в процент не попадают.</p>
+    <div class="body">
+      <div class="controls">
+        <div class="field">
+          <label for="f_a_cars">Машин в месяц от системы: база, партнеры, автопарки</label>
+          <div class="row"><input type="range" id="f_a_cars" min="0" max="20" step="1" value="4"><input type="number" id="n_a_cars" min="0" step="1" value="4"><span class="unit">шт.</span></div>
+        </div>
+        <div class="field">
+          <label for="f_a_price">Средняя цена продажи антикора</label>
+          <div class="row"><input type="range" id="f_a_price" min="40000" max="120000" step="5000" value="70000"><input type="number" id="n_a_price" min="0" step="5000" value="70000"><span class="unit">₽</span></div>
+        </div>
+        <div class="field">
+          <label for="f_a_markup">Наценка на обработку</label>
+          <div class="row"><input type="range" id="f_a_markup" min="100" max="500" step="25" value="300"><input type="number" id="n_a_markup" min="0" step="25" value="300"><span class="unit">%</span></div>
+        </div>
+        <div class="field">
+          <label>Насте с оборота</label>
+          <div class="fixed">15 %, не меняется</div>
+        </div>
+        <div class="field">
+          <label for="f_a_other">Расход на одну машину, если есть: комиссия партнеру или реклама. Фикс Насте сюда не входит, он в «Итого»</label>
+          <div class="row"><input type="range" id="f_a_other" min="0" max="15000" step="500" value="0"><input type="number" id="n_a_other" min="0" step="500" value="0"><span class="unit">₽ за машину</span></div>
+        </div>
+        <div class="field">
+          <label for="f_a_base">Машин в месяц сейчас, с улицы, без системы</label>
+          <div class="row"><input type="range" id="f_a_base" min="0" max="10" step="1" value="1"><input type="number" id="n_a_base" min="0" step="1" value="1"><span class="unit">шт.</span></div>
+        </div>
+      </div>
+
+      <div class="results">
+        <div class="hero">
+          <div class="lbl">Твоя прибыль с машин от системы, <span class="per">в месяц</span></div>
+          <div class="val" id="a_keep">—</div>
+          <div class="sub">после материала, работы и 15% Насте · <span class="per-other">в год</span> <span id="a_keep_o">—</span></div>
+        </div>
+        <div class="rows">
+          <div class="r"><span class="k">Машин от системы, <span class="per">в месяц</span></span><span class="v" id="a_cars_out">—</span></div>
+          <div class="r"><span class="k">Оборот</span><span class="v" id="a_turn">—</span></div>
+          <div class="r"><span class="k">Материал и работа, <span id="a_cost_lbl">25%</span> от цены</span><span class="v" id="a_cost">—</span></div>
+          <div class="r" id="a_other_row"><span class="k">Комиссия партнеру или реклама, на все машины</span><span class="v" id="a_other">—</span></div>
+          <div class="r"><span class="k">Насте, 15% с оборота</span><span class="v" id="a_fee">—</span></div>
+        </div>
+        <div class="bar" aria-hidden="true">
+          <div class="seg cost" id="a_seg_cost"></div>
+          <div class="seg other" id="a_seg_other"></div>
+          <div class="seg fee" id="a_seg_fee"></div>
+          <div class="seg keep" id="a_seg_keep"></div>
+        </div>
+        <div class="chips">
+          <span class="chip"><i class="cost"></i>Материал и работа <b id="a_c_cost">—</b></span>
+          <span class="chip" id="a_c_other_chip"><i class="other"></i>Партнеру или реклама <b id="a_c_other">—</b></span>
+          <span class="chip"><i class="fee"></i>Насте <b id="a_c_fee">—</b></span>
+          <span class="chip"><i class="keep"></i>Тебе <b id="a_c_keep">—</b></span>
+        </div>
+        <div class="rows-title">Было и стало, прибыль <span class="per">в месяц</span></div>
+        <div class="rows">
+          <div class="r"><span class="k">Сейчас: <span id="a_base_lbl">1 машина</span> в месяц с улицы</span><span class="v" id="a_without">—</span></div>
+          <div class="r"><span class="k">С системой: с улицы плюс машины от системы</span><span class="v" id="a_with">—</span></div>
+          <div class="r strong"><span class="k">Прирост прибыли</span><span class="v" id="a_gain">—</span></div>
+        </div>
+        <p class="note">Себестоимость посчитана от наценки: при 300% материал и работа — четверть цены. Если твоя цифра другая, подставь наценку, которая у тебя есть.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ИТОГО ========== -->
+  <section class="calc total" aria-labelledby="h-total">
+    <div class="calc-head">
+      <h2 id="h-total">Итого</h2>
+      <span class="badge">запчасти + новые + антикор + фикс</span>
+    </div>
+    <div class="body">
+      <div class="controls">
+        <div class="field">
+          <label for="f_t_fix">Фикс Насте в месяц</label>
+          <div class="row"><input type="range" id="f_t_fix" min="0" max="50000" step="1000" value="20000"><input type="number" id="n_t_fix" min="0" step="1000" value="20000"><span class="unit">₽</span></div>
+        </div>
+        <p class="note">Инструменты (WAHELP, SMS, сервер — около 5 000 ₽ в месяц) стоят на твоих аккаунтах и в фикс не входят. Рекламный бюджет, если решишь его дать, тоже отдельно.</p>
+      </div>
+      <div class="results">
+        <div class="hero">
+          <div class="lbl">Вложил и получил, <span class="per">в месяц</span></div>
+          <div class="val" id="t_roi">—</div>
+          <div class="sub">вложил — фикс и проценты Насте, получил — твоя новая прибыль после них · на каждый рубль <span id="t_ratio">—</span> · <span class="per-other">в год</span>: <span id="t_roi_o">—</span></div>
+        </div>
+        <div class="rows">
+          <div class="r"><span class="k">Платишь Насте, <span class="per">в месяц</span></span><span class="v" id="t_pay">—</span></div>
+          <div class="r"><span class="k">Из них фикс</span><span class="v" id="t_fix">—</span></div>
+          <div class="r"><span class="k">Из них проценты</span><span class="v" id="t_pct">—</span></div>
+          <div class="r strong"><span class="k">Твоя новая прибыль: запчасти, новые, антикор, после выплат Насте</span><span class="v" id="t_keep">—</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary">
+      <div class="rows-title">Сводка: вся прибыль по источникам, <span class="per">в месяц</span></div>
+      <div class="tbl-wrap">
+        <table class="sum">
+          <thead>
+            <tr><th>Источник</th><th>Оборот</th><th>Себестоимость</th><th>Насте</th><th>Тебе</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Запчасти: вернувшиеся спящие</td><td id="s_p_turn">—</td><td id="s_p_cost">—</td><td id="s_p_fee">—</td><td id="s_p_keep">—</td></tr>
+            <tr><td>Новые клиенты: удержанные</td><td id="s_n_turn">—</td><td id="s_n_cost">—</td><td id="s_n_fee">—</td><td id="s_n_keep">—</td></tr>
+            <tr><td>Антикор: машины от системы</td><td id="s_a_turn">—</td><td id="s_a_cost">—</td><td id="s_a_fee">—</td><td id="s_a_keep">—</td></tr>
+            <tr><td>Фикс Насте</td><td>—</td><td>—</td><td id="s_f_fee">—</td><td id="s_f_keep">—</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><th>Итого</th><th id="s_t_turn">—</th><th id="s_t_cost">—</th><th id="s_t_fee">—</th><th id="s_t_keep">—</th></tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="note">Себестоимость антикора включает материал, работу и, если задано, комиссию партнеру или рекламу на машину. Фикс Насте — отдельной строкой, он не зависит от числа машин. Прибыль с машин «с улицы» (сейчас <span id="s_street">—</span>) сюда не входит: она остается как есть, без процента.</p>
+    </div>
+  </section>
+
+  <!-- ========== ОБРАТНЫЙ РАСЧЕТ ========== -->
+  <section class="calc goal" aria-labelledby="h-goal">
+    <div class="calc-head">
+      <h2 id="h-goal">Обратный расчет</h2>
+      <span class="badge">от цели к продажам</span>
+    </div>
+    <p class="intro">Никита называет, сколько хочет получать сверху в месяц. Считаем, сколько машин антикора для этого нужно при текущих ползунках запчастей и новых клиентов, и что при этом получает Настя.</p>
+    <div class="body">
+      <div class="controls">
+        <div class="field">
+          <label for="f_g_goal">Никита хочет новой прибыли в месяц, после выплат Насте</label>
+          <div class="row"><input type="range" id="f_g_goal" min="50000" max="800000" step="10000" value="300000"><input type="number" id="n_g_goal" min="0" step="10000" value="300000"><span class="unit">₽</span></div>
+        </div>
+        <p class="note">Цена, наценка и расход на машину берутся из блока «Антикор», фикс — из «Итого». Воронка ниже посчитана по двум допущениям: половина осмотров заканчивается обработкой, на осмотр записывается каждый седьмой из тех, кому написали.</p>
+      </div>
+      <div class="results">
+        <div class="hero">
+          <div class="lbl">Нужно машин антикора в месяц</div>
+          <div class="val" id="g_cars">—</div>
+          <div class="sub">сверх того, что дают запчасти и новые клиенты при текущих ползунках</div>
+        </div>
+        <div class="rows">
+          <div class="r"><span class="k">Одна машина: Никите после всех выплат</span><span class="v" id="g_percar">—</span></div>
+          <div class="r"><span class="k">Запчасти и новые дают Никите в месяц</span><span class="v" id="g_parts">—</span></div>
+          <div class="r"><span class="k">Никита получит в месяц при этом числе машин</span><span class="v" id="g_nik">—</span></div>
+          <div class="r strong"><span class="k">Настя получит в месяц</span><span class="v" id="g_nas">—</span></div>
+        </div>
+        <div class="rows-title">Что для этого нужно в месяц</div>
+        <div class="rows">
+          <div class="r"><span class="k">Осмотров</span><span class="v" id="g_insp">—</span></div>
+          <div class="r"><span class="k">Адресных сообщений или обращений от партнеров</span><span class="v" id="g_msgs">—</span></div>
+          <div class="r"><span class="k">Машин за год, доля от базы 1 500</span><span class="v" id="g_year">—</span></div>
+        </div>
+        <p class="note">База сама дает 3–5 машин в месяц в сезон. Все, что выше, приходит от партнеров, автопарков и рекламы, и это надо проговорить как условие, а не как надежду.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ГОД ЦЕЛИКОМ ========== -->
+  <section class="calc year" aria-labelledby="h-year">
+    <div class="calc-head">
+      <h2 id="h-year">Год целиком</h2>
+      <span class="badge">Настя работает часть года</span>
+    </div>
+    <p class="intro">Настя строит систему и ведет ее оговоренный срок, получает фикс и проценты только за эти месяцы. Дальше система остается на твоих аккаунтах и работает на тебя без выплат. Здесь всегда 12 месяцев, переключатель наверху на этот блок не влияет.</p>
+    <div class="body">
+      <div class="controls">
+        <div class="field">
+          <label for="f_t_months">Настя работает и получает выплаты, месяцев</label>
+          <div class="row"><input type="range" id="f_t_months" min="1" max="12" step="1" value="6"><input type="number" id="n_t_months" min="1" max="12" step="1" value="6"><span class="unit">мес.</span></div>
+        </div>
+        <div class="field">
+          <label for="f_t_after">После Насти: машин антикора в месяц от касаний по базе, без партнеров и кампаний</label>
+          <div class="row"><input type="range" id="f_t_after" min="0" max="10" step="1" value="2"><input type="number" id="n_t_after" min="0" step="1" value="2"><span class="unit">шт.</span></div>
+        </div>
+        <p class="note">Запчасти и новые клиенты после ухода Насти считаются в полном объеме: касания по регламенту и сезону идут автоматически. Антикор без партнеров и кампаний обычно проседает, поэтому число машин задается отдельно.</p>
+      </div>
+      <div class="results">
+        <div class="hero">
+          <div class="lbl">За 12 месяцев: Насте и тебе</div>
+          <div class="val" id="y_roi">—</div>
+          <div class="sub">на каждый рубль Насте за год <span id="y_ratio">—</span></div>
+        </div>
+        <div class="rows">
+          <div class="r"><span class="k">Первые <span id="y_m1">6</span> мес.: Насте</span><span class="v" id="y_first_nas">—</span></div>
+          <div class="r"><span class="k">Первые <span id="y_m2">6</span> мес.: тебе, после выплат</span><span class="v" id="y_first_nik">—</span></div>
+          <div class="r"><span class="k">Остальные <span id="y_m3">6</span> мес.: Насте</span><span class="v">0 ₽</span></div>
+          <div class="r"><span class="k">Остальные <span id="y_m4">6</span> мес.: тебе, все целиком</span><span class="v" id="y_after_nik">—</span></div>
+          <div class="r strong"><span class="k">За год тебе</span><span class="v" id="y_total_nik">—</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p class="foot">Расчет по цифрам от 29.09.2026: база 1 500 клиентов, покупают 150, чек 3 000–4 000 ₽, антикор 55 000–100 000 ₽. Проценты начисляются по заказам в Parts-Soft, отчет к 3-му числу, любую строку можно проверить по номеру заказа.</p>
+</div>
+
+<script>
+(function () {
+  var KEYS = ['p_sleep','p_ret','p_check','p_buys','p_markup','n_new','n_cur','n_sys','a_cars','a_price','a_markup','a_other','a_base','t_fix','t_months','t_after','g_goal'];
+  var P_FEE = 10, A_FEE = 15;
+  var STORE = 'partlux-calc-v2', MODE_STORE = 'partlux-calc-mode';
+  var mode = 'm';
+  var nf = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 });
+  var nf1 = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 1 });
+
+  function rub(n) { return nf.format(Math.round(n)) + ' ₽'; }
+  function pct(x) { return nf1.format(x) + ' %'; }
+  function el(id) { return document.getElementById(id); }
+  function setText(id, text) { el(id).textContent = text; }
+  function setNeg(id, isNeg) { el(id).classList.toggle('neg', isNeg); }
+  function per(v) { return mode === 'y' ? v * 12 : v; }
+  function other(v) { return mode === 'y' ? v : v * 12; }
+  function money(id, v) { setText(id, rub(per(v))); setNeg(id, v < 0); }
+  function moneyOther(id, v) { setText(id, rub(other(v))); }
+  function count(id, v, plus) {
+    var x = per(v);
+    var s = mode === 'y' ? nf.format(Math.round(x)) : nf1.format(x);
+    setText(id, (plus && x > 0 ? '+' : '') + s + (id.indexOf('a_') === 0 ? ' шт.' : ' чел.'));
+  }
+  function words() {
+    var w = mode === 'y' ? 'в год' : 'в месяц', o = mode === 'y' ? 'в месяц' : 'в год';
+    var i, a = document.querySelectorAll('.per'), b = document.querySelectorAll('.per-other');
+    for (i = 0; i < a.length; i++) a[i].textContent = w;
+    for (i = 0; i < b.length; i++) b[i].textContent = o;
+  }
+
+  function val(key) {
+    var v = parseFloat(el('n_' + key).value);
+    return isNaN(v) ? 0 : v;
+  }
+
+  function widths(barPrefix, parts, total) {
+    parts.forEach(function (p) {
+      var seg = el(barPrefix + p.id);
+      var share = total > 0 ? Math.max(0, p.v) / total * 100 : 0;
+      seg.style.width = share + '%';
+      seg.hidden = share <= 0;
+    });
+  }
+
+  function compute() {
+    words();
+
+    // Запчасти: считаем за год, переводим в месяц как базу
+    var sleep = val('p_sleep'), ret = val('p_ret'), check = val('p_check'), buys = val('p_buys');
+    var pMarkup = val('p_markup');
+    var nRetY = sleep * ret / 100;
+    var pTurnY = nRetY * check * buys;
+    var pProfitShare = pMarkup / (100 + pMarkup);
+    var pProfitY = pTurnY * pProfitShare;
+    var pFeeY = nRetY * check * buys * 0.5 * P_FEE / 100;
+    var pTurn = pTurnY / 12, pProfit = pProfitY / 12, pCost = pTurn - pProfit, pFee = pFeeY / 12, pKeep = pProfit - pFee;
+    var pShare = pProfitY > 0 ? pFeeY / pProfitY * 100 : 0;
+
+    money('p_keep', pKeep); moneyOther('p_keep_o', pKeep);
+    count('p_n', nRetY / 12);
+    money('p_turn', pTurn); money('p_cost', pCost); money('p_profit', pProfit); money('p_fee', pFee);
+    widths('p_seg_', [{ id: 'cost', v: pCost }, { id: 'fee', v: pFee }, { id: 'keep', v: pKeep }], pTurn);
+    money('p_c_cost', pCost); money('p_c_fee', pFee); money('p_c_keep', pKeep);
+
+    // Новые клиенты: база в месяц
+    var newM = val('n_new'), curPct = val('n_cur'), sysPct = val('n_sys');
+    var stayCur = newM * curPct / 100;
+    var staySys = newM * sysPct / 100;
+    var delta = Math.max(0, staySys - stayCur);
+    var nTurn = delta * check * buys;
+    var nProfit = nTurn * pProfitShare;
+    var nCost = nTurn - nProfit;
+    var nFee = delta * check * buys * 0.5 * P_FEE / 100;
+    var nKeep = nProfit - nFee;
+    var nShare = nProfit > 0 ? nFee / nProfit * 100 : 0;
+
+    money('n_keep', nKeep); moneyOther('n_keep_o', nKeep);
+    count('n_year', newM); count('n_stay_cur', stayCur); count('n_stay_sys', staySys); count('n_delta', delta, true);
+    money('n_turn', nTurn); money('n_cost', nCost); money('n_profit', nProfit); money('n_fee', nFee);
+    widths('n_seg_', [{ id: 'cost', v: nCost }, { id: 'fee', v: nFee }, { id: 'keep', v: nKeep }], nTurn);
+    money('n_c_cost', nCost); money('n_c_fee', nFee); money('n_c_keep', nKeep);
+
+    // Антикор: база в месяц
+    var cars = val('a_cars'), price = val('a_price'), aMarkup = val('a_markup');
+    var otherCost = val('a_other'), base = val('a_base');
+    var aTurn = cars * price;
+    var costShare = 1 / (1 + aMarkup / 100);
+    var aCost = aTurn * costShare;
+    var aFee = aTurn * A_FEE / 100;
+    var aOther = cars * otherCost;
+    var aKeep = aTurn - aCost - aFee - aOther;
+    var aGross = aTurn - aCost;
+    var aShare = aGross > 0 ? aFee / aGross * 100 : 0;
+    var without = base * price * (1 - costShare);
+    var withSys = without + aKeep;
+
+    money('a_keep', aKeep); moneyOther('a_keep_o', aKeep);
+    count('a_cars_out', cars);
+    money('a_turn', aTurn);
+    setText('a_cost_lbl', nf.format(costShare * 100) + '%');
+    money('a_cost', aCost);
+    money('a_other', aOther);
+    el('a_other_row').hidden = aOther <= 0;
+    el('a_c_other_chip').hidden = aOther <= 0;
+    money('a_fee', aFee);
+    widths('a_seg_', [{ id: 'cost', v: aCost }, { id: 'other', v: aOther }, { id: 'fee', v: aFee }, { id: 'keep', v: aKeep }], aTurn);
+    money('a_c_cost', aCost); money('a_c_other', aOther); money('a_c_fee', aFee); money('a_c_keep', aKeep);
+    setText('a_base_lbl', nf.format(base) + (base === 1 ? ' машина' : (base >= 2 && base <= 4 ? ' машины' : ' машин')));
+    money('a_without', without);
+    money('a_with', withSys);
+    setText('a_gain', (aKeep >= 0 ? '+' : '') + rub(per(aKeep))); setNeg('a_gain', aKeep < 0);
+
+    // Итого: база в месяц
+    var fix = val('t_fix');
+    var pctPay = aFee + pFee + nFee;
+    var pay = fix + pctPay;
+    var keep = pKeep + nKeep + aKeep - fix;
+    money('t_keep', keep);
+    money('t_pay', pay); money('t_fix', fix); money('t_pct', pctPay);
+    setText('t_roi', rub(per(pay)) + ' → ' + rub(per(keep))); setNeg('t_roi', keep < 0);
+    setText('t_roi_o', rub(other(pay)) + ' → ' + rub(other(keep)));
+    setText('t_ratio', pay > 0 ? nf1.format(keep / pay) + ' ₽ тебе' : '—');
+
+    // Сводка
+    money('s_p_turn', pTurn); money('s_p_cost', pCost); money('s_p_fee', pFee); money('s_p_keep', pKeep);
+    money('s_n_turn', nTurn); money('s_n_cost', nCost); money('s_n_fee', nFee); money('s_n_keep', nKeep);
+    money('s_a_turn', aTurn); money('s_a_cost', aCost + aOther); money('s_a_fee', aFee); money('s_a_keep', aKeep);
+    money('s_f_fee', fix); money('s_f_keep', -fix);
+    money('s_t_turn', pTurn + nTurn + aTurn);
+    money('s_t_cost', pCost + nCost + aCost + aOther);
+    money('s_t_fee', pFee + nFee + aFee + fix);
+    money('s_t_keep', keep);
+    setText('s_street', rub(per(without)) + (mode === 'y' ? ' в год' : ' в месяц'));
+
+    // Обратный расчет: от цели Никиты к числу машин
+    var goal = val('g_goal');
+    var perCarNik = price * (1 - costShare) - price * A_FEE / 100 - otherCost;
+    var partsNik = pKeep + nKeep;
+    var needRaw = perCarNik > 0 ? (goal + fix - partsNik) / perCarNik : 0;
+    var needCars = Math.max(0, Math.ceil(needRaw));
+    var gNik = partsNik + needCars * perCarNik - fix;
+    var gNas = fix + pFee + nFee + needCars * price * A_FEE / 100;
+    setText('g_cars', nf.format(needCars) + (needCars === 1 ? ' машина' : (needCars >= 2 && needCars <= 4 ? ' машины' : ' машин')));
+    setText('g_percar', rub(perCarNik));
+    setText('g_parts', rub(partsNik));
+    setText('g_nik', rub(gNik));
+    setText('g_nas', rub(gNas));
+    setText('g_insp', nf.format(Math.ceil(needCars * 2)));
+    setText('g_msgs', nf.format(Math.ceil(needCars * 2 * 7)));
+    setText('g_year', nf.format(needCars * 12) + ' машин · ' + nf1.format(needCars * 12 / 1500 * 100) + ' %');
+
+    // Год целиком: всегда 12 месяцев, без переключателя
+    var months = Math.min(12, Math.max(1, Math.round(val('t_months'))));
+    var afterCars = val('t_after');
+    var rest = 12 - months;
+    var afterMonthly = pProfit + nProfit + afterCars * (price * (1 - costShare) - otherCost);
+    var firstNas = pay * months, firstNik = keep * months, afterNik = afterMonthly * rest;
+    var totalNik = firstNik + afterNik;
+    ['y_m1', 'y_m2'].forEach(function (id) { setText(id, months); });
+    ['y_m3', 'y_m4'].forEach(function (id) { setText(id, rest); });
+    setText('y_first_nas', rub(firstNas));
+    setText('y_first_nik', rub(firstNik)); setNeg('y_first_nik', firstNik < 0);
+    setText('y_after_nik', rub(afterNik));
+    setText('y_total_nik', rub(totalNik)); setNeg('y_total_nik', totalNik < 0);
+    setText('y_roi', rub(firstNas) + ' → ' + rub(totalNik)); setNeg('y_roi', totalNik < 0);
+    setText('y_ratio', firstNas > 0 ? nf1.format(totalNik / firstNas) + ' ₽ тебе' : '—');
+  }
+
+  function setMode(m) {
+    mode = m;
+    el('mode_m').classList.toggle('on', m === 'm'); el('mode_m').setAttribute('aria-pressed', m === 'm' ? 'true' : 'false');
+    el('mode_y').classList.toggle('on', m === 'y'); el('mode_y').setAttribute('aria-pressed', m === 'y' ? 'true' : 'false');
+    try { localStorage.setItem(MODE_STORE, m); } catch (e) {}
+    compute();
+  }
+
+  function save() {
+    try {
+      var o = {};
+      KEYS.forEach(function (k) { o[k] = val(k); });
+      localStorage.setItem(STORE, JSON.stringify(o));
+    } catch (e) {}
+  }
+  function load() {
+    try {
+      var o = JSON.parse(localStorage.getItem(STORE) || 'null');
+      if (o) {
+        KEYS.forEach(function (k) {
+          if (typeof o[k] === 'number' && isFinite(o[k])) { el('n_' + k).value = o[k]; el('f_' + k).value = o[k]; }
+        });
+      }
+      var m = localStorage.getItem(MODE_STORE);
+      if (m === 'y') mode = 'y';
+    } catch (e) {}
+  }
+
+  KEYS.forEach(function (k) {
+    var range = el('f_' + k), num = el('n_' + k);
+    range.addEventListener('input', function () { num.value = range.value; compute(); save(); });
+    num.addEventListener('input', function () {
+      var v = parseFloat(num.value);
+      if (!isNaN(v)) range.value = Math.min(parseFloat(range.max), Math.max(parseFloat(range.min), v));
+      compute(); save();
+    });
+  });
+  el('mode_m').addEventListener('click', function () { setMode('m'); });
+  el('mode_y').addEventListener('click', function () { setMode('y'); });
+
+  load();
+  setMode(mode);
+})();
+</script>
+</html>
