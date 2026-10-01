@@ -175,6 +175,45 @@
   .sum .neg { color: var(--warn); }
   .foot { font-size: 13px; color: var(--muted); max-width: 64ch; }
 
+  .flabel { font-size: 14px; color: var(--muted); }
+  .th-sup {
+    display: block; margin-bottom: 2px;
+    font: 600 11px/1.2 'Barlow Condensed', 'Barlow', sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+  }
+  @media (min-width: 1120px) { .calc.wide { box-sizing: border-box; width: 1040px; margin-inline: calc((100% - 1040px) / 2); } }
+  .calc.wide .note { max-width: 82ch; }
+  .plan-tbl { font-size: 13.5px; }
+  .plan-tbl th, .plan-tbl td { padding: 7px 6px; }
+  .plan-tbl thead th { vertical-align: bottom; line-height: 1.25; }
+  .plan-tbl th:first-child, .plan-tbl td:first-child { position: sticky; left: 0; z-index: 1; background: var(--surface); min-width: 11em; }
+  .plan-tbl .grp { border-left: 1px solid var(--line); padding-left: 12px; }
+  .plan-tbl tr.pctm td { background: var(--surface-2); }
+  .plan-tbl .mname { display: block; font-weight: 600; }
+  .plan-tbl .stage { display: block; margin-top: 2px; font-size: 12.5px; font-weight: 400; line-height: 1.3; color: var(--muted); }
+  .plan-tbl input[type="number"] { width: 4.2em; padding: 4px 6px; font-size: 14px; }
+  .plan-tbl td.tot { font-weight: 700; }
+  @media (max-width: 640px) {
+    .plan-tbl th:first-child, .plan-tbl td:first-child { min-width: 8.5em; }
+    .plan-tbl .stage { font-size: 12px; }
+  }
+  .linkbtn {
+    justify-self: start; font: 500 14px/1.2 'Barlow', system-ui, sans-serif; color: var(--focus);
+    background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer;
+  }
+  .linkbtn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .rep-tbl th, .rep-tbl td { text-align: left; white-space: normal; font-weight: 400; }
+  .rep-tbl .n { text-align: right; white-space: nowrap; }
+  .rep-tbl .d { white-space: nowrap; }
+  .rep-tbl th:first-child, .rep-tbl td:first-child { min-width: 8.5em; }
+  .rep-tbl td:first-child { font-weight: 500; }
+  .rep-tbl td.no { color: var(--muted); }
+  .faq { display: grid; gap: 18px; }
+  .qa { display: grid; gap: 8px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .qa:first-child { border-top: 0; padding-top: 0; }
+  .qa h3 { margin: 0; font: 600 19px/1.3 'Barlow', system-ui, sans-serif; text-wrap: balance; }
+  .qa p, .qa ul { margin: 0; max-width: 66ch; }
+  .qa ul { padding-left: 1.2em; display: grid; gap: 6px; }
+
   @media (prefers-reduced-motion: reduce) { .seg { transition: none; } }
 </style>
 
@@ -182,7 +221,7 @@
   <header class="head">
     <div class="eyebrow">Partlux · расчет для Никиты · октябрь 2026</div>
     <h1>Что остается тебе</h1>
-    <p class="lead">Двигай ползунки, цифры пересчитаются сразу. Первые 3 месяца Настя запускает систему, ведет партнеров и кампании. Ты платишь фикс 20 000 ₽ и проценты с оборота по заказам в Parts-Soft: 12,5% с антикора и 7,5% с запчастей. С 4-го месяца система работает на твоих аккаунтах без участия Насти, ты платишь только 25 000 ₽ в месяц за софт. Проценты платишь после того, как деньги пришли.</p>
+    <p class="lead">Двигай ползунки, цифры пересчитаются сразу. Первые 3 месяца Настя запускает систему, ведет партнеров и кампании. Ты платишь фикс 20 000 ₽ и проценты с оборота по заказам в Parts-Soft: 12,5% с антикора и 7,5% с запчастей. С 4-го месяца система работает на твоих аккаунтах без участия Насти, ты платишь только 25 000 ₽ в месяц за софт. Проценты платишь после того, как деньги пришли. Внизу — план по месяцам, пример отчета и ответы на частые вопросы.</p>
   </header>
 
   <div class="periodbar">
@@ -391,7 +430,7 @@
       <h2 id="h-total">Итого</h2>
       <span class="badge">в месяц: первые 3 месяца и дальше</span>
     </div>
-    <p class="intro">Цифры здесь всегда в месяц, переключатель наверху на этот блок не влияет. Итог за год — в блоке «Год целиком».</p>
+    <p class="intro">Цифры здесь всегда в месяц, переключатель наверху на этот блок не влияет. Год по месяцам — в блоке «План по месяцам».</p>
     <div class="body">
       <div class="controls">
         <div class="field">
@@ -423,7 +462,7 @@
           <div class="r strong"><span class="k">Тебе, если машин и клиентов столько же</span><span class="v" id="t4_keep">—</span></div>
           <div class="r"><span class="k">На каждый рубль за софт тебе</span><span class="v" id="t4_ratio">—</span></div>
         </div>
-        <p class="note">Без партнеров и кампаний машин антикора обычно меньше. Вариант с проседанием считает блок «Год целиком».</p>
+        <p class="note">Без партнеров и кампаний машин антикора обычно меньше. Помесячный план с проседанием — в блоке «План по месяцам».</p>
       </div>
     </div>
 
@@ -487,39 +526,154 @@
     </div>
   </section>
 
-  <!-- ========== ГОД ЦЕЛИКОМ ========== -->
-  <section class="calc year" aria-labelledby="h-year">
+  <!-- ========== ПЛАН ПО МЕСЯЦАМ ========== -->
+  <section class="calc year wide" aria-labelledby="h-plan">
     <div class="calc-head">
-      <h2 id="h-year">Год целиком</h2>
-      <span class="badge">Настя работает часть года</span>
+      <h2 id="h-plan">План по месяцам</h2>
+      <span class="badge">первый год</span>
     </div>
-    <p class="intro">Первые месяцы Настя строит систему, ведет партнеров и кампании, получает фикс и проценты. Дальше система работает на твоих аккаунтах без ее участия, ты платишь только за софт. Здесь всегда 12 месяцев, переключатель наверху на этот блок не влияет.</p>
+    <p class="intro">Осторожный план на 12 месяцев. Машины антикора в каждом месяце можно поменять прямо в таблице, остальное пересчитается. Цена, наценка, запчасти, фикс и оплата софта берутся из блоков выше. Переключатель «в месяц / в год» на этот блок не влияет.</p>
     <div class="body">
       <div class="controls">
         <div class="field">
-          <label for="f_t_months">Месяцев с фиксом и процентами: Настя запускает систему, ведет партнеров и кампании</label>
-          <div class="row"><input type="range" id="f_t_months" min="1" max="12" step="1" value="3"><input type="number" id="n_t_months" min="1" max="12" step="1" value="3"><span class="unit">мес.</span></div>
+          <span class="flabel">Договор начинается</span>
+          <div class="toggle" role="group" aria-label="Месяц старта договора">
+            <button type="button" id="start_0" class="on" aria-pressed="true">в октябре</button>
+            <button type="button" id="start_1" aria-pressed="false">в ноябре</button>
+          </div>
         </div>
-        <div class="field">
-          <label for="f_t_after">Дальше, без Насти: машин антикора в месяц от касаний по базе, без партнеров и кампаний</label>
-          <div class="row"><input type="range" id="f_t_after" min="0" max="10" step="1" value="2"><input type="number" id="n_t_after" min="0" step="1" value="2"><span class="unit">шт.</span></div>
-        </div>
-        <p class="note">Запчасти и новые клиенты после ухода Насти считаются в полном объеме: касания по регламенту и сезону идут автоматически. Антикор без партнеров и кампаний обычно проседает, поэтому число машин задается отдельно.</p>
+        <p class="note">Антикор стартует в ноябре при любом варианте. Если договор начинается в октябре, первый месяц уходит на запуск: разбор базы, каналы, сервисная волна по запчастям. Если в ноябре, запуск и первая волна антикора идут вместе, и три месяца с процентами захватывают январь.</p>
+        <p class="note">План по умолчанию осторожный. Пока Настя ведет партнеров и автопарки, к машинам с базы добавляется 1–2 машины в месяц. С 4-го месяца остаются только касания по базе: зимой 1 машина в месяц, весной и осенью 3.</p>
+        <button type="button" class="linkbtn" id="plan_reset">Вернуть план по умолчанию</button>
       </div>
       <div class="results">
         <div class="hero">
           <div class="lbl">За 12 месяцев: Насте и тебе</div>
-          <div class="val" id="y_roi">—</div>
-          <div class="sub">на каждый рубль Насте за год <span id="y_ratio">—</span></div>
+          <div class="val" id="pl_roi">—</div>
+          <div class="sub">на каждый рубль Насте <span id="pl_ratio">—</span> · <span id="pl_payback">—</span></div>
         </div>
         <div class="rows">
-          <div class="r"><span class="k">Первые <span id="y_m1">6</span> мес.: Насте</span><span class="v" id="y_first_nas">—</span></div>
-          <div class="r"><span class="k">Первые <span id="y_m2">6</span> мес.: тебе, после выплат</span><span class="v" id="y_first_nik">—</span></div>
-          <div class="r"><span class="k">Остальные <span id="y_m3">6</span> мес.: Насте, оплата софта</span><span class="v" id="y_after_nas">—</span></div>
-          <div class="r"><span class="k">Остальные <span id="y_m4">6</span> мес.: тебе, после оплаты софта</span><span class="v" id="y_after_nik">—</span></div>
-          <div class="r"><span class="k">За год Насте</span><span class="v" id="y_total_nas">—</span></div>
-          <div class="r strong"><span class="k">За год тебе</span><span class="v" id="y_total_nik">—</span></div>
+          <div class="r"><span class="k">Месяцы 1–3: Насте, фикс и проценты</span><span class="v" id="pl_n13">—</span></div>
+          <div class="r"><span class="k">Месяцы 1–3: тебе, после выплат</span><span class="v" id="pl_k13">—</span></div>
+          <div class="r"><span class="k">Месяцы 4–12: Насте, оплата софта</span><span class="v" id="pl_n412">—</span></div>
+          <div class="r"><span class="k">Месяцы 4–12: тебе, после оплаты софта</span><span class="v" id="pl_k412">—</span></div>
+          <div class="r"><span class="k">Машин антикора за год</span><span class="v" id="pl_cars_y">—</span></div>
         </div>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table class="sum plan-tbl">
+        <thead>
+          <tr>
+            <th>Месяц</th>
+            <th>Машин<br>антикора</th>
+            <th class="grp"><span class="th-sup">Насте, ₽</span>фикс или софт</th>
+            <th><span class="th-sup">Насте, ₽</span>с машин</th>
+            <th><span class="th-sup">Насте, ₽</span>с запчастей</th>
+            <th><span class="th-sup">Насте, ₽</span>всего</th>
+            <th class="grp"><span class="th-sup">Тебе, ₽</span>прибыль до выплат</th>
+            <th><span class="th-sup">Тебе, ₽</span>после выплат</th>
+            <th><span class="th-sup">Тебе, ₽</span>с начала</th>
+          </tr>
+        </thead>
+        <tbody id="plan"></tbody>
+        <tfoot>
+          <tr><th>За 12 месяцев</th><th id="pl_t_cars">—</th><th class="grp" id="pl_t_base">—</th><th id="pl_t_nc">—</th><th id="pl_t_np">—</th><th id="pl_t_nas">—</th><th class="grp" id="pl_t_prof">—</th><th id="pl_t_nik">—</th><th></th></tr>
+        </tfoot>
+      </table>
+    </div>
+    <p class="note">Серым выделены месяцы с фиксом и процентами. Как считается строка. Насте в месяцы 1–3: фикс, плюс машины × <span id="pl_nas_car">8 750</span> ₽ (12,5% цены), плюс 7,5% с покупок вернувшихся клиентов. С 4-го месяца — только оплата софта. Прибыль до выплат: машины × <span id="pl_prof_car">52 500</span> ₽ (цена минус материал, работа и расход на машину) плюс прибыль с запчастей. Запчасти растут постепенно, потому что вернувшиеся клиенты копятся: в первом месяце 1/12 объема из блоков «Запчасти» и «Новые клиенты», к 12-му месяцу полный объем. Тебе после выплат = прибыль до выплат − Насте всего.</p>
+  </section>
+
+  <!-- ========== ОТЧЕТ ========== -->
+  <section class="calc parts wide" aria-labelledby="h-report">
+    <div class="calc-head">
+      <h2 id="h-report">Что ты получаешь к 3-му числу</h2>
+      <span class="badge">пример отчета</span>
+    </div>
+    <p class="intro">Так выглядит отчет за месяц с процентами. Номера и суммы ниже условные, в настоящем отчете будут твои заказы из Parts-Soft. Любую строку проверяешь по номеру заказа в своей системе. На возражения — 5 рабочих дней, оплата до 10-го.</p>
+    <div class="tbl-wrap">
+      <table class="sum rep-tbl">
+        <thead>
+          <tr><th>Заказ</th><th>Кто купил</th><th>Сообщение системы</th><th>Покупка</th><th class="n">Сумма</th><th>Засчитано</th><th class="n">Насте</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>№ 10234, запчасти</td><td>спящий, не покупал с 2024</td><td>02.11, аккумулятор перед морозами</td><td class="d">09.11</td><td class="n">8 900 ₽</td><td>да, через 7 дней</td><td class="n">668 ₽</td></tr>
+          <tr><td>№ 10251, запчасти</td><td>новый, бросил корзину</td><td>05.11, напоминание о корзине</td><td class="d">08.11</td><td class="n">4 200 ₽</td><td>да, через 3 дня</td><td class="n">315 ₽</td></tr>
+          <tr><td>№ 10277, запчасти</td><td>спящий</td><td>01.10, сервисная волна</td><td class="d">14.11</td><td class="n">3 600 ₽</td><td class="no">нет, прошло 44 дня</td><td class="n">0 ₽</td></tr>
+          <tr><td>№ 10290, запчасти</td><td>покупал в июле, активный</td><td>—</td><td class="d">16.11</td><td class="n">12 400 ₽</td><td class="no">нет, активный на старте</td><td class="n">0 ₽</td></tr>
+          <tr><td>Наряд № 58, антикор</td><td>от партнера, автосервис</td><td>партнер из списка</td><td class="d">18.11</td><td class="n">70 000 ₽</td><td>да, партнер</td><td class="n">8 750 ₽</td></tr>
+          <tr><td>Наряд № 61, антикор</td><td>твой знакомый</td><td>—</td><td class="d">22.11</td><td class="n">85 000 ₽</td><td class="no">нет, ты отметил его до осмотра</td><td class="n">0 ₽</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="rows">
+      <div class="r"><span class="k">Проценты по засчитанным строкам</span><span class="v">9 733 ₽</span></div>
+      <div class="r"><span class="k">Фикс за месяц</span><span class="v">20 000 ₽</span></div>
+      <div class="r strong"><span class="k">К оплате до 10-го</span><span class="v">29 733 ₽</span></div>
+    </div>
+    <p class="note"><b>Контрольная группа</b>, пример: из 180 спящих, которым система не писала, за месяц купили 2 человека, это 1,1%. Из 1 020, которым писала, купили 34, это 3,3%. Разница в 2,2 процентного пункта — то, что дала система сверх того, что случилось бы само.</p>
+    <p class="note">К отчету прилагается журнал касаний: кому, когда, с каким поводом и в какой канал ушло сообщение. Те же отметки стоят в карточках клиентов в Parts-Soft.</p>
+  </section>
+
+  <!-- ========== ВОПРОСЫ И ОТВЕТЫ ========== -->
+  <section class="calc" id="faq" aria-labelledby="h-faq">
+    <div class="calc-head">
+      <h2 id="h-faq">Вопросы и ответы</h2>
+    </div>
+    <div class="faq">
+      <div class="qa">
+        <h3>Почему не сделать это самому?</h3>
+        <p>Разовую рассылку по базе можно сделать самому за вечер. Она даст всплеск заказов на неделю-две, потом продажи вернутся к прежним. Система держится на пяти вещах, которые за вечер не сделать.</p>
+        <ul>
+          <li><b>Писать первым.</b> Parts-Soft сам не напишет клиенту, который не писал тебе в мессенджер. Его нужно связать через API с WAHELP, мессенджерами менеджера и SMS. Это разработка, в настройках такой кнопки нет.</li>
+          <li><b>У каждого клиента свой повод.</b> Система каждый день смотрит историю 1 500 клиентов: когда меняли аккумулятор, колодки, масло, какая машина в гараже, кто бросил корзину или VIN-запрос. Вручную это 1–2 минуты на человека, 25–50 часов на один проход, а проход нужен каждую неделю.</li>
+          <li><b>Правила, без которых рассылка вредит.</b> Не писать тому, кто купил вчера. Не называть цену товара под заказ. Не путать машины. Первое сообщение спящему — сервисное: за рекламу без согласия штраф от 100 000 ₽. Эти правила собраны на других проектах и уже зашиты в систему.</li>
+          <li><b>Учет.</b> Каждое сообщение отмечается в карточке клиента, в отчете видно, какой заказ пришел после какого повода. Без учета через месяц непонятно, что сработало, и рассылку бросают.</li>
+          <li><b>Партнеры и автопарки.</b> Первые 3 месяца Настя сама находит и подключает автосервисы и автопарки под антикор. Это продажи, их рассылка не заменит.</li>
+        </ul>
+      </div>
+      <div class="qa">
+        <h3>Сколько я плачу, если машин не будет?</h3>
+        <p>Первые 3 месяца — фикс 20 000 ₽ и проценты только с оплаченных заказов. Машин нет — платишь фикс и 7,5% с покупок вернувшихся клиентов. С 4-го месяца — 25 000 ₽ в месяц за софт при любых продажах.</p>
+      </div>
+      <div class="qa">
+        <h3>Почему проценты только первые 3 месяца?</h3>
+        <p>В эти месяцы Настя сама ведет кампанию антикора, партнеров и автопарки и получает процент с результата. С 4-го месяца система работает на твоих аккаунтах без нее: касания по регламенту и сезону уходят сами. Ты платишь за софт, весь результат остается тебе.</p>
+      </div>
+      <div class="qa">
+        <h3>Как понять, что заказ пришел благодаря системе?</h3>
+        <p>Каждое сообщение отмечается в карточке клиента в Parts-Soft: дата, повод, канал. В отчет попадает заказ, оформленный в течение 30 дней после сообщения. Еще есть контрольная группа: 10–15% спящих клиентов система не трогает. В конце месяца видно, сколько купили те, кому писали, и те, кому не писали. Ты платишь процент только в месяцы 1–3, и только с засчитанных заказов.</p>
+      </div>
+      <div class="qa">
+        <h3>Какие заказы не считаются?</h3>
+        <ul>
+          <li>заказы клиентов, которые покупали у тебя за 12 месяцев до старта;</li>
+          <li>заказы с маркетплейсов;</li>
+          <li>первая покупка нового клиента, если до нее не было сообщения;</li>
+          <li>заказ, оформленный позже 30 дней после сообщения;</li>
+          <li>антикор твоих знакомых, если ты отметил их до осмотра.</li>
+        </ul>
+      </div>
+      <div class="qa">
+        <h3>Почему процент считается с оборота?</h3>
+        <p>Так тебе не нужно показывать закупочные цены. Себестоимость антикора записываем в договоре как четверть цены. 12,5% цены — это одна шестая того, что остается после материала и работы, пять шестых остаются тебе.</p>
+      </div>
+      <div class="qa">
+        <h3>Почему в первом месяце может быть минус?</h3>
+        <p>Если договор начинается в октябре, первый месяц уходит на запуск: разбираем базу, подключаем каналы, отправляем сервисную волну. Антикор стартует в ноябре, вернувшиеся клиенты только начинают покупать. Когда вложения окупаются, видно в колонке «Тебе, с начала» в плане по месяцам.</p>
+      </div>
+      <div class="qa">
+        <h3>Что входит в 25 000 ₽ за софт?</h3>
+        <p>Работа системы каждый день: касания по регламенту и сезону, передача ответов клиентов менеджеру, журнал. Присмотр за сервером и починка, если Parts-Soft или WAHELP что-то поменяют. Обновление сезонных текстов. Кампании, поиск партнеров и переписка с клиентами в 25 000 ₽ не входят. Инструменты — WAHELP, SMS, сервер, около 5 000 ₽ в месяц — оплачиваются отдельно на твоих аккаунтах.</p>
+      </div>
+      <div class="qa">
+        <h3>Что останется у меня, если я остановлюсь?</h3>
+        <p>Все работает на твоих аккаунтах: Parts-Soft, WAHELP, SMS. База клиентов, отметки в карточках и журнал касаний остаются у тебя.</p>
+      </div>
+      <div class="qa">
+        <h3>Клиенты не воспримут это как спам?</h3>
+        <p>Одному клиенту — не больше одного повода в день, ночью сообщения не уходят. Тем, кто в черном списке Parts-Soft или просил не писать, система не пишет. Цены не называем, машину берем из гаража или последнего заказа. Ответ клиента сразу уходит менеджеру.</p>
       </div>
     </div>
   </section>
@@ -529,7 +683,7 @@
 
 <script>
 (function () {
-  var KEYS = ['p_sleep','p_ret','p_check','p_buys','p_markup','n_new','n_cur','n_sys','a_cars','a_price','a_markup','a_other','a_base','t_fix','t_soft','t_months','t_after','g_goal'];
+  var KEYS = ['p_sleep','p_ret','p_check','p_buys','p_markup','n_new','n_cur','n_sys','a_cars','a_price','a_markup','a_other','a_base','t_fix','t_soft','g_goal'];
   var P_FEE = 7.5, A_FEE = 12.5;
   var STORE = 'partlux-calc-v4', MODE_STORE = 'partlux-calc-mode';
   var mode = 'm';
@@ -684,23 +838,142 @@
     setText('g_msgs', nf.format(Math.ceil(needCars * 2 * 7)));
     setText('g_year', nf.format(needCars * 12) + ' машин · ' + nf1.format(needCars * 12 / 1500 * 100) + ' %');
 
-    // Год целиком: всегда 12 месяцев, без переключателя
-    var months = Math.min(12, Math.max(1, Math.round(val('t_months'))));
-    var afterCars = val('t_after');
-    var rest = 12 - months;
-    var afterMonthly = pProfit + nProfit + afterCars * (price * (1 - costShare) - otherCost);
-    var firstNas = pay * months, firstNik = keep * months;
-    var afterNas = soft * rest, afterNik = (afterMonthly - soft) * rest;
-    var totalNas = firstNas + afterNas, totalNik = firstNik + afterNik;
-    ['y_m1', 'y_m2'].forEach(function (id) { setText(id, months); });
-    ['y_m3', 'y_m4'].forEach(function (id) { setText(id, rest); });
-    setText('y_first_nas', rub(firstNas));
-    setText('y_first_nik', rub(firstNik)); setNeg('y_first_nik', firstNik < 0);
-    setText('y_after_nik', rub(afterNik)); setNeg('y_after_nik', afterNik < 0);
-    setText('y_after_nas', rub(afterNas)); setText('y_total_nas', rub(totalNas));
-    setText('y_total_nik', rub(totalNik)); setNeg('y_total_nik', totalNik < 0);
-    setText('y_roi', rub(totalNas) + ' → ' + rub(totalNik)); setNeg('y_roi', totalNik < 0);
-    setText('y_ratio', totalNas > 0 ? nf1.format(totalNik / totalNas) + ' ₽ тебе' : '—');
+    // План по месяцам
+    planCtx = { price: price, costShare: costShare, otherCost: otherCost, partsTurn: pTurn + nTurn, partsProfit: pProfit + nProfit, fix: fix, soft: soft };
+    computePlan();
+  }
+
+  // ---------- План по месяцам ----------
+  var MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+  var MONTHS_IN = ['в январе', 'в феврале', 'в марте', 'в апреле', 'в мае', 'в июне', 'в июле', 'в августе', 'в сентябре', 'в октябре', 'в ноябре', 'в декабре'];
+  var PCT_MONTHS = 3;
+  // Индекс календарного месяца: 0 = октябрь 2026
+  var CARS_WITH = { 0: 0, 1: 5, 2: 4, 3: 2 };  // Настя ведет партнеров и кампании
+  var CARS_SOFT = { 3: 1, 4: 1, 5: 2, 6: 3, 7: 3, 8: 2, 9: 2, 10: 2, 11: 3, 12: 3 };  // только касания по базе
+  var PLAN_STORE = 'partlux-plan-v1';
+  var plan = { start: 0, cars: {} };
+  var planCtx = null;
+
+  function calName(i) { return MONTHS[(9 + i) % 12] + ' ' + (2026 + Math.floor((9 + i) / 12)); }
+  function season(i) {
+    var m = (9 + i) % 12;
+    if (m <= 1) return 'зима, антикора мало';
+    if (m <= 4) return 'весенний сезон антикора';
+    if (m <= 7) return 'лето';
+    if (m <= 9) return 'осенний сезон антикора';
+    return 'начало зимы';
+  }
+  function stage(c, i) {
+    if (c === 1) return '1-й месяц · ' + (i === 0 ? 'запуск: база, каналы, сервисная волна, антикора еще нет' : 'запуск и первая волна антикора');
+    if (c === 2) return '2-й месяц · кампания антикора, партнеры, автопарки';
+    if (c === 3) return '3-й месяц · кампания антикора, передача системы тебе';
+    return 'софт, касания идут сами · ' + season(i);
+  }
+  function defaultCars(c, i) {
+    if (c === 1 && i === 1) return 3;  // старт в ноябре: партнеров еще нет, только первая волна по базе
+    var t = c <= PCT_MONTHS ? CARS_WITH : CARS_SOFT;
+    return t.hasOwnProperty(i) ? t[i] : 2;
+  }
+  function carsAt(c, i) {
+    var v = plan.cars[i];
+    return typeof v === 'number' && isFinite(v) && v >= 0 ? v : defaultCars(c, i);
+  }
+  function num(v) { return nf.format(Math.round(v)); }
+
+  function savePlan() { try { localStorage.setItem(PLAN_STORE, JSON.stringify(plan)); } catch (e) {} }
+  function loadPlan() {
+    try {
+      var o = JSON.parse(localStorage.getItem(PLAN_STORE) || 'null');
+      if (o) {
+        if (o.start === 0 || o.start === 1) plan.start = o.start;
+        if (o.cars && typeof o.cars === 'object') plan.cars = o.cars;
+      }
+    } catch (e) {}
+  }
+
+  function buildPlan() {
+    var tbody = el('plan');
+    tbody.textContent = '';
+    for (var c = 1; c <= 12; c++) {
+      var i = plan.start + c - 1;
+      var tr = document.createElement('tr');
+      if (c <= PCT_MONTHS) tr.className = 'pctm';
+      var td0 = document.createElement('td');
+      var nm = document.createElement('span'); nm.className = 'mname'; nm.textContent = calName(i);
+      var st = document.createElement('span'); st.className = 'stage'; st.textContent = stage(c, i);
+      td0.appendChild(nm); td0.appendChild(st); tr.appendChild(td0);
+      var td1 = document.createElement('td');
+      var inp = document.createElement('input');
+      inp.type = 'number'; inp.min = '0'; inp.step = '1'; inp.value = carsAt(c, i);
+      inp.setAttribute('aria-label', 'Машин антикора, ' + calName(i));
+      (function (idx) {
+        inp.addEventListener('input', function () {
+          var v = parseFloat(this.value);
+          if (!isNaN(v) && v >= 0) plan.cars[idx] = v; else delete plan.cars[idx];
+          savePlan(); computePlan();
+        });
+      })(i);
+      td1.appendChild(inp); tr.appendChild(td1);
+      ['base', 'nc', 'np', 'nas', 'prof', 'nik', 'cum'].forEach(function (k) {
+        var td = document.createElement('td');
+        td.id = 'pl_' + c + '_' + k;
+        if (k === 'base' || k === 'prof') td.className = 'grp';
+        if (k === 'nas' || k === 'nik') td.className = 'tot';
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    }
+    el('start_0').classList.toggle('on', plan.start === 0); el('start_0').setAttribute('aria-pressed', plan.start === 0 ? 'true' : 'false');
+    el('start_1').classList.toggle('on', plan.start === 1); el('start_1').setAttribute('aria-pressed', plan.start === 1 ? 'true' : 'false');
+  }
+
+  function computePlan() {
+    var x = planCtx;
+    if (!x) return;
+    var perCarNas = x.price * A_FEE / 100;
+    var perCarProf = x.price * (1 - x.costShare) - x.otherCost;
+    setText('pl_nas_car', num(perCarNas));
+    setText('pl_prof_car', num(perCarProf));
+    var T = { cars: 0, base: 0, nc: 0, np: 0, nas: 0, prof: 0, nik: 0 };
+    var n13 = 0, k13 = 0, n412 = 0, k412 = 0;
+    var cum = 0, wasNeg = false, payback = 0;
+    for (var c = 1; c <= 12; c++) {
+      var i = plan.start + c - 1;
+      var pctM = c <= PCT_MONTHS;
+      var cars = carsAt(c, i);
+      var ramp = c / 12;
+      var base = pctM ? x.fix : x.soft;
+      var nc = pctM ? cars * perCarNas : 0;
+      var np = pctM ? x.partsTurn * ramp * P_FEE / 100 : 0;
+      var nas = base + nc + np;
+      var prof = cars * perCarProf + x.partsProfit * ramp;
+      var nik = prof - nas;
+      cum += nik;
+      if (cum < 0) wasNeg = true;
+      else if (wasNeg && !payback) payback = c;
+      var cells = { base: base, nc: nc, np: np, nas: nas, prof: prof, nik: nik, cum: cum };
+      for (var k in cells) {
+        var cell = el('pl_' + c + '_' + k);
+        cell.textContent = num(cells[k]);
+        cell.classList.toggle('neg', cells[k] < 0);
+      }
+      T.cars += cars; T.base += base; T.nc += nc; T.np += np; T.nas += nas; T.prof += prof; T.nik += nik;
+      if (pctM) { n13 += nas; k13 += nik; } else { n412 += nas; k412 += nik; }
+    }
+    setText('pl_t_cars', nf1.format(T.cars));
+    ['base', 'nc', 'np', 'nas', 'prof', 'nik'].forEach(function (k) {
+      setText('pl_t_' + k, num(T[k])); setNeg('pl_t_' + k, T[k] < 0);
+    });
+    setText('pl_roi', rub(T.nas) + ' → ' + rub(T.nik)); setNeg('pl_roi', T.nik < 0);
+    setText('pl_ratio', T.nas > 0 ? nf1.format(T.nik / T.nas) + ' ₽ тебе' : '—');
+    var pb;
+    if (!wasNeg) pb = 'в плюсе с первого месяца';
+    else if (payback) pb = 'вложения окупаются за ' + payback + ' ' + (payback === 1 ? 'месяц' : (payback >= 2 && payback <= 4 ? 'месяца' : 'месяцев')) + ', ' + MONTHS_IN[(9 + plan.start + payback - 1) % 12];
+    else pb = 'за 12 месяцев вложения не окупаются';
+    setText('pl_payback', pb);
+    setText('pl_n13', rub(n13)); setText('pl_k13', rub(k13)); setNeg('pl_k13', k13 < 0);
+    setText('pl_n412', rub(n412)); setText('pl_k412', rub(k412)); setNeg('pl_k412', k412 < 0);
+    setText('pl_cars_y', nf1.format(T.cars) + ' шт.');
   }
 
   function setMode(m) {
@@ -742,6 +1015,12 @@
   });
   el('mode_m').addEventListener('click', function () { setMode('m'); });
   el('mode_y').addEventListener('click', function () { setMode('y'); });
+
+  loadPlan();
+  buildPlan();
+  el('start_0').addEventListener('click', function () { plan.start = 0; savePlan(); buildPlan(); computePlan(); });
+  el('start_1').addEventListener('click', function () { plan.start = 1; savePlan(); buildPlan(); computePlan(); });
+  el('plan_reset').addEventListener('click', function () { plan.cars = {}; savePlan(); buildPlan(); computePlan(); });
 
   load();
   setMode(mode);
