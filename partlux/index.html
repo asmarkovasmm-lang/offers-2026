@@ -182,7 +182,7 @@
   <header class="head">
     <div class="eyebrow">Partlux · расчет для Никиты · октябрь 2026</div>
     <h1>Что остается тебе</h1>
-    <p class="lead">Двигай ползунки, цифры пересчитаются сразу. Новую прибыль, которую приносит система, делим на шесть частей: одна Насте, пять тебе. На каждый рубль Насте ты получаешь пять. В договоре это записано процентами с оборота по заказам в Parts-Soft: 12,5% с антикора и 7,5% с запчастей. Платишь после того, как деньги пришли.</p>
+    <p class="lead">Двигай ползунки, цифры пересчитаются сразу. Первые 3 месяца Настя запускает систему, ведет партнеров и кампании. Ты платишь фикс 20 000 ₽ и проценты с оборота по заказам в Parts-Soft: 12,5% с антикора и 7,5% с запчастей. С 4-го месяца система работает на твоих аккаунтах без участия Насти, ты платишь только 25 000 ₽ в месяц за софт. Проценты платишь после того, как деньги пришли.</p>
   </header>
 
   <div class="periodbar">
@@ -239,7 +239,7 @@
           <div class="r"><span class="k">Оборот с них</span><span class="v" id="p_turn">—</span></div>
           <div class="r"><span class="k">Себестоимость запчастей</span><span class="v" id="p_cost">—</span></div>
           <div class="r"><span class="k">Твоя прибыль по наценке</span><span class="v" id="p_profit">—</span></div>
-          <div class="r"><span class="k">Насте, 7,5% с покупок за первые полгода</span><span class="v" id="p_fee">—</span></div>
+          <div class="r"><span class="k">Насте, 7,5% с покупок в первые 3 месяца</span><span class="v" id="p_fee">—</span></div>
         </div>
         <div class="bar" aria-hidden="true">
           <div class="seg cost" id="p_seg_cost"></div>
@@ -251,7 +251,7 @@
           <span class="chip"><i class="fee"></i>Насте <b id="p_c_fee">—</b></span>
           <span class="chip"><i class="keep"></i>Тебе <b id="p_c_keep">—</b></span>
         </div>
-        <p class="note">Насте считаем с покупок вернувшегося за первые полгода. Дальше он просто твой клиент, без процента.</p>
+        <p class="note">Процент Насте идет со всех покупок вернувшихся, но только первые 3 месяца. С 4-го месяца все их покупки твои без процента.</p>
       </div>
     </div>
   </section>
@@ -297,7 +297,7 @@
           <div class="r"><span class="k">Оборот прибавки</span><span class="v" id="n_turn">—</span></div>
           <div class="r"><span class="k">Себестоимость запчастей</span><span class="v" id="n_cost">—</span></div>
           <div class="r"><span class="k">Твоя прибыль по наценке</span><span class="v" id="n_profit">—</span></div>
-          <div class="r"><span class="k">Насте, 7,5% с покупок за первые полгода</span><span class="v" id="n_fee">—</span></div>
+          <div class="r"><span class="k">Насте, 7,5% с покупок в первые 3 месяца</span><span class="v" id="n_fee">—</span></div>
         </div>
         <div class="bar" aria-hidden="true">
           <div class="seg cost" id="n_seg_cost"></div>
@@ -309,7 +309,7 @@
           <span class="chip"><i class="fee"></i>Насте <b id="n_c_fee">—</b></span>
           <span class="chip"><i class="keep"></i>Тебе <b id="n_c_keep">—</b></span>
         </div>
-        <p class="note">Первая покупка нового клиента — твоя, без процента. Считаем только повторные покупки после нашего сообщения: 7,5% за первые полгода, как со спящими. Те, кто остался бы и без системы, в расчет не входят.</p>
+        <p class="note">Первая покупка нового клиента — твоя, без процента. Считаем только повторные покупки после нашего сообщения: 7,5% в первые 3 месяца, как со спящими. Те, кто остался бы и без системы, в расчет не входят.</p>
       </div>
     </div>
   </section>
@@ -340,7 +340,7 @@
           <div class="fixed">12,5 %, не меняется</div>
         </div>
         <div class="field">
-          <label for="f_a_other">Расход на одну машину, если есть: комиссия партнеру или реклама. Минимум Насте сюда не входит, он в «Итого»</label>
+          <label for="f_a_other">Расход на одну машину, если есть: комиссия партнеру или реклама. Фикс Насте сюда не входит, он в «Итого»</label>
           <div class="row"><input type="range" id="f_a_other" min="0" max="15000" step="500" value="0"><input type="number" id="n_a_other" min="0" step="500" value="0"><span class="unit">₽ за машину</span></div>
         </div>
         <div class="field">
@@ -389,34 +389,46 @@
   <section class="calc total" aria-labelledby="h-total">
     <div class="calc-head">
       <h2 id="h-total">Итого</h2>
-      <span class="badge">запчасти + новые + антикор</span>
+      <span class="badge">в месяц: первые 3 месяца и дальше</span>
     </div>
+    <p class="intro">Цифры здесь всегда в месяц, переключатель наверху на этот блок не влияет. Итог за год — в блоке «Год целиком».</p>
     <div class="body">
       <div class="controls">
         <div class="field">
-          <label for="f_t_fix">Гарантированный минимум Насте в месяц</label>
+          <label for="f_t_fix">Первые 3 месяца: фикс Насте в месяц, плюс проценты</label>
           <div class="row"><input type="range" id="f_t_fix" min="0" max="50000" step="1000" value="20000"><input type="number" id="n_t_fix" min="0" step="1000" value="20000"><span class="unit">₽</span></div>
         </div>
-        <p class="note">Минимум засчитывается в проценты. Если за месяц процентов набралось меньше, доплачиваешь до минимума. Если больше, платишь только проценты. Инструменты (WAHELP, SMS, сервер — около 5 000 ₽ в месяц) стоят на твоих аккаунтах и в расчет не входят. Рекламный бюджет, если решишь его дать, тоже отдельно.</p>
+        <div class="field">
+          <label for="f_t_soft">С 4-го месяца: оплата софта в месяц, без процентов</label>
+          <div class="row"><input type="range" id="f_t_soft" min="0" max="50000" step="1000" value="25000"><input type="number" id="n_t_soft" min="0" step="1000" value="25000"><span class="unit">₽</span></div>
+        </div>
+        <p class="note">С 4-го месяца система работает без участия Насти: партнеров, кампаний и процентов больше нет, ты платишь только за софт. Инструменты (WAHELP, SMS, сервер — около 5 000 ₽ в месяц) стоят на твоих аккаунтах и в эти суммы не входят. Рекламный бюджет, если решишь его дать, тоже отдельно.</p>
       </div>
       <div class="results">
         <div class="hero">
-          <div class="lbl">Вложил и получил, <span class="per">в месяц</span></div>
+          <div class="lbl">Первые 3 месяца: вложил и получил, в месяц</div>
           <div class="val" id="t_roi">—</div>
-          <div class="sub">вложил — выплаты Насте, получил — твоя новая прибыль после них · на каждый рубль Насте <span id="t_ratio">—</span> · <span class="per-other">в год</span>: <span id="t_roi_o">—</span></div>
+          <div class="sub">вложил — фикс и проценты Насте, получил — твоя новая прибыль после них · на каждый рубль Насте <span id="t_ratio">—</span></div>
         </div>
         <div class="rows">
-          <div class="r"><span class="k">Платишь Насте, <span class="per">в месяц</span></span><span class="v" id="t_pay">—</span></div>
+          <div class="r"><span class="k">Платишь Насте в месяц</span><span class="v" id="t_pay">—</span></div>
           <div class="r"><span class="k">Из них проценты</span><span class="v" id="t_pct">—</span></div>
-          <div class="r"><span class="k">Из них доплата до минимума</span><span class="v" id="t_fix">—</span></div>
+          <div class="r"><span class="k">Из них фикс</span><span class="v" id="t_fix">—</span></div>
           <div class="r strong"><span class="k">Твоя новая прибыль: запчасти, новые, антикор, после выплат Насте</span><span class="v" id="t_keep">—</span></div>
           <div class="r strong"><span class="k">На каждый рубль Насте тебе</span><span class="v" id="t_ratio_r">—</span></div>
         </div>
+        <div class="rows-title">С 4-го месяца, в месяц</div>
+        <div class="rows">
+          <div class="r"><span class="k">Платишь за софт</span><span class="v" id="t4_pay">—</span></div>
+          <div class="r strong"><span class="k">Тебе, если машин и клиентов столько же</span><span class="v" id="t4_keep">—</span></div>
+          <div class="r"><span class="k">На каждый рубль за софт тебе</span><span class="v" id="t4_ratio">—</span></div>
+        </div>
+        <p class="note">Без партнеров и кампаний машин антикора обычно меньше. Вариант с проседанием считает блок «Год целиком».</p>
       </div>
     </div>
 
     <div class="summary">
-      <div class="rows-title">Сводка: вся прибыль по источникам, <span class="per">в месяц</span></div>
+      <div class="rows-title">Сводка за месяц, первые 3 месяца: вся прибыль по источникам</div>
       <div class="tbl-wrap">
         <table class="sum">
           <thead>
@@ -426,14 +438,14 @@
             <tr><td>Запчасти: вернувшиеся спящие</td><td id="s_p_turn">—</td><td id="s_p_cost">—</td><td id="s_p_fee">—</td><td id="s_p_keep">—</td></tr>
             <tr><td>Новые клиенты: удержанные</td><td id="s_n_turn">—</td><td id="s_n_cost">—</td><td id="s_n_fee">—</td><td id="s_n_keep">—</td></tr>
             <tr><td>Антикор: машины от системы</td><td id="s_a_turn">—</td><td id="s_a_cost">—</td><td id="s_a_fee">—</td><td id="s_a_keep">—</td></tr>
-            <tr><td>Доплата до минимума</td><td>—</td><td>—</td><td id="s_f_fee">—</td><td id="s_f_keep">—</td></tr>
+            <tr><td>Фикс Насте</td><td>—</td><td>—</td><td id="s_f_fee">—</td><td id="s_f_keep">—</td></tr>
           </tbody>
           <tfoot>
             <tr><th>Итого</th><th id="s_t_turn">—</th><th id="s_t_cost">—</th><th id="s_t_fee">—</th><th id="s_t_keep">—</th></tr>
           </tfoot>
         </table>
       </div>
-      <p class="note">Себестоимость антикора включает материал, работу и, если задано, комиссию партнеру или рекламу на машину. Доплата до минимума появляется, только если процентов за месяц набралось меньше минимума. Прибыль с машин «с улицы» (сейчас <span id="s_street">—</span>) сюда не входит: она остается как есть, без процента.</p>
+      <p class="note">Себестоимость антикора включает материал, работу и, если задано, комиссию партнеру или рекламу на машину. Фикс Насте — отдельной строкой, он не зависит от числа машин. Прибыль с машин «с улицы» (сейчас <span id="s_street">—</span>) сюда не входит: она остается как есть, без процента.</p>
     </div>
   </section>
 
@@ -443,14 +455,14 @@
       <h2 id="h-goal">Обратный расчет</h2>
       <span class="badge">от цели к продажам</span>
     </div>
-    <p class="intro">Никита называет, сколько хочет получать сверху в месяц. Считаем, сколько машин антикора для этого нужно при текущих ползунках запчастей и новых клиентов, и что при этом получает Настя.</p>
+    <p class="intro">Никита называет, сколько хочет получать сверху в месяц в первые 3 месяца. Считаем, сколько машин антикора для этого нужно при текущих ползунках запчастей и новых клиентов, и что при этом получает Настя.</p>
     <div class="body">
       <div class="controls">
         <div class="field">
           <label for="f_g_goal">Никита хочет новой прибыли в месяц, после выплат Насте</label>
           <div class="row"><input type="range" id="f_g_goal" min="50000" max="800000" step="10000" value="550000"><input type="number" id="n_g_goal" min="0" step="10000" value="550000"><span class="unit">₽</span></div>
         </div>
-        <p class="note">Цена, наценка и расход на машину берутся из блока «Антикор», минимум — из «Итого». Воронка ниже посчитана по двум допущениям: половина осмотров заканчивается обработкой, на осмотр записывается каждый седьмой из тех, кому написали.</p>
+        <p class="note">Цена, наценка и расход на машину берутся из блока «Антикор», фикс — из «Итого». Воронка ниже посчитана по двум допущениям: половина осмотров заканчивается обработкой, на осмотр записывается каждый седьмой из тех, кому написали.</p>
       </div>
       <div class="results">
         <div class="hero">
@@ -481,15 +493,15 @@
       <h2 id="h-year">Год целиком</h2>
       <span class="badge">Настя работает часть года</span>
     </div>
-    <p class="intro">Настя строит систему и ведет ее оговоренный срок, получает проценты только за эти месяцы. Дальше система остается на твоих аккаунтах и работает на тебя без выплат. Здесь всегда 12 месяцев, переключатель наверху на этот блок не влияет.</p>
+    <p class="intro">Первые месяцы Настя строит систему, ведет партнеров и кампании, получает фикс и проценты. Дальше система работает на твоих аккаунтах без ее участия, ты платишь только за софт. Здесь всегда 12 месяцев, переключатель наверху на этот блок не влияет.</p>
     <div class="body">
       <div class="controls">
         <div class="field">
-          <label for="f_t_months">Настя работает и получает выплаты, месяцев</label>
-          <div class="row"><input type="range" id="f_t_months" min="1" max="12" step="1" value="6"><input type="number" id="n_t_months" min="1" max="12" step="1" value="6"><span class="unit">мес.</span></div>
+          <label for="f_t_months">Месяцев с фиксом и процентами: Настя запускает систему, ведет партнеров и кампании</label>
+          <div class="row"><input type="range" id="f_t_months" min="1" max="12" step="1" value="3"><input type="number" id="n_t_months" min="1" max="12" step="1" value="3"><span class="unit">мес.</span></div>
         </div>
         <div class="field">
-          <label for="f_t_after">После Насти: машин антикора в месяц от касаний по базе, без партнеров и кампаний</label>
+          <label for="f_t_after">Дальше, без Насти: машин антикора в месяц от касаний по базе, без партнеров и кампаний</label>
           <div class="row"><input type="range" id="f_t_after" min="0" max="10" step="1" value="2"><input type="number" id="n_t_after" min="0" step="1" value="2"><span class="unit">шт.</span></div>
         </div>
         <p class="note">Запчасти и новые клиенты после ухода Насти считаются в полном объеме: касания по регламенту и сезону идут автоматически. Антикор без партнеров и кампаний обычно проседает, поэтому число машин задается отдельно.</p>
@@ -503,22 +515,23 @@
         <div class="rows">
           <div class="r"><span class="k">Первые <span id="y_m1">6</span> мес.: Насте</span><span class="v" id="y_first_nas">—</span></div>
           <div class="r"><span class="k">Первые <span id="y_m2">6</span> мес.: тебе, после выплат</span><span class="v" id="y_first_nik">—</span></div>
-          <div class="r"><span class="k">Остальные <span id="y_m3">6</span> мес.: Насте</span><span class="v">0 ₽</span></div>
-          <div class="r"><span class="k">Остальные <span id="y_m4">6</span> мес.: тебе, все целиком</span><span class="v" id="y_after_nik">—</span></div>
+          <div class="r"><span class="k">Остальные <span id="y_m3">6</span> мес.: Насте, оплата софта</span><span class="v" id="y_after_nas">—</span></div>
+          <div class="r"><span class="k">Остальные <span id="y_m4">6</span> мес.: тебе, после оплаты софта</span><span class="v" id="y_after_nik">—</span></div>
+          <div class="r"><span class="k">За год Насте</span><span class="v" id="y_total_nas">—</span></div>
           <div class="r strong"><span class="k">За год тебе</span><span class="v" id="y_total_nik">—</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <p class="foot">Расчет по цифрам от 29.09.2026, схема выплат от 01.10.2026: база 1 500 клиентов, покупают 150, чек 3 000–4 000 ₽, антикор 55 000–100 000 ₽. Проценты начисляются по заказам в Parts-Soft, отчет к 3-му числу, любую строку можно проверить по номеру заказа.</p>
+  <p class="foot">Расчет по цифрам от 29.09.2026: база 1 500 клиентов, покупают 150, чек 3 000–4 000 ₽, антикор 55 000–100 000 ₽. Схема выплат от 01.10.2026: первые 3 месяца фикс 20 000 ₽ и проценты, дальше 25 000 ₽ в месяц за софт. Проценты начисляются по заказам в Parts-Soft, отчет к 3-му числу, любую строку можно проверить по номеру заказа.</p>
 </div>
 
 <script>
 (function () {
-  var KEYS = ['p_sleep','p_ret','p_check','p_buys','p_markup','n_new','n_cur','n_sys','a_cars','a_price','a_markup','a_other','a_base','t_fix','t_months','t_after','g_goal'];
+  var KEYS = ['p_sleep','p_ret','p_check','p_buys','p_markup','n_new','n_cur','n_sys','a_cars','a_price','a_markup','a_other','a_base','t_fix','t_soft','t_months','t_after','g_goal'];
   var P_FEE = 7.5, A_FEE = 12.5;
-  var STORE = 'partlux-calc-v3', MODE_STORE = 'partlux-calc-mode';
+  var STORE = 'partlux-calc-v4', MODE_STORE = 'partlux-calc-mode';
   var mode = 'm';
   var nf = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 });
   var nf1 = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 1 });
@@ -568,7 +581,7 @@
     var pTurnY = nRetY * check * buys;
     var pProfitShare = pMarkup / (100 + pMarkup);
     var pProfitY = pTurnY * pProfitShare;
-    var pFeeY = nRetY * check * buys * 0.5 * P_FEE / 100;
+    var pFeeY = nRetY * check * buys * P_FEE / 100;
     var pTurn = pTurnY / 12, pProfit = pProfitY / 12, pCost = pTurn - pProfit, pFee = pFeeY / 12, pKeep = pProfit - pFee;
     var pShare = pProfitY > 0 ? pFeeY / pProfitY * 100 : 0;
 
@@ -586,7 +599,7 @@
     var nTurn = delta * check * buys;
     var nProfit = nTurn * pProfitShare;
     var nCost = nTurn - nProfit;
-    var nFee = delta * check * buys * 0.5 * P_FEE / 100;
+    var nFee = delta * check * buys * P_FEE / 100;
     var nKeep = nProfit - nFee;
     var nShare = nProfit > 0 ? nFee / nProfit * 100 : 0;
 
@@ -626,41 +639,42 @@
     money('a_with', withSys);
     setText('a_gain', (aKeep >= 0 ? '+' : '') + rub(per(aKeep))); setNeg('a_gain', aKeep < 0);
 
-    // Итого: база в месяц
-    var minPay = val('t_fix');
+    // Итого: всегда в месяц, первые 3 месяца и с 4-го
+    function mon(id, v) { setText(id, rub(v)); setNeg(id, v < 0); }
+    var fix = val('t_fix'), soft = val('t_soft');
     var pctPay = aFee + pFee + nFee;
-    var topUp = Math.max(0, minPay - pctPay);
-    var pay = pctPay + topUp;
-    var keep = pKeep + nKeep + aKeep - topUp;
-    money('t_keep', keep);
-    money('t_pay', pay); money('t_fix', topUp); money('t_pct', pctPay);
-    setText('t_roi', rub(per(pay)) + ' → ' + rub(per(keep))); setNeg('t_roi', keep < 0);
-    setText('t_roi_o', rub(other(pay)) + ' → ' + rub(other(keep)));
+    var pay = fix + pctPay;
+    var keep = pKeep + nKeep + aKeep - fix;
+    mon('t_keep', keep);
+    mon('t_pay', pay); mon('t_fix', fix); mon('t_pct', pctPay);
+    setText('t_roi', rub(pay) + ' → ' + rub(keep)); setNeg('t_roi', keep < 0);
     setText('t_ratio', pay > 0 ? nf1.format(keep / pay) + ' ₽ тебе' : '—');
     setText('t_ratio_r', pay > 0 ? nf1.format(keep / pay) + ' ₽' : '—');
+    var keep4 = pProfit + nProfit + (aTurn - aCost - aOther) - soft;
+    mon('t4_pay', soft); mon('t4_keep', keep4);
+    setText('t4_ratio', soft > 0 ? nf1.format(keep4 / soft) + ' ₽' : '—');
 
-    // Сводка
-    money('s_p_turn', pTurn); money('s_p_cost', pCost); money('s_p_fee', pFee); money('s_p_keep', pKeep);
-    money('s_n_turn', nTurn); money('s_n_cost', nCost); money('s_n_fee', nFee); money('s_n_keep', nKeep);
-    money('s_a_turn', aTurn); money('s_a_cost', aCost + aOther); money('s_a_fee', aFee); money('s_a_keep', aKeep);
-    money('s_f_fee', topUp); money('s_f_keep', -topUp);
-    money('s_t_turn', pTurn + nTurn + aTurn);
-    money('s_t_cost', pCost + nCost + aCost + aOther);
-    money('s_t_fee', pay);
-    money('s_t_keep', keep);
-    setText('s_street', rub(per(without)) + (mode === 'y' ? ' в год' : ' в месяц'));
+    // Сводка, в месяц
+    mon('s_p_turn', pTurn); mon('s_p_cost', pCost); mon('s_p_fee', pFee); mon('s_p_keep', pKeep);
+    mon('s_n_turn', nTurn); mon('s_n_cost', nCost); mon('s_n_fee', nFee); mon('s_n_keep', nKeep);
+    mon('s_a_turn', aTurn); mon('s_a_cost', aCost + aOther); mon('s_a_fee', aFee); mon('s_a_keep', aKeep);
+    mon('s_f_fee', fix); mon('s_f_keep', -fix);
+    mon('s_t_turn', pTurn + nTurn + aTurn);
+    mon('s_t_cost', pCost + nCost + aCost + aOther);
+    mon('s_t_fee', pay);
+    mon('s_t_keep', keep);
+    setText('s_street', rub(without) + ' в месяц');
 
     // Обратный расчет: от цели Никиты к числу машин
     var goal = val('g_goal');
     var perCarNas = price * A_FEE / 100;
     var perCarNik = price * (1 - costShare) - perCarNas - otherCost;
     var partsNik = pKeep + nKeep;
-    function gTop(c) { return Math.max(0, minPay - pFee - nFee - c * perCarNas); }
-    function gNikAt(c) { return partsNik + c * perCarNik - gTop(c); }
+    function gNikAt(c) { return partsNik + c * perCarNik - fix; }
     var needCars = 0;
     if (perCarNik > 0) { while (needCars < 500 && gNikAt(needCars) < goal - 1e-6) needCars++; }
     var gNik = gNikAt(needCars);
-    var gNas = pFee + nFee + needCars * perCarNas + gTop(needCars);
+    var gNas = fix + pFee + nFee + needCars * perCarNas;
     setText('g_cars', nf.format(needCars) + (needCars === 1 ? ' машина' : (needCars >= 2 && needCars <= 4 ? ' машины' : ' машин')));
     setText('g_percar', rub(perCarNik));
     setText('g_parts', rub(partsNik));
@@ -675,16 +689,18 @@
     var afterCars = val('t_after');
     var rest = 12 - months;
     var afterMonthly = pProfit + nProfit + afterCars * (price * (1 - costShare) - otherCost);
-    var firstNas = pay * months, firstNik = keep * months, afterNik = afterMonthly * rest;
-    var totalNik = firstNik + afterNik;
+    var firstNas = pay * months, firstNik = keep * months;
+    var afterNas = soft * rest, afterNik = (afterMonthly - soft) * rest;
+    var totalNas = firstNas + afterNas, totalNik = firstNik + afterNik;
     ['y_m1', 'y_m2'].forEach(function (id) { setText(id, months); });
     ['y_m3', 'y_m4'].forEach(function (id) { setText(id, rest); });
     setText('y_first_nas', rub(firstNas));
     setText('y_first_nik', rub(firstNik)); setNeg('y_first_nik', firstNik < 0);
-    setText('y_after_nik', rub(afterNik));
+    setText('y_after_nik', rub(afterNik)); setNeg('y_after_nik', afterNik < 0);
+    setText('y_after_nas', rub(afterNas)); setText('y_total_nas', rub(totalNas));
     setText('y_total_nik', rub(totalNik)); setNeg('y_total_nik', totalNik < 0);
-    setText('y_roi', rub(firstNas) + ' → ' + rub(totalNik)); setNeg('y_roi', totalNik < 0);
-    setText('y_ratio', firstNas > 0 ? nf1.format(totalNik / firstNas) + ' ₽ тебе' : '—');
+    setText('y_roi', rub(totalNas) + ' → ' + rub(totalNik)); setNeg('y_roi', totalNik < 0);
+    setText('y_ratio', totalNas > 0 ? nf1.format(totalNik / totalNas) + ' ₽ тебе' : '—');
   }
 
   function setMode(m) {
