@@ -182,9 +182,9 @@
 
 <div class="wrap">
   <header class="head">
-    <div class="eyebrow">Partlux · обратный расчет · сентябрь 2026</div>
+    <div class="eyebrow">Partlux · обратный расчет · октябрь 2026</div>
     <h1>Сколько нужно продавать</h1>
-    <p class="lead">Задай цель в рублях. Калькулятор посчитает, сколько машин антикора нужно продавать в месяц, сколько для этого нужно осмотров и сообщений и сколько получат Никита и Настя. Каждая сумма расписана ниже: откуда она взялась.</p>
+    <p class="lead">Задай цель в рублях. Калькулятор посчитает, сколько машин антикора нужно продавать в месяц, сколько для этого нужно осмотров и сообщений и сколько получат Никита и Настя. Новую прибыль от системы делим на шесть частей: одна Насте, пять Никите. Каждая сумма расписана ниже: откуда она взялась.</p>
   </header>
 
   <div class="modebar">
@@ -205,17 +205,17 @@
       <div class="controls">
         <div class="field" id="fld_goal_nik">
           <label for="f_goal_nik">Никита хочет новой прибыли в месяц, после выплат Насте</label>
-          <div class="row"><input type="range" id="f_goal_nik" min="50000" max="800000" step="10000" value="300000"><input type="number" id="n_goal_nik" min="0" step="10000" value="300000"><span class="unit">₽</span></div>
+          <div class="row"><input type="range" id="f_goal_nik" min="50000" max="800000" step="10000" value="550000"><input type="number" id="n_goal_nik" min="0" step="10000" value="550000"><span class="unit">₽</span></div>
         </div>
         <div class="field" id="fld_goal_nas" hidden>
           <label for="f_goal_nas">Настя хочет получать в месяц</label>
           <div class="row"><input type="range" id="f_goal_nas" min="30000" max="300000" step="5000" value="100000"><input type="number" id="n_goal_nas" min="0" step="5000" value="100000"><span class="unit">₽</span></div>
         </div>
         <div class="field">
-          <label for="f_fix">Фикс Насте в месяц</label>
+          <label for="f_fix">Гарантированный минимум Насте в месяц</label>
           <div class="row"><input type="range" id="f_fix" min="0" max="50000" step="1000" value="20000"><input type="number" id="n_fix" min="0" step="1000" value="20000"><span class="unit">₽</span></div>
         </div>
-        <p class="note">Антикор и запчасти настраиваются в своих блоках ниже. Цифры в ответе берутся оттуда.</p>
+        <p class="note">Минимум засчитывается в проценты: Никита доплачивает до него, только если процентов за месяц набралось меньше. Антикор и запчасти настраиваются в своих блоках ниже, цифры в ответе берутся оттуда.</p>
       </div>
 
       <div class="results">
@@ -242,7 +242,7 @@
         <tbody>
           <tr><td id="t_a_name">Антикор</td><td id="t_a_turn">—</td><td id="t_a_cost">—</td><td id="t_a_nas">—</td><td id="t_a_nik">—</td></tr>
           <tr><td>Запчасти</td><td id="t_p_turn">—</td><td id="t_p_cost">—</td><td id="t_p_nas">—</td><td id="t_p_nik">—</td></tr>
-          <tr><td>Фикс Насте</td><td>—</td><td>—</td><td id="t_f_nas">—</td><td id="t_f_nik">—</td></tr>
+          <tr><td>Доплата до минимума</td><td>—</td><td>—</td><td id="t_f_nas">—</td><td id="t_f_nik">—</td></tr>
         </tbody>
         <tfoot>
           <tr><th>Итого</th><th id="t_turn">—</th><th id="t_cost">—</th><th id="t_nas">—</th><th id="t_nik">—</th></tr>
@@ -255,7 +255,7 @@
   <section class="calc anti" aria-labelledby="h-anti">
     <div class="calc-head">
       <h2 id="h-anti">Антикор</h2>
-      <span class="badge">Насте 15% с оборота</span>
+      <span class="badge">Насте 12,5% с оборота</span>
     </div>
     <p class="intro">Одна машина целиком: что уходит на материал и работу, что Насте, что остается Никите.</p>
     <div class="body">
@@ -274,7 +274,7 @@
         </div>
         <div class="field">
           <label>Насте с оборота антикора</label>
-          <div class="fixed">15 %, не меняется</div>
+          <div class="fixed">12,5 %, не меняется</div>
         </div>
       </div>
       <div class="results">
@@ -282,10 +282,11 @@
           <div class="r"><span class="k">Цена продажи</span><span class="v" id="a_price">—</span></div>
           <div class="r"><span class="k">Материал и работа, <span id="a_cost_lbl">25%</span> цены</span><span class="v" id="a_cost">—</span></div>
           <div class="r" id="a_other_row"><span class="k">Комиссия партнеру или реклама</span><span class="v" id="a_other">—</span></div>
-          <div class="r"><span class="k">Насте, 15% от цены</span><span class="v" id="a_nas">—</span></div>
+          <div class="r"><span class="k">Насте, 12,5% от цены</span><span class="v" id="a_nas">—</span></div>
           <div class="r total"><span class="k">Никите с одной машины</span><span class="v" id="a_nik">—</span></div>
+          <div class="r"><span class="k">Никите на каждый рубль Насте</span><span class="v" id="a_ratio">—</span></div>
         </div>
-        <p class="note">Себестоимость посчитана от наценки: при 300% материал и работа — четверть цены.</p>
+        <p class="note">Себестоимость посчитана от наценки: при 300% материал и работа — четверть цены. Остаток делим на шесть частей: одна Насте, это и есть 12,5% цены, пять Никите. При другой наценке соотношение сдвигается.</p>
       </div>
     </div>
   </section>
@@ -294,9 +295,9 @@
   <section class="calc parts" aria-labelledby="h-parts">
     <div class="calc-head">
       <h2 id="h-parts">Запчасти</h2>
-      <span class="badge">Насте 10% за первые полгода</span>
+      <span class="badge">Насте 7,5% за первые полгода</span>
     </div>
-    <p class="intro">Клиенты, которые сейчас ничего не приносят: спящие больше года и новые, которые обычно уходят после первой покупки. Насте 10% с их покупок за первые полгода после возвращения, дальше без процента.</p>
+    <p class="intro">Клиенты, которые сейчас ничего не приносят: спящие больше года и новые, которые обычно уходят после первой покупки. Насте 7,5% с их покупок за первые полгода после возвращения, дальше без процента.</p>
     <div class="body">
       <div class="controls">
         <div class="field">
@@ -341,10 +342,10 @@
           <div class="r"><span class="k">Себестоимость запчастей</span><span class="v" id="p_cost">—</span></div>
           <div class="r"><span class="k">Прибыль Никиты по наценке</span><span class="v" id="p_profit">—</span></div>
           <div class="r"><span class="k">Под процент Насте: покупки за первые полгода, половина оборота</span><span class="v" id="p_under">—</span></div>
-          <div class="r"><span class="k">Насте, 10% от этой суммы</span><span class="v" id="p_nas">—</span></div>
+          <div class="r"><span class="k">Насте, 7,5% от этой суммы</span><span class="v" id="p_nas">—</span></div>
           <div class="r total"><span class="k">Никите с запчастей в месяц</span><span class="v" id="p_nik">—</span></div>
         </div>
-        <p class="note">Клиент покупает 3–4 раза в год, примерно половина покупок приходится на первые полгода после возвращения. С них Насте 10%, остальные покупки без процента. Те, кто купил бы и без системы, в расчет не входят.</p>
+        <p class="note">Клиент покупает 3–4 раза в год, примерно половина покупок приходится на первые полгода после возвращения. С них Насте 7,5%, остальные покупки без процента. Те, кто купил бы и без системы, в расчет не входят.</p>
       </div>
     </div>
   </section>
@@ -389,7 +390,7 @@
       <h2 id="h-ladder">Лестница</h2>
       <span class="badge">машины и деньги</span>
     </div>
-    <p class="intro">Сколько получают Никита и Настя при разном числе машин в месяц. У Насти видно, из чего складывается сумма: процент с машин, фикс и процент с запчастей. Отметка «цель» стоит на первой строке, где цель выполняется.</p>
+    <p class="intro">Сколько получают Никита и Настя при разном числе машин в месяц. У Насти видно, из чего складывается сумма: процент с машин, процент с запчастей и доплата до минимума, если процентов за месяц меньше. Последняя колонка — сколько Никита получает на каждый рубль Насте. Отметка «цель» стоит на первой строке, где цель выполняется.</p>
     <div class="tbl-wrap">
       <table class="sum ladder-tbl">
         <thead>
@@ -398,9 +399,10 @@
             <th>Оборот<br>антикора</th>
             <th>Никите</th>
             <th class="nas-first"><span class="th-sup">Насте</span>с машин</th>
-            <th><span class="th-sup">Насте</span>фикс</th>
             <th><span class="th-sup">Насте</span>с запчастей</th>
+            <th><span class="th-sup">Насте</span>доплата</th>
             <th><span class="th-sup">Насте</span>всего</th>
+            <th class="nas-first"><span class="th-sup">Никите</span>на 1 ₽ Насте</th>
           </tr>
         </thead>
         <tbody id="ladder"></tbody>
@@ -409,7 +411,7 @@
   </section>
 
   <div class="foot">
-    <p class="note">Числа средние за год: в ноябре и с марта по май машин больше, в январе и феврале меньше. Проценты начисляются по оплаченным заказам в Parts-Soft, отчет к 3-му числу, любую строку можно проверить по номеру заказа.</p>
+    <p class="note">Числа средние за год: в ноябре и с марта по май машин больше, в январе и феврале меньше. Проценты начисляются по оплаченным заказам в Parts-Soft, отчет к 3-му числу, любую строку можно проверить по номеру заказа. Схема выплат от 01.10.2026: 12,5% с антикора, 7,5% с запчастей, гарантированный минимум засчитывается в проценты.</p>
     <p class="note"><a href="../" target="_blank" rel="noopener">Основной калькулятор</a>: запчасти, новые клиенты, антикор и год целиком.</p>
   </div>
 </div>
@@ -417,8 +419,8 @@
 <script>
 (function () {
   var KEYS = ['goal_nik', 'goal_nas', 'fix', 'price', 'markup', 'other', 'sleep', 'ret', 'newm', 'cur', 'sys', 'check', 'buys', 'pmarkup', 'close', 'book', 'base'];
-  var A_FEE = 0.15, P_FEE = 0.10, P_WINDOW = 0.5, BASE_SIZE = 1500;
-  var STORE = 'partlux-reverse-v2', MODE_STORE = 'partlux-reverse-mode';
+  var A_FEE = 0.125, P_FEE = 0.075, P_WINDOW = 0.5, BASE_SIZE = 1500;
+  var STORE = 'partlux-reverse-v3', MODE_STORE = 'partlux-reverse-mode';
   var mode = 'nik';
   var nf = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 });
   var nf1 = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 1 });
@@ -456,6 +458,7 @@
     el('a_other_row').hidden = other <= 0;
     money('a_nas', perCarNas);
     money('a_nik', perCarNik);
+    setText('a_ratio', perCarNas > 0 ? nf1.format(perCarNik / perCarNas) + ' ₽' : '—');
 
     // Запчасти, в месяц
     var sleep = val('sleep'), ret = val('ret'), newm = val('newm'), cur = val('cur'), sys = val('sys');
@@ -481,16 +484,19 @@
     money('p_nik', pNik);
 
     // Цель
-    function nikAt(c) { return pNik + c * perCarNik - fix; }
-    function nasAt(c) { return fix + pNas + c * perCarNas; }
+    function pctAt(c) { return pNas + c * perCarNas; }
+    function topAt(c) { return Math.max(0, fix - pctAt(c)); }
+    function nikAt(c) { return pNik + c * perCarNik - topAt(c); }
+    function nasAt(c) { return pctAt(c) + topAt(c); }
+    function firstAt(ok) { for (var k = 0; k <= 500; k++) if (ok(k)) return k; return null; }
 
     var need = null, goal;
     if (mode === 'nik') {
       goal = val('goal_nik');
-      if (perCarNik > 0) need = Math.max(0, Math.ceil((goal - nikAt(0)) / perCarNik - 1e-9));
+      if (perCarNik > 0) need = firstAt(function (k) { return nikAt(k) >= goal - 1e-6; });
     } else {
       goal = val('goal_nas');
-      if (perCarNas > 0) need = Math.max(0, Math.ceil((goal - nasAt(0)) / perCarNas - 1e-9));
+      if (perCarNas > 0) need = firstAt(function (k) { return nasAt(k) >= goal - 1e-6; });
     }
 
     el('row_nik').classList.toggle('strong', mode === 'nik');
@@ -506,7 +512,7 @@
     } else {
       setText('g_lbl', 'Нужно машин антикора в месяц');
       setText('g_cars', cars(need));
-      setText('g_sub', 'в год ' + cars(need * 12) + ' · ' + nf1.format(need * 12 / BASE_SIZE * 100) + ' % базы в 1 500 клиентов.' + (need === 0 ? ' Фикс и запчасти уже закрывают цель.' : ''));
+      setText('g_sub', 'в год ' + cars(need * 12) + ' · ' + nf1.format(need * 12 / BASE_SIZE * 100) + ' % базы в 1 500 клиентов.' + (need === 0 ? ' Минимум и запчасти уже закрывают цель.' : ''));
     }
     money('g_nik', nik);
     money('g_nas', nas);
@@ -523,8 +529,8 @@
     money('t_p_cost', pCost);
     money('t_p_nas', pNas);
     money('t_p_nik', pNik);
-    money('t_f_nas', fix);
-    money('t_f_nik', -fix);
+    money('t_f_nas', topAt(c));
+    money('t_f_nik', -topAt(c));
     money('t_turn', c * price + pTurn);
     money('t_cost', c * (carCost + other) + pCost);
     money('t_nas', nas);
@@ -555,9 +561,10 @@
         { t: rub(i * price) },
         { t: rub(nikAt(i)), neg: nikAt(i) < 0 },
         { t: rub(i * perCarNas), cls: 'nas-first' },
-        { t: rub(fix) },
         { t: rub(pNas) },
-        { t: rub(nasAt(i)), cls: 'nas-total' }
+        { t: rub(topAt(i)) },
+        { t: rub(nasAt(i)), cls: 'nas-total' },
+        { t: nasAt(i) > 0 ? nf1.format(nikAt(i) / nasAt(i)) + ' ₽' : '—', cls: 'nas-first' }
       ].forEach(function (d, j) {
         var td = document.createElement('td');
         td.textContent = d.t;
