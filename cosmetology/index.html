@@ -62,6 +62,7 @@ const $=id=>document.getElementById(id);
 const money=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:0}).format(n)+' ₽';
 const count=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:1}).format(n);
 
+$('print').addEventListener('click',()=>window.print());
 const tabNames=['calculator','mediaplan','content-plan'];
 function selectTab(name){
  tabNames.forEach(id=>{const active=id===name;$(id).hidden=!active;$('tab-'+id).setAttribute('aria-selected',String(active));$('tab-'+id).tabIndex=active?0:-1;});
