@@ -94,7 +94,10 @@ function renderVkPlan(){
  $('vk-budget-note').textContent=missing.length?'Итоги включают только заполненные статьи. Пока не учтены: '+missing.join('; ')+'. Введи 0, если расходов по статье нет.':'В итог включены все указанные расходы ВК.';
  const cpl=planNumber('mp-cpl'),conversion=planNumber('mp-conversion'),check=planNumber('mp-check'),margin=planNumber('mp-margin');
  const ads=values('vk-ads'),leads=ads.map(v=>v/cpl),visits=leads.map(v=>v*conversion/100),revenue=visits.map(v=>v*check),contribution=revenue.map(v=>v*margin/100),net=contribution.map((v,i)=>v-expenses[i]);
- $('mp-results').innerHTML=[['Все заполненные расходы ВК',expenses,true],['Заявки',leads,false],['Оплаченные визиты',visits,false],['Выручка',revenue,true],['После переменных затрат',contribution,true],['Результат клиники',net,true]].map(([label,v,c])=>planRow(label,withTotal(v),c,label==='Результат клиники',label==='Результат клиники')).join('');
+ const budgetLabels=['Таргетолог и рассылки Senler','Контент-менеджер','Рекламный бюджет ВК','Вознаграждение Анастасии за ВК','Сервис Senler'];
+ const wasOpen=document.getElementById('vk-expense-breakdown')?.open||false;
+ const breakdown='<details class="fee-details" id="vk-expense-breakdown"'+(wasOpen?' open':'')+'><summary>Состав расходов</summary><p class="small">По месяцам: первый / второй / третий.</p><ul>'+vkPrefixes.map((prefix,index)=>'<li><b>'+budgetLabels[index]+':</b> '+[1,2,3].map(i=>$(prefix+'-'+i).value===''?'уточняется':money(Number($(prefix+'-'+i).value))).join(' / ')+'</li>').join('')+'</ul></details>';
+ $('mp-results').innerHTML=[['Расходы по медиаплану'+breakdown,expenses,true],['Заявки',leads,false],['Оплаченные визиты',visits,false],['Выручка',revenue,true],['После переменных затрат',contribution,true],['Результат клиники',net,true]].map(([label,v,c])=>planRow(label,withTotal(v),c,label==='Результат клиники',label==='Результат клиники')).join('');
  for(const prefix of ['vk-target','vk-content','vk-fee']){$(prefix+'-description').textContent=[1,2,3].map(i=>'Месяц '+i+': '+($(prefix+'-'+i).value===''?'уточняется':money(Number($(prefix+'-'+i).value)))).join(' · ');}
 }
 function renderContentPlan(){
