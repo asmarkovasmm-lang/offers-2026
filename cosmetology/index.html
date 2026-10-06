@@ -11,17 +11,26 @@
 .plan-input{width:100%;min-width:0;font:600 15px system-ui;border:1px solid var(--line);border-radius:8px;padding:10px;background:#fcfbfa;color:var(--ink)}.input-table .plan-input{width:115px}.input-table th[scope="row"]{text-align:left;color:var(--ink);font-weight:600;min-width:200px}.input-table td:last-child{white-space:nowrap}.scenario-inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.scenario-inputs .field{min-width:0;grid-template-columns:1fr 85px}.plan-links a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}#vk-plan,#base-plan,#content-plan{scroll-margin-top:24px}#vk-plan>h2{margin:26px 0 16px}#plan-clinic{max-width:650px}.forecast-controls{grid-template-columns:repeat(2,minmax(0,1fr))}#plan-error{position:sticky;top:8px;z-index:2}.input-table tfoot tr{background:#eee0e4;font-weight:600}@media(max-width:900px){.scenario-inputs,.forecast-controls{grid-template-columns:1fr;gap:0}}@media print{.plan-input{border:none;background:none;padding:0}.input-table .plan-input{width:90px}.actions,#plan-error{display:none}.input-table th[scope="row"]{min-width:0}}
 
 .fee-details{font-weight:400;font-size:13px;max-width:290px;margin-top:10px}.fee-details summary{cursor:pointer;color:var(--accent);font-weight:600}.fee-details ul{padding-left:18px;margin:10px 0}.fee-details li{margin-bottom:8px}.fee-details[open]{min-width:235px}@media print{.fee-details summary{color:var(--ink)}}
-</style></head><body><main>
-<div class="top"><span class="brand">Экономика клиники / калькулятор</span><div class="actions"><button id="reset">Сбросить пример</button><button id="export">Скачать расчет</button><button id="print">Печать / PDF</button></div></div>
-<nav class="tabs" role="tablist" aria-label="Разделы"><button id="tab-calculator" role="tab" aria-selected="true" aria-controls="calculator">Калькулятор</button><button id="tab-mediaplan" role="tab" aria-selected="false" aria-controls="mediaplan" tabindex="-1">Медиаплан</button><button id="tab-content-plan" role="tab" aria-selected="false" aria-controls="content-plan" tabindex="-1">Контент и команда</button></nav><div class="actions" id="plan-actions" hidden><button id="plan-reset">Сбросить медиаплан</button><button id="plan-export">Скачать медиаплан</button></div><div id="plan-error" role="alert" class="notice" hidden></div><section id="calculator" role="tabpanel" aria-labelledby="tab-calculator"><h1>Когда окупятся<br>вложения в маркетинг</h1><p class="intro">Посчитай, сколько оплаченных визитов нужно клинике, какую прибыль принесут новые и вернувшиеся пациенты и когда ты вернешь вложения.</p>
-<div class="layout"><aside><div class="card"><label for="clinic" class="small">Название клиники</label><input class="name" id="clinic" value="Мировая косметология" maxlength="100"><p class="small">Стартовые цифры — пример. Подставь показатели клиники. Данные сохраняются в этом браузере.</p><div id="fields"></div></div></aside>
-<div><div class="hero" aria-live="polite"><span id="clinicTitle">Мировая косметология</span><div class="big" id="payback"></div><p id="explain"></p></div>
-<div class="metrics"><div class="metric"><span>Результат за 12 месяцев</span><b id="net"></b></div><div class="metric"><span>Дополнительная выручка</span><b id="revenue"></b></div><div class="metric"><span>ROI проекта за год</span><b id="roi"></b></div></div>
-<div class="card"><h2>Как вернутся вложения</h2><p class="small">Накопленный маржинальный доход и все расходы проекта, ₽.</p><svg class="chart" id="chart" viewBox="0 0 700 210" role="img" aria-label="График дохода и расходов по месяцам"></svg><div class="legend"><span><i style="background:#2e7055"></i>Маржинальный доход</span><span><i style="background:#74384a"></i>Расходы проекта</span></div></div>
-<div class="card"><div class="reverse"><div><h2>Сколько визитов нужно для окупаемости</h2><label class="small" for="period">Покрыть расходы за </label><select id="period"><option value="1">1 месяц</option><option value="3">3 месяца</option><option value="6">6 месяцев</option><option value="12" selected>12 месяцев</option></select></div><div><b id="needed"></b><span class="small" id="pervisit"></span></div></div><p class="small">Разовый запуск + ежемесячные расходы за выбранный период. Каждый визит учитывается отдельно, включая повторный.</p></div>
-<div class="card"><h2>Прогноз по месяцам</h2><div id="warning"></div><div class="scroll"><table><thead><tr><th>Месяц</th><th>Новые</th><th>Вернулись</th><th>Повторы*</th><th>Выручка</th><th>Доход**</th><th>Расходы</th><th>Накопленный<br>результат</th></tr></thead><tbody id="rows"></tbody></table></div><p class="small">* Один повтор новых и вернувшихся пациентов плюс дополнительные визиты постоянных.<br>** Маржинальный доход после переменных затрат, до расходов проекта. Количество визитов — математическое ожидание; в таблице округлено до десятых.</p></div>
-<div class="card details"><h2>Логика расчета</h2><p><b>Новые пациенты:</b> реклама ÷ стоимость заявки × доля заявок, которые закончились оплаченным визитом.</p><p><b>Возврат базы:</b> спящие пациенты × доля возврата. Делим на первые три рабочих месяца; каждый пациент возвращается один раз.</p><p><b>Повторы:</b> доля новых и вернувшихся пациентов делает один повторный визит через указанный интервал. Постоянные добавляют заданное число визитов в год; распределяем их равномерно по рабочим месяцам.</p><p><b>Прибыль проекта:</b> выручка × маржа − реклама − работа и сервисы − разовый запуск. Маржу укажи после оплаты врача, препаратов, расходников и переменных налогов. Включи дополнительные постоянные расходы в поле «Работа и сервисы».</p><p><b>Окупаемость:</b> первый месяц, когда накопленный доход покрывает все вложения. ROI = результат за год ÷ расходы за год × 100%.</p><p>В месяцы подготовки дохода нет, ежемесячные расходы продолжаются. Модель считает только дополнительные визиты от проекта. Учти загрузку врачей, скидки и сезонность в своих исходных значениях.</p></div>
-<footer>Основа: калькулятор Partlux и расчет окупаемости для производителя гель-лаков. Горизонт — 12 месяцев. Сценарий зависит от введенных показателей.</footer></div></div></section><section id="mediaplan" role="tabpanel" aria-labelledby="tab-mediaplan" hidden>
+.calculator-controls .field{grid-template-columns:1fr;gap:8px}.calculator-controls select{width:100%;min-width:0}.calculator-controls .plan-links{font-size:14px}#calculator .media-table{font-size:12px}#calculator .media-table th,#calculator .media-table td{white-space:nowrap}</style></head><body><main>
+<div class="top"><span class="brand">Экономика клиники / калькулятор</span><div class="actions"><button id="print">Печать / PDF</button></div></div>
+<nav class="tabs" role="tablist" aria-label="Разделы"><button id="tab-calculator" role="tab" aria-selected="true" aria-controls="calculator">Калькулятор</button><button id="tab-mediaplan" role="tab" aria-selected="false" aria-controls="mediaplan" tabindex="-1">Медиаплан</button><button id="tab-content-plan" role="tab" aria-selected="false" aria-controls="content-plan" tabindex="-1">Контент и команда</button></nav><div class="actions" id="plan-actions" hidden><button id="plan-reset">Сбросить медиаплан</button><button id="plan-export">Скачать медиаплан</button></div><div id="plan-error" role="alert" class="notice" hidden></div><section id="calculator" role="tabpanel" aria-labelledby="tab-calculator">
+<h1>Когда окупятся<br>вложения в маркетинг</h1>
+<p class="intro">Сводный расчет на три месяца по текущим цифрам медиаплана. Выбери направление и сценарий возврата клиентов, чтобы увидеть выручку, расходы и результат клиники.</p>
+<div class="layout"><aside><div class="card calculator-controls"><p class="small">Клиника / проект</p><h2 id="calculator-clinic"></h2>
+<div class="field"><label for="calculator-direction">Что считаем</label><select id="calculator-direction"><option value="all" selected>ВК и работа с базой</option><option value="vk">Только ВКонтакте</option><option value="base">Только работа с базой</option></select></div>
+<div class="field" id="calculator-scenario-field"><label for="calculator-scenario">Сценарий возврата базы</label><select id="calculator-scenario"><option value="0">Осторожный</option><option value="1" selected>Рабочий</option><option value="2">Сильный</option></select></div>
+<p class="small">Расходы, чек, маржу, охват базы и проценты можно менять в медиаплане. Калькулятор использует эти же значения.</p>
+<nav class="plan-links" aria-label="Изменить вводные"><a href="#vk-plan">Расходы и прогноз ВК</a><a href="#base-plan">Работа с базой</a></nav>
+</div></aside>
+<div data-plan-results>
+<div class="hero" aria-live="polite"><span id="calculator-direction-label"></span><div class="big" id="payback"></div><p id="explain"></p></div>
+<div class="metrics"><div class="metric"><span>Результат за 3 месяца</span><b id="net"></b></div><div class="metric"><span>Выручка за 3 месяца</span><b id="revenue"></b></div><div class="metric"><span>ROI за 3 месяца</span><b id="roi"></b></div></div>
+<div class="card"><h2>Как вернутся вложения</h2><p class="small">Накопленный маржинальный доход и все заполненные расходы, ₽.</p><svg class="chart" id="chart" viewBox="0 0 700 210" role="img" aria-label="График дохода и расходов за три месяца"></svg><div class="legend"><span><i style="background:#2e7055"></i>Маржинальный доход</span><span><i style="background:#74384a"></i>Расходы</span></div></div>
+<div class="card"><div class="reverse"><div><h2>Порог окупаемости за три месяца</h2><p class="small" id="calculator-threshold-note"></p></div><div><b id="needed"></b><span class="small" id="pervisit"></span></div></div></div>
+<div class="card"><div class="scroll"><table class="media-table"><caption>Сводный расчет по месяцам</caption><thead><tr><th scope="col">Месяц</th><th scope="col">Визиты ВК</th><th scope="col">Вернулись из базы</th><th scope="col">Выручка</th><th scope="col">После переменных затрат</th><th scope="col">Все расходы</th><th scope="col">Результат за месяц</th><th scope="col">Накопленный результат</th></tr></thead><tbody id="calculator-months"></tbody><tfoot id="calculator-totals"></tfoot></table></div><p class="small" id="calculator-deferred"></p><p class="small" id="calculator-cost-note"></p></div>
+<footer>Результат клиники = выручка после переменных затрат − все заполненные расходы выбранных направлений. Вознаграждение Анастасии и премия за базу входят в расходы. Дробные визиты — расчетное среднее.</footer>
+</div></div></section>
+<section id="mediaplan" role="tabpanel" aria-labelledby="tab-mediaplan" hidden>
 <h1>Медиаплан<br>на три месяца</h1>
 <label class="small" for="plan-clinic">Клиника / название проекта</label><input class="name plan-text" id="plan-clinic" value="Мировая косметология / АНТРОПИК MED" maxlength="150">
 <p class="intro">Два направления: привлечение во ВКонтакте и возврат пациентов через мессенджеры. Меняй исходные цифры в полях — итоги пересчитываются автоматически. Значения сохраняются в этом браузере.</p>
@@ -49,31 +58,25 @@
 <tr><td>Аналитика</td><td>Настраиваем учет заявок и записей.</td><td>Сравниваем стоимость визита, доходимость и выручку.</td><td>Подводим итоги и составляем следующий план.</td></tr>
 </tbody></table></div></div></section></main>
 <script>
-const definitions=[['Вложения',[['setup','Разовый запуск','₽',45000,0,100000000,1000],['ads','Реклама каждый месяц','₽ / мес.',30000,0,10000000,1000],['service','Работа и сервисы','₽ / мес.',15000,0,10000000,1000],['delay','Подготовка до первых визитов','мес.',1,0,12,1]]],['Экономика визита',[['check','Средний оплаченный чек','₽',10000,0,10000000,100],['margin','Маржа после переменных затрат','%',40,0,100,1],['cpl','Стоимость заявки','₽',1000,1,1000000,50],['conversion','Из заявки в оплаченный визит','%',35,0,100,1]]],['Возврат и повторные визиты',[['sleepers','Спящие пациенты в базе','чел.',800,0,10000000,1],['returnRate','Вернется за 3 рабочих месяца','%',5,0,100,1],['repeat','Придут на один повторный визит','%',40,0,100,1],['interval','Через сколько месяцев повтор','мес.',3,1,12,1],['active','Постоянные пациенты в базе','чел.',200,0,10000000,1],['extra','Дополнительные визиты постоянного','визитов / год',1,0,12,.1]]]];
-const flat=definitions.flatMap(x=>x[1]);const $=id=>document.getElementById(id);const money=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:0}).format(n)+' ₽';const count=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:1}).format(n);
-$('fields').innerHTML=definitions.map(([title,fields])=>`<div class="group"><h3>${title}</h3>${fields.map(([id,label,unit,value,min,max,step])=>`<div class="field"><label for="${id}">${label}<span class="unit">${unit}</span></label><input id="${id}" type="number" value="${value}" min="${min}" max="${max}" step="${['delay','interval','active','sleepers'].includes(id)?1:'any'}" required></div>`).join('')}</div>`).join('');
-function model(p){let income=0,cost=p.setup,totalRevenue=0;const rows=[];for(let m=1;m<=12;m++){const working=m>p.delay;const fresh=working?p.ads/p.cpl*p.conversion/100:0;const returned=working&&m<=p.delay+3?p.sleepers*p.returnRate/100/3:0;const cohort=rows[m-p.interval-1];const repeats=working?(cohort?(cohort.fresh+cohort.returned)*p.repeat/100:0)+p.active*p.extra/12:0;const revenue=(fresh+returned+repeats)*p.check;const contribution=revenue*p.margin/100;const expense=p.ads+p.service;income+=contribution;cost+=expense;totalRevenue+=revenue;rows.push({m,fresh,returned,repeats,revenue,contribution,expense:expense+(m===1?p.setup:0),income,cost,net:income-cost});}const payback=rows.find(r=>r.net>=0&&r.income>0);return{rows,payback,totalRevenue,income,cost,net:income-cost,roi:cost>0?(income-cost)/cost*100:null};}
-function read(){return Object.fromEntries(flat.map(([id,,unit,value,min,max,step])=>{const raw=Number($(id).value);let v=Math.min(max,Math.max(min,Number.isFinite(raw)?raw:min));if(['delay','interval','active','sleepers'].includes(id))v=Math.round(v);return[id,v]}));}
-let current;function render(){const p=read();current={p,result:model(p)};const r=current.result;const valid=flat.every(([id])=>$(id).value!==''&&$(id).checkValidity());$('clinicTitle').textContent=$('clinic').value||'Косметологическая клиника';$('payback').textContent=valid?(r.payback?'Окупаемость: месяц '+r.payback.m:'За 12 месяцев не окупится'):'Проверь исходные значения';$('explain').textContent=valid?(r.payback?`К концу месяца ${r.payback.m} накопленный доход покроет расходы проекта. Итог за год: ${money(r.net)}.`:`До покрытия расходов к концу года не хватает ${money(Math.max(0,-r.net))}. Измени чек, маржу или число дополнительных визитов.`):'Заполни поля числами в указанных пределах. Ниже показан расчет с ограниченными допустимыми значениями.';$('net').textContent=money(r.net);$('net').className=r.net>=0?'positive':'negative';$('revenue').textContent=money(r.totalRevenue);$('roi').textContent=r.roi===null?'—':count(r.roi)+'%';const per=p.check*p.margin/100;const period=Number($('period').value);$('needed').textContent=per>0?count(Math.ceil((p.setup+period*(p.ads+p.service))/per))+' визитов':'Не рассчитать';$('pervisit').textContent=per>0?money(per)+' с каждого визита':'Чек и маржа должны быть больше нуля';$('warning').innerHTML=r.payback&&r.rows.at(-1).net<0?'<div class="notice">После первой окупаемости проект снова уходит в минус. Проверь итог за год.</div>':'';$('rows').innerHTML=r.rows.map(x=>`<tr class="${x===r.payback?'win':''}"><td>${x.m}${x.m<=p.delay?' · подготовка':''}</td><td>${count(x.fresh)}</td><td>${count(x.returned)}</td><td>${count(x.repeats)}</td><td>${money(x.revenue)}</td><td>${money(x.contribution)}</td><td>${money(x.expense)}</td><td class="${x.net>=0?'positive':'negative'}">${money(x.net)}</td></tr>`).join('');draw(r,p);try{localStorage.setItem('cosmetology-roi-v1',JSON.stringify({p,clinic:$('clinic').value,period,_revision:'2026-10-07-check'}));}catch(e){}}
-function draw(r,p){const series=[{income:0,cost:p.setup},...r.rows];const max=Math.max(1,...series.map(x=>Math.max(x.income,x.cost)));const x=i=>65+i*50,y=v=>175-v/max*145;let s='';[0,.5,1].forEach(t=>s+=`<line x1="65" y1="${y(max*t)}" x2="665" y2="${y(max*t)}" stroke="#e5ded7"/><text x="58" y="${y(max*t)+4}" text-anchor="end" fill="#746e69" font-size="11">${count(max*t/1000)} тыс.</text>`);for(const [key,color]of[['income','#2e7055'],['cost','#74384a']])s+=`<polyline points="${series.map((v,i)=>x(i)+','+y(v[key])).join(' ')}" fill="none" stroke="${color}" stroke-width="3"/>`;[0,3,6,9,12].forEach(i=>s+=`<text x="${x(i)}" y="200" text-anchor="middle" fill="#746e69" font-size="12">${i} мес.</text>`);$('chart').innerHTML=s;}
-try{const saved=JSON.parse(localStorage.getItem('cosmetology-roi-v1'));if(saved){flat.forEach(([id])=>{if(Number.isFinite(saved.p?.[id]))$(id).value=saved.p[id]});if(saved._revision!=='2026-10-07-check')$('check').value=10000;if(typeof saved.clinic==='string')$('clinic').value=saved.clinic;if([1,3,6,12].includes(saved.period))$('period').value=saved.period;}}catch(e){}
-flat.forEach(([id])=>$(id).addEventListener('input',render));$('clinic').addEventListener('input',render);$('period').addEventListener('change',render);$('reset').onclick=()=>{flat.forEach(([id,,,value])=>$(id).value=value);$('clinic').value='Мировая косметология';$('period').value=12;render()};$('print').onclick=()=>window.print();$('export').onclick=()=>{const r=current.result;const lines=[['Клиника',$('clinic').value],['Исходные значения','Значение','Единица'],...flat.map(([id,label,unit])=>[label,current.p[id],unit]),[],['Месяц','Новые','Вернулись','Повторы','Выручка','Маржинальный доход','Расходы','Накопленный результат'],...r.rows.map(x=>[x.m,x.fresh,x.returned,x.repeats,x.revenue,x.contribution,x.expense,x.net]),[],['ROI за год',r.roi??'Не определен'],['Месяц окупаемости',r.payback?.m??'Не окупится за 12 месяцев']];const csv='\ufeff'+lines.map(row=>row.map(v=>'"'+String(typeof v==='number'?Math.round(v*100)/100:v).replace(/"/g,'""')+'"').join(';')).join('\r\n');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='cosmetology-roi.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};render();
+const $=id=>document.getElementById(id);
+const money=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:0}).format(n)+' ₽';
+const count=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:1}).format(n);
 
 const tabNames=['calculator','mediaplan','content-plan'];
 function selectTab(name){
  tabNames.forEach(id=>{const active=id===name;$(id).hidden=!active;$('tab-'+id).setAttribute('aria-selected',String(active));$('tab-'+id).tabIndex=active?0:-1;});
- $('reset').hidden=name!=='calculator';$('export').hidden=name!=='calculator';$('plan-actions').hidden=name==='calculator';
- $('plan-error').hidden=name==='calculator'||!$('plan-error').textContent;
+ $('plan-actions').hidden=false;
+ $('plan-error').hidden=!$('plan-error').textContent;
 }
 function tabForHash(){return location.hash==='#content-plan'?'content-plan':['#mediaplan','#base-plan','#vk-plan'].includes(location.hash)?'mediaplan':'calculator';}
-tabNames.forEach((id,i)=>{const btn=$('tab-'+id);btn.addEventListener('click',()=>{location.hash=id;selectTab(id)});btn.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;$('tab-'+tabNames[next]).click();$('tab-'+tabNames[next]).focus();}})});
+tabNames.forEach((id,i)=>{const btn=$('tab-'+id);btn.addEventListener('click',()=>{history.pushState(null,'','#'+id);selectTab(id);window.scrollTo({top:0})});btn.addEventListener('keydown',e=>{if(!e.ctrlKey&&!e.metaKey&&!e.altKey&&['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;$('tab-'+tabNames[next]).click();$('tab-'+tabNames[next]).focus();}})});
 window.addEventListener('hashchange',()=>selectTab(tabForHash()));
 selectTab(tabForHash());
 
 const planStorageKey='cosmetology-media-plan-v2';
 const planRevision='2026-10-07-senler-check';
 const planWorkdaysRevision='2026-10-07-days30';
-const planInputs=Array.from(document.querySelectorAll('#mediaplan .plan-input, #mediaplan .plan-text, #content-plan .plan-input, #base-scenario'));
+const planInputs=Array.from(document.querySelectorAll('#mediaplan .plan-input, #mediaplan .plan-text, #content-plan .plan-input, #base-scenario, #calculator-direction'));
 const planDefaults=Object.fromEntries(planInputs.map(el=>[el.id,el.value]));
 const scenarioNames=['Осторожный','Рабочий','Сильный'];
 const vkPrefixes=['vk-target','vk-content','vk-ads','vk-fee','vk-service'];
@@ -88,19 +91,17 @@ function missingCosts(prefixes){return prefixes.flatMap(prefix=>[1,2,3].filter(i
 function persistPlan(){try{localStorage.setItem(planStorageKey,JSON.stringify({...Object.fromEntries(planInputs.map(el=>[el.id,el.value])),_revision:planRevision,_workdaysRevision:planWorkdaysRevision}));}catch(e){}}
 function validatePlan(){
  const invalid=planInputs.filter(el=>el.type==='number'&&((el.value===''&&!el.dataset.optional)||(el.value!==''&&!el.checkValidity())));
- const error=$('plan-error');error.hidden=!invalid.length||($('mediaplan').hidden&&$('content-plan').hidden);error.textContent=invalid.length?'Проверь поля: '+invalid.map(el=>el.dataset.label).slice(0,4).join('; ')+'.':'';
+ const error=$('plan-error');error.hidden=!invalid.length;error.textContent=invalid.length?'Проверь поля: '+invalid.map(el=>el.dataset.label).slice(0,4).join('; ')+'.':'';
  document.querySelectorAll('[data-plan-results]').forEach(el=>el.hidden=!!invalid.length);
  if(invalid.length){['vk-budget-total','base-budget-total','content-total','base-break-even','base-deferred','base-capacity','base-speed-note','base-timing-note','base-rules'].forEach(id=>$(id).textContent='');[...vkPrefixes,...contentPrefixes,...baseCostPrefixes,'base-contacts'].forEach(prefix=>$(prefix+'-total').textContent='—');}
  return !invalid.length;
 }
 function renderVkPlan(){
  vkPrefixes.forEach(prefix=>{const missing=[1,2,3].some(i=>$(prefix+'-'+i).value==='');$(prefix+'-total').textContent=money(sumValues(values(prefix)))+(missing?' + уточнение':'');});
- const expenses=[0,1,2].map(i=>sumValues(vkPrefixes.map(prefix=>values(prefix)[i])));
+ const {expenses,leads,visits,revenue,contribution,net}=readVkModel();
  $('vk-budget-total').innerHTML=planRow('Итого по заполненным статьям',withTotal(expenses),true,true);
  const missing=missingCosts(vkPrefixes);
  $('vk-budget-note').textContent=missing.length?'Итоги включают только заполненные статьи. Пока не учтены: '+missing.join('; ')+'. Введи 0, если расходов по статье нет.':'В итог включены все указанные расходы ВК.';
- const cpl=planNumber('mp-cpl'),conversion=planNumber('mp-conversion'),check=planNumber('mp-check'),margin=planNumber('mp-margin');
- const ads=values('vk-ads'),leads=ads.map(v=>v/cpl),visits=leads.map(v=>v*conversion/100),revenue=visits.map(v=>v*check),contribution=revenue.map(v=>v*margin/100),net=contribution.map((v,i)=>v-expenses[i]);
  const budgetLabels=['Таргетолог и рассылки Senler','Контент-менеджер','Рекламный бюджет ВК','Вознаграждение Анастасии за ВК','Дополнительные оплаты — Senler'];
  const wasOpen=document.getElementById('vk-expense-breakdown')?.open||false;
  const breakdown='<details class="fee-details" id="vk-expense-breakdown"'+(wasOpen?' open':'')+'><summary>Состав расходов</summary><p class="small">По месяцам: первый / второй / третий.</p><ul>'+vkPrefixes.map((prefix,index)=>'<li><b>'+budgetLabels[index]+':</b> '+[1,2,3].map(i=>$(prefix+'-'+i).value===''?'уточняется':money(Number($(prefix+'-'+i).value))).join(' / ')+'</li>').join('')+'</ul></details>';
@@ -151,15 +152,68 @@ function renderBasePlan(){
  $('base-break-even').textContent=selected.noExpenses?'Расходов на возмещение нет.':selected.breakEven!==null?'Порог окупаемости всех трех месяцев для выбранного сценария: около '+money(selected.breakEven)+' оплат'+(p.check>0?', или '+count(Math.ceil(selected.breakEven/p.check))+' возвращенных пациентов при указанном чеке.':'.')+' Учтены заполненные расходы и распределение ставок премии по месяцам.':selected.totals.revenue===0?'Порог не рассчитан: в выбранном сценарии нет оплаченной выручки.':'После премии не остается положительной маржи для покрытия фиксированных расходов: направление не окупается в этой модели.';
  $('base-rules').textContent='Для учета возврата: до касания пациент не был больше '+count(planNumber('base-inactive'))+' мес. и не имел записи, после касания пришел и оплатил первый визит в течение '+count(planNumber('base-window'))+' дней. Проверяем оплаты в системе клиники с учетом скидок и возвратов.';
 }
-function renderPlan(){persistPlan();if(!validatePlan())return;renderVkPlan();renderContentPlan();renderBasePlan();}
+function readVkModel(){
+ const expenses=[0,1,2].map(i=>sumValues(vkPrefixes.map(prefix=>values(prefix)[i])));
+ const cpl=planNumber('mp-cpl'),conversion=planNumber('mp-conversion'),check=planNumber('mp-check'),margin=planNumber('mp-margin');
+ const leads=values('vk-ads').map(v=>v/cpl),visits=leads.map(v=>v*conversion/100),revenue=visits.map(v=>v*check),contribution=revenue.map(v=>v*margin/100),net=contribution.map((v,i)=>v-expenses[i]);
+ return {expenses,leads,visits,revenue,contribution,net};
+}
+function buildCalculatorModel(){
+ const direction=$('calculator-direction').value,withVk=direction!=='base',withBase=direction!=='vk';
+ const vk=readVkModel(),baseParams=readBaseParams(),base=editableBaseModel(baseParams,baseParams.rates[Number($('base-scenario').value)]);
+ let cumulative=0,income=0,cost=0;
+ const rows=[0,1,2].map(i=>{
+  const fresh=withVk?vk.visits[i]:0,returned=withBase?base.rows[i].paid:0;
+  const revenue=(withVk?vk.revenue[i]:0)+(withBase?base.rows[i].revenue:0),contribution=(withVk?vk.contribution[i]:0)+(withBase?base.rows[i].contribution:0),expenses=(withVk?vk.expenses[i]:0)+(withBase?base.rows[i].expenses:0),bonus=withBase?base.rows[i].bonus:0,net=contribution-expenses;
+  cumulative+=net;income+=contribution;cost+=expenses;
+  return {month:i+1,fresh,returned,paid:fresh+returned,revenue,contribution,expenses,bonus,net,cumulative,income,cost};
+ });
+ const totals=Object.fromEntries(['fresh','returned','paid','revenue','contribution','expenses','bonus','net'].map(key=>[key,sumValues(rows.map(r=>r[key]))]));
+ const fixed=totals.expenses-totals.bonus,afterBonus=totals.contribution-totals.bonus,netMargin=totals.revenue>0?afterBonus/totals.revenue:null;
+ const threshold=netMargin!==null&&netMargin>0?fixed/netMargin:null,averageCheck=totals.paid>0?totals.revenue/totals.paid:null;
+ return {direction,withVk,withBase,rows,totals,base,threshold,neededVisits:threshold!==null&&averageCheck>0?Math.ceil(threshold/averageCheck):null,payback:rows.findIndex(r=>r.cumulative>=0&&r.contribution>0)+1,roi:totals.expenses>0?totals.net/totals.expenses*100:null};
+}
+function renderCalculator(){
+ const model=buildCalculatorModel(),t=model.totals,labels={all:'ВК и работа с базой',vk:'ВКонтакте',base:'Работа с базой'};
+ $('calculator-clinic').textContent=$('plan-clinic').value||'Косметологическая клиника';
+ $('calculator-direction-label').textContent=labels[model.direction]+' · 3 месяца';
+ $('calculator-scenario-field').hidden=!model.withBase;
+ Array.from($('calculator-scenario').options).forEach((option,i)=>option.textContent=scenarioNames[i]+' · '+count(planNumber('base-rate-'+i))+'%');
+ $('calculator-scenario').value=$('base-scenario').value;
+ $('payback').textContent=t.expenses===0?'Расходов нет':model.payback?'Окупаемость: месяц '+model.payback:'За 3 месяца не окупится';
+ $('explain').textContent=model.payback?'К концу месяца '+model.payback+' накопленный доход покроет расходы. Итог трех месяцев: '+money(t.net)+'.':'До покрытия всех расходов не хватает '+money(Math.max(0,-t.net))+'.';
+ if(model.payback&&model.rows[2].cumulative<0)$('explain').textContent+=' После первой окупаемости результат снова становится отрицательным.';
+ $('net').textContent=money(t.net);$('net').className=t.net>=0?'positive':'negative';$('revenue').textContent=money(t.revenue);$('roi').textContent=model.roi===null?'—':count(model.roi)+'%';
+ $('needed').textContent=model.threshold===null?'Не рассчитать':money(model.threshold);
+ $('pervisit').textContent=model.neededVisits===null?'Нужны положительные выручка и маржа после премии.':'Около '+count(model.neededVisits)+' оплаченных визитов';
+ $('calculator-threshold-note').textContent=model.direction==='all'?'При текущем соотношении выручки ВК и базы, чеках, марже и ставках премии.':'При текущем чеке, марже и ставках премии. Все заполненные расходы за три месяца.';
+ const cell=(v,currency=false,signed=false)=>'<td'+(signed?' class="'+(v>=0?'positive':'negative')+'"':'')+'>'+(currency?money(v):count(v))+'</td>';
+ $('calculator-months').innerHTML=model.rows.map(r=>'<tr'+(r.month===model.payback?' class="win"':'')+'><th scope="row">Месяц '+r.month+'</th>'+cell(r.fresh)+cell(r.returned)+cell(r.revenue,true)+cell(r.contribution,true)+cell(r.expenses,true)+cell(r.net,true,true)+cell(r.cumulative,true,true)+'</tr>').join('');
+ $('calculator-totals').innerHTML='<tr class="total"><th scope="row">За 3 месяца</th>'+cell(t.fresh)+cell(t.returned)+cell(t.revenue,true)+cell(t.contribution,true)+cell(t.expenses,true)+cell(t.net,true,true)+cell(t.net,true,true)+'</tr>';
+ const missing=missingCosts([...(model.withVk?vkPrefixes:[]),...(model.withBase?baseCostPrefixes:[])]);
+ $('calculator-cost-note').textContent=missing.length?'Итог по заполненным статьям. Пока не учтены: '+missing.join('; ')+'.':'В расчет включены все указанные расходы выбранных направлений.';
+ $('calculator-deferred').hidden=!model.withBase;$('calculator-deferred').textContent=model.withBase?$('base-deferred').textContent:'';
+ drawCalculator(model);
+}
+function drawCalculator(model){
+ const series=[{income:0,cost:0},...model.rows],max=Math.max(1,...series.map(r=>Math.max(r.income,r.cost)));
+ const x=i=>65+i*200,y=v=>175-v/max*145;let svg='';
+ [0,.5,1].forEach(t=>svg+='<line x1="65" y1="'+y(max*t)+'" x2="665" y2="'+y(max*t)+'" stroke="#e5ded7"/><text x="58" y="'+(y(max*t)+4)+'" text-anchor="end" fill="#746e69" font-size="11">'+count(max*t/1000)+' тыс.</text>');
+ for(const [key,color] of [['income','#2e7055'],['cost','#74384a']])svg+='<polyline points="'+series.map((r,i)=>x(i)+','+y(r[key])).join(' ')+'" fill="none" stroke="'+color+'" stroke-width="3"/>';
+ [0,1,2,3].forEach(i=>svg+='<text x="'+x(i)+'" y="200" text-anchor="middle" fill="#746e69" font-size="12">'+i+' мес.</text>');
+ $('chart').innerHTML=svg;
+}
+
+function renderPlan(){persistPlan();if(!validatePlan())return;renderVkPlan();renderContentPlan();renderBasePlan();renderCalculator();}
 try{const saved=JSON.parse(localStorage.getItem(planStorageKey));if(saved&&typeof saved==='object'){planInputs.forEach(el=>{if(typeof saved[el.id]==='string')el.value=saved[el.id];});if(saved._workdaysRevision!==planWorkdaysRevision)$('base-days').value='30';if(saved._revision!==planRevision){['mp-check','base-check'].forEach(id=>$(id).value='10000');[1,2,3].forEach(i=>{if($('vk-service-'+i).value==='')$('vk-service-'+i).value='500';});}}}catch(e){}
 ['base-share','base-delayed'].forEach(id=>$(id).addEventListener('input',()=>{if($(id).value!==''&&$(id).checkValidity())$(id==='base-share'?'base-delayed':'base-share').value=String(Math.round((100-Number($(id).value))*1000000)/1000000);}));
 planInputs.forEach(el=>el.addEventListener(el.tagName==='SELECT'?'change':'input',renderPlan));
+$('calculator-scenario').addEventListener('change',()=>{$('base-scenario').value=$('calculator-scenario').value;renderPlan();});
 $('plan-reset').addEventListener('click',()=>{planInputs.forEach(el=>el.value=planDefaults[el.id]);renderPlan();});
 $('plan-export').addEventListener('click',()=>{
  if(!validatePlan())return;
- const rows=[['Проект',$('plan-clinic').value],['Исходные значения','Значение'],...planInputs.filter(el=>el.type==='number').map(el=>[el.dataset.label,el.value===''?'Уточняется':el.value])];
- document.querySelectorAll('#mediaplan table, #content-plan table').forEach(table=>{rows.push([],[(table.caption&&table.caption.textContent)||'Результаты']);Array.from(table.rows).forEach(row=>rows.push(Array.from(row.cells).map(cell=>{const input=cell.querySelector('input');return input?input.value||'Уточняется':cell.textContent.trim();})));});
+ const rows=[['Проект',$('plan-clinic').value],['Направление калькулятора',$('calculator-direction').options[$('calculator-direction').selectedIndex].textContent],['Сценарий возврата базы',$('base-scenario').options[$('base-scenario').selectedIndex].textContent],['Исходные значения','Значение'],...planInputs.filter(el=>el.type==='number').map(el=>[el.dataset.label,el.value===''?'Уточняется':el.value])];
+ document.querySelectorAll('#calculator table, #mediaplan table, #content-plan table').forEach(table=>{rows.push([],[(table.caption&&table.caption.textContent)||'Результаты']);Array.from(table.rows).forEach(row=>rows.push(Array.from(row.cells).map(cell=>{const input=cell.querySelector('input');return input?input.value||'Уточняется':cell.textContent.trim();})));});
  const csv='\ufeff'+rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\r\n');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='cosmetology-mediaplan.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 });
 renderPlan();
