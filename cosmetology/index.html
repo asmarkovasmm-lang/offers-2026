@@ -38,9 +38,13 @@ button:hover{background:#fff5f7}select{border-radius:12px}.tabs{background:#f0ee
 @media(max-width:420px){.top{align-items:flex-start;gap:12px}.brand img{width:200px}.top button{padding:9px 12px;white-space:nowrap;font-size:10px}.brand span{font-size:8px}.tabs{gap:3px;padding:5px}.tabs button{font-size:11px;padding:11px 12px}.hero .big{font-size:29px}.card{padding:18px}}
 @media(prefers-reduced-motion:reduce){button,select{transition:none}}
 @media print{body{background:white}.top{padding-bottom:12px}.brand img{width:220px}.card{box-shadow:none;padding:15px}.hero{background:#f8e8ee;color:var(--ink)}.hero>span,.hero p{color:var(--ink)}.hero .big{font-size:28px}.operator-preview{break-inside:avoid}.operator-preview .preview-heading a{display:none}.operator-preview img{max-height:400px;object-fit:contain;aspect-ratio:auto}.media-table{font-size:10px}}
+
+.duties-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start}.duty-card .badge{margin-bottom:15px}.duty-card ul{padding-left:20px;margin:16px 0 0;font-size:14px;line-height:1.7}.duty-card li{margin-bottom:12px}.work-schedule{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:20px}.work-schedule article{padding:18px;border:1px solid var(--line);border-radius:16px;background:#fcfbfd}.work-schedule h3{font-size:14px;margin-bottom:12px}.work-schedule strong{display:block;color:var(--accent);font-size:19px;line-height:1.4}.work-schedule p{font-size:13px;line-height:1.65;margin:12px 0 0;color:var(--muted)}.work-schedule .schedule-total{font-weight:600;color:var(--ink)}.duties-pay-metrics{margin:20px 0}.duties-pay-metrics .metric{background:#fff8fa}.duties-edit-links{display:flex;gap:12px 24px;flex-wrap:wrap;margin-top:18px}.duties-edit-links a{font-size:13px;color:var(--accent);text-underline-offset:4px}.duties-edit-links a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}#anastasia-duties .media-table th[scope="row"]{color:var(--ink);font-weight:600}#anastasia-duties .media-table{min-width:680px}.tabs button{max-width:100%}
+@media(max-width:900px){.duties-grid,.work-schedule{grid-template-columns:1fr}.work-schedule article{padding:16px}.work-schedule strong{font-size:18px}}
+@media print{.duties-grid{grid-template-columns:1fr}.work-schedule{grid-template-columns:repeat(3,minmax(0,1fr))}.duties-edit-links{display:none}#anastasia-duties .media-table{min-width:0}.work-schedule article{break-inside:avoid}}
 </style></head><body><main>
 <div class="top"><div class="brand"><a href="https://www.mir-cosmo.ru/" target="_blank" rel="noopener noreferrer" aria-label="Мировая косметология — официальный сайт"><img src="assets/mir-cosmo-logo.png" width="1504" height="359" alt="Мировая косметология — клиника управления возрастом"></a><span>План продвижения / расчет окупаемости</span></div><div class="actions"><button id="print">Печать / PDF</button></div></div>
-<nav class="tabs" role="tablist" aria-label="Разделы"><button id="tab-calculator" role="tab" aria-selected="true" aria-controls="calculator">Калькулятор</button><button id="tab-mediaplan" role="tab" aria-selected="false" aria-controls="mediaplan" tabindex="-1">Медиаплан</button><button id="tab-content-plan" role="tab" aria-selected="false" aria-controls="content-plan" tabindex="-1">Контент и команда</button></nav><div class="actions" id="plan-actions" hidden><button id="plan-reset">Сбросить медиаплан</button><button id="plan-export">Скачать медиаплан</button></div><div id="plan-error" role="alert" class="notice" hidden></div><section id="calculator" role="tabpanel" aria-labelledby="tab-calculator">
+<nav class="tabs" role="tablist" aria-label="Разделы"><button id="tab-calculator" role="tab" aria-selected="true" aria-controls="calculator">Калькулятор</button><button id="tab-mediaplan" role="tab" aria-selected="false" aria-controls="mediaplan" tabindex="-1">Медиаплан</button><button id="tab-content-plan" role="tab" aria-selected="false" aria-controls="content-plan" tabindex="-1">Контент и команда</button><button id="tab-anastasia-duties" role="tab" aria-selected="false" aria-controls="anastasia-duties" tabindex="-1">Должностные обязанности Анастасии</button></nav><div class="actions" id="plan-actions" hidden><button id="plan-reset">Сбросить медиаплан</button><button id="plan-export">Скачать медиаплан</button></div><div id="plan-error" role="alert" class="notice" hidden></div><section id="calculator" role="tabpanel" aria-labelledby="tab-calculator">
 <h1>Когда окупятся<br>вложения в маркетинг</h1>
 <p class="intro">Сводный расчет на три месяца по текущим цифрам медиаплана. Выбери направление и сценарий возврата клиентов, чтобы увидеть выручку, расходы и результат клиники.</p>
 <div class="layout"><aside><div class="card calculator-controls"><p class="small">Клиника / проект</p><h2 id="calculator-clinic"></h2>
@@ -91,20 +95,51 @@ button:hover{background:#fff5f7}select{border-radius:12px}.tabs{background:#f0ee
 <tr><td>Реклама</td><td>Тестируем аудитории, предложения и креативы.</td><td>Добавляем бюджет объявлениям, которые приводят записи.</td><td>Оцениваем стоимость записи, тестируем новые предложения.</td></tr>
 <tr><td>Рассылки Senler</td><td>Первые рассылки по выбранным сегментам.</td><td>Уточняем предложения по результатам.</td><td>Корректируем тексты и видео.</td></tr>
 <tr><td>Аналитика</td><td>Настраиваем учет заявок и записей.</td><td>Сравниваем стоимость визита, доходимость и выручку.</td><td>Подводим итоги и составляем следующий план.</td></tr>
-</tbody></table></div></div></section></main>
+</tbody></table></div></div></section>
+<section id="anastasia-duties" role="tabpanel" aria-labelledby="tab-anastasia-duties" hidden>
+<h1>Должностные обязанности<br>Анастасии</h1>
+<p class="intro">Два направления работы: продвижение ВКонтакте и возврат пациентов через мессенджеры. Ниже — обязанности, график присутствия в клинике и расчет вознаграждения.</p>
+<div class="card"><h2>График работы</h2><p class="media-note">Присутствие в клинике — общее для двух направлений.</p>
+<div class="work-schedule" aria-label="График присутствия в клинике на три месяца">
+<article><h3>Первый месяц</h3><strong>Не менее 4 часов в день</strong><p>С понедельника по четверг, 4 дня в неделю.</p><p class="schedule-total">Не менее 16 часов в неделю.</p></article>
+<article><h3>Второй месяц</h3><strong>Не менее 10 часов в неделю</strong><p>Дни и время присутствия согласуем.</p></article>
+<article><h3>Третий месяц</h3><strong>По необходимости</strong><p>Присутствие в клинике по задачам проекта; дни и время согласуем.</p></article>
+</div></div>
+<div class="duties-grid">
+<div class="card duty-card"><span class="badge">Направление 1</span><h2>Продвижение ВКонтакте</h2><ul><li>Разрабатываю стратегию продвижения ВК: цели, аудитории, предложения для пациентов и план работы.</li><li>Подбираю исполнителей и ввожу их в проект: передаю материалы, объясняю задачи и правила согласования.</li><li>Ставлю задачи исполнителям и готовлю технические задания (ТЗ): цель, содержание, формат, сроки и критерии приемки.</li><li>Управляю работой команды: распределяю задачи, контролирую сроки, проверяю материалы, собираю правки и принимаю результат.</li><li>Анализирую заявки, записи и оплаченные визиты, стоимость привлечения; готовлю отчеты и корректирую план продвижения.</li><li>Оформляю сообщество и выстраиваю путь пользователя до записи.</li><li>Заполняю и обновляю товары и услуги, разделы с фото и видео.</li><li>Пишу тексты публикаций и каруселей, планирую и настраиваю их выход через планировщик.</li></ul></div>
+<div class="card duty-card"><span class="badge">Направление 2</span><h2>Мессенджер-маркетинг и повторные касания</h2><ul>
+<li id="duties-base-cohort">Планирую работу с базой пациентов, которые не были в клинике больше года: выделяю сегменты, приоритеты и поводы для повторного обращения.</li>
+<li>Готовлю сценарии повторных касаний и тексты сообщений с учетом истории визитов и переписки.</li>
+<li>Организую настройку используемой клиникой системы переписки и разработку дополнительного программного модуля для операторов.</li>
+<li>Ставлю задачи и готовлю ТЗ на автоматизацию: история обращений, анализ контекста, черновик сообщения и ближайшие свободные даты врачей.</li>
+<li>Настраиваю порядок работы с базой: очередь пациентов, задачи и следующие касания. Объясняю операторам процесс, собираю обратную связь и вношу правки.</li>
+<li>Анализирую число обработанных пациентов за одинаковое количество рабочих часов, записи и подтвержденные оплаты вернувшихся клиентов. Готовлю отчеты и корректирую процесс.</li>
+</ul></div></div>
+<div class="card" id="duties-remuneration"><h2>Вознаграждение и расчет</h2>
+<p class="media-note">Фиксированная оплата за ВК и работу с базой суммируется. К фиксу за работу с базой добавляется премия от подтвержденных оплат возвращенных пациентов.</p>
+<div data-plan-results>
+<div class="metrics duties-pay-metrics"><div class="metric"><b id="duties-fixed-total">—</b><span>Фикс за 3 месяца, оба направления</span></div><div class="metric"><b id="duties-bonus-total">—</b><span>Премия за возврат базы, 3 месяца</span></div><div class="metric"><b id="duties-pay-total">—</b><span>Все вознаграждение за 3 месяца</span></div></div>
+<div class="scroll"><table class="media-table"><caption>Вознаграждение Анастасии по месяцам</caption><thead><tr><th scope="col">За что</th><th scope="col">Месяц 1</th><th scope="col">Месяц 2</th><th scope="col">Месяц 3</th><th scope="col">За 3 месяца</th></tr></thead><tbody id="duties-pay-rows"></tbody></table></div>
+<p id="duties-bonus-calculation" class="media-note"></p><p id="duties-pay-note" class="media-note"></p>
+</div>
+<p class="small">Фикс первого месяца за работу с базой включает внедрение и ведение. Фактическую премию считаем по подтвержденным оплатам, с учетом скидок и возвратов.</p>
+<nav class="duties-edit-links" aria-label="Изменить вводные расчета вознаграждения"><a href="#vk-plan">Изменить фикс за ВК</a><a href="#base-plan">Изменить фикс, ставку премии и прогноз базы</a></nav>
+</div>
+</section>
+</main>
 <script>
 const $=id=>document.getElementById(id);
 const money=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:0}).format(n)+' ₽';
 const count=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:1}).format(n);
 
 $('print').addEventListener('click',()=>window.print());
-const tabNames=['calculator','mediaplan','content-plan'];
+const tabNames=['calculator','mediaplan','content-plan','anastasia-duties'];
 function selectTab(name){
  tabNames.forEach(id=>{const active=id===name;$(id).hidden=!active;$('tab-'+id).setAttribute('aria-selected',String(active));$('tab-'+id).tabIndex=active?0:-1;});
- $('plan-actions').hidden=false;
+ $('plan-actions').hidden=name==='anastasia-duties';
  $('plan-error').hidden=!$('plan-error').textContent;
 }
-function tabForHash(){return location.hash==='#content-plan'?'content-plan':['#mediaplan','#base-plan','#vk-plan'].includes(location.hash)?'mediaplan':'calculator';}
+function tabForHash(){const id=location.hash.slice(1);return tabNames.includes(id)?id:['base-plan','vk-plan'].includes(id)?'mediaplan':'calculator';}
 tabNames.forEach((id,i)=>{const btn=$('tab-'+id);btn.addEventListener('click',()=>{history.pushState(null,'','#'+id);selectTab(id);window.scrollTo({top:0})});btn.addEventListener('keydown',e=>{if(!e.ctrlKey&&!e.metaKey&&!e.altKey&&['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabNames.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabNames.length)%tabNames.length;$('tab-'+tabNames[next]).click();$('tab-'+tabNames[next]).focus();}})});
 window.addEventListener('hashchange',()=>selectTab(tabForHash()));
 selectTab(tabForHash());
@@ -242,7 +277,20 @@ function drawCalculator(model){
  $('chart').innerHTML=svg;
 }
 
-function renderPlan(){persistPlan();if(!validatePlan())return;renderVkPlan();renderContentPlan();renderBasePlan();renderCalculator();}
+function renderDutiesPay(){
+ const p=readBaseParams(),index=Number($('base-scenario').value),base=editableBaseModel(p,p.rates[index]),vk=values('vk-fee'),monthly=base.rows.map((row,i)=>vk[i]+row.fee),missing=missingCosts(['vk-fee','base-fixed']);
+ const amounts=prefix=>{const fees=values(prefix),unknown=[1,2,3].some(i=>$(prefix+'-'+i).value==='');return [...fees.map((v,i)=>$(prefix+'-'+(i+1)).value===''?'Уточняется':v),unknown?money(sumValues(fees))+' + уточнение':sumValues(fees)];};
+ const total=money(sumValues(monthly))+(missing.length?' + уточнение':'');
+ $('duties-fixed-total').textContent=money(sumValues(vk)+base.totals.fixed)+(missing.length?' + уточнение':'');
+ $('duties-bonus-total').textContent=money(base.totals.bonus);$('duties-pay-total').textContent=total;
+ const bonuses=[...base.rows.map((row,i)=>money(row.bonus)+' ('+count(p.commissions[i])+'%)'),base.totals.bonus];
+ $('duties-pay-rows').innerHTML=planRow('Продвижение ВК — фикс',amounts('vk-fee'),true)+planRow('Работа с базой — фикс',amounts('base-fixed'),true)+planRow('Работа с базой — премия от оплат',bonuses,true)+planRow('Все вознаграждение', [...monthly,total],true,true);
+ $('duties-bonus-calculation').textContent='Расчет премии по месяцам: '+base.rows.map((row,i)=>'месяц '+(i+1)+' — '+money(row.revenue)+' × '+count(p.commissions[i])+'% = '+money(row.bonus)).join('; ')+'.';
+ $('duties-pay-note').textContent='Прогноз: '+scenarioNames[index]+' сценарий возврата базы ('+count(p.rates[index])+'%). Премия относится к подтвержденным оплатам пациентов, которые до касания не были в клинике больше '+count(planNumber('base-inactive'))+' мес. и не имели записи, а после касания пришли и оплатили первый визит в течение '+count(planNumber('base-window'))+' дней. Оплаты после третьего месяца не входят в этот итог.'+(missing.length?' Фикс пока не указан: '+missing.join('; ')+'. Итог рассчитан по заполненным суммам.':'');
+ $('duties-base-cohort').textContent='Планирую работу с базой пациентов, которые не были в клинике больше '+count(planNumber('base-inactive'))+' мес.: выделяю сегменты, приоритеты и поводы для повторного обращения.';
+}
+
+function renderPlan(){persistPlan();if(!validatePlan())return;renderVkPlan();renderContentPlan();renderBasePlan();renderCalculator();renderDutiesPay();}
 try{const saved=JSON.parse(localStorage.getItem(planStorageKey));if(saved&&typeof saved==='object'){planInputs.forEach(el=>{if(typeof saved[el.id]==='string')el.value=saved[el.id];});if(saved._feeRevision!==planFeeRevision){[1,2,3].forEach(i=>{$('vk-fee-'+i).value='20000';$('base-fixed-'+i).value='30000';});}if(saved._vkFeeRevision!==planVkFeeRevision){[1,2,3].forEach(i=>{$('vk-fee-'+i).value='25000';});}if(saved._workdaysRevision!==planWorkdaysRevision)$('base-days').value='30';if(saved._revision!==planRevision){['mp-check','base-check'].forEach(id=>$(id).value='10000');[1,2,3].forEach(i=>{if($('vk-service-'+i).value==='')$('vk-service-'+i).value='500';});}}}catch(e){}
 ['base-share','base-delayed'].forEach(id=>$(id).addEventListener('input',()=>{if($(id).value!==''&&$(id).checkValidity())$(id==='base-share'?'base-delayed':'base-share').value=String(Math.round((100-Number($(id).value))*1000000)/1000000);}));
 planInputs.forEach(el=>el.addEventListener(el.tagName==='SELECT'?'change':'input',renderPlan));
@@ -251,7 +299,7 @@ $('plan-reset').addEventListener('click',()=>{planInputs.forEach(el=>el.value=pl
 $('plan-export').addEventListener('click',()=>{
  if(!validatePlan())return;
  const rows=[['Проект',$('plan-clinic').value],['Направление калькулятора',$('calculator-direction').options[$('calculator-direction').selectedIndex].textContent],['Сценарий возврата базы',$('base-scenario').options[$('base-scenario').selectedIndex].textContent],['Исходные значения','Значение'],...planInputs.filter(el=>el.type==='number').map(el=>[el.dataset.label,el.value===''?'Уточняется':el.value])];
- document.querySelectorAll('#calculator table, #mediaplan table, #content-plan table').forEach(table=>{rows.push([],[(table.caption&&table.caption.textContent)||'Результаты']);Array.from(table.rows).forEach(row=>rows.push(Array.from(row.cells).map(cell=>{const input=cell.querySelector('input');return input?input.value||'Уточняется':cell.textContent.trim();})));});
+ document.querySelectorAll('#calculator table, #mediaplan table, #content-plan table, #anastasia-duties table').forEach(table=>{rows.push([],[(table.caption&&table.caption.textContent)||'Результаты']);Array.from(table.rows).forEach(row=>rows.push(Array.from(row.cells).map(cell=>{const input=cell.querySelector('input');return input?input.value||'Уточняется':cell.textContent.trim();})));});
  const csv='\ufeff'+rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\r\n');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='cosmetology-mediaplan.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);
 });
 renderPlan();
