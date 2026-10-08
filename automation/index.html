@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
 <title>Разработка и автоматизация · Анастасия Маркова</title>
-<meta name="description" content="Скрипты и Telegram-боты, которые снимают рутину с маркетинга и колл-центра: проверка клиентской базы через WAHELP и YClients, статистика рекламы ВК в Telegram, боты для клиник.">
+<meta name="description" content="Автоматизация маркетинга и работы с клиентами: панели повторных касаний на WAHELP и YClients, тестирование ИИ-ответов, демо системы повторных закупок для производителя гель-лаков, Telegram-боты и отчеты.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -287,6 +287,14 @@ header.hero::before{
 .next-item .st{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--acid)}
 .next-item h3{font-family:var(--body);font-weight:600;font-size:17px;letter-spacing:0;line-height:1.3}
 .next-item p{font-size:14px;color:var(--text-2);line-height:1.45}
+.recent-note{margin-top:clamp(52px,7vw,96px);scroll-margin-top:140px}
+.recent-note h2{font-size:clamp(26px,4vw,56px);margin:16px 0;text-transform:uppercase}
+.recent-note p:last-child{color:var(--text-2);max-width:68ch}
+.recent-note + .case{margin-top:clamp(32px,5vw,64px)}
+.case-status{margin-top:20px;font-size:13px;color:var(--text-3);line-height:1.5}
+.next-grid{grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
+.case-head > *{min-width:0}
+.tag{max-width:100%;white-space:normal;overflow-wrap:anywhere}
 
 /* ============ FOOTER ============ */
 footer.end{margin-top:clamp(70px,10vw,150px);border-top:var(--rule);background:var(--acid);color:#FAF6F5}
@@ -399,8 +407,8 @@ footer.end h2{color:var(--cream)}
     <a class="brand" href="../cases/">МАРКОВА<span>.</span></a>
     <div class="nav-links">
       <a href="../cases/">Кейсы в цифрах</a>
+      <a href="#recent">Свежие разработки</a>
       <a href="#base">Клиентская база</a>
-      <a href="#bot-vk">Бот по рекламе</a>
       <a class="nav-cta" href="#contact">Написать</a>
     </div>
   </div>
@@ -412,15 +420,16 @@ footer.end h2{color:var(--cream)}
       <p class="eyebrow">Анастасия Маркова · Пермь · разработка и автоматизация</p>
       <h1>Рутина<br><em>на автомате</em></h1>
       <div class="hero-sub">
-        <p class="hero-lead">Я маркетолог, а не разработчик. Но там, где задача сводится к
-        «открыть карточку, посмотреть, вернуться в таблицу и записать» — я собираю скрипт или бота.
+        <p class="hero-lead">Я маркетолог и собираю инструменты для работы с клиентами:
+        от проверки базы до панели с готовыми сообщениями и задачами в CRM.
         Колл-центр разбирал базу в две руки две с половиной недели и прошел 318 строк.
         Оставшиеся <b>2 614 строк скрипт обработал за две минуты</b>.</p>
         <dl class="hero-meta">
-          <div class="hero-meta-row"><dt>Что делаю</dt><dd>скрипты под свои и клиентские задачи, Telegram-боты, отчеты по API</dd></div>
+          <div class="hero-meta-row"><dt>Что делаю</dt><dd>панели для сотрудников, повторные касания, Telegram-боты, отчеты по API</dd></div>
           <div class="hero-meta-row"><dt>Инструменты</dt><dd>Python, Claude Code, API сервисов, Google Sheets</dd></div>
-          <div class="hero-meta-row"><dt>Уже работает</dt><dd>боты в Telegram, скрипты по клиентской базе, отчеты по рекламе и ВК</dd></div>
-          <div class="hero-meta-row"><dt>Для кого</dt><dd>клиника косметологии, стоматология, сеть общепита, свои проекты</dd></div>
+          <div class="hero-meta-row"><dt>Собрано</dt><dd>панели на WAHELP и YClients, боты, скрипты проверки базы; ИИ-ответы прошли теневой тест</dd></div>
+          <div class="hero-meta-row"><dt>Для кого</dt><dd>клиники, стоматология, HoReCa; демо для производителя гель-лаков</dd></div>
+          <div class="hero-meta-row"><dt>Обновлено</dt><dd>8 октября 2026 · у каждого нового кейса указан этап</dd></div>
         </dl>
       </div>
     </div>
@@ -439,12 +448,15 @@ footer.end h2{color:var(--cream)}
 <div class="caselist">
   <div class="wrap">
     <div class="caselist-row">
-      <a href="#base"><b>01</b> Проверка клиентской базы</a>
-      <a href="#slots"><b>02</b> Свободные окна врача</a>
-      <a href="#bot-vk"><b>03</b> Бот по рекламе ВК</a>
-      <a href="#bot-anon"><b>04</b> Анонимный бот вопросов</a>
-      <a href="#finbot"><b>05</b> Бот учета трат</a>
-      <a href="#tools"><b>06</b> Инструменты отчетности</a>
+      <a href="#repeat-orders"><b>01</b> Повторные закупки · демо</a>
+      <a href="#operator-panels"><b>02</b> Панели для оператора</a>
+      <a href="#ai-dialog"><b>03</b> ИИ-ответы · теневой тест</a>
+      <a href="#base"><b>04</b> Проверка клиентской базы</a>
+      <a href="#slots"><b>05</b> Свободные окна врача</a>
+      <a href="#bot-vk"><b>06</b> Бот по рекламе ВК</a>
+      <a href="#bot-anon"><b>07</b> Анонимный бот вопросов</a>
+      <a href="#finbot"><b>08</b> Бот учета трат</a>
+      <a href="#tools"><b>09</b> Инструменты отчетности</a>
     </div>
   </div>
 </div>
@@ -458,7 +470,7 @@ footer.end h2{color:var(--cream)}
       <div class="how-step">
         <span class="n">01</span>
         <h3>Задача приходит из работы</h3>
-        <p>Не «давайте что-нибудь автоматизируем», а конкретная рутина, которую я или колл-центр делаем руками каждую неделю.</p>
+        <p>Выбираю конкретную рутину: проверить базу, собрать отчет, подготовить сообщение или найти время для записи.</p>
       </div>
       <div class="how-step">
         <span class="n">02</span>
@@ -468,7 +480,7 @@ footer.end h2{color:var(--cream)}
       <div class="how-step">
         <span class="n">03</span>
         <h3>Собираю в Claude Code</h3>
-        <p>Скрипт на Python или бот. Пишу и отлаживаю сама, разработчика в цепочке нет.</p>
+        <p>Пишу и отлаживаю скрипт, бота или панель на Python. В Claude Code собираю интеграции и проверяю код.</p>
       </div>
       <div class="how-step">
         <span class="n">04</span>
@@ -478,16 +490,178 @@ footer.end h2{color:var(--cream)}
     </div>
   </section>
 
-  <!-- 01 БАЗА -->
-  <section class="case" id="base">
+  <div class="recent-note rv" id="recent">
+    <p class="eyebrow">Свежие разработки · сентябрь 2026</p>
+    <h2>От данных<br>до следующего касания</h2>
+    <p>В этих проектах я разбираю весь процесс: кому пора написать, откуда взять повод,
+    как подготовить текст и что останется сотруднику. Ниже — интерактивное демо,
+    реализованные панели и отдельный тест ИИ-ответов.</p>
+  </div>
+
+  <!-- 01 ПОВТОРНЫЕ ЗАКУПКИ -->
+  <section class="case" id="repeat-orders">
     <div class="case-head rv">
       <div class="case-num">01</div>
+      <div>
+        <span class="niche">Производитель гель-лаков · B2B</span>
+        <h2 class="case-title">Повторные закупки<span class="loc">История заказов → ритм закупа → очередь касаний</span></h2>
+      </div>
+      <div class="case-tags">
+        <span class="tag tag--hot">Интерактивное демо</span>
+        <span class="tag">Проектирование</span>
+        <span class="tag">1С + WAHELP</span>
+      </div>
+    </div>
+    <div class="case-body case-body--text">
+      <div class="rv">
+        <div class="block">
+          <h3>Задача</h3>
+          <p>Мастера, салоны и сети покупают с разной частотой. Менеджеру нужно замечать,
+          кто задержал привычный заказ, и выбирать повод для сообщения по истории закупок.</p>
+        </div>
+        <div class="block">
+          <h3>Что сделала</h3>
+          <ul class="list">
+            <li>Разобрала путь от выгрузки заказов из <b>1С</b> до работы менеджера в <b>WAHELP</b>:
+            какие данные нужны, как считать ритм и когда останавливать цепочку.</li>
+            <li>Спроектировала <b>сегменты и карту касаний</b>: первая покупка, сбившийся ритм,
+            долгая пауза, новинка, сезонный закуп, жалоба или ответ клиента.</li>
+            <li>Собрала <b>интерактивное демо</b>: фильтры по сегментам, карточки с историей,
+            очередь на день и пример сообщения под повод.</li>
+            <li>Разделила шаблонные сценарии и личную работу менеджера: крупные клиенты,
+            обсуждение условий и проблемы с заказом требуют участия человека.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="report">
+          <div class="report-head"><b>Что можно посмотреть в демо</b><span>Вымышленные данные</span></div>
+          <table aria-label="Функции демо повторных закупок">
+            <tr><td>Сегменты по истории и паузе в закупках</td><td>6</td></tr>
+            <tr><td>Поводы в карте касаний</td><td>10</td></tr>
+            <tr><td>Карточка клиента и готовый текст</td><td>Есть</td></tr>
+            <tr><td>Схема обмена с 1С и WAHELP</td><td>Проект</td></tr>
+          </table>
+        </div>
+        <a class="linkcard" href="../gel/demo/">
+          <span class="lc-k">Открыть демо</span><span class="lc-v">Ритм закупа и очередь касаний</span><span class="lc-arrow" aria-hidden="true">→</span>
+        </a>
+        <p class="case-status">Статус: демо и проект системы. На странице используются вымышленные клиенты,
+        суммы и заказы. Подключение к реальной 1С и отправка через WAHELP — следующий этап;
+        результаты продаж здесь не заявлены.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 ПАНЕЛИ ОПЕРАТОРА -->
+  <section class="case" id="operator-panels">
+    <div class="case-head rv">
+      <div class="case-num">02</div>
+      <div>
+        <span class="niche">Клиника «Медлайн» · сентябрь 2026</span>
+        <h2 class="case-title">Панели для оператора<span class="loc">WAHELP + YClients → карточка → сообщение → задача</span></h2>
+      </div>
+      <div class="case-tags">
+        <span class="tag tag--hot">Реализовано</span>
+        <span class="tag">Python</span>
+        <span class="tag">ИИ-черновики</span>
+      </div>
+    </div>
+    <div class="case-body case-body--text">
+      <div class="rv">
+        <div class="block">
+          <h3>Задача</h3>
+          <p>Перед повторным касанием оператор читает переписку, проверяет визиты и будущую запись,
+          ищет окна врача, пишет сообщение и ставит следующую задачу. Эти шаги собрала в одном экране.</p>
+        </div>
+        <div class="block">
+          <h3>Что сделала</h3>
+          <ul class="list">
+            <li><b>Панель повторных касаний:</b> собирает очередь из задач WAHELP,
+            подтягивает контекст и готовит персональный текст.</li>
+            <li><b>Карточка по номеру:</b> оператор вводит телефон и получает переписку,
+            историю визитов, будущую запись, задачи и подходящие окна из YClients.</li>
+            <li><b>Правка сообщения:</b> текст можно изменить вручную или дать ИИ просьбу
+            «короче», «убери цену», «предложи другое время».</li>
+            <li><b>Следующее касание:</b> оператор выбирает дату; по кнопке отправляет
+            сообщение и ставит или переносит задачу в CRM.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="flow"><b>1. WAHELP</b> — задачи и переписка<br>
+          <span class="arrow">↓</span><br><b>2. YClients</b> — визиты, запись, окна<br>
+          <span class="arrow">↓</span><br><b>3. Панель</b> — повод, текст, следующая дата<br>
+          <span class="arrow">↓</span><br><b>4. Оператор</b> — проверяет и отправляет<br>
+          <span class="arrow">↓</span><br><b>5. CRM</b> — задача и журнал касания</div>
+        <div class="block" style="margin-top:28px">
+          <h3>Проверки перед отправкой</h3>
+          <p>В коде проверяю стоп-лист, дубли и актуальность окон. Если данных не хватает
+          или нужна оценка ситуации, карточка остается на решении оператора.
+          Перед внешней отправкой доступен режим репетиции.</p>
+        </div>
+        <p class="case-status">Статус: панели и интеграции реализованы. Отправку подтверждает оператор.
+        Эффект на продажи требует отдельного замера.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 ИИ-ДИАЛОГ -->
+  <section class="case" id="ai-dialog">
+    <div class="case-head rv">
+      <div class="case-num">03</div>
+      <div>
+        <span class="niche">Входящие сообщения клиники</span>
+        <h2 class="case-title">ИИ-ответы с проверкой<span class="loc">Прайс + карточка клиента + расписание</span></h2>
+      </div>
+      <div class="case-tags">
+        <span class="tag tag--hot">Теневой тест</span>
+        <span class="tag">50 диалогов</span>
+        <span class="tag">Без отправки клиентам</span>
+      </div>
+    </div>
+    <div class="case-body case-body--text">
+      <div class="rv">
+        <div class="block">
+          <h3>Что проверяла</h3>
+          <p>Собрала отдельный модуль для входящих вопросов. ИИ готовит ответ по прайсу,
+          расписанию и контексту клиента. Код сверяет цены и время; сложные вопросы,
+          жалобы и подтверждение записи передает сотруднику.</p>
+        </div>
+        <div class="block">
+          <h3>Как тестировала</h3>
+          <p>Повторно прогнала 50 пар прошлых переписок и сравнила решения с ответами операторов.
+          После нескольких раундов правок проверила весь набор на финальной версии.
+          Модель-судья оценила совпадение ответа или правильную передачу человеку.</p>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="report">
+          <div class="report-head"><b>Контрольный прогон</b><span>19 сентября 2026</span></div>
+          <table aria-label="Результат теневого теста ИИ-диалога">
+            <tr><td>Пар диалогов в проверке</td><td>50</td></tr>
+            <tr><td>Совпало с решением оператора</td><td>25</td></tr>
+            <tr><td>Правильно передано человеку</td><td>15</td></tr>
+            <tr><td>Итого прошли оценку модели-судьи</td><td>40 из 50</td></tr>
+          </table>
+        </div>
+        <p class="case-status">Статус: теневой тест на прошлых переписках, без отправки клиентам.
+        На этом наборе модель-судья не обнаружила опасных ответов. Результат относится
+        к контрольному набору и не заменяет проверку на новых обращениях.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 БАЗА -->
+  <section class="case" id="base">
+    <div class="case-head rv">
+      <div class="case-num">04</div>
       <div>
         <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg><span>Клиника косметологии</span></span>
         <h2 class="case-title">Проверка клиентской базы<span class="loc">WAHELP + YClients → Google Таблица</span></h2>
       </div>
       <div class="case-tags">
-        <span class="tag tag--hot">Работает в проде</span>
+        <span class="tag tag--hot">Внедрено</span>
         <span class="tag">Python</span>
         <span class="tag">2 API</span>
         <span class="tag">gspread</span>
@@ -576,7 +750,7 @@ footer.end h2{color:var(--cream)}
   <!-- 02 ОКНА -->
   <section class="case" id="slots">
     <div class="case-head rv">
-      <div class="case-num">02</div>
+      <div class="case-num">05</div>
       <div>
         <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 2"/></svg><span>Колл-центр клиники</span></span>
         <h2 class="case-title">Свободные окна врача<span class="loc">YClients → готовый текст для клиента</span></h2>
@@ -611,8 +785,9 @@ footer.end h2{color:var(--cream)}
  · вторник, 10:30 · 12:00 · 16:30
  · среда, 09:00 · 14:00
  · пятница, 11:30</div>
-        <p class="block" style="margin-top:20px;font-size:13.5px;color:var(--text-3)">Пример вывода. Следующий шаг —
-        подставлять эти окна прямо в сообщение клиенту в WAHELP.</p>
+        <p class="block" style="margin-top:20px;font-size:13.5px;color:var(--text-3)">Пример вывода.
+        В <a href="#operator-panels">панелях оператора</a> реализовала подбор окон
+        для сообщения и повторную проверку перед отправкой.</p>
       </div>
     </div>
   </section>
@@ -620,7 +795,7 @@ footer.end h2{color:var(--cream)}
   <!-- 03 БОТ ВК -->
   <section class="case" id="bot-vk">
     <div class="case-head rv">
-      <div class="case-num">03</div>
+      <div class="case-num">06</div>
       <div>
         <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16V9M8 16V4M13 16v-5M18 16V7"/></svg><span>Стоматология · реклама</span></span>
         <h2 class="case-title">Бот статистики рекламы<span class="loc">VK Ads → Telegram, одной кнопкой</span></h2>
@@ -667,7 +842,7 @@ footer.end h2{color:var(--cream)}
   <!-- 04 АНОНИМНЫЙ БОТ -->
   <section class="case" id="bot-anon">
     <div class="case-head rv">
-      <div class="case-num">04</div>
+      <div class="case-num">07</div>
       <div>
         <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v-1a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v1"/><circle cx="10" cy="6" r="3"/></svg><span>Личный бренд врача</span></span>
         <h2 class="case-title">Анонимный бот вопросов<span class="loc">Telegram-канал гинеколога</span></h2>
@@ -712,7 +887,7 @@ footer.end h2{color:var(--cream)}
   <!-- 05 ФИНБОТ -->
   <section class="case" id="finbot">
     <div class="case-head rv">
-      <div class="case-num">05</div>
+      <div class="case-num">08</div>
       <div>
         <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h14v9H3z"/><path d="M3 9h14"/></svg><span>Свой проект</span></span>
         <h2 class="case-title">Бот учета трат<span class="loc">Telegram + Google Таблица, без платных API</span></h2>
@@ -763,7 +938,7 @@ footer.end h2{color:var(--cream)}
   <!-- 06 ИНСТРУМЕНТЫ -->
   <section class="case" id="tools">
     <div class="case-head rv">
-      <div class="case-num">06</div>
+      <div class="case-num">09</div>
       <div>
         <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h5v5H4zM11 4h5v5h-5zM4 11h5v5H4zM11 11h5v5h-5z"/></svg><span>Ежедневная работа</span></span>
         <h2 class="case-title">Инструменты отчетности<span class="loc">то, чем пользуюсь каждую неделю</span></h2>
@@ -828,25 +1003,26 @@ footer.end h2{color:var(--cream)}
 
   <!-- В РАБОТЕ -->
   <section class="band rv">
-    <p class="eyebrow">Сейчас в работе</p>
+    <p class="eyebrow">Следующие этапы</p>
     <h2 style="margin-top:18px">Что дальше</h2>
     <div class="next-grid">
       <div class="next-item">
-        <span class="st">Проектирование</span>
-        <h3>ИИ-бот в сообщения ВКонтакте</h3>
-        <p>Первая линия для клиники: отвечает по процедурам, врачам и ценам, мягко доводит до записи
-        и передает оператору, когда вопрос выходит за рамки. Готово ТЗ и структура базы знаний, дальше — пилот.</p>
+        <span class="st">Повторные закупки</span>
+        <h3>Перейти от демо к пилоту</h3>
+        <p>Подключить реальные выгрузки 1С, проверить расчет ритма на истории заказов,
+        согласовать тексты и протестировать доставку на своих номерах.</p>
       </div>
       <div class="next-item">
-        <span class="st">Проектирование</span>
-        <h3>Повторные касания без ручной работы</h3>
-        <p>Связка CRM и WAHELP: сценарии для тех, кто не дозвонился или завис между звонками,
-        чтобы клиент не терялся, пока до него не дошли руки.</p>
+        <span class="st">ИИ-диалог</span>
+        <h3>Проверить новые обращения</h3>
+        <p>Продолжить проверку с участием оператора. Расширять темы по одной,
+        сверяя цены, окна и передачу человеку на каждом этапе.</p>
       </div>
       <div class="next-item">
-        <span class="st">В планах</span>
-        <h3>Окна врача прямо в переписку</h3>
-        <p>Свободное время из расписания подставляется в сообщение клиенту автоматически — оператору остается отправить.</p>
+        <span class="st">Отчетность</span>
+        <h3>Измерять результат касаний</h3>
+        <p>Связывать журнал сообщений с заказами или записями. Отдельно считать отправки,
+        доставку, ответы и покупки, чтобы оценивать результат по данным клиента.</p>
       </div>
     </div>
   </section>
