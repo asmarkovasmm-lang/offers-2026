@@ -259,7 +259,7 @@ header.hero::before{
 
 /* скриншот */
 .shot{border:var(--rule);background:var(--surface);overflow:hidden;margin-top:clamp(26px,3.2vw,42px)}
-.shot img{display:block;width:100%;height:auto}
+.shot img,.shot video{display:block;width:100%;height:auto}
 .shot-cap{
   padding:13px 18px;border-top:var(--rule);
   font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);
@@ -451,12 +451,13 @@ footer.end h2{color:var(--cream)}
       <a href="#repeat-orders"><b>01</b> Повторные закупки · демо</a>
       <a href="#operator-panels"><b>02</b> Панели для оператора</a>
       <a href="#ai-dialog"><b>03</b> ИИ-ответы · теневой тест</a>
-      <a href="#base"><b>04</b> Проверка клиентской базы</a>
-      <a href="#slots"><b>05</b> Свободные окна врача</a>
-      <a href="#bot-vk"><b>06</b> Бот по рекламе ВК</a>
-      <a href="#bot-anon"><b>07</b> Анонимный бот вопросов</a>
-      <a href="#finbot"><b>08</b> Бот учета трат</a>
-      <a href="#tools"><b>09</b> Инструменты отчетности</a>
+      <a href="#zamdir24"><b>04</b> Замдир24 · участие в проекте</a>
+      <a href="#base"><b>05</b> Проверка клиентской базы</a>
+      <a href="#slots"><b>06</b> Свободные окна врача</a>
+      <a href="#bot-vk"><b>07</b> Бот по рекламе ВК</a>
+      <a href="#bot-anon"><b>08</b> Анонимный бот вопросов</a>
+      <a href="#finbot"><b>09</b> Бот учета трат</a>
+      <a href="#tools"><b>10</b> Инструменты отчетности</a>
     </div>
   </div>
 </div>
@@ -495,7 +496,8 @@ footer.end h2{color:var(--cream)}
     <h2>От данных<br>до следующего касания</h2>
     <p>В этих проектах я разбираю весь процесс: кому пора написать, откуда взять повод,
     как подготовить текст и что останется сотруднику. Ниже — интерактивное демо,
-    реализованные панели и отдельный тест ИИ-ответов.</p>
+    реализованные панели и отдельный тест ИИ-ответов. Также добавила «Замдир24» —
+    проект рабочего ИИ-помощника в Telegram, в котором участвовала.</p>
   </div>
 
   <!-- 01 ПОВТОРНЫЕ ЗАКУПКИ -->
@@ -652,10 +654,72 @@ footer.end h2{color:var(--cream)}
     </div>
   </section>
 
-  <!-- 04 БАЗА -->
-  <section class="case" id="base">
+  <!-- 04 ЗАМДИР24 -->
+  <section class="case" id="zamdir24">
     <div class="case-head rv">
       <div class="case-num">04</div>
+      <div>
+        <span class="niche">Рабочие задачи для бизнеса · сентябрь 2026</span>
+        <h2 class="case-title">Замдир24<span class="loc">Telegram → поручение → исследование и документы</span></h2>
+      </div>
+      <div class="case-tags">
+        <span class="tag tag--hot">Участие в проекте</span>
+        <span class="tag">Telegram</span>
+        <span class="tag">ИИ-помощник</span>
+      </div>
+    </div>
+    <div class="case-body case-body--text">
+      <div class="rv">
+        <div class="block">
+          <h3>Задача</h3>
+          <p>Рабочий помощник внутри Telegram: руководитель передает поручение текстом
+          или голосом, ведет отдельные темы по проектам и получает результат в чате или файлом.</p>
+        </div>
+        <div class="block">
+          <h3>Моя роль</h3>
+          <p>Участвовала в работе над проектом «Замдир24». Описание функций и фрагмент
+          интерфейса взяты из презентации продукта и записи демонстрации.</p>
+        </div>
+        <div class="block">
+          <h3>Что показано в интерфейсе</h3>
+          <ul class="list">
+            <li><b>Поручение на исследование:</b> пользователь просит найти агентства
+            недвижимости в городе и собрать сведения из открытых источников.
+            Помощник принимает задачу и описывает будущий результат.</li>
+            <li><b>Отдельные темы:</b> в ходе демонстрации создаются два направления работы
+            внутри группы Telegram, чтобы обсуждать каждую задачу отдельно.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h3>Сценарии из презентации</h3>
+          <ul class="list">
+            <li>Разбор голосового поручения на задачи с ответственными и сроками.</li>
+            <li>Подготовка документов, отчетов и таблиц в PDF и Excel.</li>
+            <li>Работа с контекстом проекта: объекты, участники и договоренности.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="shot" style="margin-top:0">
+          <video controls playsinline preload="metadata" width="1280" height="764"
+            poster="media/zamdir24-poster.jpg" aria-label="Демонстрация интерфейса Замдир24 в Telegram">
+            <source src="media/zamdir24-demo.mp4" type="video/mp4">
+            <a href="media/zamdir24-demo.mp4">Открыть видео демонстрации</a>
+          </video>
+          <div class="shot-cap"><span>Интерфейс · 45 секунд</span><span>Переписка обезличена · скорость ×2</span></div>
+        </div>
+        <p class="case-status">Запись презентации от 9 сентября 2026. В ролике оставлен
+        экран системы: камеры, аватарки, имена и содержимое переписки скрыты. Пояснения
+        к шагам добавлены при монтаже; ролик без звука. Фрагмент показывает
+        постановку поручения и создание темы в Telegram.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 БАЗА -->
+  <section class="case" id="base">
+    <div class="case-head rv">
+      <div class="case-num">05</div>
       <div>
         <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg><span>Клиника косметологии</span></span>
         <h2 class="case-title">Проверка клиентской базы<span class="loc">WAHELP + YClients → Google Таблица</span></h2>
@@ -750,7 +814,7 @@ footer.end h2{color:var(--cream)}
   <!-- 02 ОКНА -->
   <section class="case" id="slots">
     <div class="case-head rv">
-      <div class="case-num">05</div>
+      <div class="case-num">06</div>
       <div>
         <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 2"/></svg><span>Колл-центр клиники</span></span>
         <h2 class="case-title">Свободные окна врача<span class="loc">YClients → готовый текст для клиента</span></h2>
@@ -795,7 +859,7 @@ footer.end h2{color:var(--cream)}
   <!-- 03 БОТ ВК -->
   <section class="case" id="bot-vk">
     <div class="case-head rv">
-      <div class="case-num">06</div>
+      <div class="case-num">07</div>
       <div>
         <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16V9M8 16V4M13 16v-5M18 16V7"/></svg><span>Стоматология · реклама</span></span>
         <h2 class="case-title">Бот статистики рекламы<span class="loc">VK Ads → Telegram, одной кнопкой</span></h2>
@@ -842,7 +906,7 @@ footer.end h2{color:var(--cream)}
   <!-- 04 АНОНИМНЫЙ БОТ -->
   <section class="case" id="bot-anon">
     <div class="case-head rv">
-      <div class="case-num">07</div>
+      <div class="case-num">08</div>
       <div>
         <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v-1a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v1"/><circle cx="10" cy="6" r="3"/></svg><span>Личный бренд врача</span></span>
         <h2 class="case-title">Анонимный бот вопросов<span class="loc">Telegram-канал гинеколога</span></h2>
@@ -887,7 +951,7 @@ footer.end h2{color:var(--cream)}
   <!-- 05 ФИНБОТ -->
   <section class="case" id="finbot">
     <div class="case-head rv">
-      <div class="case-num">08</div>
+      <div class="case-num">09</div>
       <div>
         <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h14v9H3z"/><path d="M3 9h14"/></svg><span>Свой проект</span></span>
         <h2 class="case-title">Бот учета трат<span class="loc">Telegram + Google Таблица, без платных API</span></h2>
@@ -938,7 +1002,7 @@ footer.end h2{color:var(--cream)}
   <!-- 06 ИНСТРУМЕНТЫ -->
   <section class="case" id="tools">
     <div class="case-head rv">
-      <div class="case-num">09</div>
+      <div class="case-num">10</div>
       <div>
         <span class="niche"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h5v5H4zM11 4h5v5h-5zM4 11h5v5H4zM11 11h5v5h-5z"/></svg><span>Ежедневная работа</span></span>
         <h2 class="case-title">Инструменты отчетности<span class="loc">то, чем пользуюсь каждую неделю</span></h2>
