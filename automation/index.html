@@ -521,8 +521,8 @@ header.hero{padding-top:48px;padding-bottom:28px}
 .calculation>summary::after{content:'＋';margin-left:10px;text-decoration:none}
 .calculation[open]>summary::after{content:'−'}
 .calculation>div{font-size:13px;line-height:1.6;max-width:86ch;padding:0 0 8px}.calculation p+p{margin-top:10px}
-html.has-motion .throughput:not(.in) .throughput-fill{transform:scaleX(.2)}
-html.has-motion .throughput.in .throughput-fill{transform:scaleX(1);transition:transform .7s cubic-bezier(.22,1,.36,1)}
+
+
 .speed-comparison{margin-top:22px;margin-bottom:0}
 .speed-comparison h4{font-size:24px}
 .speed-columns{gap:16px;margin-top:18px}
@@ -539,6 +539,64 @@ html.has-motion .throughput.in .throughput-fill{transform:scaleX(1);transition:t
 @media(max-width:650px){header.hero{padding-top:30px}.hero h1{font-size:clamp(34px,9.4vw,58px)}.hero-grid{gap:18px}.hero-sub{gap:18px}.hero-lead{font-size:17px}.hero-context{font-size:14px}.hero-context span{font-size:12px}.hero-actions{gap:8px;margin-top:20px}.button-primary,.button-secondary{width:100%;min-height:46px;font-size:13px;padding:11px 12px}.outcomes{gap:10px;margin-top:22px}.outcome-card{min-height:170px;padding:16px}.outcome-title{font-size:20px;margin-top:16px}.outcome-card p{font-size:12px}.group-head{padding:22px 20px}.group-title{font-size:30px}.group-description{font-size:14px}.group-links a{font-size:12px;min-height:40px;display:flex;align-items:center;padding:8px 12px}.case-head{gap:14px}.case-title{font-size:28px}.case-title .loc{font-size:14px;margin-top:10px}.case-lede{font-size:17px}.case-role{padding:14px 16px}.throughput-layout{grid-template-columns:minmax(0,1fr);gap:20px;margin-top:22px}.throughput-label{font-size:14px}.throughput-label strong{font-size:32px}.throughput-impact{flex-direction:row;align-items:center;gap:12px;flex-wrap:wrap;padding:18px}.throughput-impact>strong{font-size:42px}.throughput-impact>span{font-size:13px}.throughput-impact>b{width:100%;margin-top:0}.throughput-time{font-size:13px}.throughput-head>span{font-size:12px}.case-details>summary{padding:14px 16px}.details-content{padding:0 16px 20px}.speed-comparison h4{font-size:21px}.speed-side>p{font-size:13px}.shot-cap{padding:12px 14px}.contact-lead{font-size:16px}}
 @media(max-width:380px){.outcomes{grid-template-columns:minmax(0,1fr)}.outcome-card{min-height:148px}.outcome-title{font-size:24px;margin-top:12px}.outcome-card p{padding-bottom:0}}
 @media(prefers-reduced-motion:reduce){html.has-motion .throughput .throughput-fill{transform:none!important;transition:none!important}}
+
+
+/* ============ INTERACTIVE HERO / SEQUENCED MOTION ============ */
+.hero-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;align-items:center}
+.hero-copy,.scene-shell{min-width:0}
+.hero-copy .eyebrow{margin-bottom:22px;font-size:11px;line-height:1.6;max-width:52ch}
+.hero-copy h1{font-size:clamp(34px,4.9vw,68px);line-height:1.03}
+.hero-copy .hero-lead{margin-top:22px;font-size:16px;line-height:1.65;max-width:50ch}
+.hero-copy .hero-actions{margin-top:22px;gap:8px}
+.hero-copy .button-primary,.hero-copy .button-secondary{font-size:13px;padding-inline:14px}
+.hero-copy .hero-context{margin-top:20px;font-size:13px;font-weight:500}
+.hero-copy .hero-context span{font-size:11px}
+.scene-shell{--scene-progress:1;--tilt-x:0deg;--tilt-y:0deg;position:relative;padding:18px;border:1px solid rgba(49,87,244,.2);border-radius:26px;background:linear-gradient(145deg,#FFFFFF,#EAF0FF);box-shadow:0 30px 65px -35px rgba(49,87,244,.4);transform:perspective(1000px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));transition:transform .18s ease-out;isolation:isolate}
+.scene-topline{display:flex;align-items:center;gap:10px;font-size:12px;line-height:1.4;color:var(--text-2);flex-wrap:wrap}
+.scene-dots{display:flex;gap:4px}.scene-dots i{width:5px;height:5px;border-radius:50%;background:#AAB6CC}.scene-dots i:last-child{background:var(--acid)}
+.scene-badge{margin-left:auto;padding:5px 8px;border:1px solid var(--line);border-radius:100px;font-size:10px;background:rgba(255,255,255,.7)}
+.scene-stage{position:relative;height:285px;margin-top:16px;overflow:hidden;border-radius:18px;background:radial-gradient(ellipse at 50% 45%,rgba(108,149,255,.18),transparent 70%)}
+.scene-wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.6}
+.scene-wires path{fill:none;stroke:#8BA6F9;stroke-width:1.5;stroke-dasharray:6 10;stroke-dashoffset:calc(var(--scene-progress) * -140px)}
+.scene-source,.scene-workspace,.scene-result{position:absolute;border:1px solid rgba(49,87,244,.17);border-radius:16px;background:rgba(255,255,255,.95);box-shadow:0 12px 28px -18px rgba(28,58,122,.4);will-change:transform,opacity}
+.scene-source{padding:14px;width:45%;opacity:0}
+.scene-history{left:2%;top:3%;transform:rotate(-3deg)}
+.scene-slots{left:5%;top:48%;width:45%}
+.scene-message{left:51%;top:31%;width:46%}
+.scene-icon{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;background:#EAF0FF;color:var(--acid);font-family:var(--mono);font-size:10px;flex:none;margin-bottom:9px}
+.scene-source strong{display:block;font-family:var(--display);font-weight:650;font-size:15px;line-height:1.2;letter-spacing:-.025em}
+.scene-source p{font-size:11px;line-height:1.5;color:var(--text-2);margin-top:7px}
+.scene-source .scene-icon{display:none}
+.scene-skeleton{display:flex;flex-direction:column;gap:5px;margin-top:13px}.scene-skeleton i{height:4px;border-radius:5px;background:#DAE4F7;width:88%}.scene-skeleton i:last-child{width:63%}
+.scene-chip{display:inline-block;font-size:9px;color:#3157B0;background:#EEF3FF;padding:4px 6px;border-radius:6px;margin-top:10px}
+.scene-workspace{left:9%;top:14%;width:82%;padding:22px;opacity:0}
+.scene-window-head{display:flex;align-items:center;gap:10px;margin-bottom:16px}.scene-window-head .scene-icon{margin:0;width:28px;height:28px;font-size:16px}
+.scene-window-head strong{font-family:var(--display);font-size:19px;font-weight:650;line-height:1.2;letter-spacing:-.03em}
+.scene-workspace ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:13px;line-height:1.4;color:var(--text-2)}
+.scene-workspace li{display:flex;align-items:center;gap:8px}.scene-workspace li span{color:var(--acid);font-size:14px}
+.scene-human{margin-top:19px;border-top:1px solid var(--line-soft);padding-top:13px;font-size:11px;line-height:1.5;font-weight:500;color:var(--acid)}
+.scene-result{left:11%;top:18%;width:78%;padding:24px;text-align:center;background:#FFF}
+.scene-result-k{display:block;font-size:12px;line-height:1.5;color:var(--text-2)}
+.scene-result>strong{display:block;font-family:var(--display);font-weight:700;font-size:clamp(34px,3.4vw,48px);line-height:1.15;letter-spacing:-.04em;color:var(--acid);margin-top:14px;white-space:nowrap}
+.scene-result i{font-style:normal;font-size:.6em;font-weight:400;color:#91A2D0;vertical-align:middle}
+.scene-result p{font-size:12px;line-height:1.5;color:var(--text-2);margin-top:11px}
+.scene-result-gain{margin-top:16px;border-radius:9px;background:#EAF0FF;color:var(--acid);font-size:13px;line-height:1.5;padding:8px;font-weight:600}
+.scene-progress{height:3px;margin-top:14px;border-radius:3px;overflow:hidden;background:#DDE6F7}.scene-progress span{display:block;background:var(--acid);width:100%;height:100%;transform:scaleX(var(--scene-progress));transform-origin:left}
+.scene-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:12px}
+.scene-step{font-family:var(--body);font-size:11px;line-height:1.4;border:1px solid transparent;border-radius:10px;min-height:38px;padding:8px 5px;color:var(--text-2);background:transparent;cursor:pointer}
+.scene-step[aria-pressed="true"]{color:var(--acid);border-color:rgba(49,87,244,.18);background:rgba(255,255,255,.8);font-weight:600}.scene-step:hover:not(:disabled){background:var(--surface)}.scene-step:disabled{cursor:default}
+.scene-controls{display:flex;align-items:center;justify-content:space-between;gap:6px 12px;flex-wrap:wrap;margin-top:9px;color:var(--text-2);font-size:10px;line-height:1.4}
+.scene-controls>div{display:flex;gap:3px}
+.scene-play,.scene-replay,.throughput-replay{font:inherit;border:0;background:transparent;color:var(--acid);font-weight:500;cursor:pointer;min-height:38px;padding:8px 6px;border-radius:8px;line-height:1.4}
+.scene-play:hover,.scene-replay:hover,.throughput-replay:hover{background:#E1E9FD}
+.throughput-controls{display:flex;justify-content:flex-end;margin-top:12px}
+.throughput-replay{font-size:13px;min-height:44px;padding:8px 12px;border:1px solid rgba(49,87,244,.2);background:#F4F7FF}
+.throughput-replay[hidden],.scene-play[hidden],.scene-replay[hidden]{display:none}
+.throughput.is-comparing .throughput-replay{border-color:var(--acid)}
+@media(max-width:1050px){.hero-layout{gap:24px}.scene-shell{padding:14px}.scene-badge{display:none}.scene-stage{height:275px}.scene-source{padding:12px}.scene-source strong{font-size:13px}.scene-window-head strong{font-size:16px}.scene-workspace{padding:18px}.scene-controls>span{font-size:9px}}
+@media(max-width:800px){.hero-layout{grid-template-columns:minmax(0,1fr)}.hero-copy h1{font-size:clamp(34px,8vw,60px)}.hero-copy .hero-lead{max-width:56ch}.hero-copy .hero-context{display:none}.scene-shell{max-width:530px;width:100%;justify-self:center;padding:18px}.scene-badge{display:inline-block}.scene-stage{height:285px}.scene-source strong{font-size:15px}.scene-window-head strong{font-size:19px}.scene-workspace{padding:22px}.scene-controls>span{font-size:10px}.scene-step,.scene-play,.scene-replay{min-height:44px}.hero-copy .button-primary,.hero-copy .button-secondary{font-size:13px}}
+@media(max-width:380px){.scene-shell{padding:13px}.scene-stage{height:275px}.scene-source{padding:10px}.scene-source strong{font-size:12px}.scene-source p{font-size:10px}.scene-icon{width:20px;height:20px;font-size:9px}.scene-chip{font-size:8px}.scene-source .scene-skeleton{margin-top:9px}.scene-workspace{padding:16px;left:5%;width:90%}.scene-window-head strong{font-size:16px}.scene-workspace ul{font-size:12px}.scene-human{font-size:10px}.scene-result{left:6%;width:88%;padding:20px}.scene-result>strong{font-size:36px}.scene-topline{font-size:10px;gap:7px}.scene-badge{font-size:8px}.scene-controls>span{width:100%}.scene-controls{justify-content:center}.hero-copy h1{font-size:34px}}
+@media(prefers-reduced-motion:reduce){.scene-shell{transform:none;transition:none}.scene-source,.scene-workspace,.scene-result{will-change:auto}.scene-controls>span{display:none}}
 
 </style>
 </head>
@@ -559,15 +617,29 @@ html.has-motion .throughput.in .throughput-fill{transform:scaleX(1);transition:t
 
 <main class="wrap">
   <header class="hero">
-    <div class="hero-grid">
-      <p class="eyebrow">Анастасия Маркова · автоматизация маркетинга и клиентской работы</p>
-      <h1>Автоматизации<br><em>для бизнеса</em></h1>
-      <div class="hero-sub">
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <p class="eyebrow">Анастасия Маркова · автоматизация маркетинга и клиентской работы</p>
+        <h1>Автоматизации<br><em>для бизнеса</em></h1>
         <p class="hero-lead">Освобождаю время команды, помогаю контролировать клиентскую базу и рекламные расходы. Ниже — рабочие решения, моя роль и примеры результата.</p>
+        <div class="hero-actions"><a class="button-primary" href="#operator-panels">Панель: 70 → 300 задач за день</a><a class="button-secondary" href="#contact">Обсудить задачу</a></div>
         <p class="hero-context">9 проектов в четырех направлениях<br><span>Рабочие инструменты, опубликованный сайт и демо</span></p>
       </div>
+      <div class="scene-shell" data-phase="2">
+        <div class="scene-topline"><span class="scene-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>От данных к готовой задаче</span><span class="scene-badge">Схема работы</span></div>
+        <div class="scene-stage" role="img" aria-label="Схема: история клиента, расписание и черновик собраны в одном экране. Оператор проверяет и отправляет сообщение. В проекте объем вырос с 70 до 300 задач за одинаковый 12-часовой рабочий день.">
+          <svg class="scene-wires" viewBox="0 0 500 300" preserveAspectRatio="none" aria-hidden="true"><path d="M90 62 C170 62 120 144 250 144 S335 235 405 235"/><path d="M135 240 C185 240 160 144 250 144 S340 90 400 90"/></svg>
+          <div class="scene-source scene-history" aria-hidden="true"><span class="scene-icon">01</span><strong>История клиента</strong><p>Посещения и переписка</p><div class="scene-skeleton"><i></i><i></i></div></div>
+          <div class="scene-source scene-slots" aria-hidden="true"><span class="scene-icon">02</span><strong>Время для записи</strong><p>Свободные окна врача</p><div class="scene-chip">Из расписания</div></div>
+          <div class="scene-source scene-message" aria-hidden="true"><span class="scene-icon">03</span><strong>Сообщение</strong><p>Черновик по истории клиента</p><div class="scene-skeleton"><i></i><i></i></div></div>
+          <div class="scene-workspace" aria-hidden="true"><div class="scene-window-head"><span class="scene-icon">↗</span><strong>Один экран оператора</strong></div><ul><li><span>✓</span> История под рукой</li><li><span>✓</span> Время из расписания</li><li><span>✓</span> Сообщение на проверку</li></ul><p class="scene-human">Оператор проверяет и отправляет</p></div>
+          <div class="scene-result" aria-hidden="true"><span class="scene-result-k">За ту же смену</span><strong>70 <i>→</i> 300</strong><p>обработанных задач<br>за 12-часовой рабочий день</p><div class="scene-result-gain">+230 задач в день</div></div>
+        </div>
+        <div class="scene-progress" aria-hidden="true"><span></span></div>
+        <div class="scene-steps" aria-label="Этапы анимации"><button class="scene-step" type="button" aria-pressed="false" disabled>Данные</button><button class="scene-step" type="button" aria-pressed="false" disabled>Панель</button><button class="scene-step" type="button" aria-pressed="true" disabled>Результат</button></div>
+        <div class="scene-controls"><span>Прокрутка управляет сценой</span><div><button class="scene-play" type="button" hidden>Воспроизвести</button><button class="scene-replay" type="button" hidden>Повторить ↻</button></div></div>
+      </div>
     </div>
-    <div class="hero-actions"><a class="button-primary" href="#operator-panels">Панель: 70 → 300 задач за день</a><a class="button-secondary" href="#contact">Обсудить задачу</a></div>
     <div class="outcomes" id="recent" aria-label="Четыре направления разработок">
       <a class="outcome-card" href="#time">
         <span class="outcome-index">01 / 3 разработки</span>
@@ -637,6 +709,7 @@ html.has-motion .throughput.in .throughput-fill{transform:scaleX(1);transition:t
         </div>
         <div class="throughput-impact"><strong>+230</strong><span>обработанных задач<br>за тот же рабочий день</span><b>В 4,3 раза больше</b></div>
       </div>
+      <div class="throughput-controls"><button class="throughput-replay" type="button" hidden>Повторить анимацию ↻</button></div>
       <p class="throughput-time">Среднее время на задачу в пересчете на дневной объем: <b>10 мин 17 сек → 2 мин 24 сек</b>.</p>
       <details class="calculation"><summary>Как рассчитано время</summary><div><p>Делим одинаковые 12 часов на количество задач: 720 минут / 70 ≈ 10 минут 17 секунд; 720 минут / 300 = 2 минуты 24 секунды. Разница — около 7 минут 53 секунд, или 77%.</p><p>Это расчет по объему за день, а не замер каждой задачи. Результат относится к обработанным задачам; влияние на записи и выручку здесь не измеряли.</p></div></details>
     </div>
@@ -965,5 +1038,6 @@ html.has-motion .throughput.in .throughput-fill{transform:scaleX(1);transition:t
   updateReading();
 })();
 </script>
+<script src="motion.js"></script>
 </body>
 </html>
