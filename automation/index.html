@@ -139,21 +139,12 @@ header.hero::before{
 @media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}
 
 /* ============ БЫСТРЫЙ ВЫБОР ============ */
-.caselist{
-  position:sticky;top:62px;z-index:90;
-  background:rgba(250,246,245,.94);backdrop-filter:blur(14px);
-  border-bottom:var(--rule);
-}
-.caselist-row{display:flex;gap:8px;overflow-x:auto;padding:12px 0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.caselist-row::-webkit-scrollbar{display:none}
-.caselist-row a{
-  flex:0 0 auto;display:inline-flex;align-items:baseline;gap:8px;
-  padding:8px 15px;border:1px solid var(--line);border-radius:100px;
-  text-decoration:none;font-size:12.5px;letter-spacing:.04em;color:var(--text-2);
-  white-space:nowrap;transition:border-color .2s,color .2s,background .2s;
-}
-.caselist-row a b{font-family:var(--display);font-weight:700;font-size:11px;color:var(--acid)}
-.caselist-row a:hover,.caselist-row a:focus-visible{border-color:var(--acid);color:var(--acid);background:var(--ink-2)}
+
+
+
+
+
+
 
 /* ============ ПОДХОД ============ */
 .how{margin-top:clamp(52px,7vw,96px)}
@@ -363,14 +354,14 @@ header.hero::before{display:none}
 .outcome-card p{font-size:13px;line-height:1.5;color:var(--text-2);margin-top:12px;max-width:24ch;padding-bottom:26px}
 .outcome-arrow{position:absolute;bottom:18px;right:20px;width:28px;height:28px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;font-size:16px;color:var(--acid);transition:transform .3s}
 .outcome-card:hover .outcome-arrow{transform:rotate(45deg)}
-.caselist{position:sticky;top:0;z-index:90;background:rgba(244,247,252,.93);border-bottom:1px solid var(--line);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
-.caselist .wrap{height:auto;display:block}
-.caselist-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;overflow:visible;padding:12px 0}
-.caselist-row a{min-width:0;display:flex;align-items:center;justify-content:center;gap:8px;white-space:normal;text-align:center;padding:10px 12px;border-radius:12px;font-size:13px;line-height:1.35;letter-spacing:-.015em;background:transparent;transition:background .25s,color .25s,border-color .25s}
-.caselist-row a b{font-size:11px}
-.caselist-row a.is-active,.caselist-row a:hover{background:var(--acid);border-color:var(--acid);color:white}
-.caselist-row a.is-active b,.caselist-row a:hover b{color:rgba(255,255,255,.75)}
-.reading-progress{height:2px;background:linear-gradient(to right,var(--acid) calc(var(--page-progress,0)*100%),transparent 0)}
+
+
+
+
+
+
+
+
 .development-group{margin-top:clamp(58px,7vw,100px);scroll-margin-top:var(--section-offset,100px)}
 .group-head{padding:32px 34px;border:1px solid var(--line);border-radius:26px;background:linear-gradient(120deg,rgba(255,255,255,.94),rgba(231,239,255,.7));position:relative;overflow:hidden}
 .group-head::after{content:"";position:absolute;width:200px;height:200px;border:1px solid rgba(49,87,244,.13);border-radius:50%;right:-70px;top:-100px;pointer-events:none}
@@ -428,7 +419,7 @@ html.has-motion .rv{opacity:0;transform:translateY(10px);transition:opacity .45s
 html.has-motion .rv.in{opacity:1;transform:none}
 a:focus-visible,button:focus-visible{outline:3px solid #7A9BFF;outline-offset:4px}
 @media(max-width:1050px){.outcomes{grid-template-columns:repeat(2,minmax(0,1fr))}.outcome-card{min-height:210px}}
-@media(max-width:650px){.caselist-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:8px 0}.caselist-row a{font-size:12px;padding:9px 7px}.caselist-row a b{display:none}:root{--section-offset:160px}.development-group,.case{scroll-margin-top:var(--section-offset)}.outcomes{gap:10px}.outcome-card{padding:17px;min-height:210px}.outcome-title{font-size:21px;margin-top:20px}.outcome-card p{font-size:12px}.outcome-index{font-size:10px}.hero-meta-row dt{width:92px}.hero-flow{gap:7px;font-size:10px;flex-wrap:nowrap}.hero-flow span{flex:1;min-width:0;text-align:center;padding:7px 8px;line-height:1.4}.hero-flow i{font-size:12px}.group-head{padding:26px 20px}.group-description{font-size:14px}.group-title{font-size:32px}.group-links{gap:6px;margin-top:20px}.group-links a{font-size:11px}.stat{padding:20px 16px}.hero h1{max-width:none;font-size:clamp(34px,10.2vw,66px)}}
+@media(max-width:650px){:root{--section-offset:22px}.development-group,.case{scroll-margin-top:var(--section-offset)}.outcomes{gap:10px}.outcome-card{padding:17px;min-height:210px}.outcome-title{font-size:21px;margin-top:20px}.outcome-card p{font-size:12px}.outcome-index{font-size:10px}.hero-meta-row dt{width:92px}.hero-flow{gap:7px;font-size:10px;flex-wrap:nowrap}.hero-flow span{flex:1;min-width:0;text-align:center;padding:7px 8px;line-height:1.4}.hero-flow i{font-size:12px}.group-head{padding:26px 20px}.group-description{font-size:14px}.group-title{font-size:32px}.group-links{gap:6px;margin-top:20px}.group-links a{font-size:11px}.stat{padding:20px 16px}.hero h1{max-width:none;font-size:clamp(34px,10.2vw,66px)}}
 @media(max-width:380px){.outcomes{grid-template-columns:minmax(0,1fr)}.outcome-card{min-height:180px}.outcome-title{max-width:none;margin-top:14px;font-size:24px}.outcome-card p{max-width:28ch;padding-bottom:12px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.page-atmo i,.hero-flow span::before{animation:none;will-change:auto}.hero-flow span::before{display:none}html.has-motion .rv{opacity:1;transform:none;transition:none}.outcome-card,.outcome-card::before,.outcome-arrow,.linkcard{transition:none}.outcome-card:hover,.linkcard:hover{transform:none}}
 .base-report{margin:clamp(30px,4vw,48px) 0 0;padding:clamp(20px,3vw,36px);border:var(--rule);border-radius:var(--r);background:var(--surface);box-shadow:var(--shadow)}
@@ -613,11 +604,11 @@ main.wrap>.development-group:first-child{margin-top:44px}
 .group-links a{background:rgba(255,255,255,.06);border-color:rgba(212,224,239,.3);color:#F0F5FF;font-size:13px;line-height:1.4;padding:10px 14px}
 .group-links a:hover{background:#FFFFFF;border-color:#FFFFFF;color:#152B43}
 .group-links a:focus-visible{outline:3px solid #ABC3FF;outline-offset:3px}
-.reading-context{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line-soft);padding:10px 0 12px;font-size:13px;line-height:1.35;color:var(--text)}
-.reading-context-index{font-size:11px;font-weight:600;color:var(--text-2);white-space:nowrap}
-.reading-context-title{font-weight:600}
-.caselist-row a:focus-visible{outline:2px solid var(--acid);outline-offset:2px}
-.caselist-row a.is-active:focus-visible{background:var(--acid);color:#FFFFFF}
+
+
+
+
+
 @media(max-width:650px){
   .development-group{margin-top:68px}
   .group-head{padding:26px 20px;border-radius:20px}
@@ -626,9 +617,23 @@ main.wrap>.development-group:first-child{margin-top:44px}
   .group-kicker{margin-bottom:18px;gap:10px}
   .group-links{margin-top:20px}
   .group-links a{font-size:12px;min-height:42px}
-  .reading-context{gap:5px 10px;padding:8px 0 10px;font-size:12px}
-  .reading-context-index{font-size:10px}
+  
+  
 }
+
+/* First screen: business benefits and four visible directions */
+.hero-lead>span{display:block}
+.hero-lead>span+span{margin-top:12px}
+.outcome-card{background:#3157F4;border-color:#3157F4;color:#FFFFFF;min-height:220px}
+.outcome-card::before{background:radial-gradient(circle at 100% 0,rgba(255,255,255,.16),transparent 65%)}
+.outcome-card:hover,.outcome-card:focus-visible{background:#2548D9;border-color:#2548D9}
+.outcome-card:focus-visible{outline:3px solid #152B43;outline-offset:4px}
+.outcome-index{color:#DCE5FF}
+.outcome-title{color:#FFFFFF;max-width:none}
+.outcome-card p{color:#F0F4FF;font-size:14px;line-height:1.55;max-width:none}
+.outcome-arrow{color:#FFFFFF;border-color:rgba(255,255,255,.55)}
+@media(max-width:650px){.outcome-card{min-height:180px}.outcome-card p{font-size:13px}.hero-lead>span+span{margin-top:10px}}
+@media(max-width:380px){.outcome-card{min-height:148px}}
 </style>
 </head>
 <body>
@@ -651,10 +656,10 @@ main.wrap>.development-group:first-child{margin-top:44px}
     <div class="hero-layout">
       <div class="hero-copy">
         <p class="eyebrow">Анастасия Маркова · автоматизация маркетинга и клиентской работы</p>
-        <h1>Автоматизации<br><em>для бизнеса</em></h1>
-        <p class="hero-lead">Освобождаю время команды, помогаю контролировать клиентскую базу и рекламные расходы. Ниже — рабочие решения и примеры результата.</p>
-        <div class="hero-actions"><a class="button-primary" href="#operator-panels">Панель: 70 → 300 задач за день</a><a class="button-secondary" href="#contact">Обсудить задачу</a></div>
-        <p class="hero-context">9 проектов в четырех направлениях<br><span>Рабочие инструменты, опубликованный сайт и демо</span></p>
+        <h1>Автоматизация<br><em>для бизнеса</em></h1>
+        <p class="hero-lead"><span>Освобождаю время команды (экономлю ФОТ).</span><span>Увеличиваю продажи с базы и конверсию с лидов.</span><span>Помогаю держать под контролем рекламные расходы и эффективность от закупа до LTV.</span></p>
+        <div class="hero-actions"><a class="button-primary" href="#contact">Обсудить задачи</a></div>
+        <p class="hero-context">9 проектов в 4 направлениях<br><span>Рабочие инструменты, опубликованный сайт и демо</span></p>
       </div>
       <div class="scene-shell" data-phase="2">
         <div class="scene-topline"><span class="scene-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>От данных к готовой задаче</span><span class="scene-badge">Схема работы</span></div>
@@ -674,40 +679,28 @@ main.wrap>.development-group:first-child{margin-top:44px}
     <div class="outcomes" id="recent" aria-label="Четыре направления разработок">
       <a class="outcome-card" href="#time">
         <span class="outcome-index">01 / 3 разработки</span>
-        <span class="outcome-title">Экономия времени</span><p>Панель: 300 задач вместо 70 за смену.</p>
+        <span class="outcome-title">Экономия времени</span><p>Сотрудники успевают сделать в 4 раза больше.</p>
         <span class="outcome-arrow" aria-hidden="true">↗</span>
       </a>
       <a class="outcome-card" href="#visibility">
         <span class="outcome-index">02 / 2 разработки</span>
-        <span class="outcome-title">Прозрачность процессов</span><p>Клиенты без задачи в CRM и расходы на рекламу.</p>
+        <span class="outcome-title">Прозрачность процессов</span><p>Сколько потратили, сколько принесло. Все основные показатели бизнеса в одном дашборде. Доступны 24/7 и обновляются онлайн. Экономим время на сборе аналитики.</p>
         <span class="outcome-arrow" aria-hidden="true">↗</span>
       </a>
       <a class="outcome-card" href="#sales">
         <span class="outcome-index">03 / 2 разработки</span>
-        <span class="outcome-title">Рост продаж</span><p>Повторные закупки и онлайн-заказы.</p>
+        <span class="outcome-title">Рост продаж</span><p>Увеличиваем возвращаемость. Продлеваем LTV.</p>
         <span class="outcome-arrow" aria-hidden="true">↗</span>
       </a>
       <a class="outcome-card" href="#other">
         <span class="outcome-index">04 / 2 разработки</span>
-        <span class="outcome-title">Другие автоматизации</span><p>Вопросы аудитории и личный бюджет.</p>
+        <span class="outcome-title">Другие автоматизации</span>
         <span class="outcome-arrow" aria-hidden="true">↗</span>
       </a>
     </div>
   </header>
 </main>
 
-<nav class="caselist" aria-label="Направления разработок">
-  <div class="wrap">
-    <div class="caselist-row">
-      <a href="#time"><b>01</b> Экономия времени</a>
-      <a href="#visibility"><b>02</b> Прозрачность процессов</a>
-      <a href="#sales"><b>03</b> Рост продаж</a>
-      <a href="#other"><b>04</b> Другие автоматизации</a>
-    </div>
-    <p class="reading-context" aria-label="Текущий раздел"><span class="reading-context-index">4 раздела</span><span class="reading-context-title">Выберите направление</span></p>
-  </div>
-  <div class="reading-progress" aria-hidden="true"></div>
-</nav>
 
 <main class="wrap">
 
@@ -1071,7 +1064,7 @@ main.wrap>.development-group:first-child{margin-top:44px}
     var parent=target.parentElement;
     while(parent){if(parent.tagName==='DETAILS'&&!parent.open)parent.open=true;parent=parent.parentElement;}
     updateOffset();
-    requestAnimationFrame(function(){if(window.location.hash!==anchor)return;target.scrollIntoView({block:'start',behavior:'instant'});updateReading();});
+    requestAnimationFrame(function(){if(window.location.hash!==anchor)return;target.scrollIntoView({block:'start',behavior:'instant'});});
   }
   var initialHash=window.location.hash;
   var initialAnchorAllowed=Boolean(initialHash);
@@ -1086,31 +1079,15 @@ main.wrap>.development-group:first-child{margin-top:44px}
     var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.05,rootMargin:'0px 0px 60px 0px'});
     reveals.forEach(function(el){io.observe(el);});
   }
-  var groups=Array.from(document.querySelectorAll('.development-group'));
-  var links=Array.from(document.querySelectorAll('.caselist-row a'));
-  var scheduled=false;
-  var nav=document.querySelector('.caselist');
-  var readingIndex=document.querySelector('.reading-context-index');
-  var readingTitle=document.querySelector('.reading-context-title');
-  function updateOffset(){document.documentElement.style.setProperty('--section-offset',Math.ceil(nav.getBoundingClientRect().height+22)+'px');}
-  if('ResizeObserver' in window)new ResizeObserver(updateOffset).observe(nav);
-  updateOffset();
-  function updateReading(){
-    scheduled=false;
-    var limit=document.documentElement.scrollHeight-window.innerHeight;
-    document.documentElement.style.setProperty('--page-progress',limit>0?window.scrollY/limit:0);
-    var current=null,currentGroup=null;
-    var sectionEdge=nav.getBoundingClientRect().height+24;
-    groups.forEach(function(g){if(g.getBoundingClientRect().top<=sectionEdge){current=g.id;currentGroup=g;}});
-    links.forEach(function(a){var active=a.getAttribute('href')==='#'+current;a.classList.toggle('is-active',active);if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});
-    var indexText=currentGroup?'Раздел '+(groups.indexOf(currentGroup)+1)+' из '+groups.length:groups.length+' раздела';
-    var titleText=currentGroup?currentGroup.querySelector('.group-title').textContent:'Выберите направление';
-    if(readingIndex.textContent!==indexText)readingIndex.textContent=indexText;
-    if(readingTitle.textContent!==titleText)readingTitle.textContent=titleText;
+  var topNav=document.querySelector('body>nav');
+  function updateOffset(){
+    var fixed=topNav&&['sticky','fixed'].indexOf(getComputedStyle(topNav).position)!==-1;
+    var offset=fixed?topNav.getBoundingClientRect().height:0;
+    document.documentElement.style.setProperty('--section-offset',Math.ceil(offset+22)+'px');
   }
-  window.addEventListener('scroll',function(){if(!scheduled){scheduled=true;requestAnimationFrame(updateReading);}},{passive:true});
-  window.addEventListener('resize',function(){updateOffset();updateReading();});
-  updateReading();
+  if(topNav&&'ResizeObserver' in window)new ResizeObserver(updateOffset).observe(topNav);
+  updateOffset();
+  window.addEventListener('resize',updateOffset);
   if(initialAnchorAllowed)revealAnchor();
   var loaded=document.readyState==='complete'?Promise.resolve():new Promise(function(resolve){window.addEventListener('load',resolve,{once:true});});
   var fontsReady=document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve();
