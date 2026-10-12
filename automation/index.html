@@ -767,6 +767,7 @@ main.wrap>.development-group:first-child{margin-top:44px}
       <div class="case-tags"><span class="tag">Пример интерфейса</span></div>
     </div>
     <p class="case-lede">Руководитель читает показатели рекламы и продаж в отдельных разделах чата и задает вопросы помощнику.</p>
+    <a class="case-action" href="zamdir.html">Открыть прототип «Замдир» отдельно ↗</a>
     <section class="assistant-demo" data-assistant-demo aria-label="Пример интерфейса помощника руководителя">
   <div class="assistant-demo-top">
     <span class="assistant-demo-mark" aria-hidden="true">↗</span>
@@ -1064,13 +1065,20 @@ main.wrap>.development-group:first-child{margin-top:44px}
 <script>
 (function(){
   function revealAnchor(){
+    var anchor=window.location.hash;
     var id;try{id=decodeURIComponent(window.location.hash.slice(1));}catch(e){return;}
     var target=id&&document.getElementById(id);if(!target)return;
-    var parent=target.parentElement,opened=false;
-    while(parent){if(parent.tagName==='DETAILS'&&!parent.open){parent.open=true;opened=true;}parent=parent.parentElement;}
-    if(opened)requestAnimationFrame(function(){target.scrollIntoView({block:'start'});});
+    var parent=target.parentElement;
+    while(parent){if(parent.tagName==='DETAILS'&&!parent.open)parent.open=true;parent=parent.parentElement;}
+    updateOffset();
+    requestAnimationFrame(function(){if(window.location.hash!==anchor)return;target.scrollIntoView({block:'start',behavior:'instant'});updateReading();});
   }
-  window.addEventListener('hashchange',revealAnchor);revealAnchor();
+  var initialHash=window.location.hash;
+  var initialAnchorAllowed=Boolean(initialHash);
+  var navigation=window.performance&&performance.getEntriesByType?performance.getEntriesByType('navigation')[0]:null;
+  if(navigation&&navigation.type==='back_forward')initialAnchorAllowed=false;
+  ['wheel','touchstart','pointerdown','keydown'].forEach(function(type){window.addEventListener(type,function(){initialAnchorAllowed=false;},{once:true,passive:true});});
+  window.addEventListener('hashchange',function(){initialAnchorAllowed=false;revealAnchor();});
   var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var reveals=document.querySelectorAll('.rv');
   if(!reduced && 'IntersectionObserver' in window){
@@ -1103,6 +1111,10 @@ main.wrap>.development-group:first-child{margin-top:44px}
   window.addEventListener('scroll',function(){if(!scheduled){scheduled=true;requestAnimationFrame(updateReading);}},{passive:true});
   window.addEventListener('resize',function(){updateOffset();updateReading();});
   updateReading();
+  if(initialAnchorAllowed)revealAnchor();
+  var loaded=document.readyState==='complete'?Promise.resolve():new Promise(function(resolve){window.addEventListener('load',resolve,{once:true});});
+  var fontsReady=document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve();
+  Promise.all([loaded,fontsReady]).then(function(){if(initialAnchorAllowed&&window.location.hash===initialHash){initialAnchorAllowed=false;revealAnchor();}});
 })();
 </script>
 <script src="motion.js"></script>

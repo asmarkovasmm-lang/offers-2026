@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Замдир · Аналитика в Telegram — пример интерфейса</title>
+<link rel="stylesheet" href="assistant-demo.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f3f7f4;color:#19372c;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+main{max-width:1160px;margin:0 auto;padding:24px clamp(16px,4vw,44px) 40px}
+.back{display:inline-flex;align-items:center;min-height:40px;color:#176743;text-decoration:none;font-size:14px}
+h1{margin:20px 0 10px;font-size:clamp(25px,3.4vw,40px);line-height:1.15;letter-spacing:-.035em}
+.intro{margin:0;color:#566d62;font-size:15px}
+.assistant-demo{margin-top:24px}
+.back:focus-visible{outline:3px solid #379262;outline-offset:4px}
+@media(max-width:600px){main{padding-top:12px}h1{margin-top:14px}.intro{font-size:14px}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="./#business-assistant">← Все автоматизации</a>
+<h1>Замдир: аналитика в Telegram</h1>
+<p class="intro">Выбери рекламу, продажи или готовый вопрос. Здесь показан пример интерфейса с вымышленными данными.</p>
+<section class="assistant-demo" data-assistant-demo aria-label="Пример интерфейса помощника руководителя">
+  <div class="assistant-demo-top">
+    <span class="assistant-demo-mark" aria-hidden="true">↗</span>
+    <div><p class="assistant-demo-title">Помощник руководителя</p><p class="assistant-demo-caption">Пример интерфейса · демонстрационные данные</p></div>
+  </div>
+  <div class="assistant-demo-layout">
+    <nav class="assistant-demo-nav" aria-label="Разделы примера помощника">
+      <p class="assistant-demo-nav-label">Разделы</p>
+      <button class="assistant-demo-section" type="button" data-assistant-section="ads" aria-pressed="true" disabled><span class="assistant-demo-icon" aria-hidden="true">↗</span><span>Аналитика рекламы</span></button>
+      <button class="assistant-demo-section" type="button" data-assistant-section="sales" aria-pressed="false" disabled><span class="assistant-demo-icon" aria-hidden="true">₽</span><span>Аналитика продаж</span></button>
+      <button class="assistant-demo-section" type="button" data-assistant-section="questions" aria-pressed="false" disabled><span class="assistant-demo-icon" aria-hidden="true">?</span><span>Вопрос помощнику</span></button>
+    </nav>
+    <div class="assistant-demo-main">
+      <div class="assistant-demo-chat" data-assistant-chat role="region" aria-label="Пример ответа">
+        <div class="assistant-demo-user"><span>Что с рекламой?</span></div>
+        <div class="assistant-demo-answer">
+          <p class="assistant-demo-answer-title">Реклама за выбранный период</p>
+          <p class="assistant-demo-period">Демонстрационные данные</p>
+          <div class="assistant-demo-metrics">
+            <div class="assistant-demo-metric"><span>Расходы</span><strong>48 000 ₽</strong></div>
+            <div class="assistant-demo-metric"><span>Обращения</span><strong>120</strong></div>
+            <div class="assistant-demo-metric"><span>За обращение</span><strong>400 ₽</strong></div>
+          </div>
+          <p class="assistant-demo-answer-note">В одном ответе — расход бюджета и стоимость обращения. Можно обсудить эти показатели со специалистом.</p>
+        </div>
+      </div>
+      <div class="assistant-demo-question"><input class="assistant-demo-input" type="text" readonly placeholder="Выбери пример вопроса" aria-label="Вопрос: выбери один из готовых примеров"><span aria-hidden="true">↗</span></div>
+      <div class="assistant-demo-examples" aria-label="Готовые примеры вопросов">
+        <button class="assistant-demo-example" type="button" data-assistant-question="ads" disabled>Что с рекламой?</button>
+        <button class="assistant-demo-example" type="button" data-assistant-question="sales" disabled>Какие продажи?</button>
+      </div>
+      <p class="assistant-demo-limit">В демо — заранее подготовленные ответы на два вопроса.</p>
+      <div class="assistant-demo-status" data-assistant-status role="status" aria-live="polite" aria-atomic="true"></div>
+    </div>
+  </div>
+</section>
+</main>
+<script src="assistant-demo.js" defer></script>
+</body>
+</html>
