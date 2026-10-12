@@ -452,6 +452,94 @@ a:focus-visible,button:focus-visible{outline:3px solid #7A9BFF;outline-offset:4p
 .base-report figcaption{font-size:11px;line-height:1.5;color:var(--text-3);border-top:var(--rule);padding-top:16px;margin-top:20px}
 @media(max-width:650px){.base-report-sources{grid-template-columns:minmax(0,1fr);gap:14px}.base-match>span{transform:rotate(90deg);font-size:28px;margin-bottom:6px}.base-report-results{grid-template-columns:minmax(0,1fr)}.base-report-head h4{max-width:15ch}.base-source,.base-result{padding:18px}}
 
+
+/* ============ UX: RESULT FIRST ============ */
+.hero h1{font-size:clamp(38px,6.2vw,80px);max-width:none;line-height:1.02}
+header.hero{padding-top:48px;padding-bottom:28px}
+.hero-sub{padding-top:0;gap:24px;align-items:center}
+.hero-lead{max-width:52ch;font-size:18px;line-height:1.6}
+.hero-context{margin:0;font-size:15px;font-weight:600;line-height:1.6;color:var(--text)}
+.hero-context span{font-size:13px;font-weight:400;color:var(--text-2)}
+.hero-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:24px}
+.button-primary,.button-secondary,.case-action{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border-radius:12px;text-decoration:none;font-size:14px;font-weight:600;line-height:1.4;border:1px solid var(--line)}
+.button-primary{background:var(--acid);color:white;border-color:var(--acid)}
+.button-secondary{background:var(--surface)}
+.button-primary:hover{background:#2545D1}.button-secondary:hover,.case-action:hover{background:var(--bone-2)}
+.outcomes{margin-top:28px;gap:12px}
+.outcome-card{min-height:190px;padding:20px}
+.outcome-title{font-size:25px;margin-top:20px;line-height:1.12}
+.outcome-card p{font-size:13px;line-height:1.5;max-width:26ch;margin-top:12px}
+.development-group{margin-top:42px}.group-head{padding:26px 30px}
+.group-title{font-size:clamp(30px,3.4vw,46px)}
+.group-description{margin-top:12px;max-width:80ch;font-size:15px}
+.group-links{margin-top:18px}
+.case{margin-top:34px;padding-top:30px}
+.case-head{margin-bottom:14px}
+.case-lede{max-width:72ch;font-size:clamp(17px,1.55vw,21px);line-height:1.55;color:var(--text);margin:0 0 24px}
+.case-role{padding:18px 20px;border-left:3px solid var(--acid);border-radius:0 12px 12px 0;background:rgba(49,87,244,.05);font-size:14px;line-height:1.65;color:var(--text-2);margin-top:22px;max-width:90ch}
+.case-role b{color:var(--text);font-weight:600}
+.case-details{margin-top:20px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.6);overflow:hidden}
+.case-details>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:52px;padding:14px 20px;font-size:14px;font-weight:600;list-style:none;cursor:pointer;line-height:1.5}
+.case-details>summary::-webkit-details-marker,.calculation>summary::-webkit-details-marker{display:none}
+.case-details>summary>span{color:var(--acid);font-size:22px;font-weight:400;line-height:1}
+.case-details[open]>summary>span{transform:rotate(45deg)}
+.case-details>summary:hover,.calculation>summary:hover{background:rgba(49,87,244,.04)}
+.case-details>summary:focus-visible,.calculation>summary:focus-visible{outline:3px solid #7A9BFF;outline-offset:-3px}
+.details-content{padding:0 20px 24px;border-top:1px solid var(--line-soft)}
+.details-content .case-body{margin-top:22px;gap:28px}
+.details-content .block+.block{margin-top:22px}
+.details-content .block p{font-size:14px;line-height:1.65}
+.details-content .rv{opacity:1!important;transform:none!important}
+.evidence-note{margin-top:16px;max-width:90ch;font-size:13px;line-height:1.6;color:var(--text-2)}
+.case-action{margin-top:18px;background:var(--surface);color:var(--acid)}
+.shot{margin-top:22px}
+.shot img{max-height:540px;object-fit:contain;background:var(--surface)}
+.shot video{max-height:560px;background:#152033;object-fit:contain}
+#bot-vk>.shot{max-width:560px}
+.throughput{padding:clamp(18px,3vw,32px);border-radius:22px;border:1px solid rgba(49,87,244,.2);background:var(--surface);box-shadow:var(--shadow);margin-top:20px}
+.throughput-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px 20px;flex-wrap:wrap}
+.throughput-head h4{font-family:var(--display);font-size:clamp(22px,2.3vw,30px);font-weight:650;line-height:1.25;letter-spacing:-.035em}
+.throughput-head>span{font-size:13px;line-height:1.5;color:var(--text-2)}
+.throughput-layout{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);gap:32px;margin-top:28px;align-items:center}
+.throughput-chart,.throughput-impact{min-width:0}
+.throughput-row+.throughput-row{margin-top:24px}
+.throughput-label{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:15px;color:var(--text-2)}
+.throughput-label strong{font-family:var(--display);font-size:36px;font-weight:650;line-height:1.15;letter-spacing:-.03em;color:var(--text);white-space:nowrap;font-variant-numeric:tabular-nums}
+.throughput-row:last-child .throughput-label strong{color:var(--acid)}
+.throughput-label small{font-family:var(--body);font-size:13px;font-weight:400;letter-spacing:0;color:var(--text-2)}
+.throughput-track{height:18px;border-radius:8px;background:#EAF0FB;margin-top:10px;overflow:hidden}
+.throughput-fill{height:100%;border-radius:8px;background:var(--acid);transform-origin:left}
+.throughput-fill--before{background:#99A7C1}
+.throughput-impact{padding:22px;border-radius:16px;background:#EEF3FF;display:flex;flex-direction:column;gap:8px}
+.throughput-impact>strong{font-family:var(--display);font-size:clamp(40px,4.4vw,62px);font-weight:650;letter-spacing:-.05em;color:var(--acid);line-height:1}
+.throughput-impact>span{font-size:14px;line-height:1.5;color:var(--text-2)}
+.throughput-impact>b{font-size:13px;font-weight:600;color:var(--acid);margin-top:4px}
+.throughput-time{font-size:14px;line-height:1.65;border-top:1px solid var(--line-soft);padding-top:18px;margin-top:24px;color:var(--text-2)}
+.throughput-time b{color:var(--text);font-weight:600;white-space:normal}
+.calculation{margin-top:10px;color:var(--text-2)}
+.calculation>summary{display:inline-flex;align-items:center;min-height:44px;padding:8px 10px 8px 0;list-style:none;cursor:pointer;color:var(--acid);font-size:13px;font-weight:500;text-decoration:underline;text-underline-offset:4px}
+.calculation>summary::after{content:'＋';margin-left:10px;text-decoration:none}
+.calculation[open]>summary::after{content:'−'}
+.calculation>div{font-size:13px;line-height:1.6;max-width:86ch;padding:0 0 8px}.calculation p+p{margin-top:10px}
+html.has-motion .throughput:not(.in) .throughput-fill{transform:scaleX(.2)}
+html.has-motion .throughput.in .throughput-fill{transform:scaleX(1);transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.speed-comparison{margin-top:22px;margin-bottom:0}
+.speed-comparison h4{font-size:24px}
+.speed-columns{gap:16px;margin-top:18px}
+.speed-side{padding:18px}
+.speed-side>strong{font-size:clamp(32px,3.2vw,44px)}
+.base-report{margin-top:22px}
+.base-report-sources{margin-top:18px}
+.base-source{padding:18px}
+.base-report-results{margin-top:14px}
+.next-item{padding:22px}
+.contact-lead{font-size:17px;line-height:1.6;max-width:52ch;margin-top:22px;color:#D5DFF0}
+@media(min-width:900px){.hero-sub{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:48px}}
+@media(max-width:1050px){.outcome-title{font-size:24px}.outcome-card{min-height:180px}}
+@media(max-width:650px){header.hero{padding-top:30px}.hero h1{font-size:clamp(34px,9.4vw,58px)}.hero-grid{gap:18px}.hero-sub{gap:18px}.hero-lead{font-size:17px}.hero-context{font-size:14px}.hero-context span{font-size:12px}.hero-actions{gap:8px;margin-top:20px}.button-primary,.button-secondary{width:100%;min-height:46px;font-size:13px;padding:11px 12px}.outcomes{gap:10px;margin-top:22px}.outcome-card{min-height:170px;padding:16px}.outcome-title{font-size:20px;margin-top:16px}.outcome-card p{font-size:12px}.group-head{padding:22px 20px}.group-title{font-size:30px}.group-description{font-size:14px}.group-links a{font-size:12px;min-height:40px;display:flex;align-items:center;padding:8px 12px}.case-head{gap:14px}.case-title{font-size:28px}.case-title .loc{font-size:14px;margin-top:10px}.case-lede{font-size:17px}.case-role{padding:14px 16px}.throughput-layout{grid-template-columns:minmax(0,1fr);gap:20px;margin-top:22px}.throughput-label{font-size:14px}.throughput-label strong{font-size:32px}.throughput-impact{flex-direction:row;align-items:center;gap:12px;flex-wrap:wrap;padding:18px}.throughput-impact>strong{font-size:42px}.throughput-impact>span{font-size:13px}.throughput-impact>b{width:100%;margin-top:0}.throughput-time{font-size:13px}.throughput-head>span{font-size:12px}.case-details>summary{padding:14px 16px}.details-content{padding:0 16px 20px}.speed-comparison h4{font-size:21px}.speed-side>p{font-size:13px}.shot-cap{padding:12px 14px}.contact-lead{font-size:16px}}
+@media(max-width:380px){.outcomes{grid-template-columns:minmax(0,1fr)}.outcome-card{min-height:148px}.outcome-title{font-size:24px;margin-top:12px}.outcome-card p{padding-bottom:0}}
+@media(prefers-reduced-motion:reduce){html.has-motion .throughput .throughput-fill{transform:none!important;transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -475,36 +563,30 @@ a:focus-visible,button:focus-visible{outline:3px solid #7A9BFF;outline-offset:4p
       <p class="eyebrow">Анастасия Маркова · автоматизация маркетинга и клиентской работы</p>
       <h1>Автоматизации<br><em>для бизнеса</em></h1>
       <div class="hero-sub">
-        <p class="hero-lead">Помогаю собственникам и управляющим находить клиентов без задач в CRM, контролировать расходы и освобождать время команды от ручной подготовки сообщений, отчетов и материалов. В одном из проектов операторы стали обрабатывать <b>300 задач вместо 70 за 12-часовой рабочий день</b>.</p>
-        <dl class="hero-meta">
-          <div class="hero-meta-row"><dt>Что делаю</dt><dd>работа с клиентской базой, повторные касания, контроль рекламы, отчетность и контент</dd></div>
-          <div class="hero-meta-row"><dt>Что дает</dt><dd>время для клиентов и решений, понятную загрузку команды и контроль расходов</dd></div>
-          <div class="hero-meta-row"><dt>Собрано</dt><dd>9 разработок в четырех направлениях; у демо отдельно указан этап</dd></div>
-          <div class="hero-meta-row"><dt>Для кого</dt><dd>собственники, предприниматели, управляющие и HR; кейсы из медицины, beauty B2B, розничной торговли и управления бизнесом</dd></div>
-          <div class="hero-meta-row"><dt>Обновлено</dt><dd>12 октября 2026</dd></div>
-        </dl>
+        <p class="hero-lead">Освобождаю время команды, помогаю контролировать клиентскую базу и рекламные расходы. Ниже — рабочие решения, моя роль и примеры результата.</p>
+        <p class="hero-context">9 проектов в четырех направлениях<br><span>Рабочие инструменты, опубликованный сайт и демо</span></p>
       </div>
     </div>
-    <div class="hero-flow" aria-label="Результат автоматизации"><span>Меньше ручных шагов</span><i aria-hidden="true">→</i><span>Готовый результат</span><i aria-hidden="true">→</i><span>Время для бизнеса</span></div>
+    <div class="hero-actions"><a class="button-primary" href="#operator-panels">Панель: 70 → 300 задач за день</a><a class="button-secondary" href="#contact">Обсудить задачу</a></div>
     <div class="outcomes" id="recent" aria-label="Четыре направления разработок">
       <a class="outcome-card" href="#time">
         <span class="outcome-index">01 / 3 разработки</span>
-        <span class="outcome-title">Экономия времени</span><p>Больше выполненных задач за тот же рабочий день.</p>
+        <span class="outcome-title">Экономия времени</span><p>Панель: 300 задач вместо 70 за смену.</p>
         <span class="outcome-arrow" aria-hidden="true">↗</span>
       </a>
       <a class="outcome-card" href="#visibility">
         <span class="outcome-index">02 / 2 разработки</span>
-        <span class="outcome-title">Прозрачность процессов</span><p>Клиентская база, расходы и результаты перед глазами.</p>
+        <span class="outcome-title">Прозрачность процессов</span><p>Клиенты без задачи в CRM и расходы на рекламу.</p>
         <span class="outcome-arrow" aria-hidden="true">↗</span>
       </a>
       <a class="outcome-card" href="#sales">
         <span class="outcome-index">03 / 2 разработки</span>
-        <span class="outcome-title">Рост продаж</span><p>Повторные покупки и удобный путь к заказу.</p>
+        <span class="outcome-title">Рост продаж</span><p>Повторные закупки и онлайн-заказы.</p>
         <span class="outcome-arrow" aria-hidden="true">↗</span>
       </a>
       <a class="outcome-card" href="#other">
         <span class="outcome-index">04 / 2 разработки</span>
-        <span class="outcome-title">Другие автоматизации</span><p>Обратная связь с аудиторией и личный бюджет.</p>
+        <span class="outcome-title">Другие автоматизации</span><p>Вопросы аудитории и личный бюджет.</p>
         <span class="outcome-arrow" aria-hidden="true">↗</span>
       </a>
     </div>
@@ -544,31 +626,31 @@ a:focus-visible,button:focus-visible{outline:3px solid #7A9BFF;outline-offset:4p
       <div><span class="niche">Косметология · работа с клиентской базой</span>
         <h3 class="case-title">Панель оператора<span class="loc">Больше обработанных задач за ту же смену</span></h3>
       </div>
-      <div class="case-tags"><span class="tag tag--hot">Реализовано</span></div>
-    </div>
-<div class="rv">
-      <p class="stats-scope"><b>Результат работы операторов</b> · рабочий день 12 часов</p>
-      <div class="stats">
-        <div class="stat"><span class="val" data-counted="1">70 → 300</span><span class="cap">обработанных задач за рабочий день</span></div>
-        <div class="stat"><span class="val" data-counted="1">4,3×</span><span class="cap">рост количества обработанных задач</span></div>
-        <div class="stat"><span class="val" data-counted="1">2:24</span><span class="cap">минуты и секунды на задачу вместо 10:17</span></div>
-        <div class="stat"><span class="val" data-counted="1">−77%</span><span class="cap">сократилось среднее время на задачу</span></div>
+      <div class="case-tags"><span class="tag">Рабочий инструмент</span></div>
+    </div><p class="case-lede">Команда успевает обработать больше клиентских задач за тот же рабочий день.</p>
+<div class="throughput rv" aria-label="Количество задач до и после панели за одинаковый 12-часовой рабочий день">
+      <div class="throughput-head"><h4>Больше задач за ту же смену</h4><span>Одинаковый рабочий день · 12 часов</span></div>
+      <div class="throughput-layout">
+        <div class="throughput-chart">
+          <div class="throughput-row"><div class="throughput-label"><span>До панели</span><strong>70 <small>задач</small></strong></div><div class="throughput-track" aria-hidden="true"><div class="throughput-fill throughput-fill--before" style="width:23.333333%"></div></div></div>
+          <div class="throughput-row"><div class="throughput-label"><span>С панелью</span><strong>300 <small>задач</small></strong></div><div class="throughput-track" aria-hidden="true"><div class="throughput-fill" style="width:100%"></div></div></div>
+        </div>
+        <div class="throughput-impact"><strong>+230</strong><span>обработанных задач<br>за тот же рабочий день</span><b>В 4,3 раза больше</b></div>
       </div>
-      <p class="case-status">Время на задачу — в пересчете на объем за одинаковый 12-часовой рабочий день:
-      12 часов / 70 задач ≈ 10 минут 17 секунд; 12 часов / 300 задач = 2 минуты 24 секунды.
-      Разница — около 7 минут 53 секунд на задачу.</p>
+      <p class="throughput-time">Среднее время на задачу в пересчете на дневной объем: <b>10 мин 17 сек → 2 мин 24 сек</b>.</p>
+      <details class="calculation"><summary>Как рассчитано время</summary><div><p>Делим одинаковые 12 часов на количество задач: 720 минут / 70 ≈ 10 минут 17 секунд; 720 минут / 300 = 2 минуты 24 секунды. Разница — около 7 минут 53 секунд, или 77%.</p><p>Это расчет по объему за день, а не замер каждой задачи. Результат относится к обработанным задачам; влияние на записи и выручку здесь не измеряли.</p></div></details>
     </div>
-    <div class="case-body case-body--text">
+    
+    <div class="shot rv">
+      <a href="media/operator-wahelp-selected.png" target="_blank" rel="noopener" aria-label="Открыть экран панели крупнее">
+        <img src="media/operator-wahelp-selected.png" width="1649" height="954" loading="lazy" alt="Демонстрационный экран WAHELP: задачи на день, история переписки, подготовленное сообщение со свободным временем врача и основание для касания. Имена закрыты красным.">
+      </a>
+      <div class="shot-cap"><span>Очередь → переписка → готовое сообщение с вариантами записи</span><span>Демонстрационные данные · открыть крупнее ↗</span></div>
+    </div>
+  <p class="case-role"><b>Моя роль.</b> Собрала панель с историей клиента, черновиком сообщения, свободным временем врача и следующей задачей в CRM.</p><details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
       <div class="rv"><div class="block"><h4>Что отнимало время</h4><p>Перед сообщением оператор собирал историю клиента, проверял запись и расписание врача, готовил текст и ставил следующую задачу.</p></div><div class="block"><h4>Что сделала</h4><p>Собрала это в одном рабочем экране. Оператор получает историю клиента, подходящее время и черновик сообщения; проверяет текст и подтверждает отправку.</p></div><div class="block" id="slots"><h4>Подбор времени — часть панели</h4><p>Свободное время врача подставляется из расписания в сообщение. Оператор получает ближайшие варианты записи без ручного переноса часов; при отправке из панели доступность времени проверяется повторно.</p></div></div>
       <div class="rv"><div class="block"><h4>Что получает клиника</h4><p>Операторы обрабатывают <b>300 задач вместо 70 за 12-часовой день</b>. В ту же смену команда успевает связаться с большим количеством клиентов. Среднее время на задачу в пересчете на дневной объем сократилось примерно <b>на 77%</b>.</p></div><p class="case-status">Измеренный результат относится к обработке задач. Влияние на записи и выручку требует отдельного замера.</p></div>
-    </div>
-    <div class="shot rv">
-      <a href="media/operator-wahelp-selected.png" target="_blank" rel="noopener" aria-label="Увеличить выбранный скрин панели WAHELP">
-        <img src="media/operator-wahelp-selected.png" width="1649" height="954" loading="lazy" alt="Выбранный демонстрационный скрин WAHELP: задачи на день, история переписки, подготовленное сообщение со свободным временем врача и основание для касания. Имена закрыты красным.">
-      </a>
-      <div class="shot-cap"><span>Очередь → переписка → готовое сообщение с вариантами записи</span><span>Выбранный скрин WAHELP · вымышленные данные · нажми, чтобы увеличить</span></div>
-    </div>
-  </section>
+    </div></div></details></section>
 
   <section class="case" id="business-assistant">
     <span id="zamdir24" aria-hidden="true"></span>
@@ -577,18 +659,9 @@ a:focus-visible,button:focus-visible{outline:3px solid #7A9BFF;outline-offset:4p
       <div><span class="niche">Управление бизнесом · рабочие поручения</span>
         <h3 class="case-title">Исследования и документы<span class="loc">От поручения в Telegram до готового отчета</span></h3>
       </div>
-      <div class="case-tags"><span class="tag tag--hot">Участие в проекте</span></div>
-    </div>
-    <div class="case-body case-body--text">
-      <div class="rv">
-        <div class="block"><h4>Задача собственника</h4><p>Найти информацию, сравнить варианты и подготовить материал для решения. Самостоятельный поиск и оформление отчета отнимают время у управления бизнесом.</p></div>
-        <div class="block"><h4>Моя роль</h4><p>Участвовала в проекте рабочего ИИ-помощника: руководитель передает поручение в Telegram и получает исследование или документ. Задачи разных проектов можно вести в отдельных темах.</p></div>
-      </div>
-      <div class="rv">
-        <div class="block"><h4>Что получает руководитель</h4><p>Передает помощнику поиск и подготовку материалов, получает готовый файл для просмотра. Ему остается проверить выводы и принять решение — время на сбор и оформление можно направить на работу с командой и клиентами.</p></div>
-        <div class="block"><h4>Что видно в демонстрации</h4><p>Поручение найти и сравнить агентства недвижимости, готовый PDF в Telegram и просмотр отчета. Это тестовый сценарий, который показывает путь от задачи до результата.</p></div>
-      </div>
-    </div>
+      <div class="case-tags"><span class="tag">Демонстрация</span></div>
+    </div><p class="case-lede">Руководитель передает поручение в Telegram и получает готовое исследование или документ.</p>
+    
     <div class="shot rv">
       <video controls playsinline preload="metadata" width="1280" height="960"
         poster="media/business-assistant-readable-poster-2026-10-12.jpg" aria-label="Читаемая демонстрация: поручение, готовый PDF и просмотр отчета">
@@ -599,18 +672,27 @@ a:focus-visible,button:focus-visible{outline:3px solid #7A9BFF;outline-offset:4p
     </div>
     <a class="linkcard" href="media/business-assistant-readable-2026-10-12.mp4" target="_blank" rel="noopener"><span class="lc-k">Видео</span><span class="lc-v">Открыть демонстрацию отдельно</span><span class="lc-arrow" aria-hidden="true">↗</span></a>
     <p class="case-status">Монтаж фрагментов презентации от 9 сентября 2026. В кадре — экран системы с читаемой перепиской и документом.</p>
-  </section>
+  <p class="case-role"><b>Моя роль.</b> Участвовала в проекте рабочего ИИ-помощника.</p><details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
+      <div class="rv">
+        <div class="block"><h4>Задача собственника</h4><p>Найти информацию, сравнить варианты и подготовить материал для решения. Самостоятельный поиск и оформление отчета отнимают время у управления бизнесом.</p></div>
+        <div class="block"><h4>Моя роль</h4><p>Участвовала в проекте рабочего ИИ-помощника: руководитель передает поручение в Telegram и получает исследование или документ. Задачи разных проектов можно вести в отдельных темах.</p></div>
+      </div>
+      <div class="rv">
+        <div class="block"><h4>Что получает руководитель</h4><p>Передает помощнику поиск и подготовку материалов, получает готовый файл для просмотра. Ему остается проверить выводы и принять решение — время на сбор и оформление можно направить на работу с командой и клиентами.</p></div>
+        <div class="block"><h4>Что видно в демонстрации</h4><p>Поручение найти и сравнить агентства недвижимости, готовый PDF в Telegram и просмотр отчета. Это тестовый сценарий, который показывает путь от задачи до результата.</p></div>
+      </div>
+    </div></div></details></section>
 
   <section class="case" id="tools">
     <div class="case-head rv"><div class="case-num">1.3</div>
       <div><span class="niche">Маркетинг · отчетность и контент</span><h3 class="case-title">Время на запуск и решения<span class="loc">Меньше ручной подготовки отчетов и материалов</span></h3></div>
-      <div class="case-tags"><span class="tag tag--hot">Использую в работе</span></div>
-    </div>
+      <div class="case-tags"><span class="tag">Использую в работе</span></div>
+    </div><p class="case-lede">Маркетолог быстрее готовит отчеты и материалы, а клиент читает актуальную версию документа по одной ссылке.</p><p class="case-role"><b>Моя роль.</b> Собираю инструменты для отчетности, расшифровки записей и подготовки рекламных макетов.</p>
     <div class="next-grid rv" style="margin-top:0">
-      <div class="next-item"><span class="st">Отчеты</span><h4>Видеть результат контента</h4><p>Собираю охваты, просмотры и реакции по постам и клипам за нужный период. Маркетолог получает готовую сводку и тратит меньше времени на сбор цифр для оценки материалов.</p></div>
-      <div class="next-item"><span class="st">Документы</span><h4>Одна актуальная версия для клиента</h4><p>Обновляю рабочий Google Документ по постоянной ссылке. Клиент читает текущую версию; специалист экономит время на создании копий и пересылке новых ссылок.</p></div>
-      <div class="next-item"><span class="st">Контент</span><h4>Использовать материал интервью</h4><p>Преобразую запись в текст для подготовки постов, сценариев и конспектов. Экономится время на ручную расшифровку и повторное прослушивание; запись остается на рабочем компьютере.</p></div>
-      <div class="next-item"><span class="st">Креативы</span><h4>Подготовить комплект к запуску</h4><p>Собираю рекламные макеты разных размеров по одному шаблону. Дизайнер экономит время на повторной верстке, команда получает комплект материалов для размещения.</p></div>
+      <div class="next-item"><span class="st">Отчеты</span><h4>Видеть результат контента</h4><p>Охваты, просмотры и реакции — в готовой сводке за нужный период. Маркетолог быстрее оценивает материалы.</p></div>
+      <div class="next-item"><span class="st">Документы</span><h4>Одна актуальная версия для клиента</h4><p>Клиент читает текущую версию по одной ссылке. Специалист меньше создает копии и пересылает файлы.</p></div>
+      <div class="next-item"><span class="st">Контент</span><h4>Использовать материал интервью</h4><p>Из записи — текст для постов, сценариев и конспектов. Меньше ручной расшифровки и повторного прослушивания.</p></div>
+      <div class="next-item"><span class="st">Креативы</span><h4>Подготовить комплект к запуску</h4><p>Из одного шаблона — комплект рекламных размеров. Дизайнер меньше повторяет верстку перед запуском.</p></div>
     </div>
   </section>
 
@@ -630,33 +712,18 @@ a:focus-visible,button:focus-visible{outline:3px solid #7A9BFF;outline-offset:4p
       <div><span class="niche">Косметология · аналитика клиентской базы</span>
         <h3 class="case-title">Контроль клиентской базы<span class="loc">YClients + WAHELP: найти клиентов без задачи на дальнейшую работу</span></h3>
       </div>
-      <div class="case-tags"><span class="tag tag--hot">Для регулярной сверки</span></div>
-    </div>
+      <div class="case-tags"><span class="tag">Рабочий инструмент</span></div>
+    </div><p class="case-lede">Руководитель получает список клиентов без задач и может распределить их между операторами.</p>
     <div class="speed-comparison rv" aria-label="Скорость сверки одной базы: код и ручная работа">
-      <h4>Код против человека — скорость работы</h4>
+      <h4>Одна база: ручная и автоматическая сверка</h4>
       <p>Сверка одного объема: <b>2 614 клиентов</b> из YClients с задачами в WAHELP.</p>
       <div class="speed-columns">
-        <div class="speed-side"><span>Код · автоматическая сверка</span><strong>≈2 минуты</strong><p><b>Замер одного рабочего прогона.</b><br>Код сопоставил клиентов и задачи, подготовил список расхождений.</p></div>
-        <div class="speed-side speed-side--manual"><span>Человек · ручная сверка</span><strong>≈3 месяца</strong><p><b>Консервативная оценка того же объема.</b><br>Ручная проверка карточек и задач в двух системах.</p></div>
+        <div class="speed-side"><span>Автоматическая сверка</span><strong>≈2 минуты</strong><p><b>Замер одного рабочего прогона.</b><br>Код сопоставил клиентов и задачи, подготовил список расхождений.</p></div>
+        <div class="speed-side speed-side--manual"><span>Ручная сверка</span><strong>≈3 месяца</strong><p><b>Консервативная оценка того же объема.</b><br>Ручная проверка карточек и задач в двух системах.</p></div>
       </div>
     </div>
-    <div class="rv">
-      <div class="stats stats--results">
-        <div class="stat"><span class="val" data-counted="1">2 614</span><span class="cap">клиентов проверены за один прогон</span></div>
-        <div class="stat"><span class="val" data-counted="1">2 426</span><span class="cap">клиентов найдены без задачи в WAHELP</span></div>
-      </div>
-    </div>
-    <div class="case-body case-body--text">
-      <div class="rv">
-        <div class="block"><h4>Что нужно контролировать</h4><p>Клиенты и история посещений хранятся в YClients, а задачи по дальнейшей работе с ними — в WAHELP. Клиент может быть в базе, но без задачи на повторное касание. Если его пропустить, компания рискует упустить повторную запись и прибыль.</p></div>
-        <div class="block"><h4>Что разработала</h4><p>Связала данные двух систем по номерам телефонов и разработала код аналитики для поиска клиентов без задачи в WAHELP. Руководитель получает готовый список для разбора и распределения между операторами.</p></div>
-      </div>
-      <div class="rv">
-        <div class="block"><h4>Как использовать постоянно</h4><p>После обновления выгрузки базы можно запускать сверку снова: видеть клиентов без задачи и добавлять их в дальнейшую работу. Такой контроль особенно полезен на больших базах, где ручная проверка каждой карточки занимает месяцы.</p></div>
-        <div class="block"><h4>Результат и польза</h4><p>В рабочем прогоне проверила <b>2 614 клиентов примерно за две минуты</b> и выявила <b>2 426 клиентов без задачи</b>. Команда получила список для дальнейшей работы — основу для повторных касаний и снижения риска упущенных записей.</p></div>
-        <p class="case-status">Найденных клиентов нужно разобрать перед касанием; прирост прибыли отдельно не измерялся.</p>
-      </div>
-    </div>
+    
+    
     <figure class="base-report rv" aria-label="Схема аналитики: сверка клиентов YClients с задачами WAHELP">
       <div class="base-report-head"><div><span class="base-report-k">Аналитика клиентской базы</span><h4>Кто остается без задачи</h4></div><span class="base-report-badge">Сверка двух CRM</span></div>
       <div class="base-report-sources">
@@ -671,7 +738,17 @@ a:focus-visible,button:focus-visible{outline:3px solid #7A9BFF;outline-offset:4p
       </div>
       <figcaption>Схема аналитического отчета · результаты рабочего прогона · без имен и телефонов</figcaption>
     </figure>
-  </section>
+  <p class="evidence-note">≈2 минуты — замер одного прогона. ≈3 месяца — оценка ручной сверки того же объема. Список нужно разобрать перед касанием.</p><p class="case-role"><b>Моя роль.</b> Связала данные YClients и WAHELP по номерам телефонов и разработала код для повторной сверки обновленных выгрузок.</p><details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
+      <div class="rv">
+        <div class="block"><h4>Что нужно контролировать</h4><p>Клиенты и история посещений хранятся в YClients, а задачи по дальнейшей работе с ними — в WAHELP. Клиент может быть в базе, но без задачи на повторное касание. Если его пропустить, компания рискует упустить повторную запись и прибыль.</p></div>
+        <div class="block"><h4>Что разработала</h4><p>Связала данные двух систем по номерам телефонов и разработала код аналитики для поиска клиентов без задачи в WAHELP. Руководитель получает готовый список для разбора и распределения между операторами.</p></div>
+      </div>
+      <div class="rv">
+        <div class="block"><h4>Как использовать постоянно</h4><p>После обновления выгрузки базы можно запускать сверку снова: видеть клиентов без задачи и добавлять их в дальнейшую работу. Такой контроль особенно полезен на больших базах, где ручная проверка каждой карточки занимает месяцы.</p></div>
+        <div class="block"><h4>Результат и польза</h4><p>Команда получает список для разбора и повторных касаний. После обновления выгрузок сверку можно запускать снова и видеть, кого еще не добавили в работу.</p></div>
+        <p class="case-status">Найденных клиентов нужно разобрать перед касанием; прирост прибыли отдельно не измерялся.</p>
+      </div>
+    </div></div></details></section>
 
   <section class="case" id="bot-vk">
     
@@ -680,14 +757,14 @@ a:focus-visible,button:focus-visible{outline:3px solid #7A9BFF;outline-offset:4p
       <div><span class="niche">Стоматология · реклама</span>
         <h3 class="case-title">Реклама под контролем<span class="loc">Видеть расход бюджета и стоимость обращения по кнопке</span></h3>
       </div>
-      <div class="case-tags"><span class="tag tag--hot">Работает у клиента</span></div>
-    </div>
-    <div class="case-body case-body--text">
-      <div class="rv"><div class="block"><h4>Задача клиента</h4><p>Руководителю нужно понимать, сколько потратили на рекламу и сколько обращений получили. Ручной отчет приходится запрашивать у специалиста и ждать.</p></div><div class="block"><h4>Что сделала</h4><p>Собрала Telegram-бота со статистикой рекламы. Заказчик выбирает период и получает расходы, показы, клики, обращения и их стоимость.</p></div></div>
-      <div class="rv"><div class="block"><h4>Что получает руководитель</h4><p>Доступ к показателям без ожидания очередного отчета. Можно сравнивать периоды, замечать рост стоимости обращения и обсуждать расходы со специалистом на основе цифр.</p></div><div class="block"><h4>Что экономит специалист</h4><p>Время на ручную выгрузку, сведение показателей и повторные ответы заказчику. В боте доступны <b>5 готовых периодов</b> для просмотра.</p></div><div class="shot"><a href="media/ads-report-niche.jpg" target="_blank" rel="noopener" aria-label="Увеличить фрагмент рекламного отчета"><img src="media/ads-report-niche.jpg" width="448" height="238" loading="lazy" alt="Фрагмент отчета: рекламный бюджет, клики, обращения и их стоимость без названия клиента"></a><div class="shot-cap"><span>Стоматология · рекламный отчет</span><span>Название клиента скрыто</span></div></div></div>
-    </div>
+      <div class="case-tags"><span class="tag">Работает у клиента</span></div>
+    </div><p class="case-lede">Заказчик видит рекламные расходы и стоимость обращения, не дожидаясь отчета специалиста.</p>
     
-  </section>
+    
+  <div class="shot"><a href="media/ads-report-niche.jpg" target="_blank" rel="noopener" aria-label="Увеличить фрагмент рекламного отчета"><img src="media/ads-report-niche.jpg" width="448" height="238" loading="lazy" alt="Фрагмент отчета: рекламный бюджет, клики, обращения и их стоимость без названия клиента"></a><div class="shot-cap"><span>Стоматология · рекламный отчет</span><span>Название клиента скрыто</span></div></div><p class="case-role"><b>Моя роль.</b> Собрала Telegram-бота: выбор периода → показатели рекламы VK. Бот работает у клиента.</p><details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
+      <div class="rv"><div class="block"><h4>Задача клиента</h4><p>Руководителю нужно понимать, сколько потратили на рекламу и сколько обращений получили. Ручной отчет приходится запрашивать у специалиста и ждать.</p></div><div class="block"><h4>Что сделала</h4><p>Собрала Telegram-бота со статистикой рекламы. Заказчик выбирает период и получает расходы, показы, клики, обращения и их стоимость.</p></div></div>
+      <div class="rv"><div class="block"><h4>Что получает руководитель</h4><p>Доступ к показателям без ожидания очередного отчета. Можно сравнивать периоды, замечать рост стоимости обращения и обсуждать расходы со специалистом на основе цифр.</p></div><div class="block"><h4>Что экономит специалист</h4><p>Время на ручную выгрузку, сведение показателей и повторные ответы заказчику. В боте доступны <b>5 готовых периодов</b> для просмотра.</p></div></div>
+    </div></div></details></section>
 
   </section>
 
@@ -706,19 +783,19 @@ a:focus-visible,button:focus-visible{outline:3px solid #7A9BFF;outline-offset:4p
       <div><span class="niche">Производство beauty-продукции · B2B</span>
         <h3 class="case-title">Повторные закупки<span class="loc">Связаться с покупателем, когда ему пора пополнить запас</span></h3>
       </div>
-      <div class="case-tags"><span class="tag tag--hot">Проект и демо</span></div>
-    </div>
-    <div class="case-body case-body--text">
-      <div class="rv"><div class="block"><h4>Задача клиента</h4><p>Производителю важно получать повторные заказы. Менеджер может пропустить покупателя, который обычно заказывает регулярно, но в этот раз задержался.</p></div><div class="block"><h4>Что подготовила</h4><p>Собрала демо, в котором менеджер видит очередь клиентов на сегодня, причину касания и готовый текст по истории закупок. В демо — <b>6 сегментов покупателей и 10 поводов для сообщения</b>.</p></div></div>
-      <div class="rv"><div class="block"><h4>Что это дает</h4><p>Менеджер тратит меньше времени на перебор базы и поиск повода написать. Покупателям можно напоминать о закупке в подходящий момент — это основа для работы над повторными продажами.</p></div><a class="linkcard" href="../gel/demo/"><span class="lc-k">Открыть демо</span><span class="lc-v">Очередь повторных закупок</span><span class="lc-arrow" aria-hidden="true">→</span></a><p class="case-status">В демо используются вымышленные данные. Рост повторных продаж и экономию времени нужно измерить в пилоте на реальной базе.</p></div>
-    </div>
+      <div class="case-tags"><span class="tag">Демо</span></div>
+    </div><p class="case-lede">Менеджер видит, кому пора напомнить о закупке, и получает текст по истории покупок.</p>
+    
     <div class="shot rv">
       <a href="media/b2b-niche-demo.jpg" target="_blank" rel="noopener" aria-label="Увеличить изображение: B2B · очередь и сегменты">
         <img src="media/b2b-niche-demo.jpg" width="1280" height="365" loading="lazy" alt="Демонстрация сегментов и истории закупок на вымышленных данных">
       </a>
       <div class="shot-cap"><span>B2B · очередь и сегменты</span><span>Вымышленные данные · нажми, чтобы увеличить</span></div>
     </div>
-  </section>
+  <p class="evidence-note">Демо на вымышленных данных. Эффект на продажи пока не измерен.</p><a class="case-action" href="../gel/demo/">Открыть демо очереди →</a><p class="case-role"><b>Моя роль.</b> Собрала демо очереди повторных закупок. Результат продаж и экономию времени предстоит измерить в пилоте.</p><details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
+      <div class="rv"><div class="block"><h4>Задача клиента</h4><p>Производителю важно получать повторные заказы. Менеджер может пропустить покупателя, который обычно заказывает регулярно, но в этот раз задержался.</p></div><div class="block"><h4>Что подготовила</h4><p>Собрала демо, в котором менеджер видит очередь клиентов на сегодня, причину касания и готовый текст по истории закупок. В демо — <b>6 сегментов покупателей и 10 поводов для сообщения</b>.</p></div></div>
+      <div class="rv"><div class="block"><h4>Что это дает</h4><p>Менеджер тратит меньше времени на перебор базы и поиск повода написать. Покупателям можно напоминать о закупке в подходящий момент — это основа для работы над повторными продажами.</p></div><a class="linkcard" href="../gel/demo/"><span class="lc-k">Открыть демо</span><span class="lc-v">Очередь повторных закупок</span><span class="lc-arrow" aria-hidden="true">→</span></a><p class="case-status">В демо используются вымышленные данные. Рост повторных продаж и экономию времени нужно измерить в пилоте на реальной базе.</p></div>
+    </div></div></details></section>
 
   <section class="case" id="online-store">
     <div class="case-head rv">
@@ -726,9 +803,16 @@ a:focus-visible,button:focus-visible{outline:3px solid #7A9BFF;outline-offset:4p
       <div><span class="niche">Розничная торговля · продукты с доставкой</span>
         <h3 class="case-title">Интернет-магазин<span class="loc">Покупатель сам выбирает товары и собирает заказ</span></h3>
       </div>
-      <div class="case-tags"><span class="tag tag--hot">Сайт опубликован</span></div>
+      <div class="case-tags"><span class="tag">Опубликован</span></div>
+    </div><p class="case-lede">Покупатель сам выбирает продукты, фасовку и собирает заказ — команда меньше объясняет ассортимент в переписке.</p>
+    
+    <div class="shot rv">
+      <a href="media/online-store-food-2026-10-12.png" target="_blank" rel="noopener" aria-label="Увеличить изображение: интернет-магазин продуктов">
+        <img src="media/online-store-food-2026-10-12.png" width="1280" height="530" loading="lazy" alt="Реальный экран интернет-магазина: товары, цены, выбор фасовки и добавление в корзину">
+      </a>
+      <div class="shot-cap"><span>Интернет-магазин продуктов · каталог</span><span>Реальный экран опубликованного сайта</span></div>
     </div>
-    <div class="case-body case-body--text">
+  <a class="case-action" href="https://xn--80aaajn3amgzftf.xn--p1ai/" target="_blank" rel="noopener">Открыть интернет-магазин ↗</a><p class="case-role"><b>Моя роль.</b> Создала интернет-магазин продуктов с каталогом, поиском, корзиной и программой лояльности.</p><details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
       <div class="rv">
         <div class="block"><h4>Задача бизнеса</h4><p>Дать покупателям удобный способ выбрать продукты с доставкой: увидеть ассортимент, цены и варианты фасовки, собрать корзину.</p></div>
         <div class="block"><h4>Что сделала</h4><p>Создала интернет-магазин продуктов. На сайте — каталог по категориям, поиск, карточки товаров, корзина, избранное и личный кабинет. Предусмотрены акции, программа лояльности и приглашение друзей.</p></div>
@@ -738,14 +822,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #7A9BFF;outline-offset:4p
         <div class="block"><h4>Что получает бизнес</h4><p><b>Собственный сайт для онлайн-заказов</b>, на который можно направлять покупателей из рекламы и соцсетей. Акции и программа лояльности дают повод вернуться за следующей покупкой.</p></div>
         <a class="linkcard" href="https://xn--80aaajn3amgzftf.xn--p1ai/" target="_blank" rel="noopener"><span class="lc-k">Посмотреть результат</span><span class="lc-v">Открыть интернет-магазин</span><span class="lc-arrow" aria-hidden="true">→</span></a>
       </div>
-    </div>
-    <div class="shot rv">
-      <a href="media/online-store-food-2026-10-12.png" target="_blank" rel="noopener" aria-label="Увеличить изображение: интернет-магазин продуктов">
-        <img src="media/online-store-food-2026-10-12.png" width="1280" height="530" loading="lazy" alt="Реальный экран интернет-магазина: товары, цены, выбор фасовки и добавление в корзину">
-      </a>
-      <div class="shot-cap"><span>Интернет-магазин продуктов · каталог</span><span>Реальный экран опубликованного сайта</span></div>
-    </div>
-  </section>
+    </div></div></details></section>
 
   </section>
 
@@ -764,14 +841,14 @@ a:focus-visible,button:focus-visible{outline:3px solid #7A9BFF;outline-offset:4p
       <div><span class="niche">Медицина · личный бренд врача</span>
         <h3 class="case-title">Вопросы аудитории для контента<span class="loc">Говорить о том, что действительно волнует подписчиков</span></h3>
       </div>
-      <div class="case-tags"><span class="tag tag--hot">Бот собран</span></div>
-    </div>
-    <div class="case-body case-body--text">
+      <div class="case-tags"><span class="tag">Бот собран</span></div>
+    </div><p class="case-lede">Врач получает вопросы без имени отправителя, а команда использует их как темы для контента.</p>
+    
+    
+  <p class="case-role"><b>Моя роль.</b> Собрала Telegram-бота с автоматической передачей вопросов в закрытый чат и сохранением тем.</p><details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
       <div class="rv"><div class="block"><h4>Задача клиента</h4><p>Подписчики стесняются задавать вопросы о здоровье публично. Врачу трудно понять, какие темы им нужны, а специалисту приходится придумывать темы для контента.</p></div><div class="block"><h4>Что сделала</h4><p>Собрала бота, который передает вопрос в закрытый чат врача без имени отправителя. Вопросы сохраняются и могут стать темами публикаций.</p></div></div>
       <div class="rv"><div class="block"><h4>Что получает врач</h4><p>Канал обратной связи по чувствительным темам. Можно отвечать на реальные вопросы аудитории и готовить полезные публикации.</p></div><div class="block"><h4>Что экономит команда</h4><p>Время на ручную передачу вопросов и ведение отдельного списка тем. Передача врачу и сохранение вопроса происходят автоматически.</p></div></div>
-    </div>
-    
-  </section>
+    </div></div></details></section>
 
   <section class="case" id="finbot">
     
@@ -780,14 +857,14 @@ a:focus-visible,button:focus-visible{outline:3px solid #7A9BFF;outline-offset:4p
       <div><span class="niche">Личные финансы · учет расходов</span>
         <h3 class="case-title">Бюджет под контролем<span class="loc">Понимать, сколько денег осталось и как идут расходы</span></h3>
       </div>
-      <div class="case-tags"><span class="tag tag--hot">Бот развернут</span></div>
-    </div>
-    <div class="case-body case-body--text">
+      <div class="case-tags"><span class="tag">Бот развернут</span></div>
+    </div><p class="case-lede">Пользователь записывает траты сообщением и видит, сколько денег осталось.</p>
+    
+    
+  <p class="case-role"><b>Моя роль.</b> Собрала Telegram-бота для записи расходов в таблицу и просмотра своего бюджета.</p><details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
       <div class="rv"><div class="block"><h4>Задача пользователя</h4><p>Чтобы планировать покупки и накопления, нужно знать свои расходы. Когда учет требует открывать таблицу и заполнять ячейки, мелкие траты легко пропустить.</p></div><div class="block"><h4>Что сделала</h4><p>Собрала бота: пишешь расход в Telegram — сумма попадает в нужную категорию таблицы. Одним сообщением можно записать несколько трат.</p></div></div>
       <div class="rv"><div class="block"><h4>Что получает пользователь</h4><p>По запросу видит, сколько потратил, сколько осталось и укладывается ли в свой бюджет. Эти цифры помогают планировать покупки и деньги на важные цели.</p></div><div class="block"><h4>Что экономится</h4><p>Время на открытие таблицы, поиск категории и ввод суммы. В примере одно сообщение с двумя расходами дает <b>две записи в таблице</b>. Сумма сэкономленных денег зависит от решений пользователя.</p></div></div>
-    </div>
-    
-  </section>
+    </div></div></details></section>
 
   </section>
 
@@ -826,7 +903,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #7A9BFF;outline-offset:4p
 <footer class="end" id="contact">
   <div class="wrap">
     <p class="eyebrow" style="color:rgba(250,246,245,.7)">Свободна для проектов</p>
-    <h2 style="margin-top:18px">Нужно<br>снять рутину<br>с команды?</h2>
+    <h2 style="margin-top:18px">Обсудим задачу<br>вашей команды</h2><p class="contact-lead">Напиши, что отнимает время: проверка базы, работа с обращениями или отчеты.</p>
 
     <div class="contacts">
       <a class="contact" href="https://t.me/nastya_mgh">
@@ -853,6 +930,14 @@ a:focus-visible,button:focus-visible{outline:3px solid #7A9BFF;outline-offset:4p
 
 <script>
 (function(){
+  function revealAnchor(){
+    var id;try{id=decodeURIComponent(window.location.hash.slice(1));}catch(e){return;}
+    var target=id&&document.getElementById(id);if(!target)return;
+    var parent=target.parentElement,opened=false;
+    while(parent){if(parent.tagName==='DETAILS'&&!parent.open){parent.open=true;opened=true;}parent=parent.parentElement;}
+    if(opened)requestAnimationFrame(function(){target.scrollIntoView({block:'start'});});
+  }
+  window.addEventListener('hashchange',revealAnchor);revealAnchor();
   var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var reveals=document.querySelectorAll('.rv');
   if(!reduced && 'IntersectionObserver' in window){
