@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
 <title>Автоматизация маркетинга и клиентской работы · Анастасия Маркова</title>
-<meta name="description" content="Автоматизации по задачам бизнеса: экономия времени, прозрачность процессов, рост продаж и другие разработки. Панели операторов, аналитика CRM, отчеты, интернет-магазин и Telegram-боты.">
+<meta name="description" content="Автоматизации по задачам бизнеса: экономия времени, прозрачность процессов, рост продаж, сайты и другие разработки. Панели операторов, аналитика CRM, отчеты, интернет-магазин и Telegram-боты.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -621,7 +621,7 @@ main.wrap>.development-group:first-child{margin-top:44px}
   
 }
 
-/* First screen: business benefits and four visible directions */
+/* First screen: business benefits and five visible directions */
 .hero-lead>span{display:block}
 .hero-lead>span+span{margin-top:12px}
 .outcome-card{background:#3157F4;border-color:#3157F4;color:#FFFFFF;min-height:220px}
@@ -634,6 +634,59 @@ main.wrap>.development-group:first-child{margin-top:44px}
 .outcome-arrow{color:#FFFFFF;border-color:rgba(255,255,255,.55)}
 @media(max-width:650px){.outcome-card{min-height:180px}.outcome-card p{font-size:13px}.hero-lead>span+span{margin-top:10px}}
 @media(max-width:380px){.outcome-card{min-height:148px}}
+
+/* Project results and five distinct directions */
+.outcomes{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.outcome-card{padding:20px 17px;min-width:0}
+.outcome-title{font-size:clamp(20px,1.8vw,25px);overflow-wrap:normal}
+.outcome-card p{font-size:13px}
+.group-clock{display:inline-block;width:.78em;height:.78em;margin-right:.3em;vertical-align:-.04em;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.operator-top-result{background:transparent;border:0;border-top:1px solid rgba(212,224,239,.24);border-radius:0;box-shadow:none;padding:24px 0 0;margin-top:24px}
+.operator-top-result .throughput-head h4{color:#FFF;font-size:clamp(20px,2.2vw,29px);line-height:1.25}
+.operator-top-result .throughput-head>span,.operator-top-result .throughput-label,.operator-top-result .throughput-label small,.operator-top-result .throughput-impact>span{color:#D4E0EF}
+.operator-top-result .throughput-label strong{color:#FFF;font-size:clamp(28px,3vw,40px)}
+.operator-top-result .throughput-row:last-child .throughput-label strong{color:#AFC6FF}
+.operator-top-result .throughput-track{background:#243D58;height:16px}
+.operator-top-result .throughput-fill--before{background:#91A6C6}
+.operator-top-result .throughput-fill:not(.throughput-fill--before){background:#8BACFF}
+.operator-top-result .throughput-impact{background:#233D5C;padding:22px}
+.operator-top-result .throughput-impact>strong{color:#FFF}
+.operator-top-result .throughput-impact>b{color:#B6CEFF;line-height:1.5}
+.operator-top-result .throughput-replay{color:#E2EAFF;background:transparent;border-color:#587193}
+.operator-top-result .throughput-replay:hover{background:#233D5C}
+.operator-story{max-width:78ch}
+.operator-story h4{font-size:24px;line-height:1.3;font-weight:600;margin-bottom:16px}
+.operator-story p,.base-context>p:not(.case-lede){color:var(--text-2);font-size:16px;line-height:1.7;margin-top:14px}
+.base-context{max-width:82ch}
+.operator-average{margin-top:30px;padding:22px 26px;border-radius:18px;background:#E7EEFF;border:1px solid #C9D8FF}
+.operator-average>span{font-size:14px;color:#435678}
+.operator-average p{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:9px}
+.operator-average strong{font-family:var(--display);font-size:clamp(23px,3vw,36px);font-weight:650;line-height:1.3;color:#294BCC}
+.operator-average strong:first-child{color:#63718A;font-size:clamp(21px,2.4vw,29px)}
+.operator-average i{font-style:normal;color:#75859D;font-size:24px}
+.project-details{background:#E9F0FF;border-color:#BCCDFA;box-shadow:0 15px 40px -30px rgba(49,87,244,.3)}
+.project-details>summary{background:#DFE9FF;color:#2346C6}
+.project-details .details-content{background:#EDF3FF}
+.operator-benefit{padding:24px;border-radius:18px;background:#3157F4;color:#FFF;align-self:start}
+.operator-benefit h4{font-size:22px;font-weight:600;line-height:1.3;margin-bottom:15px}
+.operator-benefit p{font-size:15px;line-height:1.65}.operator-benefit p+p{margin-top:14px}
+.operator-timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:28px}
+.operator-timeline>div{padding:17px;border:1px solid #C9D8FA;border-radius:12px;background:#FFF}
+.operator-timeline span{display:block;font-size:13px;color:var(--text-2);line-height:1.5}
+.operator-timeline strong{display:block;margin-top:7px;font-size:22px;font-weight:600;color:#294BCC;line-height:1.3}
+.manager-showcase{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start;margin-top:26px;padding:28px;border:1px solid var(--line);border-radius:24px;background:#E9F0FB}
+.manager-showcase-copy{max-width:43ch;padding:22px 4px}
+.manager-showcase-copy h4{font-size:clamp(26px,3vw,40px);line-height:1.15;margin:20px 0;font-weight:650}
+.manager-showcase-copy>p:not(.eyebrow){color:var(--text-2);font-size:15px;line-height:1.7;margin-top:16px}
+.manager-demo-frame{display:block;width:100%;border:0;min-width:0;background:transparent;height:760px}
+.finbot-screens{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:28px;align-items:start}
+.finbot-screens .shot{margin:0}.finbot-screens .shot a{display:block}.finbot-screens img{object-fit:contain}
+.finbot-screens .sheet-view{overflow-x:auto}.finbot-screens .sheet-view img{min-width:1000px;width:100%}
+@media(max-width:1150px){.outcomes{grid-template-columns:repeat(3,minmax(0,1fr))}.outcome-title{font-size:24px}}
+@media(max-width:900px){.outcomes{grid-template-columns:repeat(2,minmax(0,1fr))}.manager-showcase{grid-template-columns:minmax(0,1fr)}.manager-showcase-copy{max-width:65ch;padding:4px}.manager-demo-frame{max-width:500px;margin-inline:auto}.finbot-screens{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:650px){.operator-average{padding:20px}.operator-average p{gap:8px}.operator-average strong{font-size:25px}.operator-average strong:first-child{font-size:23px}.operator-timeline{grid-template-columns:minmax(0,1fr)}.operator-timeline>div{display:flex;justify-content:space-between;gap:12px;align-items:center}.operator-timeline strong{margin:0;white-space:nowrap}.operator-top-result .throughput-label{gap:10px;flex-wrap:wrap}.operator-top-result .throughput-label strong{font-size:30px}.operator-top-result .throughput-impact{padding:18px}.manager-showcase{padding:18px 10px}.manager-showcase-copy{padding:6px}.operator-story p,.base-context>p:not(.case-lede){font-size:15px}.outcome-title{font-size:21px}}
+@media(max-width:380px){.outcomes{grid-template-columns:minmax(0,1fr)}.outcome-title{font-size:24px}.scene-result>strong{font-size:29px}.operator-average p{display:grid;grid-template-columns:1fr auto;gap:4px 8px}.operator-average i{grid-column:2;grid-row:1 / 3}.operator-average strong{grid-column:1}.manager-showcase{padding-inline:4px}.manager-showcase-copy{padding:10px}}
+
 </style>
 </head>
 <body>
@@ -659,26 +712,26 @@ main.wrap>.development-group:first-child{margin-top:44px}
         <h1>Автоматизация<br><em>для бизнеса</em></h1>
         <p class="hero-lead"><span>Освобождаю время команды (экономлю ФОТ).</span><span>Увеличиваю продажи с базы и конверсию с лидов.</span><span>Помогаю держать под контролем рекламные расходы и эффективность от закупа до LTV.</span></p>
         <div class="hero-actions"><a class="button-primary" href="#contact">Обсудить задачи</a></div>
-        <p class="hero-context">9 проектов в 4 направлениях<br><span>Рабочие инструменты, опубликованный сайт и демо</span></p>
+        <p class="hero-context">7 проектов в 5 направлениях<br><span>Рабочие инструменты, опубликованный сайт и демо</span></p>
       </div>
       <div class="scene-shell" data-phase="2">
         <div class="scene-topline"><span class="scene-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>От данных к готовой задаче</span><span class="scene-badge">Схема работы</span></div>
-        <div class="scene-stage" role="img" aria-label="Схема: история клиента, расписание и черновик собраны в одном экране. Оператор проверяет и отправляет сообщение. В проекте объем вырос с 70 до 300 задач за одинаковый 12-часовой рабочий день.">
+        <div class="scene-stage" role="img" aria-label="Схема: история клиента, расписание и черновик собраны в одном экране. Оператор проверяет и отправляет сообщение. На те же 70 задач стало уходить 3 часа вместо 12; эффективность выросла в 4 раза.">
           <svg class="scene-wires" viewBox="0 0 500 300" preserveAspectRatio="none" aria-hidden="true"><path d="M90 62 C170 62 120 144 250 144 S335 235 405 235"/><path d="M135 240 C185 240 160 144 250 144 S340 90 400 90"/></svg>
           <div class="scene-source scene-history" aria-hidden="true"><span class="scene-icon">01</span><strong>История клиента</strong><p>Посещения и переписка</p><div class="scene-skeleton"><i></i><i></i></div></div>
           <div class="scene-source scene-slots" aria-hidden="true"><span class="scene-icon">02</span><strong>Время для записи</strong><p>Свободные окна врача</p><div class="scene-chip">Из расписания</div></div>
           <div class="scene-source scene-message" aria-hidden="true"><span class="scene-icon">03</span><strong>Сообщение</strong><p>Черновик по истории клиента</p><div class="scene-skeleton"><i></i><i></i></div></div>
           <div class="scene-workspace" aria-hidden="true"><div class="scene-window-head"><span class="scene-icon">↗</span><strong>Один экран оператора</strong></div><ul><li><span>✓</span> История под рукой</li><li><span>✓</span> Время из расписания</li><li><span>✓</span> Сообщение на проверку</li></ul><p class="scene-human">Оператор проверяет и отправляет</p></div>
-          <div class="scene-result" aria-hidden="true"><span class="scene-result-k">За ту же смену</span><strong>70 <i>→</i> 300</strong><p>обработанных задач<br>за 12-часовой рабочий день</p><div class="scene-result-gain">+230 задач в день</div></div>
+          <div class="scene-result" aria-hidden="true"><span class="scene-result-k">Те же 70 задач</span><strong>12 <i>→</i> 3 часа</strong><p>вместо полного рабочего дня<br>на тот же объем задач</p><div class="scene-result-gain">Эффективность ×4</div></div>
         </div>
         <div class="scene-progress" aria-hidden="true"><span></span></div>
         <div class="scene-steps" aria-label="Этапы анимации"><button class="scene-step" type="button" aria-pressed="false" disabled>Данные</button><button class="scene-step" type="button" aria-pressed="false" disabled>Панель</button><button class="scene-step" type="button" aria-pressed="true" disabled>Результат</button></div>
         <div class="scene-controls"><span>Прокрутка управляет сценой</span><div><button class="scene-play" type="button" hidden>Воспроизвести</button><button class="scene-replay" type="button" hidden>Повторить ↻</button></div></div>
       </div>
     </div>
-    <div class="outcomes" id="recent" aria-label="Четыре направления разработок">
+    <div class="outcomes" id="recent" aria-label="Пять направлений разработок">
       <a class="outcome-card" href="#time">
-        <span class="outcome-index">01 / 3 разработки</span>
+        <span class="outcome-index">01 / 2 разработки</span>
         <span class="outcome-title">Экономия времени</span><p>Сотрудники успевают сделать в 4 раза больше.</p>
         <span class="outcome-arrow" aria-hidden="true">↗</span>
       </a>
@@ -688,12 +741,13 @@ main.wrap>.development-group:first-child{margin-top:44px}
         <span class="outcome-arrow" aria-hidden="true">↗</span>
       </a>
       <a class="outcome-card" href="#sales">
-        <span class="outcome-index">03 / 2 разработки</span>
+        <span class="outcome-index">03 / 1 разработка</span>
         <span class="outcome-title">Рост продаж</span><p>Увеличиваем возвращаемость. Продлеваем LTV.</p>
         <span class="outcome-arrow" aria-hidden="true">↗</span>
       </a>
+      <a class="outcome-card" href="#websites"><span class="outcome-index">04 / 1 проект</span><span class="outcome-title">Создание сайтов и интернет-магазинов</span><span class="outcome-arrow" aria-hidden="true">↗</span></a>
       <a class="outcome-card" href="#other">
-        <span class="outcome-index">04 / 2 разработки</span>
+        <span class="outcome-index">05 / 1 разработка</span>
         <span class="outcome-title">Другие автоматизации</span>
         <span class="outcome-arrow" aria-hidden="true">↗</span>
       </a>
@@ -710,126 +764,145 @@ main.wrap>.development-group:first-child{margin-top:44px}
 
   <section class="development-group" id="time" aria-labelledby="time-title">
     <header class="group-head">
-      <div class="group-kicker"><span>Раздел 1 из 4</span><p class="eyebrow">3 разработки</p></div>
-      <h2 class="group-title" id="time-title">Экономия времени</h2>
-      <p class="group-description">Больше задач за смену, готовая аналитика и меньше времени на подготовку материалов.</p>
-      <div class="group-links" aria-label="Разработки раздела"><a href="#operator-panels">Панель оператора</a><a href="#business-assistant">Аналитика в Telegram</a><a href="#tools">Время на запуск и решения</a></div>
+      <div class="group-kicker"><span>Раздел 1 из 5</span><p class="eyebrow">2 разработки</p></div>
+      <h2 class="group-title" id="time-title"><svg class="group-clock" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>Экономия времени</h2>
+      
+      <div class="throughput operator-top-result" aria-label="На обработку тех же 70 задач: было 12 часов, стало 3 часа; эффективность выросла в 4 раза">
+        <div class="throughput-head"><h4>Те же 70 задач — в 4 раза быстрее</h4><span>Сравниваем одинаковый объем работы</span></div>
+        <div class="throughput-layout">
+          <div class="throughput-chart">
+            <div class="throughput-row"><div class="throughput-label"><span>Было · 70 задач</span><strong>12 <small>часов работы</small></strong></div><div class="throughput-track" aria-hidden="true"><div class="throughput-fill throughput-fill--before" style="width:100%"></div></div></div>
+            <div class="throughput-row"><div class="throughput-label"><span>Стало · те же 70 задач</span><strong>3 <small>часа работы</small></strong></div><div class="throughput-track" aria-hidden="true"><div class="throughput-fill" style="width:25%"></div></div></div>
+          </div>
+          <div class="throughput-impact"><strong>×4</strong><span>выросла эффективность<br>обработки задач</span><b>9 часов освободилось на тот же объем</b></div>
+        </div>
+        <div class="throughput-controls"><button class="throughput-replay" type="button" hidden>Повторить анимацию ↻</button></div>
+      </div>
+      <div class="group-links" aria-label="Разработки раздела"><a href="#operator-panels">Панель оператора</a><a href="#business-assistant">Зам директора</a></div>
     </header>
 
   <section class="case" id="operator-panels">
-    
-    <div class="case-head rv">
-      <div class="case-num">1.1</div>
-      <div><span class="niche">Косметология · работа с клиентской базой</span>
-        <h3 class="case-title">Панель оператора<span class="loc">Больше обработанных задач за ту же смену</span></h3>
-      </div>
+    <div class="case-head rv"><div class="case-num">1.1</div>
+      <div><span class="niche">Косметология · работа с клиентской базой</span><h3 class="case-title">Панель оператора<span class="loc">История клиента, свободное время врача и готовый текст — в одном месте</span></h3></div>
       <div class="case-tags"><span class="tag">Рабочий инструмент</span></div>
-    </div><p class="case-lede">Команда успевает обработать больше клиентских задач за тот же рабочий день.</p>
-<div class="throughput rv" aria-label="Количество задач до и после панели за одинаковый 12-часовой рабочий день">
-      <div class="throughput-head"><h4>Больше задач за ту же смену</h4><span>Одинаковый рабочий день · 12 часов</span></div>
-      <div class="throughput-layout">
-        <div class="throughput-chart">
-          <div class="throughput-row"><div class="throughput-label"><span>До панели</span><strong>70 <small>задач</small></strong></div><div class="throughput-track" aria-hidden="true"><div class="throughput-fill throughput-fill--before" style="width:23.333333%"></div></div></div>
-          <div class="throughput-row"><div class="throughput-label"><span>С панелью</span><strong>300 <small>задач</small></strong></div><div class="throughput-track" aria-hidden="true"><div class="throughput-fill" style="width:100%"></div></div></div>
-        </div>
-        <div class="throughput-impact"><strong>+230</strong><span>обработанных задач<br>за тот же рабочий день</span><b>В 4,3 раза больше</b></div>
-      </div>
-      <div class="throughput-controls"><button class="throughput-replay" type="button" hidden>Повторить анимацию ↻</button></div>
-      <p class="throughput-time">Среднее время на задачу в пересчете на дневной объем: <b>10 мин 17 сек → 2 мин 24 сек</b>.</p>
-      <details class="calculation"><summary>Как рассчитано время</summary><div><p>Делим одинаковые 12 часов на количество задач: 720 минут / 70 ≈ 10 минут 17 секунд; 720 минут / 300 = 2 минуты 24 секунды. Разница — около 7 минут 53 секунд, или 77%.</p><p>Это расчет по объему за день, а не замер каждой задачи. Результат относится к обработанным задачам; влияние на записи и выручку здесь не измеряли.</p></div></details>
     </div>
-    
-    <div class="shot rv">
-      <a href="media/operator-wahelp-selected.png" target="_blank" rel="noopener" aria-label="Открыть экран панели крупнее">
-        <img src="media/operator-wahelp-selected.png" width="1649" height="954" loading="lazy" alt="Демонстрационный экран WAHELP: задачи на день, история переписки, подготовленное сообщение со свободным временем врача и основание для касания. Имена закрыты красным.">
-      </a>
-      <div class="shot-cap"><span>Очередь → переписка → готовое сообщение с вариантами записи</span><span>Демонстрационные данные · открыть крупнее ↗</span></div>
-    </div>
-  <details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
-      <div class="rv"><div class="block"><h4>Что отнимало время</h4><p>Перед сообщением оператор собирал историю клиента, проверял запись и расписание врача, готовил текст и ставил следующую задачу.</p></div><div class="block"><h4>Что сделала</h4><p>Собрала это в одном рабочем экране. Оператор получает историю клиента, подходящее время и черновик сообщения; проверяет текст и подтверждает отправку.</p></div><div class="block" id="slots"><h4>Подбор времени — часть панели</h4><p>Свободное время врача подставляется из расписания в сообщение. Оператор получает ближайшие варианты записи без ручного переноса часов; при отправке из панели доступность времени проверяется повторно.</p></div></div>
-      <div class="rv"><div class="block"><h4>Что получает клиника</h4><p>Операторы обрабатывают <b>300 задач вместо 70 за 12-часовой день</b>. В ту же смену команда успевает связаться с большим количеством клиентов. Среднее время на задачу в пересчете на дневной объем сократилось примерно <b>на 77%</b>.</p></div><p class="case-status">Измеренный результат относится к обработке задач. Влияние на записи и выручку требует отдельного замера.</p></div>
-    </div></div></details></section>
+    <section class="operator-story rv" aria-labelledby="operator-time-title">
+      <h4 id="operator-time-title">На что оператор тратит время</h4>
+      <p>Перед сообщением оператор анализирует посещения клиента и собирает данные о свободном времени врача. Большинство этих действий можно автоматизировать.</p>
+      <p>Система анализирует историю и учитывает контекст: повторное посещение той же процедуры, предложение новой процедуры или возвращение спустя год. Готовит текст для оператора с вариантами записи — ему остается проверить его и отправить.</p>
+      <p>Задачи, где клиенту нужно позвонить, вынесены отдельно. Оператор видит их сразу.</p>
+    </section>
+    <div class="operator-average rv"><span>Среднее время выполнения задачи сократилось</span><p><strong>10 мин 17 сек</strong><i aria-hidden="true">→</i><strong>2 мин 34 сек</strong></p></div>
+    <div class="shot rv"><a href="media/operator-wahelp-selected.png" target="_blank" rel="noopener" aria-label="Открыть экран панели крупнее"><img src="media/operator-wahelp-selected.png" width="1649" height="954" loading="lazy" alt="Демонстрационный экран оператора: задачи на день, история переписки и подготовленный текст с вариантами записи. Имена закрыты."></a><div class="shot-cap"><span>Очередь → история клиента → готовое сообщение</span><span>Демонстрационные данные · открыть крупнее ↗</span></div></div>
+    <details class="case-details project-details"><summary>Ход проекта<span aria-hidden="true">+</span></summary><div class="details-content">
+      <div class="case-body case-body--text"><div><div class="block"><h4>Собрала операторскую панель</h4><p>Объединила историю посещений, переписку, расписание врача и подготовку сообщения в одном рабочем экране. Звонки вынесла в отдельную очередь.</p></div><div class="block" id="slots"><h4>Подбор времени</h4><p>Свободные окна врача подставляются из расписания в сообщение. При отправке из панели доступность времени проверяется повторно.</p></div></div>
+      <aside class="operator-benefit"><h4>Что получает клиника</h4><p>На обработку 70 задач уходит 3 часа вместо 12. У команды освобождается 9 часов для других обращений и задач.</p><p>Меньше ручного сбора данных и поиска времени. Клиенты, которым нужен звонок, сразу видны в отдельной очереди.</p></aside></div>
+      <div class="operator-timeline"><div><span>Разработка</span><strong>1 месяц</strong></div><div><span>Внедрение и обкатка</span><strong>1 месяц</strong></div><div><span>Всего</span><strong>2 месяца</strong></div></div>
+      <details class="calculation"><summary>Как рассчитано среднее время</summary><div><p>12 часов / 70 задач ≈ 10 минут 17 секунд. 3 часа / 70 задач ≈ 2 минуты 34 секунды. Среднее время сократилось на 75%, эффективность выросла в 4 раза.</p><p>Это расчет по одинаковому объему работы, а не хронометраж каждой задачи. Влияние на записи и выручку отдельно не измерялось.</p></div></details>
+    </div></details>
+  </section>
 
   <section class="case" id="business-assistant">
-    <span id="zamdir24" aria-hidden="true"></span>
-    <div class="case-head rv">
-      <div class="case-num">1.2</div>
-      <div><span class="niche">Управление бизнесом · показатели и вопросы</span>
-        <h3 class="case-title">Аналитика в Telegram<span class="loc">Реклама, продажи и вопросы в одном чате</span></h3>
-      </div>
-      <div class="case-tags"><span class="tag">Пример интерфейса</span></div>
+    <span id="zamdir24" aria-hidden="true"></span><span id="tools" aria-hidden="true"></span>
+    <div class="case-head rv"><div class="case-num">1.2</div>
+      <div><span class="niche">Управление бизнесом · аналитика</span><h3 class="case-title">Зам директора<span class="loc">Все материалы в одном месте</span></h3></div>
+      <div class="case-tags"><span class="tag">Демонстрация интерфейса</span></div>
     </div>
-    <p class="case-lede">Руководитель читает показатели рекламы и продаж в отдельных разделах чата и задает вопросы помощнику.</p>
-    <a class="case-action" href="zamdir.html">Открыть прототип «Замдир» отдельно ↗</a>
-    <section class="assistant-demo" data-assistant-demo aria-label="Пример интерфейса помощника руководителя">
+    <p class="case-lede">Реклама, продажи и ответы на вопросы — в отдельных разделах Telegram. Руководитель получает основные показатели, не собирая их вручную из разных отчетов.</p>
+    <a class="case-action" href="zamdir.html">Открыть «Зам директора» отдельно ↗</a>
+    <section class="assistant-demo" data-assistant-demo aria-label="Демонстрация интерфейса Зам директора">
   <div class="assistant-demo-top">
     <span class="assistant-demo-mark" aria-hidden="true">↗</span>
-    <div><p class="assistant-demo-title">Помощник руководителя</p><p class="assistant-demo-caption">Пример интерфейса · демонстрационные данные</p></div>
+    <div class="assistant-demo-heading"><p class="assistant-demo-title">Зам директора</p><p class="assistant-demo-subtitle">Все материалы в одном месте</p><p class="assistant-demo-caption">Демонстрация интерфейса · вымышленные данные</p></div>
+    <button class="assistant-demo-pause" type="button" data-assistant-pause aria-pressed="false" hidden>Пауза</button>
   </div>
   <div class="assistant-demo-layout">
-    <nav class="assistant-demo-nav" aria-label="Разделы примера помощника">
+    <nav class="assistant-demo-nav" aria-label="Разделы демонстрации">
       <p class="assistant-demo-nav-label">Разделы</p>
       <button class="assistant-demo-section" type="button" data-assistant-section="ads" aria-pressed="true" disabled><span class="assistant-demo-icon" aria-hidden="true">↗</span><span>Аналитика рекламы</span></button>
       <button class="assistant-demo-section" type="button" data-assistant-section="sales" aria-pressed="false" disabled><span class="assistant-demo-icon" aria-hidden="true">₽</span><span>Аналитика продаж</span></button>
       <button class="assistant-demo-section" type="button" data-assistant-section="questions" aria-pressed="false" disabled><span class="assistant-demo-icon" aria-hidden="true">?</span><span>Вопрос помощнику</span></button>
     </nav>
     <div class="assistant-demo-main">
-      <div class="assistant-demo-chat" data-assistant-chat role="region" aria-label="Пример ответа">
-        <div class="assistant-demo-user"><span>Что с рекламой?</span></div>
-        <div class="assistant-demo-answer">
-          <p class="assistant-demo-answer-title">Реклама за выбранный период</p>
-          <p class="assistant-demo-period">Демонстрационные данные</p>
-          <div class="assistant-demo-metrics">
-            <div class="assistant-demo-metric"><span>Расходы</span><strong>48 000 ₽</strong></div>
-            <div class="assistant-demo-metric"><span>Обращения</span><strong>120</strong></div>
-            <div class="assistant-demo-metric"><span>За обращение</span><strong>400 ₽</strong></div>
-          </div>
-          <p class="assistant-demo-answer-note">В одном ответе — расход бюджета и стоимость обращения. Можно обсудить эти показатели со специалистом.</p>
+      <div class="assistant-demo-chat" data-assistant-panel="ads" role="region" aria-label="Демонстрационный рекламный отчет">
+        <div class="assistant-demo-telegram-head"><span class="assistant-demo-telegram-icon" aria-hidden="true">↗</span><div><p class="assistant-demo-answer-title">Отчет в Telegram</p><p class="assistant-demo-period">Расходы, обращения и креативы</p></div></div>
+        <div class="assistant-demo-period-picker" aria-label="Период рекламного отчета">
+          <button class="assistant-demo-period-button" type="button" data-assistant-period="today" aria-pressed="false" disabled>Сегодня</button>
+          <button class="assistant-demo-period-button" type="button" data-assistant-period="yesterday" aria-pressed="false" disabled>Вчера</button>
+          <button class="assistant-demo-period-button" type="button" data-assistant-period="week" aria-pressed="false" disabled>Эта неделя</button>
+          <button class="assistant-demo-period-button" type="button" data-assistant-period="previous" aria-pressed="true" disabled>Прошлая неделя</button>
+          <button class="assistant-demo-period-button" type="button" data-assistant-period="month" aria-pressed="false" disabled>С начала месяца</button>
+          <button class="assistant-demo-period-button" type="button" data-assistant-creatives aria-expanded="true" disabled>Креативы</button>
+          <button class="assistant-demo-period-button" type="button" data-assistant-period="custom" aria-pressed="false" aria-expanded="false" disabled>Свои даты</button>
         </div>
+        <form class="assistant-demo-dates" data-assistant-dates hidden>
+          <label>С <input class="assistant-demo-date-input" type="date" data-assistant-from required disabled></label>
+          <label>По <input class="assistant-demo-date-input" type="date" data-assistant-to required disabled></label>
+          <button class="assistant-demo-apply" type="submit" disabled>Показать</button>
+          <p class="assistant-demo-date-error" data-assistant-date-error role="status"></p>
+        </form>
+        <div class="assistant-demo-answer">
+          <p class="assistant-demo-answer-title">Сводка рекламы</p>
+          <p class="assistant-demo-period" data-assistant-period-label>Прошлая неделя · 7 дней</p>
+          <div class="assistant-demo-metrics">
+            <div class="assistant-demo-metric"><span>Расходы</span><strong data-assistant-value="ads-spend">48 000 ₽</strong></div>
+            <div class="assistant-demo-metric"><span>Обращения</span><strong data-assistant-value="ads-leads">120</strong></div>
+            <div class="assistant-demo-metric"><span>За обращение</span><strong data-assistant-value="ads-cpl">400 ₽</strong></div>
+          </div>
+          <p class="assistant-demo-answer-note">Два креатива в выбранном периоде.</p>
+        </div>
+        <div class="assistant-demo-creatives" data-assistant-creative-list aria-label="Креативы рекламного отчета">
+          <article class="assistant-demo-creative">
+            <div class="assistant-demo-creative-head"><span class="assistant-demo-thumb" aria-hidden="true">01</span><div><p class="assistant-demo-creative-title">Первичный прием</p><span class="assistant-demo-creative-status" data-assistant-creative-status="0">Крутится</span></div></div>
+            <dl class="assistant-demo-creative-metrics"><div><dt>Расход</dt><dd data-assistant-value="creative-0-spend">30 000 ₽</dd></div><div><dt>Обращения</dt><dd data-assistant-value="creative-0-leads">60</dd></div><div><dt>За обращение</dt><dd data-assistant-value="creative-0-cpl">500 ₽</dd></div></dl>
+          </article>
+          <article class="assistant-demo-creative">
+            <div class="assistant-demo-creative-head"><span class="assistant-demo-thumb assistant-demo-thumb-alt" aria-hidden="true">02</span><div><p class="assistant-demo-creative-title">Гигиена</p><span class="assistant-demo-creative-status" data-assistant-creative-status="1">Крутится</span></div></div>
+            <dl class="assistant-demo-creative-metrics"><div><dt>Расход</dt><dd data-assistant-value="creative-1-spend">18 000 ₽</dd></div><div><dt>Обращения</dt><dd data-assistant-value="creative-1-leads">60</dd></div><div><dt>За обращение</dt><dd data-assistant-value="creative-1-cpl">300 ₽</dd></div></dl>
+          </article>
+        </div>
+      </div>
+      <div class="assistant-demo-chat" data-assistant-panel="sales" role="region" aria-label="Демонстрационная аналитика продаж" hidden>
+        <div class="assistant-demo-user"><span>Какие продажи?</span></div>
+        <div class="assistant-demo-answer">
+          <p class="assistant-demo-answer-title">Оплаченные заказы</p><p class="assistant-demo-period" data-assistant-period-label>Прошлая неделя · 7 дней</p>
+          <div class="assistant-demo-metrics">
+            <div class="assistant-demo-metric"><span>Оплачено заказов</span><strong data-assistant-value="sales-paid">128</strong></div>
+            <div class="assistant-demo-metric"><span>Выручка</span><strong data-assistant-value="sales-revenue">89 600 ₽</strong></div>
+            <div class="assistant-demo-metric"><span>Средний чек</span><strong data-assistant-value="sales-average">700 ₽</strong></div>
+          </div>
+          <p class="assistant-demo-answer-note">Заказы, выручка и средний чек за выбранный период.</p>
+        </div>
+      </div>
+      <div class="assistant-demo-chat" data-assistant-panel="questions" role="region" aria-label="Демонстрационные ответы помощника" hidden>
+        <div data-assistant-question-answer><div class="assistant-demo-answer"><p class="assistant-demo-answer-title">Выбери пример вопроса</p><p class="assistant-demo-answer-note">Ответ покажет текущие вымышленные показатели рекламы или продаж.</p></div></div>
       </div>
       <div class="assistant-demo-question"><input class="assistant-demo-input" type="text" readonly placeholder="Выбери пример вопроса" aria-label="Вопрос: выбери один из готовых примеров"><span aria-hidden="true">↗</span></div>
       <div class="assistant-demo-examples" aria-label="Готовые примеры вопросов">
         <button class="assistant-demo-example" type="button" data-assistant-question="ads" disabled>Что с рекламой?</button>
         <button class="assistant-demo-example" type="button" data-assistant-question="sales" disabled>Какие продажи?</button>
       </div>
-      <p class="assistant-demo-limit">В демо — заранее подготовленные ответы на два вопроса.</p>
+      <div class="assistant-demo-demo-note"><span data-assistant-frame>Пример 1 из 4</span><p class="assistant-demo-limit">В демо — смена вымышленных показателей и подготовленные ответы.</p></div>
       <div class="assistant-demo-status" data-assistant-status role="status" aria-live="polite" aria-atomic="true"></div>
     </div>
   </div>
 </section>
-    <p class="case-status">Выбери раздел или готовый вопрос, чтобы посмотреть пример. Показатели и ответы вымышленные; прототип показывает сценарий работы.</p>
-    <a class="linkcard" href="media/business-assistant-readable-2026-10-12.mp4" target="_blank" rel="noopener"><span class="lc-k">Дополнительно</span><span class="lc-v">Фрагмент презентации системы</span><span class="lc-arrow" aria-hidden="true">↗</span></a>
-    <details class="case-details"><summary>Как устроен сценарий<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
-      <div class="rv">
-        <div class="block"><h4>Показатели в одном месте</h4><p>В отдельных разделах Telegram-чата руководитель смотрит рекламные расходы, обращения, заказы и выручку. Он может проверить нужное направление и обсудить показатели с командой.</p></div>
-        <div class="block"><h4>Вопросы помощнику</h4><p>В строке чата можно написать запрос и получить ответ помощника. В прототипе показаны два заранее подготовленных примера; к реальной аналитике и модели он не подключен.</p></div>
-      </div>
-      <div class="rv">
-        <div class="block"><h4>О проекте</h4><p>Участвовала в проекте рабочего ИИ-помощника. Здесь показываю наглядную схему интерфейса по сценарию системы. В дополнительном видео — фрагмент исходной презентации с поручением и готовым документом.</p></div>
-      </div>
+    <details class="case-details"><summary>Что получает руководитель<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
+      <div><div class="block"><h4>Данные по рекламе</h4><p>По дням или за выбранный период: сколько потратили, сколько обращений получили и сколько стоит обращение. Видно, какие креативы крутятся и что дает каждый из них.</p></div><div class="block"><h4>Данные по продажам</h4><p>Оплаченные заказы, выручка и средний чек собраны в одном разделе. Руководитель быстрее замечает изменения и обсуждает их с командой.</p></div></div>
+      <div><div class="block"><h4>О проекте</h4><p>Участвовала в работе над ИИ-помощником руководителя. Здесь показан сценарий интерфейса с вымышленными данными.</p></div><div class="block"><h4>Вопрос помощнику</h4><p>Руководитель задает вопрос в чате и получает нужную сводку. В демонстрации можно выбрать примеры вопросов по рекламе и продажам.</p></div></div>
     </div></div></details>
   </section>
 
-  <section class="case" id="tools">
-    <div class="case-head rv"><div class="case-num">1.3</div>
-      <div><span class="niche">Маркетинг · отчетность и контент</span><h3 class="case-title">Время на запуск и решения<span class="loc">Меньше ручной подготовки отчетов и материалов</span></h3></div>
-      <div class="case-tags"><span class="tag">Использую в работе</span></div>
-    </div><p class="case-lede">Маркетолог быстрее готовит отчеты и материалы, а клиент читает актуальную версию документа по одной ссылке.</p>
-    <div class="next-grid rv" style="margin-top:0">
-      <div class="next-item"><span class="st">Отчеты</span><h4>Видеть результат контента</h4><p>Охваты, просмотры и реакции — в готовой сводке за нужный период. Маркетолог быстрее оценивает материалы.</p></div>
-      <div class="next-item"><span class="st">Документы</span><h4>Одна актуальная версия для клиента</h4><p>Клиент читает текущую версию по одной ссылке. Специалист меньше создает копии и пересылает файлы.</p></div>
-      <div class="next-item"><span class="st">Контент</span><h4>Использовать материал интервью</h4><p>Из записи — текст для постов, сценариев и конспектов. Меньше ручной расшифровки и повторного прослушивания.</p></div>
-      <div class="next-item"><span class="st">Креативы</span><h4>Подготовить комплект к запуску</h4><p>Из одного шаблона — комплект рекламных размеров. Дизайнер меньше повторяет верстку перед запуском.</p></div>
-    </div>
-  </section>
+  
 
   </section>
 
   <section class="development-group" id="visibility" aria-labelledby="visibility-title">
     <header class="group-head">
-      <div class="group-kicker"><span>Раздел 2 из 4</span><p class="eyebrow">2 разработки</p></div>
+      <div class="group-kicker"><span>Раздел 2 из 5</span><p class="eyebrow">2 разработки</p></div>
       <h2 class="group-title" id="visibility-title">Прозрачность процессов</h2>
-      <p class="group-description">Контроль клиентской базы и рекламы: кто остался без задачи и сколько стоит обращение.</p>
+      <p class="group-description">Контроль клиентской базы и рекламных расходов: видеть, с кем еще не запланировали работу и сколько стоит обращение.</p>
+      
       <div class="group-links" aria-label="Разработки раздела"><a href="#base">Контроль клиентской базы</a><a href="#bot-vk">Реклама под контролем</a></div>
     </header>
 
@@ -837,10 +910,10 @@ main.wrap>.development-group:first-child{margin-top:44px}
     <div class="case-head rv">
       <div class="case-num">2.1</div>
       <div><span class="niche">Косметология · аналитика клиентской базы</span>
-        <h3 class="case-title">Контроль клиентской базы<span class="loc">YClients + WAHELP: найти клиентов без задачи на дальнейшую работу</span></h3>
+        <h3 class="case-title">Контроль клиентской базы<span class="loc">Связала данные YClients и WAHELP, чтобы увидеть, кого не включили в дальнейшую работу</span></h3>
       </div>
       <div class="case-tags"><span class="tag">Рабочий инструмент</span></div>
-    </div><p class="case-lede">Руководитель получает список клиентов без задач и может распределить их между операторами.</p>
+    </div><div class="base-context"><p class="case-lede">Операторы каждый день получают задачи на клиентов, но вся клиентская база не обрабатывается.</p><p>Чтобы выяснить, кого не включили в задачи, соединила данные двух систем: клиентскую базу YClients и задачи WAHELP. Так клиника видит клиентов, с которыми пока не запланирована дальнейшая работа.</p></div>
     <div class="speed-comparison rv" aria-label="Скорость сверки одной базы: код и ручная работа">
       <h4>Одна база: ручная и автоматическая сверка</h4>
       <p>Сверка одного объема: <b>2 614 клиентов</b> из YClients с задачами в WAHELP.</p>
@@ -865,7 +938,7 @@ main.wrap>.development-group:first-child{margin-top:44px}
       </div>
       <figcaption>Схема аналитического отчета · результаты рабочего прогона · без имен и телефонов</figcaption>
     </figure>
-  <p class="evidence-note">≈2 минуты — замер одного прогона. ≈3 месяца — оценка ручной сверки того же объема. Список нужно разобрать перед касанием.</p><details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
+  <p class="evidence-note">≈2 минуты — замер одного прогона. ≈3 месяца — оценка ручной сверки того же объема. Список нужно разобрать перед касанием.</p><details class="case-details project-details"><summary>Результат и польза<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
       <div class="rv">
         <div class="block"><h4>Что нужно контролировать</h4><p>Клиенты и история посещений хранятся в YClients, а задачи по дальнейшей работе с ними — в WAHELP. Клиент может быть в базе, но без задачи на повторное касание. Если его пропустить, компания рискует упустить повторную запись и прибыль.</p></div>
         <div class="block"><h4>Что разработала</h4><p>Связала данные двух систем по номерам телефонов и разработала код аналитики для поиска клиентов без задачи в WAHELP. Руководитель получает готовый список для разбора и распределения между операторами.</p></div>
@@ -897,98 +970,68 @@ main.wrap>.development-group:first-child{margin-top:44px}
 
   <section class="development-group" id="sales" aria-labelledby="sales-title">
     <header class="group-head">
-      <div class="group-kicker"><span>Раздел 3 из 4</span><p class="eyebrow">2 разработки</p></div>
+      <div class="group-kicker"><span>Раздел 3 из 5</span><p class="eyebrow">1 разработка</p></div>
       <h2 class="group-title" id="sales-title">Рост продаж</h2>
-      <p class="group-description">Повторные закупки и интернет-магазин: напомнить о покупке и упростить оформление заказа.</p>
-      <div class="group-links" aria-label="Разработки раздела"><a href="#repeat-orders">Повторные закупки</a><a href="#online-store">Интернет-магазин</a></div>
+      <p class="group-description">Повышаем эффективность повторных заказов за счет системы автоматизации.</p>
+      
+      <div class="group-links" aria-label="Разработки раздела"><a href="#repeat-orders">Помощник менеджера</a></div>
     </header>
 
   <section class="case" id="repeat-orders">
-    
-    <div class="case-head rv">
-      <div class="case-num">3.1</div>
-      <div><span class="niche">Производство beauty-продукции · B2B</span>
-        <h3 class="case-title">Повторные закупки<span class="loc">Связаться с покупателем, когда ему пора пополнить запас</span></h3>
-      </div>
+    <div class="case-head rv"><div class="case-num">3.1</div>
+      <div><span class="niche">Производство гель-лаков · повторные покупки</span><h3 class="case-title">Помощник менеджера<span class="loc">Напоминает о покупке в подходящий момент</span></h3></div>
       <div class="case-tags"><span class="tag">Демо</span></div>
-    </div><p class="case-lede">Менеджер видит, кому пора напомнить о закупке, и получает текст по истории покупок.</p>
-    
-    <div class="shot rv">
-      <a href="media/b2b-niche-demo.jpg" target="_blank" rel="noopener" aria-label="Увеличить изображение: B2B · очередь и сегменты">
-        <img src="media/b2b-niche-demo.jpg" width="1280" height="365" loading="lazy" alt="Демонстрация сегментов и истории закупок на вымышленных данных">
-      </a>
-      <div class="shot-cap"><span>B2B · очередь и сегменты</span><span>Вымышленные данные · нажми, чтобы увеличить</span></div>
     </div>
-  <p class="evidence-note">Демо на вымышленных данных. Эффект на продажи пока не измерен.</p><a class="case-action" href="../gel/demo/">Открыть демо очереди →</a><details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
-      <div class="rv"><div class="block"><h4>Задача клиента</h4><p>Производителю важно получать повторные заказы. Менеджер может пропустить покупателя, который обычно заказывает регулярно, но в этот раз задержался.</p></div><div class="block"><h4>Что подготовила</h4><p>Собрала демо, в котором менеджер видит очередь клиентов на сегодня, причину касания и готовый текст по истории закупок. В демо — <b>6 сегментов покупателей и 10 поводов для сообщения</b>.</p></div></div>
-      <div class="rv"><div class="block"><h4>Что это дает</h4><p>Менеджер тратит меньше времени на перебор базы и поиск повода написать. Покупателям можно напоминать о закупке в подходящий момент — это основа для работы над повторными продажами.</p></div><a class="linkcard" href="../gel/demo/"><span class="lc-k">Открыть демо</span><span class="lc-v">Очередь повторных закупок</span><span class="lc-arrow" aria-hidden="true">→</span></a><p class="case-status">В демо используются вымышленные данные. Рост повторных продаж и экономию времени нужно измерить в пилоте на реальной базе.</p></div>
-    </div></div></details></section>
+    <p class="case-lede">Система определяет, кому необходимо напомнить о покупке, и отправляет сообщение согласно заданному ритму. Менеджер получает ответы клиентов, подсказки и сводку — в Telegram.</p>
+    <div class="manager-showcase"><div class="manager-showcase-copy"><p class="eyebrow">Что видит менеджер</p><h4>Ответы, поступления и итоги недели</h4><p>Выбери раздел на телефоне. Помощник предлагает готовый ответ клиенту, сообщает о поступлениях и собирает результаты работы.</p><p>Менеджер может проверить и изменить текст, подтвердить отправку или перенести касание.</p><a class="case-action" href="manager-demo.html">Открыть демонстрацию отдельно ↗</a><p class="evidence-note">Демонстрация на вымышленных данных. Рост повторных продаж проверяется в пилоте.</p></div><iframe class="manager-demo-frame" src="manager-demo.html" title="Помощник менеджера в Telegram: интерактивная демонстрация" loading="lazy" height="760"></iframe></div>
+  </section>
 
-  <section class="case" id="online-store">
-    <div class="case-head rv">
-      <div class="case-num">3.2</div>
-      <div><span class="niche">Розничная торговля · продукты с доставкой</span>
-        <h3 class="case-title">Интернет-магазин<span class="loc">Покупатель сам выбирает товары и собирает заказ</span></h3>
-      </div>
-      <div class="case-tags"><span class="tag">Опубликован</span></div>
-    </div><p class="case-lede">Покупатель сам выбирает продукты, фасовку и собирает заказ — команда меньше объясняет ассортимент в переписке.</p>
-    
-    <div class="shot rv">
-      <a href="media/online-store-food-2026-10-12.png" target="_blank" rel="noopener" aria-label="Увеличить изображение: интернет-магазин продуктов">
-        <img src="media/online-store-food-2026-10-12.png" width="1280" height="530" loading="lazy" alt="Реальный экран интернет-магазина: товары, цены, выбор фасовки и добавление в корзину">
-      </a>
-      <div class="shot-cap"><span>Интернет-магазин продуктов · каталог</span><span>Реальный экран опубликованного сайта</span></div>
-    </div>
-  <a class="case-action" href="https://xn--80aaajn3amgzftf.xn--p1ai/" target="_blank" rel="noopener">Открыть интернет-магазин ↗</a><details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
-      <div class="rv">
-        <div class="block"><h4>Задача бизнеса</h4><p>Дать покупателям удобный способ выбрать продукты с доставкой: увидеть ассортимент, цены и варианты фасовки, собрать корзину.</p></div>
-        <div class="block"><h4>Что сделала</h4><p>Создала интернет-магазин продуктов. На сайте — каталог по категориям, поиск, карточки товаров, корзина, избранное и личный кабинет. Предусмотрены акции, программа лояльности и приглашение друзей.</p></div>
-      </div>
-      <div class="rv">
-        <div class="block"><h4>Что получает команда</h4><p>Ассортимент, цены и условия доставки собраны на сайте. Покупатель сам выбирает товары и фасовку — менеджеру нужно меньше объяснять ассортимент и пересылать позиции в переписке.</p></div>
-        <div class="block"><h4>Что получает бизнес</h4><p><b>Собственный сайт для онлайн-заказов</b>, на который можно направлять покупателей из рекламы и соцсетей. Акции и программа лояльности дают повод вернуться за следующей покупкой.</p></div>
-        <a class="linkcard" href="https://xn--80aaajn3amgzftf.xn--p1ai/" target="_blank" rel="noopener"><span class="lc-k">Посмотреть результат</span><span class="lc-v">Открыть интернет-магазин</span><span class="lc-arrow" aria-hidden="true">→</span></a>
-      </div>
-    </div></div></details></section>
+  
 
+  </section>
+
+  <section class="development-group" id="websites" aria-labelledby="websites-title">
+    <header class="group-head">
+      <div class="group-kicker"><span>Раздел 4 из 5</span><p class="eyebrow">1 проект</p></div>
+      <h2 class="group-title" id="websites-title">Создание сайтов и интернет-магазинов</h2>
+      
+      
+      
+    </header>
+    <section class="case" id="online-store">
+    <div class="case-head rv"><div class="case-num">4.1</div><div><span class="niche">Розничная торговля · продукты с доставкой</span><h3 class="case-title">Интернет-магазин</h3></div><div class="case-tags"><span class="tag">Опубликован</span></div></div>
+    <div class="shot rv"><a href="https://xn--80aaajn3amgzftf.xn--p1ai/" target="_blank" rel="noopener" aria-label="Открыть интернет-магазин"><img src="media/online-store-food-2026-10-12.png" width="1280" height="530" loading="lazy" alt="Интернет-магазин продуктов: каталог товаров, цены и добавление в корзину"></a><div class="shot-cap"><span>Интернет-магазин продуктов</span><span>Открыть сайт ↗</span></div></div>
+    <a class="case-action" href="https://xn--80aaajn3amgzftf.xn--p1ai/" target="_blank" rel="noopener">Открыть интернет-магазин ↗</a>
+  </section>
   </section>
 
   <section class="development-group" id="other" aria-labelledby="other-title">
     <header class="group-head">
-      <div class="group-kicker"><span>Раздел 4 из 4</span><p class="eyebrow">2 разработки</p></div>
+      <div class="group-kicker"><span>Раздел 5 из 5</span><p class="eyebrow">1 разработка</p></div>
       <h2 class="group-title" id="other-title">Другие автоматизации</h2>
-      <p class="group-description">Сбор вопросов аудитории для контента и учет личных расходов.</p>
-      <div class="group-links" aria-label="Разработки раздела"><a href="#bot-anon">Вопросы аудитории для контента</a><a href="#finbot">Бюджет под контролем</a></div>
+      
+      
+      <div class="group-links" aria-label="Разработки раздела"><a href="#finbot">Финбот</a></div>
     </header>
 
-  <section class="case" id="bot-anon">
-    
-    <div class="case-head rv">
-      <div class="case-num">4.1</div>
-      <div><span class="niche">Медицина · личный бренд врача</span>
-        <h3 class="case-title">Вопросы аудитории для контента<span class="loc">Говорить о том, что действительно волнует подписчиков</span></h3>
-      </div>
-      <div class="case-tags"><span class="tag">Бот собран</span></div>
-    </div><p class="case-lede">Врач получает вопросы без имени отправителя, а команда использует их как темы для контента.</p>
-    
-    
-  <details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
-      <div class="rv"><div class="block"><h4>Задача клиента</h4><p>Подписчики стесняются задавать вопросы о здоровье публично. Врачу трудно понять, какие темы им нужны, а специалисту приходится придумывать темы для контента.</p></div><div class="block"><h4>Что сделала</h4><p>Собрала бота, который передает вопрос в закрытый чат врача без имени отправителя. Вопросы сохраняются и могут стать темами публикаций.</p></div></div>
-      <div class="rv"><div class="block"><h4>Что получает врач</h4><p>Канал обратной связи по чувствительным темам. Можно отвечать на реальные вопросы аудитории и готовить полезные публикации.</p></div><div class="block"><h4>Что экономит команда</h4><p>Время на ручную передачу вопросов и ведение отдельного списка тем. Передача врачу и сохранение вопроса происходят автоматически.</p></div></div>
-    </div></div></details></section>
+  
 
   <section class="case" id="finbot">
     
     <div class="case-head rv">
-      <div class="case-num">4.2</div>
+      <div class="case-num">5.1</div>
       <div><span class="niche">Личные финансы · учет расходов</span>
-        <h3 class="case-title">Бюджет под контролем<span class="loc">Понимать, сколько денег осталось и как идут расходы</span></h3>
+        <h3 class="case-title">Финбот<span class="loc">Учет расходов в Telegram</span></h3>
       </div>
       <div class="case-tags"><span class="tag">Бот развернут</span></div>
-    </div><p class="case-lede">Пользователь записывает траты сообщением и видит, сколько денег осталось.</p>
+    </div><p class="case-lede">Пользователь записывает траты сообщением в Telegram и видит, сколько денег осталось.</p>
     
     
-  <details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
+  <div class="finbot-screens">
+      <figure class="shot"><a href="media/finbot-telegram-2026-10-12.png" target="_blank" rel="noopener" aria-label="Увеличить переписку с Финботом"><img src="media/finbot-telegram-2026-10-12.png" width="1836" height="1628" loading="lazy" alt="Переписка с Финботом в Telegram: пользователь пишет категорию и сумму, бот подтверждает запись расхода"></a><figcaption class="shot-cap"><span>1. Записываешь траты в Telegram</span><span>Реальный экран бота</span></figcaption></figure>
+      <figure class="shot"><a class="sheet-view" href="media/finbot-sheet-2026-10-12.png" target="_blank" rel="noopener" aria-label="Увеличить таблицу расходов"><img src="media/finbot-sheet-2026-10-12.png" width="2140" height="633" loading="lazy" alt="Таблица Финбота: план расходов, суммы по неделям и итог по категориям"></a><figcaption class="shot-cap"><span>2. Расходы попадают в таблицу</span><span>Фрагмент реальной Google-таблицы · экспорт</span></figcaption></figure>
+    </div>
+    <details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
       <div class="rv"><div class="block"><h4>Задача пользователя</h4><p>Чтобы планировать покупки и накопления, нужно знать свои расходы. Когда учет требует открывать таблицу и заполнять ячейки, мелкие траты легко пропустить.</p></div><div class="block"><h4>Что сделала</h4><p>Собрала бота: пишешь расход в Telegram — сумма попадает в нужную категорию таблицы. Одним сообщением можно записать несколько трат.</p></div></div>
       <div class="rv"><div class="block"><h4>Что получает пользователь</h4><p>По запросу видит, сколько потратил, сколько осталось и укладывается ли в свой бюджет. Эти цифры помогают планировать покупки и деньги на важные цели.</p></div><div class="block"><h4>Что экономится</h4><p>Время на открытие таблицы, поиск категории и ввод суммы. В примере одно сообщение с двумя расходами дает <b>две записи в таблице</b>. Сумма сэкономленных денег зависит от решений пользователя.</p></div></div>
     </div></div></details></section>
@@ -1089,6 +1132,18 @@ main.wrap>.development-group:first-child{margin-top:44px}
   updateOffset();
   window.addEventListener('resize',updateOffset);
   if(initialAnchorAllowed)revealAnchor();
+
+  var managerFrame=document.querySelector('.manager-demo-frame');
+  if(managerFrame){
+    function measureManager(){if(managerFrame.contentWindow)managerFrame.contentWindow.postMessage({type:'manager-demo-measure'},window.location.origin);}
+    window.addEventListener('message',function(event){
+      if(event.origin!==window.location.origin||event.source!==managerFrame.contentWindow)return;
+      var data=event.data;if(!data||data.type!=='manager-demo-height'||typeof data.height!=='number'||!Number.isFinite(data.height))return;
+      managerFrame.style.height=Math.max(300,Math.min(1800,Math.ceil(data.height)))+'px';
+    });
+    managerFrame.addEventListener('load',measureManager);measureManager();
+  }
+
   var loaded=document.readyState==='complete'?Promise.resolve():new Promise(function(resolve){window.addEventListener('load',resolve,{once:true});});
   var fontsReady=document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve();
   Promise.all([loaded,fontsReady]).then(function(){if(initialAnchorAllowed&&window.location.hash===initialHash){initialAnchorAllowed=false;revealAnchor();}});

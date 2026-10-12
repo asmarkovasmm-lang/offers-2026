@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Замдир · Аналитика в Telegram — пример интерфейса</title>
+<title>Зам директора · Все материалы в одном месте</title>
 <link rel="stylesheet" href="assistant-demo.css">
 <style>
 *{box-sizing:border-box}
@@ -21,40 +21,81 @@ h1{margin:20px 0 10px;font-size:clamp(25px,3.4vw,40px);line-height:1.15;letter-s
 <body>
 <main>
 <a class="back" href="./#business-assistant">← Все автоматизации</a>
-<h1>Замдир: аналитика в Telegram</h1>
-<p class="intro">Выбери рекламу, продажи или готовый вопрос. Здесь показан пример интерфейса с вымышленными данными.</p>
-<section class="assistant-demo" data-assistant-demo aria-label="Пример интерфейса помощника руководителя">
+<h1>Зам директора</h1>
+<p class="intro">Все материалы в одном месте. Выбери рекламу, продажи или готовый вопрос. В демонстрации используются вымышленные данные.</p>
+<section class="assistant-demo" data-assistant-demo aria-label="Демонстрация интерфейса Зам директора">
   <div class="assistant-demo-top">
     <span class="assistant-demo-mark" aria-hidden="true">↗</span>
-    <div><p class="assistant-demo-title">Помощник руководителя</p><p class="assistant-demo-caption">Пример интерфейса · демонстрационные данные</p></div>
+    <div class="assistant-demo-heading"><p class="assistant-demo-title">Зам директора</p><p class="assistant-demo-subtitle">Все материалы в одном месте</p><p class="assistant-demo-caption">Демонстрация интерфейса · вымышленные данные</p></div>
+    <button class="assistant-demo-pause" type="button" data-assistant-pause aria-pressed="false" hidden>Пауза</button>
   </div>
   <div class="assistant-demo-layout">
-    <nav class="assistant-demo-nav" aria-label="Разделы примера помощника">
+    <nav class="assistant-demo-nav" aria-label="Разделы демонстрации">
       <p class="assistant-demo-nav-label">Разделы</p>
       <button class="assistant-demo-section" type="button" data-assistant-section="ads" aria-pressed="true" disabled><span class="assistant-demo-icon" aria-hidden="true">↗</span><span>Аналитика рекламы</span></button>
       <button class="assistant-demo-section" type="button" data-assistant-section="sales" aria-pressed="false" disabled><span class="assistant-demo-icon" aria-hidden="true">₽</span><span>Аналитика продаж</span></button>
       <button class="assistant-demo-section" type="button" data-assistant-section="questions" aria-pressed="false" disabled><span class="assistant-demo-icon" aria-hidden="true">?</span><span>Вопрос помощнику</span></button>
     </nav>
     <div class="assistant-demo-main">
-      <div class="assistant-demo-chat" data-assistant-chat role="region" aria-label="Пример ответа">
-        <div class="assistant-demo-user"><span>Что с рекламой?</span></div>
-        <div class="assistant-demo-answer">
-          <p class="assistant-demo-answer-title">Реклама за выбранный период</p>
-          <p class="assistant-demo-period">Демонстрационные данные</p>
-          <div class="assistant-demo-metrics">
-            <div class="assistant-demo-metric"><span>Расходы</span><strong>48 000 ₽</strong></div>
-            <div class="assistant-demo-metric"><span>Обращения</span><strong>120</strong></div>
-            <div class="assistant-demo-metric"><span>За обращение</span><strong>400 ₽</strong></div>
-          </div>
-          <p class="assistant-demo-answer-note">В одном ответе — расход бюджета и стоимость обращения. Можно обсудить эти показатели со специалистом.</p>
+      <div class="assistant-demo-chat" data-assistant-panel="ads" role="region" aria-label="Демонстрационный рекламный отчет">
+        <div class="assistant-demo-telegram-head"><span class="assistant-demo-telegram-icon" aria-hidden="true">↗</span><div><p class="assistant-demo-answer-title">Отчет в Telegram</p><p class="assistant-demo-period">Расходы, обращения и креативы</p></div></div>
+        <div class="assistant-demo-period-picker" aria-label="Период рекламного отчета">
+          <button class="assistant-demo-period-button" type="button" data-assistant-period="today" aria-pressed="false" disabled>Сегодня</button>
+          <button class="assistant-demo-period-button" type="button" data-assistant-period="yesterday" aria-pressed="false" disabled>Вчера</button>
+          <button class="assistant-demo-period-button" type="button" data-assistant-period="week" aria-pressed="false" disabled>Эта неделя</button>
+          <button class="assistant-demo-period-button" type="button" data-assistant-period="previous" aria-pressed="true" disabled>Прошлая неделя</button>
+          <button class="assistant-demo-period-button" type="button" data-assistant-period="month" aria-pressed="false" disabled>С начала месяца</button>
+          <button class="assistant-demo-period-button" type="button" data-assistant-creatives aria-expanded="true" disabled>Креативы</button>
+          <button class="assistant-demo-period-button" type="button" data-assistant-period="custom" aria-pressed="false" aria-expanded="false" disabled>Свои даты</button>
         </div>
+        <form class="assistant-demo-dates" data-assistant-dates hidden>
+          <label>С <input class="assistant-demo-date-input" type="date" data-assistant-from required disabled></label>
+          <label>По <input class="assistant-demo-date-input" type="date" data-assistant-to required disabled></label>
+          <button class="assistant-demo-apply" type="submit" disabled>Показать</button>
+          <p class="assistant-demo-date-error" data-assistant-date-error role="status"></p>
+        </form>
+        <div class="assistant-demo-answer">
+          <p class="assistant-demo-answer-title">Сводка рекламы</p>
+          <p class="assistant-demo-period" data-assistant-period-label>Прошлая неделя · 7 дней</p>
+          <div class="assistant-demo-metrics">
+            <div class="assistant-demo-metric"><span>Расходы</span><strong data-assistant-value="ads-spend">48 000 ₽</strong></div>
+            <div class="assistant-demo-metric"><span>Обращения</span><strong data-assistant-value="ads-leads">120</strong></div>
+            <div class="assistant-demo-metric"><span>За обращение</span><strong data-assistant-value="ads-cpl">400 ₽</strong></div>
+          </div>
+          <p class="assistant-demo-answer-note">Два креатива в выбранном периоде.</p>
+        </div>
+        <div class="assistant-demo-creatives" data-assistant-creative-list aria-label="Креативы рекламного отчета">
+          <article class="assistant-demo-creative">
+            <div class="assistant-demo-creative-head"><span class="assistant-demo-thumb" aria-hidden="true">01</span><div><p class="assistant-demo-creative-title">Первичный прием</p><span class="assistant-demo-creative-status" data-assistant-creative-status="0">Крутится</span></div></div>
+            <dl class="assistant-demo-creative-metrics"><div><dt>Расход</dt><dd data-assistant-value="creative-0-spend">30 000 ₽</dd></div><div><dt>Обращения</dt><dd data-assistant-value="creative-0-leads">60</dd></div><div><dt>За обращение</dt><dd data-assistant-value="creative-0-cpl">500 ₽</dd></div></dl>
+          </article>
+          <article class="assistant-demo-creative">
+            <div class="assistant-demo-creative-head"><span class="assistant-demo-thumb assistant-demo-thumb-alt" aria-hidden="true">02</span><div><p class="assistant-demo-creative-title">Гигиена</p><span class="assistant-demo-creative-status" data-assistant-creative-status="1">Крутится</span></div></div>
+            <dl class="assistant-demo-creative-metrics"><div><dt>Расход</dt><dd data-assistant-value="creative-1-spend">18 000 ₽</dd></div><div><dt>Обращения</dt><dd data-assistant-value="creative-1-leads">60</dd></div><div><dt>За обращение</dt><dd data-assistant-value="creative-1-cpl">300 ₽</dd></div></dl>
+          </article>
+        </div>
+      </div>
+      <div class="assistant-demo-chat" data-assistant-panel="sales" role="region" aria-label="Демонстрационная аналитика продаж" hidden>
+        <div class="assistant-demo-user"><span>Какие продажи?</span></div>
+        <div class="assistant-demo-answer">
+          <p class="assistant-demo-answer-title">Оплаченные заказы</p><p class="assistant-demo-period" data-assistant-period-label>Прошлая неделя · 7 дней</p>
+          <div class="assistant-demo-metrics">
+            <div class="assistant-demo-metric"><span>Оплачено заказов</span><strong data-assistant-value="sales-paid">128</strong></div>
+            <div class="assistant-demo-metric"><span>Выручка</span><strong data-assistant-value="sales-revenue">89 600 ₽</strong></div>
+            <div class="assistant-demo-metric"><span>Средний чек</span><strong data-assistant-value="sales-average">700 ₽</strong></div>
+          </div>
+          <p class="assistant-demo-answer-note">Заказы, выручка и средний чек за выбранный период.</p>
+        </div>
+      </div>
+      <div class="assistant-demo-chat" data-assistant-panel="questions" role="region" aria-label="Демонстрационные ответы помощника" hidden>
+        <div data-assistant-question-answer><div class="assistant-demo-answer"><p class="assistant-demo-answer-title">Выбери пример вопроса</p><p class="assistant-demo-answer-note">Ответ покажет текущие вымышленные показатели рекламы или продаж.</p></div></div>
       </div>
       <div class="assistant-demo-question"><input class="assistant-demo-input" type="text" readonly placeholder="Выбери пример вопроса" aria-label="Вопрос: выбери один из готовых примеров"><span aria-hidden="true">↗</span></div>
       <div class="assistant-demo-examples" aria-label="Готовые примеры вопросов">
         <button class="assistant-demo-example" type="button" data-assistant-question="ads" disabled>Что с рекламой?</button>
         <button class="assistant-demo-example" type="button" data-assistant-question="sales" disabled>Какие продажи?</button>
       </div>
-      <p class="assistant-demo-limit">В демо — заранее подготовленные ответы на два вопроса.</p>
+      <div class="assistant-demo-demo-note"><span data-assistant-frame>Пример 1 из 4</span><p class="assistant-demo-limit">В демо — смена вымышленных показателей и подготовленные ответы.</p></div>
       <div class="assistant-demo-status" data-assistant-status role="status" aria-live="polite" aria-atomic="true"></div>
     </div>
   </div>

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Помощник менеджера — демонстрация интерфейса</title>
+<style>
+html,body{margin:0;padding:0;background:transparent}
+.manager-demo{--manager-demo-accent:#287d68;--manager-demo-ink:#172923;max-width:400px;padding:10px 8px;margin:0 auto;color:var(--manager-demo-ink);font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.manager-demo *{box-sizing:border-box}
+.manager-demo p{margin:0}
+.manager-demo-label{text-align:center;font-size:13px;line-height:1.5;font-weight:600;margin-bottom:3px!important}
+.manager-demo-caption{text-align:center;font-size:11px;line-height:1.5;color:#597165;margin-bottom:12px!important}
+.manager-demo-phone{width:100%;max-width:360px;height:650px;margin:0 auto;padding:9px;background:#17221e;border-radius:41px;box-shadow:0 15px 36px -23px #344f42}
+.manager-demo-screen{height:100%;border-radius:32px;overflow:hidden;display:flex;flex-direction:column;background:linear-gradient(145deg,#d7e8d6,#e5eee0);color:var(--manager-demo-ink)}
+.manager-demo-statusbar{display:flex;justify-content:space-between;align-items:center;padding:13px 23px 5px;background:#fff;font-size:11px;line-height:1;font-weight:600}
+.manager-demo-statusbar>span:last-child{font-size:12px;letter-spacing:.05em}
+.manager-demo-head{display:flex;gap:9px;align-items:center;padding:8px 11px 11px;background:#fff;border-bottom:1px solid #d7e3d9}
+.manager-demo-back{color:var(--manager-demo-accent);font-size:25px;line-height:1}
+.manager-demo-avatar{width:35px;height:35px;flex:none;display:grid;place-items:center;border-radius:50%;background:linear-gradient(140deg,#4ca18d,#277763);color:#fff;font-weight:600}
+.manager-demo-who>strong{display:block;font-size:14px;line-height:1.3;font-weight:650}
+.manager-demo-who>span{display:block;color:#5d756a;font-size:11px;line-height:1.4;margin-top:2px}
+.manager-demo-body{min-height:0;flex:1;overflow-y:auto;overscroll-behavior:contain;padding:11px 10px 13px;scrollbar-width:thin;scrollbar-color:#9bbcaa transparent;scroll-behavior:smooth;background-image:radial-gradient(circle at 20% 30%,rgba(255,255,255,.27) 0 3px,transparent 4px);background-size:42px 42px}
+.manager-demo-pane{display:flex;flex-direction:column;gap:7px}
+.manager-demo-day{align-self:center;padding:3px 9px;border-radius:10px;background:#65977b;color:#fff;font-size:10px;line-height:1.4;margin-bottom:3px}
+.manager-demo-message{max-width:100%;padding:9px 11px;border-radius:15px 15px 15px 4px;background:#fff;box-shadow:0 1px 2px #abc3b177;font-size:13px;line-height:1.45;overflow-wrap:anywhere}
+.manager-demo-message strong{font-weight:650}
+.manager-demo-message>time{display:block;text-align:right;font-size:10px;line-height:1.3;color:#6a8175;margin-top:4px;font-variant-numeric:tabular-nums}
+.manager-demo-quote{margin:7px 0;padding:5px 8px;border-left:3px solid #5da487;border-radius:0 7px 7px 0;background:#edf6ef;font-size:13px}
+.manager-demo-context{font-size:11px;line-height:1.5;color:#597165;margin-top:5px!important}
+.manager-demo-mini-label{display:block;color:var(--manager-demo-accent);font-size:11px;line-height:1.4;font-weight:600;margin-bottom:5px}
+.manager-demo-variant{min-width:0}
+.manager-demo-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin-top:4px}
+.manager-demo-actions-arrival{grid-template-columns:repeat(2,minmax(0,1fr))}
+.manager-demo button{font:inherit;font-size:11px;line-height:1.4;min-height:40px;padding:8px 5px;border:1px solid #a6c7b6;border-radius:8px;background:#eef8f0;color:#28644c;cursor:pointer}
+.manager-demo button:hover:not(:disabled){background:#dceede;border-color:#79aa90}
+.manager-demo button:disabled{opacity:1;cursor:default}
+.manager-demo button:focus-visible,.manager-demo textarea:focus-visible,.manager-demo-pane:focus-visible{outline:3px solid #267654;outline-offset:2px}
+.manager-demo-editor{display:block;width:100%;min-height:100px;resize:vertical;border:1px solid #89b39b;border-radius:7px;padding:8px;font:inherit;font-size:13px;line-height:1.5;color:var(--manager-demo-ink);background:#f7fcf8;margin-top:5px}
+.manager-demo-out{align-self:flex-end;max-width:94%;background:#e7f6da;border-radius:15px 15px 4px 15px;margin-top:3px}
+.manager-demo-feedback{display:flex;flex-direction:column;gap:6px}
+.manager-demo-feedback-note{padding:7px 9px;border-radius:10px;background:#f0f8ed;color:#315842;font-size:11px;line-height:1.5}
+.manager-demo-summary{display:grid;gap:0;margin-top:7px}
+.manager-demo-summary>div{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-top:1px solid #e3ebe5;font-size:12px}
+.manager-demo-summary>div>strong{font-variant-numeric:tabular-nums}
+.manager-demo-queue{display:grid;gap:5px}
+.manager-demo-status{background:#fff;border-top:1px solid #d8e4da;padding:9px 11px;min-height:46px;font-size:11px;line-height:1.5;color:#41664f}
+.manager-demo-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;padding:8px 9px 13px;background:#f7faf7;border-top:1px solid #d8e4da}
+.manager-demo-tabs button{min-height:44px;background:#fff;padding:8px 4px;font-size:11px}
+.manager-demo-tabs button[aria-pressed="true"]{background:var(--manager-demo-accent);border-color:var(--manager-demo-accent);color:#fff;font-weight:600}
+.manager-demo [hidden]{display:none!important}
+@media(max-width:340px){.manager-demo-phone{height:665px;border-radius:36px;padding:8px}.manager-demo-screen{border-radius:28px}.manager-demo-body{padding:10px 8px}.manager-demo-message{font-size:12px;padding:9px}.manager-demo-quote{font-size:12px}.manager-demo-actions button{font-size:10px;padding-inline:3px}.manager-demo-who>strong{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.manager-demo-body{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<main class="manager-demo">
+  <p class="manager-demo-label">Демонстрация интерфейса</p>
+  <p class="manager-demo-caption">Производство гель-лаков · вымышленные сообщения</p>
+  <div class="manager-demo-phone" aria-label="Телефон менеджера">
+    <div class="manager-demo-screen">
+      <div class="manager-demo-statusbar" aria-hidden="true"><span>09:41</span><span>▮▮▮ ▰</span></div>
+      <div class="manager-demo-head"><span class="manager-demo-back" aria-hidden="true">‹</span><span class="manager-demo-avatar" aria-hidden="true">М</span><span class="manager-demo-who"><strong>Помощник менеджера</strong><span>Демонстрационный чат</span></span></div>
+      <div class="manager-demo-body" id="managerBody">
+        <section class="manager-demo-pane" id="managerReplies" data-manager-pane="replies" tabindex="-1" aria-label="Ответ клиента и готовые тексты">
+          <span class="manager-demo-day">Пример ответа</span>
+          <div class="manager-demo-message"><strong>Клиент ответил на касание</strong><div class="manager-demo-quote">Есть молочный оттенок в 15 мл? Нужен еще глянцевый топ.</div><p class="manager-demo-context">Контекст: мастер, обычно заказывает раз в 3–4 недели.</p><p class="manager-demo-context">В примере на складе есть гель-лак «Молочный» 15 мл и глянцевый топ.</p><time>09:41</time></div>
+          <div class="manager-demo-variant">
+            <div class="manager-demo-message"><span class="manager-demo-mini-label">Вариант 1 · коротко</span><p data-manager-draft>Есть в 15 мл. Глянцевый топ тоже в наличии. Подготовить подборку?</p><textarea class="manager-demo-editor" aria-label="Текст первого варианта" hidden></textarea><time>09:42</time></div>
+            <div class="manager-demo-actions"><button type="button" data-manager-act="send" disabled>Отправить</button><button type="button" data-manager-act="copy" disabled>Скопировать</button><button type="button" data-manager-act="edit" disabled>Исправить</button></div>
+          </div>
+          <div class="manager-demo-variant">
+            <div class="manager-demo-message"><span class="manager-demo-mini-label">Вариант 2 · уточнить заказ</span><p data-manager-draft>В наличии гель-лак «Молочный» 15 мл и топ без липкого слоя. Сколько флаконов нужно?</p><textarea class="manager-demo-editor" aria-label="Текст второго варианта" hidden></textarea><time>09:42</time></div>
+            <div class="manager-demo-actions"><button type="button" data-manager-act="send" disabled>Отправить</button><button type="button" data-manager-act="copy" disabled>Скопировать</button><button type="button" data-manager-act="edit" disabled>Исправить</button></div>
+          </div>
+          <div class="manager-demo-feedback" data-manager-feedback="replies"></div>
+        </section>
+        <section class="manager-demo-pane" id="managerArrivals" data-manager-pane="arrivals" tabindex="-1" aria-label="Новое поступление и план касаний" hidden>
+          <span class="manager-demo-day">Пример поступления</span>
+          <div class="manager-demo-message"><strong>Новое поступление</strong><p>База «Универсальная» 30 мл снова в наличии.</p><p class="manager-demo-context">В сценарии поступление попадает в план регулярных касаний. Исходящие сообщения идут автоматически, а ответы клиентов проверяет менеджер.</p><time>09:41</time></div>
+          <div class="manager-demo-variant">
+            <div class="manager-demo-message"><span class="manager-demo-mini-label">Черновик касания</span><p data-manager-draft>Добрый день! Поступила база «Универсальная» 30 мл, которую вы брали раньше. Подготовить заказ?</p><textarea class="manager-demo-editor" aria-label="Текст сообщения о поступлении" hidden></textarea><time>09:42</time></div>
+            <div class="manager-demo-actions manager-demo-actions-arrival"><button type="button" data-manager-act="arr-send" disabled>По плану</button><button type="button" data-manager-act="arr-later" disabled>Позже</button><button type="button" data-manager-act="edit" disabled>Изменить</button><button type="button" data-manager-act="arr-skip" disabled>Пропустить</button></div>
+          </div>
+          <div class="manager-demo-feedback" data-manager-feedback="arrivals"></div>
+        </section>
+        <section class="manager-demo-pane" id="managerWeek" data-manager-pane="week" tabindex="-1" aria-label="Вымышленные итоги недели" hidden>
+          <span class="manager-demo-day">Пример недели</span>
+          <div class="manager-demo-message"><strong>Итоги недели</strong><div class="manager-demo-summary"><div><span>Касания</span><strong>48</strong></div><div><span>Ответы клиентов</span><strong>12</strong></div><div><span>Ответы обработаны</span><strong>9</strong></div><div><span>Ждут менеджера</span><strong>3</strong></div></div><time>09:41</time></div>
+          <div class="manager-demo-message"><strong>Ответы, которые ждут проверки</strong><p class="manager-demo-context">Менеджер видит очередь, историю клиента и подготовленный текст.</p></div>
+          <div class="manager-demo-queue"><button type="button" data-manager-act="open" disabled>Клиент 1 · открыть ответ</button><button type="button" data-manager-act="open" disabled>Клиент 2 · открыть ответ</button><button type="button" data-manager-act="open" disabled>Клиент 3 · открыть ответ</button></div>
+          <div class="manager-demo-message"><p class="manager-demo-context">Это пример сводки. Показанные касания и ответы вымышлены.</p></div>
+        </section>
+      </div>
+      <div class="manager-demo-status" id="managerStatus" role="status" aria-live="polite" aria-atomic="true">Все сообщения вымышлены. Реальных отправок нет.</div>
+      <nav class="manager-demo-tabs" aria-label="Сценарии телефона менеджера"><button type="button" data-manager-tab="replies" aria-controls="managerReplies" aria-pressed="true" disabled>Ответы</button><button type="button" data-manager-tab="arrivals" aria-controls="managerArrivals" aria-pressed="false" disabled>Поступления</button><button type="button" data-manager-tab="week" aria-controls="managerWeek" aria-pressed="false" disabled>Итоги недели</button></nav>
+    </div>
+  </div>
+</main>
+<script>
+(function(){
+  'use strict';
+  var root=document.querySelector('.manager-demo'),body=document.getElementById('managerBody'),status=document.getElementById('managerStatus');
+  var tabs=Array.from(root.querySelectorAll('[data-manager-tab]')),panes=Array.from(root.querySelectorAll('[data-manager-pane]'));
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var heightFrame=0,lastHeight=0,forceHeight=false;
+  function measure(force){
+    forceHeight=forceHeight||force;
+    if(heightFrame)return;
+    heightFrame=requestAnimationFrame(function(){
+      heightFrame=0;var height=Math.ceil(root.getBoundingClientRect().height),forced=forceHeight;forceHeight=false;
+      if(window.parent===window||location.origin==='null')return;
+      if(forced||height!==lastHeight){lastHeight=height;window.parent.postMessage({type:'manager-demo-height',height:height},location.origin);}
+    });
+  }
+  function notify(text){status.textContent=text;measure(false);}
+  function scrollEnd(){body.scrollTo({top:body.scrollHeight,behavior:reduced.matches?'auto':'smooth'});}
+  function showPane(key){
+    var selected=panes.find(function(pane){return pane.dataset.managerPane===key;});if(!selected)return;
+    panes.forEach(function(pane){pane.hidden=pane!==selected;});
+    tabs.forEach(function(button){button.setAttribute('aria-pressed',String(button.dataset.managerTab===key));});
+    body.scrollTop=0;notify('Демонстрационный сценарий: '+({replies:'ответы клиентов',arrivals:'новое поступление',week:'итоги недели'})[key]+'.');measure(false);
+  }
+  function textElement(className,text){var node=document.createElement('p');node.className=className;node.textContent=text;return node;}
+  function feedback(key,text,draft){
+    var area=root.querySelector('[data-manager-feedback="'+key+'"]');area.replaceChildren();
+    if(draft)area.appendChild(textElement('manager-demo-message manager-demo-out',draft));
+    area.appendChild(textElement('manager-demo-feedback-note',text));notify(text);scrollEnd();
+  }
+  function controls(variant){return {draft:variant.querySelector('[data-manager-draft]'),editor:variant.querySelector('textarea'),edit:variant.querySelector('[data-manager-act="edit"]')};}
+  function save(c){var value=c.editor.value.trim();if(!value){notify('Добавь текст для демонстрационного ответа.');return false;}c.draft.textContent=value;c.draft.hidden=false;c.editor.hidden=true;c.editor.readOnly=false;c.edit.textContent=c.edit.closest('[data-manager-pane="arrivals"]')?'Изменить':'Исправить';return true;}
+  tabs.forEach(function(button){button.disabled=false;button.addEventListener('click',function(){showPane(button.dataset.managerTab);});});
+  root.querySelectorAll('[data-manager-act]').forEach(function(button){
+    button.disabled=false;
+    button.addEventListener('click',function(){
+      var act=button.dataset.managerAct,variant=button.closest('.manager-demo-variant'),c=variant?controls(variant):null;
+      if(act==='open'){showPane('replies');document.getElementById('managerReplies').focus({preventScroll:true});notify('Демо: открыт пример ответа клиента.');return;}
+      if(act==='edit'){
+        if(!c.editor.hidden&&!c.editor.readOnly){if(save(c))notify('Демо: правка сохранена в этом примере.');return;}
+        c.editor.value=c.draft.textContent;c.draft.hidden=true;c.editor.hidden=false;c.editor.readOnly=false;button.textContent='Сохранить';c.editor.focus();notify('Исправь текст, затем нажми «Сохранить».');return;
+      }
+      if(act==='copy'){
+        c.editor.value=c.editor.hidden?c.draft.textContent:c.editor.value;c.editor.readOnly=true;c.editor.hidden=false;c.draft.hidden=true;c.editor.focus();c.editor.select();
+        c.edit.textContent='Исправить';notify('Демо: текст выделен. Скопируй его сочетанием Ctrl/Cmd+C.');return;
+      }
+      if(act==='send'||act==='arr-send'){
+        if(!c.editor.hidden&&!save(c))return;
+        feedback(act==='send'?'replies':'arrivals',act==='send'?'Демо: менеджер подтвердил текст. Реальной отправки нет.':'Демо: касание оставлено в плане. Реальной отправки нет.',c.draft.textContent);return;
+      }
+      if(act==='arr-later'){feedback('arrivals','Демо: касание отложено в плане.');return;}
+      if(act==='arr-skip'){feedback('arrivals','Демо: этот повод для касания пропущен.');}
+    });
+  });
+  root.querySelectorAll('.manager-demo-variant').forEach(function(variant){
+    var c=controls(variant);
+    c.editor.addEventListener('keydown',function(event){
+      if(event.key==='Escape'){c.editor.hidden=true;c.draft.hidden=false;c.edit.textContent=variant.closest('[data-manager-pane="arrivals"]')?'Изменить':'Исправить';c.edit.focus();notify('Правка отменена в демонстрации.');}
+      if(event.key==='Enter'&&(event.ctrlKey||event.metaKey)&&!c.editor.readOnly){event.preventDefault();if(save(c))notify('Демо: правка сохранена.');}
+    });
+  });
+  window.addEventListener('load',function(){measure(true);});window.addEventListener('resize',function(){measure(false);});
+  if('ResizeObserver' in window)new ResizeObserver(function(){measure(false);}).observe(document.body);
+  window.addEventListener('message',function(event){if(event.origin!==location.origin||event.source!==window.parent)return;if(event.data&&event.data.type==='manager-demo-measure')measure(true);});
+  measure(true);
+})();
+</script>
+</body>
+</html>
