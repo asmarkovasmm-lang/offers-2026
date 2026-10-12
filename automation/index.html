@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assistant-demo.css">
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -598,6 +599,36 @@ header.hero{padding-top:48px;padding-bottom:28px}
 @media(max-width:380px){.scene-shell{padding:13px}.scene-stage{height:275px}.scene-source{padding:10px}.scene-source strong{font-size:12px}.scene-source p{font-size:10px}.scene-icon{width:20px;height:20px;font-size:9px}.scene-chip{font-size:8px}.scene-source .scene-skeleton{margin-top:9px}.scene-workspace{padding:16px;left:5%;width:90%}.scene-window-head strong{font-size:16px}.scene-workspace ul{font-size:12px}.scene-human{font-size:10px}.scene-result{left:6%;width:88%;padding:20px}.scene-result>strong{font-size:36px}.scene-topline{font-size:10px;gap:7px}.scene-badge{font-size:8px}.scene-controls>span{width:100%}.scene-controls{justify-content:center}.hero-copy h1{font-size:34px}}
 @media(prefers-reduced-motion:reduce){.scene-shell{transform:none;transition:none}.scene-source,.scene-workspace,.scene-result{will-change:auto}.scene-controls>span{display:none}}
 
+/* Clear boundaries between business outcomes */
+.development-group{margin-top:clamp(76px,8vw,112px)}
+main.wrap>.development-group:first-child{margin-top:44px}
+.group-head{padding:34px 36px;border:1px solid #243C58;border-top:5px solid #7896FF;border-radius:24px;background:#152B43;color:#FFFFFF;box-shadow:0 20px 44px -30px rgba(21,43,67,.45)}
+.group-head::after{display:none}
+.group-kicker{gap:12px;flex-wrap:wrap;margin-bottom:20px;color:#C4D4EE}
+.group-kicker>span{font-family:var(--body);font-size:12px;line-height:1.4;font-weight:600;padding:7px 11px;border:1px solid rgba(219,232,255,.3);border-radius:8px;color:#E2EAFF;background:rgba(255,255,255,.05)}
+.group-head .eyebrow{color:#BCCCE2;font-size:11px;letter-spacing:.09em}
+.group-title{font-size:clamp(35px,4.2vw,54px);line-height:1.12;letter-spacing:-.035em;color:#FFFFFF}
+.group-description{max-width:65ch;color:#D4E0EF;font-size:16px;line-height:1.6;margin-top:16px}
+.group-links{margin-top:24px;gap:8px}
+.group-links a{background:rgba(255,255,255,.06);border-color:rgba(212,224,239,.3);color:#F0F5FF;font-size:13px;line-height:1.4;padding:10px 14px}
+.group-links a:hover{background:#FFFFFF;border-color:#FFFFFF;color:#152B43}
+.group-links a:focus-visible{outline:3px solid #ABC3FF;outline-offset:3px}
+.reading-context{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line-soft);padding:10px 0 12px;font-size:13px;line-height:1.35;color:var(--text)}
+.reading-context-index{font-size:11px;font-weight:600;color:var(--text-2);white-space:nowrap}
+.reading-context-title{font-weight:600}
+.caselist-row a:focus-visible{outline:2px solid var(--acid);outline-offset:2px}
+.caselist-row a.is-active:focus-visible{background:var(--acid);color:#FFFFFF}
+@media(max-width:650px){
+  .development-group{margin-top:68px}
+  .group-head{padding:26px 20px;border-radius:20px}
+  .group-title{font-size:34px;line-height:1.15;letter-spacing:-.035em}
+  .group-description{font-size:15px;line-height:1.55}
+  .group-kicker{margin-bottom:18px;gap:10px}
+  .group-links{margin-top:20px}
+  .group-links a{font-size:12px;min-height:42px}
+  .reading-context{gap:5px 10px;padding:8px 0 10px;font-size:12px}
+  .reading-context-index{font-size:10px}
+}
 </style>
 </head>
 <body>
@@ -673,6 +704,7 @@ header.hero{padding-top:48px;padding-bottom:28px}
       <a href="#sales"><b>03</b> Рост продаж</a>
       <a href="#other"><b>04</b> Другие автоматизации</a>
     </div>
+    <p class="reading-context" aria-label="Текущий раздел"><span class="reading-context-index">4 раздела</span><span class="reading-context-title">Выберите направление</span></p>
   </div>
   <div class="reading-progress" aria-hidden="true"></div>
 </nav>
@@ -684,11 +716,11 @@ header.hero{padding-top:48px;padding-bottom:28px}
 
 
   <section class="development-group" id="time" aria-labelledby="time-title">
-    <header class="group-head rv">
-      <div class="group-kicker"><span>01</span><p class="eyebrow">3 разработки</p></div>
+    <header class="group-head">
+      <div class="group-kicker"><span>Раздел 1 из 4</span><p class="eyebrow">3 разработки</p></div>
       <h2 class="group-title" id="time-title">Экономия времени</h2>
-      <p class="group-description">Операторы обрабатывают больше задач за смену. Руководитель получает исследования и документы по поручению в Telegram, а маркетолог быстрее готовит отчеты и материалы.</p>
-      <div class="group-links" aria-label="Разработки раздела"><a href="#operator-panels">Панель оператора</a><a href="#business-assistant">Исследования и документы</a><a href="#tools">Время на запуск и решения</a></div>
+      <p class="group-description">Операторы обрабатывают больше задач за смену. Руководитель читает аналитику в Telegram, а маркетолог быстрее готовит отчеты и материалы.</p>
+      <div class="group-links" aria-label="Разработки раздела"><a href="#operator-panels">Панель оператора</a><a href="#business-assistant">Аналитика в Telegram</a><a href="#tools">Время на запуск и решения</a></div>
     </header>
 
   <section class="case" id="operator-panels">
@@ -729,32 +761,60 @@ header.hero{padding-top:48px;padding-bottom:28px}
     <span id="zamdir24" aria-hidden="true"></span>
     <div class="case-head rv">
       <div class="case-num">1.2</div>
-      <div><span class="niche">Управление бизнесом · рабочие поручения</span>
-        <h3 class="case-title">Исследования и документы<span class="loc">От поручения в Telegram до готового отчета</span></h3>
+      <div><span class="niche">Управление бизнесом · показатели и вопросы</span>
+        <h3 class="case-title">Аналитика в Telegram<span class="loc">Реклама, продажи и вопросы в одном чате</span></h3>
       </div>
-      <div class="case-tags"><span class="tag">Демонстрация</span></div>
-    </div><p class="case-lede">Руководитель передает поручение в Telegram и получает готовое исследование или документ.</p>
-    
-    <div class="shot rv">
-      <video controls playsinline preload="metadata" width="1280" height="960"
-        poster="media/business-assistant-readable-poster-2026-10-12.jpg" aria-label="Читаемая демонстрация: поручение, готовый PDF и просмотр отчета">
-        <source src="media/business-assistant-readable-2026-10-12.mp4" type="video/mp4">
-        <a href="media/business-assistant-readable-2026-10-12.mp4">Открыть видео демонстрации</a>
-      </video>
-      <div class="shot-cap"><span>Поручение → файл → отчет · 34 секунды</span><span>Тестовый сценарий · интерфейс крупным планом</span></div>
+      <div class="case-tags"><span class="tag">Пример интерфейса</span></div>
     </div>
-    <a class="linkcard" href="media/business-assistant-readable-2026-10-12.mp4" target="_blank" rel="noopener"><span class="lc-k">Видео</span><span class="lc-v">Открыть демонстрацию отдельно</span><span class="lc-arrow" aria-hidden="true">↗</span></a>
-    <p class="case-status">Монтаж фрагментов презентации от 9 сентября 2026. В кадре — экран системы с читаемой перепиской и документом.</p>
-  <details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
+    <p class="case-lede">Руководитель читает показатели рекламы и продаж в отдельных разделах чата и задает вопросы помощнику.</p>
+    <section class="assistant-demo" data-assistant-demo aria-label="Пример интерфейса помощника руководителя">
+  <div class="assistant-demo-top">
+    <span class="assistant-demo-mark" aria-hidden="true">↗</span>
+    <div><p class="assistant-demo-title">Помощник руководителя</p><p class="assistant-demo-caption">Пример интерфейса · демонстрационные данные</p></div>
+  </div>
+  <div class="assistant-demo-layout">
+    <nav class="assistant-demo-nav" aria-label="Разделы примера помощника">
+      <p class="assistant-demo-nav-label">Разделы</p>
+      <button class="assistant-demo-section" type="button" data-assistant-section="ads" aria-pressed="true" disabled><span class="assistant-demo-icon" aria-hidden="true">↗</span><span>Аналитика рекламы</span></button>
+      <button class="assistant-demo-section" type="button" data-assistant-section="sales" aria-pressed="false" disabled><span class="assistant-demo-icon" aria-hidden="true">₽</span><span>Аналитика продаж</span></button>
+      <button class="assistant-demo-section" type="button" data-assistant-section="questions" aria-pressed="false" disabled><span class="assistant-demo-icon" aria-hidden="true">?</span><span>Вопрос помощнику</span></button>
+    </nav>
+    <div class="assistant-demo-main">
+      <div class="assistant-demo-chat" data-assistant-chat role="region" aria-label="Пример ответа">
+        <div class="assistant-demo-user"><span>Что с рекламой?</span></div>
+        <div class="assistant-demo-answer">
+          <p class="assistant-demo-answer-title">Реклама за выбранный период</p>
+          <p class="assistant-demo-period">Демонстрационные данные</p>
+          <div class="assistant-demo-metrics">
+            <div class="assistant-demo-metric"><span>Расходы</span><strong>48 000 ₽</strong></div>
+            <div class="assistant-demo-metric"><span>Обращения</span><strong>120</strong></div>
+            <div class="assistant-demo-metric"><span>За обращение</span><strong>400 ₽</strong></div>
+          </div>
+          <p class="assistant-demo-answer-note">В одном ответе — расход бюджета и стоимость обращения. Можно обсудить эти показатели со специалистом.</p>
+        </div>
+      </div>
+      <div class="assistant-demo-question"><input class="assistant-demo-input" type="text" readonly placeholder="Выбери пример вопроса" aria-label="Вопрос: выбери один из готовых примеров"><span aria-hidden="true">↗</span></div>
+      <div class="assistant-demo-examples" aria-label="Готовые примеры вопросов">
+        <button class="assistant-demo-example" type="button" data-assistant-question="ads" disabled>Что с рекламой?</button>
+        <button class="assistant-demo-example" type="button" data-assistant-question="sales" disabled>Какие продажи?</button>
+      </div>
+      <p class="assistant-demo-limit">В демо — заранее подготовленные ответы на два вопроса.</p>
+      <div class="assistant-demo-status" data-assistant-status role="status" aria-live="polite" aria-atomic="true"></div>
+    </div>
+  </div>
+</section>
+    <p class="case-status">Выбери раздел или готовый вопрос, чтобы посмотреть пример. Показатели и ответы вымышленные; прототип показывает сценарий работы.</p>
+    <a class="linkcard" href="media/business-assistant-readable-2026-10-12.mp4" target="_blank" rel="noopener"><span class="lc-k">Дополнительно</span><span class="lc-v">Фрагмент презентации системы</span><span class="lc-arrow" aria-hidden="true">↗</span></a>
+    <details class="case-details"><summary>Как устроен сценарий<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
       <div class="rv">
-        <div class="block"><h4>Задача собственника</h4><p>Найти информацию, сравнить варианты и подготовить материал для решения. Самостоятельный поиск и оформление отчета отнимают время у управления бизнесом.</p></div>
-        <div class="block"><h4>Как работает помощник</h4><p>Участвовала в проекте рабочего ИИ-помощника: руководитель передает поручение в Telegram и получает исследование или документ. Задачи разных проектов можно вести в отдельных темах.</p></div>
+        <div class="block"><h4>Показатели в одном месте</h4><p>В отдельных разделах Telegram-чата руководитель смотрит рекламные расходы, обращения, заказы и выручку. Он может проверить нужное направление и обсудить показатели с командой.</p></div>
+        <div class="block"><h4>Вопросы помощнику</h4><p>В строке чата можно написать запрос и получить ответ помощника. В прототипе показаны два заранее подготовленных примера; к реальной аналитике и модели он не подключен.</p></div>
       </div>
       <div class="rv">
-        <div class="block"><h4>Что получает руководитель</h4><p>Передает помощнику поиск и подготовку материалов, получает готовый файл для просмотра. Ему остается проверить выводы и принять решение — время на сбор и оформление можно направить на работу с командой и клиентами.</p></div>
-        <div class="block"><h4>Что видно в демонстрации</h4><p>Поручение найти и сравнить агентства недвижимости, готовый PDF в Telegram и просмотр отчета. Это тестовый сценарий, который показывает путь от задачи до результата.</p></div>
+        <div class="block"><h4>О проекте</h4><p>Участвовала в проекте рабочего ИИ-помощника. Здесь показываю наглядную схему интерфейса по сценарию системы. В дополнительном видео — фрагмент исходной презентации с поручением и готовым документом.</p></div>
       </div>
-    </div></div></details></section>
+    </div></div></details>
+  </section>
 
   <section class="case" id="tools">
     <div class="case-head rv"><div class="case-num">1.3</div>
@@ -772,8 +832,8 @@ header.hero{padding-top:48px;padding-bottom:28px}
   </section>
 
   <section class="development-group" id="visibility" aria-labelledby="visibility-title">
-    <header class="group-head rv">
-      <div class="group-kicker"><span>02</span><p class="eyebrow">2 разработки</p></div>
+    <header class="group-head">
+      <div class="group-kicker"><span>Раздел 2 из 4</span><p class="eyebrow">2 разработки</p></div>
       <h2 class="group-title" id="visibility-title">Прозрачность процессов</h2>
       <p class="group-description">Руководитель видит клиентов без задач, расходы на рекламу и результаты работы — и понимает, что требует внимания.</p>
       <div class="group-links" aria-label="Разработки раздела"><a href="#base">Контроль клиентской базы</a><a href="#bot-vk">Реклама под контролем</a></div>
@@ -842,8 +902,8 @@ header.hero{padding-top:48px;padding-bottom:28px}
   </section>
 
   <section class="development-group" id="sales" aria-labelledby="sales-title">
-    <header class="group-head rv">
-      <div class="group-kicker"><span>03</span><p class="eyebrow">2 разработки</p></div>
+    <header class="group-head">
+      <div class="group-kicker"><span>Раздел 3 из 4</span><p class="eyebrow">2 разработки</p></div>
       <h2 class="group-title" id="sales-title">Рост продаж</h2>
       <p class="group-description">Инструменты для повторных покупок и онлайн-заказов: вовремя напомнить клиенту о закупке и упростить выбор товаров.</p>
       <div class="group-links" aria-label="Разработки раздела"><a href="#repeat-orders">Повторные закупки</a><a href="#online-store">Интернет-магазин</a></div>
@@ -900,8 +960,8 @@ header.hero{padding-top:48px;padding-bottom:28px}
   </section>
 
   <section class="development-group" id="other" aria-labelledby="other-title">
-    <header class="group-head rv">
-      <div class="group-kicker"><span>04</span><p class="eyebrow">2 разработки</p></div>
+    <header class="group-head">
+      <div class="group-kicker"><span>Раздел 4 из 4</span><p class="eyebrow">2 разработки</p></div>
       <h2 class="group-title" id="other-title">Другие автоматизации</h2>
       <p class="group-description">Сбор вопросов аудитории и учет личного бюджета: меньше ручных действий в повседневных задачах.</p>
       <div class="group-links" aria-label="Разработки раздела"><a href="#bot-anon">Вопросы аудитории для контента</a><a href="#finbot">Бюджет под контролем</a></div>
@@ -1022,6 +1082,8 @@ header.hero{padding-top:48px;padding-bottom:28px}
   var links=Array.from(document.querySelectorAll('.caselist-row a'));
   var scheduled=false;
   var nav=document.querySelector('.caselist');
+  var readingIndex=document.querySelector('.reading-context-index');
+  var readingTitle=document.querySelector('.reading-context-title');
   function updateOffset(){document.documentElement.style.setProperty('--section-offset',Math.ceil(nav.getBoundingClientRect().height+22)+'px');}
   if('ResizeObserver' in window)new ResizeObserver(updateOffset).observe(nav);
   updateOffset();
@@ -1029,9 +1091,14 @@ header.hero{padding-top:48px;padding-bottom:28px}
     scheduled=false;
     var limit=document.documentElement.scrollHeight-window.innerHeight;
     document.documentElement.style.setProperty('--page-progress',limit>0?window.scrollY/limit:0);
-    var current=null;
-    groups.forEach(function(g){if(g.getBoundingClientRect().top<=window.innerHeight*.32)current=g.id;});
+    var current=null,currentGroup=null;
+    var sectionEdge=nav.getBoundingClientRect().height+24;
+    groups.forEach(function(g){if(g.getBoundingClientRect().top<=sectionEdge){current=g.id;currentGroup=g;}});
     links.forEach(function(a){var active=a.getAttribute('href')==='#'+current;a.classList.toggle('is-active',active);if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});
+    var indexText=currentGroup?'Раздел '+(groups.indexOf(currentGroup)+1)+' из '+groups.length:groups.length+' раздела';
+    var titleText=currentGroup?currentGroup.querySelector('.group-title').textContent:'Выберите направление';
+    if(readingIndex.textContent!==indexText)readingIndex.textContent=indexText;
+    if(readingTitle.textContent!==titleText)readingTitle.textContent=titleText;
   }
   window.addEventListener('scroll',function(){if(!scheduled){scheduled=true;requestAnimationFrame(updateReading);}},{passive:true});
   window.addEventListener('resize',function(){updateOffset();updateReading();});
@@ -1039,5 +1106,6 @@ header.hero{padding-top:48px;padding-bottom:28px}
 })();
 </script>
 <script src="motion.js"></script>
+<script src="assistant-demo.js" defer></script>
 </body>
 </html>
