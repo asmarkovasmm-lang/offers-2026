@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
-<meta name="portfolio-version" content="2026-10-13.03" />
+<meta name="portfolio-version" content="2026-10-13.04" />
 <title>Автоматизация маркетинга и клиентской работы · Анастасия Маркова</title>
 <meta name="description" content="Автоматизации по задачам бизнеса: экономия времени, прозрачность процессов, рост продаж, сайты и другие разработки. Панели операторов, аналитика CRM, отчеты, интернет-магазин и Telegram-боты.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assistant-demo.css?v=20261013-02">
+<link rel="stylesheet" href="hero-benefits.css?v=20261013-04">
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -688,6 +688,15 @@ main.wrap>.development-group:first-child{margin-top:44px}
 @media(max-width:650px){.operator-average{padding:20px}.operator-average p{gap:8px}.operator-average strong{font-size:25px}.operator-average strong:first-child{font-size:23px}.operator-timeline{grid-template-columns:minmax(0,1fr)}.operator-timeline>div{display:flex;justify-content:space-between;gap:12px;align-items:center}.operator-timeline strong{margin:0;white-space:nowrap}.operator-top-result .throughput-label{gap:10px;flex-wrap:wrap}.operator-top-result .throughput-label strong{font-size:30px}.operator-top-result .throughput-impact{padding:18px}.manager-showcase{padding:18px 10px}.manager-showcase-copy{padding:6px}.operator-story p,.base-context>p:not(.case-lede){font-size:15px}.outcome-title{font-size:21px}}
 @media(max-width:380px){.outcomes{grid-template-columns:minmax(0,1fr)}.outcome-title{font-size:24px}.scene-result>strong{font-size:29px}.operator-average p{display:grid;grid-template-columns:1fr auto;gap:4px 8px}.operator-average i{grid-column:2;grid-row:1 / 3}.operator-average strong{grid-column:1}.manager-showcase{padding-inline:4px}.manager-showcase-copy{padding:10px}}
 
+
+/* The source dashboard keeps its own clinic prototype design inside the frame. */
+.assistant-dashboard-shell{margin-top:24px;border:1px solid #E9E9E7;border-radius:18px;overflow:hidden;background:#FFF;box-shadow:0 18px 48px -34px rgba(55,53,47,.3)}
+.assistant-dashboard-frame{display:block;width:100%;height:920px;min-width:0;border:0;background:#FFF}
+.ads-bot-video{max-width:600px;margin-inline:auto;background:#EAF0F6}
+.ads-bot-video video{width:100%;max-width:540px;max-height:720px;object-fit:contain;margin-inline:auto;background:#EAF0F6}
+.ads-bot-video .shot-cap{background:#FFF}
+@media(max-width:650px){.assistant-dashboard-frame{height:900px}.assistant-dashboard-shell{border-radius:14px}.ads-bot-video video{max-height:620px}}
+
 </style>
 </head>
 <body>
@@ -711,7 +720,7 @@ main.wrap>.development-group:first-child{margin-top:44px}
       <div class="hero-copy">
         <p class="eyebrow">Анастасия Маркова · автоматизация маркетинга и клиентской работы</p>
         <h1>Автоматизация<br><em>для бизнеса</em></h1>
-        <p class="hero-lead"><span>Освобождаю время команды (экономлю ФОТ).</span><span>Увеличиваю продажи с базы и конверсию с лидов.</span><span>Помогаю держать под контролем рекламные расходы и эффективность от закупа до LTV.</span></p>
+        <p class="hero-lead"><span class="hero-benefit"><span class="hero-benefit-marker" aria-hidden="true">→</span><span class="hero-benefit-text">Освобождаю время команды (экономлю ФОТ).</span><span class="hero-benefit-trail" aria-hidden="true"><svg class="hero-benefit-arrow" viewBox="0 0 22 14" focusable="false"><path d="M1 7h19M14 1l6 6-6 6"/></svg></span></span><span class="hero-benefit"><span class="hero-benefit-marker" aria-hidden="true">→</span><span class="hero-benefit-text">Увеличиваю продажи с базы и конверсию с лидов.</span><span class="hero-benefit-trail" aria-hidden="true"><svg class="hero-benefit-arrow" viewBox="0 0 22 14" focusable="false"><path d="M1 7h19M14 1l6 6-6 6"/></svg></span></span><span class="hero-benefit"><span class="hero-benefit-marker" aria-hidden="true">→</span><span class="hero-benefit-text">Помогаю держать под контролем рекламные расходы и эффективность от закупа до LTV.</span><span class="hero-benefit-trail" aria-hidden="true"><svg class="hero-benefit-arrow" viewBox="0 0 22 14" focusable="false"><path d="M1 7h19M14 1l6 6-6 6"/></svg></span></span></p>
         <div class="hero-actions"><a class="button-primary" href="#contact">Обсудить задачи</a></div>
         <p class="hero-context">7 проектов в 5 направлениях<br><span>Рабочие инструменты, опубликованный сайт и демо</span></p>
       </div>
@@ -810,87 +819,13 @@ main.wrap>.development-group:first-child{margin-top:44px}
       <div class="case-tags"><span class="tag">Демонстрация интерфейса</span></div>
     </div>
     <p class="case-lede">Реклама, продажи и ответы на вопросы — в Telegram-боте или на отдельном дашборде в формате веб-страницы. Руководитель получает основные показатели, не собирая их вручную из разных отчетов.</p>
-    <a class="case-action" href="zamdir.html?v=20261013-02">Открыть «Зам директора» отдельно ↗</a>
-    <section class="assistant-demo" data-assistant-demo aria-label="Демонстрация интерфейса Зам директора">
-  <div class="assistant-demo-top">
-    <span class="assistant-demo-mark" aria-hidden="true">↗</span>
-    <div class="assistant-demo-heading"><p class="assistant-demo-title">Зам директора</p><p class="assistant-demo-subtitle">Все материалы в одном месте</p><p class="assistant-demo-caption">Демонстрация интерфейса · вымышленные данные</p></div>
-    <button class="assistant-demo-pause" type="button" data-assistant-pause aria-pressed="false" hidden>Пауза</button>
-  </div>
-  <div class="assistant-demo-layout">
-    <nav class="assistant-demo-nav" aria-label="Разделы демонстрации">
-      <p class="assistant-demo-nav-label">Разделы</p>
-      <button class="assistant-demo-section" type="button" data-assistant-section="ads" aria-pressed="true" disabled><span class="assistant-demo-icon" aria-hidden="true">↗</span><span>Аналитика рекламы</span></button>
-      <button class="assistant-demo-section" type="button" data-assistant-section="sales" aria-pressed="false" disabled><span class="assistant-demo-icon" aria-hidden="true">₽</span><span>Аналитика продаж</span></button>
-      <button class="assistant-demo-section" type="button" data-assistant-section="questions" aria-pressed="false" disabled><span class="assistant-demo-icon" aria-hidden="true">?</span><span>Вопрос помощнику</span></button>
-    </nav>
-    <div class="assistant-demo-main">
-      <div class="assistant-demo-chat" data-assistant-panel="ads" role="region" aria-label="Демонстрационный рекламный отчет">
-        <div class="assistant-demo-telegram-head"><span class="assistant-demo-telegram-icon" aria-hidden="true">↗</span><div><p class="assistant-demo-answer-title">Отчет в Telegram</p><p class="assistant-demo-period">Расходы, обращения и креативы</p></div></div>
-        <div class="assistant-demo-period-picker" aria-label="Период рекламного отчета">
-          <button class="assistant-demo-period-button" type="button" data-assistant-period="today" aria-pressed="false" disabled>Сегодня</button>
-          <button class="assistant-demo-period-button" type="button" data-assistant-period="yesterday" aria-pressed="false" disabled>Вчера</button>
-          <button class="assistant-demo-period-button" type="button" data-assistant-period="week" aria-pressed="false" disabled>Эта неделя</button>
-          <button class="assistant-demo-period-button" type="button" data-assistant-period="previous" aria-pressed="true" disabled>Прошлая неделя</button>
-          <button class="assistant-demo-period-button" type="button" data-assistant-period="month" aria-pressed="false" disabled>С начала месяца</button>
-          <button class="assistant-demo-period-button" type="button" data-assistant-creatives aria-expanded="true" disabled>Креативы</button>
-          <button class="assistant-demo-period-button" type="button" data-assistant-period="custom" aria-pressed="false" aria-expanded="false" disabled>Свои даты</button>
-        </div>
-        <form class="assistant-demo-dates" data-assistant-dates hidden>
-          <label>С <input class="assistant-demo-date-input" type="date" data-assistant-from required disabled></label>
-          <label>По <input class="assistant-demo-date-input" type="date" data-assistant-to required disabled></label>
-          <button class="assistant-demo-apply" type="submit" disabled>Показать</button>
-          <p class="assistant-demo-date-error" data-assistant-date-error role="status"></p>
-        </form>
-        <div class="assistant-demo-answer">
-          <p class="assistant-demo-answer-title">Сводка рекламы</p>
-          <p class="assistant-demo-period" data-assistant-period-label>Прошлая неделя · 7 дней</p>
-          <div class="assistant-demo-metrics">
-            <div class="assistant-demo-metric"><span>Расходы</span><strong data-assistant-value="ads-spend">48 000 ₽</strong></div>
-            <div class="assistant-demo-metric"><span>Обращения</span><strong data-assistant-value="ads-leads">120</strong></div>
-            <div class="assistant-demo-metric"><span>За обращение</span><strong data-assistant-value="ads-cpl">400 ₽</strong></div>
-          </div>
-          <p class="assistant-demo-answer-note">Два креатива в выбранном периоде.</p>
-        </div>
-        <div class="assistant-demo-creatives" data-assistant-creative-list aria-label="Креативы рекламного отчета">
-          <article class="assistant-demo-creative">
-            <div class="assistant-demo-creative-head"><span class="assistant-demo-thumb" aria-hidden="true">01</span><div><p class="assistant-demo-creative-title">Первичный прием</p><span class="assistant-demo-creative-status" data-assistant-creative-status="0">Крутится</span></div></div>
-            <dl class="assistant-demo-creative-metrics"><div><dt>Расход</dt><dd data-assistant-value="creative-0-spend">30 000 ₽</dd></div><div><dt>Обращения</dt><dd data-assistant-value="creative-0-leads">60</dd></div><div><dt>За обращение</dt><dd data-assistant-value="creative-0-cpl">500 ₽</dd></div></dl>
-          </article>
-          <article class="assistant-demo-creative">
-            <div class="assistant-demo-creative-head"><span class="assistant-demo-thumb assistant-demo-thumb-alt" aria-hidden="true">02</span><div><p class="assistant-demo-creative-title">Гигиена</p><span class="assistant-demo-creative-status" data-assistant-creative-status="1">Крутится</span></div></div>
-            <dl class="assistant-demo-creative-metrics"><div><dt>Расход</dt><dd data-assistant-value="creative-1-spend">18 000 ₽</dd></div><div><dt>Обращения</dt><dd data-assistant-value="creative-1-leads">60</dd></div><div><dt>За обращение</dt><dd data-assistant-value="creative-1-cpl">300 ₽</dd></div></dl>
-          </article>
-        </div>
-      </div>
-      <div class="assistant-demo-chat" data-assistant-panel="sales" role="region" aria-label="Демонстрационная аналитика продаж" hidden>
-        <div class="assistant-demo-user"><span>Какие продажи?</span></div>
-        <div class="assistant-demo-answer">
-          <p class="assistant-demo-answer-title">Оплаченные заказы</p><p class="assistant-demo-period" data-assistant-period-label>Прошлая неделя · 7 дней</p>
-          <div class="assistant-demo-metrics">
-            <div class="assistant-demo-metric"><span>Оплачено заказов</span><strong data-assistant-value="sales-paid">128</strong></div>
-            <div class="assistant-demo-metric"><span>Выручка</span><strong data-assistant-value="sales-revenue">89 600 ₽</strong></div>
-            <div class="assistant-demo-metric"><span>Средний чек</span><strong data-assistant-value="sales-average">700 ₽</strong></div>
-          </div>
-          <p class="assistant-demo-answer-note">Заказы, выручка и средний чек за выбранный период.</p>
-        </div>
-      </div>
-      <div class="assistant-demo-chat" data-assistant-panel="questions" role="region" aria-label="Демонстрационные ответы помощника" hidden>
-        <div data-assistant-question-answer><div class="assistant-demo-answer"><p class="assistant-demo-answer-title">Выбери пример вопроса</p><p class="assistant-demo-answer-note">Ответ покажет текущие вымышленные показатели рекламы или продаж.</p></div></div>
-      </div>
-      <div class="assistant-demo-question"><input class="assistant-demo-input" type="text" readonly placeholder="Выбери пример вопроса" aria-label="Вопрос: выбери один из готовых примеров"><span aria-hidden="true">↗</span></div>
-      <div class="assistant-demo-examples" aria-label="Готовые примеры вопросов">
-        <button class="assistant-demo-example" type="button" data-assistant-question="ads" disabled>Что с рекламой?</button>
-        <button class="assistant-demo-example" type="button" data-assistant-question="sales" disabled>Какие продажи?</button>
-      </div>
-      <div class="assistant-demo-demo-note"><span data-assistant-frame>Пример 1 из 4</span><p class="assistant-demo-limit">В демо — смена вымышленных показателей и подготовленные ответы.</p></div>
-      <div class="assistant-demo-status" data-assistant-status role="status" aria-live="polite" aria-atomic="true"></div>
+    <a class="case-action" href="zamdir.html?v=20261013-04">Открыть «Зам директора» отдельно ↗</a>
+    <div class="assistant-dashboard-shell">
+      <iframe class="assistant-dashboard-frame" src="zamdir.html?v=20261013-04" title="Зам директора: демонстрация дашборда рекламы и продаж" loading="lazy" height="920"></iframe>
     </div>
-  </div>
-</section>
     <details class="case-details"><summary>Что получает руководитель<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
       <div><div class="block"><h4>Данные по рекламе</h4><p>По дням или за выбранный период: сколько потратили, сколько обращений получили и сколько стоит обращение. Видно, какие креативы крутятся и что дает каждый из них.</p></div><div class="block"><h4>Данные по продажам</h4><p>Оплаченные заказы, выручка и средний чек собраны в одном разделе. Руководитель быстрее замечает изменения и обсуждает их с командой.</p></div></div>
-      <div><div class="block"><h4>О проекте</h4><p>Участвовала в работе над ИИ-помощником руководителя. Здесь показан сценарий интерфейса с вымышленными данными.</p></div><div class="block"><h4>Вопрос помощнику</h4><p>Руководитель задает вопрос в чате и получает нужную сводку. В демонстрации можно выбрать примеры вопросов по рекламе и продажам.</p></div></div>
+      <div><div class="block"><h4>О проекте</h4><p>Участвовала в работе над ИИ-помощником руководителя. Здесь показан сценарий интерфейса с вымышленными данными.</p></div><div class="block"><h4>Вопрос помощнику</h4><p>Руководитель задает вопрос помощнику и получает нужную сводку. В демонстрации можно выбрать примеры вопросов по рекламе и продажам.</p></div></div>
     </div></div></details>
   </section>
 
@@ -962,7 +897,10 @@ main.wrap>.development-group:first-child{margin-top:44px}
     </div><p class="case-lede">Заказчик видит рекламные расходы и стоимость обращения, не дожидаясь отчета специалиста.</p>
     
     
-  <div class="shot"><a href="media/ads-report-niche.jpg" target="_blank" rel="noopener" aria-label="Увеличить фрагмент рекламного отчета"><img src="media/ads-report-niche.jpg" width="448" height="238" loading="lazy" alt="Фрагмент отчета: рекламный бюджет, клики, обращения и их стоимость без названия клиента"></a><div class="shot-cap"><span>Стоматология · рекламный отчет</span><span>Название клиента скрыто</span></div></div><details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
+  <div class="shot ads-bot-video">
+      <video controls playsinline muted preload="metadata" poster="media/ads-bot-poster-2026-10-13.jpg" aria-label="Запись Telegram-бота: выбор периода, рекламный отчет и креативы"><source src="media/ads-bot-demo-2026-10-13.mp4" type="video/mp4">Посмотреть <a href="media/ads-bot-demo-2026-10-13.mp4">видео работы рекламного бота</a>.</video>
+      <div class="shot-cap"><span>Стоматология · Telegram-бот рекламной аналитики</span><span>Запись работы · нажми воспроизвести</span></div>
+    </div><details class="case-details"><summary>Как работает и что сделала<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
       <div class="rv"><div class="block"><h4>Задача клиента</h4><p>Руководителю нужно понимать, сколько потратили на рекламу и сколько обращений получили. Ручной отчет приходится запрашивать у специалиста и ждать.</p></div><div class="block"><h4>Что сделала</h4><p>Собрала Telegram-бота со статистикой рекламы. Заказчик выбирает период и получает расходы, показы, клики, обращения и их стоимость.</p></div></div>
       <div class="rv"><div class="block"><h4>Что получает руководитель</h4><p>Доступ к показателям без ожидания очередного отчета. Можно сравнивать периоды, замечать рост стоимости обращения и обсуждать расходы со специалистом на основе цифр.</p></div><div class="block"><h4>Что экономит специалист</h4><p>Время на ручную выгрузку, сведение показателей и повторные ответы заказчику. В боте доступны <b>5 готовых периодов</b> для просмотра.</p></div></div>
     </div></div></details></section>
@@ -1151,6 +1089,5 @@ main.wrap>.development-group:first-child{margin-top:44px}
 })();
 </script>
 <script src="motion.js?v=20261013-02"></script>
-<script src="assistant-demo.js?v=20261013-02" defer></script>
 </body>
 </html>
