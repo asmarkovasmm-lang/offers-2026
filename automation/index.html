@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
-<meta name="portfolio-version" content="2026-10-13.04" />
+<meta name="portfolio-version" content="2026-10-13.05" />
 <title>Автоматизация маркетинга и клиентской работы · Анастасия Маркова</title>
 <meta name="description" content="Автоматизации по задачам бизнеса: экономия времени, прозрачность процессов, рост продаж, сайты и другие разработки. Панели операторов, аналитика CRM, отчеты, интернет-магазин и Telegram-боты.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -697,6 +697,13 @@ main.wrap>.development-group:first-child{margin-top:44px}
 .ads-bot-video .shot-cap{background:#FFF}
 @media(max-width:650px){.assistant-dashboard-frame{height:900px}.assistant-dashboard-shell{border-radius:14px}.ads-bot-video video{max-height:620px}}
 
+.back-to-top{position:fixed;right:clamp(16px,3vw,32px);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:180;display:grid;place-items:center;width:54px;height:54px;padding:0;border:1px solid rgba(255,255,255,.55);border-radius:50%;background:#3157F4;color:#FFF;box-shadow:0 8px 25px rgba(21,43,67,.28);cursor:pointer;transition:background .18s,transform .18s}
+.back-to-top[hidden]{display:none}
+.back-to-top:hover{background:#2548D9;transform:translateY(-3px)}
+.back-to-top:focus-visible{outline:3px solid #AFC6FF;outline-offset:4px}
+.back-to-top svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:650px){.back-to-top{width:48px;height:48px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px))}}
+@media(prefers-reduced-motion:reduce){.back-to-top{transition:none}.back-to-top:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -819,9 +826,9 @@ main.wrap>.development-group:first-child{margin-top:44px}
       <div class="case-tags"><span class="tag">Демонстрация интерфейса</span></div>
     </div>
     <p class="case-lede">Реклама, продажи и ответы на вопросы — в Telegram-боте или на отдельном дашборде в формате веб-страницы. Руководитель получает основные показатели, не собирая их вручную из разных отчетов.</p>
-    <a class="case-action" href="zamdir.html?v=20261013-04">Открыть «Зам директора» отдельно ↗</a>
+    <a class="case-action" href="zamdir.html?v=20261013-05">Открыть «Зам директора» отдельно ↗</a>
     <div class="assistant-dashboard-shell">
-      <iframe class="assistant-dashboard-frame" src="zamdir.html?v=20261013-04" title="Зам директора: демонстрация дашборда рекламы и продаж" loading="lazy" height="920"></iframe>
+      <iframe class="assistant-dashboard-frame" src="zamdir.html?v=20261013-05" title="Зам директора: демонстрация дашборда рекламы и продаж" loading="lazy" height="920"></iframe>
     </div>
     <details class="case-details"><summary>Что получает руководитель<span aria-hidden="true">+</span></summary><div class="details-content"><div class="case-body case-body--text">
       <div><div class="block"><h4>Данные по рекламе</h4><p>По дням или за выбранный период: сколько потратили, сколько обращений получили и сколько стоит обращение. Видно, какие креативы крутятся и что дает каждый из них.</p></div><div class="block"><h4>Данные по продажам</h4><p>Оплаченные заказы, выручка и средний чек собраны в одном разделе. Руководитель быстрее замечает изменения и обсуждает их с командой.</p></div></div>
@@ -1037,6 +1044,8 @@ main.wrap>.development-group:first-child{margin-top:44px}
   </div>
 </footer>
 
+<button class="back-to-top" type="button" aria-label="Вернуться наверх" title="Наверх" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V4M5 11l7-7 7 7"/></svg></button>
+
 <script>
 (function(){
   function revealAnchor(){
@@ -1055,6 +1064,18 @@ main.wrap>.development-group:first-child{margin-top:44px}
   ['wheel','touchstart','pointerdown','keydown'].forEach(function(type){window.addEventListener(type,function(){initialAnchorAllowed=false;},{once:true,passive:true});});
   window.addEventListener('hashchange',function(){initialAnchorAllowed=false;revealAnchor();});
   var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var topButton=document.querySelector('.back-to-top');
+  var topFrame=0;
+  function updateTopButton(){topFrame=0;topButton.hidden=window.scrollY<500;}
+  window.addEventListener('scroll',function(){if(!topFrame)topFrame=requestAnimationFrame(updateTopButton);},{passive:true});
+  updateTopButton();
+  topButton.addEventListener('click',function(){
+    initialAnchorAllowed=false;
+    if(window.location.hash)history.replaceState(history.state,'',window.location.pathname+window.location.search);
+    window.scrollTo({top:0,behavior:reduced?'instant':'smooth'});
+    var heading=document.querySelector('.hero h1');
+    if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});}
+  });
   var reveals=document.querySelectorAll('.rv');
   if(!reduced && 'IntersectionObserver' in window){
     document.documentElement.classList.add('has-motion');
