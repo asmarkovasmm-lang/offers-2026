@@ -58,10 +58,7 @@ body{
 }
 
 /* grain */
-body::after{
-  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.035;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+/* Decorative SVG grain removed to keep content clear across browsers. */
 
 ::selection{background:var(--acid);color:#FAF6F5}
 
@@ -470,28 +467,16 @@ h1,h2,h3{font-weight:600 !important;letter-spacing:-.045em}
 
 /* размытая атмосфера в шапке — вместо плоского розового пятна */
 header.hero::before{display:none}
-/* размытая дымка во всю ширину экрана — общий прием со страницы кейсов */
-/* слой уходит ЗА поток: фон держит html, у body он прозрачный */
+/* Paint the same warm atmosphere without filtered overlay layers. */
 html{background:var(--ink)}
-body{background:transparent}
-.page-atmo{
-  position:absolute;left:50%;transform:translateX(-50%);top:0;
-  width:100vw;height:min(900px,105vh);z-index:-1;pointer-events:none;overflow:hidden;
+body{
+  background:
+    radial-gradient(ellipse 60vw 600px at 8vw 170px,rgba(168,156,141,.26),transparent 78%),
+    radial-gradient(ellipse 56vw 520px at 93vw 120px,rgba(138,90,56,.11),transparent 76%),
+    var(--ink);
+  background-repeat:no-repeat;
 }
-.page-atmo i{position:absolute;display:block;border-radius:50%;filter:blur(90px)}
-.page-atmo .a1{width:58vw;height:52vw;left:-10%;top:-16%;background:radial-gradient(circle,rgba(168,156,141,.85),transparent 64%)}
-.page-atmo .a2{width:48vw;height:44vw;right:-8%;top:-10%;background:radial-gradient(circle,rgba(138,90,56,.40),transparent 64%)}
-.page-atmo .a3{width:64vw;height:36vw;left:18%;bottom:-14%;background:radial-gradient(ellipse,rgba(252,250,247,.95),transparent 62%)}
-.page-atmo::after{
-  content:"";position:absolute;inset:0;
-  background:repeating-linear-gradient(184.5deg,
-    rgba(252,250,247,0) 0 26px,
-    rgba(252,250,247,.58) 26px 29px,
-    rgba(36,29,25,.05) 29px 74px);
-  filter:blur(7px);opacity:.38;
-  -webkit-mask-image:radial-gradient(ellipse 66% 60% at 50% 40%,#000 6%,transparent 74%);
-  mask-image:radial-gradient(ellipse 66% 60% at 50% 40%,#000 6%,transparent 74%);
-}
+.page-atmo{display:none}
 main,footer.end{position:relative;z-index:1}
 nav,.caselist{
   background:rgba(239,235,228,.74);
@@ -555,6 +540,13 @@ footer.end h2{color:var(--cream)}
 .card-case .go{margin-top:auto;padding-top:14px;font-size:12.5px;letter-spacing:.06em;
   text-transform:uppercase;color:var(--acid)}
 </style>
+
+<style id="case-readability-fix">
+.stat{min-width:0}
+.stat .val{font-size:clamp(23px,2.5vw,38px);letter-spacing:0;white-space:nowrap;font-variant-numeric:tabular-nums}
+@media(max-width:1100px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.stats{grid-template-columns:minmax(0,1fr)}}
+</style>
 </head>
 <body>
 <div class="page-atmo" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
@@ -610,15 +602,15 @@ footer.end h2{color:var(--cream)}
         <div class="cap">рублей подтвержденных продаж через ВК в месяц</div>
       </div>
       <div class="stat">
-        <div class="val" data-count="2000" data-prefix="+" data-suffix="%" data-fmt="space">+2 000%</div>
+        <div class="val" data-count="2000" data-prefix="+" data-suffix="%" data-fmt="space">+2 000%</div>
         <div class="cap">рост охватов сообщества</div>
       </div>
       <div class="stat">
-        <div class="val" data-count="10000" data-prefix="+" data-suffix="%" data-fmt="space">+10 000%</div>
+        <div class="val" data-count="10000" data-prefix="+" data-suffix="%" data-fmt="space">+10 000%</div>
         <div class="cap">рост охватов видеоконтента</div>
       </div>
       <div class="stat">
-        <div class="val" data-count="1200" data-prefix="+" data-suffix="%" data-fmt="space">+1 200%</div>
+        <div class="val" data-count="1200" data-prefix="+" data-suffix="%" data-fmt="space">+1 200%</div>
         <div class="cap">рост вовлеченности в основной соцсети</div>
       </div>
     </div>
@@ -838,12 +830,12 @@ footer.end h2{color:var(--cream)}
     if(reduce) return;
     if(!el.dataset.count){ countInText(el); return; }
     var target = parseInt(el.dataset.count, 10);
-    var pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
+    var pre = el.dataset.prefix || '', suf = (el.dataset.suffix || '').replace(/ /g, '\u00a0');
     var space = el.dataset.fmt === 'space';
     var dur = 1100, t0 = null;
     function fmt(n){
       var s = String(n);
-      if(space) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+      if(space) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0');
       return pre + s + suf;
     }
     function step(ts){

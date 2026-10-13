@@ -32,10 +32,7 @@ body{
   font-family:var(--body);font-size:clamp(15px,1.05vw,17px);line-height:1.55;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
-body::after{
-  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.035;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+/* Decorative SVG grain removed to keep content clear across browsers. */
 ::selection{background:var(--acid);color:#FAF6F5}
 h1,h2,h3{font-family:var(--display);font-weight:800;margin:0;letter-spacing:-.03em;line-height:.94}
 p{margin:0}
