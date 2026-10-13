@@ -120,28 +120,13 @@ header.hero{
   padding:clamp(46px,8vw,104px) 0 clamp(26px,3.4vw,48px);
   text-align:center;
 }
-/* размытая «дымка» — вместо плоской заливки, как на референсах */
-.hero-atmo{position:absolute;left:50%;transform:translateX(-50%);width:100vw;top:-16%;height:118%;
-  z-index:0;pointer-events:none;overflow:hidden;
-  -webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent 97%);
-  mask-image:linear-gradient(to bottom,#000 62%,transparent 97%)}
-.hero-atmo .blob{position:absolute;border-radius:50%;display:block;filter:blur(90px)}
-.hero-atmo .b1{width:58vw;height:52vw;left:-8%;top:-14%;background:radial-gradient(circle,rgba(168,156,141,.85),transparent 64%)}
-.hero-atmo .b2{width:46vw;height:44vw;right:-6%;top:-6%;background:radial-gradient(circle,rgba(138,90,56,.42),transparent 64%)}
-.hero-atmo .b3{width:70vw;height:40vw;left:16%;bottom:-22%;background:radial-gradient(ellipse,rgba(36,29,25,.30),transparent 66%)}
-.hero-atmo .b4{width:34vw;height:30vw;right:16%;bottom:6%;background:radial-gradient(circle,rgba(252,250,247,.95),transparent 62%)}
-/* горизонтальный «смаз движения» — прием с референса THE ROW */
-.hero-atmo::after{
-  content:"";position:absolute;inset:0;
-  background:repeating-linear-gradient(184.5deg,
-    rgba(252,250,247,0) 0 26px,
-    rgba(252,250,247,.62) 26px 29px,
-    rgba(36,29,25,.055) 29px 74px);
-  filter:blur(7px);opacity:.42;
-  -webkit-mask-image:radial-gradient(ellipse 62% 58% at 50% 46%,#000 6%,transparent 74%);
-  mask-image:radial-gradient(ellipse 62% 58% at 50% 46%,#000 6%,transparent 74%);
+/* Warm hero gradients without a filtered layer over the page. */
+header.hero{
+  background:
+    radial-gradient(ellipse 58vw 90% at 8% 25%,rgba(168,156,141,.24),transparent 78%),
+    radial-gradient(ellipse 52vw 85% at 93% 20%,rgba(138,90,56,.10),transparent 76%);
 }
-.hero-atmo .streak{display:none}
+.hero-atmo{display:none}
 
 .hero-inner{position:relative;z-index:1;max-width:1020px;margin:0 auto}
 .hero h1{
@@ -218,7 +203,7 @@ header.hero{
 
 /* ============ КАРТОЧКИ КЕЙСОВ ============ */
 .cards{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr));
   gap:clamp(14px,1.5vw,20px);
   margin-top:clamp(40px,5.5vw,74px);
 }
