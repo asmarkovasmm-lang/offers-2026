@@ -417,6 +417,14 @@ ul.ticks li::before{background:#fff}
 .next a{color:var(--teal);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor}
 .hero .c4 .big.w{font-size:clamp(20px,2.2vw,30px)!important}
 @media (min-width:820px) and (max-height:820px){.fs .bar{height:30px}.funnel{gap:7px}.pm{padding:12px 14px}.pm .txt{font-size:13px}}
+/* Исходная демка стоматологии встроена без изменений. */
+.slide.dashboard-slide{padding:20px 24px 82px;overflow:hidden}
+.dashboard-slide .inner{max-width:none;height:100%;min-height:0;display:flex;flex-direction:column;gap:12px}
+.dashboard-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.dashboard-heading h2{font-size:clamp(20px,2.2vw,30px)}
+.dashboard-heading a{font-size:13px;color:var(--teal);text-underline-offset:3px}
+.dashboard-demo{display:block;width:100%;flex:1;min-height:0;border:1px solid var(--line);background:#fff}
+@media(max-width:700px){.slide.dashboard-slide{padding:16px 10px 80px}.dashboard-heading{gap:6px}.dashboard-slide .inner{gap:8px}}
 </style>
 </head>
 <body>
@@ -540,6 +548,16 @@ ul.ticks li::before{background:#fff}
       <div class="box ask"><p><b>После пилота вы решаете, продолжать ли.</b> Гигиена — первый повод. Тем же способом система
         зовет пациентов с незакрытым планом лечения, на контроль после лечения и на ежегодный осмотр.</p></div>
       <p class="next"><a href="https://asmarkovasmm-lang.github.io/offers-2026/boeva/presentation.html">Полное предложение →</a></p>
+    </div>
+  </section>
+
+  <section class="slide dashboard-slide">
+    <div class="inner">
+      <div class="dashboard-heading">
+        <h2>Дашборд маркетинга и продаж</h2>
+        <a href="marketing-sales-demo.html" target="_blank" rel="noopener">Открыть демо на весь экран ↗</a>
+      </div>
+      <iframe class="dashboard-demo" src="marketing-sales-demo.html" title="Демо дашборда стоматологии: маркетинг и продажи" loading="lazy"></iframe>
     </div>
   </section>
 
