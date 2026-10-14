@@ -263,6 +263,11 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
 .ads-overview-heading>span{font-size:13px;color:var(--ink2)}
 .ads-overview>.ads-section-intro{margin:7px 0 0}
 .ads-page .ads-summary-grid{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:16px}
+.ads-summary-grid .kpi-highlight--expense{background:#F5D083;border-color:#DFB861;color:#493008}
+.ads-summary-grid .kpi-highlight--revenue{background:#1F7A74;border-color:#1F7A74;color:#FFF}
+.ads-summary-grid .kpi-highlight--expense .kpi-l,.ads-summary-grid .kpi-highlight--expense .kpi-v,.ads-summary-grid .kpi-highlight--expense .kpi-s,
+.ads-summary-grid .kpi-highlight--revenue .kpi-l,.ads-summary-grid .kpi-highlight--revenue .kpi-v,.ads-summary-grid .kpi-highlight--revenue .kpi-s{color:inherit}
+.ads-profit-note{font-size:13px;line-height:1.6;margin:14px 0 0;padding-left:12px;border-left:3px solid var(--accent);color:var(--ink)}
 .ads-overview-costs{display:flex;flex-wrap:wrap;gap:10px 26px;font-size:12px;color:var(--ink2);margin-top:16px}
 .ads-overview-costs span{display:flex;gap:5px 10px;flex-wrap:wrap}
 .ads-overview-costs b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
@@ -558,7 +563,7 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
   }
   let state={month:'2026-09',channel:'all',tab:'path',patientType:'all',patient:null,mapMetric:'views',mapDaily:false};
   let root;
-  function kpi(label,value,note) {return '<div class="kpi"><div class="kpi-l">'+label+'</div><div class="kpi-v">'+value+'</div><div class="kpi-s">'+note+'</div></div>';}
+  function kpi(label,value,note,accent) {return '<div class="kpi'+(accent?' kpi-highlight--'+accent:'')+'"><div class="kpi-l">'+label+'</div><div class="kpi-v">'+value+'</div><div class="kpi-s">'+note+'</div></div>';}
   function monthLabel() {return months.find(m=>m.id===state.month).title;}
   function sourceLabel(){return state.channel==='all'?'Все каналы':channels[state.channel];}
   function overview(){
@@ -567,14 +572,15 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
       '<div class="ads-overview-heading"><h2>Сводка по всем каналам</h2><span>'+monthLabel()+'</span></div>'+
       '<p class="ads-section-intro">ВК, ПроДокторов и Яндекс Карты. Общие итоги за выбранный месяц.</p>'+
       '<div class="kpis ads-summary-grid">'+
-      kpi('Потрачено на рекламу',money(m.spend),'Сумма расходов трех каналов')+
+      kpi('Потрачено на рекламу',money(m.spend),'Сумма расходов трех каналов','expense')+
       kpi('Обращений',fmt(m.leads),'Звонки, формы и диалоги без дублей')+
       kpi('Записались',fmt(m.books),m.newBookings+' первичных · '+m.returnBookings+' повторных')+
       kpi('Пришли и оплатили',fmt(m.came),m.fresh.length+' новых · '+(m.came-m.fresh.length)+' повторных')+
       kpi('Новых пациентов',fmt(m.fresh.length),'Пришли впервые и оплатили')+
-      kpi('Выручка этой группы',money(m.monthRevenue),'Оплаты в месяце обращения')+'</div>'+
+      kpi('Выручка',money(m.monthRevenue),'Оплаты в месяце обращения','revenue')+'</div>'+
       '<div class="ads-overview-costs"><span>Средняя цена обращения <b>'+money(m.cpl)+'</b></span><span>Средняя цена записи <b>'+money(m.cpb)+'</b></span><span>Привлечение нового пациента <b>'+money(m.cac)+'</b></span></div>'+
-      '<p class="ads-chart-caption">Выручка относится к пациентам из обращений этого месяца. Это не вся выручка клиники. Средние цены считаем из общих расходов и количества обращений, записей или новых оплативших.</p></section>';
+      '<p class="ads-chart-caption">Выручка относится к пациентам из обращений этого месяца. Это не вся выручка клиники. Средние цены считаем из общих расходов и количества обращений, записей или новых оплативших.</p>'+
+      '<p class="ads-profit-note">Можно рассчитать прибыль: для этого нужны маржинальность каждой услуги и данные обо всех расходах клиники, включая постоянные расходы и налоги.</p></section>';
   }
   function header(){
     return '<div class="ads-head"><h1>Реклама и заявки</h1><span class="tag t-yellow">Демонстрация</span></div>'+
