@@ -267,7 +267,6 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
 .ads-summary-grid .kpi-highlight--revenue{background:#1F7A74;border-color:#1F7A74;color:#FFF}
 .ads-summary-grid .kpi-highlight--expense .kpi-l,.ads-summary-grid .kpi-highlight--expense .kpi-v,.ads-summary-grid .kpi-highlight--expense .kpi-s,
 .ads-summary-grid .kpi-highlight--revenue .kpi-l,.ads-summary-grid .kpi-highlight--revenue .kpi-v,.ads-summary-grid .kpi-highlight--revenue .kpi-s{color:inherit}
-.ads-profit-note{font-size:13px;line-height:1.6;margin:14px 0 0;padding-left:12px;border-left:3px solid var(--accent);color:var(--ink)}
 .ads-overview-costs{display:flex;flex-wrap:wrap;gap:10px 26px;font-size:12px;color:var(--ink2);margin-top:16px}
 .ads-overview-costs span{display:flex;gap:5px 10px;flex-wrap:wrap}
 .ads-overview-costs b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
@@ -579,8 +578,7 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
       kpi('Новых пациентов',fmt(m.fresh.length),'Пришли впервые и оплатили')+
       kpi('Выручка',money(m.monthRevenue),'Оплаты в месяце обращения','revenue')+'</div>'+
       '<div class="ads-overview-costs"><span>Средняя цена обращения <b>'+money(m.cpl)+'</b></span><span>Средняя цена записи <b>'+money(m.cpb)+'</b></span><span>Привлечение нового пациента <b>'+money(m.cac)+'</b></span></div>'+
-      '<p class="ads-chart-caption">Выручка относится к пациентам из обращений этого месяца. Это не вся выручка клиники. Средние цены считаем из общих расходов и количества обращений, записей или новых оплативших.</p>'+
-      '<p class="ads-profit-note">Можно рассчитать прибыль: для этого нужны маржинальность каждой услуги и данные обо всех расходах клиники, включая постоянные расходы и налоги.</p></section>';
+      '<p class="ads-chart-caption">Выручка относится к пациентам из обращений этого месяца. Это не вся выручка клиники. Средние цены считаем из общих расходов и количества обращений, записей или новых оплативших.</p></section>';
   }
   function header(){
     return '<div class="ads-head"><h1>Реклама и заявки</h1><span class="tag t-yellow">Демонстрация</span></div>'+
