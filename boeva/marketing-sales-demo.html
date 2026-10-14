@@ -274,6 +274,16 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
 .ads-controls{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;padding:14px 0;border-block:1px solid var(--line)}
 .ads-controls label{display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--ink2)}
 .ads-controls select{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:8px 28px 8px 10px;max-width:100%}
+.ads-period{margin:16px 0}
+.ads-period-presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.ads-date-controls{border:0;padding:0;gap:10px}
+.ads-date-controls input{box-sizing:border-box;min-width:0;width:100%;font:inherit;font-size:14px;line-height:20px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:8px 10px;cursor:pointer}
+.ads-date-controls label{min-width:160px;max-width:100%}
+.ads-date-controls input:focus-visible,.ads-period button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.ads-period .ads-period-apply{margin:0;min-height:38px;padding:8px 18px;background:var(--accent);border-color:var(--accent);color:#fff}
+.ads-period #ads-period-help{margin:8px 0 0}
+.ads-period-error{color:var(--bad);font-size:13px;margin:8px 0 0}
+@media(max-width:560px){.ads-date-controls label{flex:1 1 130px;min-width:130px}.ads-period-apply{flex:1 1 100%}}
 .ads-tabs{margin-top:18px}
 .ads-page .kpis{margin-top:16px}
 .ads-page .kpi-v{font-size:clamp(22px,2.2vw,29px)}
@@ -464,9 +474,14 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
 (function () {
   'use strict';
   const CUT = '2026-10-14';
+  const FIRST = '2026-07-01';
   const DAY = 86400000;
   const utc = d => Date.parse(d + 'T00:00:00Z');
   const age = (a,b) => Math.round((utc(b)-utc(a))/DAY);
+  const shift = (d,days) => new Date(utc(d)+days*DAY).toISOString().slice(0,10);
+  const inRange = (d,r) => d>=r.start && d<=r.end;
+  const validDate = d => /^\d{4}-\d{2}-\d{2}$/.test(d) && Number.isFinite(utc(d)) && shift(d,0)===d;
+  const validRange = r => validDate(r.start) && validDate(r.end) && r.start>=FIRST && r.end<=CUT && r.start<=r.end;
   const nf = new Intl.NumberFormat('ru-RU', {maximumFractionDigits:0});
   const fmt = n => nf.format(n);
   const money = n => n == null ? '—' : fmt(n) + ' ₽';
@@ -541,75 +556,104 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
       p.status=came?'Пришел':i%2?'Отменена':'Не пришел';patients.push(p);
     }
   }));
-  function metrics(month,channel) {
-    const mi=months.findIndex(m=>m.id===month);
+  // Условные дневные данные сохраняют месячные суммы и каждую запись связывают с обращением.
+  const daily=[];
+  const portion=(total,day,days)=>Math.floor(total*day/days)-Math.floor(total*(day-1)/days);
+  Object.keys(channels).forEach(channel=>months.forEach((month,mi)=>{
+    const cfg=configs[channel][mi];
+    const rows=patients.filter(p=>p.channel===channel && p.month===month.id);
+    const extra=Array.from({length:cfg.leads-rows.length},(_,i)=>Math.floor((i+.5)*month.days/(cfg.leads-rows.length))+1);
+    for(let day=1;day<=month.days;day++){
+      const d=month.id+'-'+String(day).padStart(2,'0');
+      const leads=rows.filter(p=>p.booked===d).length+extra.filter(n=>n===day).length;
+      const row={date:d,channel,leads,spend:channel==='vk'?leads*251:portion(cfg.spend*100,day,month.days)/100};
+      if(channel==='maps') Object.keys(mapStats[mi]).forEach(key=>{row[key]=portion(mapStats[mi][key],day,month.days);});
+      daily.push(row);
+    }
+  }));
+  function asRange(period){
+    if(typeof period!=='string') return period;
+    const m=months.find(m=>m.id===period);
+    return m?{start:m.id+'-01',end:m.id+'-'+String(m.days).padStart(2,'0')}:null;
+  }
+  function metrics(period,channel) {
+    const range=asRange(period);
+    if(!range || !validRange(range)) throw new RangeError('Период вне данных примера');
     const codes=channel==='all'?Object.keys(channels):[channel];
-    const rows=patients.filter(p=>p.month===month && codes.includes(p.channel));
-    const cfg=codes.map(c=>configs[c][mi]);
+    const rows=patients.filter(p=>inRange(p.booked,range) && codes.includes(p.channel));
+    const cfg=daily.filter(d=>inRange(d.date,range) && codes.includes(d.channel));
     const paid=rows.filter(p=>p.visits.length),fresh=paid.filter(p=>p.kind==='new');
     const mature=fresh.filter(p=>age(p.first,CUT)>=14);
     const windowSum=sum(mature,p=>sum(p.visits.filter(v=>age(p.first,v.date)>=0 && age(p.first,v.date)<14),'amount'));
-    const spend=sum(cfg,'spend'),leads=sum(cfg,'leads');
+    const spend=Math.round(sum(cfg,'spend')*100)/100,leads=sum(cfg,'leads');
     return {rows,paid,fresh,mature,spend,leads,books:rows.length,came:paid.length,
       newBookings:rows.filter(p=>p.kind==='new').length,returnBookings:rows.filter(p=>p.kind==='return').length,
       cpl:ratio(spend,leads),cpb:ratio(spend,rows.length),cac:ratio(spend,fresh.length),
       firstRevenue:sum(paid,p=>p.visits[0].amount),
-      monthRevenue:sum(rows,p=>sum(p.visits.filter(v=>v.date.slice(0,7)===month),'amount')),
+      periodRevenue:sum(rows,p=>sum(p.visits.filter(v=>inRange(v.date,range)),'amount')),
       allRevenue:sum(rows,p=>sum(p.visits,'amount')),
       newRevenue:sum(fresh,p=>sum(p.visits,'amount')),
       visits:sum(rows,p=>p.visits.length),
       ltv:ratio(sum(fresh,p=>sum(p.visits,'amount')),fresh.length),ltv14:ratio(windowSum,mature.length)};
   }
-  let state={month:'2026-09',channel:'all',tab:'path',patientType:'all',patient:null,mapMetric:'views',mapDaily:false};
+  let state={start:shift(CUT,-6),end:CUT,channel:'all',tab:'path',patientType:'all',patient:null,mapMetric:'views',mapDaily:false};
   let root;
   function kpi(label,value,note,accent) {return '<div class="kpi'+(accent?' kpi-highlight--'+accent:'')+'"><div class="kpi-l">'+label+'</div><div class="kpi-v">'+value+'</div><div class="kpi-s">'+note+'</div></div>';}
-  function monthLabel() {return months.find(m=>m.id===state.month).title;}
+  function periodLabel() {return date(state.start)+' — '+date(state.end);}
   function sourceLabel(){return state.channel==='all'?'Все каналы':channels[state.channel];}
   function overview(){
-    const m=metrics(state.month,'all');
+    const m=metrics(state,'all');
     return '<section class="ads-overview" aria-label="Сводка по всем каналам">'+
-      '<div class="ads-overview-heading"><h2>Сводка по всем каналам</h2><span>'+monthLabel()+'</span></div>'+
-      '<p class="ads-section-intro">ВК, ПроДокторов и Яндекс Карты. Общие итоги за выбранный месяц.</p>'+
+      '<div class="ads-overview-heading"><h2>Сводка по всем каналам '+(age(state.start,state.end)===6?'за неделю':'за период')+'</h2><span>'+periodLabel()+'</span></div>'+
+      periodControls()+
+      '<p class="ads-section-intro">ВК, ПроДокторов и Яндекс Карты. Общие итоги за выбранные даты.</p>'+
       '<div class="kpis ads-summary-grid">'+
       kpi('Потрачено на рекламу',money(m.spend),'Сумма расходов трех каналов','expense')+
       kpi('Обращений',fmt(m.leads),'Звонки, формы и диалоги без дублей')+
       kpi('Записались',fmt(m.books),m.newBookings+' первичных · '+m.returnBookings+' повторных')+
       kpi('Пришли и оплатили',fmt(m.came),m.fresh.length+' новых · '+(m.came-m.fresh.length)+' повторных')+
       kpi('Новых пациентов',fmt(m.fresh.length),'Пришли впервые и оплатили')+
-      kpi('Выручка',money(m.monthRevenue),'Оплаты в месяце обращения','revenue')+'</div>'+
+      kpi('Выручка',money(m.periodRevenue),'Оплаты группы за выбранные даты','revenue')+'</div>'+
       '<div class="ads-overview-costs"><span>Средняя цена обращения <b>'+money(m.cpl)+'</b></span><span>Средняя цена записи <b>'+money(m.cpb)+'</b></span><span>Привлечение нового пациента <b>'+money(m.cac)+'</b></span></div>'+
-      '<p class="ads-chart-caption">Выручка относится к пациентам из обращений этого месяца. Это не вся выручка клиники. Средние цены считаем из общих расходов и количества обращений, записей или новых оплативших.</p></section>';
+      '<p class="ads-chart-caption">Группа — пациенты, записавшиеся в выбранные даты. Здесь только их оплаты за этот период; последующие визиты видны ниже. Средние цены считаем из общих расходов и количества обращений, записей или новых оплативших.</p></section>';
+  }
+  function periodControls(){
+    return '<form id="ads-period" class="ads-period" aria-label="Выбор периода">'+
+      '<div class="ads-period-presets" aria-label="Быстрый выбор периода">'+[7,30].map(days=>'<button type="button" class="ads-toggle" data-ad-period="'+days+'" aria-pressed="'+(state.start===shift(CUT,1-days) && state.end===CUT)+'">Последние '+days+' дней</button>').join('')+'</div>'+
+      '<div class="ads-controls ads-date-controls"><label for="ads-start">Дата начала<input type="date" id="ads-start" name="start" min="'+FIRST+'" max="'+CUT+'" value="'+state.start+'" required aria-describedby="ads-period-help ads-period-error"></label>'+
+      '<label for="ads-end">Дата окончания<input type="date" id="ads-end" name="end" min="'+FIRST+'" max="'+CUT+'" value="'+state.end+'" required aria-describedby="ads-period-help ads-period-error"></label>'+
+      '<button class="btn ads-period-apply" type="submit">Показать</button></div>'+
+      '<p class="muted" id="ads-period-help">Обе даты включены. В демке доступны 01.07–14.10.2026. Период меняет сводку и детализацию.</p>'+
+      '<p id="ads-period-error" class="ads-period-error" role="alert" hidden></p></form>';
   }
   function header(){
     return '<div class="ads-head"><h1>Реклама и заявки</h1><span class="tag t-yellow">Демонстрация</span></div>'+
-      '<p class="ads-note">Для ВК задана стоимость обращения 251 ₽. Остальные цифры и карточки — демонстрационные. Данные примера — по 14 октября 2026 года включительно.</p>'+
-      '<div class="ads-controls"><label>Месяц обращения<select id="ads-month">'+months.map(m=>'<option value="'+m.id+'"'+(m.id===state.month?' selected':'')+'>'+m.title+'</option>').join('')+'</select></label>'+
-      '<span class="muted">Период меняет общую сводку и детализацию ниже</span></div>'+overview()+
+      '<p class="ads-note">Для ВК задана стоимость обращения 251 ₽. Остальные цифры, карточки и распределение по дням — демонстрационные. Данные примера — по 14 октября 2026 года включительно.</p>'+overview()+
       '<h2 class="ads-section-title ads-detail-title">Детализация по каналам</h2><p class="ads-section-intro">Выбери канал, чтобы просмотреть его расходы, путь до оплаты и историю пациентов. Верхняя сводка всегда показывает все каналы.</p><div class="ads-controls">'+
       '<label>Канал обращения<select id="ads-channel">'+['all',...Object.keys(channels)].map(c=>'<option value="'+c+'"'+(state.channel===c?' selected':'')+'>'+(c==='all'?'Все каналы':channels[c])+'</option>').join('')+'</select></label>'+
       '<span class="muted">Группа пациентов сохраняется: последующие визиты видны до 14.10</span></div>'+
       '<div class="tabs ads-tabs" role="tablist" aria-label="Рекламная аналитика">'+[['path','Путь до оплаты'],['patients','Пациенты и визиты'],['maps','Яндекс Карты'],['method','Как считаем LTV']].map(t=>'<button class="tab'+(state.tab===t[0]?' on':'')+'" role="tab" aria-selected="'+(state.tab===t[0])+'" data-ad-tab="'+t[0]+'">'+t[1]+'</button>').join('')+'</div>';
   }
   function channelTable(){
-    return '<h2 class="ads-section-title">Каналы за '+monthLabel().toLowerCase()+'</h2><p class="ads-section-intro">Записи — пациенты, записанные после обращения в выбранном месяце. Нажми на канал, чтобы раскрыть его воронку. LTV 14 сравнивает выручку новых за одинаковый срок.</p><div class="scroll-x"><table class="tbl"><thead><tr><th>Канал</th><th>Расход</th><th>Обращения</th><th>Цена обращения</th><th>Записи</th><th>Цена записи</th><th>Пришли</th><th>Новые / повторные среди пришедших</th><th>Стоимость привлечения нового пациента</th><th>LTV за 14 дней</th></tr></thead><tbody>'+Object.keys(channels).map(c=>{
-      const m=metrics(state.month,c);return '<tr'+(state.channel===c?' class="selected-row"':'')+'><td class="source-cell"><button class="link" data-ad-channel="'+c+'">'+channels[c]+'</button></td><td>'+money(m.spend)+'</td><td>'+m.leads+'</td><td>'+money(m.cpl)+'</td><td>'+m.books+'</td><td>'+money(m.cpb)+'</td><td>'+m.came+'</td><td>'+m.fresh.length+' / '+(m.came-m.fresh.length)+'</td><td>'+money(m.cac)+'</td><td>'+money(m.ltv14)+'</td></tr>';
+    return '<h2 class="ads-section-title">Каналы · '+periodLabel().toLowerCase()+'</h2><p class="ads-section-intro">Записи — пациенты, записанные после обращения в выбранные даты. Нажми на канал, чтобы раскрыть его воронку. LTV 14 сравнивает выручку новых за одинаковый срок.</p><div class="scroll-x"><table class="tbl"><thead><tr><th>Канал</th><th>Расход</th><th>Обращения</th><th>Цена обращения</th><th>Записи</th><th>Цена записи</th><th>Пришли</th><th>Новые / повторные среди пришедших</th><th>Стоимость привлечения нового пациента</th><th>LTV за 14 дней</th></tr></thead><tbody>'+Object.keys(channels).map(c=>{
+      const m=metrics(state,c);return '<tr'+(state.channel===c?' class="selected-row"':'')+'><td class="source-cell"><button class="link" data-ad-channel="'+c+'">'+channels[c]+'</button></td><td>'+money(m.spend)+'</td><td>'+m.leads+'</td><td>'+money(m.cpl)+'</td><td>'+m.books+'</td><td>'+money(m.cpb)+'</td><td>'+m.came+'</td><td>'+m.fresh.length+' / '+(m.came-m.fresh.length)+'</td><td>'+money(m.cac)+'</td><td>'+money(m.ltv14)+'</td></tr>';
     }).join('')+'</tbody></table></div><p class="ads-chart-caption">Расход ВК в примере = число обращений × 251 ₽; это расчет, не фактический бюджет. Клик по телефону, маршрут и просмотр карточки считаются отдельно от обращений без дублей.</p>';
   }
   function pathView(){
-    const m=metrics(state.month,state.channel);
+    const m=metrics(state,state.channel);
     const stages=[[m.leads,'Обратились','звонок, форма или диалог'],[m.books,'Записались',m.newBookings+' первичных · '+m.returnBookings+' повторных'],[m.came,'Пришли',m.books-m.came+' не дошли или отменили'],[m.paid.length,'Оплатили','оплата подтверждена в МИС'],[m.fresh.length,'Новые платящие','первый оплаченный визит']];
-    return '<div class="kpis">'+kpi('Расход на рекламу',money(m.spend),state.channel==='vk'?m.leads+' обращений × 251 ₽ · расчет для демо':sourceLabel()+' · '+monthLabel())+kpi('Цена обращения',money(m.cpl),money(m.spend)+' ÷ '+m.leads+' обращений')+kpi('Цена записи',money(m.cpb),money(m.spend)+' ÷ '+m.books+' записей')+kpi('Стоимость привлечения нового пациента',money(m.cac),money(m.spend)+' ÷ '+m.fresh.length+' новых платящих')+'</div>'+
+    return '<div class="kpis">'+kpi('Расход на рекламу',money(m.spend),state.channel==='vk'?m.leads+' обращений × 251 ₽ · расчет для демо':sourceLabel()+' · '+periodLabel())+kpi('Цена обращения',money(m.cpl),money(m.spend)+' ÷ '+m.leads+' обращений')+kpi('Цена записи',money(m.cpb),money(m.spend)+' ÷ '+m.books+' записей')+kpi('Стоимость привлечения нового пациента',money(m.cac),money(m.spend)+' ÷ '+m.fresh.length+' новых платящих')+'</div>'+
       '<h2 class="ads-section-title">'+sourceLabel()+': от обращения до первой оплаты</h2><div class="ads-funnel">'+stages.map(a=>'<div class="ads-stage"><b>'+a[0]+'</b><span>'+a[1]+'</span><em>'+a[2]+'</em></div>').join('')+'</div>'+channelTable()+
       '<h2 class="ads-section-title">Что принесли эти пациенты</h2><p class="ads-section-intro">Это та же группа из '+m.books+' записей, включая повторных пациентов. Последующие оплаты прибавляются к группе обращения, даже если человек пришел в другом месяце.</p>'+
-      '<div class="kpis">'+kpi('На первых визитах группы',money(m.firstRevenue),m.paid.length+' оплативших пациентов')+kpi('Оплаты в месяце обращения',money(m.monthRevenue),'Оплаты группы · '+monthLabel())+kpi('Накоплено к 14 октября',money(m.allRevenue),m.visits+' оплаченных визитов с обращения')+kpi('LTV новых за 14 дней',money(m.ltv14),m.mature.length?'Первые 14 дней · '+m.mature.length+' новых пациентов':'Полный срок наблюдения еще не прошел')+'</div>'+
-      '<div class="ads-split"><div class="ads-explain"><h3>Новые и повторные считаются отдельно</h3><p>В этом месяце записались: <strong>'+m.newBookings+' первичных, '+m.returnBookings+' повторных</strong>. До первой оплаты дошли '+m.fresh.length+' новых. Именно на них делим расход при расчете стоимости привлечения. История оплат прежних пациентов в LTV новых не входит.</p></div><div class="ads-explain"><h3>Деньги после первой записи</h3><p><strong>'+money(m.allRevenue-m.firstRevenue)+'</strong> принесли последующие оплаченные визиты этой группы к 14 октября. Это выручка, без вычета себестоимости и оплаты труда врачей.</p><button class="btn" data-ad-tab="patients">Посмотреть пациентов и визиты</button></div></div>';
+      '<div class="kpis">'+kpi('На первых визитах группы',money(m.firstRevenue),m.paid.length+' оплативших пациентов')+kpi('Оплаты за выбранный период',money(m.periodRevenue),'Оплаты группы · '+periodLabel())+kpi('Накоплено к 14 октября',money(m.allRevenue),m.visits+' оплаченных визитов с обращения')+kpi('LTV новых за 14 дней',money(m.ltv14),m.mature.length?'Первые 14 дней · '+m.mature.length+' новых пациентов':'Полный срок наблюдения еще не прошел')+'</div>'+
+      '<div class="ads-split"><div class="ads-explain"><h3>Новые и повторные считаются отдельно</h3><p>За выбранный период записались: <strong>'+m.newBookings+' первичных, '+m.returnBookings+' повторных</strong>. До первой оплаты дошли '+m.fresh.length+' новых. Именно на них делим расход при расчете стоимости привлечения. История оплат прежних пациентов в LTV новых не входит.</p></div><div class="ads-explain"><h3>Деньги после первой записи</h3><p><strong>'+money(m.allRevenue-m.firstRevenue)+'</strong> принесли последующие оплаченные визиты этой группы к 14 октября. Это выручка, без вычета себестоимости и оплаты труда врачей.</p><button class="btn" data-ad-tab="patients">Посмотреть пациентов и визиты</button></div></div>';
   }
   function patientsView(){
-    const m=metrics(state.month,state.channel);
+    const m=metrics(state,state.channel);
     let list=m.rows.filter(p=>state.patientType==='all'||p.kind===state.patientType);
-    let h='<h2 class="ads-section-title">Пациенты · '+sourceLabel()+' · '+monthLabel().toLowerCase()+'</h2><p class="ads-section-intro">Выбери карточку: увидишь визиты, оплаты и источник первого визита. Номер карты вымышленный; имен и телефонов здесь нет.</p>'+
+    let h='<h2 class="ads-section-title">Пациенты · '+sourceLabel()+' · '+periodLabel().toLowerCase()+'</h2><p class="ads-section-intro">Выбери карточку: увидишь визиты, оплаты и источник первого визита. Номер карты вымышленный; имен и телефонов здесь нет.</p>'+
       '<div class="ads-controls"><label>Тип пациента при обращении<select id="ads-type"><option value="all"'+(state.patientType==='all'?' selected':'')+'>Все пациенты</option><option value="new"'+(state.patientType==='new'?' selected':'')+'>Первичные</option><option value="return"'+(state.patientType==='return'?' selected':'')+'>Повторные</option></select></label><span class="muted">'+list.length+' карточек</span></div>'+
-      '<div class="scroll-x"><table class="tbl"><thead><tr><th>Карта</th><th>Запись</th><th>Тип при обращении</th><th>Статус</th><th>Источник первого визита</th><th>Визитов с обращения</th><th>Оплачено с обращения</th></tr></thead><tbody>'+list.map(p=>'<tr'+(state.patient===p.id?' class="selected-row"':'')+'><td><button class="link" data-ad-patient="'+p.id+'">'+p.id+' ↗</button></td><td>'+date(p.booked)+'</td><td><span class="tag '+(p.kind==='new'?'t-blue':'t-gray')+'">'+(p.kind==='new'?'Первичный':'Повторный')+'</span></td><td><span class="ads-status '+(p.status==='Пришел'?'ads-positive':'muted')+'">'+p.status+'</span></td><td>'+(!p.visits.length && p.kind==='new'?'Визита еще не было':channels[p.origin])+'</td><td>'+p.visits.length+'</td><td>'+money(sum(p.visits,'amount'))+'</td></tr>').join('')+'</tbody></table></div><p class="ads-chart-caption">Первичный — до этой записи не было визита. Повторный — уже был пациентом клиники, даже если вернулся через новую рекламу. Неявки и отмены не входят в выручку и LTV.</p>';
+      '<div class="scroll-x"><table class="tbl"><thead><tr><th>Карта</th><th>Запись</th><th>Тип при обращении</th><th>Статус</th><th>Источник первого визита</th><th>Визитов с обращения</th><th>Оплачено с обращения</th></tr></thead><tbody>'+list.map(p=>'<tr'+(state.patient===p.id?' class="selected-row"':'')+'><td><button class="link" data-ad-patient="'+p.id+'">'+p.id+' ↗</button></td><td>'+date(p.booked)+'</td><td><span class="tag '+(p.kind==='new'?'t-blue':'t-gray')+'">'+(p.kind==='new'?'Первичный':'Повторный')+'</span></td><td><span class="ads-status '+(p.status==='Пришел'?'ads-positive':'muted')+'">'+p.status+'</span></td><td>'+(!p.visits.length && p.kind==='new'?'Визита еще не было':channels[p.origin])+'</td><td>'+p.visits.length+'</td><td>'+money(sum(p.visits,'amount'))+'</td></tr>').join('')+(!list.length?'<tr><td colspan="7" class="ads-empty">За выбранные даты и с этим фильтром записей нет.</td></tr>':'')+'</tbody></table></div><p class="ads-chart-caption">Первичный — до этой записи не было визита. Повторный — уже был пациентом клиники, даже если вернулся через новую рекламу. Неявки и отмены не входят в выручку и LTV.</p>';
     const p=list.find(p=>p.id===state.patient);
     if(p) h+=detail(p);
     return h;
@@ -635,26 +679,34 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
     return svg+'</svg>';
   }
   function mapsView(){
-    const i=months.findIndex(m=>m.id===state.month),m=months[i],s=mapStats[i],c=configs.maps[i],prev=i?mapStats[i-1]:null;
-    const viewDelta=prev?((s.views/m.days)/(prev.views/months[i-1].days)-1)*100:null;
-    const price=c.spend/s.views,prevPrice=prev?configs.maps[i-1].spend/prev.views:null;
-    const priceDelta=prevPrice?(price/prevPrice-1)*100:null;
-    const delta=(v,suffix)=>v==null?'Нет предыдущего месяца':(v>=0?'+':'−')+dec(Math.abs(v))+'% '+suffix;
-    return '<h2 class="ads-section-title">Яндекс Карты · '+monthLabel()+'</h2><p class="ads-section-intro">Медийный бюджет примера — 12 000 ₽ на полный месяц размещения в Картах. Здесь расходы и рекламные просмотры из отчета площадки. Все просмотры профиля и реальные обращения считаются отдельно.</p>'+
-      '<div class="kpis">'+kpi('Расход на размещение',money(c.spend),m.partial?'Факт примера за 1–14 октября':'Полный месяц')+kpi('Просмотры рекламы',fmt(s.views),'Охват по рекламному отчету')+kpi('Переходы по рекламе',fmt(s.clicks),'В карточку или на сайт')+kpi('Цена просмотра',dec(price)+' ₽',money(c.spend)+' ÷ '+fmt(s.views)+' просмотров')+'</div>'+
+    const stats=range=>{
+      const rows=daily.filter(d=>d.channel==='maps' && inRange(d.date,range));
+      return Object.fromEntries(['spend','views','clicks','profile','phone','route','site'].map(key=>[key,Math.round(sum(rows,key)*100)/100]));
+    };
+    const c=metrics(state,'maps'),s=stats(state),days=age(state.start,state.end)+1;
+    const previous={start:shift(state.start,-days),end:shift(state.start,-1)};
+    const prev=validRange(previous)?stats(previous):null;
+    const viewDelta=prev && prev.views?(s.views/prev.views-1)*100:null;
+    const price=ratio(c.spend,s.views),prevPrice=prev?ratio(prev.spend,prev.views):null;
+    const priceDelta=price!=null && prevPrice?(price/prevPrice-1)*100:null;
+    const delta=(v,suffix)=>v==null?'Недостаточно данных для сравнения':(v>=0?'+':'−')+dec(Math.abs(v))+'% '+suffix;
+    const priceText=v=>v==null?'—':dec(v)+' ₽';
+    return '<h2 class="ads-section-title">Яндекс Карты · '+periodLabel()+'</h2><p class="ads-section-intro">Медийный бюджет примера — 12 000 ₽ на полный месяц размещения в Картах. Здесь расходы и рекламные просмотры из отчета площадки. Все просмотры профиля и реальные обращения считаются отдельно.</p>'+
+      '<div class="kpis">'+kpi('Расход на размещение',money(c.spend),periodLabel())+kpi('Просмотры рекламы',fmt(s.views),'За выбранные даты')+kpi('Переходы по рекламе',fmt(s.clicks),'В карточку или на сайт')+kpi('Цена просмотра',priceText(price),money(c.spend)+' ÷ '+fmt(s.views)+' просмотров')+'</div>'+
+      '<h2 class="ads-section-title">Динамика по месяцам · весь пример</h2><p class="ads-section-intro">На графике и в помесячной таблице — вся история с июля по 14 октября. Карточки сверху и действия ниже показывают выбранные даты.</p>'+
       '<div class="ads-chart-wrap"><div class="ads-chart-controls" aria-label="Показатель графика">'+[['views','Просмотры рекламы'],['clicks','Переходы'],['cpv','Цена просмотра']].map(a=>'<button class="ads-toggle" aria-pressed="'+(state.mapMetric===a[0])+'" data-ad-map="'+a[0]+'">'+a[1]+'</button>').join('')+'</div>'+
-      '<div class="ads-chart-controls"><button class="ads-toggle" aria-pressed="'+!state.mapDaily+'" data-ad-daily="0">Итог периода</button><button class="ads-toggle" aria-pressed="'+state.mapDaily+'" data-ad-daily="1">В среднем за день</button></div><div class="scroll-x">'+mapChart()+'</div>'+
+      '<div class="ads-chart-controls"><button class="ads-toggle" aria-pressed="'+!state.mapDaily+'" data-ad-daily="0">Итог месяца</button><button class="ads-toggle" aria-pressed="'+state.mapDaily+'" data-ad-daily="1">В среднем за день</button></div><div class="scroll-x">'+mapChart()+'</div>'+
       '<p class="ads-chart-caption">* Октябрь — только 1–14 число. Пунктир отмечает неполный месяц. «В среднем за день» = итог / дни периода, без расчета уникального дневного охвата. Цена просмотра = расход / просмотры в обоих режимах. Месячный охват не суммируем в уникальный охват за несколько месяцев.</p></div>'+
-      '<div class="ads-split"><div class="ads-explain"><h3>Темп к предыдущему месяцу</h3><p><strong>'+delta(viewDelta,'просмотров в среднем за день')+'</strong></p><p>Сравниваем среднее за день: '+dec(s.views/m.days)+' в текущем периоде'+(prev?' и '+dec(prev.views/months[i-1].days)+' в предыдущем':'')+'.</p></div><div class="ads-explain"><h3>Как изменилась цена просмотра</h3><p><strong>'+delta(priceDelta,'к предыдущему месяцу')+'</strong></p><p>'+dec(price)+' ₽ за просмотр'+(prev?' против '+dec(prevPrice)+' ₽ месяцем раньше':'')+'. Меньшая цена не гарантирует больше записей.</p></div></div>'+
-      '<h2 class="ads-section-title">Помесячная статистика</h2><div class="scroll-x"><table class="tbl"><thead><tr><th>Период</th><th>Расход</th><th>Просмотры рекламы</th><th>Переходы по рекламе</th><th>Цена просмотра</th><th>Цена перехода</th><th>Все просмотры профиля</th><th>Обращения в CRM</th><th>Записи</th></tr></thead><tbody>'+months.map((mm,j)=>'<tr'+(j===i?' class="selected-row"':'')+'><td>'+mm.title+'</td><td>'+money(configs.maps[j].spend)+'</td><td>'+fmt(mapStats[j].views)+'</td><td>'+fmt(mapStats[j].clicks)+'</td><td>'+dec(configs.maps[j].spend/mapStats[j].views)+' ₽</td><td>'+dec(configs.maps[j].spend/mapStats[j].clicks)+' ₽</td><td>'+mapStats[j].profile+'</td><td>'+configs.maps[j].leads+'</td><td>'+configs.maps[j].books+'</td></tr>').join('')+'</tbody></table></div>'+
-      '<h2 class="ads-section-title">Действия в карточке · '+monthLabel().toLowerCase()+'</h2><div class="kpis">'+kpi('Клики по телефону',fmt(s.phone),'Это нажатия, не подтвержденные звонки')+kpi('Построили маршрут',fmt(s.route),'Это действия, не доказанные визиты')+kpi('Перешли на сайт',fmt(s.site),'Действия после рекламы')+kpi('Обратились в клинику',fmt(c.leads),'Отдельные обращения в CRM')+'</div>'+
+      '<div class="ads-split"><div class="ads-explain"><h3>К предыдущему периоду той же длины</h3><p><strong>'+delta(viewDelta,'просмотров рекламы')+'</strong></p><p>'+(prev?'Сравнение с '+date(previous.start)+' — '+date(previous.end)+': '+fmt(s.views)+' против '+fmt(prev.views)+' просмотров за '+days+' дней.':'Предыдущий период выходит за даты примера.')+'</p></div><div class="ads-explain"><h3>Как изменилась цена просмотра</h3><p><strong>'+delta(priceDelta,'к предыдущему периоду')+'</strong></p><p>'+priceText(price)+' за просмотр'+(prev?' против '+priceText(prevPrice)+' в предыдущем периоде':'')+'. Меньшая цена не гарантирует больше записей.</p></div></div>'+
+      '<h2 class="ads-section-title">Помесячная статистика · весь пример</h2><div class="scroll-x"><table class="tbl"><thead><tr><th>Период</th><th>Расход</th><th>Просмотры рекламы</th><th>Переходы по рекламе</th><th>Цена просмотра</th><th>Цена перехода</th><th>Все просмотры профиля</th><th>Обращения в CRM</th><th>Записи</th></tr></thead><tbody>'+months.map((mm,j)=>'<tr'+(mm.id>=state.start.slice(0,7) && mm.id<=state.end.slice(0,7)?' class="selected-row"':'')+'><td>'+mm.title+'</td><td>'+money(configs.maps[j].spend)+'</td><td>'+fmt(mapStats[j].views)+'</td><td>'+fmt(mapStats[j].clicks)+'</td><td>'+dec(configs.maps[j].spend/mapStats[j].views)+' ₽</td><td>'+dec(configs.maps[j].spend/mapStats[j].clicks)+' ₽</td><td>'+mapStats[j].profile+'</td><td>'+configs.maps[j].leads+'</td><td>'+configs.maps[j].books+'</td></tr>').join('')+'</tbody></table></div>'+
+      '<h2 class="ads-section-title">Действия в карточке · '+periodLabel().toLowerCase()+'</h2><div class="kpis">'+kpi('Клики по телефону',fmt(s.phone),'Это нажатия, не подтвержденные звонки')+kpi('Построили маршрут',fmt(s.route),'Это действия, не доказанные визиты')+kpi('Перешли на сайт',fmt(s.site),'Действия после рекламы')+kpi('Обратились в клинику',fmt(c.leads),'Отдельные обращения в CRM')+'</div>'+
       '<p class="ads-chart-caption">Один человек может нажать несколько кнопок. Действия карточки не складываем в число пациентов. При отключенной рекламе платные показатели будут «нет размещения», органическую статистику покажем отдельно.</p>'+
       '<details><summary>Откуда брать эти показатели</summary><p class="ads-note">Яндекс Бизнес: рекламная статистика и выгрузка по месяцам. Набор графиков зависит от размещения и настроек. Связь с пациентами потребует источника в CRM и сверки с МИС. Возможность автоматической загрузки проверим по кабинету клиники.</p><a href="https://yandex.ru/support/business-priority/ru/manage/ad-statistics" target="_blank" rel="noopener">Какие показатели доступны в Яндекс Бизнесе</a></details>';
   }
   function methodView(){
-    const m=metrics(state.month,state.channel);
+    const m=metrics(state,state.channel);
     return '<h2 class="ads-section-title">LTV: сколько новый пациент уже принес</h2><p class="ads-section-intro">В демке считаем выручку по фактическим оплатам, без прогноза будущего лечения. Для сравнения каналов используем одинаковое окно после первого визита.</p>'+
-      '<div class="kpis">'+kpi('Новых платящих',fmt(m.fresh.length),'В группе '+sourceLabel()+' за '+monthLabel().toLowerCase())+kpi('Выручка новых к 14.10',money(m.newRevenue),'С первого визита, по всем оплатам группы')+kpi('На одного нового к 14.10',money(m.ltv),'Разный срок наблюдения у пациентов')+kpi('LTV за первые 14 дней',money(m.ltv14),m.mature.length+' пациентов с полным сроком наблюдения')+'</div>'+
+      '<div class="kpis">'+kpi('Новых платящих',fmt(m.fresh.length),'В группе '+sourceLabel()+' за '+periodLabel().toLowerCase())+kpi('Выручка новых к 14.10',money(m.newRevenue),'С первого визита, по всем оплатам группы')+kpi('На одного нового к 14.10',money(m.ltv),'Разный срок наблюдения у пациентов')+kpi('LTV за первые 14 дней',money(m.ltv14),m.mature.length+' пациентов с полным сроком наблюдения')+'</div>'+
       '<ol class="ads-formulas"><li><b>Источник первого привлечения.</b> Сохраняем его в карточке пациента. Если пациент вернулся через другой канал, отдельно фиксируем источник нового обращения.</li><li><b>Связка с МИС.</b> Обращение в CRM связываем с ID пациента, затем подтягиваем визиты, оплаченные суммы и возвраты. На старте возможна проверяемая выгрузка; доступность API зависит от программы клиники.</li><li><b>LTV 14.</b> Складываем оплаты новых пациентов с первого визита до начала 15-го дня и делим на число новых платящих, у которых прошли все 14 дней. Прежнюю историю повторных не включаем. У октябрьских пациентов полного окна пока нет.</li><li><b>Накопленная выручка.</b> Все оплаты новых к 14 октября / все новые платящие. Показатель можно смотреть у отдельного пациента; сравнивать разные по возрасту группы по нему напрямую нельзя.</li><li><b>Что добавим при подключении.</b> Учет возвратов, объединение дублей, согласованное правило источника и строки «неизвестный источник». Без этой связки точный LTV по рекламе не получится.</li></ol>'+
       '<div class="ads-split"><div class="ads-explain"><h3>Формулы расходов</h3><p>Цена обращения = расход / обращения.</p><p>Цена записи = расход / записи.</p><p>Стоимость привлечения нового пациента = расход / новые пациенты с первой оплатой. Здесь весь расход канала, включая рекламу, которая вернула прежних пациентов.</p><p>LTV измеряется в рублях на пациента. Это не стоимость привлечения.</p></div><div class="ads-explain"><h3>ПроДокторов в общей воронке</h3><p>Расход по размещению, обращения и записи связываем с визитами и оплатами МИС по тому же правилу, что ВК и Яндекс Карты. Конкретные отчеты, звонки и выгрузки проверим в кабинете клиники.</p><p>Просмотр профиля не считаем заявкой. Дубли звонков и онлайн-записей объединяем до подсчета.</p></div></div>'+
       '<button class="btn" data-ad-tab="patients">Открыть историю пациентов</button>';
@@ -663,9 +715,20 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
     root.innerHTML='<div class="pg ads-page">'+header()+(state.tab==='path'?pathView():state.tab==='patients'?patientsView():state.tab==='maps'?mapsView():methodView())+'</div>';
   }
   function bind(){
+    root.onsubmit=e=>{
+      if(e.target.id!=='ads-period') return;
+      e.preventDefault();
+      const range={start:root.querySelector('#ads-start').value,end:root.querySelector('#ads-end').value};
+      if(!validRange(range)){
+        const error=root.querySelector('#ads-period-error');
+        error.textContent=range.start>range.end?'Дата начала должна быть не позже даты окончания.':'Выбери даты с 01.07 по 14.10.2026.';
+        error.hidden=false;
+        return;
+      }
+      state.start=range.start;state.end=range.end;state.patient=null;paint();
+    };
     root.onchange=e=>{
-      if(e.target.id==='ads-month'){state.month=e.target.value;state.patient=null;}
-      else if(e.target.id==='ads-channel'){state.channel=e.target.value;state.patient=null;if(state.tab==='maps' && state.channel!=='maps') state.tab='path';}
+      if(e.target.id==='ads-channel'){state.channel=e.target.value;state.patient=null;if(state.tab==='maps' && state.channel!=='maps') state.tab='path';}
       else if(e.target.id==='ads-type'){state.patientType=e.target.value;state.patient=null;}
       else return;
       paint();
@@ -673,7 +736,8 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
     root.onclick=e=>{
       const b=e.target.closest('button');if(!b)return;
       let detailOpen=false;
-      if(b.dataset.adTab){state.tab=b.dataset.adTab;state.patient=null;if(state.tab==='maps')state.channel='maps';}
+      if(b.dataset.adPeriod){state.start=shift(CUT,1-Number(b.dataset.adPeriod));state.end=CUT;state.patient=null;}
+      else if(b.dataset.adTab){state.tab=b.dataset.adTab;state.patient=null;if(state.tab==='maps')state.channel='maps';}
       else if(b.dataset.adChannel){state.channel=b.dataset.adChannel;state.patient=null;}
       else if(b.dataset.adPatient){state.patient=b.dataset.adPatient;detailOpen=true;}
       else if(b.dataset.adClose){state.patient=null;}
@@ -684,7 +748,7 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
       if(detailOpen) root.querySelector('#ads-patient-detail').scrollIntoView({behavior:'auto',block:'start'});
     };
   }
-  window.BoevaAds={render(container){root=container;paint();bind();},metrics,patients,months,configs,mapStats};
+  window.BoevaAds={render(container){root=container;paint();bind();},metrics,patients,months,configs,mapStats,daily,validRange};
 })();
 
 </script>
