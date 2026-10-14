@@ -1,0 +1,769 @@
+<title>Notion для стоматологии</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --side:#F7F7F5; --ink:#37352F; --ink2:#787774; --ink3:#A5A29C;
+  --line:#E9E9E7; --hover:rgba(55,53,47,.06); --active:rgba(55,53,47,.09);
+  --callout:#F1F1EF; --card:#FFFFFF; --card-shadow:0 0 0 1px rgba(15,15,15,.07),0 2px 4px rgba(15,15,15,.05);
+  --accent:#1F7A74; --accent-soft:rgba(31,122,116,.13); --track:#EFEEEC; --fill:#1F7A74;
+  --good:#2B7A4B; --bad:#B8472F; --live:#22A06B; --off:#C4C2BD;
+  --cover-a:#BFE3DC; --cover-b:#E4F1EE; --cover-c:#D5E5F3; --cover-dot:rgba(255,255,255,.45);
+  --tip:#FFFFFF; --tip-shadow:0 0 0 1px rgba(15,15,15,.08),0 6px 18px rgba(15,15,15,.12);
+  --t-gray-bg:#E3E2E0; --t-gray:#32302C; --t-yellow-bg:#FDECC8; --t-yellow:#402C1B;
+  --t-blue-bg:#D3E5EF; --t-blue:#183347; --t-green-bg:#DBEDDB; --t-green:#1C3829;
+  --t-red-bg:#FFE2DD; --t-red:#5D1715;
+  --ui:"Golos Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#191919; --side:#202020; --ink:#D7D6D3; --ink2:#9B9A97; --ink3:#6F6E6B;
+    --line:#2F2F2F; --hover:rgba(255,255,255,.055); --active:rgba(255,255,255,.09);
+    --callout:#252525; --card:#232323; --card-shadow:0 0 0 1px rgba(255,255,255,.08);
+    --accent:#4DB6AA; --accent-soft:rgba(77,182,170,.17); --track:#2B2B2B; --fill:#4DB6AA;
+    --good:#62C28A; --bad:#E48468; --live:#3CC07F; --off:#555;
+    --cover-a:#173F3A; --cover-b:#1D2C2A; --cover-c:#1B2939; --cover-dot:rgba(255,255,255,.06);
+    --tip:#2A2A2A; --tip-shadow:0 0 0 1px rgba(255,255,255,.1),0 6px 18px rgba(0,0,0,.4);
+    --t-gray-bg:#383838; --t-gray:#D4D4D4; --t-yellow-bg:#5C4419; --t-yellow:#F3E3C3;
+    --t-blue-bg:#1F3D5C; --t-blue:#CFE3F3; --t-green-bg:#214A33; --t-green:#CFEBD8;
+    --t-red-bg:#5E2A24; --t-red:#F6D5CE;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#191919; --side:#202020; --ink:#D7D6D3; --ink2:#9B9A97; --ink3:#6F6E6B;
+  --line:#2F2F2F; --hover:rgba(255,255,255,.055); --active:rgba(255,255,255,.09);
+  --callout:#252525; --card:#232323; --card-shadow:0 0 0 1px rgba(255,255,255,.08);
+  --accent:#4DB6AA; --accent-soft:rgba(77,182,170,.17); --track:#2B2B2B; --fill:#4DB6AA;
+  --good:#62C28A; --bad:#E48468; --live:#3CC07F; --off:#555;
+  --cover-a:#173F3A; --cover-b:#1D2C2A; --cover-c:#1B2939; --cover-dot:rgba(255,255,255,.06);
+  --tip:#2A2A2A; --tip-shadow:0 0 0 1px rgba(255,255,255,.1),0 6px 18px rgba(0,0,0,.4);
+  --t-gray-bg:#383838; --t-gray:#D4D4D4; --t-yellow-bg:#5C4419; --t-yellow:#F3E3C3;
+  --t-blue-bg:#1F3D5C; --t-blue:#CFE3F3; --t-green-bg:#214A33; --t-green:#CFEBD8;
+  --t-red-bg:#5E2A24; --t-red:#F6D5CE;
+}
+
+[hidden]{display:none!important}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.num{font-variant-numeric:tabular-nums}
+.mono{font-family:var(--mono);font-size:.86em}
+
+/* ---------- shell ---------- */
+.app{display:flex;min-height:100%}
+.side{width:248px;flex:none;background:var(--side);border-right:1px solid var(--line);
+  position:sticky;top:env(safe-area-inset-top,0px);height:100vh;height:100dvh;overflow-y:auto;
+  padding:10px 8px 18px;display:flex;flex-direction:column;gap:18px}
+.ws{display:flex;align-items:center;gap:9px;padding:6px 8px}
+.ws-av{width:24px;height:24px;border-radius:5px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;flex:none}
+.ws-name{font-weight:600;font-size:14.5px;line-height:1.2}
+.ws-sub{font-size:12px;color:var(--ink2);line-height:1.2}
+.side-h{font-size:12px;font-weight:600;color:var(--ink3);padding:0 8px 4px;letter-spacing:.02em}
+.nav{display:flex;flex-direction:column;gap:1px}
+.nav-item{display:flex;align-items:center;gap:8px;min-height:30px;padding:3px 8px;border-radius:6px;
+  color:var(--ink2);font-size:14px;font-weight:500;width:100%;background:none;border:0;text-align:left;cursor:pointer}
+.nav-item:hover{background:var(--hover)}
+.nav-item.on{background:var(--active);color:var(--ink)}
+.nav-item .ic{width:20px;text-align:center;font-size:15px;flex:none}
+.conn{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink2);padding:3px 8px}
+.conn b{font-weight:500;color:var(--ink)}
+.conn .st{margin-left:auto;font-size:12px;color:var(--ink3)}
+.led{width:8px;height:8px;border-radius:50%;background:var(--off);flex:none}
+.led.on{background:var(--live)}
+
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);height:46px;
+  display:flex;align-items:center;gap:10px;padding-inline:12px 14px}
+.burger{display:none;width:30px;height:30px;border-radius:6px;border:0;background:none;cursor:pointer;place-items:center;color:var(--ink2)}
+.burger:hover{background:var(--hover)}
+.crumbs{display:flex;align-items:center;gap:6px;font-size:14px;min-width:0;white-space:nowrap;overflow:hidden}
+.crumbs .ws-c{color:var(--ink2)}
+.crumbs .sep{color:var(--ink3)}
+.crumbs .cur{overflow:hidden;text-overflow:ellipsis}
+.top-r{margin-left:auto;display:flex;align-items:center;gap:8px;flex:none}
+.demo{font-size:12px;padding:2px 8px;border-radius:4px;background:var(--t-yellow-bg);color:var(--t-yellow);white-space:nowrap}
+.sync{display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 11px;border-radius:999px;border:1px solid var(--line);
+  background:var(--bg);font-size:13px;color:var(--ink2);cursor:pointer;white-space:nowrap}
+.sync:hover{background:var(--hover)}
+.sync .led{position:relative}
+.sync.live .led::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--live);opacity:0;animation:ping 1.8s ease-out infinite}
+.sync .clk{font-family:var(--mono);font-size:12px;color:var(--ink)}
+@keyframes ping{0%{transform:scale(.5);opacity:.7}100%{transform:scale(1.4);opacity:0}}
+
+.scrim{display:none}
+
+/* ---------- page ---------- */
+.cover{height:clamp(110px,17vw,190px);
+  background:radial-gradient(circle at 1px 1px,var(--cover-dot) 1.2px,transparent 1.7px) 0 0/18px 18px,
+             linear-gradient(115deg,var(--cover-a),var(--cover-b) 55%,var(--cover-c))}
+.pg{max-width:1080px;margin-inline:auto;padding-inline:clamp(16px,5vw,60px);padding-block:0 90px}
+.pg-icon{font-size:70px;line-height:1;margin-top:56px;user-select:none}
+.oncover .pg-icon{margin-top:-40px}
+h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacing:-.012em;margin:12px 0 4px;text-wrap:balance}
+.meta{color:var(--ink2);font-size:14px}
+.callout{display:flex;gap:10px;align-items:flex-start;padding:14px 16px;background:var(--callout);border-radius:6px;margin-top:18px;font-size:14.5px;line-height:1.55}
+.callout .ci{font-size:18px;line-height:1.3;flex:none}
+.callout p{margin:0;max-width:72ch}
+.btn{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:6px;border:1px solid var(--line);background:var(--bg);cursor:pointer;font-size:13.5px;font-weight:500;margin-top:10px}
+.btn:hover{background:var(--hover)}
+
+.tag{display:inline-flex;align-items:center;height:21px;padding:0 7px;border-radius:4px;font-size:12.5px;white-space:nowrap;line-height:1}
+.t-gray{background:var(--t-gray-bg);color:var(--t-gray)}
+.t-yellow{background:var(--t-yellow-bg);color:var(--t-yellow)}
+.t-blue{background:var(--t-blue-bg);color:var(--t-blue)}
+.t-green{background:var(--t-green-bg);color:var(--t-green)}
+.t-red{background:var(--t-red-bg);color:var(--t-red)}
+
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px}
+.kpi{position:relative;border:1px solid var(--line);border-radius:6px;padding:13px 16px 14px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.kpi-l{font-size:13px;color:var(--ink2)}
+.kpi-v{font-size:clamp(22px,1.2vw + 14px,28px);font-weight:650;letter-spacing:-.01em;line-height:1.2;font-variant-numeric:tabular-nums;white-space:nowrap}
+.kpi-s{font-size:12.5px;color:var(--ink2);line-height:1.4}
+.up{color:var(--good);font-weight:600}
+.down{color:var(--bad);font-weight:600}
+.pbar{height:5px;border-radius:3px;background:var(--track);overflow:hidden;margin-top:5px}
+.pbar i{display:block;height:100%;background:var(--fill);border-radius:3px;transition:width .7s ease}
+.delta{position:absolute;right:12px;top:10px;font-size:12.5px;font-weight:600;color:var(--good);background:var(--t-green-bg);padding:1px 7px;border-radius:4px;animation:rise 2.2s ease forwards;pointer-events:none;font-variant-numeric:tabular-nums}
+@keyframes rise{0%{opacity:0;transform:translateY(6px)}12%{opacity:1;transform:none}75%{opacity:1}100%{opacity:0;transform:translateY(-8px)}}
+
+/* database-style blocks */
+.dbh{display:flex;align-items:flex-end;justify-content:space-between;gap:10px 16px;flex-wrap:wrap;margin-top:40px;margin-bottom:10px}
+.dbt{font-size:19px;font-weight:650;line-height:1.3;display:flex;align-items:center;gap:8px}
+.dbt small{font-size:13px;font-weight:400;color:var(--ink2)}
+.dbr{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--ink2)}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);overflow-x:auto;margin-bottom:12px}
+.tab{font-size:13.5px;padding:6px 8px;color:var(--ink2);border:0;background:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;border-radius:4px 4px 0 0}
+.tab:hover{background:var(--hover)}
+.tab.on{color:var(--ink);border-bottom-color:var(--ink)}
+
+.row2{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:28px}
+.lg{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink2)}
+.sw{display:inline-block;width:16px;height:0;border-top:2px solid var(--accent)}
+.sw.prev{border-top:2px dashed var(--ink3)}
+.chart{position:relative;height:250px;touch-action:pan-y}
+.chart svg{display:block;width:100%;height:100%;overflow:visible}
+.chart .gl{stroke:var(--line);stroke-width:1}
+.chart .ax{fill:var(--ink3);font-size:11px;font-family:var(--ui);font-variant-numeric:tabular-nums}
+.chart .prev{fill:none;stroke:var(--ink3);stroke-width:1.5;stroke-dasharray:4 4}
+.chart .area{fill:var(--accent);fill-opacity:.1;stroke:none}
+.chart .today{fill:none;stroke:var(--accent);stroke-width:2;stroke-linejoin:round}
+.chart .dotc{fill:var(--accent);stroke:var(--bg);stroke-width:2}
+.chart .pulse{fill:var(--accent);opacity:.35;transform-box:fill-box;transform-origin:center;animation:puls 1.8s ease-out infinite}
+.chart .lbl{font-family:var(--ui);font-size:12.5px;font-weight:600;fill:var(--ink);font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.chart .lbl2{font-family:var(--ui);font-size:12px;fill:var(--ink2);font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.chart .cross{stroke:var(--ink3);stroke-width:1}
+.chart .hdot{fill:var(--accent);stroke:var(--bg);stroke-width:2}
+.chart .hdot.p{fill:var(--ink3)}
+@keyframes puls{0%{transform:scale(1);opacity:.4}100%{transform:scale(3.2);opacity:0}}
+.tip{position:absolute;top:8px;pointer-events:none;background:var(--tip);box-shadow:var(--tip-shadow);border-radius:6px;padding:8px 10px;font-size:12.5px;line-height:1.55;white-space:nowrap;z-index:2}
+.tip b{font-family:var(--mono);font-weight:500;font-size:12px}
+.tip div{display:flex;align-items:center;gap:6px}
+.tip span{margin-left:auto;padding-left:14px;font-weight:600;font-variant-numeric:tabular-nums}
+
+.docs{display:flex;flex-direction:column;gap:16px;padding-top:4px}
+.doc-top{display:flex;align-items:baseline;gap:8px;font-size:14px}
+.doc-name{font-weight:500;white-space:nowrap}
+.doc-role{color:var(--ink2);font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.doc-sum{margin-left:auto;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.doc-bar{position:relative;height:8px;margin-top:6px}
+.doc-bar .plan{position:absolute;left:0;top:0;bottom:0;background:var(--track);border-radius:4px;transition:width .7s ease}
+.doc-bar .fill{position:absolute;left:0;top:0;bottom:0;background:var(--fill);border-radius:4px;transition:width .7s ease}
+.doc-sub{font-size:12.5px;color:var(--ink2);margin-top:5px;line-height:1.4}
+.doc-sub em{font-style:normal;color:var(--ink)}
+
+/* board */
+.scroll-x{overflow-x:auto;padding-bottom:4px}
+.board{display:grid;grid-template-columns:repeat(5,minmax(172px,1fr));gap:10px;min-width:900px}
+.col-h{display:flex;align-items:center;gap:7px;margin-bottom:8px;font-size:13px;color:var(--ink2)}
+.col{display:flex;flex-direction:column;gap:7px}
+.bcard{background:var(--card);box-shadow:var(--card-shadow);border-radius:6px;padding:8px 10px 9px;font-size:13px;line-height:1.4}
+.bcard .tm{font-family:var(--mono);font-size:11.5px;color:var(--ink2)}
+.bcard .sv{font-weight:500;margin-top:1px}
+.bcard .mt{color:var(--ink2);font-size:12px}
+.bcard .sm{margin-top:4px;font-weight:600;font-variant-numeric:tabular-nums}
+.more{font-size:12.5px;color:var(--ink3);padding:2px 4px}
+.flash{animation:flash 1.8s ease}
+@keyframes flash{0%{background:var(--accent-soft)}100%{background:var(--card)}}
+
+/* table */
+.tbl{width:100%;border-collapse:collapse;font-size:14px;min-width:620px}
+.tbl th{font-weight:400;color:var(--ink2);font-size:13px;text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl th:first-child,.tbl td:first-child{padding-left:2px}
+.tbl .r{text-align:right}
+.tbl td.r{font-weight:600;font-variant-numeric:tabular-nums}
+.tbl tr.flash td{animation:rowflash 2.4s ease}
+@keyframes rowflash{0%{background:var(--accent-soft)}100%{background:transparent}}
+.tbl-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:8px;font-size:13px;color:var(--ink2)}
+.link{border:0;background:none;padding:4px 6px;border-radius:4px;cursor:pointer;color:var(--ink2);font-size:13px}
+.link:hover{background:var(--hover);color:var(--ink)}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:12px}
+.gcard{display:flex;flex-direction:column;gap:6px;text-align:left;padding:14px 14px 13px;border-radius:6px;background:var(--card);box-shadow:var(--card-shadow);border:0;cursor:pointer}
+.gcard:hover{background:var(--hover)}
+.gcard .gi{font-size:24px;line-height:1}
+.gcard .gt{font-weight:600;font-size:14.5px}
+.gcard .gd{font-size:13px;color:var(--ink2);line-height:1.45;flex:1}
+.gcard .gf{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+
+/* stub pages */
+.props{display:flex;flex-direction:column;gap:2px;margin-top:14px;font-size:14px}
+.prop{display:grid;grid-template-columns:150px minmax(0,1fr);gap:10px;align-items:center;min-height:32px}
+.prop .pk{color:var(--ink2)}
+.sk{display:block;height:9px;border-radius:4px;background:var(--track);position:relative;overflow:hidden}
+.sk::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--hover),transparent);transform:translateX(-100%);animation:shim 1.8s ease infinite}
+@keyframes shim{100%{transform:translateX(100%)}}
+.stub-board{display:grid;grid-template-columns:repeat(3,minmax(200px,1fr));gap:10px;min-width:640px}
+.doclist{display:flex;flex-direction:column}
+.docrow{display:flex;align-items:center;gap:10px;padding:8px 2px;border-bottom:1px solid var(--line);font-size:14.5px}
+.docrow .e{margin-left:auto;font-size:12.5px;color:var(--ink3)}
+
+@media (max-width:980px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .row2{grid-template-columns:minmax(0,1fr);gap:8px}
+}
+@media (max-width:860px){
+  .side{position:fixed;left:0;top:0;bottom:0;height:auto;z-index:30;transform:translateX(-102%);transition:transform .22s ease;
+    padding-top:calc(10px + env(safe-area-inset-top,0px));padding-bottom:calc(18px + env(safe-area-inset-bottom,0px));box-shadow:0 0 30px rgba(0,0,0,.18)}
+  .side.open{transform:none}
+  .scrim{position:fixed;inset:0;background:rgba(15,15,15,.35);z-index:25}
+  .scrim.open{display:block}
+  .burger{display:grid}
+}
+@media (max-width:560px){
+  .crumbs .ws-c,.crumbs .sep{display:none}
+  .demo{display:none}
+  .prop{grid-template-columns:120px minmax(0,1fr)}
+  .chart{height:220px}
+}
+@media (max-width:360px){
+  .kpis{grid-template-columns:minmax(0,1fr)}
+  .sync .clk{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+
+<div class="app">
+  <aside class="side" id="side" aria-label="Разделы">
+    <div class="ws">
+      <div class="ws-av">С</div>
+      <div><div class="ws-name">Стоматология</div><div class="ws-sub">рабочее пространство</div></div>
+    </div>
+    <div>
+      <div class="side-h">Разделы</div>
+      <nav class="nav" id="nav"></nav>
+    </div>
+    <div>
+      <div class="side-h">Подключения</div>
+      <div class="conn"><span class="led on"></span><b>МИС</b><span class="st">онлайн</span></div>
+      <div class="conn"><span class="led"></span>Telegram и МАХ<span class="st">этап 2</span></div>
+      <div class="conn"><span class="led"></span>Телефония<span class="st">этап 2</span></div>
+      <div class="conn"><span class="led"></span>Реклама ВК<span class="st">этап 2</span></div>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <div class="main">
+    <header class="top">
+      <button class="burger" id="burger" aria-label="Открыть меню">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 5h12M3 9h12M3 13h12"/></svg>
+      </button>
+      <div class="crumbs"><span class="ws-c">Стоматология</span><span class="sep">/</span><span class="cur"><span id="crumb-ic">🦷</span> <span id="crumb-t">Главная</span></span></div>
+      <div class="top-r">
+        <span class="demo">Демо-данные</span>
+        <button class="sync live" id="sync" title="Остановить поток данных"><span class="led on"></span><span id="sync-t">МИС · онлайн</span><span class="clk" id="clk">11:00</span></button>
+      </div>
+    </header>
+
+    <!-- Главная -->
+    <section id="v-home" class="oncover">
+      <div class="cover"></div>
+      <div class="pg">
+        <div class="pg-icon">🦷</div>
+        <h1>Главная</h1>
+        <div class="meta" id="today-line"></div>
+
+        <div class="callout">
+          <span class="ci">💡</span>
+          <div>
+            <p>Цифры приходят из МИС сами. Администратор провел оплату в кассе, и через пару секунд сумма уже здесь. На экране демо-данные, время ускорено: секунда на экране — две минуты в клинике.</p>
+            <button class="btn" id="restart" hidden>Прокрутить день заново</button>
+          </div>
+        </div>
+
+        <div class="kpis">
+          <div class="kpi" id="kpi-rev">
+            <div class="kpi-l">Выручка сегодня</div>
+            <div class="kpi-v" id="k-rev">0 ₽</div>
+            <div class="kpi-s" id="k-rev-s"></div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-l" id="k-mon-l">Выручка за месяц</div>
+            <div class="kpi-v" id="k-mon">0 ₽</div>
+            <div class="pbar"><i id="k-mon-bar" style="width:0%"></i></div>
+            <div class="kpi-s" id="k-mon-s"></div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-l">Пациенты сегодня</div>
+            <div class="kpi-v num" id="k-pat">0</div>
+            <div class="kpi-s" id="k-pat-s"></div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-l">Средний чек</div>
+            <div class="kpi-v" id="k-avg">0 ₽</div>
+            <div class="kpi-s" id="k-avg-s"></div>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div>
+            <div class="dbh">
+              <div class="dbt">Выручка с начала дня</div>
+              <div class="dbr"><span class="lg"><i class="sw"></i>Сегодня</span><span class="lg"><i class="sw prev"></i><span id="lg-prev">Прошлая неделя</span></span></div>
+            </div>
+            <div class="chart" id="chart"><svg id="chart-svg" aria-label="Выручка с начала дня, сегодня и неделю назад" role="img"></svg><div class="tip" id="tip" hidden></div></div>
+          </div>
+          <div>
+            <div class="dbh">
+              <div class="dbt">Врачи сегодня</div>
+              <div class="dbr">оплачено из записанного</div>
+            </div>
+            <div class="docs" id="docs"></div>
+          </div>
+        </div>
+
+        <div class="dbh">
+          <div class="dbt">Прием сегодня <small id="board-n"></small></div>
+          <div class="dbr"><span class="tag t-blue">МИС · расписание</span></div>
+        </div>
+        <div class="tabs" role="tablist"><button class="tab on" role="tab" aria-selected="true">Доска по статусам</button></div>
+        <div class="scroll-x"><div class="board" id="board"></div></div>
+
+        <div class="dbh">
+          <div class="dbt">Оплаты из МИС</div>
+          <div class="dbr"><span class="tag t-blue">МИС · касса</span></div>
+        </div>
+        <div class="tabs" role="tablist"><button class="tab on" role="tab" aria-selected="true">Последние</button></div>
+        <div class="scroll-x">
+          <table class="tbl">
+            <thead><tr><th>Время</th><th>Карта</th><th>Услуга</th><th>Врач</th><th>Оплата</th><th class="r">Сумма</th></tr></thead>
+            <tbody id="feed"></tbody>
+          </table>
+        </div>
+        <div class="tbl-foot"><span id="feed-n"></span><button class="link" data-go="revenue">Все оплаты за день →</button></div>
+
+        <div class="dbh">
+          <div class="dbt">Разделы</div>
+          <div class="dbr">наполним на следующих этапах</div>
+        </div>
+        <div class="gal" id="gal"></div>
+      </div>
+    </section>
+
+    <!-- Страницы-каркасы -->
+    <section id="v-stub" hidden></section>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+var $ = function(s){ return document.querySelector(s); };
+var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- справочники ---------- */
+var PAGES = [
+  {id:"revenue", icon:"💰", title:"Выручка и касса", src:"МИС · касса", what:"Все оплаты из кассы: по дням, врачам и услугам. Сверка с планом месяца.", kind:"table", db:"Оплаты", views:["По дням","По врачам","По услугам"], cols:["Дата","Карта","Услуга","Врач","Способ оплаты","Сумма"]},
+  {id:"schedule", icon:"🗓️", title:"Расписание", src:"МИС · расписание", what:"Записи всех врачей и свободные окна на неделю вперед.", kind:"table", db:"Записи", views:["Календарь","По врачам","Свободные окна"], cols:["Время","Врач","Кресло","Услуга","Статус"]},
+  {id:"patients", icon:"👥", title:"Пациенты", src:"МИС · карты", what:"Визиты, лечащий врач и план лечения. Без диагнозов и медицинских подробностей.", kind:"table", db:"Пациенты", views:["Все","Давно не были","Незакрытый план лечения"], cols:["Карта","Последний визит","Лечащий врач","План лечения","Статус"]},
+  {id:"return", icon:"🔁", title:"Возврат пациентов", src:"МИС + Telegram, МАХ", what:"Кому пора на гигиену или продолжить лечение, кому уже написали, кто записался.", kind:"table", db:"Касания", views:["Написать сегодня","Ждем ответа","Записались"], cols:["Карта","Повод","Касание","Ответ","Запись"]},
+  {id:"ads", icon:"📣", title:"Реклама и заявки", src:"ВК, сайт, телефония + МИС", what:"Сколько потратили на рекламу и сколько пациентов с каждого канала дошли до кресла.", kind:"table", db:"Заявки", views:["По каналам","По кампаниям"], cols:["Дата","Канал","Кампания","Заявка","Дошел до кресла","Оплатил"]},
+  {id:"doctors", icon:"🩺", title:"Врачи", src:"МИС", what:"Загрузка, выручка и средний чек каждого врача за месяц.", kind:"table", db:"Врачи", views:["Месяц","Неделя"], cols:["Врач","Специализация","Загрузка","Выручка","Средний чек"]},
+  {id:"tasks", icon:"✅", title:"Задачи администратора", src:"Главврач и система", what:"Что сделать сегодня: перезвонить, подтвердить запись, напомнить о визите.", kind:"board", db:"Задачи", views:["Доска","Мои задачи"], groups:[["К выполнению","t-gray"],["В работе","t-blue"],["Готово","t-green"]]},
+  {id:"docs", icon:"📚", title:"Регламенты и скрипты", src:"Пишем вместе с клиникой", what:"Как отвечать на звонки, переносить запись и говорить о цене.", kind:"docs", docs:["Первый звонок нового пациента","Перенос и отмена записи","Ответы на вопросы о цене","Памятка перед имплантацией","Как закрыть смену"]}
+];
+var HOME = {id:"home", icon:"🦷", title:"Главная"};
+
+var DOCTORS = [
+  {name:"Смирнова Е. В.", role:"терапевт", svc:[["Лечение кариеса",4200,60,5],["Лечение пульпита",9800,90,2],["Консультация терапевта",800,30,3],["Коронка из циркония",29900,60,1],["Реставрация зуба",7500,90,2]]},
+  {name:"Колесов А. И.", role:"хирург-имплантолог", svc:[["Имплант Dentium",24900,60,2],["Удаление зуба",3500,30,4],["Консультация и КТ",2500,30,3]]},
+  {name:"Ларина М. С.", role:"ортодонт", svc:[["Коррекция брекетов",3000,30,6],["Установка брекетов",23000,90,1],["Консультация ортодонта",1000,30,3]]},
+  {name:"Тихонова О. Н.", role:"гигиенист", svc:[["Профгигиена",3500,60,6],["Гигиена и фторирование",4200,60,2],["Отбеливание",15000,90,1]]}
+];
+var PAY = [["Карта",5],["СБП",3],["Наличные",1]];
+var PAYTAG = {"Карта":"t-gray","СБП":"t-blue","Наличные":"t-yellow"};
+
+var OPEN = 9*60, CLOSE = 21*60, START = 11*60, SPEED = 2; // 1 секунда = 2 минуты клиники
+var MONTH_PLAN = 6000000;
+
+/* ---------- утилиты ---------- */
+var nf = new Intl.NumberFormat("ru-RU");
+function rub(v){ return nf.format(Math.round(v)) + " ₽"; }
+function hm(m){ m = Math.round(m); return String(Math.floor(m/60)).padStart(2,"0") + ":" + String(m%60).padStart(2,"0"); }
+function pl(n,f){ var a=Math.abs(n)%100, b=a%10; if(a>10&&a<20) return f[2]; if(b>1&&b<5) return f[1]; if(b===1) return f[0]; return f[2]; }
+function rng(seed){ var a=seed>>>0; return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+function pickW(r, arr, wi){ var tot=0,i; for(i=0;i<arr.length;i++) tot+=arr[i][wi]; var v=r()*tot; for(i=0;i<arr.length;i++){ v-=arr[i][wi]; if(v<=0) return arr[i]; } return arr[arr.length-1]; }
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+
+/* ---------- день клиники (демо) ---------- */
+var today = new Date();
+var seed0 = today.getFullYear()*10000 + (today.getMonth()+1)*100 + today.getDate();
+var WD_NOM = ["Прошлое воскресенье","Прошлый понедельник","Прошлый вторник","Прошлая среда","Прошлый четверг","Прошлая пятница","Прошлая суббота"];
+var WD_DAT = ["прошлому воскресенью","прошлому понедельнику","прошлому вторнику","прошлой среде","прошлому четвергу","прошлой пятнице","прошлой субботе"];
+var MON = ["январь","февраль","март","апрель","май","июнь","июль","август","сентябрь","октябрь","ноябрь","декабрь"];
+var wd = today.getDay();
+
+function makeDay(seed){
+  var r = rng(seed), list = [];
+  DOCTORS.forEach(function(d, di){
+    var t = OPEN;
+    while(t < CLOSE){
+      if(r() < 0.35){ t += 30; continue; }
+      var s = pickW(r, d.svc, 3);
+      if(t + s[2] > CLOSE){ t += 30; continue; }
+      list.push({id:list.length, di:di, doc:d, svc:s[0], price:s[1], start:t, end:t+s[2],
+        card:1000+Math.floor(r()*8999), pay:pickW(r,PAY,1)[0], noShow:r()<0.07,
+        payAt:Math.min(CLOSE, t+s[2]+2+Math.floor(r()*6)), st:null});
+      t += s[2];
+    }
+  });
+  return list;
+}
+var day = makeDay(seed0);
+var prevPays = makeDay(seed0 - 7).filter(function(a){return !a.noShow;})
+  .map(function(a){ return {t:a.payAt, v:a.price}; }).sort(function(a,b){return a.t-b.t;});
+var prevTotal = prevPays.reduce(function(s,p){return s+p.v;},0);
+var dayPotential = day.filter(function(a){return !a.noShow;}).reduce(function(s,a){return s+a.price;},0);
+
+var monthBase = Math.round(((today.getDate()-1)*196500 + rng(seed0+1)()*40000)/100)*100;
+
+var planned = DOCTORS.map(function(){return {sum:0,n:0};});
+day.forEach(function(a){ planned[a.di].sum += a.price; planned[a.di].n++; });
+var maxPlanned = Math.max.apply(null, planned.map(function(p){return p.sum;}));
+
+function niceScale(v){ var steps=[10000,20000,25000,50000,100000,200000,250000,500000], raw=v/4, st=steps[steps.length-1];
+  for(var i=0;i<steps.length;i++){ if(steps[i]>=raw){ st=steps[i]; break; } } return {step:st, max:Math.ceil(v/st)*st}; }
+var sc = niceScale(Math.max(prevTotal, dayPotential)*1.04);
+
+function status(a, c){
+  if(a.noShow) return c >= a.start+15 ? "noshow" : "booked";
+  if(c >= a.payAt) return "paid";
+  if(c >= a.start) return "chair";
+  if(c >= a.start-20) return "arrived";
+  return "booked";
+}
+function cumAt(list, m){ var s=0; for(var i=0;i<list.length;i++){ if(list[i].t<=m) s+=list[i].v; else break; } return s; }
+
+/* ---------- состояние ---------- */
+var clock = START, running = true, finished = false, hoverM = null, seen = {}, first = true;
+var paid = [], paidPts = [], rev = 0;
+
+/* ---------- анимация чисел ---------- */
+function countTo(el, to, fmt){
+  var from = +el.dataset.v || 0; el.dataset.v = to;
+  if(first || reduce || from === to){ el.textContent = fmt(to); return; }
+  var t0 = performance.now(), dur = 700;
+  (function f(t){ var k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,3); el.textContent = fmt(from+(to-from)*e); if(k<1) requestAnimationFrame(f); })(t0);
+}
+
+/* ---------- главный цикл ---------- */
+function update(){
+  var c = clock;
+  paid = day.filter(function(a){ return !a.noShow && a.payAt <= c; }).sort(function(a,b){ return a.payAt-b.payAt || a.id-b.id; });
+  paidPts = paid.map(function(a){ return {t:a.payAt, v:a.price}; });
+  var newOnes = paid.filter(function(a){ return !seen[a.id]; });
+  newOnes.forEach(function(a){ seen[a.id] = true; });
+  rev = paidPts.reduce(function(s,p){return s+p.v;},0);
+
+  // статусы для доски
+  var changed = {}, anyChange = false;
+  day.forEach(function(a){ var s = status(a,c); if(a.st !== s){ if(a.st !== null) changed[a.id] = true; a.st = s; anyChange = true; } });
+
+  renderKPI(newOnes);
+  renderChart();
+  renderDocs();
+  if(anyChange || first) renderBoard(first ? {} : changed);
+  renderFeed(first ? [] : newOnes);
+  renderSync();
+  first = false;
+}
+
+function renderKPI(newOnes){
+  countTo($("#k-rev"), rev, rub);
+  var prevNow = cumAt(prevPays, clock);
+  if(prevNow > 0){
+    var d = Math.round((rev-prevNow)/prevNow*100);
+    $("#k-rev-s").innerHTML = (d >= 0 ? '<span class="up">▲ ' + d + '%</span>' : '<span class="down">▼ ' + Math.abs(d) + '%</span>') +
+      " к " + WD_DAT[wd] + " на это время";
+  } else { $("#k-rev-s").textContent = "первые оплаты дня"; }
+  var add = newOnes.reduce(function(s,a){return s+a.price;},0);
+  if(add > 0 && !first && !reduce){
+    var old = $("#kpi-rev .delta"); if(old) old.remove();
+    var ch = document.createElement("span"); ch.className = "delta"; ch.textContent = "+" + rub(add);
+    ch.addEventListener("animationend", function(){ ch.remove(); });
+    $("#kpi-rev").appendChild(ch);
+  }
+
+  var mon = monthBase + rev;
+  countTo($("#k-mon"), mon, rub);
+  var pct = Math.min(100, mon/MONTH_PLAN*100);
+  $("#k-mon-bar").style.width = pct.toFixed(1) + "%";
+  $("#k-mon-s").textContent = "план " + rub(MONTH_PLAN) + " · " + Math.floor(pct) + "%";
+
+  var came = 0, noshow = 0, ahead = 0;
+  day.forEach(function(a){ if(a.st==="noshow") noshow++; else if(a.st==="booked") ahead++; else came++; });
+  $("#k-pat").textContent = came + " из " + day.length;
+  $("#k-pat-s").textContent = "пришли из записанных · не пришли: " + noshow + " · впереди: " + ahead;
+
+  var avg = paid.length ? rev/paid.length : 0;
+  countTo($("#k-avg"), avg, rub);
+  $("#k-avg-s").textContent = "выручка ÷ " + paid.length + " " + pl(paid.length,["оплату","оплаты","оплат"]);
+}
+
+/* ---------- график ---------- */
+var G = null;
+function stepPath(pts, endM, x, y){
+  var d = "M" + x(OPEN) + "," + y(0), cum = 0;
+  for(var i=0;i<pts.length;i++){ if(pts[i].t > endM) break; d += "H" + x(pts[i].t).toFixed(1); cum += pts[i].v; d += "V" + y(cum).toFixed(1); }
+  return d + "H" + x(endM).toFixed(1);
+}
+function renderChart(){
+  var box = $("#chart"), W = box.clientWidth, H = box.clientHeight;
+  if(!W) return;
+  var L = 58, R = 14, T = 20, B = 24, iw = W-L-R, ih = H-T-B;
+  var x = function(v){ return L + (v-OPEN)/(CLOSE-OPEN)*iw; };
+  var y = function(v){ return T + ih - v/sc.max*ih; };
+  G = {L:L, iw:iw, W:W};
+  var s = "", v, h;
+  for(v = 0; v <= sc.max; v += sc.step){
+    s += '<line class="gl" x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'"/>';
+    s += '<text class="ax" x="'+(L-8)+'" y="'+(y(v)+4)+'" text-anchor="end">'+(v ? nf.format(v/1000)+" тыс." : "0")+'</text>';
+  }
+  for(h = 9; h <= 21; h += 3){
+    s += '<text class="ax" x="'+x(h*60)+'" y="'+(H-5)+'" text-anchor="'+(h===9?"start":h===21?"end":"middle")+'">'+String(h).padStart(2,"0")+':00</text>';
+  }
+  s += '<path class="prev" d="'+stepPath(prevPays, CLOSE, x, y)+'"/>';
+  var td = stepPath(paidPts, clock, x, y);
+  s += '<path class="area" d="'+td+'V'+y(0)+'H'+x(OPEN)+'Z"/>';
+  s += '<path class="today" d="'+td+'"/>';
+
+  var cx = x(clock), cy = y(rev), py = y(prevTotal);
+  s += '<text class="lbl2" x="'+(W-R)+'" y="'+(py-8)+'" text-anchor="end">'+esc(WD_NOM[wd])+' · '+nf.format(Math.round(prevTotal/1000))+' тыс.</text>';
+  var below = (cx > x(CLOSE-200) && Math.abs(cy-py) < 26) || cy < T+16;
+  var anchorStart = cx < L + 90;
+  s += '<text class="lbl" x="'+(anchorStart?cx+10:cx-10)+'" y="'+(below?cy+20:cy-10)+'" text-anchor="'+(anchorStart?"start":"end")+'">'+rub(rev)+'</text>';
+  if(running) s += '<circle class="pulse" cx="'+cx+'" cy="'+cy+'" r="5"/>';
+  s += '<circle class="dotc" cx="'+cx+'" cy="'+cy+'" r="4.5"/>';
+
+  var tip = $("#tip");
+  if(hoverM !== null){
+    var hx = x(hoverM), pv = cumAt(prevPays, hoverM);
+    s += '<line class="cross" x1="'+hx+'" x2="'+hx+'" y1="'+T+'" y2="'+(T+ih)+'"/>';
+    s += '<circle class="hdot p" cx="'+hx+'" cy="'+y(pv)+'" r="4"/>';
+    var tv = null;
+    if(hoverM <= clock){ tv = cumAt(paidPts, hoverM); s += '<circle class="hdot" cx="'+hx+'" cy="'+y(tv)+'" r="4"/>'; }
+    tip.innerHTML = '<b>'+hm(hoverM)+'</b>' +
+      '<div><i class="sw"></i>Сегодня<span>'+(tv===null ? "еще впереди" : rub(tv))+'</span></div>' +
+      '<div><i class="sw prev"></i>'+esc(WD_NOM[wd])+'<span>'+rub(pv)+'</span></div>';
+    tip.hidden = false;
+    var tw = tip.offsetWidth;
+    tip.style.left = (hx + 14 + tw > W ? hx - 14 - tw : hx + 14) + "px";
+  } else { tip.hidden = true; }
+
+  var svg = $("#chart-svg");
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+  svg.innerHTML = s;
+}
+(function(){
+  var box = $("#chart");
+  box.addEventListener("pointermove", function(e){
+    if(!G) return;
+    var r = box.getBoundingClientRect(), px = e.clientX - r.left;
+    var m = OPEN + (px - G.L)/G.iw*(CLOSE-OPEN);
+    hoverM = Math.max(OPEN, Math.min(CLOSE, Math.round(m/5)*5));
+    renderChart();
+  });
+  box.addEventListener("pointerleave", function(){ hoverM = null; renderChart(); });
+  if(window.ResizeObserver) new ResizeObserver(function(){ renderChart(); }).observe(box);
+})();
+
+/* ---------- врачи ---------- */
+var docRefs = [];
+(function(){
+  var wrap = $("#docs");
+  DOCTORS.forEach(function(d, i){
+    var el = document.createElement("div");
+    el.innerHTML = '<div class="doc-top"><span class="doc-name">'+esc(d.name)+'</span><span class="doc-role">'+esc(d.role)+'</span><span class="doc-sum">0 ₽</span></div>' +
+      '<div class="doc-bar"><div class="plan" style="width:'+(planned[i].sum/maxPlanned*100).toFixed(1)+'%"></div><div class="fill" style="width:0%"></div></div>' +
+      '<div class="doc-sub"></div>';
+    wrap.appendChild(el);
+    docRefs.push({sum:el.querySelector(".doc-sum"), fill:el.querySelector(".fill"), sub:el.querySelector(".doc-sub")});
+  });
+})();
+function renderDocs(){
+  DOCTORS.forEach(function(d, i){
+    var mine = paid.filter(function(a){ return a.di===i; });
+    var sum = mine.reduce(function(s,a){return s+a.price;},0);
+    var now = day.filter(function(a){ return a.di===i && a.st==="chair"; })[0];
+    var ref = docRefs[i];
+    countTo(ref.sum, sum, rub);
+    ref.fill.style.width = (sum/maxPlanned*100).toFixed(1) + "%";
+    ref.sub.innerHTML = mine.length + " " + pl(mine.length,["оплата","оплаты","оплат"]) + " из " + planned[i].n + " по записи на " + rub(planned[i].sum) +
+      " · " + (now ? "сейчас: <em>" + esc(now.svc) + "</em>" : "сейчас нет приема");
+  });
+}
+
+/* ---------- доска приема ---------- */
+var COLS = [["booked","Записан","t-gray"],["arrived","Пришел","t-yellow"],["chair","В кресле","t-blue"],["paid","Оплачено","t-green"],["noshow","Не пришел","t-red"]];
+function card(a, fl){
+  return '<div class="bcard'+(fl?" flash":"")+'"><div class="tm">'+hm(a.start)+'–'+hm(a.end)+'</div><div class="sv">'+esc(a.svc)+'</div>' +
+    '<div class="mt">'+esc(a.doc.name)+' · карта '+a.card+'</div>' + (a.st==="paid" ? '<div class="sm">'+rub(a.price)+'</div>' : '') + '</div>';
+}
+function renderBoard(changed){
+  var html = "";
+  COLS.forEach(function(col){
+    var items = day.filter(function(a){ return a.st===col[0]; });
+    if(col[0]==="paid") items.sort(function(a,b){ return b.payAt-a.payAt; });
+    else items.sort(function(a,b){ return a.start-b.start; });
+    var lim = col[0]==="booked" || col[0]==="paid" ? 4 : 6;
+    html += '<div class="col"><div class="col-h"><span class="tag '+col[2]+'">'+col[1]+'</span><span class="num">'+items.length+'</span></div>';
+    items.slice(0, lim).forEach(function(a){ html += card(a, changed[a.id]); });
+    if(items.length > lim) html += '<div class="more">еще '+(items.length-lim)+'</div>';
+    html += '</div>';
+  });
+  $("#board").innerHTML = html;
+  $("#board-n").textContent = day.length + " " + pl(day.length,["запись","записи","записей"]);
+}
+
+/* ---------- лента оплат ---------- */
+function feedRow(a, fl){
+  var tr = document.createElement("tr");
+  if(fl) tr.className = "flash";
+  tr.innerHTML = '<td class="mono">'+hm(a.payAt)+'</td><td class="num">'+a.card+'</td><td>'+esc(a.svc)+'</td><td>'+esc(a.doc.name)+'</td>' +
+    '<td><span class="tag '+PAYTAG[a.pay]+'">'+a.pay+'</span></td><td class="r">'+rub(a.price)+'</td>';
+  return tr;
+}
+function renderFeed(newOnes){
+  var tb = $("#feed");
+  if(first || !tb.children.length){
+    tb.innerHTML = "";
+    paid.slice(-8).reverse().forEach(function(a){ tb.appendChild(feedRow(a, false)); });
+  } else {
+    newOnes.forEach(function(a){ tb.insertBefore(feedRow(a, !reduce), tb.firstChild); });
+    while(tb.children.length > 8) tb.removeChild(tb.lastChild);
+  }
+  if(!paid.length) tb.innerHTML = '<tr><td colspan="6" style="color:var(--ink3)">Оплат пока нет</td></tr>';
+  $("#feed-n").textContent = "За день " + paid.length + " " + pl(paid.length,["оплата","оплаты","оплат"]) + " на " + rub(rev);
+}
+
+/* ---------- синхронизация ---------- */
+function renderSync(){
+  var b = $("#sync");
+  b.classList.toggle("live", running);
+  b.querySelector(".led").classList.toggle("on", running);
+  $("#sync-t").textContent = finished ? "МИС · прием окончен" : running ? "МИС · онлайн" : "МИС · пауза";
+  $("#clk").textContent = hm(clock);
+  b.title = finished ? "Прием окончен" : running ? "Остановить поток данных" : "Продолжить поток данных";
+  $("#restart").hidden = !finished;
+}
+$("#sync").addEventListener("click", function(){ if(finished) return; running = !running; renderSync(); renderChart(); });
+$("#restart").addEventListener("click", function(){
+  clock = START; running = true; finished = false; seen = {}; first = true;
+  day.forEach(function(a){ a.st = null; });
+  update();
+});
+setInterval(function(){
+  if(!running) return;
+  clock = Math.min(CLOSE, clock + SPEED);
+  if(clock >= CLOSE){ running = false; finished = true; }
+  update();
+}, 1000);
+
+/* ---------- навигация и каркасы ---------- */
+function navHtml(){
+  var all = [HOME].concat(PAGES), h = "";
+  all.forEach(function(p){ h += '<button class="nav-item" data-go="'+p.id+'"><span class="ic">'+p.icon+'</span>'+esc(p.title)+'</button>'; });
+  $("#nav").innerHTML = h;
+  var g = "";
+  PAGES.forEach(function(p){
+    g += '<button class="gcard" data-go="'+p.id+'"><span class="gi">'+p.icon+'</span><span class="gt">'+esc(p.title)+'</span><span class="gd">'+esc(p.what)+'</span>' +
+      '<span class="gf"><span class="tag t-blue">'+esc(p.src)+'</span><span class="tag t-gray">каркас</span></span></button>';
+  });
+  $("#gal").innerHTML = g;
+}
+var SKW = [[62,48,80,54,70,40],[50,70,58,76,44,52],[74,40,66,48,58,66],[44,60,52,68,80,46]];
+function stubHtml(p){
+  var h = '<div class="pg"><div class="pg-icon">'+p.icon+'</div><h1>'+esc(p.title)+'</h1>' +
+    '<div class="props">' +
+      '<div class="prop"><span class="pk">Источник данных</span><span><span class="tag t-blue">'+esc(p.src)+'</span></span></div>' +
+      '<div class="prop"><span class="pk">Статус</span><span><span class="tag t-gray">каркас</span></span></div>' +
+      '<div class="prop"><span class="pk">Что здесь будет</span><span>'+esc(p.what)+'</span></div>' +
+    '</div>' +
+    '<div class="callout"><span class="ci">🧱</span><p>Раздел пока пустой. Колонки и виды ниже показывают, как он будет устроен после подключения данных.</p></div>';
+  if(p.kind === "docs"){
+    h += '<div class="dbh"><div class="dbt">Страницы</div></div><div class="doclist">';
+    p.docs.forEach(function(d){ h += '<div class="docrow"><span>📄</span><span>'+esc(d)+'</span><span class="e">пусто</span></div>'; });
+    return h + '</div></div>';
+  }
+  h += '<div class="dbh"><div class="dbt">'+esc(p.db)+'</div><div class="dbr"><span class="tag t-blue">'+esc(p.src)+'</span></div></div>';
+  h += '<div class="tabs" role="tablist">';
+  p.views.forEach(function(v, i){ h += '<button class="tab'+(i?"":" on")+'" role="tab" aria-selected="'+(i?"false":"true")+'">'+esc(v)+'</button>'; });
+  h += '</div>';
+  if(p.kind === "board"){
+    h += '<div class="scroll-x"><div class="stub-board">';
+    p.groups.forEach(function(g, gi){
+      h += '<div class="col"><div class="col-h"><span class="tag '+g[1]+'">'+g[0]+'</span></div>';
+      for(var k=0;k<3-gi%2;k++) h += '<div class="bcard"><span class="sk" style="width:'+SKW[k][gi]+'%"></span><span class="sk" style="width:'+SKW[k+1][gi+1]+'%;margin-top:8px;height:7px"></span></div>';
+      h += '</div>';
+    });
+    return h + '</div></div></div>';
+  }
+  h += '<div class="scroll-x"><table class="tbl"><thead><tr>';
+  p.cols.forEach(function(c){ h += '<th>'+esc(c)+'</th>'; });
+  h += '</tr></thead><tbody>';
+  for(var r=0;r<4;r++){ h += '<tr>'; p.cols.forEach(function(c, ci){ h += '<td><span class="sk" style="width:'+(SKW[r][ci%6])+'%;min-width:40px"></span></td>'; }); h += '</tr>'; }
+  return h + '</tbody></table></div></div>';
+}
+function show(id){
+  var p = id === "home" ? HOME : PAGES.filter(function(x){ return x.id===id; })[0] || HOME;
+  $("#v-home").hidden = p !== HOME;
+  $("#v-stub").hidden = p === HOME;
+  if(p !== HOME) $("#v-stub").innerHTML = stubHtml(p);
+  document.querySelectorAll(".nav-item").forEach(function(b){ b.classList.toggle("on", b.dataset.go === p.id); });
+  $("#crumb-ic").textContent = p.icon; $("#crumb-t").textContent = p.title;
+  closeSide();
+  window.scrollTo(0, 0);
+  if(p === HOME) renderChart();
+}
+function go(id){ if(location.hash.slice(1) === id) show(id); else location.hash = id; }
+document.addEventListener("click", function(e){
+  var t = e.target.closest("[data-go]");
+  if(t){ go(t.dataset.go); return; }
+  var tab = e.target.closest(".tab");
+  if(tab){ tab.parentNode.querySelectorAll(".tab").forEach(function(x){ x.classList.toggle("on", x===tab); x.setAttribute("aria-selected", x===tab); }); }
+});
+window.addEventListener("hashchange", function(){ show(location.hash.slice(1) || "home"); });
+
+function closeSide(){ $("#side").classList.remove("open"); $("#scrim").classList.remove("open"); }
+$("#burger").addEventListener("click", function(){ $("#side").classList.add("open"); $("#scrim").classList.add("open"); });
+$("#scrim").addEventListener("click", closeSide);
+
+/* ---------- старт ---------- */
+var dl = today.toLocaleDateString("ru-RU", {weekday:"long", day:"numeric", month:"long"});
+$("#today-line").textContent = dl.charAt(0).toUpperCase() + dl.slice(1) + " · прием 09:00–21:00 · " + DOCTORS.length + " врача";
+$("#k-mon-l").textContent = "Выручка за " + MON[today.getMonth()];
+$("#lg-prev").textContent = WD_NOM[wd];
+navHtml();
+update();
+show(location.hash.slice(1) || "home");
+})();
+</script>
