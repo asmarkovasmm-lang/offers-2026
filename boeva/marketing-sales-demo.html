@@ -257,6 +257,16 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
 .ads-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .ads-head h1{margin:0;font-size:clamp(27px,3vw,36px)}
 .ads-note{color:var(--ink2);font-size:13px;line-height:1.55;margin:10px 0 18px;max-width:86ch}
+.ads-overview{margin-top:22px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.ads-overview-heading{display:flex;align-items:baseline;justify-content:space-between;gap:8px 18px;flex-wrap:wrap}
+.ads-overview-heading h2{font-size:22px;line-height:1.3;margin:0;font-weight:650}
+.ads-overview-heading>span{font-size:13px;color:var(--ink2)}
+.ads-overview>.ads-section-intro{margin:7px 0 0}
+.ads-page .ads-summary-grid{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:16px}
+.ads-overview-costs{display:flex;flex-wrap:wrap;gap:10px 26px;font-size:12px;color:var(--ink2);margin-top:16px}
+.ads-overview-costs span{display:flex;gap:5px 10px;flex-wrap:wrap}
+.ads-overview-costs b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.ads-page .ads-detail-title{margin-top:26px}
 .ads-controls{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;padding:14px 0;border-block:1px solid var(--line)}
 .ads-controls label{display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--ink2)}
 .ads-controls select{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:8px 28px 8px 10px;max-width:100%}
@@ -320,6 +330,7 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
 @media(max-width:1100px){.ads-split{grid-template-columns:1fr}.ads-funnel{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:560px){.ads-page{padding-top:18px}.ads-head{gap:8px}.ads-controls{gap:10px}.ads-controls label{flex:1 1 135px}.ads-funnel{grid-template-columns:repeat(2,minmax(0,1fr))}.ads-stage:last-child{grid-column:1/-1}.ads-mini-grid{grid-template-columns:1fr}.ads-chart-wrap{padding:10px}.ads-page .kpi{padding:11px}.ads-page .kpi-v{font-size:22px}.ads-detail-head{flex-wrap:wrap}}
 @media(max-width:560px){.ads-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;gap:2px 8px}.ads-tabs .tab{white-space:normal;text-align:left;min-height:38px}}
+@media(max-width:700px){.ads-page .ads-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ads-overview-heading h2{font-size:20px}.ads-overview-costs{gap:8px}.ads-overview-costs span{width:100%;justify-content:space-between}}
 
 </style>
 
@@ -545,15 +556,32 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
       visits:sum(rows,p=>p.visits.length),
       ltv:ratio(sum(fresh,p=>sum(p.visits,'amount')),fresh.length),ltv14:ratio(windowSum,mature.length)};
   }
-  let state={month:'2026-09',channel:'vk',tab:'path',patientType:'all',patient:null,mapMetric:'views',mapDaily:false};
+  let state={month:'2026-09',channel:'all',tab:'path',patientType:'all',patient:null,mapMetric:'views',mapDaily:false};
   let root;
   function kpi(label,value,note) {return '<div class="kpi"><div class="kpi-l">'+label+'</div><div class="kpi-v">'+value+'</div><div class="kpi-s">'+note+'</div></div>';}
   function monthLabel() {return months.find(m=>m.id===state.month).title;}
   function sourceLabel(){return state.channel==='all'?'Все каналы':channels[state.channel];}
+  function overview(){
+    const m=metrics(state.month,'all');
+    return '<section class="ads-overview" aria-label="Сводка по всем каналам">'+
+      '<div class="ads-overview-heading"><h2>Сводка по всем каналам</h2><span>'+monthLabel()+'</span></div>'+
+      '<p class="ads-section-intro">ВК, ПроДокторов и Яндекс Карты. Общие итоги за выбранный месяц.</p>'+
+      '<div class="kpis ads-summary-grid">'+
+      kpi('Потрачено на рекламу',money(m.spend),'Сумма расходов трех каналов')+
+      kpi('Обращений',fmt(m.leads),'Звонки, формы и диалоги без дублей')+
+      kpi('Записались',fmt(m.books),m.newBookings+' первичных · '+m.returnBookings+' повторных')+
+      kpi('Пришли и оплатили',fmt(m.came),m.fresh.length+' новых · '+(m.came-m.fresh.length)+' повторных')+
+      kpi('Новых пациентов',fmt(m.fresh.length),'Пришли впервые и оплатили')+
+      kpi('Выручка этой группы',money(m.monthRevenue),'Оплаты в месяце обращения')+'</div>'+
+      '<div class="ads-overview-costs"><span>Средняя цена обращения <b>'+money(m.cpl)+'</b></span><span>Средняя цена записи <b>'+money(m.cpb)+'</b></span><span>Привлечение нового пациента <b>'+money(m.cac)+'</b></span></div>'+
+      '<p class="ads-chart-caption">Выручка относится к пациентам из обращений этого месяца. Это не вся выручка клиники. Средние цены считаем из общих расходов и количества обращений, записей или новых оплативших.</p></section>';
+  }
   function header(){
     return '<div class="ads-head"><h1>Реклама и заявки</h1><span class="tag t-yellow">Демонстрация</span></div>'+
       '<p class="ads-note">От рекламного расхода до визитов и оплат. Все цифры и карточки вымышлены. Данные примера — по 14 октября 2026 года включительно.</p>'+
       '<div class="ads-controls"><label>Месяц обращения<select id="ads-month">'+months.map(m=>'<option value="'+m.id+'"'+(m.id===state.month?' selected':'')+'>'+m.title+'</option>').join('')+'</select></label>'+
+      '<span class="muted">Период меняет общую сводку и детализацию ниже</span></div>'+overview()+
+      '<h2 class="ads-section-title ads-detail-title">Детализация по каналам</h2><p class="ads-section-intro">Выбери канал, чтобы просмотреть его расходы, путь до оплаты и историю пациентов. Верхняя сводка всегда показывает все каналы.</p><div class="ads-controls">'+
       '<label>Канал обращения<select id="ads-channel">'+['all',...Object.keys(channels)].map(c=>'<option value="'+c+'"'+(state.channel===c?' selected':'')+'>'+(c==='all'?'Все каналы':channels[c])+'</option>').join('')+'</select></label>'+
       '<span class="muted">Группа пациентов сохраняется: последующие визиты видны до 14.10</span></div>'+
       '<div class="tabs ads-tabs" role="tablist" aria-label="Рекламная аналитика">'+[['path','Путь до оплаты'],['patients','Пациенты и визиты'],['maps','Яндекс Карты'],['method','Как считаем LTV']].map(t=>'<button class="tab'+(state.tab===t[0]?' on':'')+'" role="tab" aria-selected="'+(state.tab===t[0])+'" data-ad-tab="'+t[0]+'">'+t[1]+'</button>').join('')+'</div>';
@@ -575,7 +603,7 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
   function patientsView(){
     const m=metrics(state.month,state.channel);
     let list=m.rows.filter(p=>state.patientType==='all'||p.kind===state.patientType);
-    let h='<h2 class="ads-section-title">Пациенты из '+sourceLabel()+' · '+monthLabel().toLowerCase()+'</h2><p class="ads-section-intro">Выбери карточку: увидишь визиты, оплаты и источник первого визита. Номер карты вымышленный; имен и телефонов здесь нет.</p>'+
+    let h='<h2 class="ads-section-title">Пациенты · '+sourceLabel()+' · '+monthLabel().toLowerCase()+'</h2><p class="ads-section-intro">Выбери карточку: увидишь визиты, оплаты и источник первого визита. Номер карты вымышленный; имен и телефонов здесь нет.</p>'+
       '<div class="ads-controls"><label>Тип пациента при обращении<select id="ads-type"><option value="all"'+(state.patientType==='all'?' selected':'')+'>Все пациенты</option><option value="new"'+(state.patientType==='new'?' selected':'')+'>Первичные</option><option value="return"'+(state.patientType==='return'?' selected':'')+'>Повторные</option></select></label><span class="muted">'+list.length+' карточек</span></div>'+
       '<div class="scroll-x"><table class="tbl"><thead><tr><th>Карта</th><th>Запись</th><th>Тип при обращении</th><th>Статус</th><th>Источник первого визита</th><th>Визитов с обращения</th><th>Оплачено с обращения</th></tr></thead><tbody>'+list.map(p=>'<tr'+(state.patient===p.id?' class="selected-row"':'')+'><td><button class="link" data-ad-patient="'+p.id+'">'+p.id+' ↗</button></td><td>'+date(p.booked)+'</td><td><span class="tag '+(p.kind==='new'?'t-blue':'t-gray')+'">'+(p.kind==='new'?'Первичный':'Повторный')+'</span></td><td><span class="ads-status '+(p.status==='Пришел'?'ads-positive':'muted')+'">'+p.status+'</span></td><td>'+(!p.visits.length && p.kind==='new'?'Визита еще не было':channels[p.origin])+'</td><td>'+p.visits.length+'</td><td>'+money(sum(p.visits,'amount'))+'</td></tr>').join('')+'</tbody></table></div><p class="ads-chart-caption">Первичный — до этой записи не было визита. Повторный — уже был пациентом клиники, даже если вернулся через новую рекламу. Неявки и отмены не входят в выручку и LTV.</p>';
     const p=list.find(p=>p.id===state.patient);
