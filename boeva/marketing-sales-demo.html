@@ -341,10 +341,72 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
 .ads-page details{margin-top:20px}
 .ads-chart-summary{font-size:14px;margin:6px 0 16px}
 .ads-chart-summary b{font-weight:600}
+/* Карты: сначала пациенты и оплаты, затем показатели площадки. */
+.ads-maps-title{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:24px}
+.ads-maps-title h2{font-size:clamp(22px,2.6vw,30px);line-height:1.3;margin:0;font-weight:600}
+.ads-page .ads-maps-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ads-maps-kpis .kpi-highlight--expense{background:#F5D083;border-color:#DFB861;color:#493008}
+.ads-maps-kpis .kpi-highlight--revenue{background:#1F7A74;border-color:#1F7A74;color:#FFF}
+.ads-maps-kpis .kpi-highlight--expense>* , .ads-maps-kpis .kpi-highlight--revenue>*{color:inherit}
+.ads-role-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ads-role-card{font:inherit;cursor:pointer;text-align:left;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.ads-role-card[aria-pressed="true"]{background:var(--accent-soft);border:2px solid var(--accent);padding:15px}
+.ads-role-card>span{font-size:14px;line-height:1.4;min-height:40px}
+.ads-role-card strong{font-size:28px;font-weight:600;font-variant-numeric:tabular-nums}
+.ads-role-card small{font-size:12px;color:var(--ink2)}
+.ads-role-card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.ads-maps-funnel{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ads-maps-group-total{display:flex;align-items:center;gap:8px 20px;flex-wrap:wrap;padding:18px 0;border-bottom:1px solid var(--line);font-size:14px}
+.ads-maps-group-total strong{font-size:24px;font-weight:600;font-variant-numeric:tabular-nums}
+.ads-maps-group-total>span:last-child{flex-basis:100%;font-size:12px;color:var(--ink2)}
+.ads-maps-actions .ads-explain h3{font-size:15px}
+.ads-coverage{padding:20px;background:var(--callout);border-radius:6px;margin-top:24px}
+.ads-coverage h3{font-size:17px;font-weight:600;margin:0 0 12px}
+.ads-coverage-heading{display:flex;align-items:center;gap:16px;font-size:13px;line-height:1.5}
+.ads-coverage-heading strong{font-size:28px;font-weight:600;font-variant-numeric:tabular-nums}
+.ads-coverage-track{height:9px;background:var(--line);margin:14px 0;border-radius:10px;overflow:hidden}
+.ads-coverage-track span{display:block;height:100%;background:var(--accent)}
+.ads-source-evidence{margin:18px 0}
+.ads-source-evidence dl{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ads-source-evidence dt{font-size:12px;color:var(--ink2);margin-bottom:4px}
+.ads-source-evidence dd{font-size:14px;margin:0;line-height:1.5}
+.ads-source-evidence .ads-split{margin-top:14px}
+.ads-page .ads-attribution-table td{white-space:normal}
+.ads-platform-stats{border-top:1px solid var(--line);padding-top:20px;margin-top:28px!important}
+.ads-platform-stats>summary{font-size:16px;font-weight:600}
+.ads-global-fold .ads-overview{margin-top:12px}
+.ads-admin-guide,.ads-cost-detail{line-height:1.5}
+/* Сохраняем существующий сценарий LTV на остальных вкладках. */
+.ads-ltv-overview{margin-top:20px;padding:22px;background:var(--callout);border-radius:6px}
+.ads-ltv-heading{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.ads-ltv-heading h2{font-size:22px;margin:0;font-weight:600}
+.ads-ltv-intro,.ads-ltv-footnote{font-size:13px;line-height:1.5;color:var(--ink2)}
+.ads-ltv-timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:18px 0}
+.ads-ltv-step{min-width:0}.ads-ltv-step>span,.ads-ltv-group>span{display:block;font-size:12px;color:var(--ink2)}
+.ads-ltv-value{display:block;font-size:24px;font-weight:600;margin:8px 0 2px}
+.ads-ltv-track{height:90px;display:flex;align-items:flex-end;margin:12px 0;background:var(--bg)}
+.ads-ltv-bar{width:100%;display:flex;flex-direction:column-reverse}.ads-ltv-observed{background:var(--accent)}.ads-ltv-planned{background:#C6E1E5}
+.ads-ltv-group b{font-size:17px;font-weight:600}.ads-ltv-visits{font-size:12px;color:var(--ink2)}
+.ads-ltv-legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--ink2)}.ads-ltv-legend i{display:inline-block;width:10px;height:10px;margin-right:5px}.ads-ltv-key-observed{background:var(--accent)}.ads-ltv-key-planned{background:#C6E1E5}
+.ads-channel-ltv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.ads-channel-ltv-card{background:var(--callout);padding:14px;border-radius:6px}.ads-channel-ltv-card dl{font-size:13px}.ads-channel-ltv-card dd{margin:2px 0 10px;font-weight:600}
+@media(max-width:900px){.ads-page .ads-maps-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.ads-role-grid{grid-template-columns:1fr}.ads-role-card>span{min-height:0}.ads-role-card{display:grid;grid-template-columns:1fr auto}.ads-role-card small{grid-column:1/-1}.ads-maps-funnel{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.ads-source-evidence dl{grid-template-columns:1fr}.ads-coverage{padding:14px}.ads-ltv-timeline{grid-template-columns:repeat(2,minmax(0,1fr))}.ads-channel-ltv{grid-template-columns:1fr}.ads-maps-funnel .ads-stage:last-child{grid-column:auto}}
 @media(max-width:1100px){.ads-split{grid-template-columns:1fr}.ads-funnel{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:560px){.ads-page{padding-top:18px}.ads-head{gap:8px}.ads-controls{gap:10px}.ads-controls label{flex:1 1 135px}.ads-funnel{grid-template-columns:repeat(2,minmax(0,1fr))}.ads-stage:last-child{grid-column:1/-1}.ads-mini-grid{grid-template-columns:1fr}.ads-chart-wrap{padding:10px}.ads-page .kpi{padding:11px}.ads-page .kpi-v{font-size:22px}.ads-detail-head{flex-wrap:wrap}}
 @media(max-width:560px){.ads-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;gap:2px 8px}.ads-tabs .tab{white-space:normal;text-align:left;min-height:38px}}
 @media(max-width:700px){.ads-page .ads-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ads-overview-heading h2{font-size:20px}.ads-overview-costs{gap:8px}.ads-overview-costs span{width:100%;justify-content:space-between}}
+/* Фактическая выручка Карт: первые визиты и возвраты прежних групп. */
+.ads-page .ads-maps-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ads-maps-kpis .kpi-highlight--repeat{background:#E4F2EF;border-color:#9DCFC2;color:#155D50}
+.ads-maps-kpis .kpi-highlight--repeat>*{color:inherit}
+.ads-ltv-summary-table{min-width:890px!important}
+.ads-ltv-summary-table th.ads-repeat-cell,.ads-ltv-summary-table td.ads-repeat-cell{background:#E4F2EF;color:#155D50}
+.ads-ltv-summary-table td small,.ads-ltv-summary-table th small{display:block;font-size:11px;line-height:1.5;font-weight:400;color:var(--ink2);margin-top:5px;white-space:normal}
+.ads-ltv-summary-table td small{max-width:190px}
+.ads-ltv-summary-table .link{font-size:14px}
+.ads-ltv-summary-table td{font-variant-numeric:tabular-nums}
+@media(max-width:900px){.ads-page .ads-maps-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 </style>
 
@@ -474,11 +536,18 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
 (function () {
   'use strict';
   const CUT = '2026-10-14';
-  const FIRST = '2026-07-01';
+  const FIRST = '2026-05-01';
   const DAY = 86400000;
   const utc = d => Date.parse(d + 'T00:00:00Z');
   const age = (a,b) => Math.round((utc(b)-utc(a))/DAY);
   const shift = (d,days) => new Date(utc(d)+days*DAY).toISOString().slice(0,10);
+  const addMonths = (d,n) => {
+    const source=new Date(utc(d));
+    const first=new Date(Date.UTC(source.getUTCFullYear(),source.getUTCMonth()+n,1));
+    const last=new Date(Date.UTC(first.getUTCFullYear(),first.getUTCMonth()+1,0)).getUTCDate();
+    first.setUTCDate(Math.min(source.getUTCDate(),last));
+    return first.toISOString().slice(0,10);
+  };
   const inRange = (d,r) => d>=r.start && d<=r.end;
   const validDate = d => /^\d{4}-\d{2}-\d{2}$/.test(d) && Number.isFinite(utc(d)) && shift(d,0)===d;
   const validRange = r => validDate(r.start) && validDate(r.end) && r.start>=FIRST && r.end<=CUT && r.start<=r.end;
@@ -492,17 +561,21 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
   const ratio = (n,d) => d ? n/d : null;
   const channels = {vk:'ВК', pro:'ПроДокторов', maps:'Яндекс Карты'};
   const months = [
+    {id:'2026-05',title:'Май 2026',short:'Май',days:31},
+    {id:'2026-06',title:'Июнь 2026',short:'Июнь',days:30},
     {id:'2026-07',title:'Июль 2026',short:'Июль',days:31},
     {id:'2026-08',title:'Август 2026',short:'Август',days:31},
     {id:'2026-09',title:'Сентябрь 2026',short:'Сентябрь',days:30},
     {id:'2026-10',title:'Октябрь, 1–14',short:'Октябрь*',days:14,partial:true}
   ];
   const configs = {
-    vk:[{spend:18*251,leads:18,books:9,came:7,newCame:5},{spend:20*251,leads:20,books:10,came:8,newCame:6},{spend:22*251,leads:22,books:11,came:9,newCame:7},{spend:12*251,leads:12,books:6,came:5,newCame:4}],
-    pro:[{spend:7500,leads:9,books:5,came:4,newCame:3},{spend:8500,leads:10,books:6,came:5,newCame:4},{spend:9000,leads:12,books:7,came:6,newCame:4},{spend:4500,leads:7,books:4,came:3,newCame:2}],
-    maps:[{spend:12000,leads:6,books:4,came:3,newCame:2},{spend:12000,leads:8,books:5,came:4,newCame:3},{spend:12000,leads:10,books:6,came:5,newCame:4},{spend:5600,leads:6,books:4,came:3,newCame:2}]
+    vk:[{spend:14*251,leads:14,books:7,came:5,newCame:4},{spend:16*251,leads:16,books:8,came:6,newCame:4},{spend:18*251,leads:18,books:9,came:7,newCame:5},{spend:20*251,leads:20,books:10,came:8,newCame:6},{spend:22*251,leads:22,books:11,came:9,newCame:7},{spend:28*251,leads:28,books:16,came:14,newCame:11}],
+    pro:[{spend:6500,leads:7,books:4,came:3,newCame:2},{spend:7000,leads:8,books:4,came:3,newCame:2},{spend:7500,leads:9,books:5,came:4,newCame:3},{spend:8500,leads:10,books:6,came:5,newCame:4},{spend:9000,leads:12,books:7,came:6,newCame:4},{spend:4500,leads:14,books:9,came:8,newCame:6}],
+    maps:[{spend:12000,leads:6,books:4,came:3,newCame:2},{spend:12000,leads:7,books:4,came:3,newCame:2},{spend:12000,leads:6,books:4,came:3,newCame:2},{spend:12000,leads:8,books:5,came:4,newCame:3},{spend:12000,leads:10,books:6,came:5,newCame:4},{spend:5600,leads:12,books:8,came:7,newCame:5}]
   };
   const mapStats = [
+    {views:15000,clicks:285,profile:510,phone:13,route:18,site:29},
+    {views:16500,clicks:330,profile:570,phone:15,route:21,site:33},
     {views:18000,clicks:360,profile:620,phone:16,route:24,site:38},
     {views:22000,clicks:484,profile:740,phone:20,route:31,site:47},
     {views:26000,clicks:650,profile:920,phone:28,route:44,site:63},
@@ -535,11 +608,11 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
     p.status=r[3];patients.push(p);
   });
   Object.keys(channels).forEach((channel,ci) => months.forEach((month,mi) => {
-    if(channel==='vk' && mi===2) return;
+    if(channel==='vk' && month.id==='2026-09') return;
     const c=configs[channel][mi];
     for(let i=0;i<c.books;i++) {
       const kind=i<c.newCame?'new':'return';
-      const day=month.partial?Math.min(2+i*2,13):3+i*3;
+      const day=month.partial?2+Math.floor(i*12/c.books):3+i*3;
       const booked=month.id+'-'+String(Math.min(day,month.days)).padStart(2,'0');
       const came=i<c.came;
       const first=kind==='new'?booked:'2025-06-'+String(2+i).padStart(2,'0');
@@ -552,10 +625,32 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
         const next=new Date(utc(booked)+25*DAY).toISOString().slice(0,10);
         if(next<=CUT) visits.push(visit(next,9800,'Продолжение лечения'));
       }
-      const p=person('Д'+String(ci+2)+String(mi+7)+String(i+1).padStart(2,'0'),channel,month.id,kind,first,booked,visits,kind==='return'?[visit(first,3500,'Визит до обращения')]:[],channel);
+      const p=person('Д'+String(ci+2)+String(Number(month.id.slice(5)))+String(i+1).padStart(2,'0'),channel,month.id,kind,first,booked,visits,kind==='return'?[visit(first,3500,'Визит до обращения')]:[],channel);
       p.status=came?'Пришел':i%2?'Отменена':'Не пришел';patients.push(p);
     }
   }));
+  // Сценарий продолжения лечения: только будущие даты, отдельно от полученных оплат.
+  const planRules=[
+    {day:21,amount:4200,service:'Лечение кариеса',when:i=>i%5!==4},
+    {day:60,amount:3500,service:'Профгигиена',when:i=>i%3!==2},
+    {day:85,amount:9800,service:'Продолжение лечения',when:i=>i%4===0},
+    {day:180,amount:3500,service:'Профгигиена',when:i=>i%2===0},
+    {day:270,amount:9800,service:'Продолжение лечения',when:i=>i%3===1},
+    {day:360,amount:3500,service:'Профилактический визит',when:i=>i%4!==3}
+  ];
+  patients.forEach((p,i)=>{
+    p.plan=p.kind==='new' && p.visits.length?planRules.filter(rule=>rule.when(i))
+      .map(rule=>({...visit(shift(p.first,rule.day),rule.amount,rule.service),planned:true}))
+      .filter(v=>v.date>CUT && !p.visits.some(actual=>actual.date===v.date)):[];
+  });
+  function horizon(rows,monthsCount){
+    const scoped=p=>[...p.visits,...p.plan].filter(v=>v.date>=p.first && v.date<addMonths(p.first,monthsCount));
+    const items=rows.flatMap(scoped);
+    const revenue=sum(items,'amount'),observedRevenue=sum(items.filter(v=>!v.planned),'amount');
+    return {months:monthsCount,revenue,observedRevenue,plannedRevenue:revenue-observedRevenue,
+      ltv:ratio(revenue,rows.length),visits:items.length,returned:rows.filter(p=>scoped(p).length>1).length,
+      plannedVisits:items.filter(v=>v.planned).length};
+  }
   // Условные дневные данные сохраняют месячные суммы и каждую запись связывают с обращением.
   const daily=[];
   const portion=(total,day,days)=>Math.floor(total*day/days)-Math.floor(total*(day-1)/days);
@@ -576,6 +671,115 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
     const m=months.find(m=>m.id===period);
     return m?{start:m.id+'-01',end:m.id+'-'+String(m.days).padStart(2,'0')}:null;
   }
+  // Один человек на обращение в учебном наборе. Реальный учет потребует объединения дублей.
+  const sourceNames={...channels,referral:'Рекомендация',unknown:'Неизвестно'};
+  const inquiries=[];
+  daily.forEach(day=>{
+    const booked=patients.filter(p=>p.channel===day.channel && p.booked===day.date);
+    for(let i=0;i<day.leads;i++){
+      const p=booked[i]||null,seed=inquiries.length;
+      const pattern=seed%7;
+      const firstSource=p && p.kind==='return'?p.origin:
+        pattern===3||(day.channel==='maps'&&!p&&seed%4===0)?'unknown':day.channel==='maps'?(pattern===1?'referral':pattern===5?'pro':'maps'):
+        pattern===0?'maps':day.channel;
+      const mapsHelp=firstSource==='maps'?true:firstSource==='unknown'?null:
+        day.channel==='maps'||pattern===1;
+      const answer=firstSource==='unknown'?'Источник пока не уточнили.':firstSource==='referral'?
+        'Клинику посоветовала знакомая.':'Впервые узнал(а) о клинике: '+sourceNames[firstSource]+'.';
+      const choice=mapsHelp===null?'Участие Карт пока не уточнили.':mapsHelp?
+        firstSource==='maps'?'Нашел(ла) клинику на Картах, посмотрел(а) отзывы и записался(ась).':
+          'После рекомендации или знакомства с клиникой посмотрел(а) отзывы на Яндекс Картах.':
+        'Выбрал(а) клинику без просмотра Яндекс Карт.';
+      const evidence=seed%2?'Заявка по ссылке с UTM-меткой':'Звонок на номер канала';
+      const q={id:'О-'+String(seed+1).padStart(3,'0'),date:day.date,channel:day.channel,
+        patient:p,isNew:!p||p.kind==='new',firstSource,mapsHelp,answer,choice,evidence,
+        sourceEvidence:p&&p.kind==='return'?'Первый источник из истории пациента':'Ответ пациента'};
+      inquiries.push(q);
+      if(p) p.inquiry=q;
+    }
+  });
+  // Учебный пример: майский пациент продолжает лечение спустя несколько месяцев.
+  const longTermMaps=inquiries.find(q=>q.isNew&&q.firstSource==='maps'&&q.patient&&q.date.startsWith('2026-05'));
+  if(longTermMaps){
+    const p=longTermMaps.patient;
+    [[shift(p.first,60),3500],[shift(p.first,120),4200],[CUT,3500]].forEach(([d,amount])=>{
+      if(d<=CUT&&!p.visits.some(v=>v.date===d))p.visits.push(visit(d,amount,'Повторный визит · учебный пример'));
+    });
+    p.visits.sort((a,b)=>a.date.localeCompare(b.date));
+  }
+  function inquiryGroup(rows){
+    const booked=rows.filter(q=>q.patient),paid=booked.filter(q=>q.patient.visits.length);
+    return {rows,booked,paid,returned:paid.filter(q=>q.patient.visits.length>1),
+      revenue:sum(paid,q=>sum(q.patient.visits,'amount'))};
+  }
+  function mapsAttribution(period){
+    const range=asRange(period);
+    if(!range||!validRange(range)) throw new RangeError('Период вне данных примера');
+    const rows=inquiries.filter(q=>q.isNew && inRange(q.date,range));
+    const first=inquiryGroup(rows.filter(q=>q.firstSource==='maps'));
+    const assist=inquiryGroup(rows.filter(q=>q.firstSource!=='maps'&&q.firstSource!=='unknown'&&q.mapsHelp));
+    const unknown=inquiryGroup(rows.filter(q=>q.firstSource==='unknown'&&q.channel==='maps'));
+    const spend=sum(daily.filter(d=>d.channel==='maps'&&inRange(d.date,range)),'spend');
+    const apportioned=total=>sum(daily.filter(d=>d.channel==='maps'&&inRange(d.date,range)),d=>{
+      const month=months.find(m=>d.date.startsWith(m.id));
+      return portion(total,Number(d.date.slice(8)),month.partial?30:month.days);
+    });
+    const management=apportioned(6000),tracking=apportioned(1000),total=spend+management+tracking;
+    return {first,assist,unknown,rows,known:rows.filter(q=>q.firstSource!=='unknown').length,
+      missing:rows.filter(q=>q.firstSource==='unknown').length,
+      spend,management,tracking,total,cac:ratio(total,first.paid.length)};
+  }
+  // Фактические оплаты за календарные даты, включая возвраты старых групп.
+  // Первый источник закреплен за пациентом. plan и prior не участвуют.
+  const reportPeriods=[
+    {id:'day',label:'День',start:()=>CUT},
+    {id:'week',label:'Неделя',start:()=>shift(CUT,-6)},
+    {id:'month',label:'Месяц',start:()=>shift(addMonths(CUT,-1),1)},
+    {id:'five',label:'5 месяцев',start:()=>shift(addMonths(CUT,-5),1)}
+  ];
+  function mapsCashflow(period){
+    const range=asRange(period);
+    if(!range||!validRange(range)) throw new RangeError('Период вне данных примера');
+    const seen=new Set();
+    const people=inquiries.filter(q=>q.isNew&&q.firstSource==='maps'&&q.patient)
+      .map(q=>q.patient).filter(p=>{if(seen.has(p.id))return false;seen.add(p.id);return true;});
+    let firstRevenue=0,repeatRevenue=0,firstPatients=0,repeatVisits=0;
+    const payments=[];
+    const paying=new Set(),returning=new Set();
+    people.forEach(p=>{
+      const visits=p.visits.filter(v=>v.date<=CUT).slice().sort((a,b)=>a.date.localeCompare(b.date));
+      visits.forEach((v,i)=>{
+        if(!inRange(v.date,range))return;
+        paying.add(p.id);
+        payments.push({patient:p,visit:v,repeat:i>0});
+        if(i===0){firstRevenue+=v.amount;firstPatients++;}
+        else{repeatRevenue+=v.amount;repeatVisits++;returning.add(p.id);}
+      });
+    });
+    return {range,firstRevenue,repeatRevenue,totalRevenue:firstRevenue+repeatRevenue,
+      firstPatients,repeatVisits,returningPatients:returning.size,payingPatients:paying.size,
+      payments:payments.sort((a,b)=>b.visit.date.localeCompare(a.visit.date)||a.patient.id.localeCompare(b.patient.id)),
+      costs:Math.round(mapsAttribution(range).total*100)/100};
+  }
+  function mapsPeriodSummary(){
+    return '<section class="ads-maps-summary" aria-label="Сводка по Картам и повторным визитам">'+
+      '<h3 class="ads-section-title">Сводка по Картам: первые и повторные визиты</h3>'+
+      '<p class="ads-section-intro">Все пациенты с первым источником «Яндекс Карты», включая тех, кто пришел раньше выбранного периода. Считаем оплаты по дате визита. Конец каждого периода — 14.10.2026.</p>'+
+      '<div class="scroll-x"><table class="tbl ads-ltv-summary-table"><thead><tr><th>Период</th><th>Затраты на Карты</th><th>Новые оплатившие</th><th>Первые визиты</th><th class="ads-repeat-cell">Заработали на LTV<small>Повторные визиты</small></th><th>Всего оплат</th></tr></thead><tbody>'+reportPeriods.map(r=>{
+        const m=mapsCashflow({start:r.start(),end:CUT});
+        return '<tr'+(state.start===m.range.start&&state.end===CUT?' class="selected-row"':'')+'><td><button class="link" data-ad-report="'+r.id+'">'+r.label+'</button><small>'+date(m.range.start)+' — '+date(CUT)+'</small></td><td>'+money(m.costs)+'</td><td>'+m.firstPatients+'</td><td>'+money(m.firstRevenue)+'</td><td class="ads-repeat-cell"><button class="link" data-ad-cash="'+r.id+'" aria-label="Открыть повторные оплаты: '+r.label.toLowerCase()+'">'+money(m.repeatRevenue)+'</button><small>Повторных визитов: '+m.repeatVisits+' · пациентов: '+m.returningPatients+'</small></td><td><strong>'+money(m.totalRevenue)+'</strong></td></tr>';
+      }).join('')+'</tbody></table></div><p class="ads-chart-caption">«Заработали на LTV» — полученные оплаты со второго визита. Всего оплат = первые + повторные. Это выручка, расходы на лечение не вычитаем. Периоды пересекаются, их суммы не складываем. Нажми на период, чтобы открыть его детализацию.</p>'+mapsCashDetail()+'</section>';
+  }
+  function mapsCashDetail(){
+    if(!state.mapCash)return '';
+    const m=mapsCashflow(state),items=m.payments.filter(p=>p.repeat);
+    return '<section class="ads-patient-detail" id="ads-cash-detail"><div class="ads-detail-head"><h3>Повторные оплаты из Карт · '+periodLabel()+'</h3><button class="btn" data-ad-cash-close="1">Скрыть оплаты</button></div><p class="ads-section-intro">Пациент остается за первым источником «Яндекс Карты», даже если повторно обратился другим способом.</p><div class="scroll-x"><table class="tbl"><thead><tr><th>Дата оплаты</th><th>Карта МИС</th><th>Первый визит</th><th>Услуга</th><th>Оплата</th></tr></thead><tbody>'+items.map(item=>'<tr><td>'+date(item.visit.date)+'</td><td><button class="link" data-ad-inquiry="'+item.patient.inquiry.id+'">'+item.patient.id+' ↗</button></td><td>'+date(item.patient.first)+'</td><td>'+escape(item.visit.service)+'</td><td>'+money(item.visit.amount)+'</td></tr>').join('')+(!items.length?'<tr><td colspan="5">За выбранные даты повторных оплат нет.</td></tr>':'')+'</tbody><tfoot><tr><td colspan="4">Всего повторных оплат</td><td><strong>'+money(m.repeatRevenue)+'</strong></td></tr></tfoot></table></div></section>';
+  }
+  function observedWindow(group,days){
+    const complete=group.paid.filter(q=>age(q.patient.first,CUT)>=days-1);
+    const revenue=sum(complete,q=>sum(q.patient.visits.filter(v=>age(q.patient.first,v.date)<days),'amount'));
+    return {count:complete.length,revenue,perPatient:ratio(revenue,complete.length)};
+  }
   function metrics(period,channel) {
     const range=asRange(period);
     if(!range || !validRange(range)) throw new RangeError('Период вне данных примера');
@@ -583,10 +787,13 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
     const rows=patients.filter(p=>inRange(p.booked,range) && codes.includes(p.channel));
     const cfg=daily.filter(d=>inRange(d.date,range) && codes.includes(d.channel));
     const paid=rows.filter(p=>p.visits.length),fresh=paid.filter(p=>p.kind==='new');
-    const mature=fresh.filter(p=>age(p.first,CUT)>=14);
-    const windowSum=sum(mature,p=>sum(p.visits.filter(v=>age(p.first,v.date)>=0 && age(p.first,v.date)<14),'amount'));
+    const mature3=fresh.filter(p=>addMonths(p.first,3)<=shift(CUT,1));
+    const windowSum=sum(mature3,p=>sum(p.visits.filter(v=>v.date>=p.first && v.date<addMonths(p.first,3)),'amount'));
+    const horizons=[1,3,6,12].map(n=>horizon(fresh,n));
     const spend=Math.round(sum(cfg,'spend')*100)/100,leads=sum(cfg,'leads');
-    return {rows,paid,fresh,mature,spend,leads,books:rows.length,came:paid.length,
+    const mature=fresh.filter(p=>age(p.first,CUT)>=13);
+    return {rows,paid,fresh,mature3,mature,horizons,spend,leads,books:rows.length,came:paid.length,
+      ltv14:ratio(sum(mature,p=>sum(p.visits.filter(v=>age(p.first,v.date)<14),'amount')),mature.length),
       newBookings:rows.filter(p=>p.kind==='new').length,returnBookings:rows.filter(p=>p.kind==='return').length,
       cpl:ratio(spend,leads),cpb:ratio(spend,rows.length),cac:ratio(spend,fresh.length),
       firstRevenue:sum(paid,p=>p.visits[0].amount),
@@ -594,24 +801,48 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
       allRevenue:sum(rows,p=>sum(p.visits,'amount')),
       newRevenue:sum(fresh,p=>sum(p.visits,'amount')),
       visits:sum(rows,p=>p.visits.length),
-      ltv:ratio(sum(fresh,p=>sum(p.visits,'amount')),fresh.length),ltv14:ratio(windowSum,mature.length)};
+      ltv:ratio(sum(fresh,p=>sum(p.visits,'amount')),fresh.length),observedLtv3:ratio(windowSum,mature3.length),
+      ltv3:horizons[1].ltv,ltv12:horizons[3].ltv};
   }
-  let state={start:shift(CUT,-6),end:CUT,channel:'all',tab:'path',patientType:'all',patient:null,mapMetric:'views',mapDaily:false};
+  let state={start:shift(CUT,-6),end:CUT,channel:'all',tab:'path',patientType:'all',patient:null,inquiry:null,mapRole:'first',mapMetric:'views',mapDaily:false,mapStatsOpen:false,mapCash:false};
+  if(new URLSearchParams(window.location.search).get('view')==='maps'){
+    state.channel='maps';state.tab='maps';
+  }
   let root;
   function kpi(label,value,note,accent) {return '<div class="kpi'+(accent?' kpi-highlight--'+accent:'')+'"><div class="kpi-l">'+label+'</div><div class="kpi-v">'+value+'</div><div class="kpi-s">'+note+'</div></div>';}
   function periodLabel() {return date(state.start)+' — '+date(state.end);}
   function sourceLabel(){return state.channel==='all'?'Все каналы':channels[state.channel];}
-  function overview(){
+  function ltvOverview(channel='all'){
+    const m=metrics(state,channel),n=m.fresh.length;
+    const title=channel==='all'?'Ценность пациента: смотрим на год вперед':channels[channel]+': выручка группы за год';
+    if(!n) return '<section class="ads-ltv-overview"><h2>'+title+'</h2><p class="ads-empty">В выбранной группе пока нет новых оплативших пациентов. Выбери другой период, чтобы увидеть LTV.</p></section>';
+    const max=Math.max(...m.horizons.map(h=>h.revenue),1);
+    return '<section class="ads-ltv-overview" aria-label="LTV за три месяца и год">'+
+      '<div class="ads-ltv-heading"><h2>'+title+'</h2><span class="tag t-blue">Демонстрационный сценарий</span></div>'+
+      '<p class="ads-ltv-intro">'+n+' новых пациентов из обращений '+periodLabel()+'. Одна и та же группа: первые оплаты, продолжение лечения и повторные визиты.</p>'+
+      '<div class="ads-ltv-timeline" role="list" aria-label="Накопленная выручка одной группы за 1, 3, 6 и 12 месяцев">'+m.horizons.map(h=>{
+        const observed=ratio(h.observedRevenue,h.revenue)||0;
+        return '<div class="ads-ltv-step'+(h.months===3?' ads-ltv-quarter':h.months===12?' ads-ltv-year':'')+'" role="listitem">'+
+          '<span class="ads-ltv-period">'+(h.months===1?'1 месяц':h.months===3?'3 месяца':h.months===6?'6 месяцев':'Год · 12 месяцев')+'</span>'+
+          '<strong class="ads-ltv-value">'+money(h.ltv)+'</strong><span class="ads-ltv-unit">LTV · выручка на пациента</span>'+
+          '<div class="ads-ltv-track" aria-hidden="true"><div class="ads-ltv-bar" style="height:'+(h.revenue/max*100).toFixed(2)+'%"><span class="ads-ltv-observed" style="height:'+(observed*100).toFixed(2)+'%"></span><span class="ads-ltv-planned" style="height:'+((1-observed)*100).toFixed(2)+'%"></span></div></div>'+
+          '<div class="ads-ltv-group"><b>'+money(h.revenue)+'</b><span>выручка всей группы</span></div>'+
+          '<p class="ads-ltv-visits">Визитов: <b>'+h.visits+'</b> · повторно: <b>'+h.returned+' из '+n+'</b></p></div>';
+      }).join('')+'</div>'+
+      '<div class="ads-ltv-legend"><span><i class="ads-ltv-key-observed"></i>Оплаты в демо к 14.10</span><span><i class="ads-ltv-key-planned"></i>Будущие визиты по сценарию</span></div>'+
+      '<p class="ads-ltv-footnote">Уже получено от новых пациентов: <strong>'+money(m.newRevenue)+'</strong>. Для будущих визитов задан условный план лечения. Это пример возможной динамики; при подключении заменим сценарий оплатами из МИС.</p></section>';
+  }
+  function overview(includePeriod=true){
     const m=metrics(state,'all');
     return '<section class="ads-overview" aria-label="Сводка по всем каналам">'+
       '<div class="ads-overview-heading"><h2>Сводка по всем каналам '+(age(state.start,state.end)===6?'за неделю':'за период')+'</h2><span>'+periodLabel()+'</span></div>'+
-      periodControls()+
+      (includePeriod?periodControls():'')+
       '<p class="ads-section-intro">ВК, ПроДокторов и Яндекс Карты. Общие итоги за выбранные даты.</p>'+
       '<div class="kpis ads-summary-grid">'+
       kpi('Потрачено на рекламу',money(m.spend),'Сумма расходов трех каналов','expense')+
       kpi('Обращений',fmt(m.leads),'Звонки, формы и диалоги без дублей')+
-      kpi('Записались',fmt(m.books),m.newBookings+' первичных · '+m.returnBookings+' повторных')+
-      kpi('Пришли и оплатили',fmt(m.came),m.fresh.length+' новых · '+(m.came-m.fresh.length)+' повторных')+
+      kpi('Записались',fmt(m.books),'Первичные: '+m.newBookings+' · повторные: '+m.returnBookings)+
+      kpi('Пришли и оплатили',fmt(m.came),'Новые: '+m.fresh.length+' · повторные: '+(m.came-m.fresh.length))+
       kpi('Новых пациентов',fmt(m.fresh.length),'Пришли впервые и оплатили')+
       kpi('Выручка',money(m.periodRevenue),'Оплаты группы за выбранные даты','revenue')+'</div>'+
       '<div class="ads-overview-costs"><span>Средняя цена обращения <b>'+money(m.cpl)+'</b></span><span>Средняя цена записи <b>'+money(m.cpb)+'</b></span><span>Привлечение нового пациента <b>'+money(m.cac)+'</b></span></div>'+
@@ -619,66 +850,126 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
   }
   function periodControls(){
     return '<form id="ads-period" class="ads-period" aria-label="Выбор периода">'+
-      '<div class="ads-period-presets" aria-label="Быстрый выбор периода">'+[7,30].map(days=>'<button type="button" class="ads-toggle" data-ad-period="'+days+'" aria-pressed="'+(state.start===shift(CUT,1-days) && state.end===CUT)+'">Последние '+days+' дней</button>').join('')+'</div>'+
+      '<div class="ads-period-presets" aria-label="Быстрый выбор периода">'+reportPeriods.map(r=>'<button type="button" class="ads-toggle" data-ad-report="'+r.id+'" aria-pressed="'+(state.start===r.start() && state.end===CUT)+'">'+r.label+'</button>').join('')+'</div>'+
       '<div class="ads-controls ads-date-controls"><label for="ads-start">Дата начала<input type="date" id="ads-start" name="start" min="'+FIRST+'" max="'+CUT+'" value="'+state.start+'" required aria-describedby="ads-period-help ads-period-error"></label>'+
       '<label for="ads-end">Дата окончания<input type="date" id="ads-end" name="end" min="'+FIRST+'" max="'+CUT+'" value="'+state.end+'" required aria-describedby="ads-period-help ads-period-error"></label>'+
       '<button class="btn ads-period-apply" type="submit">Показать</button></div>'+
-      '<p class="muted" id="ads-period-help">Обе даты включены. В демке доступны 01.07–14.10.2026. Период меняет сводку и детализацию.</p>'+
+      '<p class="muted" id="ads-period-help">Обе даты включены. В демке доступны 01.05–14.10.2026. Период меняет сводку и детализацию.</p>'+
       '<p id="ads-period-error" class="ads-period-error" role="alert" hidden></p></form>';
   }
   function header(){
     return '<div class="ads-head"><h1>Реклама и заявки</h1><span class="tag t-yellow">Демонстрация</span></div>'+
-      '<p class="ads-note">Для ВК задана стоимость обращения 251 ₽. Остальные цифры, карточки и распределение по дням — демонстрационные. Данные примера — по 14 октября 2026 года включительно.</p>'+overview()+
+      '<p class="ads-note">Для ВК задана стоимость обращения 251 ₽. Остальные цифры, ответы пациентов и карточки — демонстрационные. Оплаты учтены по 14 октября 2026 года; будущие визиты показаны отдельно как сценарий.</p>'+
+      (state.tab==='maps'?periodControls()+'<details class="ads-global-fold"><summary>Общая сводка по всем каналам</summary>'+overview(false)+'</details>':ltvOverview()+overview())+
       '<h2 class="ads-section-title ads-detail-title">Детализация по каналам</h2><p class="ads-section-intro">Выбери канал, чтобы просмотреть его расходы, путь до оплаты и историю пациентов. Верхняя сводка всегда показывает все каналы.</p><div class="ads-controls">'+
       '<label>Канал обращения<select id="ads-channel">'+['all',...Object.keys(channels)].map(c=>'<option value="'+c+'"'+(state.channel===c?' selected':'')+'>'+(c==='all'?'Все каналы':channels[c])+'</option>').join('')+'</select></label>'+
       '<span class="muted">Группа пациентов сохраняется: последующие визиты видны до 14.10</span></div>'+
       '<div class="tabs ads-tabs" role="tablist" aria-label="Рекламная аналитика">'+[['path','Путь до оплаты'],['patients','Пациенты и визиты'],['maps','Яндекс Карты'],['method','Как считаем LTV']].map(t=>'<button class="tab'+(state.tab===t[0]?' on':'')+'" role="tab" aria-selected="'+(state.tab===t[0])+'" data-ad-tab="'+t[0]+'">'+t[1]+'</button>').join('')+'</div>';
   }
   function channelTable(){
-    return '<h2 class="ads-section-title">Каналы · '+periodLabel().toLowerCase()+'</h2><p class="ads-section-intro">Записи — пациенты, записанные после обращения в выбранные даты. Нажми на канал, чтобы раскрыть его воронку. LTV 14 сравнивает выручку новых за одинаковый срок.</p><div class="scroll-x"><table class="tbl"><thead><tr><th>Канал</th><th>Расход</th><th>Обращения</th><th>Цена обращения</th><th>Записи</th><th>Цена записи</th><th>Пришли</th><th>Новые / повторные среди пришедших</th><th>Стоимость привлечения нового пациента</th><th>LTV за 14 дней</th></tr></thead><tbody>'+Object.keys(channels).map(c=>{
-      const m=metrics(state,c);return '<tr'+(state.channel===c?' class="selected-row"':'')+'><td class="source-cell"><button class="link" data-ad-channel="'+c+'">'+channels[c]+'</button></td><td>'+money(m.spend)+'</td><td>'+m.leads+'</td><td>'+money(m.cpl)+'</td><td>'+m.books+'</td><td>'+money(m.cpb)+'</td><td>'+m.came+'</td><td>'+m.fresh.length+' / '+(m.came-m.fresh.length)+'</td><td>'+money(m.cac)+'</td><td>'+money(m.ltv14)+'</td></tr>';
+    return '<h2 class="ads-section-title">Каналы · '+periodLabel()+'</h2><div class="ads-channel-ltv">'+Object.keys(channels).map(c=>{
+      const m=metrics(state,c);return '<div class="ads-channel-ltv-card"><button class="link" data-ad-channel="'+c+'">'+channels[c]+'</button><dl><div><dt>LTV за 3 месяца</dt><dd>'+money(m.ltv3)+'</dd></div><div><dt>LTV за год</dt><dd>'+money(m.ltv12)+'</dd></div></dl><span class="muted">Сценарий · новых пациентов: '+m.fresh.length+'</span></div>';
+    }).join('')+'</div><p class="ads-section-intro">Записи — пациенты из обращений за выбранные даты. Нажми на канал, чтобы раскрыть его воронку. LTV выше — выручка на нового пациента по одному сценарию продолжения лечения.</p><div class="scroll-x"><table class="tbl"><thead><tr><th>Канал</th><th>Расход</th><th>Обращения</th><th>Цена обращения</th><th>Записи</th><th>Цена записи</th><th>Пришли</th><th>Новые / повторные среди пришедших</th><th>Стоимость привлечения нового пациента</th></tr></thead><tbody>'+Object.keys(channels).map(c=>{
+      const m=metrics(state,c);return '<tr'+(state.channel===c?' class="selected-row"':'')+'><td class="source-cell"><button class="link" data-ad-channel="'+c+'">'+channels[c]+'</button></td><td>'+money(m.spend)+'</td><td>'+m.leads+'</td><td>'+money(m.cpl)+'</td><td>'+m.books+'</td><td>'+money(m.cpb)+'</td><td>'+m.came+'</td><td>'+m.fresh.length+' / '+(m.came-m.fresh.length)+'</td><td>'+money(m.cac)+'</td></tr>';
     }).join('')+'</tbody></table></div><p class="ads-chart-caption">Расход ВК в примере = число обращений × 251 ₽; это расчет, не фактический бюджет. Клик по телефону, маршрут и просмотр карточки считаются отдельно от обращений без дублей.</p>';
   }
   function pathView(){
     const m=metrics(state,state.channel);
-    const stages=[[m.leads,'Обратились','звонок, форма или диалог'],[m.books,'Записались',m.newBookings+' первичных · '+m.returnBookings+' повторных'],[m.came,'Пришли',m.books-m.came+' не дошли или отменили'],[m.paid.length,'Оплатили','оплата подтверждена в МИС'],[m.fresh.length,'Новые платящие','первый оплаченный визит']];
+    const stages=[[m.leads,'Обратились','звонок, форма или диалог'],[m.books,'Записались','Первичные: '+m.newBookings+' · повторные: '+m.returnBookings],[m.came,'Пришли',m.books-m.came+' не дошли или отменили'],[m.paid.length,'Оплатили','оплата подтверждена в МИС'],[m.fresh.length,'Новые платящие','первый оплаченный визит']];
     return '<div class="kpis">'+kpi('Расход на рекламу',money(m.spend),state.channel==='vk'?m.leads+' обращений × 251 ₽ · расчет для демо':sourceLabel()+' · '+periodLabel())+kpi('Цена обращения',money(m.cpl),money(m.spend)+' ÷ '+m.leads+' обращений')+kpi('Цена записи',money(m.cpb),money(m.spend)+' ÷ '+m.books+' записей')+kpi('Стоимость привлечения нового пациента',money(m.cac),money(m.spend)+' ÷ '+m.fresh.length+' новых платящих')+'</div>'+
       '<h2 class="ads-section-title">'+sourceLabel()+': от обращения до первой оплаты</h2><div class="ads-funnel">'+stages.map(a=>'<div class="ads-stage"><b>'+a[0]+'</b><span>'+a[1]+'</span><em>'+a[2]+'</em></div>').join('')+'</div>'+channelTable()+
       '<h2 class="ads-section-title">Что принесли эти пациенты</h2><p class="ads-section-intro">Это та же группа из '+m.books+' записей, включая повторных пациентов. Последующие оплаты прибавляются к группе обращения, даже если человек пришел в другом месяце.</p>'+
-      '<div class="kpis">'+kpi('На первых визитах группы',money(m.firstRevenue),m.paid.length+' оплативших пациентов')+kpi('Оплаты за выбранный период',money(m.periodRevenue),'Оплаты группы · '+periodLabel())+kpi('Накоплено к 14 октября',money(m.allRevenue),m.visits+' оплаченных визитов с обращения')+kpi('LTV новых за 14 дней',money(m.ltv14),m.mature.length?'Первые 14 дней · '+m.mature.length+' новых пациентов':'Полный срок наблюдения еще не прошел')+'</div>'+
-      '<div class="ads-split"><div class="ads-explain"><h3>Новые и повторные считаются отдельно</h3><p>За выбранный период записались: <strong>'+m.newBookings+' первичных, '+m.returnBookings+' повторных</strong>. До первой оплаты дошли '+m.fresh.length+' новых. Именно на них делим расход при расчете стоимости привлечения. История оплат прежних пациентов в LTV новых не входит.</p></div><div class="ads-explain"><h3>Деньги после первой записи</h3><p><strong>'+money(m.allRevenue-m.firstRevenue)+'</strong> принесли последующие оплаченные визиты этой группы к 14 октября. Это выручка, без вычета себестоимости и оплаты труда врачей.</p><button class="btn" data-ad-tab="patients">Посмотреть пациентов и визиты</button></div></div>';
+      '<div class="kpis">'+kpi('На первых визитах группы',money(m.firstRevenue),m.paid.length+' оплативших пациентов')+kpi('Оплаты за выбранный период',money(m.periodRevenue),'Оплаты группы · '+periodLabel())+kpi('Накоплено к 14 октября',money(m.allRevenue),m.visits+' оплаченных визитов с обращения')+kpi('LTV новых за 3 месяца',money(m.ltv3),'Сценарий продолжения лечения')+'</div>'+
+      (state.channel!=='all'?ltvOverview(state.channel):'')+
+      '<div class="ads-split"><div class="ads-explain"><h3>Новые и повторные считаются отдельно</h3><p>За выбранный период: <strong>первичных записей — '+m.newBookings+', повторных — '+m.returnBookings+'</strong>. Новых пациентов с оплатой — '+m.fresh.length+'. Именно на них делим расход при расчете стоимости привлечения. История оплат прежних пациентов в LTV новых не входит.</p></div><div class="ads-explain"><h3>Деньги после первой записи</h3><p><strong>'+money(m.allRevenue-m.firstRevenue)+'</strong> принесли последующие оплаченные визиты этой группы к 14 октября.</p><button class="btn" data-ad-tab="patients">Посмотреть пациентов и визиты</button></div></div>';
   }
   function patientsView(){
     const m=metrics(state,state.channel);
     let list=m.rows.filter(p=>state.patientType==='all'||p.kind===state.patientType);
     let h='<h2 class="ads-section-title">Пациенты · '+sourceLabel()+' · '+periodLabel().toLowerCase()+'</h2><p class="ads-section-intro">Выбери карточку: увидишь визиты, оплаты и источник первого визита. Номер карты вымышленный; имен и телефонов здесь нет.</p>'+
       '<div class="ads-controls"><label>Тип пациента при обращении<select id="ads-type"><option value="all"'+(state.patientType==='all'?' selected':'')+'>Все пациенты</option><option value="new"'+(state.patientType==='new'?' selected':'')+'>Первичные</option><option value="return"'+(state.patientType==='return'?' selected':'')+'>Повторные</option></select></label><span class="muted">'+list.length+' карточек</span></div>'+
-      '<div class="scroll-x"><table class="tbl"><thead><tr><th>Карта</th><th>Запись</th><th>Тип при обращении</th><th>Статус</th><th>Источник первого визита</th><th>Визитов с обращения</th><th>Оплачено с обращения</th></tr></thead><tbody>'+list.map(p=>'<tr'+(state.patient===p.id?' class="selected-row"':'')+'><td><button class="link" data-ad-patient="'+p.id+'">'+p.id+' ↗</button></td><td>'+date(p.booked)+'</td><td><span class="tag '+(p.kind==='new'?'t-blue':'t-gray')+'">'+(p.kind==='new'?'Первичный':'Повторный')+'</span></td><td><span class="ads-status '+(p.status==='Пришел'?'ads-positive':'muted')+'">'+p.status+'</span></td><td>'+(!p.visits.length && p.kind==='new'?'Визита еще не было':channels[p.origin])+'</td><td>'+p.visits.length+'</td><td>'+money(sum(p.visits,'amount'))+'</td></tr>').join('')+(!list.length?'<tr><td colspan="7" class="ads-empty">За выбранные даты и с этим фильтром записей нет.</td></tr>':'')+'</tbody></table></div><p class="ads-chart-caption">Первичный — до этой записи не было визита. Повторный — уже был пациентом клиники, даже если вернулся через новую рекламу. Неявки и отмены не входят в выручку и LTV.</p>';
+      '<div class="scroll-x"><table class="tbl"><thead><tr><th>Карта</th><th>Запись</th><th>Тип при обращении</th><th>Статус</th><th>Первый источник знакомства</th><th>Визитов с обращения</th><th>Оплачено с обращения</th></tr></thead><tbody>'+list.map(p=>'<tr'+(state.patient===p.id?' class="selected-row"':'')+'><td><button class="link" data-ad-patient="'+p.id+'">'+p.id+' ↗</button></td><td>'+date(p.booked)+'</td><td><span class="tag '+(p.kind==='new'?'t-blue':'t-gray')+'">'+(p.kind==='new'?'Первичный':'Повторный')+'</span></td><td><span class="ads-status '+(p.status==='Пришел'?'ads-positive':'muted')+'">'+p.status+'</span></td><td>'+sourceNames[p.inquiry?p.inquiry.firstSource:p.origin]+'</td><td>'+p.visits.length+'</td><td>'+money(sum(p.visits,'amount'))+'</td></tr>').join('')+(!list.length?'<tr><td colspan="7" class="ads-empty">За выбранные даты и с этим фильтром записей нет.</td></tr>':'')+'</tbody></table></div><p class="ads-chart-caption">Первичный — до этой записи не было визита. Повторный — уже был пациентом клиники, даже если вернулся через новую рекламу. Неявки и отмены не входят в выручку и LTV.</p>';
     const p=list.find(p=>p.id===state.patient);
     if(p) h+=detail(p);
     return h;
   }
   function detail(p){
     const total=sum(p.visits,'amount');
-    const mature=p.kind==='new' && p.visits.length && age(p.first,CUT)>=14;
+    const mature=p.kind==='new' && p.visits.length && age(p.first,CUT)>=13;
     const first14=mature?sum(p.visits.filter(v=>age(p.first,v.date)<14),'amount'):null;
     return '<section class="ads-patient-detail" id="ads-patient-detail"><div class="ads-detail-head"><div><h3>Карта '+p.id+'</h3><span class="muted">'+(p.kind==='new'?'Первичный':'Повторный')+' · обращение из '+channels[p.channel]+' · запись '+date(p.booked)+'</span></div><button class="btn ads-detail-close" data-ad-close="1">Закрыть карточку</button></div>'+
       '<div class="ads-mini-grid"><div><b>'+p.visits.length+'</b><span>оплаченных визитов с обращения</span></div><div><b>'+money(total)+'</b><span>выручка с обращения к 14.10</span></div><div><b>'+(p.kind==='return'?'Не входит':money(first14))+'</b><span>'+(p.kind==='return'?'в LTV новых пациентов':mature?'оплаты в первые 14 дней':'LTV 14: нет полного срока или визита')+'</span></div></div>'+
-      '<p class="ads-section-intro">'+(p.kind==='return'?'Первый визит в клинику: '+date(p.first)+', источник — '+channels[p.origin]+'. Возврат через '+channels[p.channel]+' не меняет источник первого привлечения.':'Источник первого привлечения — '+channels[p.origin]+'. '+(p.visits.length?'Первый визит: '+date(p.first)+'.':'Первый визит пока не состоялся.'))+'</p>'+
+      '<p class="ads-section-intro">Первый источник: '+sourceNames[p.inquiry?p.inquiry.firstSource:p.origin]+'. '+(p.kind==='return'?'Первый визит в клинику: '+date(p.first)+'. Канал нового обращения: '+channels[p.channel]+'.':p.visits.length?'Первый визит: '+date(p.first)+'.':'Первый визит пока не состоялся.')+'</p>'+
+      (p.inquiry?sourceDetail(p.inquiry):'')+
       '<div class="scroll-x"><table class="tbl"><thead><tr><th>Дата</th><th>Услуга</th><th>Оплата</th><th>Учет</th></tr></thead><tbody>'+[...p.prior,...p.visits].map(v=>'<tr><td>'+date(v.date)+'</td><td>'+escape(v.service)+'</td><td>'+money(v.amount)+'</td><td>'+(p.prior.includes(v)?'До обращения · отдельно':'После обращения')+'</td></tr>').join('')+(!p.visits.length?'<tr><td>'+date(p.booked)+'</td><td>'+p.status+'</td><td>—</td><td>Оплаты нет</td></tr>':'')+'</tbody></table></div></section>';
+  }
+  function sourceDetail(q){
+    return '<div class="ads-source-evidence"><dl>'+[
+      ['Впервые узнал(а) о клинике',sourceNames[q.firstSource]+(q.firstSource==='unknown'?'':' · '+q.sourceEvidence.toLowerCase())],
+      ['Карты помогли выбрать клинику',q.mapsHelp===null?'Не уточнили':q.mapsHelp?'Да · со слов пациента':'Нет · со слов пациента'],
+      ['Канал этого обращения',channels[q.channel]+' · '+q.evidence],
+      ['Платная реклама или бесплатная карточка','Не установлено']
+    ].map(a=>'<div><dt>'+a[0]+'</dt><dd>'+escape(a[1])+'</dd></div>').join('')+'</dl>'+
+      '<div class="ads-split"><div class="ads-explain"><h3>Откуда впервые узнали?</h3><p>«'+escape(q.answer)+'»</p></div><div class="ads-explain"><h3>Что помогло выбрать?</h3><p>«'+escape(q.choice)+'»</p></div></div>'+
+      '<p class="ads-chart-caption">Первое знакомство и канал обращения могут различаться. Оба значения сохраняем; один человек остается одним обращением.</p></div>';
+  }
+  function inquiryDetail(q){
+    if(q.patient) return detail(q.patient);
+    return '<section class="ads-patient-detail" id="ads-patient-detail"><div class="ads-detail-head"><div><h3>Обращение '+q.id+'</h3><span class="muted">'+date(q.date)+' · записи и карты МИС пока нет</span></div><button class="btn ads-detail-close" data-ad-close="1">Закрыть карточку</button></div>'+sourceDetail(q)+'</section>';
+  }
+  function mapsPatients(group){
+    const q=inquiries.find(q=>q.id===state.inquiry);
+    return '<h3 class="ads-section-title">Из каких обращений сложился результат</h3><p class="ads-section-intro">Нажми на обращение: увидишь ответы пациента, основание источника и оплаты из его карты МИС. Все примеры вымышлены.</p>'+
+      '<div class="scroll-x"><table class="tbl ads-attribution-table"><thead><tr><th>Обращение / карта МИС</th><th>Первый источник</th><th>Карты помогли выбрать</th><th>Канал обращения</th><th>Запись и визиты</th><th>Оплачено к 14.10</th><th>Из них повторные визиты</th></tr></thead><tbody>'+group.rows.map(q=>{
+        const p=q.patient;
+        return '<tr'+(state.inquiry===q.id?' class="selected-row"':'')+'><td><button class="link" data-ad-inquiry="'+q.id+'">'+q.id+(p?' / '+p.id:'')+' ↗</button><br><span class="muted">'+date(q.date)+'</span></td><td>'+sourceNames[q.firstSource]+'</td><td>'+(q.mapsHelp===null?'Не уточнили':q.mapsHelp?'Да':'Нет')+'</td><td>'+channels[q.channel]+'</td><td>'+(p?(p.visits.length?p.visits.length+' оплаченных визитов':p.status):'Без записи')+'</td><td>'+money(p?sum(p.visits,'amount'):0)+'</td><td>'+money(p?sum(p.visits.slice(1),'amount'):0)+'</td></tr>';
+      }).join('')+(!group.rows.length?'<tr><td colspan="7" class="ads-empty">В этой группе за выбранные даты обращений нет.</td></tr>':'')+'</tbody></table></div>'+(q?inquiryDetail(q):'');
+  }
+  function mapsResult(){
+    const a=mapsAttribution(state),g=a[state.mapRole],cash=mapsCashflow(state);
+    const labels={first:'Впервые нашли клинику в Картах',assist:'Карты помогли выбрать после другого источника',unknown:'Обратились через Карты, первый источник неизвестен'};
+    const stages=[[g.rows.length,'Обратились','люди без дублей'],[g.booked.length,'Записались','из этой группы обращений'],[g.paid.length,'Пришли и оплатили','первый визит подтвержден в МИС'],[g.returned.length,'Вернулись','два и более оплаченных визита']];
+    const pct=a.rows.length?Math.round(a.known/a.rows.length*100):0;
+    return '<section class="ads-maps-result"><div class="ads-maps-title"><h2>Яндекс Карты: пациенты и деньги</h2><span class="tag t-yellow">Учебный пример</span></div>'+
+      '<p class="ads-section-intro">'+periodLabel()+'. Считаем первые и повторные оплаты пациентов с первым источником «Яндекс Карты». Повторные визиты прежних групп тоже входят в выручку периода.</p>'+
+      '<div class="kpis ads-maps-kpis">'+kpi('Затраты на Карты',money(a.total),'Размещение, ведение и отслеживание','expense')+
+      kpi('Новых платящих пациентов',fmt(a.first.paid.length),'Первый источник — Карты')+
+      kpi('Затраты на нового пациента',money(a.cac),money(a.total)+' ÷ '+a.first.paid.length+' новых оплативших')+
+      kpi('Всего оплат за период',money(cash.totalRevenue),'Все пациенты из Карт, включая прежние группы','revenue')+
+      kpi('На первых визитах',money(cash.firstRevenue),cash.firstPatients+' новых оплативших за выбранные даты')+
+      kpi('Заработали на LTV',money(cash.repeatRevenue),'Повторных визитов за выбранные даты: '+cash.repeatVisits,'repeat')+'</div>'+
+      mapsPeriodSummary()+
+      '<details class="ads-cost-detail"><summary>Состав затрат и границы расчета</summary><div class="ads-mini-grid"><div><b>'+money(a.spend)+'</b><span>размещение за выбранные даты</span></div><div><b>'+money(a.management)+'</b><span>ведение карточки · условный расход</span></div><div><b>'+money(a.tracking)+'</b><span>отслеживание · условный расход</span></div></div><p class="ads-chart-caption">Ведение: 6 000 ₽ в полный месяц; отслеживание: 1 000 ₽. Октябрь распределен на 30 дней примера. Все затраты делим на новых оплативших с первым источником «Карты». Это учетная стоимость привлечения из Карт в целом. Отдельный эффект платной рекламы пока не установлен. Оплаты — выручка; расходы на лечение здесь не учтены.</p></details>'+
+      '<h3 class="ads-section-title">Какую роль сыграли Карты</h3><div class="ads-role-grid" aria-label="Роль Яндекс Карт">'+Object.keys(labels).map(key=>'<button class="ads-role-card" data-ad-role="'+key+'" aria-pressed="'+(state.mapRole===key)+'"><span>'+labels[key]+'</span><strong>'+fmt(a[key].rows.length)+'</strong><small>обращений · '+a[key].paid.length+' новых оплативших</small></button>').join('')+'</div>'+
+      '<p class="ads-chart-caption">Три группы новых обратившихся не пересекаются. Помощь Карт учитываем отдельно от первого источника; деньги одного пациента не прибавляем дважды. Прежние пациенты клиники остаются в общей вкладке «Пациенты и визиты».</p>'+
+      '<h3 class="ads-section-title">'+labels[state.mapRole]+'</h3><div class="ads-funnel ads-maps-funnel">'+stages.map(s=>'<div class="ads-stage"><b>'+s[0]+'</b><span>'+s[1]+'</span><em>'+s[2]+'</em></div>').join('')+'</div>'+
+      '<div class="ads-maps-group-total"><span>Оплаты выбранной группы к 14.10</span><strong>'+money(g.revenue)+'</strong><span>'+g.rows.length+' обращений из выбранных дат; все их последующие оплаты до даты наблюдения</span></div>'+
+      '<div class="ads-mini-grid"><div><b>'+money(sum(g.paid,q=>q.patient.visits[0].amount))+'</b><span>на первых визитах группы</span></div><div><b>'+money(sum(g.paid,q=>sum(q.patient.visits.slice(1),'amount')))+'</b><span>на повторных визитах группы к 14.10</span></div><div><b>'+money(ratio(g.revenue,g.paid.length))+'</b><span>накопленный LTV на пациента · '+g.paid.length+' оплативших</span></div></div>'+
+      '<p class="ads-chart-caption">Здесь группа новых обращений за выбранные даты и все ее оплаты к 14.10. В сводке выше — оплаты за период от всех пациентов из Карт. Поэтому суммы могут отличаться.</p>'+
+      '<div class="ads-split ads-maps-actions"><div class="ads-explain"><h3>Что проверить в работе клиники</h3><p>Без записи: <strong>'+fmt(g.rows.length-g.booked.length)+'</strong>. Посмотреть причины отказов и обработку обращений.</p><p>Записались, но не пришли: <strong>'+fmt(g.booked.length-g.paid.length)+'</strong>. Проверить отмены и напоминания.</p></div><div class="ads-explain"><h3>Что нужно для решения о бюджете</h3><p>Есть связь с '+g.paid.length+' новыми оплатившими пациентами. Чтобы оценить выгоду, нужны расходы на лечение. Чтобы оценить прибавку от платной рекламы, нужен сопоставимый тест размещения.</p></div></div>'+
+      '<details><summary>Сравнение по первым 30 и 90 дням</summary><div class="ads-mini-grid">'+[30,90].map(days=>{
+        const w=observedWindow(g,days);
+        return '<div><b>'+money(w.perPatient)+'</b><span>на пациента за первые '+days+' дней · полный срок у '+w.count+' пациентов</span><span>Оплаты этой подгруппы: '+money(w.revenue)+'</span></div>';
+      }).join('')+'</div><p class="ads-chart-caption">Включаем только новых оплативших, у которых прошли все 30 или 90 дней с первого визита. «—» означает, что полного срока пока ни у кого нет. Будущие визиты и сценарий LTV в эти суммы не входят.</p></details>'+
+      mapsPatients(g)+
+      '<section class="ads-coverage"><h3>Насколько полный учет источников</h3><div class="ads-coverage-heading"><strong>'+pct+'%</strong><span>Первый источник известен у '+a.known+' из '+a.rows.length+' новых обратившихся по всем каналам за выбранные даты</span></div><div class="ads-coverage-track" role="progressbar" aria-label="Доля новых обращений с известным первым источником" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><span style="width:'+pct+'%"></span></div><p class="ads-chart-caption">Первый источник не выяснили у '+a.missing+' человек. Из них обратились через Карты: '+a.unknown.rows.length+'. Этих людей не приписываем Картам как первому источнику.</p></section>'+
+      '<details class="ads-admin-guide"><summary>Как администратор будет собирать данные</summary><div class="ads-split"><div class="ads-explain"><h3>1. Откуда впервые узнали?</h3><p>«Подскажите, откуда вы впервые узнали о нашей клинике?»</p></div><div class="ads-explain"><h3>2. Что помогло выбрать?</h3><p>«Что помогло вам выбрать нас и записаться?»</p></div></div><p class="ads-chart-caption">Сначала записываем свободный ответ. Первый источник выбираем отдельно от площадок, которые помогли принять решение. При отсутствии ответа оставляем «Неизвестно». Технический источник звонка или заявки сохраняем рядом. Обращение связываем с ID пациента в МИС, затем загружаем визиты, оплаты и возвраты. В реальном учете объединяем дубли обращений.</p></details></section>';
   }
   function mapChart(){
     const key=state.mapMetric,daily=state.mapDaily && key!=='cpv';
     const values=months.map((m,i)=>key==='cpv'?configs.maps[i].spend/mapStats[i].views:mapStats[i][key]/(daily?m.days:1));
-    const top=Math.max(...values)*1.25;const x=[68,255,442,629];const y=v=>210-v/top*160;
+    const top=Math.max(...values,1)*1.25;const x=months.map((m,i)=>68+i*561/(months.length-1));const y=v=>210-v/top*160;
     const display=v=>key==='cpv'?dec(v)+' ₽':fmt(v);
     let svg='<svg class="ads-chart" viewBox="0 0 700 260" role="img" aria-label="Динамика Яндекс Карт по месяцам"><title>Яндекс Карты: '+(key==='views'?'просмотры рекламы':key==='clicks'?'переходы по рекламе':'цена просмотра')+(daily?', среднее за день':'')+'</title>';
     [0,.5,1].forEach(f=>{const v=top*f;svg+='<line class="chart-grid" x1="50" x2="655" y1="'+y(v)+'" y2="'+y(v)+'"/><text x="44" y="'+(y(v)+4)+'" text-anchor="end">'+(key==='cpv'?dec(v):fmt(v))+'</text>';});
-    svg+='<path class="chart-line" d="M'+x.slice(0,3).map((xx,i)=>xx+','+y(values[i])).join(' L')+'"/><path class="chart-line chart-partial" d="M'+x[2]+','+y(values[2])+' L'+x[3]+','+y(values[3])+'"/>';
+    svg+='<path class="chart-line" d="M'+x.slice(0,-1).map((xx,i)=>xx+','+y(values[i])).join(' L')+'"/><path class="chart-line chart-partial" d="M'+x[x.length-2]+','+y(values[values.length-2])+' L'+x[x.length-1]+','+y(values[values.length-1])+'"/>';
     values.forEach((v,i)=>{svg+='<circle class="chart-dot" cx="'+x[i]+'" cy="'+y(v)+'" r="6"/><text class="chart-value" x="'+x[i]+'" y="'+(y(v)-15)+'" text-anchor="middle">'+display(v)+'</text><text x="'+x[i]+'" y="240" text-anchor="middle">'+months[i].short+'</text>';});
     return svg+'</svg>';
   }
   function mapsView(){
+    return mapsResult()+'<details class="ads-platform-stats"'+(state.mapStatsOpen?' open':'')+'><summary>Статистика Яндекса: показы, переходы и действия</summary>'+mapsStatsView()+'</details>';
+  }
+  function mapsStatsView(){
     const stats=range=>{
       const rows=daily.filter(d=>d.channel==='maps' && inRange(d.date,range));
       return Object.fromEntries(['spend','views','clicks','profile','phone','route','site'].map(key=>[key,Math.round(sum(rows,key)*100)/100]));
@@ -693,7 +984,7 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
     const priceText=v=>v==null?'—':dec(v)+' ₽';
     return '<h2 class="ads-section-title">Яндекс Карты · '+periodLabel()+'</h2><p class="ads-section-intro">Медийный бюджет примера — 12 000 ₽ на полный месяц размещения в Картах. Здесь расходы и рекламные просмотры из отчета площадки. Все просмотры профиля и реальные обращения считаются отдельно.</p>'+
       '<div class="kpis">'+kpi('Расход на размещение',money(c.spend),periodLabel())+kpi('Просмотры рекламы',fmt(s.views),'За выбранные даты')+kpi('Переходы по рекламе',fmt(s.clicks),'В карточку или на сайт')+kpi('Цена просмотра',priceText(price),money(c.spend)+' ÷ '+fmt(s.views)+' просмотров')+'</div>'+
-      '<h2 class="ads-section-title">Динамика по месяцам · весь пример</h2><p class="ads-section-intro">На графике и в помесячной таблице — вся история с июля по 14 октября. Карточки сверху и действия ниже показывают выбранные даты.</p>'+
+      '<h2 class="ads-section-title">Динамика по месяцам · весь пример</h2><p class="ads-section-intro">На графике и в помесячной таблице — вся история с мая по 14 октября. Карточки сверху и действия ниже показывают выбранные даты.</p>'+
       '<div class="ads-chart-wrap"><div class="ads-chart-controls" aria-label="Показатель графика">'+[['views','Просмотры рекламы'],['clicks','Переходы'],['cpv','Цена просмотра']].map(a=>'<button class="ads-toggle" aria-pressed="'+(state.mapMetric===a[0])+'" data-ad-map="'+a[0]+'">'+a[1]+'</button>').join('')+'</div>'+
       '<div class="ads-chart-controls"><button class="ads-toggle" aria-pressed="'+!state.mapDaily+'" data-ad-daily="0">Итог месяца</button><button class="ads-toggle" aria-pressed="'+state.mapDaily+'" data-ad-daily="1">В среднем за день</button></div><div class="scroll-x">'+mapChart()+'</div>'+
       '<p class="ads-chart-caption">* Октябрь — только 1–14 число. Пунктир отмечает неполный месяц. «В среднем за день» = итог / дни периода, без расчета уникального дневного охвата. Цена просмотра = расход / просмотры в обоих режимах. Месячный охват не суммируем в уникальный охват за несколько месяцев.</p></div>'+
@@ -712,6 +1003,8 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
       '<button class="btn" data-ad-tab="patients">Открыть историю пациентов</button>';
   }
   function paint(){
+    const platform=root.querySelector('.ads-platform-stats');
+    if(platform) state.mapStatsOpen=platform.open;
     root.innerHTML='<div class="pg ads-page">'+header()+(state.tab==='path'?pathView():state.tab==='patients'?patientsView():state.tab==='maps'?mapsView():methodView())+'</div>';
   }
   function bind(){
@@ -721,34 +1014,40 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
       const range={start:root.querySelector('#ads-start').value,end:root.querySelector('#ads-end').value};
       if(!validRange(range)){
         const error=root.querySelector('#ads-period-error');
-        error.textContent=range.start>range.end?'Дата начала должна быть не позже даты окончания.':'Выбери даты с 01.07 по 14.10.2026.';
+        error.textContent=range.start>range.end?'Дата начала должна быть не позже даты окончания.':'Выбери даты с 01.05 по 14.10.2026.';
         error.hidden=false;
         return;
       }
-      state.start=range.start;state.end=range.end;state.patient=null;paint();
+      state.start=range.start;state.end=range.end;state.patient=null;state.inquiry=null;paint();
     };
     root.onchange=e=>{
-      if(e.target.id==='ads-channel'){state.channel=e.target.value;state.patient=null;if(state.tab==='maps' && state.channel!=='maps') state.tab='path';}
+      if(e.target.id==='ads-channel'){state.channel=e.target.value;state.patient=null;state.inquiry=null;if(state.channel==='maps')state.tab='maps';else if(state.tab==='maps')state.tab='path';}
       else if(e.target.id==='ads-type'){state.patientType=e.target.value;state.patient=null;}
       else return;
       paint();
     };
     root.onclick=e=>{
       const b=e.target.closest('button');if(!b)return;
-      let detailOpen=false;
-      if(b.dataset.adPeriod){state.start=shift(CUT,1-Number(b.dataset.adPeriod));state.end=CUT;state.patient=null;}
-      else if(b.dataset.adTab){state.tab=b.dataset.adTab;state.patient=null;if(state.tab==='maps')state.channel='maps';}
-      else if(b.dataset.adChannel){state.channel=b.dataset.adChannel;state.patient=null;}
+      let detailOpen=false,cashOpen=false;
+      if(b.dataset.adCash){const r=reportPeriods.find(r=>r.id===b.dataset.adCash);state.start=r.start();state.end=CUT;state.mapCash=true;state.inquiry=null;cashOpen=true;}
+      else if(b.dataset.adCashClose){state.mapCash=false;}
+      else if(b.dataset.adReport){const r=reportPeriods.find(r=>r.id===b.dataset.adReport);state.start=r.start();state.end=CUT;state.patient=null;state.inquiry=null;}
+      else if(b.dataset.adPeriod){state.start=shift(CUT,1-Number(b.dataset.adPeriod));state.end=CUT;state.patient=null;state.inquiry=null;}
+      else if(b.dataset.adTab){state.tab=b.dataset.adTab;state.patient=null;state.inquiry=null;if(state.tab==='maps')state.channel='maps';}
+      else if(b.dataset.adChannel){state.channel=b.dataset.adChannel;state.patient=null;state.inquiry=null;if(state.channel==='maps')state.tab='maps';}
+      else if(b.dataset.adRole){state.mapRole=b.dataset.adRole;state.inquiry=null;}
+      else if(b.dataset.adInquiry){state.inquiry=b.dataset.adInquiry;detailOpen=true;}
       else if(b.dataset.adPatient){state.patient=b.dataset.adPatient;detailOpen=true;}
-      else if(b.dataset.adClose){state.patient=null;}
+      else if(b.dataset.adClose){state.patient=null;state.inquiry=null;}
       else if(b.dataset.adMap){state.mapMetric=b.dataset.adMap;}
       else if(b.dataset.adDaily!=null){state.mapDaily=b.dataset.adDaily==='1';}
       else return;
       paint();
+      if(cashOpen)root.querySelector('#ads-cash-detail').scrollIntoView({behavior:'auto',block:'start'});
       if(detailOpen) root.querySelector('#ads-patient-detail').scrollIntoView({behavior:'auto',block:'start'});
     };
   }
-  window.BoevaAds={render(container){root=container;paint();bind();},metrics,patients,months,configs,mapStats,daily,validRange};
+  window.BoevaAds={render(container){root=container;paint();bind();},metrics,patients,months,configs,mapStats,daily,validRange,inquiries,mapsAttribution,observedWindow,mapsCashflow,reportPeriods};
 })();
 
 </script>
