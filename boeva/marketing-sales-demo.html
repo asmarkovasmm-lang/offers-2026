@@ -273,7 +273,19 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
 .ads-overview-costs{display:flex;flex-wrap:wrap;gap:10px 26px;font-size:12px;color:var(--ink2);margin-top:16px}
 .ads-overview-costs span{display:flex;gap:5px 10px;flex-wrap:wrap}
 .ads-overview-costs b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
-.ads-page .ads-detail-title{margin-top:26px}
+.ads-channel-picker{margin:26px 0 20px;padding:22px;background:var(--accent-soft);border:2px solid var(--accent);border-radius:10px;box-shadow:0 4px 16px rgba(31,122,116,.08)}
+.ads-channel-picker .ads-detail-title{margin:0;color:var(--ink);font-size:clamp(22px,2.6vw,28px);line-height:1.25;font-weight:700}
+.ads-picker-intro{margin:8px 0 18px;color:var(--ink);font-size:15px;line-height:1.5}
+.ads-channel-buttons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.ads-channel-button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;min-width:0;padding:12px 10px;font:inherit;font-size:14px;font-weight:600;line-height:1.3;color:var(--ink);background:var(--bg);border:1px solid var(--accent);border-radius:6px;cursor:pointer}
+.ads-channel-button:hover{box-shadow:inset 0 0 0 1px var(--accent)}
+.ads-channel-button[aria-pressed="true"]{color:var(--bg);background:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.ads-channel-check{display:none}
+.ads-channel-button[aria-pressed="true"] .ads-channel-check{display:inline}
+.ads-channel-button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.ads-picker-note{margin:14px 0 0;font-size:12px;line-height:1.5;color:var(--ink)}
+@media(max-width:760px){.ads-channel-buttons{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.ads-channel-picker{padding:16px;margin-top:22px}.ads-picker-intro{font-size:14px;margin-bottom:14px}.ads-channel-button{font-size:13px;padding:11px 6px}}
 .ads-controls{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;padding:14px 0;border-block:1px solid var(--line)}
 .ads-controls label{display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--ink2)}
 .ads-controls select{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:8px 28px 8px 10px;max-width:100%}
@@ -867,9 +879,9 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
     return '<div class="ads-head"><h1>Реклама и заявки</h1><span class="tag t-yellow">Демонстрация</span></div>'+
       '<p class="ads-note">Для ВК задана стоимость обращения 251 ₽. Остальные цифры, ответы пациентов и карточки — демонстрационные. Оплаты учтены по 14 октября 2026 года; будущие визиты показаны отдельно как сценарий.</p>'+
       ((state.tab==='maps'||state.tab==='source')?periodControls()+'<details class="ads-global-fold"><summary>Общая сводка по всем каналам</summary>'+overview(false)+'</details>':ltvOverview()+overview())+
-      '<h2 class="ads-section-title ads-detail-title">Детализация по каналам</h2><p class="ads-section-intro">Выбери канал, чтобы просмотреть его расходы, путь до оплаты и историю пациентов. Верхняя сводка всегда показывает все каналы.</p><div class="ads-controls">'+
-      '<label>Канал<select id="ads-channel">'+['all',...Object.keys(channels)].map(c=>'<option value="'+c+'"'+(state.channel===c?' selected':'')+'>'+(c==='all'?'Все каналы':channels[c])+'</option>').join('')+'</select></label>'+
-      '<span class="muted">Группа пациентов сохраняется: последующие визиты видны до 14.10</span></div>'+
+      '<section class="ads-channel-picker" aria-labelledby="ads-detail-title"><h2 id="ads-detail-title" class="ads-detail-title">Детализация по каналам</h2><p class="ads-picker-intro">Выбери канал — ниже его расходы, оплаты и пациенты.</p>'+
+      '<div class="ads-channel-buttons" role="group" aria-label="Выбор канала">'+['all',...Object.keys(channels)].map(c=>'<button type="button" class="ads-channel-button" data-ad-channel="'+c+'" aria-pressed="'+(state.channel===c)+'"><span class="ads-channel-check" aria-hidden="true">'+(state.channel===c?'✓':'')+'</span>'+(c==='all'?'Все каналы':channels[c])+'</button>').join('')+'</div>'+
+      '<p class="ads-picker-note">Выбранный канал меняет детализацию ниже. Общая сводка остается по всем каналам.</p></section>'+
       '<div class="tabs ads-tabs" role="tablist" aria-label="Рекламная аналитика">'+[['source','Эффективность канала'],['path','Путь до оплаты'],['patients','Пациенты и визиты'],['method','Как считаем LTV']].map(t=>'<button class="tab'+(state.tab===t[0]||(t[0]==='source'&&state.tab==='maps')?' on':'')+'" role="tab" aria-selected="'+(state.tab===t[0]||(t[0]==='source'&&state.tab==='maps'))+'" data-ad-tab="'+t[0]+'">'+t[1]+'</button>').join('')+'</div>';
   }
   function channelTable(){
@@ -1082,7 +1094,7 @@ h1{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.15;letter-spacin
       else if(b.dataset.adReport){const r=reportPeriods.find(r=>r.id===b.dataset.adReport);state.start=r.start();state.end=CUT;state.patient=null;state.inquiry=null;}
       else if(b.dataset.adPeriod){state.start=shift(CUT,1-Number(b.dataset.adPeriod));state.end=CUT;state.patient=null;state.inquiry=null;}
       else if(b.dataset.adTab){state.tab=b.dataset.adTab;state.patient=null;state.inquiry=null;state.mapCash=false;if(state.tab==='maps')state.channel='maps';if(state.tab==='source'&&state.channel==='all')state.channel='vk';if(state.tab==='source'&&state.channel==='maps')state.tab='maps';}
-      else if(b.dataset.adChannel){state.channel=b.dataset.adChannel;state.patient=null;state.inquiry=null;state.mapCash=false;state.tab=state.channel==='maps'?'maps':'source';}
+      else if(b.dataset.adChannel){state.channel=b.dataset.adChannel;state.patient=null;state.inquiry=null;state.mapCash=false;state.tab=state.channel==='maps'?'maps':state.channel==='all'?'path':'source';}
       else if(b.dataset.adRole){state.mapRole=b.dataset.adRole;state.inquiry=null;}
       else if(b.dataset.adInquiry){state.inquiry=b.dataset.adInquiry;detailOpen=true;}
       else if(b.dataset.adPatient){state.patient=b.dataset.adPatient;detailOpen=true;}
