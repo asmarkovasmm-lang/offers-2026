@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Перчини — реклама и лояльность</title>
+<style>
+:root{--red:#c93429;--ink:#282a26;--green:#365d3f;--line:#deded5;--paper:#f8f7f2}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 Arial,sans-serif}main{max-width:1050px;margin:auto;padding:28px 26px 55px}header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:25px}.brand{font-size:29px;color:var(--red);font-weight:800;letter-spacing:-1.8px}header a{font-size:12px;color:#666}h1{font-size:30px;line-height:1.2;margin:0 0 10px}h2{font-size:19px;margin:0 0 18px}p{margin:0 0 18px}.muted{color:#676c62;font-size:12px}.section{margin:26px 0;padding:23px 24px;background:white;border:1px solid var(--line);border-radius:10px}.inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.field label{font-size:12px;display:block;font-weight:700;min-height:36px}.entry{display:flex;align-items:center;gap:7px}.entry input{width:100%;min-width:0;border:1px solid #c9cfc3;border-radius:5px;padding:9px 10px;font-size:17px;background:#fff;color:var(--ink)}.entry span{font-size:12px;color:#656b60;white-space:nowrap}.entry input:focus{outline:2px solid var(--green);outline-offset:1px}.entry input[aria-invalid=true]{border-color:var(--red)}.formula{padding:15px 18px;background:#edf2e8;border-left:3px solid var(--green);font-size:15px;margin-top:19px;margin-bottom:0}.error{font-size:12px;color:var(--red);margin-top:10px}.error:empty{display:none}.table-wrap{border:1px solid var(--line);border-radius:9px;overflow-x:auto;background:#fff}table{width:100%;min-width:640px;border-collapse:collapse;table-layout:fixed;font-variant-numeric:tabular-nums}th,td{padding:11px 12px;text-align:right;border-bottom:1px solid #e7e7df;font-size:13px}th:first-child,td:first-child{text-align:left;width:43%}thead th{background:#e9ede2;font-size:13px;color:var(--green)}.group th{text-align:left;background:#f1f1e9;font-size:13px;color:#63685f;padding-top:14px}.total th,.total td{background:#eef3e8;font-weight:700;color:var(--green)}.net th,.net td{background:#e3ecdc;font-weight:700;font-size:15px}.negative{color:var(--red)!important}.positive{color:var(--green)}.final{margin-top:24px;background:#eaf0e3;padding:22px 24px;border-left:4px solid var(--green)}.final h2{margin-bottom:10px}.final strong{font-size:22px}.final p:last-child{margin-bottom:0}.base-inputs{grid-template-columns:1fr 1fr}button{font:inherit;cursor:pointer;border:1px solid #cbd2c4;border-radius:5px;background:#fff;padding:9px 13px;color:var(--green)}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:23px}.field small{display:block;color:#777;font-size:11px;margin-top:6px}.base-note{font-size:12px;color:#696f62;margin-top:14px;margin-bottom:0}footer{font-size:11px;color:#777;margin-top:20px}.table-note{font-size:12px;color:#666;margin-bottom:10px}
+@media(max-width:600px){main{padding:20px 13px 35px}h1{font-size:26px}.section{padding:18px 15px}.inputs{grid-template-columns:1fr 1fr;gap:16px 13px}.field label{font-size:11px;min-height:34px}.entry input{font-size:16px;padding:9px 8px}.entry span{font-size:10px}.formula{font-size:13px;padding:12px}th,td{padding:10px 5px;font-size:11px}th:first-child,td:first-child{width:40%;font-size:11px}thead th{font-size:11px}.net th,.net td{font-size:12px}.final{padding:18px}.final strong{font-size:20px}.brand{font-size:26px}header a{font-size:10px}.base-inputs{grid-template-columns:1fr 1fr}}
+@media print{body{background:#fff}main{max-width:none;padding:10px}.actions,header a{display:none}.section{break-inside:avoid}th,td{font-size:10px;padding:6px}table{break-inside:auto}tr{break-inside:avoid}.final{break-inside:avoid}}
+
+.formula+.formula{margin-top:10px}.table-wrap input{width:100%;min-width:0;border:1px solid #aebca6;border-radius:5px;background:#fafcf7;color:var(--ink);padding:8px 7px;text-align:right;font:inherit;font-size:15px;font-variant-numeric:tabular-nums}.table-wrap input:focus{outline:2px solid var(--green);outline-offset:1px;background:#fff}.table-wrap input[aria-invalid=true]{border-color:var(--red)}th small,.net td small{display:block;font-size:11px;font-weight:400;color:#74796c;margin-top:4px;line-height:1.35}input::-webkit-inner-spin-button,input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.table-wrap input{appearance:textfield;-moz-appearance:textfield}.step-control{display:grid;grid-template-columns:28px minmax(0,1fr) 28px;align-items:center;gap:4px}.step-control button{padding:0;width:28px;height:36px;font-size:19px;line-height:1;touch-action:manipulation;user-select:none}.step-control button:disabled{opacity:.35;cursor:default}.step-control button:focus-visible{outline:2px solid var(--green);outline-offset:1px}.step-control input{padding-left:3px;padding-right:3px}.editable td{padding-top:7px;padding-bottom:7px}.table-wrap th:first-child{width:43%}.base-note{margin-top:16px}
+@media(max-width:600px){.table-wrap input{font-size:14px;padding:8px 5px}.table-wrap th:first-child{width:40%}.table-wrap th,.table-wrap td{font-size:12px}th small{font-size:10px}}
+@media print{.step-control{display:block}.step-control button{display:none}table{min-width:0}.table-wrap{overflow:visible}input{border:none!important;background:transparent!important;padding:0!important;font-size:10px!important}}
+.group.group-vk th{background:#0077ff;color:#fff}.group.group-loyalty th{background:var(--red);color:#fff}
+
+.color-key{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}.color-key span{padding:5px 10px;border-radius:5px;font-size:12px;font-weight:700}.key-vk{background:#e8f1ff;color:#005fcc}.key-loyalty{background:#faeae7;color:#a62920}.key-expenses{background:#f9eedc;color:#7a4a10}.key-result{background:#e6efe0;color:#365d3f}
+.table-wrap{overflow:visible}thead th{position:sticky;top:0;z-index:5;box-shadow:0 1px 0 #c3cdbb}thead th:first-child{border-top-left-radius:9px}thead th:last-child{border-top-right-radius:9px}.group th{padding:15px 12px;font-size:14px;border-top:10px solid var(--paper)}.group:first-child th{border-top:0}
+.group.group-config th{background:#e7eae5;color:#394238}.group.group-sales th,.group.group-revenue th{background:#dcebd5;color:#2b5034}.group.group-expenses th{background:#f4dfbb;color:#74430b}.group.group-base th{background:#f5ded9;color:#9a2b22}.group.group-result th{background:var(--green);color:#fff}
+tr[data-tone="group-vk"]:not(.group):not(.total)>th,tr[data-tone="group-vk"]:not(.group):not(.total)>td{background:#f3f7ff}tr[data-tone="group-loyalty"]:not(.group):not(.total)>th,tr[data-tone="group-loyalty"]:not(.group):not(.total)>td,tr[data-tone="group-base"]:not(.group)>th,tr[data-tone="group-base"]:not(.group)>td{background:#fff5f2}tr[data-tone="group-expenses"]:not(.group)>th,tr[data-tone="group-expenses"]:not(.group)>td{background:#fffaf1}tr.total[data-tone="group-expenses"]>th,tr.total[data-tone="group-expenses"]>td{background:#f6e8ce;color:#74430b}tr[data-tone="group-sales"]:not(.group):not(.total)>th,tr[data-tone="group-sales"]:not(.group):not(.total)>td,tr[data-tone="group-revenue"]:not(.group):not(.total)>th,tr[data-tone="group-revenue"]:not(.group):not(.total)>td{background:#f5f9f2}.net th,.net td{border-top:2px solid #93ad84;padding-top:16px;padding-bottom:16px}
+@media(max-width:700px){.table-wrap{overflow:auto;max-height:85vh}.group th{font-size:13px}}@media print{thead th{position:static}.table-wrap{max-height:none;overflow:visible}.group th{border-top-width:5px}}
+</style></head><body><main>
+<header><span class="brand">перчини</span><span class="muted">Финансовая модель на 3 месяца</span></header>
+<h1>Реклама + программа лояльности</h1>
+<p class="muted">Один клиент — одна компания с оплаченным заказом. Меняйте цифры в полях таблицы отдельно для каждого месяца; суммы и итоги пересчитываются автоматически.</p>
+<div class="color-key" aria-label="Цвета разделов"><span class="key-vk">Реклама</span><span class="key-loyalty">Лояльность</span><span class="key-expenses">Расходы</span><span class="key-result">Выручка и итог</span></div>
+<p class="formula" id="funnel"></p>
+<p class="formula" id="loyalty-formula"></p>
+<p class="base-note">База карт на начало второго месяца — участники, которых собрали в первом месяце. По исходному прогнозу это 200 человек; к началу третьего месяца — 400. Рекламных клиентов здесь повторно не учитываем. Первые покупки при оформлении карты уже входят в исходную выручку.</p>
+<h2 style="margin-top:28px">Расчет на три месяца</h2>
+<p class="table-note">Цифры можно вводить вручную или менять кнопками − и +. Денежные суммы — в рублях. Под каждой стоимостью привлечения указано, какие расходы мы делим на клиентов.</p>
+<p class="error" id="input-error" role="status" aria-live="polite"></p>
+<div class="table-wrap"><table aria-label="Расчет за три месяца"><thead><tr><th>Показатель</th><th>Месяц 1</th><th>Месяц 2</th><th>Месяц 3</th></tr></thead><tbody id="calculation"></tbody></table></div>
+<div class="final"><h2>Итого за три месяца</h2><p id="total-clients"></p><p id="total-money"></p><p id="total-loyalty"></p><p class="muted" id="total-unit"></p></div>
+<p class="base-note">200 новых участников по картам, 5% дополнительных визитов, сервисы 5 000 ₽ и подарочная пицца 102,90 ₽ — расчетные гипотезы. Для дополнительного визита по карте используем средний чек на стол 2 480 ₽. Себестоимость блюд — 21%, ее можно изменить в таблице. Контент-менеджера ресторан оплачивает отдельно.</p>
+<p class="base-note">Повторы из рекламы считаем от активных клиентов прошлого месяца. Дополнительные визиты по картам — от накопленной доступной базы на начало месяца. Для карт «Хачу Пурри» отдельно задаем долю гостей, которые дополнительно придут в «Перчини»; начальный прогноз — 1%. Эти оплаты, бонусы и себестоимость входят в общий результат проекта. При расчете повторов из рекламы предполагаем, что гость использует доступные бонусы в пределах лимита. Карты и подписки могут принадлежать одним людям; их не складываем. Все оплатившие рекламную акцию оформляют карту.</p>
+<div class="actions"><button type="button" id="reset">Вернуть исходные цифры</button><button type="button" id="save">Скачать этот калькулятор</button><button type="button" id="print">Печать / PDF</button></div>
+<footer>Результат проекта после указанных расходов. Зарплата, аренда, дополнительные налоги, эквайринг и роялти здесь не учтены. Бонусные скидки на обычных покупках по картам пока отдельно не оценены. Себестоимость пиццы нужно подтвердить техкартой.</footer>
+</main><script>
+(function (root) {
+  'use strict';
+  const defaults = Object.freeze({
+    baseline:6852133,target:7500000,guestCheck:1163,existingCheck:2500,
+    adBudget:25000,subscriberCost:50,conversion:20,paidRate:100,
+    firstCheck:1400,repeatCheck:1400,returnRate:30,
+    adCardRate:100,hallPerchini:0,hallOther:0,hallMessageRate:0,
+    hallOrganicReturn:30,hallExtraReturn:0,
+    foodCost:21,giftCost:102.9,bonusEarn:5,bonusCap:20,bonusUse:100,
+    agency:30000,messenger:20000,software:5000,setup:35000,otherMonthly:0,otherVariable:0
+  });
+  const percentKeys=['conversion','paidRate','returnRate','adCardRate','hallMessageRate','hallOrganicReturn','hallExtraReturn','foodCost','bonusEarn','bonusCap','bonusUse','otherVariable'];
+  function simulate(input={},horizon=3,monthlySubscribers=null,monthlyInputs=null) {
+    const p={...defaults,...input};
+    for(const key of Object.keys(defaults)) if(!Number.isFinite(p[key])||p[key]<0) throw new RangeError('Некорректное значение: '+key);
+    for(const key of percentKeys) if(p[key]>100) throw new RangeError('Процент больше 100: '+key);
+    if(p.hallOrganicReturn+p.hallExtraReturn>100) throw new RangeError('Обычный и дополнительный возврат в сумме не могут быть больше 100%.');
+    if(p.subscriberCost<=0||p.existingCheck<=0||p.guestCheck<=0) throw new RangeError('Стоимость подписки и чеки должны быть больше нуля.');
+    if(!Number.isInteger(horizon)||horizon<1||horizon>36) throw new RangeError('Некорректный период.');
+    if(monthlySubscribers!==null&&(!Array.isArray(monthlySubscribers)||monthlySubscribers.length!==horizon||monthlySubscribers.some(v=>!Number.isFinite(v)||v<0)))throw new RangeError('Проверьте план подписок по месяцам.');
+    if(monthlyInputs!==null){
+      if(!Array.isArray(monthlyInputs)||monthlyInputs.length!==horizon)throw new RangeError('Проверьте помесячные параметры.');
+      for(const item of monthlyInputs){const q={...p,...item};for(const key of Object.keys(defaults))if(!Number.isFinite(q[key])||q[key]<0)throw new RangeError('Некорректное значение: '+key);for(const key of percentKeys)if(q[key]>100)throw new RangeError('Процент больше 100: '+key);if(q.subscriberCost<=0||q.existingCheck<=0||q.guestCheck<=0||q.hallOrganicReturn+q.hallExtraReturn>100)throw new RangeError('Проверьте помесячные условия.');}
+    }
+    const plan=monthlySubscribers??Array(horizon).fill(p.adBudget/p.subscriberCost);
+    const subscribers=plan[0],arrivals=subscribers*p.conversion/100,first=arrivals*p.paidRate/100;
+    const marketing=p.adBudget+p.agency+p.messenger,recurring=marketing+p.software+p.otherMonthly;
+    const adCohorts=[],hallCohorts=[],rows=[];
+    let cumulative=0,adBalance=0,hallBalance=0,cardBase=0,adClientBase=0,vkBase=0;
+    for(let month=1;month<=horizon;month++) {
+      const q={...p,...(monthlyInputs?.[month-1]??{})};
+      const marketing=q.adBudget+q.agency+q.messenger,recurring=marketing+q.software+q.otherMonthly;
+      const subscribers=plan[month-1],arrivals=subscribers*q.conversion/100,first=arrivals*q.paidRate/100;
+      const adCards=first*q.adCardRate/100,newCards=adCards+q.hallPerchini+q.hallOther;
+      cardBase+=newCards;adClientBase+=first;vkBase+=subscribers;
+      let repeats=0,adSpent=0,adEarned=adCards*q.firstCheck*q.bonusEarn/100;
+      for(const cohort of adCohorts) {
+        cohort.active*=q.returnRate/100;
+        const members=cohort.active*q.adCardRate/100;
+        const spentPer=Math.min(cohort.points,q.repeatCheck*q.bonusCap/100)*q.bonusUse/100;
+        repeats+=cohort.active;adSpent+=members*spentPer;
+        const earnedPer=(q.repeatCheck-spentPer)*q.bonusEarn/100;
+        adEarned+=members*earnedPer;
+        cohort.points=cohort.points-spentPer+earnedPer;
+      }
+      let hallOrganicVisits=0,hallExtraVisits=0,hallSpent=0,hallEarned=q.hallPerchini*q.existingCheck*q.bonusEarn/100;
+      for(const cohort of hallCohorts) {
+        const organic=cohort.active*q.hallOrganicReturn/100,extra=cohort.active*q.hallExtraReturn/100;
+        cohort.active=organic+extra;hallOrganicVisits+=organic;hallExtraVisits+=extra;
+        const spentPer=Math.min(cohort.points,q.existingCheck*q.bonusCap/100)*q.bonusUse/100;
+        hallSpent+=cohort.active*spentPer;
+        const earnedPer=(q.existingCheck-spentPer)*q.bonusEarn/100;
+        hallEarned+=cohort.active*earnedPer;
+        cohort.points=cohort.points-spentPer+earnedPer;
+      }
+      adCohorts.push({active:first,points:q.firstCheck*q.bonusEarn/100});
+      hallCohorts.push({active:q.hallPerchini,points:q.existingCheck*q.bonusEarn/100});
+      adBalance+=adEarned-adSpent;hallBalance+=hallEarned-hallSpent;
+      const firstGross=first*q.firstCheck,repeatGross=repeats*q.repeatCheck,hallExtraGross=hallExtraVisits*q.existingCheck;
+      const gross=firstGross+repeatGross+hallExtraGross,bonusSpent=adSpent+hallSpent,incrementalCash=gross-bonusSpent;
+      const foodFirst=firstGross*q.foodCost/100,foodRepeat=repeatGross*q.foodCost/100,foodHall=hallExtraGross*q.foodCost/100;
+      const food=foodFirst+foodRepeat+foodHall,gifts=first*q.giftCost,setup=monthlyInputs!==null?q.setup:(month===1?q.setup:0);
+      const other=Math.max(0,incrementalCash)*q.otherVariable/100;
+      const totalCosts=food+gifts+recurring+setup+other,result=incrementalCash-totalCosts;
+      cumulative+=result;
+      const acquisitionSpend=recurring+setup+gifts,fullFirstSpend=acquisitionSpend+foodFirst+firstGross*q.otherVariable/100;
+      rows.push({month,parameters:q,subscribers,arrivals,first,repeats,hallOrganicVisits,hallExtraVisits,
+        adCards,hallPerchini:q.hallPerchini,hallOther:q.hallOther,newCards,cardBase,
+        adClientBase,vkBase,hallCardBase:q.hallPerchini*month,otherCardBase:q.hallOther*month,
+        messageBase:vkBase+(q.hallPerchini+q.hallOther)*q.hallMessageRate/100*month,
+        firstGross,repeatGross,hallExtraGross,gross,adSpent,hallSpent,bonusSpent,incrementalCash,cash:q.baseline+incrementalCash,
+        foodFirst,foodRepeat,foodHall,food,gifts,marketing,recurring,setup,other,totalCosts,result,cumulative,
+        acquisitionSpend,fullFirstSpend,acquisitionUnit:first?acquisitionSpend/first:null,fullFirstUnit:first?fullFirstSpend/first:null,
+        adEarned,hallEarned,adBalance,hallBalance,bonusBalance:adBalance+hallBalance,
+        economicCosts:totalCosts+bonusSpent,afterReserve:cumulative-adBalance-hallBalance});
+    }
+    return {p,rows,first,subscribers,arrivals,marketing,recurring,
+      breakEvenMonth:rows.find(r=>r.cumulative>=0)?.month??null,targetMonth:rows.find(r=>r.cash>=p.target)?.month??null};
+  }
+  const api={defaults,simulate};
+  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.PerchiniModel=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+
+(function(root){
+'use strict';
+const main=typeof module!=='undefined'&&module.exports?require('./dist/model.js'):root.PerchiniModel;
+const defaults=Object.freeze({baseline:6852133,adBudget:25000,subscriberCost:50,subscribers1:500,subscribers2:400,subscribers3:300,conversion:20,firstCheck:1400,returnRate:30,agency:30000,messenger:20000,software:5000,setup:35000,foodCost:21,giftCost:102.9,hall1:200,hall2:0,otherReturn:1,loyaltyReturn:5,loyaltyCheck:2480,loyaltyBonus:5,bonusEarn:5,bonusCap:20});
+function calculate(input={}){
+ const values={...defaults,...input};
+ for(const key of Object.keys(defaults))if(!Number.isFinite(values[key])||values[key]<0)throw new RangeError('Некорректное значение: '+key);
+ const months=Array.from({length:3},(_,i)=>({...values,subscribers:values['subscribers'+(i+1)],repeatCheck:values.firstCheck,returnRate:i===0?0:values.returnRate,setup:i===0?values.setup:0,...(input.months?.[i]??{})}));
+ for(const m of months){
+  for(const key of [...Object.keys(defaults),'subscribers','repeatCheck'])if(!Number.isFinite(m[key])||m[key]<0)throw new RangeError('Некорректное значение: '+key);
+  for(const key of ['loyaltyReturn','otherReturn','loyaltyBonus','conversion','returnRate','foodCost','bonusEarn','bonusCap'])if(m[key]>100)throw new RangeError('Процент больше 100: '+key);
+  if(m.firstCheck<=0||m.repeatCheck<=0||m.loyaltyCheck<=0)throw new RangeError('Сумма заказа должна быть больше нуля.');
+ }
+ const p={...main.defaults,...values,paidRate:100,repeatCheck:values.firstCheck,hallPerchini:0,hallOther:0,hallExtraReturn:0,adCardRate:100};
+ const plan=months.map(m=>m.subscribers),parameters=months.map(m=>({...p,...m}));
+ const advertising=main.simulate(p,3,plan,parameters);let cumulative=0,loyaltyBase=0,otherBase=0;
+ const rows=advertising.rows.map((ad,i)=>{
+  const m=months[i],loyaltyBaseStart=loyaltyBase,loyaltyVisits=loyaltyBaseStart*m.loyaltyReturn/100;
+  const loyaltyGross=loyaltyVisits*m.loyaltyCheck,loyaltyDiscount=loyaltyGross*m.loyaltyBonus/100;
+  const loyaltyCash=loyaltyGross-loyaltyDiscount,loyaltyFood=loyaltyGross*m.foodCost/100;
+  const loyaltyContribution=loyaltyCash-loyaltyFood;
+  const otherBaseStart=otherBase,otherVisits=otherBaseStart*m.otherReturn/100;
+  const otherGross=otherVisits*m.loyaltyCheck,otherDiscount=otherGross*m.loyaltyBonus/100;
+  const otherCash=otherGross-otherDiscount,otherFood=otherGross*m.foodCost/100,otherContribution=otherCash-otherFood;
+  const gross=ad.gross+loyaltyGross+otherGross,bonusSpent=ad.bonusSpent+loyaltyDiscount+otherDiscount;
+  const incrementalCash=ad.incrementalCash+loyaltyCash+otherCash,totalCosts=ad.totalCosts+loyaltyFood+otherFood,result=ad.result+loyaltyContribution+otherContribution;
+  cumulative+=result;loyaltyBase+=m.hall1;otherBase+=m.hall2;
+  return {...ad,parameters:m,subscriberCost:ad.subscribers?m.adBudget/ad.subscribers:null,adOrderCost:ad.first?m.adBudget/ad.first:null,advertisingResult:ad.result,foodAd:ad.food,loyaltyBaseStart,loyaltyVisits,loyaltyGross,loyaltyDiscount,loyaltyCash,loyaltyFood,loyaltyContribution,
+   otherBaseStart,otherVisits,otherGross,otherDiscount,otherCash,otherFood,otherContribution,
+   food:ad.food+loyaltyFood+otherFood,gross,bonusSpent,incrementalCash,totalCosts,result,cumulative,cash:m.baseline+incrementalCash,
+   cardBase:ad.adClientBase+loyaltyBase+otherBase};
+ });
+ return {...advertising,values,months,rows};
+}
+const api={defaults,calculate};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.PerchiniSimpleModel=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+
+(function(){
+'use strict';
+const defaults={...window.PerchiniSimpleModel.defaults};
+let values={...defaults};try{const saved=document.getElementById('calcsaved');if(saved)values={...defaults,...JSON.parse(saved.textContent)};}catch(error){}
+const $=id=>document.getElementById(id),n=(v,d=0)=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:d}).format(Math.abs(v)<.5*10**(-d)?0:v),money=(v,d=0)=>n(v,d)+' ₽';
+const limits={baseline:[0,100000000,1000],adBudget:[0,1000000,1000],subscribers:[0,100000,1],conversion:[0,100,1],firstCheck:[1400,30000,100],repeatCheck:[1,30000,100],returnRate:[0,100,1],agency:[0,1000000,1000],messenger:[0,1000000,1000],software:[0,1000000,500],setup:[0,1000000,1000],foodCost:[0,100,.1],giftCost:[0,10000,.1],hall1:[0,20000,1],hall2:[0,20000,1],otherReturn:[0,100,1],loyaltyReturn:[0,100,.1],loyaltyCheck:[1,30000,100],loyaltyBonus:[0,100,.5],bonusEarn:[0,100,.5],bonusCap:[0,100,1]};
+function setTable(html){
+ const body=$('calculation'),next=document.createElement('tbody');next.innerHTML=html;
+ let tone='group-neutral';for(const row of next.rows){if(row.classList.contains('group'))tone=row.dataset.tone;else row.dataset.tone=tone;}
+ if(body.rows.length!==next.rows.length){body.innerHTML=next.innerHTML;return;}
+ Array.from(next.rows).forEach((row,i)=>{body.rows[i].dataset.tone=row.dataset.tone;body.rows[i].className=row.className;Array.from(row.cells).forEach((cell,j)=>{
+  const old=body.rows[i].cells[j],input=old.querySelector('input'),replacement=cell.querySelector('input');
+  if(input&&replacement){
+   if(document.activeElement!==input&&input.value!==replacement.value)input.value=replacement.value;
+   old.querySelectorAll('button[data-step]').forEach((button,k)=>{button.disabled=cell.querySelectorAll('button[data-step]')[k].disabled;});
+  }
+  else {old.className=cell.className;if(old.innerHTML!==cell.innerHTML)old.innerHTML=cell.innerHTML;}
+ });});
+}
+function render(){
+ const {rows,months}=window.PerchiniSimpleModel.calculate(values);const sum=key=>rows.reduce((a,r)=>a+r[key],0);
+ const group=(label,color='group-neutral')=>`<tr class="group ${color}" data-tone="${color}"><th colspan="4">${label}</th></tr>`;
+ const row=(label,fn,css='',digits=2,note='')=>`<tr class="${css}"><th scope="row">${label}${note?`<small>${note}</small>`:''}</th>${rows.map(r=>{const v=fn(r);return `<td${typeof v==='number'&&v<0?' class="negative"':''}>${v===null?'—':n(v,digits)}</td>`}).join('')}</tr>`;
+ const edit=(label,key,note='')=>{const [min,max,step]=limits[key];return `<tr class="editable"><th scope="row">${label}${note?`<small>${note}</small>`:''}</th>${months.map((m,i)=>`<td><div class="step-control"><button type="button" data-step="-1" aria-label="Уменьшить: ${label.replace(/<[^>]+>/g,'')}, месяц ${i+1}"${m[key]<=min?' disabled':''}>−</button><input id="m${i+1}-${key}" data-month="${i}" name="${key}" type="number" min="${min}" max="${max}" step="${step}" value="${m[key]}" aria-label="${label.replace(/<[^>]+>/g,'')}, месяц ${i+1}"><button type="button" data-step="1" aria-label="Увеличить: ${label.replace(/<[^>]+>/g,'')}, месяц ${i+1}"${m[key]>=max?' disabled':''}>+</button></div></td>`).join('')}</tr>`;};
+ const rates=key=>{const list=months.map(m=>n(m[key],2)+'%');return list.every(x=>x===list[0])?list[0]:list.join(' / ');};
+ setTable(
+ group('Реклама: сколько гостей придет','group-vk')+
+ edit('Рекламный бюджет, ₽','adBudget')+edit('Новые подписки из рекламы','subscribers')+row('Стоимость подписки, ₽',r=>r.subscriberCost,'',2,'Рекламный бюджет ÷ новые подписки')+
+ edit('Дошли и сделали заказ, % подписок','conversion')+row('Новые платящие клиенты из рекламы',r=>r.first)+row('Рекламные расходы на один новый заказ, ₽',r=>r.adOrderCost,'',2,'Только рекламный бюджет ÷ новые платящие клиенты')+
+ edit('Повторный визит, % клиентов прошлого месяца','returnRate','В первом месяце базы для возврата еще нет')+row('Повторные визиты клиентов из рекламы',r=>r.repeats)+
+ group('Программа лояльности: дополнительные визиты','group-loyalty')+
+ edit('Новые участники по картам без рекламных клиентов','hall1','Собираем в текущем месяце; начинаем возвращать со следующего')+row('База карт без рекламных клиентов на начало месяца',r=>r.loyaltyBaseStart)+
+ edit('Дополнительные визиты от базы, %','loyaltyReturn')+row('Дополнительные визиты по программе лояльности',r=>r.loyaltyVisits)+
+ group('Суммы заказов и бонусы','group-config')+
+ edit('Первый заказ из рекламы для расчета, ₽','firstCheck','Порог подарка — 1 400 ₽. Сумма заказа в модели — отдельная гипотеза.')+edit('Повторный заказ из рекламы, ₽','repeatCheck')+edit('Заказ на дополнительном визите по карте, ₽','loyaltyCheck','2 480 ₽ — средний чек на стол')+
+ edit('Начисляем бонусы клиентам из рекламы, %','bonusEarn')+edit('Максимум оплаты бонусами из рекламы, %','bonusCap')+edit('Средняя скидка бонусами на дополнительных визитах по картам, %','loyaltyBonus')+
+ group('Сколько заказали и оплатили, ₽','group-sales')+row('Первые заказы из рекламы',r=>r.firstGross)+row('Повторные заказы из рекламы',r=>r.repeatGross)+row('Дополнительные заказы по картам «Перчини»',r=>r.loyaltyGross)+row('Заказы в «Перчини» по картам «Хачу Пурри»',r=>r.otherGross)+row('Заказали всего до бонусов',r=>r.gross,'total')+row('Бонусы клиентам из рекламы',r=>-r.adSpent)+row('Бонусы на дополнительных заказах по картам',r=>-r.loyaltyDiscount-r.otherDiscount)+row('Дополнительная оплаченная выручка',r=>r.incrementalCash,'total')+
+ group('Расходы','group-expenses')+edit('Ведение рекламы, ₽','agency')+edit('Мессенджер-маркетинг, ₽','messenger')+edit('Сервисы и лицензии, ₽','software')+edit('Разовый запуск, ₽','setup','35 000 ₽ только в первом месяце')+edit('Себестоимость блюд, % суммы заказа','foodCost')+
+ row(`Себестоимость заказов из рекламы (${rates('foodCost')}), ₽`,r=>r.foodAd)+row(`Себестоимость блюд на дополнительных визитах по картам (${rates('foodCost')}), ₽`,r=>r.loyaltyFood+r.otherFood,'',2,'Дополнительные заказы по картам обоих ресторанов × себестоимость блюд')+
+ edit('Себестоимость одной подарочной пиццы, ₽','giftCost')+row('Подарочные пиццы, количество',r=>r.first)+row('Себестоимость подарочных пицц всего, ₽',r=>r.gifts)+row('Всего расходов, ₽',r=>r.totalCosts,'total',2,'Включая рекламный бюджет из первого блока')+
+ row('Стоимость привлечения нового клиента',r=>r.first?r.totalCosts/r.first:null,'',2,'Включая услуги, запуск, продукты и подарки')+
+ group('Выручка ресторана, ₽','group-revenue')+edit('Исходная выручка ресторана, ₽','baseline')+row('Выручка ресторана с учетом проекта',r=>r.cash,'total',0,'Исходная выручка + дополнительные оплаты. Расходы из этой суммы еще не вычтены. Итог проекта после расходов — в конце таблицы.')+
+ group('Карты «Хачу Пурри»: визиты в «Перчини»','group-base')+
+ edit('Новые карты «Хачу Пурри»','hall2','Новые уникальные участники за месяц. Рекламных клиентов и карты «Перчини» повторно не включаем.')+row('База карт «Хачу Пурри» на начало месяца',r=>r.otherBaseStart)+
+ edit('Пришли в «Перчини» по картам «Хачу Пурри», %','otherReturn','1% от накопленной базы на начало месяца — прогноз дополнительных визитов')+row('Дополнительные визиты по картам «Хачу Пурри»',r=>r.otherVisits)+
+ row('Дополнительные оплаты по картам «Хачу Пурри», ₽',r=>r.otherCash,'',2,'Визиты × заказ по карте минус бонусные списания')+row('Вклад карт «Хачу Пурри» в результат проекта, ₽',r=>r.otherContribution,'total',2,'Дополнительные оплаты минус себестоимость блюд. Уже включен в итог проекта.')+
+ row('Общая база карт двух ресторанов на конец месяца',r=>r.cardBase)+
+ group('Итог проекта после всех расходов, ₽','group-result')+row('Результат без дополнительных заказов по картам',r=>r.advertisingResult)+row('Прибавка от лояльности и рассылок',r=>r.loyaltyContribution+r.otherContribution,'total')+row('Результат с начала запуска',r=>r.cumulative,'',2,'Накопленный итог с первого месяца')+
+ `<tr class="net"><th scope="row">Итог проекта за месяц<small>Дополнительные оплаты − все расходы проекта</small></th>${rows.map(r=>`<td class="${r.result<0?'negative':'positive'}">${money(r.result,2)}<small>${money(r.incrementalCash,2)} − ${money(r.totalCosts,2)}</small></td>`).join('')}</tr>`);
+ $('funnel').textContent=`Рекламный бюджет: ${months.map(m=>money(m.adBudget)).join(' / ')}. Новые подписки: ${rows.map(r=>n(r.subscribers)).join(' / ')}. Новые платящие клиенты: ${rows.map(r=>n(r.first,1)).join(' / ')}.`;
+ $('loyalty-formula').textContent=`База по программе лояльности: ${rows.map(r=>n(r.loyaltyBaseStart+r.otherBaseStart)).join(' / ')}. Дополнительные визиты: ${rows.map(r=>n(r.loyaltyVisits+r.otherVisits,1)).join(' / ')}. Их вклад после бонусов и себестоимости: ${rows.map(r=>money(r.loyaltyContribution+r.otherContribution,2)).join(' / ')}.`;
+ $('total-clients').textContent=`${n(sum('first'),1)} новых платящих клиентов из рекламы + ${n(sum('repeats'),1)} повторных визитов из рекламы + ${n(sum('loyaltyVisits')+sum('otherVisits'),1)} дополнительных визитов по программе лояльности.`;
+ $('total-money').innerHTML=`${money(sum('incrementalCash'),2)} дополнительной оплаты − ${money(sum('totalCosts'),2)} расходов = <strong class="${sum('result')<0?'negative':'positive'}">${money(sum('result'),2)}</strong>.`;
+ $('total-loyalty').innerHTML=`Из этого результата <b>${money(sum('loyaltyContribution')+sum('otherContribution'),2)}</b> добавляет прогноз программы лояльности и рассылок.`;
+ $('total-unit').textContent=sum('first')?`Стоимость привлечения нового клиента — ${money(sum('totalCosts')/sum('first'),2)}. Все расходы проекта делим на новых платящих клиентов из рекламы. Здесь учтены также продукты для дополнительных заказов по картам.`:'При нуле новых платящих клиентов из рекламы стоимость клиента не рассчитываем.';
+ window.simplePerchini={values:JSON.parse(JSON.stringify(values)),rows};
+}
+function stepValue(input,direction){
+ const base=input.value!==''&&Number.isFinite(Number(input.value))?Number(input.value):window.PerchiniSimpleModel.calculate(values).months[Number(input.dataset.month)][input.name];
+ input.value=Number(Math.min(Number(input.max),Math.max(Number(input.min),base+direction*Number(input.step))).toFixed(6));
+ input.removeAttribute('aria-invalid');input.dispatchEvent(new Event('input',{bubbles:true}));
+}
+$('calculation').addEventListener('click',event=>{
+ const button=event.target.closest('button[data-step]');if(!button||button.disabled)return;
+ stepValue(button.closest('.step-control').querySelector('input'),Number(button.dataset.step));
+});
+$('calculation').addEventListener('keydown',event=>{
+ if(!event.target.matches('input[data-month]')||!['ArrowUp','ArrowDown'].includes(event.key))return;
+ event.preventDefault();stepValue(event.target,event.key==='ArrowUp'?1:-1);
+});
+$('calculation').addEventListener('input',event=>{
+ const input=event.target;if(!input.matches('input[data-month]'))return;const v=Number(input.value);
+ if(input.value===''||!Number.isFinite(v)||v<Number(input.min)||v>Number(input.max)){input.setAttribute('aria-invalid','true');$('input-error').textContent=`Допустимое значение: от ${n(Number(input.min))} до ${n(Number(input.max))}.` ;return;}
+ values.months??=[{},{},{}];values.months[Number(input.dataset.month)][input.name]=v;
+ $('input-error').textContent='';render();
+});
+$('calculation').addEventListener('focusout',event=>{if(event.target.matches('input[aria-invalid="true"]')){const i=Number(event.target.dataset.month);event.target.value=window.PerchiniSimpleModel.calculate(values).months[i][event.target.name];event.target.removeAttribute('aria-invalid');$('input-error').textContent='Неверное значение не сохранено. Восстановлено последнее корректное число.';}});
+$('reset').addEventListener('click',()=>{values={...defaults};$('input-error').textContent='';render();});
+$('print').addEventListener('click',()=>window.print());
+$('save').addEventListener('click',()=>{const doc=document.documentElement.cloneNode(true);doc.querySelector('#calcsaved')?.remove();const snapshot=document.createElement('script');snapshot.id='calcsaved';snapshot.type='application/json';snapshot.textContent=JSON.stringify(values);doc.querySelector('head').appendChild(snapshot);const url=URL.createObjectURL(new Blob(['<!doctype html>\n'+doc.outerHTML],{type:'text/html;charset=utf-8'})),link=document.createElement('a');link.href=url;link.download='perchini-simple-calculator.html';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+render();
+})();
+
+</script></body></html>
