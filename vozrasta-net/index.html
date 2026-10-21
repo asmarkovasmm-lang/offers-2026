@@ -15,6 +15,10 @@
     @media(max-width:700px){html{scroll-padding-top:78px}.wrap{width:calc(100% - 36px)}.nav{min-height:64px;gap:12px}.wordmark{font-size:12px;gap:8px}.monogram{width:28px;height:28px;font-size:12px}.navlinks{gap:14px;font-size:11px}.navlinks .nav-content{display:none}.hero{padding:38px 0 35px}.eyebrow{font-size:9px;letter-spacing:.1em}.hero-grid{grid-template-columns:1fr;gap:32px;margin-top:24px}h1{font-size:clamp(43px,10.8vw,67px);letter-spacing:-.05em}.intro{font-size:16px;margin-top:21px;max-width:540px}.hero-meta{margin-top:22px;font-size:11px;gap:14px}.hero-meta span+span{padding-left:14px}.contents-title{padding-top:14px}.contents a{padding:13px 0}.identity{margin-top:20px}.intro-strip{display:grid;grid-template-columns:1fr;gap:8px;padding:20px 0}.intro-strip span{font-size:12px}.section{padding:43px 0}.section-head{grid-template-columns:35px 1fr;gap:12px;margin-bottom:27px}.section-no{font-size:29px}.section-desc{font-size:14px;margin-top:10px}h2{font-size:33px}.case{grid-template-columns:1fr;gap:23px;padding:27px 0 32px}.case h3{font-size:23px}.case-copy p{margin:13px 0;font-size:14px}.case-figure{padding:23px}.big-number{font-size:59px}.case-footnote{font-size:11px}.plan-section{padding:43px 0}.channels{grid-template-columns:1fr;gap:23px;padding-top:25px}.channel{display:block}.channel-num{display:block;padding:0}.channel h3{margin:7px 0 0;font-size:27px}.channel p{margin-top:7px;font-size:14px}.budget{margin-top:30px;padding:23px 15px}.budget-top{align-items:flex-start;gap:12px}.budget h3{font-size:18px;max-width:190px}.badge{font-size:8px;letter-spacing:.04em;padding:4px 6px}.budget-note{font-size:12px;margin-top:14px}table{font-size:11px}th{font-size:8px;letter-spacing:0}td{padding:13px 0}td:first-child{gap:5px}.dot{width:5px;height:5px}.forecast{grid-template-columns:1fr;gap:15px;margin-top:20px}.forecast-value{font-size:38px;display:flex;align-items:center;gap:17px}.forecast-value small{margin:0;max-width:110px}.forecast p{font-size:12px}.definition{font-size:11px;line-height:1.7}.workflow{grid-template-columns:1fr 1fr;gap:22px;margin-top:25px}.workflow p{font-size:12px}.examples{grid-template-columns:1fr;gap:28px}.example h3{max-width:none;margin-top:14px;font-size:28px}.example p{margin:11px 0 17px}.content-caption{margin-top:25px}.working{grid-template-columns:1fr;gap:14px;margin-top:34px;padding:23px}.working h3{font-size:26px}.working p{font-size:13px}.footer{padding:30px 0 20px}.footer-main{flex-direction:column;gap:23px}.footer h2{font-size:31px}.actions{width:100%}.actions .button{flex:1;white-space:nowrap;font-size:11px;padding:11px}.utility{align-items:flex-start;flex-direction:column;gap:15px;margin-top:25px}.utility-buttons{gap:22px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
     @media print{html{scroll-behavior:auto}.topbar,.contents,.actions,.utility-buttons,.toast,.skip{display:none!important}.wrap{width:100%}.hero{padding:0 0 25px}.hero-grid{display:block;margin-top:20px}h1{font-size:44px}.intro{font-size:14px;margin-top:15px}.identity{margin-top:20px}.hero-meta{margin-top:15px}.intro-strip{padding:12px 0}.section{padding:28px 0}.section-head{margin-bottom:20px}h2{font-size:29px}.case{gap:30px;padding:23px 0}.case,.example,.working,.budget{break-inside:avoid}.case-copy p,.channel p{font-size:12px}.case-figure{padding:17px}.big-number{font-size:48px}.plan-section{background:white;color:var(--ink);padding:28px 0}.plan-section .section-desc,.plan-section .kicker,.channel p,.channel-num,.definition,.workflow p,.workflow b{color:var(--muted)}.channels,.workflow{border-color:var(--line)}.budget{border:1px solid var(--line);margin-top:25px;padding:22px}.definition{font-size:11px}.workflow{margin-top:20px}.working{margin-top:30px}.footer{padding:25px 0 0}.footer h2{font-size:27px}.utility{margin-top:20px}.examples{gap:20px}.example h3{font-size:23px}.example p{font-size:12px}.textlink{font-size:11px}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A4;margin:16mm}}
+
+    .plan-notes{display:grid;grid-template-columns:1fr 1fr;gap:45px;margin-top:34px;padding-top:28px;border-top:1px solid #53705d}.plan-notes h3{font-family:var(--serif);font-size:28px;font-weight:400;margin-top:10px}.plan-notes p{font-size:14px;color:#d1dccd;margin-top:13px;line-height:1.7}.channel h3{overflow-wrap:anywhere}
+    @media(max-width:700px){.plan-notes{grid-template-columns:1fr;gap:27px;margin-top:28px;padding-top:25px}.plan-notes h3{font-size:27px}.plan-notes p{font-size:13px}.budget h3{max-width:195px}}
+    @media print{.plan-notes{break-inside:avoid;border-color:var(--line)}.plan-notes p{color:var(--muted);font-size:12px}.plan-notes h3{font-size:24px}}
   </style>
 </head>
 <body>
@@ -61,33 +65,32 @@
     </div>
     <section class="plan-section" id="plan" aria-labelledby="plan-title">
       <div class="wrap">
-        <div class="section-head"><span class="section-no" aria-hidden="true">02</span><div><h2 id="plan-title">Первые 30 дней</h2><p class="section-desc">Начала бы с трех каналов: спрос на конкретные процедуры, знакомство с новой клиникой и поиск рядом с домом.</p></div></div>
+        <div class="section-head"><span class="section-no" aria-hidden="true">02</span><div><h2 id="plan-title">Первые 30 дней</h2><p class="section-desc">Начала бы с упаковки площадок, разработки предложения для первого визита и подготовки сообщества ВКонтакте к приему трафика. Три основных инструмента — контент-маркетинг, реклама ВКонтакте и мессенджер-маркетинг.</p></div></div>
         <div class="channels">
-          <article class="channel"><span class="channel-num">01 / СПРОС</span><h3>Яндекс Директ</h3><p>Поисковая реклама по процедурам в Перми. На старте — несколько приоритетных услуг с учетом маржи, расписания врачей и даты открытия.</p></article>
-          <article class="channel"><span class="channel-num">02 / ЗНАКОМСТВО</span><h3>ВКонтакте</h3><p>Знакомство с врачами, объяснение процедур и предложения для первого посещения. Проверяю качество обращений и конверсию в запись.</p></article>
-          <article class="channel"><span class="channel-num">03 / РЯДОМ</span><h3>Геосервисы</h3><p>Яндекс Карты и 2ГИС: услуги, цены, фотографии, врачи и способ записи. Помогаем человеку сравнить варианты и выбрать клинику поблизости.</p></article>
+          <article class="channel"><span class="channel-num">01 / КОНТЕНТ И SMM</span><h3>Контент-маркетинг</h3><p>Оформлю сообщество ВКонтакте как посадочную площадку: услуги, врачи, ответы на вопросы и понятный путь до записи. Через контент познакомлю аудиторию с клиникой, объясню процедуры и проработаю возражения перед первым визитом.</p></article>
+          <article class="channel"><span class="channel-num">02 / ПЕРВИЧНЫЕ ЗАЯВКИ</span><h3>Реклама ВКонтакте</h3><p>Разработаю оффер для запуска и вместе с таргетологом протестирую рекламу на подготовленное сообщество. Параллельно проработаю обработку первичных обращений: скорость ответа, диалог с администратором, запись и сопровождение до визита.</p></article>
+          <article class="channel"><span class="channel-num">03 / РАБОТА С БАЗОЙ</span><h3>Мессенджер-маркетинг</h3><p>Разработаю индивидуальные сценарии повторных касаний: после обращения, консультации и посещения. Автоматизирую сообщения с учетом истории клиента и этапа общения. Рассылки и персональные касания запущу по мере формирования базы и с согласия клиентов.</p></article>
         </div>
         <div class="budget">
-          <div class="budget-top"><h3>Тестовый бюджет: <span style="white-space:nowrap">100 000 ₽</span></h3><span class="badge">Гипотеза для старта</span></div>
-          <p class="budget-note">На размещение рекламы за первый месяц. Оплата специалистов и производство контента рассчитываются отдельно.</p>
-          <div class="allocation" role="img" aria-label="Распределение бюджета: 50% Яндекс Директ, 35% VK, 15% геосервисы"><span></span><span></span><span></span></div>
-          <table aria-label="Предварительный медиаплан на первый месяц">
-            <thead><tr><th scope="col">Канал</th><th scope="col">Бюджет</th><th scope="col">Обращения</th><th scope="col">CPL, ₽</th></tr></thead>
-            <tbody>
-              <tr><td><span class="dot" aria-hidden="true"></span>Яндекс Директ</td><td>50 000 ₽</td><td>20–30</td><td>≈ 1 700–2 500</td></tr>
-              <tr><td><span class="dot vk" aria-hidden="true"></span>VK</td><td>35 000 ₽</td><td>20–35</td><td>1 000–1 750</td></tr>
-              <tr><td><span class="dot maps" aria-hidden="true"></span>Геосервисы</td><td>15 000 ₽</td><td>5–10</td><td>1 500–3 000</td></tr>
-            </tbody>
-            <tfoot><tr><td>Всего</td><td>100 000 ₽</td><td>45–75</td><td>≈ 1 330–2 220</td></tr></tfoot>
+          <div class="budget-top"><h3>Трафик ВКонтакте: <span style="white-space:nowrap">40 000 ₽ / мес.</span></h3><span class="badge">Ориентиры для теста</span></div>
+          <p class="budget-note">Предварительно заложила бы 40 000 ₽ в месяц на размещение рекламы. Оплата специалистов, контента и сервисов рассчитывается отдельно.</p>
+          <table aria-label="Предварительный расчет рекламы ВКонтакте">
+            <thead><tr><th scope="col">Канал</th><th scope="col">Бюджет</th><th scope="col">Средний CPL</th><th scope="col">Заявки</th></tr></thead>
+            <tbody><tr><td><span class="dot vk" aria-hidden="true"></span>ВКонтакте</td><td>40 000 ₽</td><td>700 ₽</td><td>≈ 57</td></tr></tbody>
           </table>
-          <div class="forecast"><div class="forecast-value">45–75<small>целевых обращений<br>за первый месяц</small></div><p>Предварительный расчет, который уточню после изучения услуг, цен, даты открытия и рекламного аукциона. Первые результаты теста покажут, какие каналы стоит усиливать. CPL — бюджет размещения, разделенный на число обращений.</p></div>
+          <div class="forecast"><div class="forecast-value">≈ 57<small>заявок в месяц<br>при CPL 700 ₽</small></div><p>Рабочий ориентир стоимости заявки — 500–1 000 ₽, для расчета беру 700 ₽. При бюджете 40 000 ₽ это 40–80 заявок, около 57 при выбранном среднем CPL. Эти значения — гипотеза для теста; фактический результат проверю после запуска.</p></div>
+          <div class="forecast"><div class="forecast-value">≈ 6<small>первых визитов<br>при конверсии 10%</small></div><p>Для осторожного сценария закладываю 10% перехода из заявки в состоявшийся визит: 57 × 10% ≈ 6. Это расчетное допущение для новой клиники, а не среднерыночный показатель. Доходимость уже записанных пациентов считаю отдельно: состоявшиеся визиты / записи.</p></div>
         </div>
-        <p class="definition">Лидом считаю уникальное целевое обращение. Записи, состоявшиеся визиты и оплаты отслеживаю отдельно. Для итогового числа обращений исключаю повторы между каналами.</p>
+        <div class="plan-notes">
+          <article><span class="channel-num">ОБЯЗАТЕЛЬНАЯ ЧАСТЬ ЗАПУСКА</span><h3>Программа лояльности</h3><p>Сразу заложу работу на удержание: понятные условия участия, ценность повторного визита и учет программы в CRM. Свяжу ее с контентом, рассылками и персональными касаниями. Условия программы разработаю с учетом экономики услуг.</p></article>
+          <article><span class="channel-num">РЕЗЕРВНЫЙ КАНАЛ</span><h3>Реклама на Яндексе</h3><p>Рассмотрю как дополнительный тест с отдельным резервом 9–15 тысяч ₽ в месяц, сверх основного бюджета ВКонтакте. Перед запуском проверю спрос и подготовлю подходящую посадочную страницу для клиники в Перми. В основной прогноз заявок этот канал пока не включаю.</p></article>
+        </div>
+        <p class="definition">Заявка — уникальное целевое обращение. Отдельно отслеживаю конверсию в запись, состоявшиеся визиты, оплаты и повторные посещения. Результат работы с базой оцениваю по возвратам и повторным записям.</p>
         <div class="workflow" aria-label="Последовательность работы в первый месяц">
-          <div><b>НЕДЕЛЯ 01</b><p>Приоритетные услуги, офферы, учет заявок и подготовка площадок.</p></div>
-          <div><b>НЕДЕЛЯ 02</b><p>Запуск тестов, первые обращения и проверка работы администраторов.</p></div>
-          <div><b>НЕДЕЛЯ 03</b><p>Разбор качества заявок, корректировка объявлений и контента.</p></div>
-          <div><b>НЕДЕЛЯ 04</b><p>Сверка записей и оплат, отчет и план следующего месяца.</p></div>
+          <div><b>НЕДЕЛЯ 01</b><p>Упаковка площадок, посадочная ВКонтакте, оффер и учет заявок.</p></div>
+          <div><b>НЕДЕЛЯ 02</b><p>Контент и запуск рекламы. Проверка обработки первичных обращений.</p></div>
+          <div><b>НЕДЕЛЯ 03</b><p>Программа лояльности и первые сценарии повторных касаний.</p></div>
+          <div><b>НЕДЕЛЯ 04</b><p>Разбор заявок, записей и визитов. Корректировка рекламы и сценариев.</p></div>
         </div>
       </div>
     </section>
@@ -122,17 +125,21 @@ COSMOMED Clinic, Пермь. Вместе с таргетологом запус
 За 12 месяцев по отчетности проекта получили 3 526 записей и 22,8 млн ₽ выручки без платного продвижения. Это результат работы команды; я отвечала за SMM-направление.
 Кейс: https://asmarkovasmm-lang.github.io/offers-2026/cases/filosofiya-krasoty/
 
-2. ТРИ КАНАЛА НА ПЕРВЫЕ 30 ДНЕЙ
+2. ТРИ ИНСТРУМЕНТА НА ПЕРВЫЕ 30 ДНЕЙ
 
-Яндекс Директ, поиск: спрос на конкретные процедуры в Перми. Начала бы с нескольких приоритетных услуг с учетом маржи и расписания врачей.
-VK: знакомство с новой клиникой через врачей, объяснение процедур и предложения для первого посещения. Проверяю качество обращений и конверсию в запись.
-Геосервисы, Яндекс Карты и 2ГИС: карточки клиники с услугами, ценами, фотографиями и способом записи для людей, которые выбирают клинику поблизости.
+Начала бы с упаковки площадок, разработки оффера для первого визита и подготовки сообщества ВКонтакте к приему трафика.
 
-При условном бюджете 100 000 ₽ на размещение рекламы, отдельно от оплаты специалистов и производства контента:
-— Яндекс Директ: 50 000 ₽, 20–30 обращений, CPL около 1 700–2 500 ₽.
-— VK: 35 000 ₽, 20–35 обращений, CPL 1 000–1 750 ₽.
-— Геосервисы: 15 000 ₽, 5–10 обращений, CPL 1 500–3 000 ₽.
-Итого: 45–75 обращений за месяц. Это предварительная гипотеза: прогноз уточню после изучения услуг, цен, даты открытия и рекламного аукциона. Лидом считаю уникальное целевое обращение; записи, состоявшиеся визиты и оплаты отслеживаю отдельно.
+Контент-маркетинг и SMM. Оформлю сообщество ВКонтакте как посадочную площадку: услуги, врачи, ответы на вопросы и понятный путь до записи. Через контент познакомлю аудиторию с клиникой, объясню процедуры и проработаю возражения.
+
+Реклама ВКонтакте. Вместе с таргетологом протестирую рекламу на подготовленное сообщество. Параллельно проработаю обработку первичных обращений: скорость ответа, диалог с администратором, запись и сопровождение до визита.
+
+Мессенджер-маркетинг. Разработаю индивидуальные сценарии повторных касаний после обращения, консультации и посещения. Автоматизирую сообщения с учетом истории клиента и этапа общения. Рассылки и персональные касания запущу по мере формирования базы и с согласия клиентов.
+
+Обязательной частью запуска считаю программу лояльности: понятные условия участия, ценность повторного визита и учет программы в CRM. Свяжу ее с контентом, рассылками и персональными касаниями. Условия разработаю с учетом экономики услуг.
+
+На рекламу ВКонтакте предварительно заложила бы 40 000 ₽ в месяц. Рабочий ориентир CPL — 500–1 000 ₽; для расчета беру 700 ₽. Получается около 57 заявок в месяц, диапазон при указанном CPL — 40–80. Это гипотеза для теста; фактический результат проверю после запуска. Оплата специалистов, контента и сервисов рассчитывается отдельно. Для осторожного сценария закладываю 10% перехода из заявки в состоявшийся визит: около 6 первых визитов из 57 заявок. Это расчетное допущение для новой клиники, а не среднерыночный показатель. Конверсию в запись, доходимость записанных пациентов и повторные посещения отслеживаю отдельно.
+
+Рекламу на Яндексе рассмотрю как резервный канал с дополнительным бюджетом 9–15 тысяч ₽ в месяц, сверх основного бюджета ВКонтакте. Перед запуском проверю спрос и подготовлю подходящую посадочную страницу для клиники в Перми. В основной прогноз заявок этот канал пока не включаю.
 
 3. ПРИМЕРЫ КОНТЕНТА
 
