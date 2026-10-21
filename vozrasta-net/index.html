@@ -19,6 +19,10 @@
     .plan-notes{display:grid;grid-template-columns:1fr 1fr;gap:45px;margin-top:34px;padding-top:28px;border-top:1px solid #53705d}.plan-notes h3{font-family:var(--serif);font-size:28px;font-weight:400;margin-top:10px}.plan-notes p{font-size:14px;color:#d1dccd;margin-top:13px;line-height:1.7}.channel h3{overflow-wrap:anywhere}
     @media(max-width:700px){.plan-notes{grid-template-columns:1fr;gap:27px;margin-top:28px;padding-top:25px}.plan-notes h3{font-size:27px}.plan-notes p{font-size:13px}.budget h3{max-width:195px}}
     @media print{.plan-notes{break-inside:avoid;border-color:var(--line)}.plan-notes p{color:var(--muted);font-size:12px}.plan-notes h3{font-size:24px}}
+
+    .launch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:28px}.launch-grid h3{font-size:19px}.launch-grid p{font-size:13px;color:#d1dccd;margin-top:12px}.launch-title{font-family:var(--serif);font-size:32px;margin-top:42px;padding-top:28px;border-top:1px solid #53705d}.economy{border-bottom:1px solid var(--line)}.economy-intro{padding:24px 28px;background:var(--sage);font-size:16px;margin-bottom:28px}.assumptions{display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;margin:24px 0}.assumptions p{font-size:14px;color:var(--muted)}.table-scroll{overflow-x:auto;margin:26px 0}.economy-table{min-width:640px}.economy-table td:first-child{display:table-cell;white-space:normal;width:40%}.economy-table th,.economy-table td{padding:14px 12px}.economy-table th:first-child,.economy-table td:first-child{padding-left:0}.economy-table .result{background:var(--sage);font-weight:600}.economy-table .result td:first-child{padding-left:12px}.economy-notes{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:28px}.economy-notes h3{font-size:22px}.economy-notes p,.economy-source{font-size:13px;color:var(--muted);margin-top:13px}.economy-bottom{margin-top:28px;padding-top:22px;border-top:1px solid var(--line);font-size:15px}.research{margin-top:24px;font-size:12px;color:var(--muted)}.research summary{cursor:pointer}.research p{margin-top:12px}
+    @media(max-width:700px){.launch-grid,.assumptions,.economy-notes{grid-template-columns:1fr}.launch-grid{gap:20px}.economy-intro{padding:20px;font-size:15px}.economy-table{font-size:12px}.navlinks{gap:10px}.launch-title{font-size:28px}.table-scroll:before{content:'Таблицу можно прокрутить вправо →';display:block;font-size:11px;color:var(--muted);margin-bottom:12px}}
+    @media print{.launch-grid p{color:var(--muted)}.launch-grid{grid-template-columns:repeat(3,1fr)}.table-scroll{overflow:visible}.economy-table{min-width:0;font-size:11px}.economy-intro,.economy-notes{break-inside:avoid}.research{display:none}}
   </style>
 </head>
 <body>
@@ -26,7 +30,7 @@
   <header class="topbar">
     <nav class="wrap nav" aria-label="Навигация по странице">
       <a class="wordmark" href="#main"><span class="monogram" aria-hidden="true">АМ</span> Анастасия Маркова</a>
-      <div class="navlinks"><a href="#cases">Кейсы</a><a href="#plan">План на 30 дней</a><a class="nav-content" href="#content">Контент</a></div>
+      <div class="navlinks"><a href="#cases">Кейсы</a><a href="#plan">План на 30 дней</a><a href="#economy">Экономика</a><a class="nav-content" href="#content">Контент</a></div>
     </nav>
   </header>
   <main id="main">
@@ -43,7 +47,7 @@
             <div class="contents">
               <div class="contents-title">Три ответа на вопросы вакансии</div>
               <a href="#cases"><span class="num">01</span><span class="label">Опыт и результаты</span><span class="arrow" aria-hidden="true">↗</span></a>
-              <a href="#plan"><span class="num">02</span><span class="label">Каналы, бюджет и прогноз</span><span class="arrow" aria-hidden="true">↗</span></a>
+              <a href="#plan"><span class="num">02</span><span class="label">Каналы, запуск и экономика</span><span class="arrow" aria-hidden="true">↗</span></a>
               <a href="#content"><span class="num">03</span><span class="label">Примеры контента</span><span class="arrow" aria-hidden="true">↗</span></a>
             </div>
             <div class="identity"><span class="initial" aria-hidden="true">АМ</span><div><strong>Анастасия Маркова</strong><small>Маркетолог · SMM · Контент</small></div></div>
@@ -85,18 +89,65 @@
           <article><span class="channel-num">ОБЯЗАТЕЛЬНАЯ ЧАСТЬ ЗАПУСКА</span><h3>Программа лояльности</h3><p>Сразу заложу работу на удержание: понятные условия участия, ценность повторного визита и учет программы в CRM. Свяжу ее с контентом, рассылками и персональными касаниями. Условия программы разработаю с учетом экономики услуг.</p></article>
           <article><span class="channel-num">РЕЗЕРВНЫЙ КАНАЛ</span><h3>Реклама на Яндексе</h3><p>Рассмотрю как дополнительный тест с отдельным резервом 9–15 тысяч ₽ в месяц, сверх основного бюджета ВКонтакте. Перед запуском проверю спрос и подготовлю подходящую посадочную страницу для клиники в Перми. В основной прогноз заявок этот канал пока не включаю.</p></article>
         </div>
+
+        <h3 class="launch-title">Что поможет получить первые оплаты</h3>
+        <div class="launch-grid">
+          <article><span class="channel-num">01 / ЭКОНОМИКА УСЛУГ</span><h3>Два-три предложения для старта</h3><p>Выберу услуги после расчета расходников, оплаты врача, времени приема, загрузки оборудования и повторного спроса. Оценю, сколько остается с продажи каждой услуги и какой объем клиника может принять.</p></article>
+          <article><span class="channel-num">02 / ПЕРВЫЙ ВИЗИТ</span><h3>Понятный оффер</h3><p>Сформулирую предложение с составом первого визита, ценой и следующим шагом. Необходимость процедуры определяет врач. Скидки и бонусы проверю по экономике до запуска.</p></article>
+          <article><span class="channel-num">03 / МЕСТНЫЕ ПАРТНЕРЫ</span><h3>Фитнес, пилатес и салоны</h3><p>Протестирую небольшие партнерства с соседними студиями, салонами и женскими сообществами. Для каждого источника — своя ссылка или код, учет оплаченных визитов и расходов на бонусы.</p></article>
+          <article><span class="channel-num">04 / ЗНАКОМСТВО С КЛИНИКОЙ</span><h3>Аудитория врачей и встречи</h3><p>Подключу профессиональные площадки врачей и предложу небольшие ознакомительные мероприятия. Заранее подготовлю свободные окна, цены и администратора, который поможет записаться.</p></article>
+          <article><span class="channel-num">05 / ОБРАБОТКА ОБРАЩЕНИЙ</span><h3>От заявки до оплаты</h3><p>Проработаю ответы администраторов, скорость реакции, повторный контакт, подтверждение и перенос записи. В CRM разделю заявки, записи, состоявшиеся визиты и оплаты процедур.</p></article>
+          <article><span class="channel-num">06 / ПОИСК И УДЕРЖАНИЕ</span><h3>Карты и повторные визиты</h3><p>Оформлю карточки клиники в Яндекс Картах и 2ГИС: услуги, фото, контакты и запись. Настрою сбор отзывов и сопровождение повторных визитов по рекомендациям врача. Повторные оплаты оценю за 60–90 дней.</p></article>
+        </div>
+
         <p class="definition">Заявка — уникальное целевое обращение. Отдельно отслеживаю конверсию в запись, состоявшиеся визиты, оплаты и повторные посещения. Результат работы с базой оцениваю по возвратам и повторным записям.</p>
         <div class="workflow" aria-label="Последовательность работы в первый месяц">
-          <div><b>НЕДЕЛЯ 01</b><p>Упаковка площадок, посадочная ВКонтакте, оффер и учет заявок.</p></div>
-          <div><b>НЕДЕЛЯ 02</b><p>Контент и запуск рекламы. Проверка обработки первичных обращений.</p></div>
+          <div><b>НЕДЕЛЯ 01</b><p>Экономика услуг, упаковка площадок, оффер и учет заявок.</p></div>
+          <div><b>НЕДЕЛЯ 02</b><p>Контент, реклама и первые партнерства. Проверка обработки обращений.</p></div>
           <div><b>НЕДЕЛЯ 03</b><p>Программа лояльности и первые сценарии повторных касаний.</p></div>
-          <div><b>НЕДЕЛЯ 04</b><p>Разбор заявок, записей и визитов. Корректировка рекламы и сценариев.</p></div>
+          <div><b>НЕДЕЛЯ 04</b><p>Разбор заявок, визитов, оплат и расходов. Корректировка рекламы и сценариев.</p></div>
         </div>
       </div>
     </section>
     <div class="wrap">
+
+      <section class="section economy" id="economy" aria-labelledby="economy-title">
+        <div class="section-head"><span class="section-no" aria-hidden="true">03</span><div><h2 id="economy-title">Предварительная экономика</h2><p class="section-desc">Модель первого месяца для трафика ВКонтакте. Показывает зависимость результата от визитов и оплат; после получения прайса и себестоимости клиники пересчитаю параметры.</p></div></div>
+        <p class="economy-intro">При бюджете <strong>40 000 ₽</strong> и переходе из заявки в визит около <strong>10%</strong> реклама может не окупиться в первый месяц. Пришедший на консультацию пациент и покупатель процедуры — разные этапы воронки.</p>
+        <div class="assumptions">
+          <p><strong>40 000 ₽ на размещение и CPL 700 ₽.</strong> Получается около 57 заявок. Стоимость заявки — рабочая гипотеза для теста.</p>
+          <p><strong>50% пришедших оплачивают процедуру.</strong> Условная конверсия для расчета, которую предстоит проверить.</p>
+          <p><strong>15 000 ₽ — условный средний чек процедуры.</strong> Это допущение, а не подтвержденный средний чек клиники.</p>
+          <p><strong>50% выручки остается после переменных расходов.</strong> Допущение об оплате врача, препаратах, расходниках и других затратах на процедуру.</p>
+        </div>
+        <div class="table-scroll" role="region" aria-label="Сценарии экономики первого месяца" tabindex="0">
+          <table class="economy-table"><caption>Три сценария при одном рекламном бюджете</caption>
+            <thead><tr><th scope="col">Показатель</th><th scope="col">Слабый</th><th scope="col">Средний</th><th scope="col">Сильный</th></tr></thead>
+            <tbody>
+              <tr><td>Заявки</td><td>57</td><td>57</td><td>57</td></tr>
+              <tr><td>Пришли пациенты</td><td>6</td><td>12</td><td>18</td></tr>
+              <tr><td>Доля пришедших от заявок</td><td>≈ 11%</td><td>≈ 21%</td><td>≈ 32%</td></tr>
+              <tr><td>Оплатили процедуру</td><td>3</td><td>6</td><td>9</td></tr>
+              <tr><td>Выручка при чеке 15 000 ₽</td><td>45 000 ₽</td><td>90 000 ₽</td><td>135 000 ₽</td></tr>
+              <tr><td>Осталось после переменных расходов</td><td>22 500 ₽</td><td>45 000 ₽</td><td>67 500 ₽</td></tr>
+              <tr class="result"><td>Осталось после оплаты рекламы</td><td>−17 500 ₽</td><td>+5 000 ₽</td><td>+27 500 ₽</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="economy-source">Расчет: число оплат × 15 000 ₽ × 50% − 40 000 ₽. Число визитов в сценариях округлено до целых; 6 из 57 — около 11%, что соответствует осторожному ориентиру около 10%.</p>
+        <p class="economy-source"><strong>Последняя строка — еще не прибыль клиники.</strong> Не учтены маркетолог, подрядчики, аренда, постоянные расходы и налоги. Доход от консультаций, повторных процедур и дополнительных каналов в расчет не включен. Яндекс с резервом 9–15 тысяч ₽ также считается отдельно.</p>
+        <div class="economy-notes">
+          <article><h3>Что нужно для покрытия рекламы</h3><p>При этих допущениях нужны <strong>6 оплат по 15 000 ₽</strong>: 90 000 ₽ выручки оставят 45 000 ₽ после переменных расходов и 5 000 ₽ после рекламы. При покупке у половины пришедших это <strong>12 визитов из 57 заявок — около 21%</strong>. Такой результат — ориентир теста, а не обещание.</p></article>
+          <article><h3>Если добавить оплату маркетолога</h3><p>Для примера, при условных <strong>80 000 ₽ на маркетолога</strong> и 40 000 ₽ на рекламу потребуется покрыть 120 000 ₽. При той же маржинальности нужны <strong>240 000 ₽ выручки, или 16 процедур по 15 000 ₽</strong>. Это не согласованный гонорар. Расходы работодателя сверх этой оплаты и прочие постоянные затраты здесь не учтены.</p></article>
+          <article><h3>Высокий чек сам по себе не решает задачу</h3><p>Для сравнения: в <a href="https://vozrastanet24.ru/price/apparatnaya-kosmetologiya/mikroigolchatyy-rf-lifting/" target="_blank" rel="noopener noreferrer">прайсе «Возраста нет» в Красноярске</a> RF-лифтинг всего лица указан за 25 000 ₽. Это ориентир отдельной услуги другого города; связь сайта с пермской клиникой и ее цены требуют подтверждения.</p><p>Даже 3 процедуры по 25 000 ₽ при условной маржинальности 50% дадут после рекламы <strong>−2 500 ₽</strong>. Поэтому услуги выбираю по сумме, которая остается после затрат.</p></article>
+          <article><h3>Как оценивать удержание</h3><p>Зафиксирую пациентов, привлеченных в первый месяц, и прослежу их фактические оплаты за 60–90 дней. Повторные продажи могут улучшить результат, но заранее включать их в гарантированную выручку нельзя. Расходы на программу лояльности и повторные касания также учитываю.</p></article>
+        </div>
+        <details class="research"><summary>Почему 10% — допущение, а не рыночная норма</summary><p>В опубликованном <a href="https://vc.ru/marketing/2938351-targetirovannaya-reklama-vkontakte-dlya-kosmetologa-v-surgute" target="_blank" rel="noopener noreferrer">кейсе косметолога из Сургута</a> автор сообщает о 69 обращениях и минимум 12 клиентах на процедурах: около 17%. В <a href="https://vc.ru/id4124736/1857892-kak-privlech-klientov-na-epilyaciyu-cherez-vkontakte-1657-zayavok-po-383-i-roi-221-za-6-mesyacev-raboty" target="_blank" rel="noopener noreferrer">кейсе эпиляции</a> — 1 657 заявок, 745 записей и 521 визит: около 31% от заявок и 70% от записей. Это данные авторов отдельных проектов с другими услугами и условиями, а не прогноз для новой клиники. Конверсии «заявка → визит» и «запись → визит» считаю отдельно.</p></details>
+        <p class="economy-bottom"><strong>40 000 ₽ — бюджет проверки предложения и воронки.</strong> Приоритет запуска: экономика услуг → офферы → подготовка администраторов → ВКонтакте и партнерства → первые оплаты. Решение об увеличении бюджета принимаю по фактическим результатам.</p>
+      </section>
+
       <section class="section" id="content" aria-labelledby="content-title">
-        <div class="section-head"><span class="section-no" aria-hidden="true">03</span><div><h2 id="content-title">Медицинские темы<br>человеческим языком</h2><p class="section-desc">Веду контент для личного бренда врача Гульнары Садыковой в клинике «Медлайн»: темы, тексты, сценарии, съемка и монтаж.</p></div></div>
+        <div class="section-head"><span class="section-no" aria-hidden="true">04</span><div><h2 id="content-title">Медицинские темы<br>человеческим языком</h2><p class="section-desc">Веду контент для личного бренда врача Гульнары Садыковой в клинике «Медлайн»: темы, тексты, сценарии, съемка и монтаж.</p></div></div>
         <div class="examples">
           <article class="example"><div class="example-index"><span>01</span><span>ОБЪЯСНЕНИЕ</span></div><h3>Сухость и дискомфорт после 45</h3><p>Публикация с разбором вопроса, с которым пациентки приходят к врачу.</p><a class="textlink" href="https://t.me/dr_sadykova_medline/149" target="_blank" rel="noopener noreferrer">Открыть публикацию <span aria-hidden="true">↗</span></a></article>
           <article class="example"><div class="example-index"><span>02</span><span>РАЗБОР ТРЕНДА</span></div><h3>Вагиномаксинг:<br>взгляд врача</h3><p>Экспертный контент на тему, которую обсуждают в социальных сетях.</p><a class="textlink" href="https://t.me/dr_sadykova_medline/165" target="_blank" rel="noopener noreferrer">Открыть публикацию <span aria-hidden="true">↗</span></a></article>
@@ -140,6 +191,25 @@ COSMOMED Clinic, Пермь. Вместе с таргетологом запус
 На рекламу ВКонтакте предварительно заложила бы 40 000 ₽ в месяц. Рабочий ориентир CPL — 500–1 000 ₽; для расчета беру 700 ₽. Получается около 57 заявок в месяц, диапазон при указанном CPL — 40–80. Это гипотеза для теста; фактический результат проверю после запуска. Оплата специалистов, контента и сервисов рассчитывается отдельно. Для осторожного сценария закладываю 10% перехода из заявки в состоявшийся визит: около 6 первых визитов из 57 заявок. Это расчетное допущение для новой клиники, а не среднерыночный показатель. Конверсию в запись, доходимость записанных пациентов и повторные посещения отслеживаю отдельно.
 
 Рекламу на Яндексе рассмотрю как резервный канал с дополнительным бюджетом 9–15 тысяч ₽ в месяц, сверх основного бюджета ВКонтакте. Перед запуском проверю спрос и подготовлю подходящую посадочную страницу для клиники в Перми. В основной прогноз заявок этот канал пока не включаю.
+
+ДОПОЛНИТЕЛЬНЫЕ ДЕЙСТВИЯ ДЛЯ ПЕРВЫХ ОПЛАТ
+
+Выберу 2–3 услуги после расчета расходников, оплаты врача, времени приема, загрузки и повторного спроса. Сформулирую предложение первого визита с понятной ценой; необходимость процедуры определяет врач. Проверю экономику скидок и бонусов.
+Протестирую партнерства с местными фитнес- и пилатес-студиями, салонами и женскими сообществами: отдельные ссылки или коды, учет оплаченных визитов и затрат. Подключу профессиональные площадки врачей и небольшие ознакомительные мероприятия с готовыми окнами записи.
+Подготовлю администраторов: быстрый ответ, повторный контакт, подтверждение и перенос записи. Оформлю карточки в Яндекс Картах и 2ГИС, настрою сбор отзывов и сопровождение повторных визитов по рекомендации врача.
+
+ПРЕДВАРИТЕЛЬНАЯ ЭКОНОМИКА
+
+Допущения: 40 000 ₽ на размещение рекламы, CPL 700 ₽, около 57 заявок; 50% пришедших оплачивают процедуру; средний чек 15 000 ₽; после переменных расходов остается 50% выручки. Средний чек, конверсия в оплату и маржинальность пока не подтверждены.
+Слабый сценарий: 6 визитов (около 11% заявок), 3 оплаты, 45 000 ₽ выручки, 22 500 ₽ после переменных расходов, −17 500 ₽ после рекламы.
+Средний сценарий: 12 визитов (около 21%), 6 оплат, 90 000 ₽ выручки, 45 000 ₽ после переменных расходов, +5 000 ₽ после рекламы.
+Сильный сценарий: 18 визитов (около 32%), 9 оплат, 135 000 ₽ выручки, 67 500 ₽ после переменных расходов, +27 500 ₽ после рекламы.
+Формула: оплаты × 15 000 ₽ × 50% − 40 000 ₽. Последняя сумма — не прибыль клиники: не учтены маркетолог, подрядчики, аренда, постоянные расходы и налоги. Консультации, повторные оплаты, партнерские продажи и резерв Яндекса не включены.
+Чтобы покрыть рекламу, нужны 6 оплат по 15 000 ₽, или около 12 визитов при покупке у половины пришедших. Это ориентир теста, не обещание.
+Если условно добавить 80 000 ₽ на маркетолога, нужно покрыть 120 000 ₽: при маржинальности 50% потребуется 240 000 ₽ выручки, или 16 процедур по 15 000 ₽. Это не согласованный гонорар; расходы работодателя сверх оплаты и прочие постоянные расходы не включены.
+В прайсе «Возраста нет» в Красноярске RF-лифтинг всего лица стоит 25 000 ₽. Связь сайта с пермской клиникой и ее цены требуют подтверждения. Три процедуры по 25 000 ₽ при маржинальности 50% оставят −2 500 ₽ после рекламы.
+Источник цены: https://vozrastanet24.ru/price/apparatnaya-kosmetologiya/mikroigolchatyy-rf-lifting/
+Фактические повторные оплаты привлеченных пациентов оценю за 60–90 дней с учетом расходов на удержание. Бюджет 40 000 ₽ рассматриваю как проверку предложения и воронки; прибыльный запуск всей клиники заранее не обещаю.
 
 3. ПРИМЕРЫ КОНТЕНТА
 
