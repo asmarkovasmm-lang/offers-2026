@@ -119,11 +119,17 @@ tr[data-tone="group-vk"]:not(.group):not(.total)>th,tr[data-tone="group-vk"]:not
 (function(root){
 'use strict';
 const main=typeof module!=='undefined'&&module.exports?require('./dist/model.js'):root.PerchiniModel;
-const defaults=Object.freeze({baseline:6852133,adBudget:25000,subscriberCost:50,subscribers1:500,subscribers2:400,subscribers3:300,conversion:20,firstCheck:1400,returnRate:30,agency:30000,messenger:20000,software:5000,setup:35000,foodCost:21,giftCost:102.9,hall1:200,hall2:0,otherReturn:1,loyaltyReturn:5,loyaltyCheck:2480,loyaltyBonus:5,bonusEarn:5,bonusCap:20});
+const defaults=Object.freeze({baseline:6852133,adBudget:25000,subscriberCost:150,conversion:20,firstCheck:1400,returnRate:30,agency:30000,messenger:20000,software:5000,setup:35000,foodCost:21,giftCost:102.9,hall1:200,hall2:0,otherReturn:1,loyaltyReturn:5,loyaltyCheck:2480,loyaltyBonus:5,bonusEarn:5,bonusCap:20});
 function calculate(input={}){
  const values={...defaults,...input};
  for(const key of Object.keys(defaults))if(!Number.isFinite(values[key])||values[key]<0)throw new RangeError('Некорректное значение: '+key);
- const months=Array.from({length:3},(_,i)=>({...values,subscribers:values['subscribers'+(i+1)],repeatCheck:values.firstCheck,returnRate:i===0?0:values.returnRate,setup:i===0?values.setup:0,...(input.months?.[i]??{})}));
+ const months=Array.from({length:3},(_,i)=>{
+  const override=input.months?.[i]??{},m={...values,repeatCheck:values.firstCheck,returnRate:i===0?0:values.returnRate,setup:i===0?values.setup:0,...override};
+  const subscribers=override.subscribers??input['subscribers'+(i+1)];
+  if(subscribers!==undefined){m.subscribers=subscribers;if(subscribers>0&&m.adBudget>0)m.subscriberCost=m.adBudget/subscribers;}
+  else{if(m.subscriberCost<=0)throw new RangeError('Стоимость подписки должна быть больше нуля.');m.subscribers=m.adBudget/m.subscriberCost;}
+  return m;
+ });
  for(const m of months){
   for(const key of [...Object.keys(defaults),'subscribers','repeatCheck'])if(!Number.isFinite(m[key])||m[key]<0)throw new RangeError('Некорректное значение: '+key);
   for(const key of ['loyaltyReturn','otherReturn','loyaltyBonus','conversion','returnRate','foodCost','bonusEarn','bonusCap'])if(m[key]>100)throw new RangeError('Процент больше 100: '+key);
@@ -158,7 +164,7 @@ const api={defaults,calculate};if(typeof module!=='undefined'&&module.exports)mo
 const defaults={...window.PerchiniSimpleModel.defaults};
 let values={...defaults};try{const saved=document.getElementById('calcsaved');if(saved)values={...defaults,...JSON.parse(saved.textContent)};}catch(error){}
 const $=id=>document.getElementById(id),n=(v,d=0)=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:d}).format(Math.abs(v)<.5*10**(-d)?0:v),money=(v,d=0)=>n(v,d)+' ₽';
-const limits={baseline:[0,100000000,1000],adBudget:[0,1000000,1000],subscribers:[0,100000,1],conversion:[0,100,1],firstCheck:[1400,30000,100],repeatCheck:[1,30000,100],returnRate:[0,100,1],agency:[0,1000000,1000],messenger:[0,1000000,1000],software:[0,1000000,500],setup:[0,1000000,1000],foodCost:[0,100,.1],giftCost:[0,10000,.1],hall1:[0,20000,1],hall2:[0,20000,1],otherReturn:[0,100,1],loyaltyReturn:[0,100,.1],loyaltyCheck:[1,30000,100],loyaltyBonus:[0,100,.5],bonusEarn:[0,100,.5],bonusCap:[0,100,1]};
+const limits={baseline:[0,100000000,1000],adBudget:[0,1000000,1000],subscribers:[0,100000,1],subscriberCost:[1,1000000,10],conversion:[0,100,1],firstCheck:[1400,30000,100],repeatCheck:[1,30000,100],returnRate:[0,100,1],agency:[0,1000000,1000],messenger:[0,1000000,1000],software:[0,1000000,500],setup:[0,1000000,1000],foodCost:[0,100,.1],giftCost:[0,10000,.1],hall1:[0,20000,1],hall2:[0,20000,1],otherReturn:[0,100,1],loyaltyReturn:[0,100,.1],loyaltyCheck:[1,30000,100],loyaltyBonus:[0,100,.5],bonusEarn:[0,100,.5],bonusCap:[0,100,1]};
 function setTable(html){
  const body=$('calculation'),next=document.createElement('tbody');next.innerHTML=html;
  let tone='group-neutral';for(const row of next.rows){if(row.classList.contains('group'))tone=row.dataset.tone;else row.dataset.tone=tone;}
@@ -176,11 +182,11 @@ function render(){
  const {rows,months}=window.PerchiniSimpleModel.calculate(values);const sum=key=>rows.reduce((a,r)=>a+r[key],0);
  const group=(label,color='group-neutral')=>`<tr class="group ${color}" data-tone="${color}"><th colspan="4">${label}</th></tr>`;
  const row=(label,fn,css='',digits=2,note='')=>`<tr class="${css}"><th scope="row">${label}${note?`<small>${note}</small>`:''}</th>${rows.map(r=>{const v=fn(r);return `<td${typeof v==='number'&&v<0?' class="negative"':''}>${v===null?'—':n(v,digits)}</td>`}).join('')}</tr>`;
- const edit=(label,key,note='')=>{const [min,max,step]=limits[key];return `<tr class="editable"><th scope="row">${label}${note?`<small>${note}</small>`:''}</th>${months.map((m,i)=>`<td><div class="step-control"><button type="button" data-step="-1" aria-label="Уменьшить: ${label.replace(/<[^>]+>/g,'')}, месяц ${i+1}"${m[key]<=min?' disabled':''}>−</button><input id="m${i+1}-${key}" data-month="${i}" name="${key}" type="number" min="${min}" max="${max}" step="${step}" value="${m[key]}" aria-label="${label.replace(/<[^>]+>/g,'')}, месяц ${i+1}"><button type="button" data-step="1" aria-label="Увеличить: ${label.replace(/<[^>]+>/g,'')}, месяц ${i+1}"${m[key]>=max?' disabled':''}>+</button></div></td>`).join('')}</tr>`;};
+ const edit=(label,key,note='')=>{const [min,max,step]=limits[key];return `<tr class="editable"><th scope="row">${label}${note?`<small>${note}</small>`:''}</th>${months.map((m,i)=>`<td><div class="step-control"><button type="button" data-step="-1" aria-label="Уменьшить: ${label.replace(/<[^>]+>/g,'')}, месяц ${i+1}"${m[key]<=min?' disabled':''}>−</button><input id="m${i+1}-${key}" data-month="${i}" name="${key}" type="number" min="${min}" max="${max}" step="${step}" value="${['subscribers','subscriberCost'].includes(key)?Number(m[key].toFixed(2)):m[key]}" aria-label="${label.replace(/<[^>]+>/g,'')}, месяц ${i+1}"><button type="button" data-step="1" aria-label="Увеличить: ${label.replace(/<[^>]+>/g,'')}, месяц ${i+1}"${m[key]>=max?' disabled':''}>+</button></div></td>`).join('')}</tr>`;};
  const rates=key=>{const list=months.map(m=>n(m[key],2)+'%');return list.every(x=>x===list[0])?list[0]:list.join(' / ');};
  setTable(
  group('Реклама: сколько гостей придет','group-vk')+
- edit('Рекламный бюджет, ₽','adBudget')+edit('Новые подписки из рекламы','subscribers')+row('Стоимость подписки, ₽',r=>r.subscriberCost,'',2,'Рекламный бюджет ÷ новые подписки')+
+ edit('Рекламный бюджет, ₽','adBudget')+edit('Новые подписки из рекламы','subscribers','Бюджет ÷ стоимость подписки. Дробные значения — расчетный прогноз.')+edit('Стоимость подписки, ₽','subscriberCost','Прогноз — 150 ₽ за подписку в Senler. При изменении пересчитываем подписки и итог.')+
  edit('Дошли и сделали заказ, % подписок','conversion')+row('Новые платящие клиенты из рекламы',r=>r.first)+row('Рекламные расходы на один новый заказ, ₽',r=>r.adOrderCost,'',2,'Только рекламный бюджет ÷ новые платящие клиенты')+
  edit('Повторный визит, % клиентов прошлого месяца','returnRate','В первом месяце базы для возврата еще нет')+row('Повторные визиты клиентов из рекламы',r=>r.repeats)+
  group('Программа лояльности: дополнительные визиты','group-loyalty')+
@@ -202,7 +208,7 @@ function render(){
  row('Общая база карт двух ресторанов на конец месяца',r=>r.cardBase)+
  group('Итог проекта после всех расходов, ₽','group-result')+row('Результат без дополнительных заказов по картам',r=>r.advertisingResult)+row('Прибавка от лояльности и рассылок',r=>r.loyaltyContribution+r.otherContribution,'total')+row('Результат с начала запуска',r=>r.cumulative,'',2,'Накопленный итог с первого месяца')+
  `<tr class="net"><th scope="row">Итог проекта за месяц<small>Дополнительные оплаты − все расходы проекта</small></th>${rows.map(r=>`<td class="${r.result<0?'negative':'positive'}">${money(r.result,2)}<small>${money(r.incrementalCash,2)} − ${money(r.totalCosts,2)}</small></td>`).join('')}</tr>`);
- $('funnel').textContent=`Рекламный бюджет: ${months.map(m=>money(m.adBudget)).join(' / ')}. Новые подписки: ${rows.map(r=>n(r.subscribers)).join(' / ')}. Новые платящие клиенты: ${rows.map(r=>n(r.first,1)).join(' / ')}.`;
+ $('funnel').textContent=`Рекламный бюджет: ${months.map(m=>money(m.adBudget)).join(' / ')}. Стоимость подписки: ${months.map(m=>money(m.subscriberCost,2)).join(' / ')}. Новые подписки: ${rows.map(r=>n(r.subscribers,2)).join(' / ')}. Новые платящие клиенты: ${rows.map(r=>n(r.first,2)).join(' / ')}.`;
  $('loyalty-formula').textContent=`База по программе лояльности: ${rows.map(r=>n(r.loyaltyBaseStart+r.otherBaseStart)).join(' / ')}. Дополнительные визиты: ${rows.map(r=>n(r.loyaltyVisits+r.otherVisits,1)).join(' / ')}. Их вклад после бонусов и себестоимости: ${rows.map(r=>money(r.loyaltyContribution+r.otherContribution,2)).join(' / ')}.`;
  $('total-clients').textContent=`${n(sum('first'),1)} новых платящих клиентов из рекламы + ${n(sum('repeats'),1)} повторных визитов из рекламы + ${n(sum('loyaltyVisits')+sum('otherVisits'),1)} дополнительных визитов по программе лояльности.`;
  $('total-money').innerHTML=`${money(sum('incrementalCash'),2)} дополнительной оплаты − ${money(sum('totalCosts'),2)} расходов = <strong class="${sum('result')<0?'negative':'positive'}">${money(sum('result'),2)}</strong>.`;
@@ -226,7 +232,9 @@ $('calculation').addEventListener('keydown',event=>{
 $('calculation').addEventListener('input',event=>{
  const input=event.target;if(!input.matches('input[data-month]'))return;const v=Number(input.value);
  if(input.value===''||!Number.isFinite(v)||v<Number(input.min)||v>Number(input.max)){input.setAttribute('aria-invalid','true');$('input-error').textContent=`Допустимое значение: от ${n(Number(input.min))} до ${n(Number(input.max))}.` ;return;}
- values.months??=[{},{},{}];values.months[Number(input.dataset.month)][input.name]=v;
+ values.months??=[{},{},{}];const month=values.months[Number(input.dataset.month)];month[input.name]=v;
+ if(input.name==='subscriberCost'||input.name==='adBudget')delete month.subscribers;
+ if(input.name==='subscribers'&&v>0)month.subscriberCost=window.PerchiniSimpleModel.calculate(values).months[Number(input.dataset.month)].adBudget/v;
  $('input-error').textContent='';render();
 });
 $('calculation').addEventListener('focusout',event=>{if(event.target.matches('input[aria-invalid="true"]')){const i=Number(event.target.dataset.month);event.target.value=window.PerchiniSimpleModel.calculate(values).months[i][event.target.name];event.target.removeAttribute('aria-invalid');$('input-error').textContent='Неверное значение не сохранено. Восстановлено последнее корректное число.';}});
