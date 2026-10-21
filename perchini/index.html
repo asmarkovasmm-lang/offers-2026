@@ -22,13 +22,13 @@ tr[data-tone="group-vk"]:not(.group):not(.total)>th,tr[data-tone="group-vk"]:not
 <div class="color-key" aria-label="Цвета разделов"><span class="key-vk">Реклама</span><span class="key-loyalty">Лояльность</span><span class="key-expenses">Расходы</span><span class="key-result">Выручка и итог</span></div>
 <p class="formula" id="funnel"></p>
 <p class="formula" id="loyalty-formula"></p>
-<p class="base-note">База карт на начало второго месяца — участники, которых собрали в первом месяце. По исходному прогнозу это 200 человек; к началу третьего месяца — 400. Рекламных клиентов здесь повторно не учитываем. Первые покупки при оформлении карты уже входят в исходную выручку.</p>
+<p class="base-note">База карт на начало второго месяца — участники, которых собрали в первом месяце. По исходному прогнозу это 50 человек; к началу третьего месяца — 100. Рекламных клиентов здесь повторно не учитываем. Первые покупки при оформлении карты уже входят в исходную выручку.</p>
 <h2 style="margin-top:28px">Расчет на три месяца</h2>
 <p class="table-note">Цифры можно вводить вручную или менять кнопками − и +. Денежные суммы — в рублях. Под каждой стоимостью привлечения указано, какие расходы мы делим на клиентов.</p>
 <p class="error" id="input-error" role="status" aria-live="polite"></p>
 <div class="table-wrap"><table aria-label="Расчет за три месяца"><thead><tr><th>Показатель</th><th>Месяц 1</th><th>Месяц 2</th><th>Месяц 3</th></tr></thead><tbody id="calculation"></tbody></table></div>
 <div class="final"><h2>Итого за три месяца</h2><p id="total-clients"></p><p id="total-money"></p><p id="total-loyalty"></p><p class="muted" id="total-unit"></p></div>
-<p class="base-note">200 новых участников по картам, 5% дополнительных визитов, сервисы 5 000 ₽ и подарочная пицца 102,90 ₽ — расчетные гипотезы. Для дополнительного визита по карте используем средний чек на стол 2 480 ₽. Себестоимость блюд — 21%, ее можно изменить в таблице. Контент-менеджера ресторан оплачивает отдельно.</p>
+<p class="base-note">50 новых участников по картам, 3% дополнительных визитов, сервисы 5 000 ₽ и подарочная пицца 102,90 ₽ — расчетные гипотезы. Для дополнительного визита по карте используем средний чек на стол 2 480 ₽. Себестоимость блюд — 21%, ее можно изменить в таблице. Контент-менеджера ресторан оплачивает отдельно.</p>
 <p class="base-note">Повторы из рекламы считаем от активных клиентов прошлого месяца. Дополнительные визиты по картам — от накопленной доступной базы на начало месяца. Для карт «Хачу Пурри» отдельно задаем долю гостей, которые дополнительно придут в «Перчини»; начальный прогноз — 1%. Эти оплаты, бонусы и себестоимость входят в общий результат проекта. При расчете повторов из рекламы предполагаем, что гость использует доступные бонусы в пределах лимита. Карты и подписки могут принадлежать одним людям; их не складываем. Все оплатившие рекламную акцию оформляют карту.</p>
 <div class="actions"><button type="button" id="reset">Вернуть исходные цифры</button><button type="button" id="save">Скачать этот калькулятор</button><button type="button" id="print">Печать / PDF</button></div>
 <footer>Результат проекта после указанных расходов. Зарплата, аренда, дополнительные налоги, эквайринг и роялти здесь не учтены. Бонусные скидки на обычных покупках по картам пока отдельно не оценены. Себестоимость пиццы нужно подтвердить техкартой.</footer>
@@ -119,7 +119,7 @@ tr[data-tone="group-vk"]:not(.group):not(.total)>th,tr[data-tone="group-vk"]:not
 (function(root){
 'use strict';
 const main=typeof module!=='undefined'&&module.exports?require('./dist/model.js'):root.PerchiniModel;
-const defaults=Object.freeze({baseline:6852133,adBudget:25000,subscriberCost:150,conversion:20,firstCheck:1400,returnRate:30,agency:30000,messenger:20000,software:5000,setup:35000,foodCost:21,giftCost:102.9,hall1:200,hall2:0,otherReturn:1,loyaltyReturn:5,loyaltyCheck:2480,loyaltyBonus:5,bonusEarn:5,bonusCap:20});
+const defaults=Object.freeze({baseline:6852133,adBudget:25000,subscriberCost:150,conversion:5,firstCheck:1400,returnRate:10,agency:30000,messenger:20000,software:5000,setup:35000,foodCost:21,giftCost:102.9,hall1:50,hall2:0,otherReturn:1,loyaltyReturn:3,loyaltyCheck:2480,loyaltyBonus:5,bonusEarn:5,bonusCap:20});
 function calculate(input={}){
  const values={...defaults,...input};
  for(const key of Object.keys(defaults))if(!Number.isFinite(values[key])||values[key]<0)throw new RangeError('Некорректное значение: '+key);
