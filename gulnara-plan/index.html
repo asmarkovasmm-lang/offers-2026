@@ -65,6 +65,15 @@
     thead th{background:var(--surface-2);font:11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
     tbody th{width:23%;font-weight:600;background:var(--surface)}
     td{width:25.66%}td strong{display:block;color:var(--ink);margin-top:4px;font:600 13.5px var(--mono)}
+    .row-toggle{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;width:100%;padding:0;border:0;background:none;color:var(--ink);font:inherit;font-weight:600;text-align:left;cursor:pointer}
+    .row-toggle:hover{color:var(--accent)}
+    .row-toggle:after{content:'+';color:var(--rose);font:600 18px var(--mono);line-height:1;flex:none}
+    .row-toggle[aria-expanded="true"]:after{content:'−'}
+    .detail-row td{background:var(--surface);padding:18px 22px;color:var(--muted);font-size:14px}
+    .detail-row p{max-width:78ch}
+    .detail-row .items{margin:7px 0 0}
+    .detail-row .items li{font-size:14px}
+    .table-hint{font:12px var(--mono);color:var(--muted);margin:0 0 10px}
     .tentative{color:var(--muted)}
     .total th,.total td{background:var(--accent-soft);font-weight:600}
     .table-note{font-size:13.5px;color:var(--muted);margin-top:14px;max-width:78ch}
@@ -167,15 +176,22 @@
 
     <section class="schedule" id="schedule">
       <div class="sec-head"><div class="tag">План внедрения</div><h2>Ноябрь, декабрь, январь</h2><div class="sec-count">Стоимость работ сверх действующего договора с «Медлайном»</div></div>
+      <p class="table-hint">Нажмите на направление, чтобы посмотреть состав работ.</p>
       <div class="table-scroll"><table>
         <thead><tr><th scope="col">Направление</th><th scope="col">Ноябрь 2026</th><th scope="col">Декабрь 2026</th><th scope="col">Январь 2027</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Дополнительные публикации</th><td>+3 к текущим 8; всего 11<strong>6 000 ₽</strong></td><td>+4 к текущим 8; всего 12<strong>8 000 ₽</strong></td><td>+4 к текущим 8; всего 12<strong>8 000 ₽*</strong></td></tr>
-          <tr><th scope="row">Пробный режим Reels</th><td>Старт: 2 оригинальных ролика, далее от 10 оригинальных и адаптированных публикаций<strong>10 000 ₽</strong></td><td>От 10 публикаций, анализ результата за 2 месяца<strong>10 000 ₽</strong></td><td class="tentative">Решение по итогам ноября и декабря<strong>?</strong></td></tr>
-          <tr><th scope="row">«Актуальное»</th><td>Первый этап разработки 3 блоков<strong>7 500 ₽</strong></td><td>Завершение 3 блоков, около 5 слайдов каждый<strong>7 500 ₽</strong></td><td>Работа завершена<strong>—</strong></td></tr>
-          <tr><th scope="row">Подкасты</th><td>1 подкаст, пробная организация<strong>0 ₽</strong></td><td>2 подкаста<strong>5 000–14 000 ₽</strong></td><td>1 подкаст<strong>2 500–7 000 ₽</strong></td></tr>
-          <tr><th scope="row">Блогеры</th><td>1 блогер<strong>от 2 000 ₽</strong></td><td>1 блогер<strong>от 2 000 ₽</strong></td><td>1 блогер<strong>от 2 000 ₽</strong></td></tr>
-          <tr><th scope="row">Рассылочные материалы</th><td>Пока не запускаем<strong>—</strong></td><td>Пока не запускаем<strong>—</strong></td><td>2 материала, включая техническую реализацию рассылки<strong>6 000 ₽</strong></td></tr>
+          <tr><th scope="row"><button class="row-toggle" type="button" aria-expanded="false" aria-controls="detail-content">Дополнительные публикации</button></th><td>+3 к текущим 8; всего 11<strong>6 000 ₽</strong></td><td>+4 к текущим 8; всего 12<strong>8 000 ₽</strong></td><td>+4 к текущим 8; всего 12<strong>8 000 ₽*</strong></td></tr>
+          <tr class="detail-row" id="detail-content" hidden><td colspan="4"><p>Текущие 8 публикаций «Медлайна» посвящены эстетической гинекологии. Дополнительные материалы расширяют темы на ведение беременности и другие вопросы гинекологии: 3 публикации в ноябре и по 4 с декабря.</p></td></tr>
+          <tr><th scope="row"><button class="row-toggle" type="button" aria-expanded="false" aria-controls="detail-trial">Пробный режим Reels</button></th><td>Старт: 2 оригинальных ролика, далее от 10 оригинальных и адаптированных публикаций<strong>10 000 ₽</strong></td><td>От 10 публикаций, анализ результата за 2 месяца<strong>10 000 ₽</strong></td><td class="tentative">Решение по итогам ноября и декабря<strong>?</strong></td></tr>
+          <tr class="detail-row" id="detail-trial" hidden><td colspan="4"><p>Тестируем Reels на новой аудитории, чтобы увеличить охваты и привлечь заинтересованных подписчиков.</p><ul class="items"><li>На старте готовим 2 дополнительных оригинальных ролика.</li><li>Публикуем от 10 оригинальных и адаптированных материалов в месяц.</li><li>Перспективные ролики размещаем повторно, меняя метаданные и оформление.</li><li>Анализируем результаты и корректируем стратегию.</li></ul></td></tr>
+          <tr><th scope="row"><button class="row-toggle" type="button" aria-expanded="false" aria-controls="detail-highlights">«Актуальное»</button></th><td>Первый этап разработки 3 блоков<strong>7 500 ₽</strong></td><td>Завершение 3 блоков, около 5 слайдов каждый<strong>7 500 ₽</strong></td><td>Работа завершена<strong>—</strong></td></tr>
+          <tr class="detail-row" id="detail-highlights" hidden><td colspan="4"><p>Создаём 3 блока «Актуального» примерно по 5 слайдов. Разделы знакомят с врачом и услугами, отвечают на частые вопросы и помогают перейти к записи. Основной фокус — Instagram; структуру также используем для VK.</p></td></tr>
+          <tr><th scope="row"><button class="row-toggle" type="button" aria-expanded="false" aria-controls="detail-podcasts">Подкасты</button></th><td>1 подкаст, пробная организация<strong>0 ₽</strong></td><td>2 подкаста<strong>5 000–14 000 ₽</strong></td><td>1 подкаст<strong>2 500–7 000 ₽</strong></td></tr>
+          <tr class="detail-row" id="detail-podcasts" hidden><td colspan="4"><p>Ищем площадки, договариваемся об участии и определяем экспертные темы. Помогаем подготовить сценарий и структуру разговора, координируем съёмку, контролируем выход и планируем дальнейшее использование фрагментов. Первые два платных подкаста оцениваем по результату.</p></td></tr>
+          <tr><th scope="row"><button class="row-toggle" type="button" aria-expanded="false" aria-controls="detail-bloggers">Блогеры</button></th><td>1 блогер<strong>от 2 000 ₽</strong></td><td>1 блогер<strong>от 2 000 ₽</strong></td><td>1 блогер<strong>от 2 000 ₽</strong></td></tr>
+          <tr class="detail-row" id="detail-bloggers" hidden><td colspan="4"><p>Ищем блогера, согласуем сотрудничество и вместе разрабатываем концепцию размещения. Организуем съёмку, при необходимости выезжаем на площадку, получаем материалы и контролируем публикацию. Платное размещение у блогера оплачивается отдельно.</p></td></tr>
+          <tr><th scope="row"><button class="row-toggle" type="button" aria-expanded="false" aria-controls="detail-mailing">Рассылочные материалы</button></th><td>Пока не запускаем<strong>—</strong></td><td>Пока не запускаем<strong>—</strong></td><td>2 материала, включая техническую реализацию рассылки<strong>6 000 ₽</strong></td></tr>
+          <tr class="detail-row" id="detail-mailing" hidden><td colspan="4"><p>Создаём 2 материала для рассылки клиентам Гульнары Камильевны и технически запускаем рассылку. Материалы связывают контент и точку входа с записью, помогая пациенткам, которые уже заинтересовались услугой, принять решение. Стоимость — 3 000 ₽ за материал.</p></td></tr>
           <tr class="total"><th scope="row">Итого ориентир</th><td>При базовой цене менеджмента блогера<strong>25 500 ₽</strong></td><td>При базовой цене менеджмента блогера<strong>32 500–41 500 ₽</strong></td><td>Без пробного режима; при базовой цене менеджмента блогера<strong>18 500–23 000 ₽</strong></td></tr>
         </tbody>
       </table></div>
@@ -184,5 +200,15 @@
     </section>
     <footer class="closing"><a href="../">Вернуться к основному предложению</a></footer>
   </main>
+  <script>
+    document.querySelectorAll('.row-toggle').forEach(button => {
+      button.addEventListener('click', () => {
+        const detail = document.getElementById(button.getAttribute('aria-controls'));
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!expanded));
+        detail.hidden = expanded;
+      });
+    });
+  </script>
 </body>
 </html>
