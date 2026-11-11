@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Возраста нет — расходы на специалистов на 3 месяца</title>
+  <style>
+    :root { color-scheme: light; --ink:#25474b; --muted:#61777a; --line:#d9e8e9; --teal:#1f9ba5; --deep:#367e83; --soft:#edf8f8; --paper:#fff; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:#f7faf9; color:var(--ink); font:16px/1.52 Arial, "Helvetica Neue", sans-serif; }
+    main { max-width:1060px; margin:30px auto 72px; padding:0 24px; }
+    header { position:relative; overflow:hidden; padding:27px 42px 44px; border:1px solid var(--line); border-top:4px solid var(--teal); border-radius:4px; background:linear-gradient(115deg,#eaf7f7 0%,#f9fdfc 57%,#fff 100%); }
+    header::after { content:""; position:absolute; width:370px; height:370px; right:-105px; top:-116px; border:1px solid #bce0e1; border-radius:50%; box-shadow:0 0 0 52px rgba(31,155,165,.035),0 0 0 105px rgba(31,155,165,.025); pointer-events:none; }
+    .brand { position:relative; z-index:1; display:inline-flex; align-items:center; gap:13px; padding-bottom:15px; border-bottom:1px solid #a8d6d8; }
+    .brand-mark { display:block; width:58px; height:58px; object-fit:contain; border-radius:12px; mix-blend-mode:multiply; }
+    .brand-copy { display:flex; flex-direction:column; gap:2px; }
+    .brand-name { color:var(--deep); font:30px/1.05 Georgia, "Times New Roman", serif; letter-spacing:.015em; text-transform:uppercase; }
+    .brand-sub { color:#6a9da0; font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+    .eyebrow { position:relative; z-index:1; margin:43px 0 12px; color:var(--deep); text-transform:uppercase; letter-spacing:.12em; font-size:12px; font-weight:700; }
+    h1 { position:relative; z-index:1; margin:0; max-width:750px; font:clamp(32px,4.2vw,48px)/1.12 Georgia, "Times New Roman", serif; letter-spacing:-.025em; }
+    header p:last-child { position:relative; z-index:1; max-width:690px; margin:18px 0 0; color:#567073; }
+    section { margin-top:22px; padding:28px 32px; border:1px solid var(--line); border-radius:4px; background:var(--paper); box-shadow:0 8px 25px rgba(24,99,103,.025); }
+    h2 { margin:0 0 18px; color:var(--ink); font:27px/1.2 Georgia, "Times New Roman", serif; letter-spacing:-.015em; }
+    h3 { margin:0 0 9px; font-size:17px; line-height:1.25; }
+    p { margin:0 0 12px; }
+    p:last-child { margin-bottom:0; }
+    .muted, small { color:var(--muted); }
+    .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:18px 0 0; }
+    .stat { padding:19px 18px 18px; background:var(--soft); border-top:3px solid var(--teal); border-radius:2px; }
+    .stat b { display:block; margin-top:5px; font-size:26px; line-height:1.15; color:var(--deep); white-space:nowrap; }
+    .stat span { font-size:13px; color:#607f82; }
+    .scroll { overflow-x:auto; }
+    table { border-collapse:collapse; width:100%; min-width:680px; font-variant-numeric:tabular-nums; }
+    th, td { border-bottom:1px solid var(--line); padding:12px 10px; text-align:right; vertical-align:top; white-space:nowrap; }
+    th:first-child, td:first-child { text-align:left; padding-left:0; white-space:normal; }
+    th:last-child, td:last-child { padding-right:0; }
+    thead th { color:var(--deep); font-size:13px; font-weight:700; }
+    tbody th { font-weight:600; }
+    tfoot th, tfoot td { border-top:2px solid var(--teal); border-bottom:0; color:var(--deep); font-weight:800; }
+    .amount-button { border:0; border-bottom:1px dashed var(--teal); padding:0 0 2px; background:transparent; color:var(--deep); font:inherit; font-weight:700; white-space:nowrap; cursor:pointer; }
+    .amount-button:hover { color:#12616a; border-bottom-style:solid; }
+    .amount-button:focus-visible, .dialog-close:focus-visible { outline:3px solid var(--teal); outline-offset:4px; }
+    .budget-dialog { width:min(580px,calc(100vw - 28px)); max-height:min(80vh,760px); padding:0; border:1px solid var(--line); border-top:4px solid var(--teal); border-radius:4px; background:var(--paper); color:var(--ink); box-shadow:0 22px 70px rgba(16,58,62,.22); }
+    .budget-dialog::backdrop { background:rgba(17,42,45,.55); }
+    .dialog-inner { padding:28px 32px 30px; }
+    .dialog-top { display:flex; align-items:flex-start; justify-content:space-between; gap:20px; }
+    .dialog-top h3 { margin:0; color:var(--deep); font:26px/1.2 Georgia, "Times New Roman", serif; }
+    .dialog-close { flex:none; width:34px; height:34px; border:1px solid var(--line); border-radius:50%; background:var(--soft); color:var(--deep); font-size:22px; line-height:1; cursor:pointer; }
+    .dialog-sum { margin:9px 0 18px; color:var(--deep); font-size:22px; font-weight:700; }
+    .dialog-inner ul { margin:0; }
+    .dialog-inner li { margin:10px 0; }
+    .dialog-inner .note { margin-top:18px; }
+    .note { margin-top:14px; font-size:14px; color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .card { padding:19px 19px 18px; border:1px solid var(--line); border-top:3px solid #9ed4d6; border-radius:2px; }
+    .card p { font-size:14px; }
+    .card strong { color:var(--deep); }
+    ul { margin:8px 0 0; padding-left:20px; }
+    li { margin:7px 0; }
+    .two { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    .formula { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px; }
+    .formula div { padding:16px; border-radius:2px; background:var(--soft); }
+    .formula b { display:block; margin-top:5px; font-size:20px; color:var(--deep); }
+    .formula small { display:block; color:#607f82; }
+    .total { margin-top:14px; font-weight:700; color:var(--deep); }
+    .tag { display:inline-block; padding:3px 8px; border-radius:2px; background:var(--soft); color:var(--deep); font-size:12px; font-weight:700; }
+    footer { padding:20px 3px; color:var(--muted); font-size:13px; }
+    @media (max-width:700px) { main{padding:0 12px;margin:12px auto 36px} header{padding:24px 22px 32px} header::after{width:250px;height:250px;right:-150px;top:-70px} .brand-mark{width:48px;height:48px}.brand-name{font-size:24px}.eyebrow{margin-top:34px} section{padding:22px 20px}.stats,.grid,.formula,.two{grid-template-columns:1fr}.stat b{font-size:24px}.dialog-inner{padding:22px 20px 24px}.dialog-top h3{font-size:22px} }
+    @media print { body{background:white;font-size:12px} main{margin:0;max-width:none;padding:0} header{border-radius:0;padding:18px 28px;print-color-adjust:exact;-webkit-print-color-adjust:exact} header::after{display:none}.brand-name{font-size:20px}.brand-sub{font-size:8px}.eyebrow{margin:20px 0 8px} section{margin-top:12px;padding:15px 20px;break-inside:avoid;box-shadow:none}.stats,.formula{grid-template-columns:repeat(3,1fr)} .grid{grid-template-columns:repeat(3,1fr)} .two{grid-template-columns:1fr 1fr} .stat,.formula div{print-color-adjust:exact;-webkit-print-color-adjust:exact} .amount-button{border:0;color:inherit;font-weight:inherit} .budget-dialog{display:none} h1{font-size:27px} h2{font-size:18px} h3{font-size:13px} li{margin:3px 0} footer{padding:10px 0} }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="brand" aria-label="Клиника Возраста нет">
+      <img class="brand-mark" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAMAAAAKE/YAAAAAM1BMVEX///8jur8+w8day8/j9vcwv8OR3N/I7u911Net5efy+/vW8vOD2NtMx8toz9O66uue4eNE7qDiAAAFJElEQVR4nO2b2YKkIAxFu8AFcP3/r51aunuGcKMR0PEh57ULvULIBv31pSiKoiiKoiiKoiiKoiiKoiiKoiiKoihKSlhWN5n28Xi0kx3X/sDQwY/ze6iZrFv7cJrGmL6zD4r1jWBkWOc2GblKRpYRgOIP87IztLeJ4g+TP1ky8943ZuvlPfex75HdedO9bkl+v3zIkbz7wQUM086LXzi0s8IoGGnOmOxV8GLm3Y0RDe1qSw6zTPOTFaiWLNLjMdZ1gMK3sjMm/OappokI1/d3xsAjOtHIioZ9UPPTZ4N1vlh1OKoZr7NsJ0+V7Fq+B/+CZmzZc/NvXBXNeF2NW/3SL75jgjPv+tp5fA71vpvxCgLvc5gGKYrCbu+Qbhgde+//TQmHEehuubB6gPSxU5KKNignkb3cp8+3xZqT7dPC5WscmGxZPpGaX6mBJN6O9UnIOcgCc/KOttCD0GnY8EgDMBGhahpvy7IQOgmbXhTFINnrA1FdNtVeaBu8apnbpSOLrJo8ay/GItUopKcQ2ypxIANZNTfb2XUbNTRd5xey1I1sniMFPoGtOCbHPRW4PlkSFC9SwVbcyqKNw1pA1Bep7qMh+fYRNjS/wLKBahyQCLFVZ/uPPn29RDbKsATLHQ/b66IIHwOBpT8at+9E4sws2+mJEmlUW3nwu33DjrZidlq912H5gFwaVL294qQ5MuWKFpZZaA5RIrJp2DS5NbmiZZoPNGhmzkT65Nft2aJhvg9V45Yd7PSdLhrm+wFuiVQ205y8QDS0V5wFGPc3dwl9x22cXNF0M5nZOWeZ2I5Us45+ss8nOaYcf5Nt09Ezp9/5aTxcUOSwZa0O+Fm5oqPgMv/7F1jHoqB3uKP2Q3bGFCkj6wVKfxhmmpz+1AOvm4i4wCYZNOr+wlAt6zxSsnOPOMuj3456zlC1zzHs7NIlRG9LS2Tg0mAzLMewczXTjCl1aijfR2mR6KQooqCyjY0adCOQvUJrRPt2i4ITOlJvzekvUA6Kkzk29EFKDgRIFAGTKG+GNQdkFzVOaZUozOa4sgOH0qdG6ojKzm+JImkOarmKsPE04WjntaHLlV0BfKA2i5wDUr1VEYZ+7dxsnznTuC6v3/XUxEoPypMFBXaNmmEHztaSzVw40aj3gbZZdjPsC7nN7J7HL2lcEGbOwgOfdGSFQzlw9Ck9RhaYZpP6kyqHtkOqBmXOWWcuKJeqcCKH5aDMGVUp26phSlLr1oewezugc4CNtU6bHRU1i1VDh80ZNs786pyM86qlDRrcxcZpX3aRJVUNgyPsLyRX9rircrVvMQkzZ+bej3H+Z2GeQZzrxla/eSXOnPkixVhrDV8vtmdczZNmznnVd5UbEwBp5pylmr08eYZqlDkjS9qh6uU2olp4IJskyHtUvkYYg3rOBRc1v4Fth5oIM+eAOpQMW6G+EtLMWdrpMAVn90WqYeYM28HJ93YX/VeAOHPelX2Z5K8jmXMDr+x9Y8/efzEoc2YSh8A0aOyFk/zNodtKYRmju52tHZfLFb9AqjevkoV+8WvnvR/Od3As4tOLWyE+vbgX0tOLe5F57+c/g1Tb25sICo7t7ScbHn6f9Y9Y1UDB8SX73kbC5fvu2sziIGyV0ro7z/fGeew0r/1Nle9VKca+7uQ8GS8pU4SIqpT7+XDYbCaS7zTN33DHsTeW/GJgi6v2VsZMWVxqJma87B/xs2mWbv60dFszue7OvlpRFEVRFEVRFEVRFEVRFEVRFEVRFEVRbsofAEArikJQwCwAAAAASUVORK5CYII=" alt="" width="58" height="58">
+      <span class="brand-copy"><span class="brand-name">Возраста нет</span><span class="brand-sub">Клиника лазерного омоложения</span></span>
+    </div>
+    <p class="eyebrow">Рабочий прогноз · Пермь · 3 месяца</p>
+    <h1>Расходы на специалистов для «Возраста нет»</h1>
+    <p>План выплат команде на старте. Здесь только работа специалистов: рекламные бюджеты и оплата маркетолога в суммы не входят.</p>
+  </header>
+
+  <section aria-labelledby="summary-title">
+    <h2 id="summary-title">Сколько понадобится</h2>
+    <div class="stats">
+      <div class="stat"><span>1 месяц</span><b>48 900 ₽</b></div>
+      <div class="stat"><span>2 месяц</span><b>71 000 ₽</b></div>
+      <div class="stat"><span>3 месяц</span><b>93 200 ₽</b></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="budget-title">
+    <h2 id="budget-title">Расходы по месяцам</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th scope="col">Специалист</th><th scope="col">Месяц 1</th><th scope="col">Месяц 2</th><th scope="col">Месяц 3</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Таргетолог · VK и рассылки</th><td><button class="amount-button" type="button" data-detail="target-1" aria-haspopup="dialog" aria-label="Таргетолог, месяц 1: за что 12 500 рублей">12 500 ₽</button></td><td><button class="amount-button" type="button" data-detail="target-2" aria-haspopup="dialog" aria-label="Таргетолог, месяц 2: за что 25 000 рублей">25 000 ₽</button></td><td><button class="amount-button" type="button" data-detail="target-3" aria-haspopup="dialog" aria-label="Таргетолог, месяц 3: за что 25 000 рублей">25 000 ₽</button></td></tr>
+          <tr><th scope="row">Контент-менеджер · видео, сторис, карусели</th><td><button class="amount-button" type="button" data-detail="content-1" aria-haspopup="dialog" aria-label="Контент-менеджер, месяц 1: за что 18 400 рублей">18 400 ₽</button></td><td><button class="amount-button" type="button" data-detail="content-2" aria-haspopup="dialog" aria-label="Контент-менеджер, месяц 2: за что 22 000 рублей">22 000 ₽</button></td><td><button class="amount-button" type="button" data-detail="content-3" aria-haspopup="dialog" aria-label="Контент-менеджер, месяц 3: за что 29 200 рублей">29 200 ₽</button></td></tr>
+          <tr><th scope="row">Контекстолог · Яндекс Директ</th><td>—</td><td><button class="amount-button" type="button" data-detail="context-2" aria-haspopup="dialog" aria-label="Контекстолог, месяц 2: за что 15 000 рублей">15 000 ₽</button></td><td><button class="amount-button" type="button" data-detail="context-3" aria-haspopup="dialog" aria-label="Контекстолог, месяц 3: за что 30 000 рублей">30 000 ₽</button></td></tr>
+          <tr><th scope="row">Специалист по медицинским площадкам</th><td><button class="amount-button" type="button" data-detail="platforms-1" aria-haspopup="dialog" aria-label="Медицинские площадки, месяц 1: за что 18 000 рублей">18 000 ₽</button></td><td><button class="amount-button" type="button" data-detail="platforms-2" aria-haspopup="dialog" aria-label="Медицинские площадки, месяц 2: за что 9 000 рублей">9 000 ₽</button></td><td><button class="amount-button" type="button" data-detail="platforms-3" aria-haspopup="dialog" aria-label="Медицинские площадки, месяц 3: за что 9 000 рублей">9 000 ₽</button></td></tr>
+        </tbody>
+        <tfoot><tr><th scope="row">Итого</th><td>48 900 ₽</td><td>71 000 ₽</td><td>93 200 ₽</td></tr></tfoot>
+      </table>
+    </div>
+    <p class="note">Нажмите на сумму, чтобы увидеть работу специалиста за этот месяц. Таргетолог начинает через две недели после старта, контекстолог — с середины второго месяца. За половину месяца заложена половина месячной ставки.</p>
+  </section>
+
+  <section aria-labelledby="schedule-title">
+    <h2 id="schedule-title">Что делает команда</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Месяц 1 <span class="tag">Запуск</span></h3>
+        <p>Контент-менеджер: 8 видео и 3 серии сторис за месяц. Первая серия — 3 новых слайда; вторая и третья — по одному новому слайду к репосту.</p>
+        <p>Анастасия готовит 4 карусели. Таргетолог подключается со второй половины месяца.</p>
+        <p>Специалист по медицинским площадкам оформляет карточки 6 врачей, размещает информацию на 3 площадках и отвечает на отзывы. Материалы предоставляет Анастасия, она же контролирует работу.</p>
+      </div>
+      <div class="card">
+        <h3>Месяц 2 <span class="tag">Расширение</span></h3>
+        <p>Контент-менеджер: 10 видео и те же 3 серии сторис за месяц. Четыре карусели пока делает Анастасия.</p>
+        <p>Таргетолог работает весь месяц. Контекстолог начинает с середины месяца.</p>
+        <p>Специалист по медицинским площадкам обновляет информацию о 6 врачах на 3 площадках и отвечает на отзывы. Материалы и общий контроль остаются за Анастасией.</p>
+      </div>
+      <div class="card">
+        <h3>Месяц 3 <span class="tag">Полный состав</span></h3>
+        <p>Контент-менеджер делает 10 видео, 3 серии сторис и 4 карусели. Таргетолог и контекстолог работают весь месяц.</p>
+        <p>Специалист продолжает вести карточки 6 врачей на 3 медицинских площадках и отвечать на отзывы. Анастасия предоставляет материалы и контролирует качество и сроки.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="content-calc-title">
+    <h2 id="content-calc-title">Как посчитана работа контент-менеджера</h2>
+    <div class="formula">
+      <div><small>Со 2-го месяца: 10 видео × 1 800 ₽</small><b>18 000 ₽</b></div>
+      <div><small>Сторис: (3 + 1 + 1) новых слайдов × 800 ₽</small><b>4 000 ₽</b></div>
+      <div><small>С 3-го месяца: 4 карусели × 1 800 ₽</small><b>7 200 ₽</b></div>
+    </div>
+    <p class="total">1-й месяц: 8 × 1 800 + 4 000 = 18 400 ₽. 2-й месяц: 18 000 + 4 000 = 22 000 ₽. 3-й месяц: 22 000 + 7 200 = 29 200 ₽.</p>
+    <p class="note">Сторис во все месяцы: первая серия — 3 новых слайда (2 400 ₽), вторая и третья — по одному новому слайду (по 800 ₽). Репосты бесплатны. Каждый дополнительный уникальный слайд стоит ещё 800 ₽. В 1-й и 2-й месяцы карусели делает Анастасия.</p>
+  </section>
+
+  <section aria-labelledby="platforms-calc-title">
+    <h2 id="platforms-calc-title">Медицинские площадки: 6 врачей, 3 сервиса</h2>
+    <div class="formula">
+      <div><small>Разово: 6 врачей × 1 500 ₽</small><b>9 000 ₽</b></div>
+      <div><small>Размещение и обновления: 3 площадки × 1 500 ₽</small><b>4 500 ₽/мес.</b></div>
+      <div><small>Отзывы и ответы: 3 площадки × 1 500 ₽</small><b>4 500 ₽/мес.</b></div>
+    </div>
+    <p class="total">1-й месяц: 9 000 + 4 500 + 4 500 = 18 000 ₽. 2-й и 3-й месяцы: по 4 500 + 4 500 = 9 000 ₽.</p>
+    <p>Анастасия предоставляет фотографии, тексты, сведения о врачах и актуальные цены. Она ставит задачи, согласовывает материалы и контролирует качество и сроки. Исполнитель оформляет карточки, дублирует и обновляет информацию, следит за новыми отзывами и отвечает на них.</p>
+    <p class="note">Ставка 1 500 ₽ за площадку в месяц охватывает всех 6 врачей. Оформление каждого врача оплачивается один раз; повторно умножать эту оплату на число площадок не нужно. В расчёте 3 медицинских сервиса, например ПроДокторов и аналогичные площадки; их состав согласовываем перед стартом. Платные тарифы сервисов оплачиваются отдельно.</p>
+  </section>
+
+  <section aria-labelledby="roles-title">
+    <h2 id="roles-title">За что отвечает каждый</h2>
+    <div class="two">
+      <div>
+        <h3>Таргетолог · 25 000 ₽ за полный месяц</h3>
+        <ul>
+          <li>Проверяет рекламный кабинет VK, доступы и текущие кампании; готовит структуру запуска под выбранные услуги и аудитории Перми.</li>
+          <li>Собирает сегменты и объявления, запускает тесты, проверяет модерацию медицинской рекламы и маркировку.</li>
+          <li>Ставит UTM-метки и цели, проверяет путь заявки до записи вместе с маркетологом и администраторами.</li>
+          <li>Следит за расходом и стоимостью заявки, отключает слабые объявления, готовит еженедельный отчёт и предложения по следующему тесту.</li>
+          <li>В Senler готовит и отправляет 2 рассылки в неделю по базе подписчиков клиники: выбирает сегмент, собирает сообщение, проверяет отправку, переходы и обращения. Тексты и медицинские утверждения согласовывает с маркетологом и клиникой.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Контекстолог · 30 000 ₽ за полный месяц</h3>
+        <ul>
+          <li>Собирает поисковые запросы по услугам и географии, группирует их, добавляет минус-слова.</li>
+          <li>Настраивает Яндекс Директ: поиск и, если подходит задача, Рекламную сеть Яндекса. Пишет и тестирует объявления с учётом правил медицинской рекламы.</li>
+          <li>Настраивает UTM-метки, цели Яндекс Метрики и передачу заявок; проверяет формы, звонки и посадочные страницы перед запуском.</li>
+          <li>Следит за ставками и расходом, чистит поисковые запросы, улучшает объявления и посадочные связки.</li>
+          <li>Раз в неделю показывает расходы, заявки, CPL и качество обращений; предлагает, что оставить и что изменить.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="two" style="margin-top:24px">
+      <div>
+        <h3>Контент-менеджер</h3>
+        <ul>
+          <li>Организует и проводит съёмки по готовым сценариям, монтирует короткие видео, готовит их к публикации и выкладывает.</li>
+          <li>Собирает сторис по заданному плану: авторские серии, репосты и дополнительные слайды.</li>
+          <li>С третьего месяца делает 4 карусели в месяц по темам и материалам маркетолога.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Анастасия · маркетолог проекта</h3>
+        <ul>
+          <li>Отвечает за стратегию, темы и сценарии видео, общий контент-план, подачу и образ экспертов.</li>
+          <li>Ставит задачи специалистам, принимает материалы, согласовывает медицинские формулировки с врачами и следит за сроками.</li>
+          <li>Предоставляет материалы для карточек 6 врачей на 3 медицинских площадках: фотографии, тексты, сведения о врачах и актуальные цены. Контролирует качество оформления, обновлений и ответов на отзывы.</li>
+          <li>В первый и второй месяцы сама делает 4 карусели в месяц. Её оплата в этот прогноз не включена.</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:24px">
+      <h3>Специалист по медицинским площадкам · 18 000 ₽ / 9 000 ₽ / 9 000 ₽</h3>
+      <ul>
+        <li>В первый месяц оформляет карточки 6 врачей из материалов Анастасии: фото, специализация, образование, опыт, услуги и цены. За оформление — 6 × 1 500 ₽ = 9 000 ₽ разово.</li>
+        <li>Размещает и обновляет готовую информацию на 3 согласованных площадках, проверяет карточки после публикации и исправляет замечания модерации. За работу на площадках — 3 × 1 500 ₽ = 4 500 ₽ в месяц для всех 6 врачей.</li>
+        <li>Проверяет новые отзывы по рабочим дням и отвечает на них. Жалобы по организации приёма согласовывает с администратором, медицинские претензии — с врачом или руководителем; личные сведения пациента в ответах не раскрывает. За отзывы — 3 × 1 500 ₽ = 4 500 ₽ в месяц.</li>
+        <li>Передаёт Анастасии ссылки на оформленные карточки и краткий список обновлений. Анастасия предоставляет материалы и контролирует работу.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="limits-title">
+    <h2 id="limits-title">Что потребуется сверх этого расчёта</h2>
+    <p>Отдельно согласовать рекламный бюджет VK и Яндекс Директа, оплату маркетолога, сервисы рассылок и аналитики, платные тарифы медицинских площадок, а также расходы на съёмку, если понадобятся аренда студии, реквизит или выезды. Перед стартом рекламы клиника предоставляет доступы, сведения об услугах и медицинские документы; врач согласовывает содержательные утверждения.</p>
+  </section>
+  <footer>Рабочая оценка по условиям, указанным Анастасией 11 ноября 2026 года. Суммы — расходы на работу специалистов, без прогноза выручки.</footer>
+</main>
+<dialog class="budget-dialog" aria-labelledby="detail-title">
+  <div class="dialog-inner">
+    <div class="dialog-top"><div id="detail-body"></div><button class="dialog-close" type="button" aria-label="Закрыть окно">×</button></div>
+  </div>
+</dialog>
+
+<template id="target-1">
+  <h3 id="detail-title">Таргетолог · месяц 1</h3>
+  <p class="dialog-sum">12 500 ₽ · работа со второй половины месяца</p>
+  <ul>
+    <li>Проверяет доступы и рекламный кабинет VK, выбирает с Анастасией услуги и аудитории для первого запуска в Перми.</li>
+    <li>Собирает объявления и аудитории, настраивает метки, запускает первые тесты после согласования рекламы с клиникой.</li>
+    <li>В Senler готовит и отправляет две рассылки в неделю по базе подписчиков клиники, проверяет отправку и переходы.</li>
+    <li>Следит за расходом и первыми заявками, показывает, какие объявления стоит оставить или заменить.</li>
+  </ul>
+  <p class="note">Половина месячной ставки 25 000 ₽. Рекламный бюджет оплачивается отдельно.</p>
+</template>
+<template id="target-2">
+  <h3 id="detail-title">Таргетолог · месяц 2</h3>
+  <p class="dialog-sum">25 000 ₽ · полный месяц</p>
+  <ul>
+    <li>Ведёт рекламу VK: проверяет заявки и стоимость обращения, отключает слабые объявления, обновляет креативы и аудитории.</li>
+    <li>Тестирует новые услуги и связки с согласованными посадочными страницами, проверяет метки и путь заявки до записи.</li>
+    <li>В Senler делает две рассылки в неделю по базе подписчиков клиники: сегментирует, собирает, отправляет и проверяет результат.</li>
+    <li>Раз в неделю показывает расходы, заявки и план следующего теста Анастасии и клинике.</li>
+  </ul>
+</template>
+<template id="target-3">
+  <h3 id="detail-title">Таргетолог · месяц 3</h3>
+  <p class="dialog-sum">25 000 ₽ · полный месяц</p>
+  <ul>
+    <li>Продолжает рекламу VK по работающим услугам, меняет объявления и аудитории на основе заявок и записей.</li>
+    <li>Контролирует расход, стоимость и качество обращений; вместе с Анастасией решает, куда перенести бюджет.</li>
+    <li>В Senler делает две рассылки в неделю по базе подписчиков клиники и проверяет переходы и обращения.</li>
+    <li>Раз в неделю отчитывается по рекламе и рассылкам, предлагает следующий тест.</li>
+  </ul>
+</template>
+<template id="content-1">
+  <h3 id="detail-title">Контент-менеджер · месяц 1</h3>
+  <p class="dialog-sum">18 400 ₽ · видео и сторис</p>
+  <ul>
+    <li>Снимает, монтирует и публикует 8 коротких видео по сценариям Анастасии: 8 × 1 800 ₽ = 14 400 ₽.</li>
+    <li>Выпускает 3 серии сторис: первая — 3 новых слайда; вторая и третья — репост с одним новым слайдом каждая. Всего 5 новых слайдов × 800 ₽ = 4 000 ₽; репосты бесплатны.</li>
+    <li>Готовит видео и сторис к публикации, проверяет оформление и размещение.</li>
+  </ul>
+  <p class="note">Итого: 14 400 + 4 000 = 18 400 ₽. Четыре карусели делает Анастасия, в оплату контент-менеджера они не входят.</p>
+</template>
+<template id="content-2">
+  <h3 id="detail-title">Контент-менеджер · месяц 2</h3>
+  <p class="dialog-sum">22 000 ₽ · видео и сторис</p>
+  <ul>
+    <li>Снимает, монтирует и публикует 10 видео по сценариям Анастасии: 10 × 1 800 ₽ = 18 000 ₽.</li>
+    <li>Делает 3 серии сторис: 3 новых слайда в первой и по одному к репостам во второй и третьей. 5 × 800 ₽ = 4 000 ₽; сами репосты бесплатны.</li>
+    <li>Проверяет готовые материалы и выкладывает их по плану.</li>
+  </ul>
+  <p class="note">Четыре карусели в этом месяце делает Анастасия. Итого: 18 000 + 4 000 = 22 000 ₽.</p>
+</template>
+<template id="content-3">
+  <h3 id="detail-title">Контент-менеджер · месяц 3</h3>
+  <p class="dialog-sum">29 200 ₽ · видео, сторис и карусели</p>
+  <ul>
+    <li>Снимает, монтирует и публикует 10 видео по сценариям Анастасии: 10 × 1 800 ₽ = 18 000 ₽.</li>
+    <li>Делает 3 серии сторис с 5 новыми слайдами: 5 × 800 ₽ = 4 000 ₽. Репосты бесплатны.</li>
+    <li>Готовит и публикует 4 карусели по темам и материалам Анастасии: 4 × 1 800 ₽ = 7 200 ₽.</li>
+  </ul>
+  <p class="note">Итого: 18 000 + 4 000 + 7 200 = 29 200 ₽.</p>
+</template>
+<template id="context-2">
+  <h3 id="detail-title">Контекстолог · месяц 2</h3>
+  <p class="dialog-sum">15 000 ₽ · работа со второй половины месяца</p>
+  <ul>
+    <li>Собирает поисковые запросы по услугам клиники и Перми, группирует их, исключает нецелевые запросы.</li>
+    <li>Настраивает Яндекс Директ, объявления и географию показа; согласовывает медицинские формулировки с Анастасией и клиникой.</li>
+    <li>Настраивает Метрику, цели и метки, проверяет формы и звонки, запускает первые объявления.</li>
+    <li>Проверяет первые расходы и заявки, исправляет настройки по результатам теста.</li>
+  </ul>
+  <p class="note">Половина месячной ставки 30 000 ₽. Рекламный бюджет оплачивается отдельно.</p>
+</template>
+<template id="context-3">
+  <h3 id="detail-title">Контекстолог · месяц 3</h3>
+  <p class="dialog-sum">30 000 ₽ · полный месяц</p>
+  <ul>
+    <li>Ведёт кампании в Яндекс Директе: проверяет поисковые запросы, ставки, расход и качество заявок.</li>
+    <li>Отключает нецелевые запросы, меняет объявления и посадочные связки; тестирует РСЯ, если для неё есть подходящие материалы и бюджет.</li>
+    <li>Проверяет цели Метрики, формы и звонки, чтобы видеть заявки и записи по рекламным источникам.</li>
+    <li>Раз в неделю показывает расходы, число и стоимость обращений, предлагает изменения на следующую неделю.</li>
+  </ul>
+</template>
+<template id="platforms-1">
+  <h3 id="detail-title">Медицинские площадки · месяц 1</h3>
+  <p class="dialog-sum">18 000 ₽ · 6 врачей, 3 площадки</p>
+  <ul>
+    <li>Оформляет карточки 6 врачей из готовых материалов Анастасии: фото, специализация, образование, опыт, услуги и цены. 6 × 1 500 ₽ = 9 000 ₽ разово.</li>
+    <li>Дублирует информацию на 3 согласованных площадках, проверяет публикацию, исправляет замечания модерации и вносит обновления. 3 × 1 500 ₽ = 4 500 ₽ за месяц для всех 6 врачей.</li>
+    <li>Проверяет новые отзывы по рабочим дням и отвечает на них. Сложные ответы согласовывает с администратором, врачом или руководителем клиники. 3 × 1 500 ₽ = 4 500 ₽ за месяц.</li>
+  </ul>
+  <p class="note">Итого: 9 000 + 4 500 + 4 500 = 18 000 ₽. Материалы предоставляет Анастасия; она же контролирует качество и сроки работы. Платные тарифы площадок в сумму не входят.</p>
+</template>
+<template id="platforms-2">
+  <h3 id="detail-title">Медицинские площадки · месяц 2</h3>
+  <p class="dialog-sum">9 000 ₽ · 6 врачей, 3 площадки</p>
+  <ul>
+    <li>Дублирует и обновляет готовую информацию о 6 врачах на 3 площадках: фото, описания, услуги и цены. Проверяет карточки и ссылки для записи, исправляет замечания модерации. 3 × 1 500 ₽ = 4 500 ₽ за месяц.</li>
+    <li>Проверяет новые отзывы по рабочим дням и отвечает на них. Сложные ответы согласовывает с администратором, врачом или руководителем клиники. 3 × 1 500 ₽ = 4 500 ₽ за месяц.</li>
+    <li>Передаёт Анастасии список обновлений. Повторной оплаты за первоначальное оформление 6 врачей нет.</li>
+  </ul>
+  <p class="note">Итого: 4 500 + 4 500 = 9 000 ₽. Материалы предоставляет Анастасия; она же контролирует качество и сроки работы. Платные тарифы площадок в сумму не входят.</p>
+</template>
+<template id="platforms-3">
+  <h3 id="detail-title">Медицинские площадки · месяц 3</h3>
+  <p class="dialog-sum">9 000 ₽ · 6 врачей, 3 площадки</p>
+  <ul>
+    <li>Дублирует и обновляет готовую информацию о 6 врачах на 3 площадках: фото, описания, услуги и цены. Проверяет карточки и ссылки для записи, исправляет замечания модерации. 3 × 1 500 ₽ = 4 500 ₽ за месяц.</li>
+    <li>Проверяет новые отзывы по рабочим дням и отвечает на них. Сложные ответы согласовывает с администратором, врачом или руководителем клиники. 3 × 1 500 ₽ = 4 500 ₽ за месяц.</li>
+    <li>Передаёт Анастасии список обновлений. Повторной оплаты за первоначальное оформление 6 врачей нет.</li>
+  </ul>
+  <p class="note">Итого: 4 500 + 4 500 = 9 000 ₽. Материалы предоставляет Анастасия; она же контролирует качество и сроки работы. Платные тарифы площадок в сумму не входят.</p>
+</template>
+<script>
+  const budgetDialog = document.querySelector('.budget-dialog');
+  const detailBody = document.querySelector('#detail-body');
+  document.querySelectorAll('.amount-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const detail = document.getElementById(button.dataset.detail);
+      detailBody.replaceChildren(detail.content.cloneNode(true));
+      budgetDialog.showModal();
+    });
+  });
+  document.querySelector('.dialog-close').addEventListener('click', () => budgetDialog.close());
+  budgetDialog.addEventListener('click', event => {
+    if (event.target === budgetDialog) budgetDialog.close();
+  });
+</script>
+</body>
+</html>
